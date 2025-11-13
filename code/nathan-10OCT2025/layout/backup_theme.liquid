@@ -1,0 +1,258 @@
+{% include 'shogun-content-handler' %}
+{% liquid
+  if shop.permanent_domain == 'usbns.myshopify.com'
+    assign storefront = "US"
+  endif
+  assign ss_collection_handle = settings.ss_collection_handle
+%}
+
+{% comment %}ly_liquid_scripts_begin{% endcomment %}
+{% capture ly_liquid_content %}
+{% comment %}ly_liquid_scripts_end{% endcomment %}
+
+{%- if storefront == "US" -%}
+  {%- comment %}<locksmith:d4e9>{% endcomment -%}
+    {%- include 'locksmith' -%}
+  {%- comment %}</locksmith:d4e9>{% endcomment -%}
+{%- endif -%}
+
+<!DOCTYPE html>
+<html lang="{{ shop.locale }}">
+
+<head>
+<script src="https://sapi.negate.io/script/XvHMv74qJcRokaeCK/HnhQ==?shop=usbns.myshopify.com"></script>
+  {%- render 'gcm-integration-script' -%}
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-N5PL2WZ');</script>
+  <!-- End Google Tag Manager -->
+
+  {% comment %} Code from Old NATH site {% endcomment %}
+  <script src="https://www.googleoptimize.com/optimize.js?id=OPT-WBBDCRP"></script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+  <script src = "https://cjshpfy.cjpowered.com/getPluginJS?shop=usbns.myshopify.com"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L759EKP838"></script>
+
+  <!-- Global site tag (gtag.js) - Google Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-868109585"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-868109585');
+  </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-L759EKP838');
+  </script>
+
+  {%- comment -%} Omit certain pages from Search Engine Crawlers {%- endcomment -%}
+  {%- assign hide_from_crawlers = false -%}
+  {%- if page and page.url == "/pages/pro" -%}
+    {%- assign hide_from_crawlers = true -%}
+  {%- elsif collection and collection.handle == "frontpage" -%}
+    {%- assign hide_from_crawlers = true -%}
+  {%- endif -%}
+
+  {%- if hide_from_crawlers -%}
+    <meta name="robots" content="noindex">
+    <script>console.log("noindex page");</script>
+  {%- endif -%}
+
+  <!-- href lang -->
+  {%- if storefront == "US" -%}
+    <link rel="alternate" hreflang="en" href="https://nathansports.com" />
+  {%- else -%}
+    <link rel="alternate" hreflang="x-default" href="https://nathansports.com" />
+  {%- endif -%}
+
+  <!-- main site JS file -->
+  <!-- <script src="{{ 'vendor.js' | asset_url }}"></script> -->
+  <script src="{{ 'layout.build.js' | asset_url }}" defer></script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="shortcut icon" href="" type="image/png">
+
+  <!-- Typekit Fonts -->
+  <link rel="stylesheet" href="https://use.typekit.net/ted3lqw.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  {%- capture seo_title -%}
+    {{ page_title }}
+    {%- if current_page != 1 -%}
+      &ndash; {{ 'general.meta.page' | t: page: current_page }}
+    {%- endif -%}
+    {%- unless page_title contains shop.name -%}
+      &ndash; {{ shop.name }}
+    {%- endunless -%}
+  {%- endcapture -%}
+
+  {%- if page_description and storefront == "US" -%}
+    {%- comment %}<locksmith:31d8>{% endcomment -%}
+      {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}{% if var == 'true' %}<meta name="description" content="{{ page_description | escape }}">{% endif -%}
+      {%- comment %}original: <meta name="description" content="{{ page_description | escape }}">{%- endcomment %}
+    {%- comment %}</locksmith:31d8>{% endcomment -%}
+  {%- endif -%}
+
+  {% if settings.favicon != blank %}
+  <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+  {% endif %}
+
+  {%- comment -%} Avada SEO {%- endcomment -%}
+  {%- if storefront == "US" -%}
+    {% include 'avada-seo' %}
+  {%- endif -%}
+
+  <title>{{ seo_title }}</title>
+
+  {% include 'head-meta' %}
+
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+  {{ content_for_header }}
+
+  {%if settings.ss_enable %}
+  	{% include 'ss-script' storefront: storefront %}
+  {% endif %}
+
+  {%- if storefront == "US" and page and page.handle contains "frequently-asked-questions" -%}
+    {% render 'faq-rich-results', page: page %}
+  {%- endif -%}
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
+  </style>
+
+  {% comment %} BV Implemenation {% endcomment %}
+  <script type="text/javascript" async="" src="https://apps.bazaarvoice.com/deployments/nathansports/main_site/production/en_US/bv.js?shop=usbns.myshopify.com"></script>
+  {% include 'nerdy-form-builder' %}
+
+  {% render 'shogun-head' %}
+</head>
+
+{%- if customer -%}
+  {%- comment -%} check if the customer is a Pro member {%- endcomment -%}
+  {%- assign discount_tag = false -%}
+  {%- assign limit_tag = false -%}
+  {%- for tag in customer.tags -%}
+    {%- if tag contains "discount-" -%}
+      {%- assign discount_tag = tag | remove: "discount-" | plus: 0 -%}
+    {%- endif -%}
+    {%- if tag contains "limit-" -%}
+      {%- assign limit_tag = tag | remove: "limit-" | plus: 0 -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{%- section 'cart-drawer' -%}
+
+<body {% if settings.ss_enable and collection.handle and collection.handle == settings.ss_collection_handle %} class="ss-shop"{% endif %}
+  data-storefront="{{ storefront }}"
+  data-language="{{ shop.locale }}"
+  data-is-pro="{% if limit_tag and discount_tag %}true{% else %}false{% endif %}"
+  {% if discount_tag %}data-pro-discount="{{- discount_tag -}}"{% endif %}
+  {% if limit_tag %}data-pro-limit="{{- limit_tag -}}"{% endif %}
+  data-coming-soon-text="{{ settings.coming_soon_text | escape }}"
+  data-fs-customers="{{ settings.free_shipping_enabled_normals }}"
+  data-fs-pros="{{ settings.free_shipping_enabled_pros }}"
+>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N5PL2WZ"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  {% render 'pro-classes' %}
+  {% section 'utility-bar' %}
+  {% section 'header' %}
+
+  {%- if template.name == 'product' -%}
+    {%- render 'pdp-sticky-atc' -%}
+  {%- endif -%}
+
+  <div class="mobile-search z-[101] fixed top-0 left-0 w-full h-15 bg-white shadow-search-auto hidden xl:hidden" data-search-wrapper>
+    {%- render 'search-form' -%}
+  </div>
+  <!-- Meganav Scrim -->
+  <div class="hidden lg:block fixed opacity-0 z-1 invisible top-0 bottom-0 left-0 right-0 transition-opacity bg-stone bg-opacity-40" data-scrim>
+  </div>
+
+  <main role="main" id="root">
+    {{ content_for_layout }}
+  </main>
+
+  {% section 'technology-icons' %}
+  {% section 'footer' %}
+  {% render 'tailwind-classes' %}
+
+  {%- if template.suffix == "bundle" -%}
+    {% render 'mini-cart' bundle: true %}
+  {%- else -%}
+    {% render 'mini-cart' bundle: false %}
+  {%- endif -%}
+
+  <!-- Global Modal -->
+  <div class="hidden lg:block">
+    <div id="siteOverlay" class="site-overlay fixed top-0 left-0 w-screen h-screen bg-black opacity-0 transition duration-300 ease-in-out z-30 hidden"></div>
+    <div id="searchOverlay" class="site-overlay fixed bottom-0 left-0 w-screen h-desktop-search bg-black opacity-0 transition duration-300 ease-in-out z-10 hidden"></div>
+  </div>
+
+  <div class="fixed z-10 top-0 right-0 bottom-0 left-0 bg-black bg-opacity-75 hidden" data-modal-container>
+    <div class="global-modal-inner fixed top-2.5 md:top-1/2 left-1/2 transform -translate-x-1/2 md:-translate-y-1/2 bg-white w-screen overflow-y-auto rounded max-w-1200" data-inner-modal></div>
+  </div>
+
+  {%- render 'quickshop-modal' -%}
+
+  {%- if storefront == "US" -%}
+    {% render 'accessibe-widget' %}
+  {%- endif -%}
+
+  {% render 'avantlink-script' storefront: storefront %}
+
+  <!-- langify-v2-scripts-begin -->{% endcapture %}
+  {{ ly_liquid_content }}
+  <!-- langify-v2-scripts-end -->
+
+{% if settings.ss_enable %}
+  {% include 'ss-intellisuggest' %}
+{% endif %}
+
+{% include 'klaviyo-snippets' %}
+
+<!-- Gorgias Chat Widget Start -->
+<script id="gorgias-chat-widget-install">
+  !function(_){_.GORGIAS_CHAT_APP_ID="4459",_.GORGIAS_CHAT_BASE_URL="us-east1-898b.production.gorgias.chat",_.GORGIAS_API_BASE_URL="config.gorgias.chat";var e=new XMLHttpRequest;e.open("GET","https://config.gorgias.chat/applications/4459",!0),e.onload=function(t){if(4===e.readyState)if(200===e.status){var n=JSON.parse(e.responseText);if(!n.application||!n.bundleVersion)throw new Error("Missing fields in the response body - https://config.gorgias.chat/applications/4459");if(_.GORGIAS_CHAT_APP=n.application,_.GORGIAS_CHAT_BUNDLE_VERSION=n.bundleVersion,n&&n.texts&&(_.GORGIAS_CHAT_TEXTS=n.texts),n&&n.sspTexts&&(_.GORGIAS_CHAT_SELF_SERVICE_PORTAL_TEXTS=n.sspTexts),!document.getElementById("gorgias-chat-container")){var o=document.createElement("div");o.id="gorgias-chat-container",document.body.appendChild(o);var r=document.createElement("script");r.setAttribute("defer",!0),r.src="https://client-builds.production.gorgias.chat/{bundleVersion}/static/js/main.js".replace("{bundleVersion}",n.bundleVersion),document.body.appendChild(r)}}else console.error("Failed request GET - https://config.gorgias.chat/applications/4459")},e.onerror=function(_){console.error(_)},e.send()}(window||{});
+</script>
+<script id="gorgias-chat-shopify-install">
+  !function(_){_.SHOPIFY_PERMANENT_DOMAIN="{{shop.permanent_domain}}",_.SHOPIFY_CUSTOMER_ID="{{customer.id}}",_.SHOPIFY_CUSTOMER_EMAIL="{{customer.email}}"}(window||{});
+</script>
+<!-- Gorgias Chat Widget End -->
+
+<!-- start Ecodrive -->
+{{ 'ecodrive.js' | asset_url | script_tag }}
+{{ 'ecodrive.css' | asset_url | stylesheet_tag }}
+<!-- end Ecodrive -->
+
+<script src="https://unpkg.com/@loophq/onstore-sdk@latest/dist/loop-onstore-sdk.js"></script>
+<script>
+    LoopOnstore.init({
+      key: "03b888e94801710c26501de6b7273cd27354f556",
+      attach: "[data-checkout-btn]"
+    });
+</script>
+
+{% include 'kiwiSizing' %}</body></html>

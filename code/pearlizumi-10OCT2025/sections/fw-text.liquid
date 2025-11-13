@@ -1,0 +1,80 @@
+<div class="fw-text" style="background-color: {{ section.settings.bg_color }};">
+  <div class="fw-text__container">
+    {% if section.settings.heading != blank %}
+      <div class="fw-text__heading">
+        <h3 style="color: {{ section.settings.text_color }};">{{ section.settings.heading }}</h3>
+      </div>
+    {% endif %}
+
+    {% if section.settings.text != blank %}
+      <div class="fw-text__text" style="color: {{ section.settings.text_color }};">
+        {{ section.settings.text }}
+      </div>
+    {% endif %}
+
+    {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+      <a
+        class="fw-button{% if section.settings.button_outlined == true %} fw-button--outlined{% endif %}"
+        href="{{ section.settings.button_link }}"
+      >
+        {{- section.settings.button_label -}}
+      </a>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FC Text",
+  "tag": "section",
+  "class": "shopify-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#353B42"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Heading Text"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Text content here...</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "button_outlined",
+      "label": "Button Outlined",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "FC Text"
+    }
+  ]
+}
+{% endschema %}

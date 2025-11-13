@@ -1,0 +1,179 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "full-width-cta": {
+      "type": "full-width-cta",
+      "settings": {
+        "image": "shopify://shop_images/hero3_b8ac8268-7315-493a-8485-21b2d0f9ae94.jpg",
+        "image_mobile": "shopify://shop_images/hero3mob_6a77aeef-ce31-4424-97be-211e32edcedf.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "hero_height": "small",
+        "text_overlay_color": "#262b2c",
+        "overlay_opacity": 0.6,
+        "title": "HOW TO CHOOSE A BIKE  JERSEY",
+        "text": "",
+        "enable_description": true,
+        "btn_label_1": "",
+        "btn_link_1": "",
+        "btn_label_2": "",
+        "btn_link_2": "",
+        "enable_bottom_margin": false
+      }
+    },
+    "text-block": {
+      "type": "text-block",
+      "settings": {
+        "bg_color": "#01796F",
+        "svg": "",
+        "svg_mobile": "",
+        "text_color": "#fff",
+        "heading": "",
+        "body": "<p>When choosing a cycling jersey, prioritize fit and fabric to ensure comfort and performance on every ride. A well-fitting jersey should balance aerodynamics and breathability, allowing free movement while keeping you cool, with stretchable panels that conform to your body without feeling restrictive. Fabrics are key: lightweight, moisture-wicking materials are perfect for hot days, while thermal fabrics provide warmth in colder conditions. Consider UV protection, reflective elements for safety, and the practicalities of jersey pockets versus cargo bibs or trail shorts with storage. Above all, match your jersey choice to the riding conditions you'll face to get the most out of your gear.</p>",
+        "enable_bottom_margin": false
+      }
+    },
+    "full-width-cta-reversible": {
+      "type": "full-width-cta-reversible",
+      "settings": {
+        "image": "shopify://shop_images/3_99364534-365c-4245-9b35-7a1a4781b0c6.jpg",
+        "image_position": "right",
+        "subtitle": "",
+        "title": "THE GO-TO JERSEYS",
+        "text": "When selecting the best cycling jerseys, it's important to consider both functionality and fit. The right jersey not only keeps you comfortable by wicking away moisture, but also offers features like rear pockets for carrying essentials. The question of \"how should a cycling jersey fit?\" is crucial; jerseys should be form-fitting but not restrictive, allowing for optimal movement and aerodynamics. Look for jerseys that offer performance-driven materials like Transfer fabric, which ensures quick-drying and cooling during rides. For cooler days, pairing your jersey with a baselayer and arm warmers can extend your comfort across seasons.",
+        "btn_label": "SHOP JERSEYS",
+        "btn_link": "shopify://collections/cycling-jerseys",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "hero-image": {
+      "type": "hero-image",
+      "settings": {
+        "image": "shopify://shop_images/banner2new.jpg",
+        "image_mobile": "shopify://shop_images/banner2newmob.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "subtitle": "",
+        "title": "When the Temps Climb",
+        "text": "<p><span style=\"color:#FFFFFF\">When temperatures soar, staying cool and protected becomes a priority for cyclists. For the best hot weather cycling jerseys, look no further than options featuring PEARL iZUMi's In-R-Cool® technology, which delivers advanced cooling and moisture-wicking performance. The Attack Air Jersey, with its sleek fit and UPF 50 protection, is perfect for high-output rides under the sun. Pair it with sun sleeves for added UPF 50 defense, ensuring you're ready to take on the heat while staying comfortable and focused on the ride.</span></p>",
+        "show_description": true,
+        "btn_text_1": "SOP HOT WEATHER JERSEYS",
+        "btn_url_1": "shopify://collections/hot-weather-cycling-jerseys",
+        "btn_text_2": "Button",
+        "btn_url_2": "",
+        "btn_text_3": "Button",
+        "btn_url_3": "",
+        "show_breadcrumbs": false,
+        "enable_bottom_margin": true
+      }
+    },
+    "full-width-cta-reversible-2": {
+      "type": "full-width-cta-reversible",
+      "settings": {
+        "image": "shopify://shop_images/4_855ed6f3-f6c0-4c91-81c6-f3c5a9162b1a.jpg",
+        "image_position": "right",
+        "subtitle": "",
+        "title": "For the Trail",
+        "text": "Mountain bikers have a little more freedom when it comes to choosing tops, because trail shorts usually have enough pockets to carry what you want to keep at arm's reach. To match the baggy short look, a looser fitting jersey is a popular choice. Our trail jerseys are made with the same fast drying Transfer fabrics as our line of road jerseys.",
+        "btn_label": "SHOP MOUNTAIN BIKE JERSEYS",
+        "btn_link": "shopify://collections/mens-mountain-bike-jerseys",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": false
+      }
+    },
+    "hero-image-2": {
+      "type": "hero-image",
+      "settings": {
+        "image": "shopify://shop_images/x_04185e20-4c7f-434c-9879-9893d143a09c.jpg",
+        "image_mobile": "shopify://shop_images/xmob.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "subtitle": "",
+        "title": "COOL CONDITIONS",
+        "text": "<p><span style=\"color:#FFFFFF\">Some of the best cycling experiences happen in the transition months of fall or early spring, when a combination of cool air and warming sun makes the ride exhilarating. For these days, a Thermal jersey is a top choice. Designed to retain body heat while maintaining fast-drying properties similar to our Transfer jerseys, the extra loft keeps you warm without overheating. For optimal comfort and performance, pair it with a baselayer—this layering strategy ensures you stay comfortable across varying cold weather conditions. Learn more about how to layer a cycling jersey for cold weather and get the most out of your rides in cooler temps.</span></p>",
+        "show_description": true,
+        "btn_text_1": "shop men's thermals",
+        "btn_url_1": "https://www.pearlizumi.com/collections/all-thermal-cycling-gear#/filter:tags_sub_type:Jersey",
+        "btn_text_2": "shop women's thermals",
+        "btn_url_2": "https://www.pearlizumi.com/collections/all-thermal-cycling-gear#/filter:tags_sub_type:Jersey",
+        "btn_text_3": "Button",
+        "btn_url_3": "",
+        "show_breadcrumbs": false,
+        "enable_bottom_margin": false
+      }
+    },
+    "full-width-cta-reversible-3": {
+      "type": "full-width-cta-reversible",
+      "settings": {
+        "image": "shopify://shop_images/5_8ac5d3b5-c743-4192-af95-6b9e1880ac58.jpg",
+        "image_position": "right",
+        "subtitle": "",
+        "title": "BASELAYERS",
+        "text": "Mountain bikers enjoy more flexibility when choosing jerseys, as trail shorts typically offer ample pocket space for essentials. A looser-fitting jersey complements the relaxed style of baggy shorts, making it a popular choice for trail riders. Our trail jerseys are crafted from the same fast-drying Transfer fabrics used in our road jerseys, ensuring moisture-wicking performance in any weather. In colder or rainy conditions, layering becomes essential. Consider wearing a base layer under your jersey to help retain warmth while wicking away moisture.",
+        "btn_label": "shop baselayers",
+        "btn_link": "shopify://collections/cycling-baselayers",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "hero-image-3": {
+      "type": "hero-image",
+      "settings": {
+        "image": "shopify://shop_images/x2.jpg",
+        "image_mobile": "shopify://shop_images/x2mob.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "subtitle": "",
+        "title": "Wet & Damp Riding",
+        "text": "<p><span style=\"color:#FFFFFF\">Rain happens, but that's no reason to cancel your ride. Our jerseys with WxB fabric and PI Dry® technology are engineered to keep you dry while maintaining excellent breathability. Whether you're caught in a downpour or just a drizzle, our jerseys ensure moisture stays out, so you stay comfortable and dry. Pair with arm sleeves and a lightweight jacket for maximum protection against unpredictable weather conditions.</span></p>",
+        "show_description": true,
+        "btn_text_1": "shop lightweight jackets",
+        "btn_url_1": "shopify://collections/all-cycling-jackets-vests",
+        "btn_text_2": "Button",
+        "btn_url_2": "",
+        "btn_text_3": "Button",
+        "btn_url_3": "",
+        "show_breadcrumbs": false,
+        "enable_bottom_margin": true
+      }
+    },
+    "full-width-cta-reversible-4": {
+      "type": "full-width-cta-reversible",
+      "settings": {
+        "image": "shopify://shop_images/6_f3584af0-fe26-49f9-ad29-d0371593eaa4.jpg",
+        "image_position": "right",
+        "subtitle": "",
+        "title": "COLD WEATHER",
+        "text": "Prepping for cold weather cycling requires striking the right balance in layers. Too many, and you risk overheating; too few, and the chill sets in. A good strategy is to start with a moisture-wicking baselayer, add an insulating cycling jersey for cold weather, and layer up with a windproof jacket or vest if conditions demand it. The key is flexibility—you can remove or adjust layers as your ride progresses, ensuring you're always at the perfect temperature to keep the adventure going no matter how cold the air gets. Weather be damned—cycling never stops!",
+        "btn_label": "Learn Cold Weather Layering",
+        "btn_link": "https://www.pearlizumi.com/blogs/pearl-izumi-journal/how-to-dress-for-winter-cycling",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": false
+      }
+    }
+  },
+  "order": [
+    "full-width-cta",
+    "text-block",
+    "full-width-cta-reversible",
+    "hero-image",
+    "full-width-cta-reversible-2",
+    "hero-image-2",
+    "full-width-cta-reversible-3",
+    "hero-image-3",
+    "full-width-cta-reversible-4"
+  ]
+}

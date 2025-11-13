@@ -1,0 +1,91 @@
+<div class="fw-shoe-diffs" id="section-{{ section.id }}">
+  <div class="fw-shoe-diffs__container">
+    <div class="fw-shoe-diffs__copy">
+      {% if section.settings.heading != blank %}
+        <h3>{{ section.settings.heading }}</h3>
+      {% endif %}
+    </div>
+    {% if section.blocks.size %}
+      <ul class="fw-shoe-diffs__shoes">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'shoe' -%}
+              <li class="fw-shoe-diffs__shoe">
+                <a href="{{ block.settings.url }}">
+                  {% if block.settings.shoe_image != blank %}
+                    <img
+                      src="{{block.settings.shoe_image |  image_url: width:800 }}"
+                      alt=""
+                      class="fw-shoe-diffs__shoe_image"
+                      width=""
+                      height=""
+                    >
+                  {% endif %}
+                  <div class="fw-shoe-diffs__shoe-info">
+                    {% if block.settings.heading != blank %}
+                      <h4>{{ block.settings.heading }}</h4>
+                    {% endif %}
+                    {% if block.settings.text != blank %}
+                      {{ block.settings.text }}
+                    {% endif %}
+                  </div>
+                </a>
+              </li>
+          {%- endcase -%}
+        {%- endfor -%}
+      </ul>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FW Shoe Diffs",
+  "tag": "section",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "shoe",
+      "name": "Shoe",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "shoe_image",
+          "label": "Shoe Image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Rich text",
+          "default": "<p>Some description.</p>"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FW Shoe Diffs",
+      "blocks": [{ "type": "shoe" }]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,43 @@
+{%- unless blog.articles_count == 0 -%}
+    {%-liquid
+        for tag in article.tags
+            assign currentTag = currentTag | append: '####' | append: tag
+        endfor
+        assign currentTag = currentTag | split: '####'
+        assign relatedCnt = 0
+        assign currentArticleId = article.id
+    -%}
+
+    {%- capture relatedBlogs -%}
+        {%- for article in blog.articles -%}
+            {%- if relatedCnt >= 3 -%}
+                {%- break -%}
+            {%- endif -%}
+
+            {%- if currentArticleId == article.id -%}
+                {%- continue -%}
+            {%- endif -%}
+
+            {%- for tag in article.tags -%}
+                {%- if currentTag contains tag -%}
+                    {%- render 'blog-item' article: article, class: "min-w-268" -%}####
+                    {%- assign relatedCnt = relatedCnt | plus: 1 -%}
+                    {%- break -%}
+                {%- endif -%}
+            {%- endfor -%}
+        {%- endfor -%}
+    {%- endcapture -%}
+    
+    {% if relatedCnt > 0 %}
+        <h3 class="uppercase">Related Posts</h3>
+        <div class="mt-10 overflow-auto">
+            <div class="flex lg:grid grid-cols-3 gap-5">
+                
+                {%- assign relatedBlogsArray = relatedBlogs | split: "####" -%}
+                {%- for item in relatedBlogsArray -%}
+                    {{ item }}
+                {%- endfor -%}
+            </div>
+        </div>
+    {%- endif-%}
+{%- endunless -%}

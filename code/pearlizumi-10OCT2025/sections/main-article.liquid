@@ -1,0 +1,88 @@
+{%-liquid
+if current_tags
+    assign current_tag = current_tags.first
+else
+    for tag in article.tags
+        if forloop.first == true
+            assign current_tag = tag
+        endif
+    endfor
+endif
+
+if current_tag == blank
+    assign current_tag = 'All Posts'
+    assign current_tag_link = blog.url
+else
+    assign current_tag_link = current_tag | handleize | prepend: '/tagged/' | prepend: blog.url
+endif
+
+if shop.permanent_domain == 'pearlizumi.myshopify.com'
+    assign storefront = "US"
+elsif shop.permanent_domain == 'pearlizumi-ca.myshopify.com'
+    assign storefront = "CA"
+elsif shop.permanent_domain == 'pearl-izumi-int.myshopify.com'
+    assign storefront = "INT"
+endif
+-%}
+
+<div class="pt-4 md:pt-8 pb-4 md:pb-6 overflow-hidden">
+<div class="sm:container px-6 sm:max-w-xl sm:mx-auto sm:px-0 lg:max-w-full lg:px-13 xl:max-w-1200 xl:px-0">
+    <nav class="breadcrumb font-sora text-p-xs text-black cursor-pointer text-left" role="navigation" aria-label="breadcrumbs">
+        <a class="text-stone border-b border-stone" href="{{ blog.url }}" title="{{ blog.title }}">All Posts</a>
+        <span class="text-silver" aria-hidden="true">&nbsp;/&nbsp;</span>
+        <span class="text-stone border-b border-stone" aria-label="{{ article.title }}">{{ article.title }}</span>
+    </nav>
+</div>
+<div class="mt-6 md:px-14 lg:max-w-full lg:mx-auto lg:px-13 xl:max-w-1200 xl:px-0">
+    {% render 'blog-hero', show_section: section.settings.show_section %}
+</div>
+<div class="sm:container px-6 sm:max-w-xl sm:mx-auto sm:px-0 lg:max-w-full lg:px-13 xl:max-w-1200 xl:px-0">
+    {%- render 'blog-meta' -%}
+
+    <div class="article__content general-content-template">
+        {% include 'shortcode' load: article.content %}
+    </div>
+    <div class="article__author">
+        {%- render 'blog-author', blog: blog -%}
+    </div>
+    <div class="article__tags">
+        {% render 'blog-tags' has_share: true %}
+    </div>
+    <div class="article__related-posts">
+        {% render 'blog-related-posts' %}
+    </div>
+
+    {%- unless article.metafields["global"]["recommended_product_id"] == blank -%}
+        {% render 'blog-recommended-products',
+            section_id: section.id,
+            recommended_product_id: article.metafields["global"]["recommended_product_id"]
+        %}
+
+    {%- endunless -%}
+    
+    {% if blog.comments_enabled? %}
+        <div class="article__comments mt-14">
+            {% render 'blog-comments' %}
+        </div>
+    {% endif %}
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "Main article",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_section",
+      "label": "Show Hero Section",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Main article"
+    }
+  ]
+}
+{% endschema %}

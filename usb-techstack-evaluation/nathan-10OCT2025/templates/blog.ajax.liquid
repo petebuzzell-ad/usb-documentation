@@ -1,0 +1,11 @@
+{% layout none %}
+
+{%- paginate blog.articles by 6 -%}
+  {%- if blog.articles.size > 0 -%}
+    <div class="flex flex-row flex-wrap flex-col sm:flex-row lg:-mx-1 xl:-mx-2.5" data-blog-list-section>
+        {%- for article in blog.articles -%}
+            {% render 'blog-item' article: article, height: "386" %}
+        {%- endfor -%}
+    </div>
+  {%- endif -%}
+{%- endpaginate -%}

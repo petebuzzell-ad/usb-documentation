@@ -1,0 +1,117 @@
+{%- unless template.name contains 'cart' -%}
+  {% liquid
+    assign is_pro_customer = false
+    assign is_ev_customer = false
+    assign is_op_customer = false
+    assign is_any_pro = false
+
+    if customer.tags contains 'Pro Purchase' or customer.tags contains 'PRO PURCHASE'
+      assign is_pro_customer = true
+      assign is_any_pro = true
+    elsif customer.tags contains 'Expert Voice'
+      assign is_ev_customer = true
+      assign is_any_pro = true
+    elsif customer.tags contains 'Outdoor Pro'
+      assign is_op_customer = true
+      assign is_any_pro = true
+    endif
+  %}
+
+  {%- if customer -%}
+    {%- comment -%} check if the customer is a Pro member {%- endcomment -%}
+    {%- assign discount_tag = false -%}
+    {%- assign limit_tag = false -%}
+    {%- for tag in customer.tags -%}
+      {%- if tag contains 'discount-' -%}
+        {%- assign discount_tag = tag | remove: 'discount-' | plus: 0 -%}
+      {%- endif -%}
+      {%- if tag contains 'limit-' -%}
+        {%- assign limit_tag = tag | remove: 'limit-' | plus: 0 -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+
+  <div
+    data-cart-drawer-overlay
+    class="fixed top-0 left-0 w-screen h-screen flex justify-end"
+    style=" background-color: rgba(81,88,85,0.7);"
+  >
+    <div id="cartDrawer" data-cart-drawer class="bg-white w-full lg:w-480 flex font-sora flex-col ">
+      <div id="cartHeader" class="flex justify-between items-center px-4 py-5">
+        <div class="flex gap-2">
+          <button data-close-cart class="text-2xl text-black cursor-pointer">{%- render 'svg-close' -%}</button>
+          <h5 class="m-0 font-sora">My Cart</h5>
+        </div>
+
+        <p data-items-count class="m-0 font-sora text-dark-stone text-special-lg uppercase">0 items</p>
+      </div>
+
+      {% if settings.free_shipping_enabled_pros or settings.free_shipping_enabled_normals or settings.free_shipping_enabled_pro_ev %}
+        {% assign enable_pros = settings.free_shipping_enabled_pros %}
+        {% assign enable_normals = settings.free_shipping_enabled_normals %}
+        {% assign enable_pro_ev = settings.free_shipping_enabled_pro_ev %}
+        <div data-freeshipping-block class="py-4 px-6 lg:px-0">
+          {%- render 'cart-shipping-widget', enabled_for_pros: enable_pros, enabled_for_normals: enable_normals, enabled_ev: enable_pro_ev -%}
+        </div>
+
+      {% endif %}
+
+      <div data-cart-empty class="flex justify-center grow">
+        <div class="flex justify-center flex-col">
+          <h6 class="font-sora">Your cart is currently empty.</h6>
+          <a
+            href="{{ section.settings.continue_shopping_link |  default: '/cart'}}"
+            class="button-primary-lg p-4 w-full !max-w-full text-special uppercase font-sora font-semibold"
+            >
+            {{ section.settings.continue_shopping_text }}
+
+            </a
+          >
+        </div>
+      </div>
+
+      <div data-cart-container class="overflow-scroll divide-y divide-silver border-silver flex-col grow"></div>
+
+      <div data-cart-upsell class="my-6 hidden">
+        <span class="text-special-mxs lg:text-special-ms font-semibold uppercase text-center block">you may also like</span>
+
+        {% for product in collections['all'].products limit: 1 %}
+          <div class="featured-product-slide lg:p-4 whitespace-normal">
+            {%- render 'product-tile', product: product, title_tag: 'h3' -%}
+          </div>
+
+         {% endfor %}
+      </div>
+
+      <div data-cart-footer class="px-4 py-5">
+        <div class="flex items-center justify-between font-sora font-semibold text-special-lg text-black mb-4 ">
+          <span class="uppercase  text-special-lg ">Subtotal</span>
+
+          <span class=" text-special-lg  tracking-normal " data-total-price=""></span>
+        </div>
+
+        <a href="/checkout" class="button-primary-lg p-4 w-full !max-w-full text-special uppercase font-sora font-semibold button-cart"
+          >Checkout</a>
+      </div>
+    </div>
+  </div>
+{%- endunless -%}
+
+{% schema %}
+{
+  "name": "Cart Drawer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "continue_shopping_text",
+      "label": "Continue shopping text",
+      "default": "Continue shopping"
+    },
+    {
+      "type": "url",
+      "id": "continue_shopping_link",
+      "label": "Continue shopping link"
+    }
+  ]
+}
+{% endschema %}

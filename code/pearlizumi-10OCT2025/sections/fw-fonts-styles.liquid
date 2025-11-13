@@ -1,0 +1,52 @@
+{% if section.settings.fw_fonts_styles == true %}
+  {{ 'https://unpkg.com/flickity@2/dist/flickity.min.css' | stylesheet_tag }}
+  {{ 'https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js' | script_tag }}
+
+  {{ 'fw_styles.css' | asset_url | stylesheet_tag }}
+{% endif %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    // This makes sure all cells are the same height in Flickity carousels.
+    Flickity.prototype._createResizeClass = function () {
+      this.element.classList.add('flickity-resize');
+    };
+
+    Flickity.createMethods.push('_createResizeClass');
+
+    var resize = Flickity.prototype.resize;
+    Flickity.prototype.resize = function () {
+      this.element.classList.remove('flickity-resize');
+      resize.call(this);
+      this.element.classList.add('flickity-resize');
+    };
+  });
+</script>
+
+<style>
+  /* Hide the top of the default footer which is not in our design */
+  #shopify-section-footer footer.footer.relative > .bg-white {
+    display: none;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "FW Fonts and Stylesheets",
+  "tag": "section",
+  "class": "fw-fonts-styles",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "fw_fonts_styles",
+      "label": "Load FW Fonts and Stylesheets?",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "FW Fonts and Stylesheets"
+    }
+  ]
+}
+{% endschema %}

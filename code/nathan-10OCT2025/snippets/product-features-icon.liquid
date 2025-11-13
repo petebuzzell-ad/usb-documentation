@@ -1,0 +1,3 @@
+{% assign icon_name = 'svg-' | append: icon_handle | append: '.svg' %}
+
+<img class="lazy w-full" data-src="{{ icon_name | asset_url }}" alt="{{ icon_handle }}">

@@ -1,0 +1,82 @@
+{%- comment -%} Buy Box Options {%- endcomment -%}
+
+{%- comment -%}
+  Size Chart:
+{%- endcomment -%}
+{% liquid
+assign size_guide = false
+assign size_chart = false
+assign how_to_measure = false
+
+for tag in product.tags
+  if tag contains "fit_guide:" or tag contains "size_guide:" or tag contains "size_chart:"
+    assign size_guide = true
+    break
+  endif
+endfor %}
+
+{% capture size_chart %}
+  {%- if size_guide -%}  
+    <a href="#" class="flex items-center justify-start" data-size-guide-show="{{ product.id }}">
+      <span class="text-stone mr-2">{%- render 'svg-tape-measure' -%}</span>
+      <span class="text-p-xs text-pine">{{ 'products.product.view_size_guide' | t }}</span>
+    </a>
+    
+    {% render 'product-size-guide',
+      id: product.id,
+      tags: product.tags %}
+  {%- endif -%}
+{% endcapture %}
+
+{%- comment -%}
+  Only show options if we have them:
+    Note: no color swatches
+{%- endcomment -%}
+{% if product.options and product.options[0] != "Title" %}
+  <div class="divide-y divide-light-grey border-t border-b border-light-grey w-full pb-5 mb-5">
+  {%- for option in product.options_with_values -%}
+    {%- assign option_handle = option.name | handleize -%}
+    {%- assign option_index = forloop.index -%}
+
+    {%- comment -%}Skip these:{%- endcomment -%}
+    {% if option.values.size == 1 %}
+      {% unless option_handle == 'size' %}
+        {% continue %}
+      {% endunless %}
+    {% endif %}
+
+    <div>{%- comment -%} Wrapper to allow Divide-Y border between Groups {%- endcomment -%}
+      <div class="flex items-center {% if size_guide %}justify-between{% else %}justify-start{% endif %}">
+
+        {%- comment -%} Label: {%- endcomment -%}
+        <div class="text-special-s font-sora font-semibold my-4">
+          <span>{{ option.name | upcase }}:&nbsp;</span>
+          <span data-option-label="option{{- option_index -}}">{{ option.values | first }}</span>
+        </div>
+
+        {%- comment -%} Only add size chart on a size:{%- endcomment -%}
+        {% if size_guide and option_handle contains 'size' %}
+          {{ size_chart }}
+        {% endif %}
+      </div>      
+
+      {%- comment -%}Size Options
+        repeat(auto-fill, 50px);
+      {%- endcomment -%}
+      <div class="grid grid-flow-row grid-cols-[repeat(auto-fill,_50px)] bxl:grid-cols-5 gap-1 bxl:gap-2" data-option-group="{{ option_handle }}" data-option-index="{{ option_index | minus: 1 }}">{% comment %}Need this one 0-based{% endcomment %}
+      {% for value in option.values %}
+        <div class="option-wrapper">
+          <button type="button" data-option="option{{ option_index }}" data-value="{{ value }}"
+      class="option border border-silver h-11 bxl:h-8 p-2 bxl:p-0 cursor-pointer font-sora text-black text-special-s text-center w-full focus:outline-none hover:border-black{% if forloop.first %} active{% endif %}"
+          >
+            {{ value }}
+          </button>
+        </div>
+      {% endfor %}
+      <p class="text-red m-0" data-oos-message></p>
+      </div>
+    </div>
+      
+  {%- endfor -%}
+  </div>
+{% endif %}

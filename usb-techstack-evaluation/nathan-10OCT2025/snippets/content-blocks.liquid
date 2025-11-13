@@ -1,0 +1,29 @@
+{% comment %}
+Loads other blocks
+{% endcomment %}
+{% if exclude %}
+  {% assign exclude_blocks = exclude | split: "," %}
+{% endif %}
+
+{% for block in section.blocks %}
+  {% assign module_name = 'content' %}
+  {% assign block_type = block.type %}
+
+  {% if exclude_blocks %}
+    {% if exclude_blocks contains block_type %}
+      {% continue %}
+    {% endif %}
+  {% endif %}
+
+  {% comment %}
+  Support loading blocks from other modules using modulename__blocktype format
+  {% endcomment %}
+  {% assign type_parts = block.type | split: "__" %}
+  {% if type_parts.size > 1 %}
+    {% assign module_name = type_parts.first %}
+    {% assign block_type = type_parts.last %}
+  {% endif %}
+
+  {% assign file_name = module_name | append: '-block-' | append: block_type %}
+  {% include file_name block=block %}
+{% endfor %}

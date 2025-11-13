@@ -1,0 +1,21 @@
+<div>
+  <div {% if id %}id="{{ id }}"{% endif %} class="accordion lg:hidden" onclick="eHS.theme.accordionHandler(event)" tabindex="0">
+    <div class="flex items-center justify-between border-t border-black py-5 lg:py-0 px-6 lg:px-8 xl:px-0">
+      <span class="special-s uppercase">{{ title }}</span>
+      <div>
+        <div class="open fill-black stroke-black">
+          {% render 'svg-plus', width: '11px', height: '11px' %}
+        </div>
+        <div class="close fill-black stroke-black">
+          {% render 'svg-minus', width: '11px', height: '3px' %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {{ content }}
+  {% if is_last %}
+    <div class="container w-full">
+      <div class="w-full border-b border-black"></div>
+    </div>
+  {% endif %}
+</div>

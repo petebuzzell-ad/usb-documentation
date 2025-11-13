@@ -1,0 +1,19 @@
+{% assign mb_class = 'mb-0' %}{% if block.settings.enable_bottom_margin %}{% assign mb_class = 'mb-20 md:mb-40' %}{% endif %}
+<div data-section-id="{{ block.id }}" data-section-type="text" id="section-{{ number }}" class="relative px-3.5 {% if block.settings.svg != blank %} pt-12.5 pb-20 md:pt-27.5 md:pb-40{% else %} py-20 md:py-40 {% endif %} bg-{{ block.settings.bg_color }} {{ mb_class }}">
+  <div class="rte max-w-920 mx-auto px-2.5 text-{{ block.settings.text_color }}">
+    {%- if block.settings.svg != blank -%}
+    	<div class="mb-6 hidden lg:block">{{- block.settings.svg -}}</div>
+    	{%- if block.settings.svg_mobile != blank -%}
+    		<div class="mb-4 block lg:hidden">{{- block.settings.svg_mobile -}}</div>
+    	{%- else -%}
+    		<div class="mb-4 block lg:hidden">{{- block.settings.svg -}}</div>
+    	{%- endif -%}
+    {%- endif -%}
+    {% if block.settings.heading != blank %}
+      <h2 class="mb-6 md:mb-8">{{ block.settings.heading }}</h2>
+    {% endif %}
+    {% if block.settings.body != blank %}
+      {{ block.settings.body }}
+    {% endif %}
+  </div>
+</div>

@@ -1,0 +1,43 @@
+{% liquid
+  if shop.permanent_domain == 'pearlizumi.myshopify.com'
+    assign storefront = "US"
+  elsif shop.permanent_domain == 'pearlizumi-ca.myshopify.com'
+    assign storefront = "CA"
+  elsif shop.permanent_domain == 'pearl-izumi-int.myshopify.com'
+    assign storefront = "INT"
+  endif
+
+  assign US_ENGLISH_URL = "https://pearlizumi.com"
+  assign INT_ENGLISH_URL = "https://pearlizumi.eu"
+  assign CA_ENGLISH_URL = "https://pearlizumi.ca"
+  assign CA_FRENCH_URL = "https://pearlizumi.ca/fr"
+
+  if storefront == "CA"
+    for language in localization.available_languages
+      if language.iso_code == "fr"
+        assign CA_FRENCH_URL = "https://pearlizumi-ca.myshopify.com/" | append: language.iso_code
+      elsif language.iso_code == "en"
+        assign CA_ENGLISH_URL = "https://pearlizumi-ca.myshopify.com/"
+      endif
+    endfor
+  endif
+
+  assign is_french = false
+  if shop.locale == "fr"
+    assign is_french = true
+  endif
+
+
+%}
+<span class="sr-only">Language Selector Mobile</span>
+<select aria-label="Language Selector Mobile" class="w-full font-sora text-p border p-5 pr-8 border-mobile-nav-border bg-transparent" data-mobile-lang-selector>
+	<optgroup label="NORTH AMERICA">
+    <option value="{{ US_ENGLISH_URL }}" {% if storefront == "US" %}selected{% endif %}>United States: English</option>
+		<option value="{{ CA_ENGLISH_URL | remove: "fr" }}" {% if storefront == "CA" and is_french == false %}selected{% endif %}>Canada: English</option>
+    <option value="{{ CA_FRENCH_URL }}" {% if storefront == "CA" and is_french == true %}selected{% endif %}>Canada: Français</option>
+  </optgroup>
+
+  <optgroup label="EUROPE">   
+    <option value="{{ INT_ENGLISH_URL }}">EU/UK: English</option>
+  </optgroup>
+</select>

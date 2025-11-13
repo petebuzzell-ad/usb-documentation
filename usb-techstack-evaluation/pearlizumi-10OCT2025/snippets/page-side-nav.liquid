@@ -1,0 +1,28 @@
+{% if subNav != blank %}
+<div class="lg:pr-12 mx-0 lg:m-0 {{ show }}">
+  {% for link in linklists[subNav].links %}
+    {% if link.active %}
+      <span href="javascript:void(0)" class="lg:hidden js-toggleBtn flex shadow-general-content-sidenav relative transition duration-500 ease-in-out text-special-s text-black font-semibold py-4 px-6 md:px-14 font-sora uppercase"
+      id="toggle-menu">
+        {{ link.title }}
+        <svg width="8" height="4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 4"
+        class="absolute md:right-14 right-6 top-1/2 transform -translate-y-1/2">
+          <path d="M6.405 0L3.5 2.918.595 0 0 .484 3.5 4 7 .484z" fill="#000000" fill-rule="evenodd" />
+        </svg>
+      </span>
+    {% endif %}
+  {% endfor %}
+  <nav class="sidebar_nav lg:block transition-max-height duration-500 ease-out js-toggleContent lg:max-h-full max-h-0 bg-white"
+    id="nav">
+      <ul class="p-0 list-none lg:m-0 mb-0 lg:border-0 lg:border-none border-b border-light-grey bg-white">
+        {% for link in linklists[subNav].links %}
+          {%- if show contains 'mobile__nav' and link.active -%}{%- continue -%}{%- endif -%}
+          <li class="text-special-s list-none p-0 relative group transition-all duration-300 ease-in-out lg:pl-4.25 m-0 py-4 px-6 lg:p-0 shadow-general-content-sidenav lg:shadow-none md:px-14 h-12 border border-b-0 border-l-0 border-r-0 border-silver lg:border-none overflow-y-hidden {% if forloop.last %}mb-0 lg:mb-0{% else %}lg:mb-4 mb-0 {% endif %}">
+            <a href="{{ link.url }}" class="text-black text-special-s lg:leading-48 uppercase font-sora font-semibold align-top">{{link.title }}</a>
+            <span class="absolute left-0 w-1 h-full bg-lush transition-all duration-300 ease-in-out{% if link.active %} top-0 bg-lush {% else %} -top-full group-hover:top-0 {% endif %} hidden lg:block"></span>
+          </li>
+        {% endfor %}
+      </ul>
+  </nav>
+</div>
+{% endif %}

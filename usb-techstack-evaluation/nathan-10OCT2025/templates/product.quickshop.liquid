@@ -1,0 +1,20 @@
+{%- layout none -%}
+
+<div id="productQuickViewTemplate" class="transition-opacity opacity-0" data-product-handle="{{ product.handle }}" data-product-type="onetime">
+  <div class="w-full md:px-14 lg:px-22.5 mx-auto py-20" style="max-width: 1380px;">
+    <!-- Mobile Buy Box Info -->
+    <div class="lg:hidden">
+      {% render 'product-buy-box-info' mobile: true product: product, quickview: true %}
+    </div>
+
+    <!-- Gallery & Buy Box -->
+    <div class="flex flex-col w-full lg:flex-row lg:justify-between">
+      <div class="w-full lg:w-63% lg:max-w-product-gallery-desktop">
+        {% render 'product-gallery' product: product, quickview: true %}
+      </div>
+      <div class="px-6 lg:px-0 lg:w-full lg:max-w-112">
+        {% render 'product-buy-box', product: product, quickview: true %}
+      </div>
+    </div>
+  </div>
+</div>

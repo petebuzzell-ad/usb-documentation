@@ -1,0 +1,75 @@
+{%- liquid
+  if collection
+    assign collection_parent = 'All'
+    assign collection_parent_url = '/collections/all'
+
+    if collection.metafields["global"]["custom_parent_collection"] != blank
+      assign collection_parent = collection.metafields["global"]["custom_parent_collection"]
+      assign collection_parent_url = collection.metafields["global"]["custom_parent_url"] | default: '/collections/all-products'
+    elsif collection.handle contains 'womens'
+      assign collection_parent = "Women's"
+      assign collection_parent_url = '/collections/womens'
+    elsif collection.handle contains 'mens'
+      assign collection_parent = "Men's"
+      assign collection_parent_url = '/collections/mens'
+    elsif collection.handle contains 'kids'
+      assign collection_parent = "Kid's"
+      assign collection_parent_url = '/collections/kids'
+    endif
+  endif
+-%}
+{% unless template == 'index' or template == 'cart' or template == 'list-collections' %}
+  {%- if template == 'collection' -%}
+  <nav aria-label="breadcrumbs" class="breadcrumb font-lato text-p-xs text-grey-three my-3 cursor-pointer text-center lg:text-left" role="navigation">
+  {%- else -%}
+  <nav aria-label="breadcrumbs" class="breadcrumb{% if template == 'product' %} truncate{% endif %} font-lato text-p-xs text-grey-three my-3 cursor-pointer text-left" role="navigation">
+  {%- endif -%}
+    <a class="text-grey-three border-b border-grey-three" href="/" aria-label="BreadCrumb - Home" title="BreadCrumb - Home">Home</a>
+    {% if template contains 'page' %}
+      <span aria-hidden="true" class="text-grey-five">&nbsp;/&nbsp;</span>
+      <span aria-label="{{ page.title }}">{{ page.title }}</span>
+    {% elsif template contains 'product' %}
+      {% if collection.url %}
+        <span aria-hidden="true" class="text-grey-five">&nbsp;/&nbsp;</span>
+        <a class="text-grey-three border-b border-grey-three" title="BreadCrumb - {{ collection.title }}" aria-label="BreadCrumb - {{ collection.title }}" href="{{ collection.url }}">{{ collection.title }}</a>
+        <span aria-hidden="true" class="text-grey-five">&nbsp;/&nbsp;</span>
+        <span class="" aria-label="BreadCrumb - {{ product.title }}">{{ product.title }}</span>
+      {% else %}
+        <span aria-hidden="true" class="text-grey-five">&nbsp;/&nbsp;</span>
+        <a class="text-grey-three border-b border-grey-three" href="/collections/all">All</a>
+        <span aria-hidden="true" class="text-grey-five">&nbsp;/&nbsp;</span>
+        <span class="" aria-label="BreadCrumb - {{ product.title }}">{{ product.title }}</span>
+      {% endif %}
+    {% elsif template contains 'collection' and collection.handle %}
+      <span aria-hidden="true">&nbsp;/&nbsp;</span>
+      <a class="text-grey-three border-b border-grey-three" href="{{ collection_parent_url }}" title="BreadCrumb - {{ collection_parent }}">{{ collection_parent }}</a>
+      <span aria-hidden="true">&nbsp;/&nbsp;</span>
+      {% if current_tags %}
+        {% capture url %}/collections/{{ collection.handle }}
+        {% endcapture %}
+        <a class="text-orange-one" href="{{ url }}">{{ collection.title }}</a>
+        <span aria-hidden="true">&nbsp;/&nbsp;</span>
+        <span>{{ current_tags | join: " + " }}</span>
+      {% else %}
+        <span>{{ collection.title }}</span>
+      {% endif %}
+    {% elsif template == 'blog' %}
+      <span aria-hidden="true">&nbsp;/&nbsp;</span>
+      {% if current_tags %}
+        {{ blog.title | link_to: blog.url }}
+        <span aria-hidden="true">/</span>
+        <span>{{ current_tags | join: " + " }}</span>
+      {% else %}
+        <span aria-label="{{ blog.title }}">{{ blog.title }}</span>
+      {% endif %}
+    {% elsif template == 'article' %}
+      <span aria-hidden="true">&nbsp;/&nbsp;</span>
+      {{ blog.title | link_to: blog.url }}
+      <span aria-hidden="true">&nbsp;/&nbsp;</span>
+      <span aria-label="{{ article.title }}">{{ article.title }}</span>
+    {% else %}
+      <span aria-hidden="true">&nbsp;/&nbsp;</span>
+      <span aria-label="{{ page_title }}">{{ page_title }}</span>
+    {% endif %}
+  </nav>
+{% endunless %}

@@ -1,0 +1,118 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "footer-block-4": {
+          "type": "newsletter",
+          "disabled": true,
+          "settings": {
+            "alignment": "text-left",
+            "title": "Get the latest from CUTTERS SPORTS",
+            "uppercase_heading": true,
+            "heading_size": 160,
+            "text": "<p>Stay up to date with the new collections, products and exclusive offers.</p>",
+            "button_text": "Sign up",
+            "button_color": "btn--primary",
+            "button_style": "btn--solid",
+            "column_width": "20"
+          }
+        },
+        "footer-block-2": {
+          "type": "link",
+          "settings": {
+            "alignment": "text-left",
+            "menu": "new-footer-2-connect-with-us",
+            "title": "CONNECT WITH US",
+            "column_width": "20"
+          }
+        },
+        "footer-block-3": {
+          "type": "link",
+          "settings": {
+            "alignment": "text-left",
+            "menu": "new-footer-2",
+            "title": "CUSTOMER SERVICE",
+            "column_width": "20"
+          }
+        },
+        "link_3MPQBA": {
+          "type": "link",
+          "settings": {
+            "alignment": "text-left",
+            "menu": "new-footer-3",
+            "title": "ABOUT CUTTERS SPORTS",
+            "column_width": "20"
+          }
+        },
+        "link_7ffz6P": {
+          "type": "link",
+          "settings": {
+            "alignment": "text-left",
+            "menu": "new-footer-4-legal",
+            "title": "LEGAL",
+            "column_width": "20"
+          }
+        },
+        "logo_full_YdWqUq": {
+          "type": "logo_full",
+          "settings": {
+            "alignment": "text-center",
+            "image": "shopify://shop_images/Logo.svg",
+            "logo_width": 100,
+            "padding_top": 40
+          }
+        }
+      },
+      "block_order": [
+        "footer-block-4",
+        "footer-block-2",
+        "footer-block-3",
+        "link_3MPQBA",
+        "link_7ffz6P",
+        "logo_full_YdWqUq"
+      ],
+      "custom_css": [
+        "a.footer-link {color: #ffff;}"
+      ],
+      "settings": {
+        "show_footer_wave": false,
+        "enable_footer_parallax": true,
+        "increase_border_radius": true,
+        "accessibility_logo": "shopify://shop_images/2022-LevelAccess_Icon_White-V2.svg",
+        "accessibility_url": "https://levelaccess.com/a/unitedspb",
+        "bottom_bar_alignment": "text-left",
+        "show_social_links": true,
+        "enable_follow_on_shop": false,
+        "show_payment_icons": false,
+        "enable_greyscale": false,
+        "bottom_menu": "",
+        "color_text": "#ffffff",
+        "color_bg": "#001810",
+        "color_border": "#ffffff",
+        "show_locale_selector": true,
+        "show_locale_code": true,
+        "show_country_selector": true,
+        "show_country_name": false,
+        "show_country_flag": false,
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

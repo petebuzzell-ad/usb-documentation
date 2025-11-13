@@ -1,0 +1,26 @@
+{%- capture links -%}{% include 'shortcode-render' render:'links' %}{%- endcapture -%}
+{%- assign links = links | split: ':' -%}
+{%- if links -%}
+  <h6 class="font-semibold">Quick Links</h6>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-6 gap-y-0 mb-18">
+    {%- assign i = 0 -%}
+    {%- for link in links -%}
+      {%- assign splits = link | split: ',' -%}
+      {%- if splits.size == 2 -%}
+        {%- assign title = splits | first | strip -%}
+        {%- assign id = splits | last | strip -%}
+        <div class="quick-link-item h-14 border border-l-0 border-r-0 border-b-0 border-silver {% if forloop.last %}border-b lg:border-b-0{% endif %}">
+          <a href="#{{- id -}}" class="h-14 leading-56 xl:hover:text-pine xl:hover:underline active:text-black visited:text-black active:no-underline visited:no-underline pr-6 block relative font-normal">{{- title -}}</a>
+        </div>
+        {%- assign i = i | plus: 1 -%}
+      {%- endif -%} 
+    {%- endfor -%}
+    
+    {%- assign i = i | modulo: 3 -%}
+    {%- assign i = 3 | minus: i -%}
+    
+    {%- for s in (1..3) -%}
+      <div class="quick-link-item border-none lg:border lg:border-solid lg:border-l-0 lg:border-r-0 lg:border-b-0 lg:border-silver"></div>
+    {%- endfor -%}
+  </div>
+{%- endif -%}

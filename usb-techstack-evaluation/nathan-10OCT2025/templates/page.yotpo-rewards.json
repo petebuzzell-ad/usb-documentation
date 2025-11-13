@@ -1,0 +1,238 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "shogun_custom_html_AfhBc8": {
+      "type": "shogun-custom-html",
+      "name": "Banner",
+      "settings": {
+        "html": "<div class=\"yotpo-widget-instance\" data-yotpo-instance-id=\"1145971\"></div>"
+      }
+    },
+    "shogun_custom_html_jpLFMV": {
+      "type": "shogun-custom-html",
+      "name": "My activity",
+      "settings": {
+        "html": "<div class=\"yotpo-widget-instance\" data-yotpo-instance-id=\"1145974\"></div>"
+      }
+    },
+    "shogun_custom_html_eHBHNJ": {
+      "type": "shogun-custom-html",
+      "name": "Earning Points",
+      "settings": {
+        "html": "<div class=\"yotpo-widget-instance\" data-yotpo-instance-id=\"1145973\"></div>"
+      }
+    },
+    "shogun_custom_html_dmQz4i": {
+      "type": "shogun-custom-html",
+      "name": "Redeem Points",
+      "settings": {
+        "html": "<div class=\"yotpo-widget-instance\" data-yotpo-instance-id=\"1145970\"></div>"
+      }
+    },
+    "shogun_custom_html_eHtDty": {
+      "type": "shogun-custom-html",
+      "name": "VIP",
+      "settings": {
+        "html": "<div class=\"yotpo-widget-instance\" data-yotpo-instance-id=\"1145972\"></div>"
+      }
+    },
+    "yotpo_faq_Lrtyd9": {
+      "type": "yotpo-faq",
+      "blocks": {
+        "faq_MaBPKh": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I join NATHAN Rewards?",
+            "answer": "<p>Joining is simple! Sign up by navigating to the Sign-Up page and creating an online account with us. You’ll receive a confirmation email, and you’re in! You earn <strong>50 points just for signing-up</strong>. </p>"
+          }
+        },
+        "faq_4CtVp6": {
+          "type": "faq",
+          "settings": {
+            "question": "What are the advantages of becoming a rewards member?",
+            "answer": "<p>Our rewards program is a tiered program that allows members to earn more perks the more they engage with us. Members receive reward points for each purchase, which can then be redeemed towards the cost of future purchases. </p><p>You also earn points for sharing with friends, following us on social media and you are even gifted with bonus points just for having a birthday! In addition to earning points, members have the chance to earn free shipping and get exclusive access to coupons, launches, promotions, giveaways, and more. You can view the full list of perks on our rewards page.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_MaBPKh",
+        "faq_4CtVp6"
+      ],
+      "name": "Signing Up | Yotpo FAQ",
+      "settings": {
+        "faq_header": "NATHAN Rewards FAQ",
+        "sub_faq_header": "SIGNING UP"
+      }
+    },
+    "yotpo_faq_fbeD3x": {
+      "type": "yotpo-faq",
+      "blocks": {
+        "faq_h8LP3g": {
+          "type": "faq",
+          "settings": {
+            "question": "I already have an account. Do I need to create a new one to earn rewards?",
+            "answer": "<p>We took care of that for you! All customers with an active account were automatically enrolled in our rewards program. If you have had more than one customer account with us, please note that only one rewards account was created per person.</p>"
+          }
+        },
+        "faq_3XpgtJ": {
+          "type": "faq",
+          "settings": {
+            "question": "Will I receive points for purchases I made prior to creating my rewards account?",
+            "answer": "<p>You will only receive points for purchases made after creating your rewards account. Make sure to create an account before placing an order so you can receive points!</p>"
+          }
+        },
+        "faq_RNMBD9": {
+          "type": "faq",
+          "settings": {
+            "question": "What if I have an old email address or multiple email addresses and want to combine my accounts & earnings?",
+            "answer": "<p>Contact customer service by emailing <a href=\"mailto:cs@unitedspb.com\"><span style=\"text-decoration:underline\">cs@unitedspb.com</span></a> and our team will be happy to assist you with merging your accounts.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_h8LP3g",
+        "faq_3XpgtJ",
+        "faq_RNMBD9"
+      ],
+      "name": "Account | Yotpo FAQ",
+      "settings": {
+        "faq_header": "",
+        "sub_faq_header": "ACCOUNT"
+      }
+    },
+    "yotpo_faq_Cakayp": {
+      "type": "yotpo-faq",
+      "blocks": {
+        "faq_gXCNyJ": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I redeem my NATHAN Points?",
+            "answer": "<p>Points will be available to redeem for rewards during checkout. As a reminder, points cannot be combined with any other discounts or promotions.</p><p><span style=\"text-decoration:underline\"><strong>Note</strong></span><strong>:</strong> If the number of points redeemed is greater than your order total, <span style=\"text-decoration:underline\">you will lose</span> the difference in points (example: if an order is $8 and a $10 reward is redeemed, the remaining $2 will be lost.)</p>"
+          }
+        },
+        "faq_rXhpXV": {
+          "type": "faq",
+          "settings": {
+            "question": "What can I redeem my NATHAN Points on?",
+            "answer": "<p>Points may be redeemed for rewards on all products!  Customers can redeem points for rewards at 100 points. Rewards are offered at $10 increments. Maximum reward </p>"
+          }
+        },
+        "faq_mKEXgC": {
+          "type": "faq",
+          "settings": {
+            "question": "How Do Points Convert to dollars?",
+            "answer": "<p>100 points = $10 (i.e., 10 points = $1; each point is worth $0.10).<br/>Redemptions are available in $10 increments at checkout (100 pts = $10, 200 pts = $20, 300 pts = $30, etc.).</p><ul><li>Explorer (Tier 1): Earn 1 point per $1. Example: spend $150 → 150 points = $15.</li><li>Trail Blazer (Tier 2): Earn points 2× as fast. Example: spend $150 → 300 points = $30.</li><li>VIP (Tier 3): Earn points 3× as fast. Example: spend $150 → 450 points = $45.</li></ul><p><em>The value of your points doesn’t change by tier—higher tiers just earn points faster.</em></p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_gXCNyJ",
+        "faq_rXhpXV",
+        "faq_mKEXgC"
+      ],
+      "name": "EARNING & REDEEMING | Yotpo FAQ",
+      "settings": {
+        "faq_header": "",
+        "sub_faq_header": "EARNING & REDEEMING"
+      }
+    },
+    "yotpo_faq_WGCjrF": {
+      "type": "yotpo-faq",
+      "blocks": {
+        "faq_dVytRn": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I return my order if I redeem rewards points for a discount?",
+            "answer": "<p>Yes. If you return the entire order, we will refund you the total dollar amount spent after the discount is applied. The points you used to redeem the discount will also be added back to your rewards account.</p>"
+          }
+        },
+        "faq_6kWdUX": {
+          "type": "faq",
+          "settings": {
+            "question": "I earned points/VIP tier with my last purchase, but now I want to return it. What will happen to my reward?",
+            "answer": "<p>If you use your rewards towards a purchase and later decide to return that item, your rewards will be credited back to your rewards account. For example, if you use a $10 coupon towards a $100 purchase that you decide to return, the $90 balance will be refunded to your credit card, and the $10 reward credit will be deposited back into your rewards account.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_dVytRn",
+        "faq_6kWdUX"
+      ],
+      "name": "RETURNS | Yotpo FAQ",
+      "settings": {
+        "faq_header": "",
+        "sub_faq_header": "RETURNS"
+      }
+    },
+    "yotpo_faq_Af3TQF": {
+      "type": "yotpo-faq",
+      "blocks": {
+        "faq_9mPj9k": {
+          "type": "faq",
+          "settings": {
+            "question": "Why didn’t I earn points on my purchase?",
+            "answer": "<p>Double-check you were signed into your rewards account and didn’t accidentally check out as a guest. You must be logged in when making purchases to earn points. If you have done this in error, contact us at <a href=\"mailto:cs@unitedspb.com\"><span style=\"text-decoration:underline\">cs@unitedspb.com</span></a> to help apply your points to your account. You also won’t receive points if you return your purchase or your purchase is canceled for any reason. Please note that any points you earn on a purchase you later return will be deducted from your point balance.</p>"
+          }
+        },
+        "faq_HmUTkH": {
+          "type": "faq",
+          "settings": {
+            "question": "Why did I not receive any NATHAN Points for my uploaded receipt?",
+            "answer": "<p>Please note that we verify each individual receipt before points are awarded and allow up to <strong>4–5 business days</strong> for processing. If your receipt is rejected, it may be due to any of the following reasons:</p><ul><li>Not an in-store receipt</li><li>Products purchased were not Nathan Sports</li><li>Receipt is more than <strong>30 days old</strong></li></ul>"
+          }
+        },
+        "faq_46qaHW": {
+          "type": "faq",
+          "settings": {
+            "question": "I should have earned points for a purchase/incentive, but I didn’t see my account balance change. Did I get credit?",
+            "answer": "<p>Yes! You work hard to earn points, and we want you to feel confident that all your points are right where they should be . . . in your account! The first thing to note is that there may be a delay in our system’s communication and points could take anywhere from minutes to several hours to appear in your account.  However, if you feel like you have earned points, but they are not showing up in your account you can also troubleshoot it with these tricks:</p><ol><li>Try to refresh your browser.</li><li>Try to log out and then back into your account.</li><li>Check your ‘Rewards history’ in your Rewards account to see if the points were added without you realizing it.  Your ‘Rewards history’ will show you the number of points earned, how and when they were earned, as well as any redemptions of points made on your account.</li></ol><p>If you still feel like your points balance is not accurate you can contact our team at <a href=\"mailto:cs@unitedspb.com\"><span style=\"text-decoration:underline\">cs@unitedspb.com</span></a> and they will investigate the issue for you.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_9mPj9k",
+        "faq_HmUTkH",
+        "faq_46qaHW"
+      ],
+      "name": "TROUBLESHOOTING | Yotpo FAQ",
+      "settings": {
+        "faq_header": "",
+        "sub_faq_header": "TROUBLESHOOTING"
+      }
+    },
+    "shogun_custom_html_aRfyKz": {
+      "type": "shogun-custom-html",
+      "name": "Refer a friend",
+      "settings": {
+        "html": "<div class=\"yotpo-widget-instance\" data-yotpo-instance-id=\"1145968\"></div>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "shogun_custom_html_AfhBc8",
+    "shogun_custom_html_jpLFMV",
+    "shogun_custom_html_eHBHNJ",
+    "shogun_custom_html_dmQz4i",
+    "shogun_custom_html_eHtDty",
+    "yotpo_faq_Lrtyd9",
+    "yotpo_faq_fbeD3x",
+    "yotpo_faq_Cakayp",
+    "yotpo_faq_WGCjrF",
+    "yotpo_faq_Af3TQF",
+    "shogun_custom_html_aRfyKz"
+  ]
+}

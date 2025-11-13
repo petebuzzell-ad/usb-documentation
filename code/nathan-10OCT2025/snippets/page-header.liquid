@@ -1,0 +1,11 @@
+{% if desktop_banner or mobile_banner %}
+<div class="page__header relative {% if desktop_banner == blank %}lg:hidden{% endif %} {% if desktop_banner != blank or mobile_banner != blank %}h-270 relative md:h-auto{% endif %}">
+  <picture>
+    <source media="(min-width: 768px)" data-srcset="{{ desktop_banner }}" />
+    <source media="(max-width: 767px)"
+        data-srcset="{% if mobile_banner != blank %}{{ mobile_banner }}{% else %}{{ desktop_banner }}{% endif %}" />
+    <img alt="A lazy image" class="lazy w-full h-full md:h-auto absolute md:relative object-cover md:object-none top-1/2 left-1/2 md:top-auto md:left-auto transform -translate-x-1/2 -translate-y-1/2 md:transform-none" data-src="{{ desktop_banner }}" />
+  </picture>
+  <h1 class="text-center absolute top-1/2 left-1/2 transform -translate-y-2/4 -translate-x-2/4 mb-0 {{ text_color }} uppercase w-max px-5 py-6 xl:px-25 max-w-mobile-full mx-auto lg:max-w-920 {% if text_color == 'text-white' %}bg-dark-stone-overlay{% else %}bg-title-overlay{% endif %}">{{ page.title }}</h1>
+</div>
+{% endif %}

@@ -1,0 +1,28 @@
+{% comment %}
+  Value Callouts
+  Guarantees & Shipping Info
+{% endcomment %}
+
+{% liquid
+  assign key = 'products.product.free_shipping_on_all'
+  assign text_after = ''
+  if settings.free_shipping_enabled_pros or settings.free_shipping_enabled_normals
+    assign key = 'products.product.free_shipping_on_all'
+    if threshold > 0
+      assign key = 'products.product.free_shipping_on_orders_over'
+      assign text_after = ' $' | append: threshold
+    endif
+  endif -%}
+
+<div class="mt-4">
+  <div class="mb-4 flex flex-wrap justify-center md:justify-center gap-1.5 xl:gap-x-8 xl:gap-y-2 items-center">
+  {% render 'value-callout',
+    key: key,
+    text_after: text_after,
+    svg: 'truck' %}
+
+  {% render 'value-callout',
+    key: 'products.product.lifetime_warranty',
+    svg: 'shield' %}
+  </div>
+</div>

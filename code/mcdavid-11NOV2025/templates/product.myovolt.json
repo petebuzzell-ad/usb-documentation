@@ -1,0 +1,64 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+ {
+  "sections": {
+    "product-template": {
+      "type": "product-template-myovolt",
+      "blocks": {
+        "sika_discovery_eligibility_sika_large_chip_7mAbCj": {
+          "type": "shopify://apps/sika-discovery-eligibility/blocks/sika_large_chip/e17f8505-bcca-4959-8609-82e792382ccf",
+          "settings": {
+            "product": "{{product}}",
+            "align": "left",
+            "allWhite": "false"
+          }
+        }
+      },
+      "block_order": [
+        "sika_discovery_eligibility_sika_large_chip_7mAbCj"
+      ],
+      "settings": {
+        "gallery_arrows": true,
+        "activate_zoom": true,
+        "enable_product_lightbox": true,
+        "activate_autoplay": false,
+        "slideshow_animation": "slide",
+        "product_images_position": "left",
+        "product_thumbs": false,
+        "thumbnail_position": "left-thumbnails",
+        "product_breadcrumb": true,
+        "display_vendor": false,
+        "display_sku": false,
+        "display_savings": true,
+        "show_payment_button": false,
+        "display_collections": false,
+        "display_type": false,
+        "display_tags": false,
+        "display_social_buttons": false,
+        "product_description_position": "top",
+        "enable_shopify_product_badges": true,
+        "review_position": "below_gallery",
+        "display_related_products": true,
+        "related_products_style": "slider",
+        "related_products_limit": 12,
+        "products_per": 5,
+        "display_recently_viewed": false,
+        "rv_title": "Recently Viewed Items",
+        "rv_products_style": "slider",
+        "rv_max_display": 3,
+        "rv_per": 3,
+        "toggle": false
+      }
+    }
+  },
+  "order": [
+    "product-template"
+  ]
+}

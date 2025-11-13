@@ -1,0 +1,235 @@
+{% comment %}
+** Footer - default view **
+- Static section
+- Uses blocks
+{% endcomment %}
+
+<footer class="new-footer">
+  <div class="new-footer-container">
+    <div class="new-footer-columns">
+      <div class="new-footer-column">
+        {% if section.settings.footer_logo_image %}
+          <img  alt="{{ section.settings.footer_logo_image.alt | escape }}"
+                class="footer-logo lazyload {{ settings.image_loading_style }}"
+                loading="lazy"
+                data-sizes="25vw"
+                style="max-width: {{- section.settings.footer_logo_image.width -}}px"
+                data-src="{{ section.settings.footer_logo_image | img_url: '2048x' }}"
+                data-srcset=" {{ section.settings.footer_logo_image | img_url: '200x' }} 200w,
+                              {{ section.settings.footer_logo_image | img_url: '300x' }} 300w,
+                              {{ section.settings.footer_logo_image | img_url: '400x' }} 400w,
+                              {{ section.settings.footer_logo_image | img_url: '500x' }} 500w,
+                              {{ section.settings.footer_logo_image | img_url: '600x' }} 600w,
+                              {{ section.settings.footer_logo_image | img_url: '1000x' }} 1000w"
+             />
+        {% endif %}
+
+        {% if section.settings.newsletter_title != blank %}
+          <h5>{{ section.settings.newsletter_title }}</h5>
+        {% endif %}
+        {% if section.settings.newsletter_text != blank %}
+          {{ section.settings.newsletter_text }}
+        {% endif %}
+
+        <div class="newsletter">
+          <span class="message"></span>
+          <div class="klaviyo-form-LWy48v"></div> 
+        </div>
+
+        <div class="footer-social-icons">
+          {% if settings.instagram_link != '' %}
+          <a href="{{ settings.instagram_link }}" title="{{ shop.name }} on Instagram" rel="me" target="_blank">{% render 'icon-instagram' %}</a>
+          {% endif %}
+          {% if settings.tiktok_link != '' %}
+          <a href="{{ settings.tiktok_link }}" title="{{ shop.name }} on TikTok" rel="me" target="_blank">{% render 'icon-tik-tok' %}</a>
+          {% endif %}
+          {% if settings.facebook_link != '' %}
+          <a href="{{ settings.facebook_link }}" title="{{ shop.name }} on Facebook" rel="me" target="_blank">{% render 'icon-facebook' %}</a>
+          {% endif %}
+          {% if settings.youtube_link != '' %}
+          <a href="{{ settings.youtube_link }}" title="{{ shop.name }} on Youtube" rel="me" target="_blank">{% render 'icon-youtube' %}</a>
+          {% endif %}
+          {% if settings.twitter_link != '' %}
+          <a href="{{ settings.twitter_link }}" title="{{ shop.name }} on Twitter" rel="me" target="_blank"><img src="{{ 'icon-x.png' | asset_url }}" alt="Twitter" width="40" height="40" loading="lazy"></a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="new-footer-column">
+        <h6>{{ section.settings.footer_column2_title }}</h6>
+        <div class="toggle_content">
+          <ul>
+            {% for link in linklists[section.settings.footer_column2_menu].links %}
+              <li><p><a href="{{ link.url }}">{{ link.title }}</a></p></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="new-footer-column">
+        <h6>{{ section.settings.footer_column3_title }}</h6>
+        <div class="toggle_content">
+          <ul>
+            {% for link in linklists[section.settings.footer_column3_menu].links %}
+              <li><p><a href="{{ link.url }}">{{ link.title }}</a></p></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="new-footer-column">
+        <h6>{{ section.settings.footer_column4_title }}</h6>
+        <div class="toggle_content">
+          <ul>
+            {% for link in linklists[section.settings.footer_column4_menu].links %}
+              <li><p><a href="{{ link.url }}">{{ link.title }}</a></p></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="new-footer-column wide-column">
+        {% if section.settings.footer_usb_logo %}
+          <img  alt="{{ section.settings.footer_usb_logo.alt | escape }}"
+                class="usb-footer-logo mobile-hide lazyload {{ settings.image_loading_style }}"
+                loading="lazy"
+                data-sizes="25vw"
+                style="max-width: {{- section.settings.footer_usb_logo.width -}}px"
+                data-src="{{ section.settings.footer_usb_logo | img_url: '2048x' }}"
+                data-srcset=" {{ section.settings.footer_usb_logo | img_url: '200x' }} 200w,
+                              {{ section.settings.footer_usb_logo | img_url: '300x' }} 300w,
+                              {{ section.settings.footer_usb_logo | img_url: '400x' }} 400w,
+                              {{ section.settings.footer_usb_logo | img_url: '500x' }} 500w,
+                              {{ section.settings.footer_usb_logo | img_url: '600x' }} 600w,
+                              {{ section.settings.footer_usb_logo | img_url: '1000x' }} 1000w"
+             />
+             
+        {% endif %}
+        <h6 class="desktop-hide">{{ section.settings.footer_usb_text }}</h6>
+        <div class="toggle_content">
+          <ul class="brand-logos">
+            {% for block in section.blocks %}
+              <li><a href="{{ block.settings.logo_url }}">
+                <img  alt="{{ block.settings.logo.alt | escape }}"
+                  class="brand-logo lazyload {{ settings.image_loading_style }}"
+                  loading="lazy"
+                  data-sizes="25vw"
+                  style="max-width: {{- block.settings.logo.width -}}px"
+                  data-src="{{ block.settings.logo | img_url: '2048x' }}"
+                  data-srcset=" {{ block.settings.logo | img_url: '200x' }} 200w,
+                                {{ block.settings.logo | img_url: '300x' }} 300w,
+                                {{ block.settings.logo | img_url: '400x' }} 400w,
+                                {{ block.settings.logo | img_url: '500x' }} 500w,
+                                {{ block.settings.logo | img_url: '600x' }} 600w,
+                                {{ block.settings.logo | img_url: '1000x' }} 1000w"
+               />
+              </a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        
+
+      </div>
+    </div>
+    <p class="credits">
+      &copy; {{ "now" | date: "%Y" }} {{ section.settings.copyright_text | link_to: '/' }}
+    </p>
+  </div>
+  <script>
+    window.fwSettings={
+    'widget_id':44000003784
+    };
+    !function(){if("function"!=typeof window.FreshworksWidget){var n=function(){n.q.push(arguments)};n.q=[],window.FreshworksWidget=n}}()
+    </script>
+  <script type='text/javascript' src='https://widget.freshworks.com/widgets/44000003784.js' async defer></script>
+</footer>
+
+{% schema %}
+
+{
+  "name": "Footer",
+  "class": "footer-section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "footer_logo_image",
+      "label": "Logo"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_title",
+      "label": "Newsletter title"
+    },
+    {
+      "type": "richtext",
+      "id": "newsletter_text",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "footer_column2_title",
+      "label": "Column 2 title"
+    },
+    {
+      "type": "link_list",
+      "id": "footer_column2_menu",
+      "label": "Column 2 menu",
+      "info": "This menu won't show drop-down items"
+    },
+    {
+      "type": "text",
+      "id": "footer_column3_title",
+      "label": "Column 3 title"
+    },
+    {
+      "type": "link_list",
+      "id": "footer_column3_menu",
+      "label": "Column 3 menu",
+      "info": "This menu won't show drop-down items"
+    },
+    {
+      "type": "text",
+      "id": "footer_column4_title",
+      "label": "Column 4 title"
+    },
+    {
+      "type": "link_list",
+      "id": "footer_column4_menu",
+      "label": "Column 4 menu",
+      "info": "This menu won't show drop-down items"
+    },
+    {
+      "type": "image_picker",
+      "id": "footer_usb_logo",
+      "label": "USB Logo",
+      "info": "This will not show on mobile. See below"
+    },
+    {
+      "type": "text",
+      "id": "footer_usb_text",
+      "label": "USB text (mobile)"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brand_logo",
+      "name": "Brand Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Brand logo"
+        },
+        {
+          "type": "url",
+          "id": "logo_url",
+          "label": "Brand link"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

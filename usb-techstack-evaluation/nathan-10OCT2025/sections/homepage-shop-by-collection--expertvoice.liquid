@@ -1,0 +1,135 @@
+{% liquid
+  assign pro_homepage_enabled = settings.enable_pro_homepage
+  assign ev_homepage_enabled = settings.enable_ev_homepage
+  assign op_homepage_enabled = settings.enable_op_homepage
+
+  assign is_pro_customer = false
+  assign is_ev_customer = false
+  assign is_op_customer = false
+  if customer.tags contains 'Pro Purchase'
+    assign is_pro_customer = true
+  elsif customer.tags contains 'Expert Voice'
+    assign is_ev_customer = true
+  elsif customer.tags contains 'Outdoor Pro'
+    assign is_op_customer = true
+  endif
+
+  assign use_pro_homepage = false
+  assign use_ev_homepage = false
+  assign use_op_homepage = false
+
+  if pro_homepage_enabled and is_pro_customer
+    assign use_pro_homepage = true
+  elsif ev_homepage_enabled and is_ev_customer
+    assign use_ev_homepage = true
+  elsif op_homepage_enabled and is_op_customer
+    assign use_op_homepage = true
+  endif
+%}
+
+{%- if use_ev_homepage -%}
+  {%- if section.blocks.size > 0 and section.settings.title != blank and section.settings.description != blank -%}
+    <div class="container max-w-full md:max-w-680 lg:max-w-920 xl:max-w-1200 mb-20 md:mb-40">
+      <div class="mb-6 lg:mb-0 flex items-end justify-between lg:block px-6 md:px-0">
+        <h2 class="text-h3-m lg:text-h2 uppercase mb-0 lg:mb-8">{{- section.settings.title -}}</h2>
+        <div class="flex items-center justify-between mb-0 lg:mb-8">
+          <div class="hidden lg:block lg:max-w-122">{{- section.settings.description -}}</div>
+          {%- if section.settings.cta_title != blank and section.settings.url != blank -%}
+            <a href="{{- section.settings.url -}}" class="button button-outline-dark min-w-btn hidden lg:block">{{- section.settings.cta_title -}}</a>
+
+            <a href="{{section.settings.url}}" class="inline-block lg:hidden font-semibold text-special-xs px-0 h-5 border border-t-0 border-l-0 border-r-0 border-b-2 uppercase font-sora">{{- section.settings.cta_title -}}</a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-0">
+        {%- for block in section.blocks -%}
+          {%- if block.settings.image != blank and block.settings.cta_title != blank and block.settings.url != blank -%}
+            <a href="{{block.settings.url}}" class="relative block w-full h-0 pt-144percent group transition-all duration-300 ease-in-out overflow-hidden">
+              <img class="lazy absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full object-cover" data-src="{{ block.settings.image | img_url: '400x', scale: 2 }}" alt="{{- block.settings.image.alt -}}">
+
+              <div class="absolute left-0 bottom-0 w-full bg-dark-stone-overlay lg:hover:bg-dark-stone-overlay-hover px-6 xl:px-8 py-10 md:py-6 xl:py-12 text-white text-h4-m lg:text-h4 tracking-0.8 md:tracking-1 font-medium flex items-center justify-between">
+                {{- block.settings.cta_title -}}
+                <span class="w-7.5 h-7.5 md:w-8 md:h-8 rounded-full block opacity-100 xl:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 ease-in-out text-black">
+                  <span class="w-full h-full flex items-center justify-center opacity-70 md:opacity-70 md:hover:opacity-90 bg-faint-cloud rounded-full">
+                    {% include 'svg-arrow-right', width: '16.8px', height: '11.52px' %}
+                  </span>
+                </span>
+
+                <div class="bg-lush absolute bottom-full -left-full group-hover:left-0 w-full h-2 transition-all duration-300 ease-in-out hidden md:block"></div>
+              </div>
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Shop By Collection (Exp)",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Shop By Collection (Exp)"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Shop By Collection"
+    },
+    {
+      "id": "description",
+      "type": "text",
+      "label": "Description",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "info": "Recommended Character Count: 140"
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "label": "CTA title",
+      "default": "View All"
+    },
+    {
+      "id": "url",
+      "type": "url",
+      "label": "Link"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Item",
+      "type": "item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Recommended size: 800x1152"
+        },
+        {
+          "type": "text",
+          "id": "cta_title",
+          "label": "CTA title"
+        },
+        {
+          "id": "url",
+          "type": "url",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop By Collection (Exp)",
+      "category": "Homepage"
+    }
+  ]
+}
+
+{% endschema %}

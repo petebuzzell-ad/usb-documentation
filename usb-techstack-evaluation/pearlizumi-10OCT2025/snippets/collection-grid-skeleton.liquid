@@ -1,0 +1,25 @@
+<div data-ss-grid-skeleton>
+  <div class="ss__theme ss__toolbar collection-filter-sort">
+    <div class="relative grid grid-cols-2 lg:flex items-center flex-wrap gap-4">
+      {% for i in (1..8) %}
+        {% assign filter_class = 'flex' %}
+        {% if i > 2 %}
+          {% assign filter_class = 'hidden lg:flex' %}
+        {% endif %}
+        <div class="{{ filter_class }} items-center h-10 justify-center !min-w-85 !px-4 bg-white">
+          <div class="block h-4 w-full rounded-full bg-faint-cloud">&nbsp;</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="ss__has-results collection-grid pt-16 !mt-0">
+    <div class="mb-4 block h-3 w-56 rounded-full bg-faint-cloud">&nbsp;</div>
+    <div class="mb-2 block h-6 w-72 rounded-full bg-faint-cloud">&nbsp;</div>
+    <div class="ss__results ss__results--grid collection-grid--inner">
+      {% for i in (1..8) %}
+        {% render 'product-item-skeleton' %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

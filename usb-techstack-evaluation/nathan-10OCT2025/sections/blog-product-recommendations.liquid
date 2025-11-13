@@ -1,0 +1,41 @@
+<div
+  class="pt-14 md:pt-20 blog-product-recommendations"
+  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ article.metafields["global"]["recommended_product_id"] }}&limit=10"
+  data-blog-recommended-products
+>
+  {%- if recommendations.performed and recommendations.products_count > 0 -%}
+    <h3 class="uppercase">You may also like</h3>
+
+    <div class="clp-slider relative">
+      <div class="product-carousel overflow-x-visible" data-blog-recommended-products-carouel>
+        <div class="glide__track" data-glide-el="track">
+          <div class="glide__slides">
+            {%- for product in recommendations.products -%}
+              {%- render 'product-item', product: product -%}
+            {%- endfor -%}
+          </div>
+        </div>
+        <div class="glide__arrows absolute w-screen h-0 top-0 left-1/2 transform -translate-x-1/2 flex justify-between px-1 md:px-6" data-glide-el="controls">
+          <a href="javascript:void(0);" class="glide__arrow glide__arrow--left h-full flex items-center" data-glide-dir="<">
+            <span class="button-slider-nav-light w-6 h-6 md:w-12.5 md:h-12.5 m-0 p-0 rounded-circle flex items-center justify-center transform scale-50 md:scale-100">
+              {% render 'svg-arrow-left', classes: 'hidden md:block' %}
+              {% render 'svg-arrow-left', width: '14px', height: '9px', classes: 'block md:hidden' %}
+            </span>
+          </a>
+          <a href="javascript:void(0);" class="glide__arrow glide__arrow--right h-full flex items-center" data-glide-dir=">">
+            <span class="button-slider-nav-light w-6 h-6 md:w-12.5 md:h-12.5 m-0 p-0 rounded-circle flex items-center justify-center transform scale-50 md:scale-100">
+              {% render 'svg-arrow-right', classes: 'hidden md:block' %}
+              {% render 'svg-arrow-right', width: '14px', height: '9px', classes: 'block md:hidden' %}
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+{% schema %}
+  {
+    "name": "Product recommendations",
+    "settings": []
+  }
+{% endschema %}

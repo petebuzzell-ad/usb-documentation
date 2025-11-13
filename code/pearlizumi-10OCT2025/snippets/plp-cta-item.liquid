@@ -1,0 +1,30 @@
+{%- if image != blank and title != blank -%}
+  <div class="plp-cta-item mb-4 sm:mb-5">
+    <div class="plp-cta-item__media block mb-7.25 md:mb-5">
+      {%- if url != blank -%}<a href="{{ url }}">{%- endif -%}
+      <div class="plp-cta-item__media-wrapper relative w-full h-0 bg-faint-cloud pt-[100%]">
+        <img class="plp-cta-item__media-image w-full h-full absolute object-cover top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" src="{{image | img_url: '600x'}}" alt="{{image.alt}}" loading="lazy">
+        {%- if video != blank -%}
+          <span class="play-video-btn bg-play-btn w-8.5 h-8.5 lg:w-23.5 lg:h-23.5 rounded-full absolute top-1/2 left-1/2 cursor-pointer transform -translate-x-1/2 -translate-y-1/2 z-1" data-video="{{video}}">
+            {%- render 'svg-play-light', classes: 'absolute z-2 top-1/2 left-1/2 cursor-pointer transform -translate-y-1/2 -translate-x-1/3 w-4 h-6 lg:w-8 lg:h-12' -%}
+          </span>
+        {%- endif -%}
+      </div>
+      {%- if url != blank -%}</a>{%- endif -%}
+    </div>
+    <div class="plp-cta-item__info">
+      {%- if url != blank -%}<a href="{{ url }}">{%- endif -%}
+      <div class="plp-cta-item__title text-h6 md:text-h5 tracking-normal leading-6 md:leading-8 font-semibold">{{- title -}}</div>
+      {%- if url != blank -%}</a>{%- endif -%}
+
+      <div class="plp-cta-item__excerpt text-p font-light mb-2.5 hidden md:block">{{- description | strip_html -}}</div>
+      {%- if video != blank -%}
+        <span class="watch-video-btn font-sora font-medium text-special-xs md:text-special text-black border border-b-2 border-l-0 border-r-0 border-t-0 hover:border-dark-green hover:text-dark-green cursor-pointer" data-video="{{video}}">WATCH</span>
+      {%- else -%}
+        {%- if url != blank -%}
+          <a href="{{ url }}" class="font-sora font-medium text-special-xs md:text-special text-black border border-b-2 border-l-0 border-r-0 border-t-0 hover:border-dark-green hover:text-dark-green">LEARN MORE</a>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}

@@ -1,0 +1,853 @@
+{
+  "colors": [
+    {
+      "Demo Image": "blank.gif"
+    },
+    {
+      "ash": "#a3a3a3"
+    },
+    {
+      "sky": "#4cbbb8"
+    },
+    {
+      "pop": "#e43e23"
+    },
+    {
+      "red": "#e52824"
+    },
+    {
+      "jet": "#000000"
+    },
+    {
+      "gum": "#eb5799"
+    },
+    {
+      "hot": "#ff0073"
+    },
+    {
+      "mud": "#4a342c"
+    },
+    {
+      "tan": "#d2b48c"
+    },
+    {
+      "ruby": "#e32040"
+    },
+    {
+      "jade": "#1b5c1d"
+    },
+    {
+      "vert": "#489c4a"
+    },
+    {
+      "bone": "#dedbbf"
+    },
+    {
+      "aqua": "#00ffff"
+    },
+    {
+      "blue": "#1d5caa"
+    },
+    {
+      "cyan": "#00ffff"
+    },
+    {
+      "dirt": "#a54400"
+    },
+    {
+      "gold": "#D4AF37"
+    },
+    {
+      "gray": "#808080"
+    },
+    {
+      "grey": "#808080"
+    },
+    {
+      "lime": "#00ff00"
+    },
+    {
+      "navy": "#000080"
+    },
+    {
+      "nude": "#E3BC9A"
+    },
+    {
+      "mint": "#b6e4d0"
+    },
+    {
+      "milk": "#f6f2e8"
+    },
+    {
+      "wine": "#533230"
+    },
+    {
+      "coal": "#060d11"
+    },
+    {
+      "snow": "#dddddd"
+    },
+    {
+      "dash": "#234d90"
+    },
+    {
+      "moss": "#40592f"
+    },
+    {
+      "peel": "#ffd322"
+    },
+    {
+      "sand": "#e0c389"
+    },
+    {
+      "onyx": "#323737"
+    },
+    {
+      "silk": "#d1c4bb"
+    },
+    {
+      "peru": "#cd853f"
+    },
+    {
+      "pink": "#ffc0cb"
+    },
+    {
+      "plum": "#8a3340"
+    },
+    {
+      "rust": "#b7410e"
+    },
+    {
+      "teal": "#008080"
+    },
+    {
+      "tile": "#b9b6a1"
+    },
+    {
+      "azure": "#f0ffff"
+    },
+    {
+      "beige": "#f5f5dc"
+    },
+    {
+      "black": "#000000"
+    },
+    {
+      "brown": "#804020"
+    },
+    {
+      "cream": "#ddd7cb"
+    },
+    {
+      "terra": "#b7a282"
+    },
+    {
+      "slate": "#4f4f4f"
+    },
+    {
+      "olive": "#40483f"
+    },
+    {
+      "coral": "#ff7f50"
+    },
+    {
+      "green": "#008000"
+    },
+    {
+      "ivory": "#f5ecda"
+    },
+    {
+      "khaki": "#f0e68c"
+    },
+    {
+      "linen": "#faf0e6"
+    },
+    {
+      "mauve": "#e0b0ff"
+    },
+    {
+      "wheat": "#f5deb3"
+    },
+    {
+      "white": "#ffffff"
+    },
+    {
+      "sienna": "#9f6a51"
+    },
+    {
+      "bisque": "#ffe4c4"
+    },
+    {
+      "indigo": "#4b0082"
+    },
+    {
+      "maroon": "#800000"
+    },
+    {
+      "orange": "#ffa500"
+    },
+    {
+      "orchid": "#da70d6"
+    },
+    {
+      "purple": "#800080"
+    },
+    {
+      "salmon": "#fa8072"
+    },
+    {
+      "silver": "#c0c0c0"
+    },
+    {
+      "shadow": "#5c534f"
+    },
+    {
+      "tomato": "#ff6347"
+    },
+    {
+      "violet": "#ee82ee"
+    },
+    {
+      "yellow": "#ffff00"
+    },
+    {
+      "natural": "#b7ac9a"
+    },
+    {
+      "crimson": "#dc143c"
+    },
+    {
+      "fuchsia": "#ff00ff"
+    },
+    {
+      "magenta": "#ff00ff"
+    },
+    {
+      "thistle": "#d8bfd8"
+    },
+    {
+      "hot pink": "#ff69b4"
+    },
+    {
+      "sky blue": "#87ceeb"
+    },
+    {
+      "dark red": "#8b0000"
+    },
+    {
+      "cornsilk": "#fff8dc"
+    },
+    {
+      "honeydew": "#f0fff0"
+    },
+    {
+      "lavender": "#e6e6fa"
+    },
+    {
+      "moccasin": "#ffe4b5"
+    },
+    {
+      "midnight": "#383863"
+    },
+    {
+      "seashell": "#fff5ee"
+    },
+    {
+      "sea green": "#2e8b57"
+    },
+    {
+      "rose gold": "#cf9fa6"
+    },
+    {
+      "dark blue": "#00008b"
+    },
+    {
+      "dark cyan": "#008b8b"
+    },
+    {
+      "cool grey": "#b9c1c9"
+    },
+    {
+      "dark gray": "#a9a9a9"
+    },
+    {
+      "dark grey": "#a9a9a9"
+    },
+    {
+      "deep pink": "#ff1493"
+    },
+    {
+      "chocolate": "#d2691e"
+    },
+    {
+      "gainsboro": "#dcdcdc"
+    },
+    {
+      "steelblue": "#4682b4"
+    },
+    {
+      "turquoise": "#40e0d0"
+    },
+    {
+      "alabaster": "#e8e7df"
+    },
+    {
+      "dark green": "#006400"
+    },
+    {
+      "dark khaki": "#bdb76b"
+    },
+    {
+      "light blue": "#add8e6"
+    },
+    {
+      "light cyan": "#e0ffff"
+    },
+    {
+      "light gray": "#d3d3d3"
+    },
+    {
+      "light grey": "#d3d3d3"
+    },
+    {
+      "light pink": "#ffb6c1"
+    },
+    {
+      "lime green": "#32cd32"
+    },
+    {
+      "mint cream": "#f5fffa"
+    },
+    {
+      "royal blue": "#4169e1"
+    },
+    {
+      "slate blue": "#6a5acd"
+    },
+    {
+      "slate gray": "#708090"
+    },
+    {
+      "slate grey": "#708090"
+    },
+    {
+      "aquamarine": "#7fffd4"
+    },
+    {
+      "chartreuse": "#7fff00"
+    },
+    {
+      "dark orange": "#ff8c00"
+    },
+    {
+      "dark salmon": "#e9967a"
+    },
+    {
+      "dark violet": "#9400d3"
+    },
+    {
+      "light coral": "#f08080"
+    },
+    {
+      "light green": "#90ee90"
+    },
+    {
+      "black chrome": "#000000"
+    },
+    {
+      "chrome gold": "#D4AF37"
+    },
+    {
+      "shock green": "#AEF76D"
+    },
+    {
+      "neon green": "#87CE69"
+    },
+    {
+      "trans pink": "#EC62A0"
+    },
+    {
+      "trans black": "#000000"
+    },
+    {
+      "trans red": "#e52824"
+    },
+    {
+      "trans royal": "#1d5caa"
+    },
+    {
+      "trans blue": "#1d5caa"
+    },
+    {
+      "neon pink": "#E45591"
+    },
+    {
+      "solid black": "#000000"
+    },
+    {
+      "kool-aid cherry": "#FE4345"
+    },
+    {
+      "ICEE Cherry": "#D43D46"
+    },
+    {
+      "ICEE Drip": "#D43D46"
+    },
+    {
+      "kool-aid tropical punch": "#03D2EE"
+    },
+    {
+      "kool-aid grape": "#7751A0"
+    },
+    {
+      "sour green apple": "#6AC412"
+    },
+    {
+      "sour watermelon": "#F272A8"
+    },
+    {
+      "royal": "#384DF3"
+    },
+    {
+      "multi color": "Multiple_Swatch.jpg"
+    },
+    {
+      "carbon": "#454545"
+    },
+    {
+      "bubblegum": "#FF86AB"
+    },
+    {
+      "black\/white": "Black-White-Swatch.jpg"
+    },
+    {
+      "white\/black": "White-Black-Swatch.jpg"
+    },
+    {
+      "red\/white": "#e52824"
+    },
+    {
+      "royal\/white": "#4169e1"
+    },
+    {
+      "bazooka joe bubblegum": "#ffc0cb"
+    },
+    {
+      "lemontensity": "#A4DE43"
+    },
+    {
+      "fruit punch": "#F45352"
+    },
+    {
+      "blue raspberry": "#4E3FA7"
+    },
+    {
+      "lemon lime": "#CFF282"
+    },
+    {
+      "blue raz": "#605DF7"
+    },
+    {
+      "chrome slime green": "#7CD047"
+    },
+    {
+      "trans black\/white fang": "#000000"
+    },
+    {
+      "black\/white fang": "Black-White-Fang-Swatch.jpg"
+    },
+    {
+      "white fang": "#000000"
+    },
+    {
+      "gold chrome": "#D4AF37"
+    },
+    {
+      "silver chrome": "#DADADA"
+    },
+    {
+      "clear\/transblue": "#0298EA"
+    },
+    {
+      "chrome black\/gold": "#000000"
+    },
+    {
+      "iridescent pink": "Iridescent-Pink-Swatch.jpg"
+    },
+    {
+      "black lux\/iridescent": "Black-Lux-Iridescent-Swatch.jpg"
+    },
+    {
+      "white\/iridescent lux": "White-Iridescent-Lux-Swatch.jpg"
+    },
+    {
+      "white lux\/iridescent": "White-Lux-Iridescent-Swatch.jpg"
+    },
+    {
+      "stars & stripes": "#EA4243"
+    },
+    {
+      "black\/gold": "#000000"
+    },
+    {
+      "black\/gold chain": "Black-Gold-Chain-Swatch.jpg"
+    },
+    {
+      "3d drip pink\/silver": "#E582B2"
+    },
+    {
+      "3d slime": "#31AF39"
+    },
+    {
+      "3d iridescent purple": "#BB50E7"
+    },
+    {
+      "3d iridescent chain": "#B5AAF6"
+    },
+    {
+      "3d iridescent": "#8888F3"
+    },
+    {
+      "black\/gold skull": "#847C50"
+    },
+    {
+      "black\/gold lux": "#000000"
+    },
+    {
+      "purple clear": "#EC93E2"
+    },
+    {
+      "black\/shock green": "#000000"
+    },
+    {
+      "gold band": "#EDE568"
+    },
+    {
+      "gold card": "#9E9151"
+    },
+    {
+      "chrome iridescent": "#88f7e4"
+    },
+    {
+      "iridescent purple": "#C442E1"
+    },
+    {
+      "iridescent pink": "#D9037C"
+    },
+    {
+      "iridescent gold": "#E99C64"
+    },
+    {
+      "3d black chain": "#000000"
+    },
+    {
+      "black\/gold money": "#000000"
+    },
+    {
+      "black\/gold king": "#000000"
+    },
+    {
+      "dollar": "#000000"
+    },
+    {
+      "king": "#000000"
+    },
+    {
+      "gold cross": "#000000"
+    },
+    {
+      "clear": "#c3eaf2"
+    },
+    {
+      "chrome silver": "#888888"
+    },
+    {
+      "shock blue": "#23A8D0"
+    },
+    {
+      "shock yellow": "#E2CF38"
+    },
+    {
+      "gold\/gummies": "#B49A59"
+    },
+    {
+      "pink lux skull": "#F75A98"
+    },
+    {
+      "silver chrome": "#878787"
+    },
+    {
+      "neon yellow": "#CDDE70"
+    },
+    {
+      "chrome gold": "#AF7F27"
+    },
+    {
+      "smoke": "#E0E0DE"
+    },
+    {
+      "iridescent silver": "Iridescent-Silver-Swatch.jpg"
+    },
+    {
+      "white\/gold": "White-Gold-Swatch.jpg"
+    },
+    {
+      "white lux": "White-Lux-Swatch.jpg"
+    },
+    {
+      "black\/rainbow lux": "Black-Rainbow-Lux-Swatch.jpg"
+    },
+    {
+      "tie dye": "Tie-Dye-Swatch.jpg"
+    },
+    {
+      "blue\/black": "Blue-Black-Swatch.jpg"
+    },
+    {
+      "camo": "Camo-Swatch.jpg"
+    },
+    {
+      "black\/red lux": "Black-Red-Lux-Swatch.jpg"
+    },
+    {
+      "black lux": "Black-Lux-Swatch.jpg"
+    },
+    {
+      "white\/multi color lux": "White-Multi-Color-Lux-Swatch.jpg"
+    },
+    {
+      "black\/gold lux": "Black-Gold-Lux-Swatch.jpg"
+    },
+    {
+      "black\/red": "Black-Red-Swatch.jpg"
+    },
+    {
+      "white\/gold lux": "White-Gold-Lux-Swatch.jpg"
+    },
+    {
+      "white\/gold card": "White-Gold-Card-Swatch.jpg"
+    },
+    {
+      "black\/white hounds": "Black-White-Hounds-Swatch.jpg"
+    },
+    {
+      "flag": "Flag-Swatch.jpg"
+    },
+    {
+      "the king": "The-King-Swatch.jpg"
+    },
+    {
+      "chrome silver flag": "Chrome-Silver-Flag-Swatch.jpg"
+    },
+    {
+      "shock repeat": "Shock-Repeat-Swatch.jpg"
+    },
+    {
+      "black tie dye drip": "Black-Tie-Dye-Drip-Swatch.jpg"
+    },
+    {
+      "tie-dye drip": "Black-Tie-Dye-Drip-Swatch.jpg"
+    },
+    {
+      "3d black\/white stripes": "3D-Black-White-Stripes-Swatch.jpg"
+    },
+    {
+      "stars and stripes\/gold": "Stars-Stripes-Gold-Swatch.jpg"
+    },
+    {
+      "chrome silver stars & stripes\/gold": "Stars-Stripes-Gold-Swatch.jpg"
+    },
+    {
+      "usa flag": "usa-flag-swatch.jpg"
+    },
+    {
+      "black\/gold king": "Black-Gold-King-Swatch.jpg"
+    },
+    {
+      "black\/gold chaching": "Black-Gold-ChaChing-Swatch.jpg"
+    },
+    {
+      "clear\/iridescent white lux": "Clear-Iridescent-White-Lux-Swatch.jpg"
+    },
+    {
+      "iridescent lux": "iridescent-lux-swatch.jpg"
+    },
+    {
+      "red drip fang": "Red-Drip-Fang-Swatch.jpg"
+    },
+    {
+      "white\/columbia blue": "White-ColumbiaBlue-Swatch.jpg"
+    },
+    {
+      "white\/columbia blue stitch": "White-ColumbiaBlue-Swatch.jpg"
+    },
+    {
+      "checker red": "checker-red-swatch.jpg"
+    },
+    {
+      "3d tether stripes": "3d-tether-stripes-swatch.jpg"
+    },
+    {
+      "columbia blue\/white stitch": "ColumbiaBlue-White-Swatch.jpg"
+    },
+     {
+      "columbia blue": "#94B7C9"
+    },
+    {
+      "gold gummies": "Gold-Gummies-Swatch.jpg"
+    },
+    {
+      "usa stars & stripes": "Stars-and-Stripes-Swatch.jpg"
+    },
+    {
+      "benjamins color": "Benjamins-Swatch.jpg"
+    },
+    {
+      "stars and stripes": "Stars-and-Stripes-Swatch.jpg"
+    },
+    {
+      "paisley black": "Paisley-Black-Swatch.jpg"
+    },
+    {
+      "checker": "Checker-Swatch.jpg"
+    },
+    {
+      "multi lux": "Multi-Lux-Swatch.jpg"
+    },
+    {
+      "graffiti": "Graffiti-Swatch.jpg"
+    },
+    {
+      "white camo": "White-Camo-Swatch.jpg"
+    },
+    {
+      "black camo": "Black-Camo-Swatch.jpg"
+    },
+    {
+      "amoeba camo": "Amoeba-Camo-Swatch.jpg"
+    },
+    {
+      "black\/white lux": "Black-White-Lux-Swatch.jpg"
+    },
+    {
+      "chrome silver stars & stripes\/silver": "Chrome-Silver-Stars-and-Stripes-Swatch.jpg"
+    },
+    {
+      "chrome stars & stripes": "Chrome-Stars-Stripes-Swatch.jpg"
+    },
+    {
+      "Your Speed Zero": "Your_Speed_Zero_Swatch.jpg"
+    },
+    {
+      "See Ya": "See_Ya_Swatch.jpg"
+    },
+    {
+      "Gold Money Bands": "Gold_Money_Bands-Swatch.jpg"
+    },
+    {
+      "Hi Mom": "Hi-Mom-Swatch.jpg"
+    },
+    {
+      "Money Mouth Lux": "Money-Mouth-Swatch.jpg"
+    },
+    {
+      "White I'm Him": "White_Im_Him_Swatch.jpg"
+    },
+    {
+      "Gold $ Smile": "Gold_Dollar_Smile_Swatch.jpg"
+    },
+    {
+      "Money Gold Band Chain": "Money_Gold_Band_Chain_Swatch.jpg"
+    },
+    {
+      "Benjamin Splatter": "Benjamin_Splatter_Swatch.jpg"
+    },
+    {
+      "Benjamin Lux": "Benjamin_Lux_Swatch.jpg"
+    },
+    {
+      "Translucent Pink Lux": "Translucent_Pink_Lux_Swatch.jpg"
+    },
+    {
+      "Clear Gold Lux": "Clear_Gold_Lux_Swatch.jpg"
+    },
+    {
+      "White Ice Cold": "White_Ice_Cold_Swatch.jpg"
+    },
+    {
+      "iridescent refracted": "Iridescent-Refracted-Swatch.jpg"
+    },
+    {
+      "White\/Pink Sprinkle Drip": "White_Sprinkle_Drip_Swatch.jpg"
+    },
+    {
+      "Multi Color Face": "Multi-Color-Face-Swatch.jpg"
+    },
+    {
+      "Multi Drip": "Multiple_Swatch.jpg"
+    },
+    {
+      "Smile": "Smile-Swatch.jpg"
+    },
+    {
+      "White\/Black Lux": "White-Black-Lux-Swatch_NEW.jpg"
+    },
+    {
+      "White Money Bands": "White-Money-Bands-Swatch.jpg"
+    },
+    {
+      "White\/Royal": "White-Royal-Swatch.jpg"
+    },
+    {
+      "White\/Pink": "White-Pink-Swatch.jpg"
+    },
+    {
+      "White\/Red": "White-Red-Swatch.jpg"
+    },
+    {
+      "Solid Black": "Solid-Black-Swatch.jpg"
+    },
+    {
+      "Translucent Columbia Blue/White": "#aecef7"
+    },
+    {
+      "Translucent Shock Pink/White": "#f69fd9"
+    },
+    {
+      "Translucent Shock Orange/White": "#f36838"
+    },
+    {
+      "Translucent Shock Red/White": "#de696f"
+    },
+    {
+      "Translucent Shock Blue/White": "#3783ce"
+    },
+    {
+      "Translucent Shock Yellow/White": "#c5d638"
+    },
+    {
+      "Translucent Shock Green/White": "#6cc22d"
+    },
+    {
+      "Gray/Red": "Gray_Red_Swatch.jpg"
+    },
+    {
+      "Red/Gray": "Red_Gray_Swatch.jpg"
+    },
+    {
+      "Navy/White": "Navy_White_Swatch.jpg"
+    },
+    {
+      "White/Navy": "White_Navy_Swatch.jpg"
+    },
+    {
+      "Royal/Orange": "Royal_Orange_Swatch.jpg"
+    },
+    {
+      "Orange/Royal": "Orange_Royal_Swatch.jpg"
+    },
+    {
+      "Solid White": "Solid-White-Swatch.jpg"
+    }
+  ]
+}

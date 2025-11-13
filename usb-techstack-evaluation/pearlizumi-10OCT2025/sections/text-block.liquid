@@ -1,0 +1,110 @@
+{% assign mb_class = 'mb-0' %}{% if section.settings.enable_bottom_margin %}{% assign mb_class = 'mb-20 md:mb-40' %}{% endif %}
+  
+<div data-section-id="{{ section.id }}" data-section-type="text" id="section-{{ number }}" class="relative px-3.5 {% if section.settings.svg != blank %} pt-12.5 pb-20 md:pt-27.5 md:pb-40{% else %} py-20 md:py-40 {% endif %} bg-{{ section.settings.bg_color }} {{ mb_class }}">
+  <div class="rte max-w-920 mx-auto px-2.5 text-{{ section.settings.text_color }}">
+    {%- if section.settings.svg != blank -%}
+    	<div class="mb-6 hidden lg:block">{{- section.settings.svg -}}</div>
+    	{%- if section.settings.svg_mobile != blank -%}
+    		<div class="mb-4 block lg:hidden">{{- section.settings.svg_mobile -}}</div>
+    	{%- else -%}
+    		<div class="mb-4 block lg:hidden">{{- section.settings.svg -}}</div>
+    	{%- endif -%}
+    {%- endif -%}
+    {% if section.settings.heading != blank %}
+      <h2 class="mb-6 md:mb-8">{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.body != blank %}
+      {{ section.settings.body }}
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Text Block",
+    "tag": "section",
+    "class": "text-block-section",
+    "settings": [
+      {
+        "type": "select",
+        "id": "bg_color",
+        "label": "Background Color",
+        "default": "white",
+        "options": [
+          {
+            "label": "White",
+            "value": "white"
+          },
+          {
+            "label": "Black",
+            "value": "black"
+          },
+          {
+            "label": "Pine",
+            "value": "pine"
+          },
+          {
+            "label": "Sand",
+            "value": "sand"
+          },
+          {
+            "label": "Silver",
+            "value": "silver"
+          },
+          {
+            "label": "Stone",
+            "value": "stone"
+          }
+        ]
+      },
+      {
+        "type": "html",
+        "id": "svg",
+        "label": "Desktop SVG Icon"
+      },
+      {
+        "type": "html",
+        "id": "svg_mobile",
+        "label": "Mobile SVG Icon"
+      },
+      {
+        "type": "select",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "black",
+        "options": [
+          {
+            "label": "Black",
+            "value": "black"
+          },
+          {
+            "label": "White",
+            "value": "white"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading Text (H2)"
+      },
+      {
+        "type": "richtext",
+        "id": "body",
+        "label": "Body Text"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_bottom_margin",
+        "label": "Enable Bottom Margin",
+        "default": true
+      }
+    ],
+    "presets": [
+      {
+        "name": "Text Block",
+        "category": "Text"
+      }
+    ]
+  }
+  {% endschema %}

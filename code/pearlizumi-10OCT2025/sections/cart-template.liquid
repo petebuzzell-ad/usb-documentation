@@ -1,0 +1,370 @@
+{% liquid
+  assign is_pro_customer = false
+  assign is_ev_customer = false
+  assign is_op_customer = false
+  assign is_any_pro = false
+
+  if customer.tags contains 'Pro Purchase' or customer.tags contains 'PRO PURCHASE'
+    assign is_pro_customer = true
+    assign is_any_pro = true
+  elsif customer.tags contains 'Expert Voice'
+    assign is_ev_customer = true
+    assign is_any_pro = true
+  elsif customer.tags contains 'Outdoor Pro'
+    assign is_op_customer = true
+    assign is_any_pro = true
+  endif
+
+  assign cart_total = cart.total_price
+  assign original_total = cart.original_total_price
+
+  assign item_count = 0
+  assign only_gift_cards = true
+
+  for item in cart.items
+    if item.product.tags contains 'gift-for-good'
+      assign item_count = item_count | plus: 1
+    else
+      assign item_count = item_count | plus: item.quantity
+    endif
+
+    unless item.gift_card
+      assign only_gift_cards = false
+    endunless
+  endfor
+
+  assign extra_pro_discount = settings.pro_extra_discount
+  assign extra_pro_discount_amount = settings.extra_pro_discount_amount
+
+  assign is_pro_member = false
+  if customer
+    assign has_discount_tag = false
+    assign has_limit_tag = false
+    for tag in customer.tags
+      if tag contains "discount-"
+        assign has_discount_tag = true
+      endif
+      if tag contains "limit-"
+        assign has_limit_tag = true
+      endif
+    endfor
+    if has_discount_tag and has_limit_tag
+      assign is_pro_member = true
+      for tag in customer.tags
+        if tag contains "discount-"
+          if extra_pro_discount
+            assign discount_tag = tag | remove: "discount-" | plus: extra_pro_discount_amount
+          else
+            assign discount_tag = tag | remove: "discount-" | plus: 0
+          endif
+          assign pro_price_discount = 100.00 | minus: discount_tag | divided_by: 100
+        endif
+      endfor
+    endif
+  endif
+
+  if shop.permanent_domain == 'pearlizumi.myshopify.com' or shop.permanent_domain == 'pearlizumi-dev.myshopify.com'
+    assign storefront = "US"
+    assign cart_url = '/cart'
+    assign checkout_url = '/checkout'
+  elsif shop.permanent_domain == 'pearlizumi-ca.myshopify.com' or shop.permanent_domain == 'pearlizumi-cadev.myshopify.com'
+    assign storefront = "CA"
+    assign cart_url = '/cart'
+    assign checkout_url = '/checkout'
+  elsif shop.permanent_domain == 'pearl-izumi-int.myshopify.com'
+    assign storefront = "INT"
+  endif
+
+  assign CAD_pricing = ""
+  if storefront == "CA"
+    assign CAD_pricing = " CAD"
+  endif
+%}
+
+<script>console.log("saved: {{ amount_saved }}, denom: {{ denominator }}, cart savings: {{ cart_savings }}")</script>
+
+{%- unless storefront == "INT" -%}
+  <div id="cartTemplate" class="md:px-14 lg:px-22.5 mb-20 lg:mb-12">
+    <div class="lg:max-w-1200 lg:mx-auto mb-20 md:mb-0">
+
+    {% if cart.item_count > 0 %}
+
+      <div class="text-center lg:text-left px-6 mb-2 lg:px-0">
+        <a class="inline-flex items-center justify-center lg:justify-start text-black hover:text-pine hover:underline mx-auto my-4 lg:mx-0 lg:mt-10" href="collections/all">
+          {%- render 'svg-chevron-left', width: '6px', height: '12px' %}
+          <span class="ml-3 font-sora font-semibold uppercase text-special-s">{{ 'cart.general.continue_shopping' | t }}</span>
+        </a>
+      </div>
+      <h1 class="text-h3-m lg:text-h3 text-center lg:text-left uppercase font-semibold px-6 lg:px-0 mb-4 lg:-mx-3"><span class="lg:w-2/3 lg:pl-3 lg:flex lg:justify-between lg:items-end">
+        {{ 'cart.general.title' | t }}
+        <span class="font-sora text-special lg:text-h6">
+          {%- assign single_item = 'layout.cart.items_count.one' | t -%}
+          {%- assign plural_items = 'layout.cart.items_count.other' | t -%}
+          (<span data-item-count>{{ item_count }}</span> <span data-item-count-label>{{ item_count | pluralize: single_item, plural_items }}</span><span class="md:hidden" data-total-price>: {{ cart_total | money }}</span>)
+        </span>
+      </span></h1>
+
+
+      <div class="flex flex-col lg:flex-row lg:justify-between lg:-mx-3">
+
+        <!-- Mobile-Only Checkout Button -->
+        <form action="{{ checkout_url }}" class="lg:hidden w-full px-6 mx-auto mb-10">
+          <button data-checkout-btn class="button-cart w-full md:max-w-full !flex items-center justify-center mx-auto">
+            <span class="sr-only">{{ 'cart.general.checkout' | t }}</span>
+            {%- render 'svg-lock-cart'  -%}
+            <span class="ml-3">{{ 'cart.general.checkout' | t }}</span>
+          </button>
+        </form>
+
+        <!-- Main Cart on Desktop -->
+        <div class="mb-10 lg:mb-0 w-full lg:w-3/5 xl:w-2/3 lg:pl-3">
+
+          {% if section.settings.custom_message != blank %}
+            <div class="border-l-5 border-magma bg-faint-cloud font-normal text-p text-dark-black pt-5 pb-6 pl-8 pr-6 lg:pb-7.5 lg:pr-8 mb-7.5 mx-6 lg:mx-0">
+              {{ section.settings.custom_message }}
+            </div>
+          {% endif %}
+
+          <!-- Line Items -->
+          <form action="{{ cart_url }}" method="post" novalidate class="cart">
+            <section class="cartContainer divide-y divide-silver border-t border-b border-silver">
+              {% for item in cart.items %}
+                {%- render 'cart-line-item', item: item, line: forloop.index, CAD_pricing: CAD_pricing, is_pro: is_pro_member  -%}
+              {% endfor %}
+            </section>
+          </form>
+
+        </div>
+
+        <!-- Right Sidebar on Desktop -->
+        <div class="w-full lg:w-2/5 xl:w-1/3 p-0 lg:pl-12 lg:pr-3">
+
+          <!-- Order Summary -->
+          <div class="bg-faint-cloud px-6 py-8 lg:rounded lg:pb-10 lg:px-8 mb-3"><div class="lg:max-w-65 lg:mx-auto">
+            {%- unless only_gift_cards -%}
+              <!-- Free Shipping Widget -->
+              {%- if settings.free_shipping_enabled_pros or settings.free_shipping_enabled_normals or settings.free_shipping_enabled_pro_ev -%}
+                {% assign enable_pro_ev = settings.free_shipping_enabled_pro_ev %}
+                <div
+                class="md:px-28 lg:px-0">
+                  {%- render 'cart-shipping-widget'
+                    enabled_for_pros: settings.free_shipping_enabled_pros
+                    enabled_for_normals: settings.free_shipping_enabled_normals,
+                    enabled_ev: enable_pro_ev
+                  -%}
+                </div>
+              {%- endif -%}
+            {%- endunless -%}
+
+            <h2 class="text-special-lg font-sora font-semibold text-black uppercase text-center mb-4">{{ 'cart.general.order_summary' | t }}</h2>
+            <div class="border border-soft-grey lg:border-silver border-r-0 border-l-0">
+              <!-- Subtotal -->
+              <div class="flex items-center justify-between font-sora text-p text-black py-3">
+                <label for="subtotal">
+                  <span>{{ 'cart.general.subtotal' | t }}</span>
+                  </label>
+
+                {% assign total_minus_discount = 0 %}
+                {% for item in cart.items %}
+                  {% if is_pro_member %}
+                    {% if item.variant.compare_at_price > item.variant.price %}
+                      {% assign item_price = item.variant.compare_at_price %}
+                    {% else %}
+                      {% assign item_price = item.variant.price %}
+                    {% endif %}
+                    {% assign price_and_quantity = item_price | times: item.quantity %}
+                    {% assign total_minus_discount = total_minus_discount | plus: price_and_quantity %}
+                  {% else %}
+                    {% if item.variant.compare_at_price > item.variant.price %}
+                      {% assign item_price = item.variant.compare_at_price %}
+                      {% assign price_and_quantity = item_price | times: item.quantity %}
+                      {% assign total_minus_discount = total_minus_discount | plus: price_and_quantity %}
+                    {% else %}
+                      {% assign item_price = item.variant.price %}
+                      {% assign price_and_quantity = item_price | times: item.quantity %}
+                      {% assign total_minus_discount = total_minus_discount | plus: price_and_quantity %}
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+                <span data-original-total-price>{{- total_minus_discount | money -}}{{- CAD_pricing -}}</span>
+              </div>
+
+              {%- unless only_gift_cards -%}
+                <!-- Savings -->
+                {% assign script_discount = 0 %}
+                {% assign total_item_discount = 0 %}
+                {% for item in cart.items %}
+                  {% unless item.gift_card or item.product.tags contains 'CustomPreorder' %}
+                    {% if item.total_discount > 0 %}
+                      {% assign script_discount = script_discount | plus: item.total_discount %}
+                    {% endif %}
+                    {% if is_pro_member %}
+                      {% if item.variant.compare_at_price > item.variant.price %}
+                        {% assign pro_discount_price = pro_price_discount | times: item.variant.compare_at_price %}
+                      {% else %}
+                        {% assign pro_discount_price = pro_price_discount | times: item.variant.price %}
+                      {% endif %}
+                      {% if pro_discount_price < item.variant.price %}
+                        {% if item.variant.compare_at_price > 0 %}
+                          {% assign item_discount = item.variant.compare_at_price | minus: pro_discount_price %}
+                        {% else %}
+                          {% assign item_discount = item.variant.price | minus: pro_discount_price %}
+                        {% endif %}
+                      {% else %}
+                        {% assign item_discount = item.variant.compare_at_price | minus: item.variant.price %}
+                      {% endif %}
+                      {% assign discount_and_quantity = item_discount | times: item.quantity %}
+                      {% assign total_item_discount = total_item_discount | plus: discount_and_quantity %}
+                    {% else %}
+                      {% if item.variant.compare_at_price > item.variant.price %}
+                        {% assign item_discount = item.variant.compare_at_price | minus: item.variant.price %}
+                        {% assign discount_and_quantity = item_discount | times: item.quantity %}
+                        {% assign total_item_discount = total_item_discount | plus: discount_and_quantity %}
+                      {% endif %}
+                    {% endif %}
+                  {% endunless %}
+                {% endfor %}
+
+                {% if script_discount > 0 %}
+                  <div class="flex items-center justify-between font-sora text-p py-3">
+                    <label for="discount-code"><span>{% if is_pro_member %}Pro Savings{% else %}Total Savings{% endif %}</span></label>
+                    <span data-total-savings class="text-pine">-{{- script_discount | money -}}{{- CAD_pricing -}}</span>
+                  </div>
+                {% else %}
+                  {% if total_item_discount > 0 %}
+                    <div class="flex items-center justify-between font-sora text-p py-3">
+                      <label for="discount-code"><span>{% if is_pro_member %}Pro Savings{% else %}Total Savings{% endif %}</span></label>
+
+                      <span data-total-savings class="text-pine">-{{- total_item_discount | money -}}{{- CAD_pricing -}}</span>
+                    </div>
+                  {% endif %}
+                {% endif %}
+              {%- endunless -%}
+
+              <!-- Shipping -->
+              <div class="flex items-center justify-between font-sora text-p text-black py-3">
+                {% liquid
+                  if is_pro_member
+                    if customer.tags contains 'Pro Purchase' or customer.tags contains 'PRO PURCHASE'
+                      assign threshold = settings.free_shipping_threshold_pro | times: 100
+                    elsif customer.tags contains 'Expert Voice'
+                      assign threshold = settings.free_shipping_threshold_expert | times: 100
+                    elsif customer.tags contains 'Outdoor Pro'
+                      assign threshold = settings.free_shipping_threshold_outdoor | times: 100
+                    else
+                      assign threshold = settings.free_shipping_threshold | times: 100
+                    endif
+                  else
+                    assign threshold = settings.free_shipping_threshold | times: 100
+                  endif
+                  assign difference = threshold | minus: cart.total_price
+                  assign threshold_met = false
+                  if difference <= 0
+                    assign threshold_met = true
+                  endif
+                %}
+                <label for="shipping"><span>{{ 'cart.general.shipping' | t }}*</span></label>
+
+                <span data-shipping-status>{%- if threshold_met -%}FREE{%- else -%}TBD{%- endif -%}</span>
+
+                {% comment %} <span>
+                {% if is_pro_member %}
+                  {{ 'cart.general.to_be_determined' | t }}
+                {% else %}
+                  {% if threshold_met %}
+                    FREE
+                  {% else %}
+                    {{ 'cart.general.to_be_determined' | t }}
+                  {% endif %}
+                {% endif %}
+                </span> {% endcomment %}
+              </div>
+              <!-- Taxes  -->
+              <div class="flex items-center justify-between font-sora text-p text-black py-3">
+                <label for="taxes"><span>{{ 'cart.general.taxes' | t }}*</span></label>
+
+                <span>--</span>
+              </div>
+            </div>
+
+            <!-- Total Price -->
+            <div class="flex items-center justify-between font-sora font-semibold text-special-lg text-black mt-4 mb-8">
+              <label for="total-price">
+                <span class="uppercase {% if storefront == 'CA' %}max-w-1/2 leading-21{% endif %}">{{ 'cart.general.order_total' | t }}</span>
+              </label>
+
+
+              <span class="text-p-xl tracking-normal {% if storefront == 'CA' %}text-p-lg{% endif %}" data-total-price>{{- cart_total | money -}}{{- CAD_pricing -}}</span>
+            </div>
+
+            <!-- Primary Checkout Button -->
+            <form action="{{ checkout_url }}" class="w-full mx-auto mb-4 md:mb-3">
+              <button data-checkout-btn class="button-cart w-full md:max-w-full !flex items-center justify-center mx-auto">
+                {%- render 'svg-lock-cart'  -%}
+                <span class="ml-3">{{ 'cart.general.checkout' | t }}</span>
+              </button>
+            </form>
+          <p class="text-p-xs text-center text-stone font-sora m-0" role="text" aria-label="{% if is_pro_member %}*{{ 'cart.general.shipping_at_checkout' | t }}{% else %}{{- settings.shipping_taxes_message -}}{% endif %}">
+          {% if is_pro_member %}*{{ 'cart.general.shipping_at_checkout' | t }}{% else %}{{- settings.shipping_taxes_message -}}{% endif %}
+        </p>
+          </div></div>
+
+        </div>
+      </div>
+
+    {% else %}
+
+      <div class="text-center pt-22 pb-50 px-6 md:pt-40 md:pb-50">
+        <h1 class="text-h5 md:text-h3 uppercase text-black font-semibold mb-4">{{ 'cart.general.title' | t }}</h1>
+        <p class="text-p-lg text-black font-normal mb-8 md:mb-14">{{ 'cart.general.empty' | t }}</p>
+        <form action="/collections/all" class="w-full max-w-xs mx-auto">
+          <button class="button-cart w-full">{{ 'cart.general.continue_shopping' | t }}</button>
+        </form>
+      </div>
+
+    {% endif %}
+
+  </div></div>
+
+  {% if storefront == 'CA' %}
+    {%- render 'searchspring-recommendations' profile: 'view-cart' data: cart storefront: storefront -%}
+  {% else %}
+    {%- render 'searchspring-recommendations' profiles: 'view-cart' data: cart storefront: storefront -%}
+  {% endif %}
+
+  {%- comment -%}
+  {%- if section.settings.title != blank -%}
+  {%- render 'snippet-smart-recommendation-cart' block: section -%}
+  {%- endif -%}
+  {%- endcomment -%}
+
+{%- else -%}
+  {%- comment -%} Redirect International Users Away from Cart {%- endcomment -%}
+  <script>window.location.replace("/");</script>
+{%- endunless -%}
+
+
+
+{% schema %}
+{
+  "name": "Cart Template",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "custom_message",
+      "label": "Custom Message"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_bottom_margin",
+      "label": "Enable Bottom Margin",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cart Template"
+    }
+  ]  
+}
+{% endschema %}

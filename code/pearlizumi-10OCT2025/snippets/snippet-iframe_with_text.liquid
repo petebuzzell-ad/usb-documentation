@@ -1,0 +1,19 @@
+<div data-block-id="{{ block.id }}" data-block-type="iframe-with-text-block" class="lg:mb-30 md:mb-18 mb-16">
+  <div class="{% if block.settings.iframe_width_18 == 'container' %}{{ block.settings.iframe_width_18 }} mx-auto {% endif %}xl:px-0 md:px-11 px-6">
+    <div class="text-center lg:mb-18 mb-9 md:max-w-83% mx-auto">
+      {% if block.settings.title_18 != blank %}
+      <h2 class="md:mb-6 mb-4 tracking-normal">{{ block.settings.title_18 | escape }}</h2>
+      {% endif %}
+      {% if block.settings.text_18 != blank %}
+      <p class="md:text-h6 text-h6-m tracking-normal lg:px-26 font-medium m-0">{{ block.settings.text_18 }}</p>
+      {% endif %}
+    </div>
+    {% if block.settings.videourl_18 != blank %}
+    <div class="relative overflow-hidden{% if block.settings.iframe_width_18 == 'container' %}md:max-w-83% {% endif %} h-auto mx-auto video_container" style="padding-bottom: 58%;">
+      <iframe class="lazy absolute top-0 left-0 w-full h-full{% if block.settings.iframe_width_18 == 'container' %} rounded-sm{% endif %}" data-src="{{ block.settings.videourl_18 }}"
+        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+    {% endif %}
+  </div>
+</div>

@@ -1,0 +1,23 @@
+{% assign blog_handles = "Our Impact,How To,Gear Up,Cycling Culture,Riders & Rides,Destinations" | split: "," %}
+<div class="bg-white z-1 lg:hidden blog-menu-mobile" data-blog-menu>
+    <div class="relative px-6 h-14 uppercase flex items-center justify-between font-sora font-normal text-special-s border-b border-silver blog-menu-mobile__header" data-blog-menu-header>
+        <span>
+            {% if current_tags %}
+                {{ current_tags.first }}
+            {% else %}
+                All Posts
+            {% endif %}
+        </span>
+        {% render 'svg-chevron-down' %}
+    </div>
+    <div class="hidden z-1 absolute bg-white w-full t-150 blog-menu-mobile__items shadow-nav" data-blog-menu-items>
+        <a class="group relative px-6 h-14 uppercase flex items-center font-sora font-normal text-special-s border-b border-silver" href="/blogs/pearl-izumi-journal">
+            <span class="group-hover:text-pine">All Posts</span>
+        </a>
+    {% for handle in blog_handles %}
+        <a class="group relative px-6 h-14 uppercase flex items-center font-sora font-normal text-special-s border-b border-silver" href="/blogs/pearl-izumi-journal/tagged/{{ handle | handleize }}">
+            <span class="group-hover:text-pine">{{ handle | capitalize }}</span>
+        </a>
+    {% endfor %}
+    </div>
+</div>

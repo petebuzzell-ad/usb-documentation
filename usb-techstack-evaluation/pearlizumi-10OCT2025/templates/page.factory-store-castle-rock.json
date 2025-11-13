@@ -1,0 +1,78 @@
+{
+  "sections": {
+    "full-width-cta": {
+      "type": "full-width-cta",
+      "settings": {
+        "image": "shopify://shop_images/Untitled.jpg",
+        "image_mobile": "shopify://shop_images/Untitled.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "hero_height": "normal",
+        "text_overlay_color": "#262b2c",
+        "overlay_opacity": 0.6,
+        "title": "Castle Rock Factory Store",
+        "text": "",
+        "enable_description": true,
+        "btn_label_1": "",
+        "btn_link_1": "",
+        "btn_label_2": "",
+        "btn_link_2": "",
+        "enable_bottom_margin": false
+      }
+    },
+    "text-block": {
+      "type": "text-block",
+      "settings": {
+        "bg_color": "#335345",
+        "svg": "",
+        "svg_mobile": "",
+        "text_color": "#fff",
+        "heading": "The PEARL iZUMi Experience",
+        "body": "<p>For over 20 years, the PEARL iZUMi Factory Stores have offered the most comprehensive selection of PEARL iZUMi gear in the world. Ideally situated in the mountains, this brand store is stocked with PEARL iZUMi gear offerings from past seasons at outlet pricing and also carries tons of current season gear. The stores are staffed by knowledgeable experts who delight in outfitting guests for their upcoming adventures on bikes. Whether you’re a beginning cyclist who needs honest advice on how to increase the role of bicycles in your life or a seasoned rider looking for gear that will give you a performance edge, our team will listen carefully and make thoughtful suggestions to help you select just the right gear to make your cycling adventures the best experience possible. Stop by and experience PEARL iZUMi.</p>",
+        "enable_bottom_margin": true
+      }
+    },
+    "full-width-cta-reversible": {
+      "type": "full-width-cta-reversible",
+      "settings": {
+        "image": "shopify://shop_images/Media_4_1.jpg",
+        "image_position": "right",
+        "subtitle": "",
+        "title": "Contact Us",
+        "text": "<p>Phone: 303-862-7499</p><p>Email: CastleRock@pearlizumi.com</p><p>Hours of Operation: Mon-Sat 10am-8pm, Sun 11am-6pm</p>  <p>Physical Address: 5050 Factory Shops Blvd, Space 150, Castle Rock, CO 80108</p><p>Follow us on Instagram for the latest PEARL iZUMi news: @pearlizumicastlerock</p>",
+        "btn_label": "Store Email Signup",
+        "btn_link": "https://www.pearlizumi.com/pages/castle-rock-store-signup",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "full-width-cta-2": {
+      "type": "full-width-cta",
+      "settings": {
+        "image": "shopify://shop_images/PC_Store_bottom.jpg",
+        "image_mobile": "shopify://shop_images/PC_Store_bottom.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "hero_height": "normal",
+        "text_overlay_color": "#262b2c",
+        "overlay_opacity": 0.6,
+        "title": "We've got you covered",
+        "text": "<p>We've got all the gear you'll need from the road to the trail, and everything in between. Shorts, bibs, pants, jackets and accessories - all at prices that can't be beat.</p>",
+        "enable_description": true,
+        "btn_label_1": "",
+        "btn_link_1": "",
+        "btn_label_2": "",
+        "btn_link_2": "",
+        "enable_bottom_margin": false
+      }
+    }
+  },
+  "order": [
+    "full-width-cta",
+    "text-block",
+    "full-width-cta-reversible",
+    "full-width-cta-2"
+  ]
+}

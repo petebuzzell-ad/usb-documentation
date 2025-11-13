@@ -1,0 +1,143 @@
+{% liquid
+  if shop.permanent_domain == 'usbns.myshopify.com'
+    assign storefront = "US"
+  endif
+
+  assign CAD_pricing = ""
+%}
+
+<div class="account-page pb-0 lg:pt-24 lg:pb-30 overflow-x-hidden">
+  <div class="mx-auto lg:max-w-1320 pb-25 lg:px-15">
+    <div class="flex flex-col lg:flex-row lg:-mx-3">
+      {% render 'account-nav' %}
+
+      <section class="order-detail lg:w-5/6 lg:px-3 lg:overflow-visible lg:relative">
+        <a class="text-grey-one font-lato font-semibold text-special-s flex items-center mx-6 mt-6 mb-5 lg:absolute lg:-top-11 lg:m-0 lg:left-1 lg:hover:text-orange-one" href="/account">
+          {% render 'svg-chevron-left' %}
+          <span class="block uppercase ml-3 lg:hover:text-orange-one lg:hover:underline">{{ 'customer.orders.back_to_all' | t }}</span>
+        </a>
+        <h1 class="account-page-title uppercase mb-7 px-6 lg:mt-0 lg:mb-9 lg:px-0">{{ 'customer.orders.order_number' | t }} {{ order.order_name }}</h1>
+
+        <div class="border-t-2 border-grey-one">
+          <div class="flex flex-wrap md:px-6 md:-mx-3 md:border-b md:border-grey-five lg:mx-0 lg:px-0">
+            <div class="w-full flex flex-wrap pt-5 pb-7 px-6 md:px-0 md:pb-5 md:w-7/10">
+              <div class="w-5/12 md:w-3/7 md:px-3 lg:px-1">
+                <span class="font-lato font-semibold text-special-xs text-grey-one lg:text-special-s lg:text-grey-three">{{ 'customer.orders.date' | t }}</span>
+                <p class="font-lato font-normal text-p text-grey-one mb-0">{{ order.created_at | date: "%b %d, %Y" }}</p>
+              </div>
+              <div class="w-4/12 md:w-2/7 md:px-3 lg:px-1">
+                <span class="font-lato font-semibold text-special-xs text-grey-one lg:text-special-s lg:text-grey-three">{{ 'customer.orders.fulfillment_status' | t }}</span>
+                <p class="font-lato font-normal text-p text-grey-one mb-0">{{ order.fulfillment_status | capitalize }}</p>
+              </div>
+              <div class="w-3/12 md:w-2/7 md:px-3 lg:px-1">
+                <span class="font-lato font-semibold text-special-xs text-grey-one lg:text-special-s lg:text-grey-three">{{ 'customer.orders.total' | t }}</span>
+                <p class="font-lato font-normal text-p text-grey-one mb-0">{{ order.total_price | money }}{{- CAD_pricing -}}</p>
+              </div>
+            </div>
+            <div class="w-full border-t border-grey-five px-6 py-5 md:w-3/10 md:px-3 lg:px-1">
+              <div class="w-full">
+                <span class="font-lato font-semibold text-special-xs text-grey-one lg:text-special-s lg:text-grey-three">{{ 'customer.order.tracking_number' | t }}</span>
+                <p class="font-lato font-normal text-p-lg mb-0">
+                  {% for line_item in order.line_items %}
+                    {% if forloop.first == true %}
+                      {% if line_item.fulfillment.tracking_number %}
+                        <a class="font-lato font-normal text-p-lg text-orange-one mb-0 lg:hover:underline" href="{{ line_item.fulfillment.tracking_url }}" target="_blank">{{ line_item.fulfillment.tracking_number }}</a>
+                      {% else %}
+                        <p class="font-lato font-normal text-p-lg text-grey-one mb-0">-</p>
+                      {% endif %}
+                    {% endif %}
+                  {% endfor %}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap md:px-6 md:-mx-3 lg:mx-0 lg:px-0">
+            <div class="w-full border-t border-grey-five px-6 py-5 md:w-3/10 md:px-3 md:border-none lg:px-1 lg:pb-25">
+              <span class="font-lato font-semibold text-special-xs text-grey-one lg:text-special-s lg:text-grey-three">{{ 'customer.order.shipping_information' | t }}</span>
+              {% assign fa = order.shipping_address %}
+              {% if fa.first_name or fa.last_name or fa.address1 or fa.address2 or fa.city or fa.province_code or fa.zip or fa.country %}
+                <p class="font-lato font-normal text-p-lg mb-0">{{ fa.first_name | capitalize }} {{ fa.last_name | capitalize }}</p>
+                <p class="font-lato font-normal text-p-lg mb-0">{{ fa.address1 }}</p>
+                {% if fa.address2 %}<p class="font-lato font-normal text-p-lg mb-0">{{ fa.address2 }}</p>{% endif %}
+                <p class="font-lato font-normal text-p-lg mb-0">{{ fa.city | capitalize }}{% if fa.province_code or fa.zip %}, {{ fa.province_code }} {{ fa.zip }}{% endif %}</p>
+                <p class="font-lato font-normal text-p-lg mb-0">{{ fa.country }}</p>
+              {% else %}
+                <p class="font-lato font-normal text-p-lg mb-0">-</p>
+              {% endif %}
+            </div>
+            <div class="w-full border-t border-grey-five px-6 py-5 md:w-2/5 md:px-3 md:border-none lg:px-1 lg:pb-25">
+              <span class="font-lato font-semibold text-special-xs text-grey-one lg:text-special-s lg:text-grey-three">{{ 'customer.order.billing_information' | t }}</span>
+              {% assign ba = order.billing_address %}
+              {% if ba.first_name or ba.last_name or ba.address1 or ba.address2 or ba.city or ba.province_code or ba.zip or ba.country %}
+                <p class="font-lato font-normal text-p-lg mb-0">{{ ba.first_name | capitalize }} {{ ba.last_name | capitalize }}</p>
+                <p class="font-lato font-normal text-p-lg mb-0">{{ ba.address1 }}</p>
+                {% if ba.address2 %}<p class="font-lato font-normal text-p-lg mb-0">{{ ba.address2 }}</p>{% endif %}
+                <p class="font-lato font-normal text-p-lg mb-0">{{ ba.city | capitalize }}{% if ba.province_code or ba.zip %}, {{ ba.province_code }} {{ ba.zip }}{% endif %}</p>
+                <p class="font-lato font-normal text-p-lg mb-0">{{ ba.country }}</p>
+              {% else %}
+                <p class="font-lato font-normal text-p-lg mb-0">-</p>
+              {% endif %}
+            </div>
+
+            <div class="w-full hidden px-6 py-5 lg:block lg:w-3/10 lg:px-1 lg:pb-25">
+              <span class="font-lato font-semibold text-special-xs text-grey-one lg:text-special-s lg:text-grey-three">{{ 'customer.order.summary' | t }}</span>
+              <div class="flex flex-wrap justify-between">
+                <p class="font-lato font-normal text-p-lg mb-0">{{ 'cart.general.subtotal' | t }}</p>
+                <p class="font-lato font-normal text-p-lg mb-0">{{ order.subtotal_price | money }}{{- CAD_pricing -}}</p>
+              </div>
+              <div class="flex flex-wrap justify-between">
+                <p class="font-lato font-normal text-p-lg mb-0">{{ 'cart.general.discounts' | t }}</p>
+                <p class="font-lato font-normal text-p-lg mb-0">{{ order.total_discounts | money }}{{- CAD_pricing -}}</p>
+              </div>
+              <div class="flex flex-wrap justify-between">
+                <p class="font-lato font-normal text-p-lg mb-0">{{ 'cart.general.shipping' | t }}*</p>
+                <p class="font-lato font-normal text-p-lg mb-0">{{ order.shipping_price | money }}{{- CAD_pricing -}}</p>
+              </div>
+              <div class="flex flex-wrap justify-between">
+                <p class="font-lato font-normal text-p-lg mb-0">{{ 'cart.general.taxes' | t }}*</p>
+                <p class="font-lato font-normal text-p-lg mb-0">{{ order.tax_price | money }}{{- CAD_pricing -}}</p>
+              </div>
+              <div class="flex flex-wrap justify-between">
+                <p class="font-lato font-normal text-p-lg mb-0">{{ 'cart.general.order_total' | t }}</p>
+                <p class="font-lato font-normal text-p-lg mb-0">{{ order.total_price | money }}{{- CAD_pricing -}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t-2 border-grey-one">
+          <div class="border-b border-grey-five px-6 py-4 lg:px-1">
+            <span class="font-lato font-semibold text-special-xs text-grey-one uppercase lg:text-special-s lg:text-grey-three">{{ 'customer.order.items_ordered' | t }} ({{ order.line_items.size }})</span>
+          </div>
+          <div class="order-card__line-items">
+            {% for line_item in order.line_items %}
+              <div class="order-card__line-item px-6 py-7.5 border-b border-grey-five md:pt-6 md:py-7 md:-mx-3 flex lg:px-1">
+                <div class="order-card__line-item-left w-1/4 mr-3 md:w-1/5 md:px-3 md:mr-0">
+                  <div class="w-full h-0 bg-grey-seven pt-[100%] relative overflow-hidden">
+                    <img data-src="{{ line_item.image | img_url: '300x'}}" alt="{{ line_item.title }} image" class="order-image lazy absolute object-contain left-1/2 top-1/2">
+                  </div>
+                </div>
+                <div class="order-card__line-item-right w-3/4 flex-grow flex flex-wrap md:w-4/5 md:pl-8 md:pr-3">
+                  <div class="w-full md:w-3/4">
+                    <p class="font-lato font-semibold text-p-lg text-grey-one mb-2">{{ line_item.title }}</p>
+                    <p class="font-lato font-semibold text-p leading-5 text-grey-three uppercase mb-1">{{ line_item.product.price | money }}{{- CAD_pricing -}}</p>
+                    {% unless line_item.product.has_only_default_variant %}
+                      {% for option in line_item.options_with_values %}
+                        <p class="font-lato font-semibold text-special-xs text-grey-three uppercase mb-1">{{ option.name }}: {{ option.value }}</p>
+                      {% endfor %}
+                    {% endunless %}
+                    <p class="font-lato font-semibold text-special-xs text-grey-three uppercase mb-3">Qty: {{ line_item.quantity }}</p>
+                  </div>
+                  <div class="w-full md:w-1/4 md:text-right">
+                    <p class="font-lato font-semibold text-p-xl text-grey-one mb-0">{{ line_item.final_line_price | money }}{{- CAD_pricing -}}</p>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="relative pt-0 mobile:w-full opacity-1 transition-all duration-200 {% unless last_group == true %}bxl:mb-16{% endunless %}" data-gallery-main>
+    <div class="w-full">
+      <div class="product-gallery relative bg-faint-cloud py-8 bxl:pt-18 bxl:pb-8" data-gallery-wrapper>
+
+        <!-- Main Gallery -->
+        <div class="glide__track" data-glide-el="track">
+          <div class="glide__slides" data-gallery-main-slides>
+          </div>
+
+          <!-- Arrows -->
+          <div class="glide__arrows flex absolute w-full top-1/2 transform -translate-y-1/2 justify-between px-5 bxl:px-18 pointer-events-none" data-glide-el="controls">
+            <button class="glide__arrow glide__arrow--left button-slider-nav w-12.5 h-12.5 p-0 rounded-circle flex items-center justify-center" style="pointer-events: all;" data-glide-dir="<">{% render 'svg-chevron-left' %}</button>
+            <button class="glide__arrow glide__arrow--right button-slider-nav w-12.5 h-12.5 p-0 rounded-circle flex items-center justify-center" style="pointer-events: all;" data-glide-dir=">">{% render 'svg-chevron-right' %}</button>
+          </div>
+        </div>
+
+        <!-- Zoom Slides -->
+        <div class="hidden fixed w-full h-full px-0 py-0 bxl:px-20 bxl:py-10 top-0 left-0 z-30 bg-white overflow-y-auto" data-gallery-zoom>
+          <div class="relative max-w-1320 mx-auto">
+            <button class="fixed bxl:sticky bxl:w-0 bxl:h-0 right-0 top-0 bxl:transform bxl:translate-x-5 bxl:float-right" data-gallery-zoom-close>
+              {% render 'svg-close' width: '40px', height: '40px' %}
+            </button>
+            <div class="w-full" data-gallery-zoom-slides></div>
+          </div>
+        </div>
+
+        {%- comment -%}
+        <!-- Product Gallery Dots -->
+        <div class="flex justify-center items-center absolute w-full bottom-2.5 bxl:hidden" data-gallery-dots>
+        </div>
+        {%- endcomment -%}
+
+        <!-- Magnifier -->
+        <span class="flex bxl:hidden items-center justify-center w-15 h-15 rounded-circle absolute bottom-2.5 left-2.5 bg-opacity-20 bg-white hover:bg-opacity-100 text-stone cursor-pointer" data-gallery-zoom-trigger>
+          {% render 'svg-magnifier' %}
+        </span>
+
+      </div>
+    </div>
+    
+  
+  </div>

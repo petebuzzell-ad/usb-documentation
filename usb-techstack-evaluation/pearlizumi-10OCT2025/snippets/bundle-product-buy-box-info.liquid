@@ -1,0 +1,59 @@
+{% liquid
+    if product.available
+      assign current_variant = product.first_available_variant
+    else
+      assign current_variant = product.variants[0]
+    endif
+
+    assign step_label_text = ""
+    if group_num == 1
+      assign step_label_text = step_1_label
+    elsif group_num == 2
+      assign step_label_text = step_2_label
+    elsif group_num == 3
+      assign step_label_text = step_3_label
+    endif
+  %}
+
+  <!-- Step Label -->
+  <p class="font-sora text-p-xs uppercase text-light-stone mt-4 mb-0 mx-0 text-left bxl:hidden" style="letter-spacing: 0.85px;">{{ step_label_text }}</p>
+
+  <!-- Mobile Buy Box Info -->
+  <div class="flex justify-between items-center bxl:hidden  pt-2 pb-2.5">
+    <!-- Title -->
+    <a class="pdp-title text-h6-m text-left font-sora font-semibold text-black tracking-normal m-0 max-w-2/3" target="_blank" href="{{ product.url }}">
+      {{- product.title -}}
+    </a>
+
+    <!-- Price Container -->
+    <div class="flex items-end max-w-1/3">
+      <span data-compare-price class="text-special-s font-sora font-light line-through text-light-stone tracking-normal align-right mr-2"></span>
+      <span data-product-price class="text-h8-m font-sora font-semibold text-stone tracking-normal align-right">{{ current_variant.price | money }}</span>
+    </div>
+  </div>
+
+  <!-- Desktop Buy Box Info -->
+  <div class="hidden bxl:block mb-3.5">
+    {%- comment -%} Top Row {%- endcomment -%}
+    <!-- Step Label -->
+    <p class="font-sora text-p-xs uppercase text-light-stone mt-6 mb-2 mx-0" style="letter-spacing: 0.85px;">{{ step_label_text }}</p>
+
+    <div class="flex items-start">
+      <!-- Title -->
+      <a class="pdp-title text-h5-m text-left font-sora font-semibold text-black tracking-normal m-0 hover:text-pine w-full max-w-2/3" target="_blank" href="{{ product.url }}">
+        {{- product.title -}}
+      </a>
+      <!-- Price Container -->
+      <div class="flex items-center justify-end flex-nowrap max-w-1/3">
+        <span data-compare-price class="inline-block text-mobile-product-title mr-2 font-sora font-light line-through text-light-stone tracking-normal"></span>
+        <span data-product-price class="inline-block text-h7-m font-sora font-semibold text-stone tracking-normal">{{ current_variant.price | money }}</span>
+      </div>
+    </div>
+    {% if product.metafields["global"]["prd_sub_title"] != blank %}
+      <!-- Short Description -->
+      <div>
+        <p class="p-s font-sora font-normal pt-2 mb-0">{{ product.metafields["global"]["prd_sub_title"] }}</p>
+      </div>
+    {% endif %}
+  </div>
+

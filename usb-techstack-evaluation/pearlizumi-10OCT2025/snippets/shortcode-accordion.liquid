@@ -1,0 +1,13 @@
+<div class="border border-stone border-l-0 border-r-0 border-b-0">
+  <div tabindex="0" class="accordion relative bg-white cursor-pointer px-2 py-6 pr-10 lg:px-4 lg:py-6 lg:pr-18 group transition-colors duration-300 ease-in-out" onclick="eHS.theme.accordionHandler(event)">
+    <h5 class="m-0 text-xl lg:text-2xl group-hover:text-pine pt-0 tracking-normal">{% include 'shortcode-render' render:'heading' %}</h5>
+    <div class="absolute top-1/2 right-3 lg:right-5 transform -translate-y-1/2 transition duration-500 ease-in-out group-hover:fill-pine">
+      <!-- Ddd wrappers that you can target with the Tailwind @apply statement instead of traversing the DOM into elements -->
+      
+      {% render 'svg-plus', classes: 'w-3 h-3 lg:w-5.25 lg:h-5.25' %}
+    </div>
+  </div>
+  <div class="overflow-hidden max-h-0 transition-max-height duration-500 ease-out">
+    <p class="m-0 pr-23 pt-2 pb-8 pl-4">{% include 'shortcode-render' render:'content' %}</p>
+  </div>
+</div>

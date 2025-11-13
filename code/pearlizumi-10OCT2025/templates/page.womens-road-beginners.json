@@ -1,0 +1,217 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "full_width_cta_FXgRDb": {
+      "type": "full-width-cta",
+      "name": "Full Width CTA",
+      "settings": {
+        "image": "shopify://shop_images/hero2_d5fe36e1-9a48-41d7-8c84-a05f0e8dc24b.jpg",
+        "image_mobile": "shopify://shop_images/hero2mob_40db1567-5b4f-4dcf-888c-9d1b9dd258cc.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "hero_height": "normal",
+        "text_overlay_color": "38,43,44",
+        "overlay_opacity": 0.6,
+        "title": "women's road beginner guide",
+        "text": "",
+        "enable_description": true,
+        "btn_label_1": "",
+        "btn_link_1": "",
+        "btn_label_2": "",
+        "btn_link_2": "",
+        "enable_bottom_margin": false
+      }
+    },
+    "text_block_PNijMk": {
+      "type": "text-block",
+      "name": "Text Block",
+      "settings": {
+        "bg_color": "black",
+        "svg": "<!--?xml version=\"1.0\" encoding=\"utf-8\"?-->\n<!-- Generator: Adobe Illustrator 25.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" width=\"130px\" height=\"130px\" viewbox=\"0 0 130 130\" style=\"enable-background:new 0 0 130 130;\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\">\n<style type=\"text/css\">\n\t.st0{fill:#231F20;}\n\t.st1{fill:#BDCE4C;}\n</style>\n<g>\n\t<path class=\"st1\" d=\"M23.75,103.41c-12.82,0-23.46-10.21-23.88-23.12c-0.43-13.18,9.94-24.24,23.11-24.67\n\t\tc13.18-0.44,24.24,9.93,24.67,23.11c0.21,6.38-2.08,12.47-6.44,17.13c-4.37,4.66-10.29,7.34-16.67,7.55\n\t\tC24.28,103.41,24.01,103.41,23.75,103.41 M23.77,59.2c-0.22,0-0.45,0-0.68,0.01c-11.19,0.37-20,9.77-19.63,20.96\n\t\tc0.18,5.42,2.45,10.45,6.41,14.16c3.96,3.71,9.14,5.65,14.55,5.48c5.42-0.18,10.45-2.46,14.16-6.41c3.71-3.96,5.65-9.12,5.47-14.55\n\t\tC43.7,67.88,34.66,59.2,23.77,59.2\"></path>\n\t<path class=\"st1\" d=\"M106.23,103.77c-12.83,0-23.46-10.22-23.88-23.13c-0.21-6.38,2.08-12.46,6.45-17.12\n\t\tc4.36-4.66,10.28-7.34,16.66-7.55c13.18-0.46,24.24,9.94,24.67,23.11c0.43,13.18-9.93,24.25-23.11,24.68\n\t\tC106.76,103.76,106.49,103.77,106.23,103.77 M106.26,59.55c-0.22,0-0.45,0-0.68,0.01c-5.42,0.18-10.45,2.46-14.16,6.41\n\t\tc-3.7,3.96-5.65,9.12-5.47,14.55c0.37,11.19,9.82,19.98,20.96,19.63c5.42-0.18,10.45-2.46,14.16-6.41\n\t\tc3.71-3.96,5.65-9.12,5.48-14.55c-0.18-5.42-2.46-10.45-6.41-14.16C116.33,61.49,111.43,59.55,106.26,59.55\"></path>\n\t<path class=\"st1\" d=\"M60.38,91.12c-2.18,0-4.24-0.81-5.84-2.31c-1.66-1.56-2.62-3.68-2.7-5.96c-0.08-2.28,0.74-4.45,2.3-6.12\n\t\tc1.56-1.67,3.68-2.63,5.95-2.7c2.3-0.09,4.46,0.74,6.12,2.3c1.67,1.56,2.62,3.67,2.7,5.95c0.15,4.71-3.55,8.67-8.26,8.82\n\t\tC60.57,91.12,60.47,91.12,60.38,91.12 M60.39,77.63c-0.05,0-0.11,0-0.17,0c-1.32,0.04-2.55,0.6-3.45,1.56\n\t\tc-0.9,0.96-1.38,2.22-1.33,3.54s0.6,2.55,1.56,3.45c0.97,0.9,2.24,1.36,3.54,1.33c2.73-0.09,4.87-2.38,4.79-5.11\n\t\tc-0.04-1.32-0.6-2.54-1.56-3.45C62.84,78.1,61.65,77.63,60.39,77.63\"></path>\n\t<path class=\"st1\" d=\"M53.61,83.38c-0.04,0-0.08,0-0.13-0.01L23.63,81.3c-0.63-0.04-1.2-0.42-1.48-0.99\n\t\tc-0.29-0.57-0.25-1.24,0.09-1.78L47.7,39.01c0.37-0.58,1.03-0.89,1.71-0.81l47.14,5.35c0.88,0.1,1.55,0.82,1.6,1.7l0.35,6.81\n\t\tc0.03,0.55-0.2,1.08-0.6,1.44L67.36,80.45c-0.75,0.66-1.88,0.59-2.54-0.16c-0.66-0.75-0.59-1.88,0.16-2.54l29.89-26.38l-0.23-4.42\n\t\tl-44.51-5.06l-23.2,36.03l26.81,1.87c0.99,0.07,1.74,0.93,1.67,1.92C55.33,82.66,54.55,83.38,53.61,83.38\"></path>\n\t<path class=\"st1\" d=\"M106.28,82.87c-0.75,0-1.46-0.48-1.71-1.23L95,52.71c-0.31-0.94,0.2-1.96,1.14-2.27\n\t\tc0.94-0.31,1.96,0.2,2.27,1.15l9.58,28.92c0.31,0.94-0.2,1.96-1.14,2.28C106.66,82.85,106.47,82.87,106.28,82.87\"></path>\n\t<path class=\"st1\" d=\"M96.49,47.35c-0.96,0-1.75-0.76-1.8-1.73L94.15,32.9c-0.02-0.49,0.16-0.97,0.5-1.32\n\t\tc0.33-0.35,0.8-0.56,1.29-0.56l10.94-0.05h0.03c2.76,0,5.09,1.98,5.53,4.71c0.59,3.65-1.53,7.15-5.03,8.32l-3.15,1.05\n\t\tc-0.94,0.31-1.96-0.2-2.28-1.14c-0.31-0.94,0.2-1.96,1.14-2.28l3.14-1.05c1.82-0.61,2.93-2.43,2.62-4.33\n\t\tc-0.16-0.98-0.99-1.69-1.98-1.69h-0.01l-9.08,0.05l0.46,10.86c0.04,0.99-0.73,1.83-1.72,1.87C96.54,47.35,96.51,47.35,96.49,47.35\"></path>\n\t<path class=\"st1\" d=\"M57.87,77.71c-0.79,0-1.52-0.53-1.73-1.33L43.35,29.09c-0.26-0.96,0.31-1.95,1.27-2.21\n\t\tc0.97-0.25,1.95,0.31,2.21,1.27L59.6,75.44c0.26,0.96-0.31,1.95-1.27,2.21C58.18,77.69,58.02,77.71,57.87,77.71\"></path>\n\t<path class=\"st1\" d=\"M36.72,30.46c-0.97,0-1.77-0.77-1.8-1.74c-0.03-0.99,0.75-1.82,1.74-1.86l19.33-0.63\n\t\tc0.97-0.04,1.82,0.75,1.85,1.74c0.04,0.99-0.75,1.82-1.74,1.86l-19.33,0.63H36.72z\"></path>\n\t<path class=\"st1\" d=\"M50.19,95.74c-0.97,0-1.77-0.77-1.8-1.74c-0.03-0.99,0.75-1.83,1.74-1.86L54.81,92l1.87-3.8\n\t\tc0.44-0.89,1.52-1.26,2.41-0.82c0.89,0.44,1.26,1.52,0.82,2.41l-2.35,4.76c-0.29,0.59-0.89,0.98-1.56,1l-5.76,0.19H50.19z\"></path>\n\t<path class=\"st1\" d=\"M61.85,77.58c-0.23,0-0.47-0.05-0.69-0.14c-0.92-0.39-1.35-1.44-0.96-2.35l2.94-6.99\n\t\tc0.27-0.65,0.9-1.08,1.6-1.1l4.95-0.16c0.99-0.02,1.82,0.75,1.85,1.74c0.04,0.99-0.75,1.82-1.74,1.85L66,70.55l-2.49,5.92\n\t\tC63.22,77.17,62.55,77.58,61.85,77.58\"></path>\n</g>\n</svg>",
+        "svg_mobile": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!-- Generator: Adobe Illustrator 25.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" width=\"130px\" height=\"130px\" viewbox=\"0 0 130 130\" style=\"enable-background:new 0 0 130 130;\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\">\n<style type=\"text/css\">\n\t.st0{fill:#231F20;}\n\t.st1{fill:#BDCE4C;}\n</style>\n<g>\n\t<path class=\"st1\" d=\"M23.75,103.41c-12.82,0-23.46-10.21-23.88-23.12c-0.43-13.18,9.94-24.24,23.11-24.67\n\t\tc13.18-0.44,24.24,9.93,24.67,23.11c0.21,6.38-2.08,12.47-6.44,17.13c-4.37,4.66-10.29,7.34-16.67,7.55\n\t\tC24.28,103.41,24.01,103.41,23.75,103.41 M23.77,59.2c-0.22,0-0.45,0-0.68,0.01c-11.19,0.37-20,9.77-19.63,20.96\n\t\tc0.18,5.42,2.45,10.45,6.41,14.16c3.96,3.71,9.14,5.65,14.55,5.48c5.42-0.18,10.45-2.46,14.16-6.41c3.71-3.96,5.65-9.12,5.47-14.55\n\t\tC43.7,67.88,34.66,59.2,23.77,59.2\"></path>\n\t<path class=\"st1\" d=\"M106.23,103.77c-12.83,0-23.46-10.22-23.88-23.13c-0.21-6.38,2.08-12.46,6.45-17.12\n\t\tc4.36-4.66,10.28-7.34,16.66-7.55c13.18-0.46,24.24,9.94,24.67,23.11c0.43,13.18-9.93,24.25-23.11,24.68\n\t\tC106.76,103.76,106.49,103.77,106.23,103.77 M106.26,59.55c-0.22,0-0.45,0-0.68,0.01c-5.42,0.18-10.45,2.46-14.16,6.41\n\t\tc-3.7,3.96-5.65,9.12-5.47,14.55c0.37,11.19,9.82,19.98,20.96,19.63c5.42-0.18,10.45-2.46,14.16-6.41\n\t\tc3.71-3.96,5.65-9.12,5.48-14.55c-0.18-5.42-2.46-10.45-6.41-14.16C116.33,61.49,111.43,59.55,106.26,59.55\"></path>\n\t<path class=\"st1\" d=\"M60.38,91.12c-2.18,0-4.24-0.81-5.84-2.31c-1.66-1.56-2.62-3.68-2.7-5.96c-0.08-2.28,0.74-4.45,2.3-6.12\n\t\tc1.56-1.67,3.68-2.63,5.95-2.7c2.3-0.09,4.46,0.74,6.12,2.3c1.67,1.56,2.62,3.67,2.7,5.95c0.15,4.71-3.55,8.67-8.26,8.82\n\t\tC60.57,91.12,60.47,91.12,60.38,91.12 M60.39,77.63c-0.05,0-0.11,0-0.17,0c-1.32,0.04-2.55,0.6-3.45,1.56\n\t\tc-0.9,0.96-1.38,2.22-1.33,3.54s0.6,2.55,1.56,3.45c0.97,0.9,2.24,1.36,3.54,1.33c2.73-0.09,4.87-2.38,4.79-5.11\n\t\tc-0.04-1.32-0.6-2.54-1.56-3.45C62.84,78.1,61.65,77.63,60.39,77.63\"></path>\n\t<path class=\"st1\" d=\"M53.61,83.38c-0.04,0-0.08,0-0.13-0.01L23.63,81.3c-0.63-0.04-1.2-0.42-1.48-0.99\n\t\tc-0.29-0.57-0.25-1.24,0.09-1.78L47.7,39.01c0.37-0.58,1.03-0.89,1.71-0.81l47.14,5.35c0.88,0.1,1.55,0.82,1.6,1.7l0.35,6.81\n\t\tc0.03,0.55-0.2,1.08-0.6,1.44L67.36,80.45c-0.75,0.66-1.88,0.59-2.54-0.16c-0.66-0.75-0.59-1.88,0.16-2.54l29.89-26.38l-0.23-4.42\n\t\tl-44.51-5.06l-23.2,36.03l26.81,1.87c0.99,0.07,1.74,0.93,1.67,1.92C55.33,82.66,54.55,83.38,53.61,83.38\"></path>\n\t<path class=\"st1\" d=\"M106.28,82.87c-0.75,0-1.46-0.48-1.71-1.23L95,52.71c-0.31-0.94,0.2-1.96,1.14-2.27\n\t\tc0.94-0.31,1.96,0.2,2.27,1.15l9.58,28.92c0.31,0.94-0.2,1.96-1.14,2.28C106.66,82.85,106.47,82.87,106.28,82.87\"></path>\n\t<path class=\"st1\" d=\"M96.49,47.35c-0.96,0-1.75-0.76-1.8-1.73L94.15,32.9c-0.02-0.49,0.16-0.97,0.5-1.32\n\t\tc0.33-0.35,0.8-0.56,1.29-0.56l10.94-0.05h0.03c2.76,0,5.09,1.98,5.53,4.71c0.59,3.65-1.53,7.15-5.03,8.32l-3.15,1.05\n\t\tc-0.94,0.31-1.96-0.2-2.28-1.14c-0.31-0.94,0.2-1.96,1.14-2.28l3.14-1.05c1.82-0.61,2.93-2.43,2.62-4.33\n\t\tc-0.16-0.98-0.99-1.69-1.98-1.69h-0.01l-9.08,0.05l0.46,10.86c0.04,0.99-0.73,1.83-1.72,1.87C96.54,47.35,96.51,47.35,96.49,47.35\"></path>\n\t<path class=\"st1\" d=\"M57.87,77.71c-0.79,0-1.52-0.53-1.73-1.33L43.35,29.09c-0.26-0.96,0.31-1.95,1.27-2.21\n\t\tc0.97-0.25,1.95,0.31,2.21,1.27L59.6,75.44c0.26,0.96-0.31,1.95-1.27,2.21C58.18,77.69,58.02,77.71,57.87,77.71\"></path>\n\t<path class=\"st1\" d=\"M36.72,30.46c-0.97,0-1.77-0.77-1.8-1.74c-0.03-0.99,0.75-1.82,1.74-1.86l19.33-0.63\n\t\tc0.97-0.04,1.82,0.75,1.85,1.74c0.04,0.99-0.75,1.82-1.74,1.86l-19.33,0.63H36.72z\"></path>\n\t<path class=\"st1\" d=\"M50.19,95.74c-0.97,0-1.77-0.77-1.8-1.74c-0.03-0.99,0.75-1.83,1.74-1.86L54.81,92l1.87-3.8\n\t\tc0.44-0.89,1.52-1.26,2.41-0.82c0.89,0.44,1.26,1.52,0.82,2.41l-2.35,4.76c-0.29,0.59-0.89,0.98-1.56,1l-5.76,0.19H50.19z\"></path>\n\t<path class=\"st1\" d=\"M61.85,77.58c-0.23,0-0.47-0.05-0.69-0.14c-0.92-0.39-1.35-1.44-0.96-2.35l2.94-6.99\n\t\tc0.27-0.65,0.9-1.08,1.6-1.1l4.95-0.16c0.99-0.02,1.82,0.75,1.85,1.74c0.04,0.99-0.75,1.82-1.74,1.85L66,70.55l-2.49,5.92\n\t\tC63.22,77.17,62.55,77.58,61.85,77.58\"></path>\n</g>\n</svg>",
+        "text_color": "white",
+        "heading": "How to Build Your First Road Cycling Outfit",
+        "body": "<p>The bike is just the start of your journey. If you’re new to riding — or if it’s been 10 years since you’ve swung a leg over a top tube — you have a lot of new clothing and accessory innovations to take your riding to the next level. We know sorting through it all can feel overwhelming. But little extra investment will reap dividends in the saddle and set you on the right path.</p>",
+        "enable_bottom_margin": false
+      }
+    },
+    "text_block_PLHzKU": {
+      "type": "text-block",
+      "name": "Text Block",
+      "settings": {
+        "bg_color": "white",
+        "svg": "",
+        "svg_mobile": "",
+        "text_color": "black",
+        "heading": "So, let’s get you outfitted for a fantastic future on the road.",
+        "body": "",
+        "enable_bottom_margin": false
+      }
+    },
+    "full_width_cta_reversible_BXQF33": {
+      "type": "full-width-cta-reversible",
+      "name": "Reversible Full Width CTA",
+      "settings": {
+        "image": "shopify://shop_images/6_d47a9c03-1d17-420b-ab1c-2bae5596c516.jpg",
+        "image_position": "left",
+        "subtitle": "",
+        "title": "Bike Shorts",
+        "text": "Shorts or bibs it’s a personal preference. Shorts stop at the waist. Bibs have straps that ride over the shoulder that hold the chamois in place and eliminate the waistband, reducing compression on the gut. Yes, traditionally bib shorts have been a hassle for women to wrestle out of for a pitstop, but our women’s bibs have an easy to use drop tail design that makes them as convenient as shorts.  The padded chamois is made from layers of breathable foam that cushion the bum, buffing out road vibrations. The chamois is held in place with Lycra panels that compress muscles for support and reduce chafing. Bike shorts are meant to be comfortably compressive; you don’t want loose fabric as it will lead to chafing.  Cycling bibs and shorts are meant to be worn without underwear. Awkward, maybe; comfortable, yes.",
+        "btn_label": "Shop Shorts",
+        "btn_link": "shopify://collections/womens-road-shorts",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "full_width_cta_reversible_YAGyfV": {
+      "type": "full-width-cta-reversible",
+      "name": "Reversible Full Width CTA",
+      "settings": {
+        "image": "shopify://shop_images/1_352b1a6d-503c-4949-83dd-751a8602a739.jpg",
+        "image_position": "right",
+        "subtitle": "",
+        "title": "Jerseys",
+        "text": "A proper jersey fits svelte, quickly wicks away moisture, is cut longer in the back for coverage, and has a row of pockets slung low over the back to provide easy access to supplies. The jersey is also an opportunity to personalize your look. You’ll have reams of color options to sift through to mix and match with your socks and helmet, allowing you to dial in a look. And if you’re not into the look of a traditional jersey, you can find tanks from us with the same functionality. Not all jerseys fit the same. Choose a Form-Fit cut if you want a slightly compressive, close to body fit that doesn’t flap in the wind. For a classic look that fits close to body, but not tight, opt for Standard Fit. And if you’d rather error on the side of roomy, go for Relaxed Fit.",
+        "btn_label": "Shop Jerseys",
+        "btn_link": "shopify://collections/womens-cycling-jerseys",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "full_width_cta_reversible_mhmPXq": {
+      "type": "full-width-cta-reversible",
+      "name": "Reversible Full Width CTA",
+      "settings": {
+        "image": "shopify://shop_images/5_4fea3c2a-7cb4-4402-9101-fb4664969a10.jpg",
+        "image_position": "left",
+        "subtitle": "",
+        "title": "Gloves",
+        "text": "Riders have three contact points with the bike: the foot, the butt, and the hands. A good pair of gloves have a touch of padding, damping road vibration. Choose fingerless gloves for hot summer days.  For cooler rides, use a pair of fingered gloves that block wind and offer insulation. Take it from us, cycling with cold, wet hands is like enduring the ice bucket challenge only for hours, not seconds. Gloves keep the digits nimble enough to use the levers.",
+        "btn_label": "Shop Gloves",
+        "btn_link": "shopify://collections/womens-road-cycling-gloves",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "full_width_cta_reversible_hc8Krc": {
+      "type": "full-width-cta-reversible",
+      "name": "Reversible Full Width CTA",
+      "settings": {
+        "image": "shopify://shop_images/2_9ca03e1a-0a51-4dc0-b993-cbb548ff9e9d.jpg",
+        "image_position": "right",
+        "subtitle": "",
+        "title": "Socks",
+        "text": "Socks aren’t just another way to dial in your look; the bright colors help you be seen by drivers on the road. They come in many lengths, but, thanks to Lance Armstrong, the current trend has a bias for mid calf length.   Socks should be comfortable, stay put, and meet the conditions you’re riding in. Thin and airy are good for hot summer days; wear a bit thicker Merino wool sock for cooler days.",
+        "btn_label": "Shop Socks",
+        "btn_link": "shopify://collections/womens-cycling-socks",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "full_width_cta_reversible_RJDe88": {
+      "type": "full-width-cta-reversible",
+      "name": "Reversible Full Width CTA",
+      "settings": {
+        "image": "shopify://shop_images/3_e593a461-883a-47a9-bb98-5c3c92b18f5a.jpg",
+        "image_position": "left",
+        "subtitle": "",
+        "title": "Shoes",
+        "text": "Linking the rider to the bike, a proper road shoe is stiff, transferring force from the legs to the road. A well-fitting shoe will be snug–but not tight–with some room for the toes to wiggle. The heel should feel locked in the shoe’s counter and shouldn’t slip up or down.  Traditional road shoes have a sleek, firm outsole made of nylon or carbon fiber with pedal cleats mounted over the sole, making them efficient on the bike. But they can be uncomfortable to walk in. This leaves many new riders asking, “Do I need a dedicated road shoe?” Purists will groan, but we say no. Some riders use one pair of shoes for both mountain and road cycling. If “there can be only one” in your wardrobe, but you have two bikes in the stable, we recommend a gravel-friendly shoe. These are durable and walkable without sacrificing that road flare. The fashion police will give you a pass.  Tip: Traditional road shoe cleats are mounted to the sole through three bolts (while a mountain bike shoe uses a two-bolt mechanism). The shoe you choose will inform your pedal decision and vice versa.",
+        "btn_label": "Shop Shoes",
+        "btn_link": "shopify://collections/womens-road-cycling-shoes",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "full_width_cta_reversible_xX6GCt": {
+      "type": "full-width-cta-reversible",
+      "name": "Reversible Full Width CTA",
+      "settings": {
+        "image": "shopify://shop_images/4_70083eff-9972-430d-b892-165bf7fe0df0.jpg",
+        "image_position": "right",
+        "subtitle": "",
+        "title": "Wind Vest or Jacket",
+        "text": "The cycling jacket’s goal is to keep you warm and dry, with “dry” being relative. Unless you regularly ride in the rain, a jacket doesn’t need to be waterproof. A waterproof jacket will trap sweat on the inside, making you wet anyway.  Instead, we almost always carry a water-resistant wind jacket treated with a durable water-repellent finish. The fit should be snug and the material should be light. This simultaneously reduces wind flap and allows the jacket to stow away in a pocket. If you ride in town, our reflective BioViz® accents to catch the eye of passing drivers in low light conditions.",
+        "btn_label": "Shop Vests/Jackets",
+        "btn_link": "shopify://collections/womens-cycling-jackets-vests",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "full_width_cta_reversible_gFyExQ": {
+      "type": "full-width-cta-reversible",
+      "name": "Reversible Full Width CTA",
+      "settings": {
+        "image": "shopify://shop_images/7_fe1e0ce5-940b-4361-afdd-b9257d683c24.jpg",
+        "image_position": "left",
+        "subtitle": "",
+        "title": "Warmers",
+        "text": "Rides often start early and end some 20 degrees later. Arm warmers and leg warmers slip over limbs, allowing you to adjust your thermostat as the temperatures change. They are easy to pull off and tuck away into the jersey with little fuss.   Like bibs and jerseys, arm and leg warmers come in a variety of sizes. Find the right fit for your guns, as you don’t want the warmers to slip off. To help prevent them from falling down, layer arm and leg warmers under the jersey and bibs.",
+        "btn_label": "Shop Warmers",
+        "btn_link": "shopify://collections/womens-cycling-warmers-protection",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "full_width_cta_reversible_X94L6q": {
+      "type": "full-width-cta-reversible",
+      "name": "Reversible Full Width CTA",
+      "settings": {
+        "image": "shopify://shop_images/8_558f0ca7-c029-4a52-8da2-08e32101be60.jpg",
+        "image_position": "right",
+        "subtitle": "",
+        "title": "Baselayers",
+        "text": "A baselayer will help keep you in the comfort sweet spot as temperatures fluctuate, but especially in cooler weather. They fit close to the body, under your bib straps, and pull sweat quickly off your skin. In warmer temps when you’re sweating more a baselayer will improve your cooling, to a point. We don’t recommend them above 90.  In cooler weather, the baselayer keeps you dryer and warmer. Choose a polyester Transfer base for all condition use, or cozy Merino wool for cooler rides.",
+        "btn_label": "Shop Baselayers",
+        "btn_link": "shopify://collections/womens-baselayers",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "full_width_cta_Aq7764": {
+      "type": "full-width-cta",
+      "name": "Full Width CTA",
+      "settings": {
+        "image": "shopify://shop_images/Bottom_Banner2_477b5fd4-83dd-45d9-b7fb-b4e815eb3690.jpg",
+        "image_mobile": "shopify://shop_images/Bottom_Banner2mob_8e265849-8a88-41e3-b86f-6909bbad2870.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "hero_height": "normal",
+        "text_overlay_color": "38,43,44",
+        "overlay_opacity": 0.6,
+        "title": "here we go",
+        "text": "Go connection.",
+        "enable_description": true,
+        "btn_label_1": "subscribe",
+        "btn_link_1": "https://www.youtube.com/c/pearlizumi",
+        "btn_label_2": "",
+        "btn_link_2": "",
+        "enable_bottom_margin": false
+      }
+    }
+  },
+  "order": [
+    "full_width_cta_FXgRDb",
+    "text_block_PNijMk",
+    "text_block_PLHzKU",
+    "full_width_cta_reversible_BXQF33",
+    "full_width_cta_reversible_YAGyfV",
+    "full_width_cta_reversible_mhmPXq",
+    "full_width_cta_reversible_hc8Krc",
+    "full_width_cta_reversible_RJDe88",
+    "full_width_cta_reversible_xX6GCt",
+    "full_width_cta_reversible_gFyExQ",
+    "full_width_cta_reversible_X94L6q",
+    "full_width_cta_Aq7764"
+  ]
+}

@@ -1,0 +1,110 @@
+{% liquid
+  assign pro_homepage_enabled = settings.enable_pro_homepage
+  assign ev_homepage_enabled = settings.enable_ev_homepage
+  assign op_homepage_enabled = settings.enable_op_homepage
+
+  assign is_pro_customer = false
+  assign is_ev_customer = false
+  assign is_op_customer = false
+  if customer.tags contains 'Pro Purchase' or customer.tags contains 'PRO PURCHASE'
+    assign is_pro_customer = true
+  elsif customer.tags contains 'Expert Voice'
+    assign is_ev_customer = true
+  elsif customer.tags contains 'Outdoor Pro'
+    assign is_op_customer = true
+  endif
+
+  assign use_pro_homepage = false
+  assign use_ev_homepage = false
+  assign use_op_homepage = false
+
+  if pro_homepage_enabled and is_pro_customer
+    assign use_pro_homepage = true
+  elsif ev_homepage_enabled and is_ev_customer
+    assign use_ev_homepage = true
+  elsif op_homepage_enabled and is_op_customer
+    assign use_op_homepage = true
+  endif
+%}
+
+{%- if use_pro_homepage -%}
+  <div class="container pb-10 lg:pb-50">
+    {% if section.settings.title != blank %}
+      <h3 class="text-center mx-auto pt-0">{{ section.settings.title }}</h3>
+    {% endif %}
+    {% assign selected_collection = collections[section.settings.collection] %}
+    {% assign products = selected_collection.products %}
+    <div class="pb-2 lg:pb-0 lg:px-14 px-10 relative">
+      <div id="featuredProducts">
+        <div class="glide__track py-4" data-glide-el="track">
+          <div class="glide__slides" style="padding-right: 16px!important;">
+            {% for p in products %}
+              {% if forloop.index == 9 %}
+                {% break %}
+              {% endif %}
+              <div class="featured-product-slide lg:p-4 whitespace-normal">
+                {%- render 'product-tile', product: p, title_tag: section.settings.product_title_tag -%}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="absolute left-0 flex items-center justify-between w-full pointer-events-none" style="top: 30%;">
+          <button id="featured-products-prev" class="products-prev h-8 px-2 mr-auto pointer-events-auto focus:outline-none"
+            onclick="eHS.featuredProductCarousel.goToPreviousSlide()">
+            {% render 'svg-chevron-left' width: '9px', height: '16px' %}
+          </button>
+          <button id="featured-products-next" class="products-next h-8 px-2 ml-auto pointer-events-auto focus:outline-none"
+            onclick="eHS.featuredProductCarousel.goToNextSlide()">
+            {% render 'svg-chevron-right' width: '9px', height: '16px' %}
+          </button>
+        </div>
+        <div id="featuredProductsDots" class="absolute left-0 bottom-0 flex items-center justify-center w-full">
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Featured collection (Pro)",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Featured collection (Pro)"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Featured collection"
+    },
+    {
+      "id": "collection",
+      "type": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "select",
+      "id": "product_title_tag",
+      "options": [
+        { "value": "h1", "label": "H1"},
+        { "value": "h2", "label": "H2"},
+        { "value": "h3", "label": "H3"},
+        { "value": "h4", "label": "H4"},
+        { "value": "h5", "label": "H5"},
+        { "value": "h6", "label": "H6"},
+      ],
+      "label": "Product Title Tag",
+      "default": "h3"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured collection (Pro)",
+      "category": "Collection"
+    }
+  ]
+}
+
+{% endschema %}

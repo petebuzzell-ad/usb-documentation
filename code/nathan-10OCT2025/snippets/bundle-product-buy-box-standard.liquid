@@ -1,0 +1,63 @@
+{% liquid
+  assign current_variant = product.selected_or_first_available_variant
+
+  assign color_option_index = nil
+  for option in product.options
+    assign option_lower = option | downcase
+    if option_lower == 'color' or option_lower == 'couleur'
+      assign color_option_index = forloop.index0
+      break
+    endif
+  endfor
+%}
+
+<div data-product-options>
+{% if product.options and product.options[0] != "Title" %}
+<div>
+    <div class="divide-y divide-grey-five border-t border-b border-grey-five w-full pb-5">
+        {%- comment -%} Show Color First {%- endcomment -%}
+        {%- for option in product.options_with_values -%}
+          {%- assign option_handle = option.name | handleize -%}
+          {%- if option_handle == 'color' or option_handle == 'couleur' -%}
+            {%- assign option_num = forloop.index0 -%}
+            <div>{%- comment -%} Wrapper to allow Divide-Y border between Groups {%- endcomment -%}
+              {%- render 'bundle-buy-box-option-group'
+                  product: product,
+                  option: option,
+                  option_handle: option_handle,
+                  option_num: option_num,
+                  regular_price: regular_price,
+                  discount_tag: discount_tag,
+                  limit_tag: limit_tag,
+                  group_num: group_num
+              -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- for option in product.options_with_values -%}
+          {%- assign option_handle = option.name | handleize -%}
+          {%- unless option_handle == 'color' or option_handle == 'couleur' -%}
+            {%- assign option_num = forloop.index0 -%}
+            {%- assign size_guide = false -%}
+            {%- if option_handle == 'size' or option_handle == 'taille' -%}
+              {%- assign size_guide = true -%}
+            {%- endif -%}
+            <div>{%- comment -%} Wrapper to allow Divide-Y border between Groups {%- endcomment -%}
+              {%- render 'bundle-buy-box-option-group'
+                  option: option,
+                  option_handle: option_handle,
+                  option_num: option_num,
+                  size_guide: size_guide,
+                  product: product,
+                  discount_tag: discount_tag,
+                  limit_tag: limit_tag,
+                  group_num: group_num
+              -%}
+            </div>
+          {%- endunless -%}
+        {%- endfor -%}
+    </div>
+</div>
+{% endif %}
+</div>

@@ -1,0 +1,16 @@
+{%- comment -%} Listrak email preferences page {%- endcomment -%}
+<div class="container">
+  <script type="text/javascript">
+    var cid = 'pearlizumi';
+    document.write(unescape("%3Cscript src='//services.listrak.com/" + cid + "/scripts/ltkframe.min.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+    // wait for listrak to load
+    // const waitForListrak = setInterval(() => {
+    // if (ltkframe) {
+    (new ltkframe({ cid: cid, passQueryString: true, width: '100%', minHeight: 700 })).Render();
+    // clearInterval(waitForListrak);
+    // }
+    // }, 300);
+  </script>
+</div>

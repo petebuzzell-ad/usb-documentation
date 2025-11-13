@@ -1,0 +1,150 @@
+{%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+{%- comment -%}
+**Changed for US Aug/Sept promo**
+  line: 27: adding 10% for US Pros
+  line 111: promotion text
+{%- endcomment -%}
+{% liquid
+  if shop.permanent_domain == 'usbns.myshopify.com'
+    assign storefront = "US"
+  endif
+  assign CAD_pricing = ""
+
+  assign is_member = false
+  assign member_discount = nil
+  assign member_limit = nil
+  assign pro_tag = nil
+  for tag in customer.tags
+    if tag contains 'discount-'
+      if storefront == "US"
+        assign member_discount = tag | remove: 'discount-' | plus: 0
+      endif
+    endif
+    if tag contains 'limit-'
+      assign member_limit = tag | remove: 'limit-' | plus: 0
+      assign member_limit_formatted = member_limit | times: 100 | money
+    endif
+    if tag contains 'Expert Voice' or tag contains 'Outdoor Pro' or tag contains 'Pro Purchase'
+      assign pro_tag = tag
+    endif
+  endfor
+  if member_discount and member_limit
+    assign is_member = true
+  endif
+
+  assign page_url = contentForQuerystring | split: '"pageurl":"' | last | split: '"' | first | split: '.myshopify.com' | last | replace: '\/','/' | replace: '%20',' ' | replace: '\u0026','&'
+  assign view_tab = ''
+  if page_url contains '?'
+    assign query_string = page_url | split: '?' | last
+    assign qry_parts= query_string | split: '&'
+    for part in qry_parts
+      assign key_and_value = part | split: '='
+      if key_and_value.size > 1
+        if key_and_value[0] == 'view_tab'
+          assign view_tab = key_and_value[1]
+        endif
+      endif
+    endfor
+  endif
+%}
+
+{%- comment -%} Redirect Pros to Benefits Page on Login {%- endcomment -%}
+{%- if pro_tag -%}
+  <script>
+    if (document.referrer.includes("/account/login")) {
+      let redirect_url = "/pages/pro";
+      window.location.replace(redirect_url);
+    }
+  </script>
+{%- endif -%}
+
+<div class="account-page pb-0 lg:pt-24 lg:pb-30">
+  <div class="mx-auto lg:max-w-1320 md:px-14 lg:px-22.5">
+    <div class="flex flex-col lg:flex-row lg:-mx-3">
+      {% render 'account-nav' is_member: is_member, view_tab: view_tab %}
+
+      {% if is_member %}
+        <section class="profile lg:w-5/6 lg:px-3{% if view_tab == 'order' %} hidden{% endif %}">
+          <h1 class="account-page-title uppercase mt-9 mb-7 px-6 lg:mt-0 lg:mb-9 lg:px-0">{{ 'customer.account.profile_member_title' | t }}</h1>
+          <div class="border-t-2 border-grey-one bg-orange-four p-0 lg:pt-9.5 lg:pb-13 lg:px-13 md:flex">
+            <div class="md:w-4/5 p-6 md:py-8 lg:p-0">
+              <h4 class="mb-1.5 md:mb-2">{{ customer.name }}</h4>
+              {% if pro_tag %}
+                <p class="font-normal text-p-s lg:text-h6 lg:font-semibold lg:tracking-normal mb-0 md:mb-1.5">{{ pro_tag }}</p>
+              {% endif %}
+              <p class="font-normal text-p-s lg:text-p-lg mb-0">{{ customer.email }}</p>
+              {% if customer.phone != blank %}
+                {%- comment -%}Assume this is US phone number{%- endcomment -%}
+                {% assign p = customer.phone | remove: '+1' | split: '' %}
+                {% capture phone %}({{p[0]}}{{p[1]}}{{p[2]}}) {{p[3]}}{{p[4]}}{{p[5]}}-{{p[6]}}{{p[7]}}{{p[8]}}{{p[9]}}{% endcapture %}
+                <p class="font-normal text-p-s lg:text-p-lg mb-0">{{ phone }}</p>
+              {% endif %}
+            </div>
+            <div class="md:w-1/5 border-t md:border-t-0 md:border-l border-grey-five flex md:flex-col lg:pl-9 lg:pr-5.5">
+              <div class="w-1/2 md:w-full md:pt-8 py-6 px-5 border-r md:border-b md:border-r-0 border-grey-five lg:pt-0 lg:px-0">
+                <p class="font-lato font-semibold uppercase text-grey-one text-special-xs lg:text-special-s lg:text-grey-three mb-0">{{ 'customer.account.discount' | t }}</p>
+                <p class="font-normal text-grey-one text-p lg:text-p-lg mb-0">{{ member_discount }}% off</p>
+                {% comment %} {%- if storefront == "US" -%}<p class="p-xs mb-0">+ Extra 10% off promo</p>{%- endif -%} {% endcomment %}
+              </div>
+              <div class="w-1/2 md:w-full py-6 md:pb-8 px-5 lg:pb-0 lg:px-0">
+                <p class="font-lato font-semibold uppercase text-grey-one text-special-xs lg:text-special-s lg:text-grey-three mb-0">{{ 'customer.account.limit' | t }}</p>
+                <p class="font-normal text-grey-one text-p lg:text-p-lg mb-0">{{ member_limit_formatted }}{{- CAD_pricing -}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="border-t border-grey-five lg:border-none px-6 lg:px-0">
+            {%- assign benefits_page_handle = "pro-customer-membership-details" -%}
+            {%- assign benefits_page_content = pages[benefits_page_handle].content | replace: '[[limit]]', member_limit_formatted | replace: '[[discount]]', member_discount -%}
+            <div class="rte pt-13.5 lg:pt-17.5 general-content-template">{% include 'shortcode' load: benefits_page_content %}</div>
+          </div>
+          <div class="px-6 lg:px-0 mb-18">
+            <a href="/account?view_tab=order" class="w-full md:max-w-387 font-semibold underline">{{ 'customer.orders.view_all' | t }}</a>
+          </div>
+        </section>
+      {% endif %}
+      <section class="order-history lg:w-5/6 lg:px-3{% if is_member %}{% unless view_tab == 'order' %} hidden{% endunless %}{% endif %}">
+        <h1 class="account-page-title uppercase mt-9 mb-7 px-6 lg:mt-0 lg:mb-9 lg:px-0">{{ 'customer.orders.title' | t }}</h1>
+
+        {% if customer.orders != blank %}
+
+          {% paginate customer.orders by 1 %}
+            <div class="border-t-2 border-orange-one bg-orange-four">
+              {% for order in customer.orders %}
+                <div class="{% cycle 'bg-white', 'bg-transparent' %} border-b border-grey-five pt-7 pb-9 px-6 lg:pl-8 lg:pr-4.5 lg:py-8 flex flex-wrap justify-between lg:flex-nowrap">
+                  <div class="w-3/5 sm:w-1/4 mb-7 lg:mb-0">
+                    <span class="font-lato font-semibold text-special-xs text-grey-one lg:text-grey-three">{{ 'customer.order.number' | t }}</span>
+                    <p class="mb-0 text-p-lg font-normal"><a href="{{ order.customer_url }}" class="text-grey-three underline">{{ order.order_name }}</a></p>
+                  </div>
+                  <div class="w-2/5 sm:w-1/4 mb-7 lg:mb-0">
+                    <span class="font-lato font-semibold text-special-xs text-grey-one lg:text-grey-three">{{ 'customer.orders.date' | t }}</span>
+                    <p class="mb-0 text-p-lg font-normal">{{ order.created_at | date: "%b %d, %Y" }}</p>
+                  </div>
+                  <div class="w-3/5 sm:w-1/4 mb-7 lg:mb-0">
+                    <span class="font-lato font-semibold text-special-xs text-grey-one lg:text-grey-three">{{ 'customer.orders.fulfillment_status' | t }}</span>
+                    <p class="mb-0 text-p-lg font-normal capitalize">{{ order.fulfillment_status | replace: 'fulfilled', 'shipped' }}</p>
+                  </div>
+                  <div class="w-2/5 sm:w-20 lg:w-1/4 mb-7 lg:mb-0">
+                    <span class="font-lato font-semibold text-special-xs text-grey-one lg:text-grey-three">{{ 'customer.orders.total' | t }}</span>
+                    <p class="mb-0 text-p-lg font-normal">{{ order.total_price | money }}{{- CAD_pricing -}}</p>
+                  </div>
+                  <div class="w-full md:w-1/4 min-w-btn mx-auto">
+                    <a href="{{ order.customer_url }}" class="button button-outline button-small font-semibold w-full max-w-full sm:max-w-btn" target="_self">{{ 'customer.order.view_order' | t }}</a>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+            {% include 'pagination-accounts' %}
+          {% endpaginate %}
+        {% else %}
+          <div class="border-t-2 border-grey-one bg-orange-four text-center pb-45 pt-15 lg:pt-33">
+            {% render 'svg-empty-box', class: 'w-15 h-12 lg:w-18 lg:h-14 mx-auto mb-4 lg:mb-2' %}
+            <h6 class="tracking-normal mb-6">{{ 'customer.orders.none' | t }}</h6>
+            <a href="/" class="order-history__no-orders--button button button-primary mx-auto">{{ 'customer.orders.start_shopping' | t }}</a>
+          </div>
+        {% endif %}
+      </section>
+    </div>
+  </div>
+</div>
+
+

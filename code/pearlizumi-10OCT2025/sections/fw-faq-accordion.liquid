@@ -1,0 +1,109 @@
+<section
+  class="fw-faq-accordion-section"
+  id="section-{{ section.id }}"
+  style="background-color: {{ section.settings.bg_color }}; color: {{ section.settings.font_color }};"
+>
+  {%- if section.settings.title != blank -%}
+    <h2 class="fw-faq-title">{{ section.settings.title }}</h2>
+  {%- endif -%}
+
+  <div class="fw-faq-wrapper">
+    {%- for block in section.blocks -%}
+      <div class="fw-faq-item" {{ block.shopify_attributes }}>
+        <button class="fw-faq-question" type="button" aria-expanded="false">
+          <div class="fw-faq-icon">
+            <svg width="26" height="13" viewBox="0 0 26 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.92825 11.062L13.0145 2.42627L24.1005 11.062" stroke="#353B42" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span>{{ block.settings.question }}</span>
+        </button>
+        <div class="fw-faq-answer" aria-hidden="true">
+          {{ block.settings.answer }}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+<script>
+  (() => {
+    const section = document.getElementById('section-{{ section.id }}');
+    if (!section) return;
+    const items = section.querySelectorAll('.fw-faq-item');
+
+    items.forEach((item) => {
+      const questionBtn = item.querySelector('.fw-faq-question');
+      const answer = item.querySelector('.fw-faq-answer');
+
+      questionBtn.addEventListener('click', () => {
+        const isOpen = answer.classList.toggle('open');
+        questionBtn.classList.toggle('open');
+        questionBtn.setAttribute('aria-expanded', isOpen);
+        answer.setAttribute('aria-hidden', !isOpen);
+
+        // Animate height
+        if (isOpen) {
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        } else {
+          answer.style.maxHeight = 0;
+        }
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "FW FAQ Accordion",
+  "tag": "section",
+  "class": "fw-faq-accordion-section",
+  "max_blocks": 20,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "font_color",
+      "label": "Font color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What is your return policy?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>You can return any unused item within 30 days for a full refund.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FW FAQ Accordion",
+      "blocks": [{ "type": "faq_item" }, { "type": "faq_item" }, { "type": "faq_item" }]
+    }
+  ]
+}
+{% endschema %}

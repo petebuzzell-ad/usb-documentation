@@ -1,0 +1,5422 @@
+{
+  "site_info": {
+    "name": "McDavid",
+    "slug": "mcdavid",
+    "createdAt": "2025-08-20T18:52:59Z",
+    "team": {
+      "name": "USB",
+      "slug": "arcadia-digital-assessments"
+    }
+  },
+  "latest_snapshot": {
+    "iid": 54,
+    "htmlUrl": "https://calibreapp.com/teams/arcadia-digital-assessments/mcdavid/snapshots#54",
+    "ref": null,
+    "client": "scheduler",
+    "createdAt": "2025-10-10T06:02:23Z",
+    "status": "completed",
+    "id": 54
+  },
+  "snapshot_metrics": {
+    "snapshot": {
+      "iid": 54,
+      "tests": [
+        {
+          "page": {
+            "name": "Home",
+            "url": "https://www.mcdavidusa.com/"
+          },
+          "testProfile": {
+            "uuid": "351ebe8d-bb35-4cc2-96d5-3f9463739b92"
+          },
+          "measurements": [
+            {
+              "name": "asset_count",
+              "label": "Number of Requests",
+              "value": 197
+            },
+            {
+              "name": "page_body_size_in_bytes",
+              "label": "Total Page Size in Bytes",
+              "value": 9209458
+            },
+            {
+              "name": "page_size_in_bytes",
+              "label": "Total Page Transferred",
+              "value": 3981975
+            },
+            {
+              "name": "html_body_size_in_bytes",
+              "label": "Total HTML Size in Bytes",
+              "value": 834241
+            },
+            {
+              "name": "html_size_in_bytes",
+              "label": "Total HTML Transferred",
+              "value": 55510
+            },
+            {
+              "name": "css_body_size_in_bytes",
+              "label": "Total CSS Size in Bytes",
+              "value": 1142141
+            },
+            {
+              "name": "css_size_in_bytes",
+              "label": "Total CSS Transferred",
+              "value": 187162
+            },
+            {
+              "name": "js_body_size_in_bytes",
+              "label": "Total JavaScript Size in Bytes",
+              "value": 6059847
+            },
+            {
+              "name": "js_size_in_bytes",
+              "label": "Total JavaScript Transferred",
+              "value": 2624550
+            },
+            {
+              "name": "font_body_size_in_bytes",
+              "label": "Total Font Size in Bytes",
+              "value": 222036
+            },
+            {
+              "name": "font_size_in_bytes",
+              "label": "Total Font Transferred",
+              "value": 192574
+            },
+            {
+              "name": "json_body_size_in_bytes",
+              "label": "Total JSON Size in Bytes",
+              "value": 80173
+            },
+            {
+              "name": "json_size_in_bytes",
+              "label": "Total JSON Transferred",
+              "value": 31094
+            },
+            {
+              "name": "image_body_size_in_bytes",
+              "label": "Total Image Size in Bytes",
+              "value": 870613
+            },
+            {
+              "name": "image_size_in_bytes",
+              "label": "Total Image Transferred",
+              "value": 883888
+            },
+            {
+              "name": "video_body_size_in_bytes",
+              "label": "Total Video Size in Bytes",
+              "value": 0
+            },
+            {
+              "name": "video_size_in_bytes",
+              "label": "Total Video Transferred",
+              "value": 0
+            },
+            {
+              "name": "page_tcp_timing",
+              "label": "Server Connection Time",
+              "value": 11
+            },
+            {
+              "name": "page_dns_timing",
+              "label": "Domain Lookup Time",
+              "value": 5
+            },
+            {
+              "name": "page_download_timing",
+              "label": "HTML Download Time",
+              "value": 14
+            },
+            {
+              "name": "page_ssl_timing",
+              "label": "SSL Time",
+              "value": 10
+            },
+            {
+              "name": "page_wait_timing",
+              "label": "Response Time",
+              "value": 192
+            },
+            {
+              "name": "benchmarkIndex",
+              "label": "Benchmark Index",
+              "value": 1936
+            },
+            {
+              "name": "testDuration",
+              "label": "Test Duration",
+              "value": 21597
+            },
+            {
+              "name": "lighthouse-performance-score",
+              "label": "Lighthouse Performance Score",
+              "value": 62
+            },
+            {
+              "name": "lighthouse-accessibility-score",
+              "label": "Lighthouse Accessibility Score",
+              "value": 85
+            },
+            {
+              "name": "lighthouse-best-practices-score",
+              "label": "Lighthouse Best Practices Score",
+              "value": 71
+            },
+            {
+              "name": "lighthouse-seo-score",
+              "label": "Lighthouse SEO Score",
+              "value": 77
+            },
+            {
+              "name": "first-contentful-paint",
+              "label": "First Contentful Paint",
+              "value": 2376
+            },
+            {
+              "name": "speed_index",
+              "label": "Speed Index",
+              "value": 6602
+            },
+            {
+              "name": "max-potential-fid",
+              "label": "Max Potential First Input Delay",
+              "value": 196
+            },
+            {
+              "name": "largest_contentful_paint",
+              "label": "Largest Contentful Paint",
+              "value": 5520
+            },
+            {
+              "name": "cumulative-layout-shift",
+              "label": "Cumulative Layout Shift",
+              "value": 40
+            },
+            {
+              "name": "consistently-interactive",
+              "label": "Time to Interactive",
+              "value": 20820
+            },
+            {
+              "name": "total-blocking-time",
+              "label": "Total Blocking Time",
+              "value": 337
+            },
+            {
+              "name": "js-parse-compile",
+              "label": "JS Parse & Compile",
+              "value": 2115
+            },
+            {
+              "name": "time-to-first-byte",
+              "label": "Time to First Byte",
+              "value": 626
+            },
+            {
+              "name": "third_party_count",
+              "label": "Number of Third Party Providers",
+              "value": 38
+            },
+            {
+              "name": "third_party_main_thread_duration",
+              "label": "Total Third Party Main Thread Execution Time",
+              "value": 2607
+            },
+            {
+              "name": "third_party_size_in_bytes",
+              "label": "Total Third Party Code Transferred",
+              "value": 2648613
+            },
+            {
+              "name": "visually_complete",
+              "label": "Visually Complete",
+              "value": 3746
+            }
+          ]
+        },
+        {
+          "page": {
+            "name": "PDP",
+            "url": "https://www.mcdavidusa.com/products/nrg-spring-hinge-knee-brace"
+          },
+          "testProfile": {
+            "uuid": "351ebe8d-bb35-4cc2-96d5-3f9463739b92"
+          },
+          "measurements": [
+            {
+              "name": "asset_count",
+              "label": "Number of Requests",
+              "value": 282
+            },
+            {
+              "name": "page_body_size_in_bytes",
+              "label": "Total Page Size in Bytes",
+              "value": 12395448
+            },
+            {
+              "name": "page_size_in_bytes",
+              "label": "Total Page Transferred",
+              "value": 5634447
+            },
+            {
+              "name": "html_body_size_in_bytes",
+              "label": "Total HTML Size in Bytes",
+              "value": 1300381
+            },
+            {
+              "name": "html_size_in_bytes",
+              "label": "Total HTML Transferred",
+              "value": 111760
+            },
+            {
+              "name": "css_body_size_in_bytes",
+              "label": "Total CSS Size in Bytes",
+              "value": 932669
+            },
+            {
+              "name": "css_size_in_bytes",
+              "label": "Total CSS Transferred",
+              "value": 193754
+            },
+            {
+              "name": "js_body_size_in_bytes",
+              "label": "Total JavaScript Size in Bytes",
+              "value": 7681223
+            },
+            {
+              "name": "js_size_in_bytes",
+              "label": "Total JavaScript Transferred",
+              "value": 3115766
+            },
+            {
+              "name": "font_body_size_in_bytes",
+              "label": "Total Font Size in Bytes",
+              "value": 156420
+            },
+            {
+              "name": "font_size_in_bytes",
+              "label": "Total Font Transferred",
+              "value": 127800
+            },
+            {
+              "name": "json_body_size_in_bytes",
+              "label": "Total JSON Size in Bytes",
+              "value": 351818
+            },
+            {
+              "name": "json_size_in_bytes",
+              "label": "Total JSON Transferred",
+              "value": 69377
+            },
+            {
+              "name": "image_body_size_in_bytes",
+              "label": "Total Image Size in Bytes",
+              "value": 1972530
+            },
+            {
+              "name": "image_size_in_bytes",
+              "label": "Total Image Transferred",
+              "value": 2006537
+            },
+            {
+              "name": "video_body_size_in_bytes",
+              "label": "Total Video Size in Bytes",
+              "value": 0
+            },
+            {
+              "name": "video_size_in_bytes",
+              "label": "Total Video Transferred",
+              "value": 0
+            },
+            {
+              "name": "page_tcp_timing",
+              "label": "Server Connection Time",
+              "value": 7
+            },
+            {
+              "name": "page_dns_timing",
+              "label": "Domain Lookup Time",
+              "value": 10
+            },
+            {
+              "name": "page_download_timing",
+              "label": "HTML Download Time",
+              "value": 21
+            },
+            {
+              "name": "page_ssl_timing",
+              "label": "SSL Time",
+              "value": 6
+            },
+            {
+              "name": "page_wait_timing",
+              "label": "Response Time",
+              "value": 125
+            },
+            {
+              "name": "benchmarkIndex",
+              "label": "Benchmark Index",
+              "value": 1832
+            },
+            {
+              "name": "testDuration",
+              "label": "Test Duration",
+              "value": 38789
+            },
+            {
+              "name": "lighthouse-performance-score",
+              "label": "Lighthouse Performance Score",
+              "value": 43
+            },
+            {
+              "name": "lighthouse-accessibility-score",
+              "label": "Lighthouse Accessibility Score",
+              "value": 82
+            },
+            {
+              "name": "lighthouse-best-practices-score",
+              "label": "Lighthouse Best Practices Score",
+              "value": 75
+            },
+            {
+              "name": "lighthouse-seo-score",
+              "label": "Lighthouse SEO Score",
+              "value": 85
+            },
+            {
+              "name": "first-contentful-paint",
+              "label": "First Contentful Paint",
+              "value": 2578
+            },
+            {
+              "name": "speed_index",
+              "label": "Speed Index",
+              "value": 10890
+            },
+            {
+              "name": "max-potential-fid",
+              "label": "Max Potential First Input Delay",
+              "value": 336
+            },
+            {
+              "name": "largest_contentful_paint",
+              "label": "Largest Contentful Paint",
+              "value": 6328
+            },
+            {
+              "name": "cumulative-layout-shift",
+              "label": "Cumulative Layout Shift",
+              "value": 46
+            },
+            {
+              "name": "consistently-interactive",
+              "label": "Time to Interactive",
+              "value": 30214
+            },
+            {
+              "name": "total-blocking-time",
+              "label": "Total Blocking Time",
+              "value": 918
+            },
+            {
+              "name": "js-parse-compile",
+              "label": "JS Parse & Compile",
+              "value": 4479
+            },
+            {
+              "name": "time-to-first-byte",
+              "label": "Time to First Byte",
+              "value": 628
+            },
+            {
+              "name": "third_party_count",
+              "label": "Number of Third Party Providers",
+              "value": 40
+            },
+            {
+              "name": "third_party_main_thread_duration",
+              "label": "Total Third Party Main Thread Execution Time",
+              "value": 4635
+            },
+            {
+              "name": "third_party_size_in_bytes",
+              "label": "Total Third Party Code Transferred",
+              "value": 2407451
+            },
+            {
+              "name": "visually_complete",
+              "label": "Visually Complete",
+              "value": 6107
+            }
+          ]
+        },
+        {
+          "page": {
+            "name": "PLP",
+            "url": "https://www.mcdavidusa.com/collections/braces-and-supports"
+          },
+          "testProfile": {
+            "uuid": "35deb0dc-35c3-467b-8322-4361e0cb494f"
+          },
+          "measurements": [
+            {
+              "name": "asset_count",
+              "label": "Number of Requests",
+              "value": 278
+            },
+            {
+              "name": "page_body_size_in_bytes",
+              "label": "Total Page Size in Bytes",
+              "value": 10139856
+            },
+            {
+              "name": "page_size_in_bytes",
+              "label": "Total Page Transferred",
+              "value": 4403630
+            },
+            {
+              "name": "html_body_size_in_bytes",
+              "label": "Total HTML Size in Bytes",
+              "value": 1279424
+            },
+            {
+              "name": "html_size_in_bytes",
+              "label": "Total HTML Transferred",
+              "value": 73295
+            },
+            {
+              "name": "css_body_size_in_bytes",
+              "label": "Total CSS Size in Bytes",
+              "value": 841203
+            },
+            {
+              "name": "css_size_in_bytes",
+              "label": "Total CSS Transferred",
+              "value": 175202
+            },
+            {
+              "name": "js_body_size_in_bytes",
+              "label": "Total JavaScript Size in Bytes",
+              "value": 6332933
+            },
+            {
+              "name": "js_size_in_bytes",
+              "label": "Total JavaScript Transferred",
+              "value": 2721871
+            },
+            {
+              "name": "font_body_size_in_bytes",
+              "label": "Total Font Size in Bytes",
+              "value": 205192
+            },
+            {
+              "name": "font_size_in_bytes",
+              "label": "Total Font Transferred",
+              "value": 158465
+            },
+            {
+              "name": "json_body_size_in_bytes",
+              "label": "Total JSON Size in Bytes",
+              "value": 368279
+            },
+            {
+              "name": "json_size_in_bytes",
+              "label": "Total JSON Transferred",
+              "value": 64710
+            },
+            {
+              "name": "image_body_size_in_bytes",
+              "label": "Total Image Size in Bytes",
+              "value": 1112430
+            },
+            {
+              "name": "image_size_in_bytes",
+              "label": "Total Image Transferred",
+              "value": 1202901
+            },
+            {
+              "name": "video_body_size_in_bytes",
+              "label": "Total Video Size in Bytes",
+              "value": 0
+            },
+            {
+              "name": "video_size_in_bytes",
+              "label": "Total Video Transferred",
+              "value": 0
+            },
+            {
+              "name": "page_tcp_timing",
+              "label": "Server Connection Time",
+              "value": 10
+            },
+            {
+              "name": "page_dns_timing",
+              "label": "Domain Lookup Time",
+              "value": 0
+            },
+            {
+              "name": "page_download_timing",
+              "label": "HTML Download Time",
+              "value": 36
+            },
+            {
+              "name": "page_ssl_timing",
+              "label": "SSL Time",
+              "value": 9
+            },
+            {
+              "name": "page_wait_timing",
+              "label": "Response Time",
+              "value": 143
+            },
+            {
+              "name": "benchmarkIndex",
+              "label": "Benchmark Index",
+              "value": 1813
+            },
+            {
+              "name": "testDuration",
+              "label": "Test Duration",
+              "value": 29941
+            },
+            {
+              "name": "lighthouse-performance-score",
+              "label": "Lighthouse Performance Score",
+              "value": 64
+            },
+            {
+              "name": "lighthouse-accessibility-score",
+              "label": "Lighthouse Accessibility Score",
+              "value": 90
+            },
+            {
+              "name": "lighthouse-best-practices-score",
+              "label": "Lighthouse Best Practices Score",
+              "value": 74
+            },
+            {
+              "name": "lighthouse-seo-score",
+              "label": "Lighthouse SEO Score",
+              "value": 92
+            },
+            {
+              "name": "first-contentful-paint",
+              "label": "First Contentful Paint",
+              "value": 744
+            },
+            {
+              "name": "speed_index",
+              "label": "Speed Index",
+              "value": 2241
+            },
+            {
+              "name": "max-potential-fid",
+              "label": "Max Potential First Input Delay",
+              "value": 261
+            },
+            {
+              "name": "largest_contentful_paint",
+              "label": "Largest Contentful Paint",
+              "value": 1209
+            },
+            {
+              "name": "cumulative-layout-shift",
+              "label": "Cumulative Layout Shift",
+              "value": 3
+            },
+            {
+              "name": "consistently-interactive",
+              "label": "Time to Interactive",
+              "value": 5596
+            },
+            {
+              "name": "total-blocking-time",
+              "label": "Total Blocking Time",
+              "value": 976
+            },
+            {
+              "name": "js-parse-compile",
+              "label": "JS Parse & Compile",
+              "value": 2948
+            },
+            {
+              "name": "time-to-first-byte",
+              "label": "Time to First Byte",
+              "value": 189
+            },
+            {
+              "name": "third_party_count",
+              "label": "Number of Third Party Providers",
+              "value": 38
+            },
+            {
+              "name": "third_party_main_thread_duration",
+              "label": "Total Third Party Main Thread Execution Time",
+              "value": 3484
+            },
+            {
+              "name": "third_party_size_in_bytes",
+              "label": "Total Third Party Code Transferred",
+              "value": 3065756
+            },
+            {
+              "name": "visually_complete",
+              "label": "Visually Complete",
+              "value": 5993
+            }
+          ]
+        },
+        {
+          "page": {
+            "name": "PDP",
+            "url": "https://www.mcdavidusa.com/products/nrg-spring-hinge-knee-brace"
+          },
+          "testProfile": {
+            "uuid": "35deb0dc-35c3-467b-8322-4361e0cb494f"
+          },
+          "measurements": [
+            {
+              "name": "asset_count",
+              "label": "Number of Requests",
+              "value": 275
+            },
+            {
+              "name": "page_body_size_in_bytes",
+              "label": "Total Page Size in Bytes",
+              "value": 11913829
+            },
+            {
+              "name": "page_size_in_bytes",
+              "label": "Total Page Transferred",
+              "value": 5126734
+            },
+            {
+              "name": "html_body_size_in_bytes",
+              "label": "Total HTML Size in Bytes",
+              "value": 1300381
+            },
+            {
+              "name": "html_size_in_bytes",
+              "label": "Total HTML Transferred",
+              "value": 113701
+            },
+            {
+              "name": "css_body_size_in_bytes",
+              "label": "Total CSS Size in Bytes",
+              "value": 932669
+            },
+            {
+              "name": "css_size_in_bytes",
+              "label": "Total CSS Transferred",
+              "value": 193743
+            },
+            {
+              "name": "js_body_size_in_bytes",
+              "label": "Total JavaScript Size in Bytes",
+              "value": 7681233
+            },
+            {
+              "name": "js_size_in_bytes",
+              "label": "Total JavaScript Transferred",
+              "value": 3116438
+            },
+            {
+              "name": "font_body_size_in_bytes",
+              "label": "Total Font Size in Bytes",
+              "value": 352892
+            },
+            {
+              "name": "font_size_in_bytes",
+              "label": "Total Font Transferred",
+              "value": 308023
+            },
+            {
+              "name": "json_body_size_in_bytes",
+              "label": "Total JSON Size in Bytes",
+              "value": 351818
+            },
+            {
+              "name": "json_size_in_bytes",
+              "label": "Total JSON Transferred",
+              "value": 69437
+            },
+            {
+              "name": "image_body_size_in_bytes",
+              "label": "Total Image Size in Bytes",
+              "value": 1294441
+            },
+            {
+              "name": "image_size_in_bytes",
+              "label": "Total Image Transferred",
+              "value": 1315614
+            },
+            {
+              "name": "video_body_size_in_bytes",
+              "label": "Total Video Size in Bytes",
+              "value": 0
+            },
+            {
+              "name": "video_size_in_bytes",
+              "label": "Total Video Transferred",
+              "value": 0
+            },
+            {
+              "name": "page_tcp_timing",
+              "label": "Server Connection Time",
+              "value": 10
+            },
+            {
+              "name": "page_dns_timing",
+              "label": "Domain Lookup Time",
+              "value": 4
+            },
+            {
+              "name": "page_download_timing",
+              "label": "HTML Download Time",
+              "value": 10
+            },
+            {
+              "name": "page_ssl_timing",
+              "label": "SSL Time",
+              "value": 9
+            },
+            {
+              "name": "page_wait_timing",
+              "label": "Response Time",
+              "value": 490
+            },
+            {
+              "name": "benchmarkIndex",
+              "label": "Benchmark Index",
+              "value": 1815
+            },
+            {
+              "name": "testDuration",
+              "label": "Test Duration",
+              "value": 40322
+            },
+            {
+              "name": "lighthouse-performance-score",
+              "label": "Lighthouse Performance Score",
+              "value": 56
+            },
+            {
+              "name": "lighthouse-accessibility-score",
+              "label": "Lighthouse Accessibility Score",
+              "value": 79
+            },
+            {
+              "name": "lighthouse-best-practices-score",
+              "label": "Lighthouse Best Practices Score",
+              "value": 74
+            },
+            {
+              "name": "lighthouse-seo-score",
+              "label": "Lighthouse SEO Score",
+              "value": 85
+            },
+            {
+              "name": "first-contentful-paint",
+              "label": "First Contentful Paint",
+              "value": 802
+            },
+            {
+              "name": "speed_index",
+              "label": "Speed Index",
+              "value": 3517
+            },
+            {
+              "name": "max-potential-fid",
+              "label": "Max Potential First Input Delay",
+              "value": 247
+            },
+            {
+              "name": "largest_contentful_paint",
+              "label": "Largest Contentful Paint",
+              "value": 1769
+            },
+            {
+              "name": "cumulative-layout-shift",
+              "label": "Cumulative Layout Shift",
+              "value": 30
+            },
+            {
+              "name": "consistently-interactive",
+              "label": "Time to Interactive",
+              "value": 7198
+            },
+            {
+              "name": "total-blocking-time",
+              "label": "Total Blocking Time",
+              "value": 741
+            },
+            {
+              "name": "js-parse-compile",
+              "label": "JS Parse & Compile",
+              "value": 3692
+            },
+            {
+              "name": "time-to-first-byte",
+              "label": "Time to First Byte",
+              "value": 190
+            },
+            {
+              "name": "third_party_count",
+              "label": "Number of Third Party Providers",
+              "value": 40
+            },
+            {
+              "name": "third_party_main_thread_duration",
+              "label": "Total Third Party Main Thread Execution Time",
+              "value": 3963
+            },
+            {
+              "name": "third_party_size_in_bytes",
+              "label": "Total Third Party Code Transferred",
+              "value": 2490912
+            },
+            {
+              "name": "visually_complete",
+              "label": "Visually Complete",
+              "value": 7219
+            }
+          ]
+        },
+        {
+          "page": {
+            "name": "PLP",
+            "url": "https://www.mcdavidusa.com/collections/braces-and-supports"
+          },
+          "testProfile": {
+            "uuid": "351ebe8d-bb35-4cc2-96d5-3f9463739b92"
+          },
+          "measurements": [
+            {
+              "name": "asset_count",
+              "label": "Number of Requests",
+              "value": 217
+            },
+            {
+              "name": "page_body_size_in_bytes",
+              "label": "Total Page Size in Bytes",
+              "value": 9821200
+            },
+            {
+              "name": "page_size_in_bytes",
+              "label": "Total Page Transferred",
+              "value": 4050411
+            },
+            {
+              "name": "html_body_size_in_bytes",
+              "label": "Total HTML Size in Bytes",
+              "value": 1279403
+            },
+            {
+              "name": "html_size_in_bytes",
+              "label": "Total HTML Transferred",
+              "value": 73347
+            },
+            {
+              "name": "css_body_size_in_bytes",
+              "label": "Total CSS Size in Bytes",
+              "value": 841203
+            },
+            {
+              "name": "css_size_in_bytes",
+              "label": "Total CSS Transferred",
+              "value": 175775
+            },
+            {
+              "name": "js_body_size_in_bytes",
+              "label": "Total JavaScript Size in Bytes",
+              "value": 6332950
+            },
+            {
+              "name": "js_size_in_bytes",
+              "label": "Total JavaScript Transferred",
+              "value": 2722224
+            },
+            {
+              "name": "font_body_size_in_bytes",
+              "label": "Total Font Size in Bytes",
+              "value": 152992
+            },
+            {
+              "name": "font_size_in_bytes",
+              "label": "Total Font Transferred",
+              "value": 123373
+            },
+            {
+              "name": "json_body_size_in_bytes",
+              "label": "Total JSON Size in Bytes",
+              "value": 367509
+            },
+            {
+              "name": "json_size_in_bytes",
+              "label": "Total JSON Transferred",
+              "value": 64649
+            },
+            {
+              "name": "image_body_size_in_bytes",
+              "label": "Total Image Size in Bytes",
+              "value": 846736
+            },
+            {
+              "name": "image_size_in_bytes",
+              "label": "Total Image Transferred",
+              "value": 883562
+            },
+            {
+              "name": "video_body_size_in_bytes",
+              "label": "Total Video Size in Bytes",
+              "value": 0
+            },
+            {
+              "name": "video_size_in_bytes",
+              "label": "Total Video Transferred",
+              "value": 0
+            },
+            {
+              "name": "page_tcp_timing",
+              "label": "Server Connection Time",
+              "value": 7
+            },
+            {
+              "name": "page_dns_timing",
+              "label": "Domain Lookup Time",
+              "value": 0
+            },
+            {
+              "name": "page_download_timing",
+              "label": "HTML Download Time",
+              "value": 18
+            },
+            {
+              "name": "page_ssl_timing",
+              "label": "SSL Time",
+              "value": 7
+            },
+            {
+              "name": "page_wait_timing",
+              "label": "Response Time",
+              "value": 123
+            },
+            {
+              "name": "benchmarkIndex",
+              "label": "Benchmark Index",
+              "value": 1686
+            },
+            {
+              "name": "testDuration",
+              "label": "Test Duration",
+              "value": 32234
+            },
+            {
+              "name": "lighthouse-performance-score",
+              "label": "Lighthouse Performance Score",
+              "value": 37
+            },
+            {
+              "name": "lighthouse-accessibility-score",
+              "label": "Lighthouse Accessibility Score",
+              "value": 90
+            },
+            {
+              "name": "lighthouse-best-practices-score",
+              "label": "Lighthouse Best Practices Score",
+              "value": 75
+            },
+            {
+              "name": "lighthouse-seo-score",
+              "label": "Lighthouse SEO Score",
+              "value": 92
+            },
+            {
+              "name": "first-contentful-paint",
+              "label": "First Contentful Paint",
+              "value": 2374
+            },
+            {
+              "name": "speed_index",
+              "label": "Speed Index",
+              "value": 9461
+            },
+            {
+              "name": "max-potential-fid",
+              "label": "Max Potential First Input Delay",
+              "value": 258
+            },
+            {
+              "name": "largest_contentful_paint",
+              "label": "Largest Contentful Paint",
+              "value": 27403
+            },
+            {
+              "name": "cumulative-layout-shift",
+              "label": "Cumulative Layout Shift",
+              "value": 0
+            },
+            {
+              "name": "consistently-interactive",
+              "label": "Time to Interactive",
+              "value": 27565
+            },
+            {
+              "name": "total-blocking-time",
+              "label": "Total Blocking Time",
+              "value": 1628
+            },
+            {
+              "name": "js-parse-compile",
+              "label": "JS Parse & Compile",
+              "value": 4098
+            },
+            {
+              "name": "time-to-first-byte",
+              "label": "Time to First Byte",
+              "value": 636
+            },
+            {
+              "name": "third_party_count",
+              "label": "Number of Third Party Providers",
+              "value": 38
+            },
+            {
+              "name": "third_party_main_thread_duration",
+              "label": "Total Third Party Main Thread Execution Time",
+              "value": 4540
+            },
+            {
+              "name": "third_party_size_in_bytes",
+              "label": "Total Third Party Code Transferred",
+              "value": 2746816
+            },
+            {
+              "name": "visually_complete",
+              "label": "Visually Complete",
+              "value": 5899
+            }
+          ]
+        },
+        {
+          "page": {
+            "name": "Home",
+            "url": "https://www.mcdavidusa.com/"
+          },
+          "testProfile": {
+            "uuid": "35deb0dc-35c3-467b-8322-4361e0cb494f"
+          },
+          "measurements": [
+            {
+              "name": "asset_count",
+              "label": "Number of Requests",
+              "value": 198
+            },
+            {
+              "name": "page_body_size_in_bytes",
+              "label": "Total Page Size in Bytes",
+              "value": 9419782
+            },
+            {
+              "name": "page_size_in_bytes",
+              "label": "Total Page Transferred",
+              "value": 4172341
+            },
+            {
+              "name": "html_body_size_in_bytes",
+              "label": "Total HTML Size in Bytes",
+              "value": 834243
+            },
+            {
+              "name": "html_size_in_bytes",
+              "label": "Total HTML Transferred",
+              "value": 53895
+            },
+            {
+              "name": "css_body_size_in_bytes",
+              "label": "Total CSS Size in Bytes",
+              "value": 1142150
+            },
+            {
+              "name": "css_size_in_bytes",
+              "label": "Total CSS Transferred",
+              "value": 186730
+            },
+            {
+              "name": "js_body_size_in_bytes",
+              "label": "Total JavaScript Size in Bytes",
+              "value": 6059846
+            },
+            {
+              "name": "js_size_in_bytes",
+              "label": "Total JavaScript Transferred",
+              "value": 2624665
+            },
+            {
+              "name": "font_body_size_in_bytes",
+              "label": "Total Font Size in Bytes",
+              "value": 250580
+            },
+            {
+              "name": "font_size_in_bytes",
+              "label": "Total Font Transferred",
+              "value": 203949
+            },
+            {
+              "name": "json_body_size_in_bytes",
+              "label": "Total JSON Size in Bytes",
+              "value": 80923
+            },
+            {
+              "name": "json_size_in_bytes",
+              "label": "Total JSON Transferred",
+              "value": 28013
+            },
+            {
+              "name": "image_body_size_in_bytes",
+              "label": "Total Image Size in Bytes",
+              "value": 1051645
+            },
+            {
+              "name": "image_size_in_bytes",
+              "label": "Total Image Transferred",
+              "value": 1067475
+            },
+            {
+              "name": "video_body_size_in_bytes",
+              "label": "Total Video Size in Bytes",
+              "value": 0
+            },
+            {
+              "name": "video_size_in_bytes",
+              "label": "Total Video Transferred",
+              "value": 0
+            },
+            {
+              "name": "page_tcp_timing",
+              "label": "Server Connection Time",
+              "value": 7
+            },
+            {
+              "name": "page_dns_timing",
+              "label": "Domain Lookup Time",
+              "value": 4
+            },
+            {
+              "name": "page_download_timing",
+              "label": "HTML Download Time",
+              "value": 4
+            },
+            {
+              "name": "page_ssl_timing",
+              "label": "SSL Time",
+              "value": 6
+            },
+            {
+              "name": "page_wait_timing",
+              "label": "Response Time",
+              "value": 109
+            },
+            {
+              "name": "benchmarkIndex",
+              "label": "Benchmark Index",
+              "value": 1970
+            },
+            {
+              "name": "testDuration",
+              "label": "Test Duration",
+              "value": 21764
+            },
+            {
+              "name": "lighthouse-performance-score",
+              "label": "Lighthouse Performance Score",
+              "value": 88
+            },
+            {
+              "name": "lighthouse-accessibility-score",
+              "label": "Lighthouse Accessibility Score",
+              "value": 81
+            },
+            {
+              "name": "lighthouse-best-practices-score",
+              "label": "Lighthouse Best Practices Score",
+              "value": 70
+            },
+            {
+              "name": "lighthouse-seo-score",
+              "label": "Lighthouse SEO Score",
+              "value": 77
+            },
+            {
+              "name": "first-contentful-paint",
+              "label": "First Contentful Paint",
+              "value": 753
+            },
+            {
+              "name": "speed_index",
+              "label": "Speed Index",
+              "value": 1897
+            },
+            {
+              "name": "max-potential-fid",
+              "label": "Max Potential First Input Delay",
+              "value": 120
+            },
+            {
+              "name": "largest_contentful_paint",
+              "label": "Largest Contentful Paint",
+              "value": 1207
+            },
+            {
+              "name": "cumulative-layout-shift",
+              "label": "Cumulative Layout Shift",
+              "value": 32
+            },
+            {
+              "name": "consistently-interactive",
+              "label": "Time to Interactive",
+              "value": 4067
+            },
+            {
+              "name": "total-blocking-time",
+              "label": "Total Blocking Time",
+              "value": 181
+            },
+            {
+              "name": "js-parse-compile",
+              "label": "JS Parse & Compile",
+              "value": 1540
+            },
+            {
+              "name": "time-to-first-byte",
+              "label": "Time to First Byte",
+              "value": 183
+            },
+            {
+              "name": "third_party_count",
+              "label": "Number of Third Party Providers",
+              "value": 38
+            },
+            {
+              "name": "third_party_main_thread_duration",
+              "label": "Total Third Party Main Thread Execution Time",
+              "value": 2176
+            },
+            {
+              "name": "third_party_size_in_bytes",
+              "label": "Total Third Party Code Transferred",
+              "value": 2598726
+            },
+            {
+              "name": "visually_complete",
+              "label": "Visually Complete",
+              "value": 3762
+            }
+          ]
+        }
+      ],
+      "sequenceId": 54,
+      "htmlUrl": "https://calibreapp.com/teams/arcadia-digital-assessments/mcdavid/snapshots#54",
+      "status": "completed",
+      "createdAt": "2025-10-10T06:02:23Z"
+    },
+    "testProfiles": [
+      {
+        "uuid": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "name": "Desktop",
+        "device": {
+          "title": "PageSpeed Desktop"
+        },
+        "bandwidth": {
+          "title": "Simulated throttling"
+        },
+        "isMobile": false,
+        "jsIsDisabled": false,
+        "adBlockerIsEnabled": false,
+        "hasDeviceEmulation": true,
+        "hasBandwidthEmulation": false
+      },
+      {
+        "uuid": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "name": "Mobile",
+        "device": {
+          "title": "PageSpeed Mobile"
+        },
+        "bandwidth": {
+          "title": "Simulated throttling"
+        },
+        "isMobile": true,
+        "jsIsDisabled": false,
+        "adBlockerIsEnabled": false,
+        "hasDeviceEmulation": true,
+        "hasBandwidthEmulation": false
+      }
+    ]
+  },
+  "time_series_metrics": {
+    "times": [
+      {
+        "name": "Snapshot #48",
+        "snapshot": "48",
+        "timestamp": "2025-10-04T06:02:34+00:00"
+      },
+      {
+        "name": "Snapshot #49",
+        "snapshot": "49",
+        "timestamp": "2025-10-05T06:02:34+00:00"
+      },
+      {
+        "name": "Snapshot #50",
+        "snapshot": "50",
+        "timestamp": "2025-10-06T06:02:28+00:00"
+      },
+      {
+        "name": "Snapshot #51",
+        "snapshot": "51",
+        "timestamp": "2025-10-07T06:02:03+00:00"
+      },
+      {
+        "name": "Snapshot #52",
+        "snapshot": "52",
+        "timestamp": "2025-10-08T06:02:15+00:00"
+      },
+      {
+        "name": "Snapshot #53",
+        "snapshot": "53",
+        "timestamp": "2025-10-09T06:02:18+00:00"
+      },
+      {
+        "name": "Snapshot #54",
+        "snapshot": "54",
+        "timestamp": "2025-10-10T06:02:23+00:00"
+      }
+    ],
+    "series": [
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "asset_count",
+        "values": [
+          195,
+          197,
+          197,
+          198,
+          197,
+          200,
+          198
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "asset_count",
+        "values": [
+          273,
+          275,
+          275,
+          277,
+          277,
+          276,
+          275
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "asset_count",
+        "values": [
+          276,
+          268,
+          276,
+          277,
+          279,
+          279,
+          278
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "benchmarkIndex",
+        "values": [
+          1712,
+          1801,
+          1789,
+          1820,
+          1940,
+          1805,
+          1970
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "benchmarkIndex",
+        "values": [
+          1680,
+          1899,
+          1771,
+          1814,
+          1802,
+          1804,
+          1813
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "benchmarkIndex",
+        "values": [
+          1660,
+          1783,
+          1821,
+          1287,
+          1927,
+          1837,
+          1815
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "consistently-interactive",
+        "values": [
+          5413,
+          4720,
+          5105,
+          4898,
+          5790,
+          5356,
+          5596
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "consistently-interactive",
+        "values": [
+          6868,
+          6760,
+          7007,
+          7009,
+          7167,
+          7100,
+          7198
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "consistently-interactive",
+        "values": [
+          4754,
+          4634,
+          4578,
+          4665,
+          4106,
+          5405,
+          4067
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "css_body_size_in_bytes",
+        "values": [
+          1142151,
+          1142151,
+          1142151,
+          1142151,
+          1142151,
+          1142151,
+          1142150
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "css_body_size_in_bytes",
+        "values": [
+          931166,
+          931166,
+          931166,
+          931166,
+          931166,
+          931166,
+          932669
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "css_body_size_in_bytes",
+        "values": [
+          841204,
+          841204,
+          841204,
+          841204,
+          841204,
+          841204,
+          841203
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "css_size_in_bytes",
+        "values": [
+          190709,
+          190905,
+          193427,
+          193228,
+          190696,
+          190871,
+          193743
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "css_size_in_bytes",
+        "values": [
+          173057,
+          173194,
+          175804,
+          175795,
+          173255,
+          173349,
+          175202
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "css_size_in_bytes",
+        "values": [
+          185173,
+          183985,
+          187828,
+          186947,
+          184144,
+          184002,
+          186730
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "cumulative-layout-shift",
+        "values": [
+          30,
+          56,
+          61,
+          34,
+          30,
+          30,
+          30
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "cumulative-layout-shift",
+        "values": [
+          3,
+          109,
+          3,
+          37,
+          3,
+          4,
+          3
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "cumulative-layout-shift",
+        "values": [
+          3,
+          30,
+          3,
+          3,
+          3,
+          37,
+          32
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "first-contentful-paint",
+        "values": [
+          779,
+          761,
+          763,
+          763,
+          749,
+          786,
+          753
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "first-contentful-paint",
+        "values": [
+          803,
+          754,
+          814,
+          786,
+          750,
+          806,
+          802
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "first-contentful-paint",
+        "values": [
+          788,
+          738,
+          762,
+          793,
+          762,
+          744,
+          744
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "font_body_size_in_bytes",
+        "values": [
+          352892,
+          352892,
+          352892,
+          352892,
+          352892,
+          352892,
+          352892
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "font_body_size_in_bytes",
+        "values": [
+          250580,
+          250580,
+          250580,
+          250580,
+          250580,
+          250580,
+          250580
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "font_body_size_in_bytes",
+        "values": [
+          205192,
+          205192,
+          205192,
+          205192,
+          205192,
+          205192,
+          205192
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "font_size_in_bytes",
+        "values": [
+          308038,
+          308049,
+          308030,
+          308041,
+          308022,
+          308053,
+          308023
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "font_size_in_bytes",
+        "values": [
+          203931,
+          203946,
+          203931,
+          203944,
+          203937,
+          203951,
+          203949
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "font_size_in_bytes",
+        "values": [
+          158461,
+          158472,
+          158465,
+          158471,
+          158466,
+          158461,
+          158465
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "html_body_size_in_bytes",
+        "values": [
+          1274369,
+          1274369,
+          1274316,
+          1274223,
+          1274574,
+          1274750,
+          1279424
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "html_body_size_in_bytes",
+        "values": [
+          829099,
+          829086,
+          829086,
+          829140,
+          829160,
+          829242,
+          834243
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "html_body_size_in_bytes",
+        "values": [
+          1295374,
+          1295374,
+          1295304,
+          1295304,
+          1296445,
+          1296508,
+          1300381
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "html_size_in_bytes",
+        "values": [
+          113717,
+          112957,
+          112927,
+          115748,
+          113732,
+          113643,
+          113701
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "html_size_in_bytes",
+        "values": [
+          73118,
+          73090,
+          73130,
+          73019,
+          73109,
+          73258,
+          73295
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "html_size_in_bytes",
+        "values": [
+          53753,
+          55399,
+          55538,
+          55361,
+          53873,
+          55419,
+          53895
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "image_body_size_in_bytes",
+        "values": [
+          1108665,
+          1045947,
+          1108665,
+          1108665,
+          1108617,
+          1108617,
+          1112430
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "image_body_size_in_bytes",
+        "values": [
+          1078414,
+          1078414,
+          1078414,
+          1078414,
+          1047832,
+          1047832,
+          1051645
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "image_body_size_in_bytes",
+        "values": [
+          1290628,
+          1290671,
+          1290628,
+          1290671,
+          1290628,
+          1290628,
+          1294441
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "image_size_in_bytes",
+        "values": [
+          1100301,
+          1100322,
+          1100303,
+          1100435,
+          1069981,
+          1069700,
+          1067475
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "image_size_in_bytes",
+        "values": [
+          1205193,
+          1134944,
+          1205266,
+          1205327,
+          1205231,
+          1205184,
+          1202901
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "image_size_in_bytes",
+        "values": [
+          1318107,
+          1318542,
+          1318108,
+          1318518,
+          1318145,
+          1318139,
+          1315614
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "js_body_size_in_bytes",
+        "values": [
+          7380276,
+          7380280,
+          7380993,
+          7524876,
+          7670852,
+          7670693,
+          7681233
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "js_body_size_in_bytes",
+        "values": [
+          5762179,
+          5762179,
+          5762954,
+          5906816,
+          6044569,
+          6054323,
+          6059846
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "js_body_size_in_bytes",
+        "values": [
+          6035265,
+          6035352,
+          6037446,
+          6184568,
+          6322329,
+          6322371,
+          6332933
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "json_body_size_in_bytes",
+        "values": [
+          80924,
+          80942,
+          80942,
+          80942,
+          80924,
+          80942,
+          80923
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "json_body_size_in_bytes",
+        "values": [
+          368460,
+          368462,
+          368462,
+          368465,
+          368827,
+          368826,
+          368279
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "json_body_size_in_bytes",
+        "values": [
+          349649,
+          349650,
+          349650,
+          349648,
+          351817,
+          351818,
+          351818
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "json_size_in_bytes",
+        "values": [
+          27556,
+          30829,
+          30808,
+          31581,
+          28004,
+          31594,
+          28013
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "json_size_in_bytes",
+        "values": [
+          64479,
+          64334,
+          64387,
+          65209,
+          65358,
+          65429,
+          64710
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "json_size_in_bytes",
+        "values": [
+          68012,
+          68352,
+          68336,
+          65651,
+          69755,
+          69778,
+          69437
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "js-parse-compile",
+        "values": [
+          3670,
+          3460,
+          3839,
+          3729,
+          4325,
+          3759,
+          3692
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "js-parse-compile",
+        "values": [
+          3184,
+          2918,
+          3193,
+          2886,
+          3482,
+          3224,
+          2948
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "js-parse-compile",
+        "values": [
+          1658,
+          2087,
+          1882,
+          1658,
+          1809,
+          2071,
+          1540
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "js_size_in_bytes",
+        "values": [
+          2536095,
+          2536485,
+          2541567,
+          2581782,
+          2623068,
+          3094976,
+          2624665
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "js_size_in_bytes",
+        "values": [
+          3026269,
+          3025890,
+          3031850,
+          3073313,
+          3116655,
+          3110846,
+          3116438
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "js_size_in_bytes",
+        "values": [
+          2631305,
+          2630743,
+          2636558,
+          2679262,
+          2719202,
+          3185406,
+          2721871
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "largest_contentful_paint",
+        "values": [
+          1809,
+          1787,
+          1691,
+          1790,
+          1706,
+          1791,
+          1769
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "largest_contentful_paint",
+        "values": [
+          1177,
+          1181,
+          1201,
+          1161,
+          1209,
+          1223,
+          1209
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "largest_contentful_paint",
+        "values": [
+          1171,
+          1162,
+          1065,
+          1279,
+          1165,
+          1146,
+          1207
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "lighthouse-accessibility-score",
+        "values": [
+          79,
+          79,
+          79,
+          79,
+          79,
+          79,
+          79
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "lighthouse-accessibility-score",
+        "values": [
+          81,
+          81,
+          81,
+          81,
+          81,
+          81,
+          81
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "lighthouse-accessibility-score",
+        "values": [
+          90,
+          90,
+          90,
+          90,
+          90,
+          90,
+          90
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "lighthouse-best-practices-score",
+        "values": [
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "lighthouse-best-practices-score",
+        "values": [
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          74
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "lighthouse-best-practices-score",
+        "values": [
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          74
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "lighthouse-performance-score",
+        "values": [
+          60,
+          60,
+          56,
+          56,
+          57,
+          60,
+          56
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "lighthouse-performance-score",
+        "values": [
+          62,
+          60,
+          62,
+          66,
+          62,
+          63,
+          64
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "lighthouse-performance-score",
+        "values": [
+          85,
+          82,
+          80,
+          76,
+          85,
+          78,
+          88
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "lighthouse-seo-score",
+        "values": [
+          85,
+          85,
+          85,
+          85,
+          85,
+          85,
+          85
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "lighthouse-seo-score",
+        "values": [
+          77,
+          77,
+          77,
+          77,
+          77,
+          77,
+          77
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "lighthouse-seo-score",
+        "values": [
+          92,
+          92,
+          92,
+          92,
+          92,
+          92,
+          92
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "max-potential-fid",
+        "values": [
+          303,
+          282,
+          267,
+          270,
+          269,
+          243,
+          247
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "max-potential-fid",
+        "values": [
+          160,
+          216,
+          193,
+          243,
+          146,
+          228,
+          120
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "max-potential-fid",
+        "values": [
+          326,
+          366,
+          278,
+          241,
+          321,
+          283,
+          261
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "page_body_size_in_bytes",
+        "values": [
+          9143742,
+          9143747,
+          9144522,
+          9288438,
+          9395611,
+          9405465,
+          9419782
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "page_body_size_in_bytes",
+        "values": [
+          11600380,
+          11600428,
+          11601028,
+          11744952,
+          11894195,
+          11894100,
+          11913829
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "page_body_size_in_bytes",
+        "values": [
+          9833550,
+          9770921,
+          9835680,
+          9982712,
+          10121138,
+          10121355,
+          10139856
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "page_dns_timing",
+        "values": [
+          14,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "page_dns_timing",
+        "values": [
+          2,
+          23,
+          4,
+          4,
+          5,
+          2,
+          4
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "page_dns_timing",
+        "values": [
+          2,
+          7,
+          19,
+          2,
+          3,
+          19,
+          4
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "page_download_timing",
+        "values": [
+          6,
+          15,
+          6,
+          6,
+          19,
+          5,
+          10
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "page_download_timing",
+        "values": [
+          11,
+          11,
+          4,
+          11,
+          5,
+          11,
+          4
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "page_download_timing",
+        "values": [
+          12,
+          7,
+          17,
+          6,
+          7,
+          16,
+          36
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "page_size_in_bytes",
+        "values": [
+          5033533,
+          5033456,
+          5041424,
+          5084354,
+          5126781,
+          5121110,
+          5126734
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "page_size_in_bytes",
+        "values": [
+          4312360,
+          4241520,
+          4320351,
+          4364279,
+          4402092,
+          4868558,
+          4403630
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "page_size_in_bytes",
+        "values": [
+          4113548,
+          4117711,
+          4126725,
+          4167245,
+          4170196,
+          4646832,
+          4172341
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "page_ssl_timing",
+        "values": [
+          7,
+          8,
+          8,
+          12,
+          10,
+          9,
+          9
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "page_ssl_timing",
+        "values": [
+          8,
+          7,
+          8,
+          8,
+          8,
+          8,
+          6
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "page_ssl_timing",
+        "values": [
+          9,
+          9,
+          10,
+          7,
+          8,
+          9,
+          9
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "page_tcp_timing",
+        "values": [
+          10,
+          10,
+          11,
+          8,
+          9,
+          10,
+          10
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "page_tcp_timing",
+        "values": [
+          8,
+          9,
+          8,
+          12,
+          10,
+          10,
+          10
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "page_tcp_timing",
+        "values": [
+          9,
+          9,
+          9,
+          10,
+          9,
+          9,
+          7
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "page_wait_timing",
+        "values": [
+          478,
+          566,
+          426,
+          478,
+          498,
+          610,
+          490
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "page_wait_timing",
+        "values": [
+          143,
+          107,
+          107,
+          120,
+          123,
+          123,
+          143
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "page_wait_timing",
+        "values": [
+          106,
+          106,
+          122,
+          106,
+          98,
+          143,
+          109
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "speed_index",
+        "values": [
+          1821,
+          1867,
+          1975,
+          1892,
+          1785,
+          1970,
+          1897
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "speed_index",
+        "values": [
+          2473,
+          2447,
+          2448,
+          2327,
+          2497,
+          2379,
+          2241
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "speed_index",
+        "values": [
+          3392,
+          3392,
+          3538,
+          3515,
+          3429,
+          3477,
+          3517
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "testDuration",
+        "values": [
+          40654,
+          37354,
+          39373,
+          37981,
+          39044,
+          39436,
+          40322
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "testDuration",
+        "values": [
+          30785,
+          27481,
+          29964,
+          29020,
+          31851,
+          32221,
+          29941
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "testDuration",
+        "values": [
+          23197,
+          23545,
+          23452,
+          22668,
+          22347,
+          23224,
+          21764
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "third_party_count",
+        "values": [
+          38,
+          38,
+          38,
+          38,
+          38,
+          38,
+          38
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "third_party_count",
+        "values": [
+          40,
+          39,
+          39,
+          39,
+          40,
+          40,
+          40
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "third_party_count",
+        "values": [
+          38,
+          38,
+          38,
+          38,
+          38,
+          38,
+          38
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "third_party_main_thread_duration",
+        "values": [
+          2166,
+          2242,
+          2278,
+          2155,
+          2204,
+          2425,
+          2176
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "third_party_main_thread_duration",
+        "values": [
+          3780,
+          3562,
+          3658,
+          3336,
+          4115,
+          3943,
+          3484
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "third_party_main_thread_duration",
+        "values": [
+          4042,
+          3631,
+          3993,
+          3878,
+          4541,
+          3856,
+          3963
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "third_party_size_in_bytes",
+        "values": [
+          2541853,
+          2544092,
+          2553200,
+          2593013,
+          2596317,
+          3070372,
+          2598726
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "third_party_size_in_bytes",
+        "values": [
+          2400501,
+          2400394,
+          2408384,
+          2450214,
+          2490127,
+          2483179,
+          2490912
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "third_party_size_in_bytes",
+        "values": [
+          2975520,
+          2904710,
+          2983517,
+          3026862,
+          3063160,
+          3528653,
+          3065756
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "time-to-first-byte",
+        "values": [
+          189,
+          188,
+          192,
+          191,
+          186,
+          191,
+          190
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "time-to-first-byte",
+        "values": [
+          198,
+          182,
+          182,
+          181,
+          186,
+          183,
+          189
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "time-to-first-byte",
+        "values": [
+          191,
+          182,
+          186,
+          185,
+          185,
+          186,
+          183
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "total-blocking-time",
+        "values": [
+          599,
+          563,
+          745,
+          775,
+          811,
+          609,
+          741
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "total-blocking-time",
+        "values": [
+          1152,
+          922,
+          1069,
+          759,
+          1171,
+          1007,
+          976
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "total-blocking-time",
+        "values": [
+          241,
+          293,
+          322,
+          386,
+          245,
+          366,
+          181
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "video_body_size_in_bytes",
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "video_body_size_in_bytes",
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "video_body_size_in_bytes",
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "video_size_in_bytes",
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "video_size_in_bytes",
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "video_size_in_bytes",
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "visually_complete",
+        "values": [
+          3997,
+          4300,
+          4342,
+          4093,
+          4114,
+          4537,
+          3762
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "visually_complete",
+        "values": [
+          6591,
+          6348,
+          7260,
+          6846,
+          7342,
+          6945,
+          7219
+        ]
+      },
+      {
+        "name": "Desktop",
+        "profile": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "visually_complete",
+        "values": [
+          6506,
+          5762,
+          6211,
+          6080,
+          6671,
+          6447,
+          5993
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "asset_count",
+        "values": [
+          286,
+          280,
+          284,
+          284,
+          285,
+          285,
+          282
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "asset_count",
+        "values": [
+          201,
+          196,
+          195,
+          196,
+          197,
+          195,
+          197
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "asset_count",
+        "values": [
+          214,
+          214,
+          214,
+          215,
+          216,
+          216,
+          217
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "benchmarkIndex",
+        "values": [
+          1817,
+          1936,
+          1820,
+          1825,
+          1835,
+          1846,
+          1686
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "benchmarkIndex",
+        "values": [
+          1703,
+          1823,
+          1754,
+          1957,
+          1948,
+          1838,
+          1936
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "benchmarkIndex",
+        "values": [
+          1734,
+          1819,
+          1848,
+          1798,
+          1965,
+          1844,
+          1832
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "consistently-interactive",
+        "values": [
+          22715,
+          22049,
+          19010,
+          22273,
+          23450,
+          20507,
+          20820
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "consistently-interactive",
+        "values": [
+          29387,
+          29387,
+          33962,
+          29998,
+          30419,
+          29896,
+          30214
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "consistently-interactive",
+        "values": [
+          26359,
+          26632,
+          27122,
+          27310,
+          27038,
+          27434,
+          27565
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "css_body_size_in_bytes",
+        "values": [
+          931166,
+          931166,
+          931166,
+          931166,
+          931166,
+          931166,
+          932669
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "css_body_size_in_bytes",
+        "values": [
+          1142142,
+          1142142,
+          1142142,
+          1142142,
+          1142142,
+          1142142,
+          1142141
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "css_body_size_in_bytes",
+        "values": [
+          841204,
+          841204,
+          841204,
+          841204,
+          841204,
+          841204,
+          841203
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "css_size_in_bytes",
+        "values": [
+          173257,
+          173274,
+          175548,
+          175801,
+          173059,
+          172234,
+          175775
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "css_size_in_bytes",
+        "values": [
+          190900,
+          190824,
+          193279,
+          193240,
+          190624,
+          190942,
+          193754
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "css_size_in_bytes",
+        "values": [
+          184544,
+          183949,
+          186763,
+          186516,
+          184194,
+          184206,
+          187162
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "cumulative-layout-shift",
+        "values": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "cumulative-layout-shift",
+        "values": [
+          46,
+          46,
+          46,
+          46,
+          48,
+          48,
+          46
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "cumulative-layout-shift",
+        "values": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "first-contentful-paint",
+        "values": [
+          2346,
+          2347,
+          2574,
+          2347,
+          2350,
+          2365,
+          2374
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "first-contentful-paint",
+        "values": [
+          2583,
+          2586,
+          2579,
+          2587,
+          2732,
+          2576,
+          2578
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "first-contentful-paint",
+        "values": [
+          2389,
+          2379,
+          2371,
+          2352,
+          2581,
+          2574,
+          2376
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "font_body_size_in_bytes",
+        "values": [
+          152992,
+          152992,
+          152992,
+          152992,
+          152992,
+          152992,
+          152992
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "font_body_size_in_bytes",
+        "values": [
+          222036,
+          222036,
+          222036,
+          222036,
+          222036,
+          222036,
+          222036
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "font_body_size_in_bytes",
+        "values": [
+          156420,
+          156420,
+          156420,
+          156420,
+          156420,
+          156420,
+          156420
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "font_size_in_bytes",
+        "values": [
+          127802,
+          127802,
+          127806,
+          127812,
+          127799,
+          127795,
+          127800
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "font_size_in_bytes",
+        "values": [
+          192561,
+          192556,
+          192558,
+          192555,
+          192582,
+          192563,
+          192574
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "font_size_in_bytes",
+        "values": [
+          123389,
+          123380,
+          123396,
+          123386,
+          123386,
+          123377,
+          123373
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "html_body_size_in_bytes",
+        "values": [
+          1295374,
+          1295374,
+          1295304,
+          1295304,
+          1296445,
+          1296508,
+          1300381
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "html_body_size_in_bytes",
+        "values": [
+          829091,
+          829086,
+          829086,
+          829081,
+          829048,
+          829179,
+          834241
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "html_body_size_in_bytes",
+        "values": [
+          1274369,
+          1274369,
+          1274223,
+          1274223,
+          1274601,
+          1274661,
+          1279403
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "html_size_in_bytes",
+        "values": [
+          112981,
+          111853,
+          113715,
+          113590,
+          112696,
+          112868,
+          111760
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "html_size_in_bytes",
+        "values": [
+          53917,
+          55656,
+          55296,
+          55607,
+          55332,
+          53908,
+          55510
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "html_size_in_bytes",
+        "values": [
+          73075,
+          73079,
+          73262,
+          73009,
+          73133,
+          73331,
+          73347
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "image_body_size_in_bytes",
+        "values": [
+          842923,
+          842923,
+          842923,
+          842923,
+          842923,
+          842923,
+          846736
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "image_body_size_in_bytes",
+        "values": [
+          1968787,
+          1968717,
+          1968787,
+          1968787,
+          1968744,
+          1968744,
+          1972530
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "image_body_size_in_bytes",
+        "values": [
+          866800,
+          866800,
+          866800,
+          866800,
+          866800,
+          866800,
+          870613
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "image_size_in_bytes",
+        "values": [
+          885968,
+          886018,
+          885989,
+          885971,
+          886000,
+          885987,
+          883562
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "image_size_in_bytes",
+        "values": [
+          886284,
+          886330,
+          886311,
+          886341,
+          886450,
+          886302,
+          883888
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "image_size_in_bytes",
+        "values": [
+          2008689,
+          2008705,
+          2009117,
+          2008629,
+          2008253,
+          2008366,
+          2006537
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "js_body_size_in_bytes",
+        "values": [
+          6035282,
+          6035292,
+          6035999,
+          6184567,
+          6317642,
+          6322370,
+          6332950
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "js_body_size_in_bytes",
+        "values": [
+          5762179,
+          5762220,
+          5762913,
+          5906834,
+          6047718,
+          6049214,
+          6059847
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "js_body_size_in_bytes",
+        "values": [
+          7381706,
+          7381773,
+          7380973,
+          7529587,
+          7665781,
+          7670703,
+          7681223
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "json_body_size_in_bytes",
+        "values": [
+          80155,
+          80173,
+          80173,
+          80173,
+          80173,
+          80155,
+          80173
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "json_body_size_in_bytes",
+        "values": [
+          367693,
+          367691,
+          367692,
+          367696,
+          368058,
+          368057,
+          367509
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "json_body_size_in_bytes",
+        "values": [
+          349650,
+          349650,
+          349650,
+          349650,
+          351818,
+          351817,
+          351818
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "json_size_in_bytes",
+        "values": [
+          27417,
+          30671,
+          30674,
+          31435,
+          31395,
+          27851,
+          31094
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "json_size_in_bytes",
+        "values": [
+          64225,
+          64289,
+          64930,
+          65080,
+          65193,
+          65270,
+          64649
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "json_size_in_bytes",
+        "values": [
+          68314,
+          68327,
+          68363,
+          68725,
+          69759,
+          69758,
+          69377
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "js-parse-compile",
+        "values": [
+          3001,
+          3027,
+          3050,
+          3342,
+          3145,
+          3351,
+          4098
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "js-parse-compile",
+        "values": [
+          2153,
+          2187,
+          2124,
+          1869,
+          2129,
+          2233,
+          2115
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "js-parse-compile",
+        "values": [
+          4566,
+          4587,
+          4184,
+          4425,
+          3985,
+          4145,
+          4479
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "js_size_in_bytes",
+        "values": [
+          3026399,
+          3026441,
+          3504060,
+          3074448,
+          3114811,
+          3111092,
+          3115766
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "js_size_in_bytes",
+        "values": [
+          2536290,
+          2536571,
+          2542002,
+          2581945,
+          2625473,
+          2619702,
+          2624550
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "js_size_in_bytes",
+        "values": [
+          2630667,
+          2630294,
+          2636509,
+          2678749,
+          2716189,
+          2712944,
+          2722224
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "largest_contentful_paint",
+        "values": [
+          26168,
+          26422,
+          26949,
+          27142,
+          26856,
+          27279,
+          27403
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "largest_contentful_paint",
+        "values": [
+          6108,
+          6111,
+          6329,
+          6562,
+          6932,
+          6626,
+          6328
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "largest_contentful_paint",
+        "values": [
+          5740,
+          5450,
+          5822,
+          5527,
+          5818,
+          5508,
+          5520
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "lighthouse-accessibility-score",
+        "values": [
+          82,
+          82,
+          82,
+          82,
+          82,
+          82,
+          82
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "lighthouse-accessibility-score",
+        "values": [
+          90,
+          91,
+          90,
+          90,
+          90,
+          90,
+          90
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "lighthouse-accessibility-score",
+        "values": [
+          85,
+          85,
+          85,
+          85,
+          85,
+          85,
+          85
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "lighthouse-best-practices-score",
+        "values": [
+          71,
+          71,
+          71,
+          71,
+          71,
+          71,
+          71
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "lighthouse-best-practices-score",
+        "values": [
+          71,
+          71,
+          71,
+          71,
+          71,
+          71,
+          75
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "lighthouse-best-practices-score",
+        "values": [
+          71,
+          71,
+          71,
+          71,
+          71,
+          71,
+          75
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "lighthouse-performance-score",
+        "values": [
+          43,
+          44,
+          39,
+          41,
+          41,
+          41,
+          37
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "lighthouse-performance-score",
+        "values": [
+          46,
+          44,
+          45,
+          44,
+          47,
+          45,
+          43
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "lighthouse-performance-score",
+        "values": [
+          63,
+          65,
+          61,
+          63,
+          61,
+          60,
+          62
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "lighthouse-seo-score",
+        "values": [
+          77,
+          77,
+          77,
+          77,
+          77,
+          77,
+          77
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "lighthouse-seo-score",
+        "values": [
+          92,
+          92,
+          92,
+          92,
+          92,
+          92,
+          92
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "lighthouse-seo-score",
+        "values": [
+          85,
+          85,
+          85,
+          85,
+          85,
+          85,
+          85
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "max-potential-fid",
+        "values": [
+          358,
+          346,
+          345,
+          341,
+          323,
+          324,
+          336
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "max-potential-fid",
+        "values": [
+          216,
+          160,
+          211,
+          181,
+          177,
+          167,
+          196
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "max-potential-fid",
+        "values": [
+          219,
+          208,
+          212,
+          265,
+          290,
+          242,
+          258
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "page_body_size_in_bytes",
+        "values": [
+          9514870,
+          9514878,
+          9515440,
+          9664012,
+          9797827,
+          9802614,
+          9821200
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "page_body_size_in_bytes",
+        "values": [
+          12083510,
+          12083507,
+          12082707,
+          12231321,
+          12370781,
+          12375765,
+          12395448
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "page_body_size_in_bytes",
+        "values": [
+          8902810,
+          8902864,
+          8903557,
+          9047473,
+          9188324,
+          9189933,
+          9209458
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "page_dns_timing",
+        "values": [
+          0,
+          6,
+          21,
+          18,
+          2,
+          16,
+          0
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "page_dns_timing",
+        "values": [
+          7,
+          6,
+          5,
+          5,
+          5,
+          0,
+          10
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "page_dns_timing",
+        "values": [
+          2,
+          1,
+          6,
+          6,
+          3,
+          11,
+          5
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "page_download_timing",
+        "values": [
+          4,
+          4,
+          4,
+          8,
+          20,
+          4,
+          14
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "page_download_timing",
+        "values": [
+          10,
+          10,
+          12,
+          17,
+          7,
+          5,
+          21
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "page_download_timing",
+        "values": [
+          7,
+          21,
+          6,
+          23,
+          15,
+          28,
+          18
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "page_size_in_bytes",
+        "values": [
+          5543843,
+          5542319,
+          6025030,
+          5596230,
+          5633812,
+          5630689,
+          5634447
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "page_size_in_bytes",
+        "values": [
+          3887772,
+          3892925,
+          3900362,
+          3941593,
+          3982632,
+          3971730,
+          3981975
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "page_size_in_bytes",
+        "values": [
+          3957342,
+          3957095,
+          3966394,
+          4009185,
+          4044149,
+          4040349,
+          4050411
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "page_ssl_timing",
+        "values": [
+          7,
+          9,
+          8,
+          9,
+          11,
+          8,
+          10
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "page_ssl_timing",
+        "values": [
+          8,
+          6,
+          7,
+          8,
+          7,
+          7,
+          6
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "page_ssl_timing",
+        "values": [
+          8,
+          7,
+          7,
+          7,
+          8,
+          8,
+          7
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "page_tcp_timing",
+        "values": [
+          8,
+          11,
+          10,
+          10,
+          12,
+          10,
+          11
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "page_tcp_timing",
+        "values": [
+          8,
+          8,
+          7,
+          8,
+          9,
+          9,
+          7
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "page_tcp_timing",
+        "values": [
+          9,
+          8,
+          8,
+          9,
+          8,
+          8,
+          7
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "page_wait_timing",
+        "values": [
+          101,
+          98,
+          109,
+          117,
+          131,
+          101,
+          192
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "page_wait_timing",
+        "values": [
+          132,
+          117,
+          133,
+          164,
+          135,
+          155,
+          123
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "page_wait_timing",
+        "values": [
+          501,
+          491,
+          490,
+          464,
+          107,
+          99,
+          125
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "speed_index",
+        "values": [
+          8823,
+          8256,
+          9497,
+          9214,
+          9269,
+          8776,
+          9461
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "speed_index",
+        "values": [
+          10675,
+          11501,
+          11588,
+          10557,
+          10083,
+          9892,
+          10890
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "speed_index",
+        "values": [
+          5570,
+          6956,
+          6794,
+          7275,
+          6490,
+          6881,
+          6602
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "testDuration",
+        "values": [
+          40515,
+          39087,
+          38417,
+          38989,
+          37325,
+          37690,
+          38789
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "testDuration",
+        "values": [
+          22784,
+          21739,
+          22888,
+          20647,
+          21847,
+          22011,
+          21597
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "testDuration",
+        "values": [
+          27049,
+          26334,
+          26181,
+          27274,
+          27305,
+          28357,
+          32234
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "third_party_count",
+        "values": [
+          39,
+          40,
+          40,
+          40,
+          39,
+          39,
+          40
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "third_party_count",
+        "values": [
+          38,
+          38,
+          38,
+          38,
+          38,
+          38,
+          38
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "third_party_count",
+        "values": [
+          38,
+          38,
+          38,
+          38,
+          38,
+          38,
+          38
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "third_party_main_thread_duration",
+        "values": [
+          3350,
+          3384,
+          3603,
+          3654,
+          3675,
+          3665,
+          4540
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "third_party_main_thread_duration",
+        "values": [
+          4615,
+          4592,
+          4367,
+          4530,
+          4148,
+          4296,
+          4635
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "third_party_main_thread_duration",
+        "values": [
+          2512,
+          2605,
+          2503,
+          2456,
+          2624,
+          2623,
+          2607
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "third_party_size_in_bytes",
+        "values": [
+          2319689,
+          2318050,
+          2800721,
+          2371362,
+          2405758,
+          2401520,
+          2407451
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "third_party_size_in_bytes",
+        "values": [
+          2655488,
+          2655285,
+          2664028,
+          2706806,
+          2740176,
+          2736200,
+          2746816
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "third_party_size_in_bytes",
+        "values": [
+          2557764,
+          2561188,
+          2568797,
+          2609254,
+          2649099,
+          2638973,
+          2648613
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "time-to-first-byte",
+        "values": [
+          628,
+          626,
+          625,
+          631,
+          632,
+          625,
+          626
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "time-to-first-byte",
+        "values": [
+          622,
+          622,
+          625,
+          629,
+          627,
+          633,
+          636
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "time-to-first-byte",
+        "values": [
+          634,
+          637,
+          629,
+          638,
+          632,
+          627,
+          628
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "total-blocking-time",
+        "values": [
+          943,
+          890,
+          1104,
+          1105,
+          1033,
+          1119,
+          1628
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "total-blocking-time",
+        "values": [
+          808,
+          920,
+          811,
+          836,
+          663,
+          803,
+          918
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "total-blocking-time",
+        "values": [
+          358,
+          255,
+          368,
+          300,
+          338,
+          376,
+          337
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "video_body_size_in_bytes",
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "video_body_size_in_bytes",
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "video_body_size_in_bytes",
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "video_size_in_bytes",
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "video_size_in_bytes",
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "video_size_in_bytes",
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "measurement": "visually_complete",
+        "values": [
+          3833,
+          3735,
+          3974,
+          3604,
+          3668,
+          3963,
+          3746
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "measurement": "visually_complete",
+        "values": [
+          6030,
+          6615,
+          5656,
+          5772,
+          5069,
+          5782,
+          6107
+        ]
+      },
+      {
+        "name": "Mobile",
+        "profile": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "page": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "measurement": "visually_complete",
+        "values": [
+          4891,
+          4694,
+          4939,
+          5264,
+          5184,
+          5195,
+          5899
+        ]
+      }
+    ],
+    "pages": [
+      {
+        "uuid": "11c7e102-b84c-469f-8347-9c238e071f2b",
+        "name": "Home",
+        "url": "https://www.mcdavidusa.com/"
+      },
+      {
+        "uuid": "90106520-3cf0-4eb5-905a-ea907848c52e",
+        "name": "PLP",
+        "url": "https://www.mcdavidusa.com/collections/braces-and-supports"
+      },
+      {
+        "uuid": "e25e502a-1d94-4020-8ce4-c6657c256613",
+        "name": "PDP",
+        "url": "https://www.mcdavidusa.com/products/nrg-spring-hinge-knee-brace"
+      }
+    ],
+    "testProfiles": [
+      {
+        "uuid": "35deb0dc-35c3-467b-8322-4361e0cb494f",
+        "name": "Desktop",
+        "jsIsDisabled": false,
+        "adBlockerIsEnabled": false,
+        "hasDeviceEmulation": true,
+        "hasBandwidthEmulation": false,
+        "isMobile": false
+      },
+      {
+        "uuid": "351ebe8d-bb35-4cc2-96d5-3f9463739b92",
+        "name": "Mobile",
+        "jsIsDisabled": false,
+        "adBlockerIsEnabled": false,
+        "hasDeviceEmulation": true,
+        "hasBandwidthEmulation": false,
+        "isMobile": true
+      }
+    ],
+    "metrics": [
+      {
+        "name": "first-contentful-paint",
+        "label": "First Contentful Paint",
+        "formatter": "humanDuration",
+        "docsPath": "/docs/metrics/first-contentful-paint"
+      },
+      {
+        "name": "consistently-interactive",
+        "label": "Time to Interactive",
+        "formatter": "humanDuration",
+        "docsPath": "/docs/metrics/time-to-interactive"
+      },
+      {
+        "name": "total-blocking-time",
+        "label": "Total Blocking Time",
+        "formatter": "humanDuration",
+        "docsPath": "/docs/metrics/total-blocking-time"
+      },
+      {
+        "name": "visually_complete",
+        "label": "Visually Complete",
+        "formatter": "humanDuration",
+        "docsPath": "/docs/metrics/paint-based#visually-complete"
+      },
+      {
+        "name": "js-parse-compile",
+        "label": "JS Parse & Compile",
+        "formatter": "humanDuration",
+        "docsPath": "/docs/metrics/metrics-guide#runtime"
+      },
+      {
+        "name": "speed_index",
+        "label": "Speed Index",
+        "formatter": "humanDuration",
+        "docsPath": "/docs/metrics/metrics-guide#paint"
+      },
+      {
+        "name": "time-to-first-byte",
+        "label": "Time to First Byte",
+        "formatter": "humanDuration",
+        "docsPath": "/docs/metrics/time-to-first-byte"
+      },
+      {
+        "name": "lighthouse-performance-score",
+        "label": "Lighthouse Performance Score",
+        "formatter": "gradeScore",
+        "docsPath": "/docs/metrics/metrics-guide#lighthouse-scores"
+      },
+      {
+        "name": "lighthouse-accessibility-score",
+        "label": "Lighthouse Accessibility Score",
+        "formatter": "gradeScore",
+        "docsPath": "/docs/metrics/metrics-guide#lighthouse-scores"
+      },
+      {
+        "name": "lighthouse-best-practices-score",
+        "label": "Lighthouse Best Practices Score",
+        "formatter": "gradeScore",
+        "docsPath": "/docs/metrics/metrics-guide#lighthouse-scores"
+      },
+      {
+        "name": "lighthouse-seo-score",
+        "label": "Lighthouse SEO Score",
+        "formatter": "gradeScore",
+        "docsPath": "/docs/metrics/metrics-guide#lighthouse-scores"
+      },
+      {
+        "name": "third_party_count",
+        "label": "Number of Third Party Providers",
+        "formatter": "trust",
+        "docsPath": "/docs/metrics/metrics-guide#third-party"
+      },
+      {
+        "name": "third_party_main_thread_duration",
+        "label": "Total Third Party Main Thread Execution Time",
+        "formatter": "humanDuration",
+        "docsPath": "/docs/metrics/metrics-guide#third-party"
+      },
+      {
+        "name": "third_party_size_in_bytes",
+        "label": "Total Third Party Code Transferred",
+        "formatter": "fileSize",
+        "docsPath": "/docs/metrics/metrics-guide#third-party"
+      },
+      {
+        "name": "largest_contentful_paint",
+        "label": "Largest Contentful Paint",
+        "formatter": "humanDuration",
+        "docsPath": "/docs/metrics/largest-contentful-paint"
+      },
+      {
+        "name": "max-potential-fid",
+        "label": "Max Potential First Input Delay",
+        "formatter": "humanDuration",
+        "docsPath": "/docs/metrics/metrics-guide#runtime"
+      },
+      {
+        "name": "cumulative-layout-shift",
+        "label": "Cumulative Layout Shift",
+        "formatter": "milliunit",
+        "docsPath": "/docs/metrics/cumulative-layout-shift"
+      },
+      {
+        "name": "asset_count",
+        "label": "Number of Requests",
+        "formatter": "trust",
+        "docsPath": "/docs/metrics/metrics-guide#request"
+      },
+      {
+        "name": "page_wait_timing",
+        "label": "Response Time",
+        "formatter": "humanDuration",
+        "docsPath": "/docs/metrics/metrics-guide#request"
+      },
+      {
+        "name": "page_dns_timing",
+        "label": "Domain Lookup Time",
+        "formatter": "humanDuration",
+        "docsPath": "/docs/metrics/metrics-guide#request"
+      },
+      {
+        "name": "page_tcp_timing",
+        "label": "Server Connection Time",
+        "formatter": "humanDuration",
+        "docsPath": "/docs/metrics/metrics-guide#request"
+      },
+      {
+        "name": "page_ssl_timing",
+        "label": "SSL Time",
+        "formatter": "humanDuration",
+        "docsPath": "/docs/metrics/metrics-guide#request"
+      },
+      {
+        "name": "page_download_timing",
+        "label": "HTML Download Time",
+        "formatter": "humanDuration",
+        "docsPath": "/docs/metrics/metrics-guide#request"
+      },
+      {
+        "name": "page_body_size_in_bytes",
+        "label": "Total Page Size in Bytes",
+        "formatter": "fileSize",
+        "docsPath": "/docs/metrics/metrics-guide#byte-size"
+      },
+      {
+        "name": "html_body_size_in_bytes",
+        "label": "Total HTML Size in Bytes",
+        "formatter": "fileSize",
+        "docsPath": "/docs/metrics/metrics-guide#byte-size"
+      },
+      {
+        "name": "js_body_size_in_bytes",
+        "label": "Total JavaScript Size in Bytes",
+        "formatter": "fileSize",
+        "docsPath": "/docs/metrics/metrics-guide#byte-size"
+      },
+      {
+        "name": "image_body_size_in_bytes",
+        "label": "Total Image Size in Bytes",
+        "formatter": "fileSize",
+        "docsPath": "/docs/metrics/metrics-guide#byte-size"
+      },
+      {
+        "name": "video_body_size_in_bytes",
+        "label": "Total Video Size in Bytes",
+        "formatter": "fileSize",
+        "docsPath": "/docs/metrics/metrics-guide#byte-size"
+      },
+      {
+        "name": "font_body_size_in_bytes",
+        "label": "Total Font Size in Bytes",
+        "formatter": "fileSize",
+        "docsPath": "/docs/metrics/metrics-guide#byte-size"
+      },
+      {
+        "name": "json_body_size_in_bytes",
+        "label": "Total JSON Size in Bytes",
+        "formatter": "fileSize",
+        "docsPath": "/docs/metrics/metrics-guide#byte-size"
+      },
+      {
+        "name": "css_body_size_in_bytes",
+        "label": "Total CSS Size in Bytes",
+        "formatter": "fileSize",
+        "docsPath": "/docs/metrics/metrics-guide#byte-size"
+      },
+      {
+        "name": "page_size_in_bytes",
+        "label": "Total Page Transferred",
+        "formatter": "fileSize",
+        "docsPath": "/docs/metrics/metrics-guide#request"
+      },
+      {
+        "name": "html_size_in_bytes",
+        "label": "Total HTML Transferred",
+        "formatter": "fileSize",
+        "docsPath": "/docs/metrics/metrics-guide#request"
+      },
+      {
+        "name": "js_size_in_bytes",
+        "label": "Total JavaScript Transferred",
+        "formatter": "fileSize",
+        "docsPath": "/docs/metrics/metrics-guide#request"
+      },
+      {
+        "name": "image_size_in_bytes",
+        "label": "Total Image Transferred",
+        "formatter": "fileSize",
+        "docsPath": "/docs/metrics/metrics-guide#request"
+      },
+      {
+        "name": "video_size_in_bytes",
+        "label": "Total Video Transferred",
+        "formatter": "fileSize",
+        "docsPath": "/docs/metrics/metrics-guide#request"
+      },
+      {
+        "name": "font_size_in_bytes",
+        "label": "Total Font Transferred",
+        "formatter": "fileSize",
+        "docsPath": "/docs/metrics/metrics-guide#request"
+      },
+      {
+        "name": "json_size_in_bytes",
+        "label": "Total JSON Transferred",
+        "formatter": "fileSize",
+        "docsPath": "/docs/metrics/metrics-guide#request"
+      },
+      {
+        "name": "css_size_in_bytes",
+        "label": "Total CSS Transferred",
+        "formatter": "fileSize",
+        "docsPath": "/docs/metrics/metrics-guide#request"
+      },
+      {
+        "name": "benchmarkIndex",
+        "label": "Benchmark Index",
+        "formatter": "trust",
+        "docsPath": null
+      },
+      {
+        "name": "testDuration",
+        "label": "Test Duration",
+        "formatter": "humanDuration",
+        "docsPath": null
+      },
+      {
+        "name": "oncontentload",
+        "label": "onContentLoad",
+        "formatter": "humanDuration",
+        "docsPath": "/docs/metrics/metrics-guide#historical-deprecated-metrics"
+      },
+      {
+        "name": "onload",
+        "label": "onLoad",
+        "formatter": "humanDuration",
+        "docsPath": "/docs/metrics/metrics-guide#historical-deprecated-metrics"
+      },
+      {
+        "name": "firstRender",
+        "label": "First Paint",
+        "formatter": "humanDuration",
+        "docsPath": "/docs/metrics/paint-based-metrics#first-paint-fp"
+      },
+      {
+        "name": "first-meaningful-paint",
+        "label": "First Meaningful Paint",
+        "formatter": "humanDuration",
+        "docsPath": "/docs/metrics/paint-based#first-meaningful-paint-fmp-deprecated"
+      },
+      {
+        "name": "visually_complete_85",
+        "label": "85% Visually Complete",
+        "formatter": "humanDuration",
+        "docsPath": "/docs/metrics/paint-based#visually-complete-85-deprecated"
+      },
+      {
+        "name": "first-interactive",
+        "label": "First CPU Idle",
+        "formatter": "humanDuration",
+        "docsPath": "/docs/metrics/metrics-guide#runtime"
+      },
+      {
+        "name": "lighthouse-pwa-score",
+        "label": "Lighthouse Progressive Web App Score",
+        "formatter": "gradeScore",
+        "docsPath": "/docs/metrics/metrics-guide#lighthouse-scores"
+      }
+    ]
+  },
+  "scores": {
+    "performance": 70,
+    "accessibility": 84
+  },
+  "analysis_date": "2025-10-10T17:07:46.194046"
+}

@@ -1,0 +1,67 @@
+{% comment %}Add to Cart Form{% endcomment %}
+
+{% comment %}
+  Set current variant here so it's consistent:
+{% endcomment %}
+{% assign current_variant = product.selected_or_first_available_variant %}
+
+<form action="/cart/add" class="bg-white pb-4 bxl:w-37%" js-buy-box data-index="{{ index }}">
+  <div class="px-6 bxl:px-0 bxl:w-full bxl:max-w-112 transition-opacity opacity-1">
+    <div class="bxl:pl-10">
+
+      {% comment %}
+        Product Info (title, price, etc)
+      {% endcomment %}
+      <div class="text-center bxl:text-left">
+      {% render 'custom-product-buy-box-info'
+          product: product,
+          index: index,
+          current_variant: current_variant %}
+      </div>
+
+      {% comment %}
+        Features
+      {% endcomment %}
+      {% render 'feature-accordion', product: product %}
+
+      {% comment %}
+        Variant (size) selection:
+        Note: color is not supported
+      {% endcomment %}
+      {% render 'custom-buy-box-option-group',
+        product: product,
+        current_variant: current_variant %}
+
+      {% comment %}
+        Add To Cart + variant ID:
+      {% endcomment %}
+      <div class="w-full flex align-stretch justify-center">
+        {% render 'custom-quantity-selector' %}
+        <button type="submit" name="add" data-add-to-cart disabled
+        class="button-primary-lg p-4 w-full text-special uppercase font-sora font-semibold tracking-normal max-w-none shrink disabled">Unavailable</button>
+        <input type="hidden" name="id" value="{{ current_variant.id }}" />
+
+        {% comment %}
+          Custom product properties:
+            - These are all final sale:
+        {% endcomment %}
+        <input type="hidden" name="properties[_LPROP]" value="Final Sale" />
+        <input type="hidden" name="properties[_customProduct]" value="true" />
+        <input type="hidden" name="properties[_group_order]" value="{{ product.metafields.custom.group_order | default: '' }}" />
+        <input type="hidden" name="properties[_group_segment]" value="{{ current_variant.metafields.custom.group_segment | default: '' }}" />
+
+        {% comment %}
+          Custom Preorder:
+          (only assigned if child product has customPreorder tag)
+        {% endcomment %}
+        <input type="hidden" name="properties[_preorder_message]" value="{{ product.metafields.custom.preorder_message | default: preorder_message }}" />
+      </div>
+
+      {% comment %}
+        Value callouts:
+      {% endcomment %}
+      {% render 'value-callouts', product: product %}
+
+    </div>
+  </div>
+</form>

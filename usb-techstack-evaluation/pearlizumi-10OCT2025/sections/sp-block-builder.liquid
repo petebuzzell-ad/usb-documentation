@@ -1,0 +1,394 @@
+{% comment %}
+  © Sections Pro. You are free to use this section in your store. You may not redistribute this section in another Shopify app.
+{% endcomment %}
+
+{% assign short_id = section.id | slice: -10, 10 %}
+
+<style>
+  #spro-{{ section.id }} {
+    overflow: inherit;
+  }
+
+  #spro-{{ section.id }} {
+      background-image: {{ section.settings.section_background_color }};
+      {% if section.settings.section_background_image %}
+          background: {% if section.settings.section_background_image_color %}{{ section.settings.section_background_image_color }}{%endif%} url({{ section.settings.section_background_image | image_url }});
+          background-repeat: no-repeat;
+          background-position: center;
+          width: 100%;
+          background-size: {{ section.settings.section_background_size }};
+      {% endif %}
+      width: 100%;
+      box-sizing: border-box;
+      padding: {{ section.settings.section_padding_top_bottom }}px {{ section.settings.section_padding_left_right }}px;
+      overflow: hidden;
+  }
+
+  {% if section.settings.mobile_section_background_image %}
+  @media (max-width: 800px) {
+    #spro-{{ section.id }} {
+          background: {% if section.settings.mobile_section_background_image_color %}{{ section.settings.mobile_section_background_image_color }}{%endif%} url({{ section.settings.mobile_section_background_image | image_url }});
+          background-repeat: no-repeat;
+          background-position: center;
+          width: 100%;
+          background-size: {{ section.settings.mobile_section_background_size }};
+    }
+  }
+  {% endif %}
+
+  @media (max-width: 800px) {
+      #spro-{{ section.id }} {
+        padding: {{ section.settings.mobile_section_padding_top_bottom }}px {{ section.settings.mobile_section_padding_left_right }}px;
+      }
+  }
+
+  {% if section.settings.show_on_device == 'mobile' %}
+    @media (min-width: 801px) {
+        #spro-{{ section.id }} {
+            display: none;
+        }
+    }
+  {% endif %}
+
+  {% if section.settings.show_on_device == 'desktop' %}
+    @media (max-width: 800px) {
+        #spro-{{ section.id }} {
+            display: none;
+        }
+    }
+  {% endif %}
+
+  #spro-{{ section.id }} .spro-container {
+      position: relative;
+      margin: 0 auto;
+      background-image: {{ section.settings.container_background_color }};
+      border-radius: {{ section.settings.container_radius }}px;
+      {% if section.settings.container_shadow %}box-shadow: 0 0 5px 0 rgba(0,0,0,0.20);{% endif %}
+      border: {{ section.settings.container_border_size }}px solid {{ section.settings.container_border_color }};
+      max-width: {{ section.settings.container_max_width }}px;
+      padding: {{ section.settings.container_padding_top_bottom }}px {{ section.settings.container_padding_left_right }}px;
+  }
+
+  @media (max-width: 800px) {
+      #spro-{{ section.id }} .spro-container {
+      padding: {{ section.settings.mobile_container_padding_top_bottom }}px {{ section.settings.mobile_container_padding_left_right }}px;
+      }
+  }
+
+    /* cols container */
+    #spro-{{ section.id }} .spro-grid {
+      display: block;
+      margin: 0;
+      padding: 0;
+      align-items: {{ section.settings.vertical_alignment }};
+    }
+
+    #spro-{{ section.id }} .spro-grid {
+      gap: {{ section.settings.grid_gap}}px;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media only screen and (min-width: 801px) {
+      #spro-{{ section.id }} .spro-grid:has(.sprob-col) {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+    }
+
+    /* Small devices (tablets, 768px and up) */
+    @media (max-width: 800px) {
+        #spro-{{ section.id }} .spro-grid {
+            display: block;
+        }
+
+        #spro-{{ section.id }} .spro-grid .sprob-col {
+          display: block;
+          margin: 0 0 {{ section.settings.grid_gap}}px 0;
+        }
+
+        #spro-{{ section.id }} .spro-grid .sprob-col:last-child {
+          margin: 0;
+        }
+    }
+
+    /* block gap */
+    #spro-{{ section.id }} .spro-grid>.shopify-block {
+      margin: 0 0 {{ section.settings.content_gap }}px 0;
+    }
+
+    #spro-{{ section.id }} .spro-grid>.shopify-block:last-child {
+      margin: 0 0 {{ section.settings.content_gap }}px 0;
+    }
+
+    #spro-{{ section.id }} .sprob-col>div {
+      margin: 0 0 {{ section.settings.content_gap }}px 0;
+    }
+
+    #spro-{{ section.id }} .sprob-col>div:last-child {
+      margin: 0;
+    }
+</style>
+
+<div id="spro-{{ section.id }}" class="spro-section{% if section.settings.section_custom_class %} {{ section.settings.section_custom_class }}{% endif %}" spro-section>
+  <div class="spro-container" spro-container>
+    <div class="spro-grid">
+      {% content_for 'blocks' %}
+    </div>
+    <!-- /.spro-grid -->
+  </div>
+  <!-- /.spro-container -->
+</div>
+<!-- /.spro-section -->
+
+{% schema %}
+{
+  "name": "🚀 Block Builder",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Design",
+      "info": "Set the design for the section"
+    },
+    {
+      "type": "select",
+      "id": "show_on_device",
+      "label": "Show Section",
+      "options": [
+        {
+          "value": "all",
+          "label": "All Devices"
+        },
+        {
+          "value": "mobile",
+          "label": "Mobile Only"
+        },
+        {
+          "value": "desktop",
+          "label": "Desktop Only"
+        }
+      ],
+      "default": "all"
+    },
+    {
+      "type": "color_background",
+      "id": "section_background_color",
+      "default": "linear-gradient(127deg, rgba(241, 246, 251, 1) 11%, rgba(241, 246, 251, 1) 81%)",
+      "label": "Background Color"
+    },
+    {
+        "type": "paragraph",
+        "content": "Set the Background Image (optional)"
+    },
+    {
+      "type": "image_picker",
+      "id": "section_background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "color",
+      "id": "section_background_image_color",
+      "label": "Background Image Color"
+    },
+    {
+      "type": "select",
+      "id": "section_background_size",
+      "default": "cover",
+      "label": "Background Image Size",
+      "options": [
+        {
+          "value": "auto",
+          "label": "Auto"
+        },
+        {
+          "value": "cover",
+          "label": "Cover"
+        },
+        {
+          "value": "contain",
+          "label": "Contain"
+        }
+      ]
+    },
+    {
+        "type": "paragraph",
+        "content": "Set the Mobile Background Image (optional)"
+    },
+    {
+        "type": "image_picker",
+        "id": "mobile_section_background_image",
+        "label": "Mobile Background Image"
+    },
+    {
+        "type": "color",
+        "id": "mobile_section_background_image_color",
+        "label": "Mobile Background Image Color"
+    },
+    {
+        "type": "select",
+        "id": "mobile_section_background_size",
+        "default": "cover",
+        "label": "Mobile Background Image Size",
+        "options": [
+          {
+            "value": "auto",
+            "label": "Auto"
+          },
+          {
+            "value": "cover",
+            "label": "Cover"
+          },
+          {
+            "value": "contain",
+            "label": "Contain"
+          }
+        ]
+    },
+    {
+      "type": "number",
+      "id": "section_padding_top_bottom",
+      "default": 25,
+      "label": "Padding Top/Bottom"
+    },
+    {
+      "type": "number",
+      "id": "mobile_section_padding_top_bottom",
+      "default": 25,
+      "label": "Mobile Padding Top/Bottom"
+    },
+    {
+      "type": "number",
+      "id": "section_padding_left_right",
+      "default": 25,
+      "label": "Padding Left/Right"
+    },
+    {
+      "type": "number",
+      "id": "mobile_section_padding_left_right",
+      "default": 25,
+      "label": "Mobile Padding Left/Right"
+    },
+    {
+      "type": "text",
+      "id": "section_custom_class",
+      "label": "Custom CSS Class"
+    },
+    {
+      "type": "header",
+      "content": "Container Design",
+      "info": "Set the design for your inner container"
+    },
+    {
+      "type": "color_background",
+      "id": "container_background_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "number",
+      "id": "container_max_width",
+      "default": 1000,
+      "label": "Max Width"
+    },
+    {
+      "type": "number",
+      "id": "container_padding_top_bottom",
+      "default": 10,
+      "label": "Padding Top/Bottom"
+    },
+    {
+      "type": "number",
+      "id": "mobile_container_padding_top_bottom",
+      "default": 10,
+      "label": "Mobile Padding Top/Bottom"
+    },
+    {
+      "type": "number",
+      "id": "container_padding_left_right",
+      "default": 10,
+      "label": "Padding Left/Right"
+    },
+    {
+      "type": "number",
+      "id": "mobile_container_padding_left_right",
+      "default": 10,
+      "label": "Mobile Padding Left/Right"
+    },
+    {
+      "type": "range",
+      "id": "container_radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Round Borders on Container",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "container_shadow",
+      "default": false,
+      "label": "Subtle Shadow on Container"
+    },
+    {
+      "type": "range",
+      "id": "container_border_size",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Border Size on Container",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "container_border_color",
+      "default": "#888",
+      "label": "Border Color on Container"
+    },
+    {
+      "type": "header",
+      "content": "Grid Design",
+      "info": "Set the design for the grid"
+    },
+    {
+      "type": "number",
+      "id": "grid_gap",
+      "default": 20,
+      "label": "Gap Between Columns"
+    },
+    {
+      "type": "number",
+      "id": "content_gap",
+      "default": 10,
+      "label": "Gap Between Blocks"
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment",
+      "label": "Vertical Alignment",
+      "options": [
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "start",
+          "label": "Top"
+        },
+        {
+          "value": "end",
+          "label": "Bottom"
+        }
+      ],
+      "default": "start"
+    }
+  ],
+  "blocks": [{ "type": "@theme" }, { "type": "@app" }],
+  "presets": [
+    {
+      "name": "🚀 Block Builder"
+    }
+  ]
+}
+{% endschema %}

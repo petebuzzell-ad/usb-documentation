@@ -1,0 +1,357 @@
+{%- if storefront == "US" -%}
+  {% assign store_url = "https://pearlizumi.com/" %}
+{%- elsif storefront == "CA" -%}
+  {% assign store_url = "https://pearlizumi.ca/" %}
+{%- elsif storefront == "INT" -%}
+  {% assign store_url = "https://international.pearlizumi.com/" %}
+{%- endif -%}
+
+{% assign social_type = 'website' %}
+{% assign social_title = page_title | strip_html %}
+{% assign social_description = page_description | strip_html | escape %}
+{% assign social_image = '//cdn.shopify.com/s/files/1/0518/9405/9179/files/Social_image_request-01_bcb854fd-4ab3-49cd-a755-55775d9c58df.png?v=1632157843' %}
+
+{% if template contains 'product' %}
+  {% assign social_type = 'product' %}
+  {% assign social_title = product.title | strip_html %}
+  {% assign social_price = product.price | money_without_currency | strip_html | escape %}
+  {% assign social_currency = shop.currency %}
+  {% if product.featured_image %}
+    {% assign social_product_img = current_variant.featured_image | default: product.featured_image %}
+    {% assign social_image = social_product_img | img_url: '1024x' %}
+  {% endif %}
+{% elsif template contains 'collection' %}
+  {%- liquid
+    if collection
+      assign collection_parent = 'All'
+      assign collection_parent_url = 'collections/all'
+      if collection.metafields["global"]["custom_parent_collection"] != blank
+        assign collection_parent = collection.metafields["global"]["custom_parent_collection"]
+        assign collection_parent_url = collection.metafields["global"]["custom_parent_url"] | default: 'collections/all-products'
+      elsif collection.handle contains 'womens'
+        assign collection_parent = "Women's"
+        assign collection_parent_url = 'collections/womens'
+      elsif collection.handle contains 'mens'
+        assign collection_parent = "Men's"
+        assign collection_parent_url = 'collections/mens'
+      elsif collection.handle contains 'kids'
+        assign collection_parent = "Kid's"
+        assign collection_parent_url = 'collections/kids'
+      endif
+    endif
+  -%}
+  {% if collection.description != blank %}
+    {% assign social_description = collection.description | strip_html | escape %}
+  {% endif %}
+  {% if collection.image %}
+    {% assign social_image = collection.image | img_url: 'master' %}
+  {% endif %}
+{% elsif template contains 'blog' %}
+  {% for article in blog.articles %}
+    {% if article.image %}
+      {% assign social_image = article.image | img_url: 'master' %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% elsif template contains 'article' %}
+  {% assign social_type = 'article' %}
+  {% assign img_tag = '<' | append: 'img' %}
+  {% if article.image %}
+    {% assign social_image = article.image | img_url: 'master' %}
+  {% elsif article.content contains img_tag %}
+    {% assign src = article.content | split: 'src="' %}
+    {% assign src = src[1] | split: '"' | first | remove: 'https:' | remove: 'http:' %}
+    {% assign social_image = src %}
+  {% endif %}
+{% endif %}
+
+{% if social_title contains '"' %}
+  {% assign social_title = social_title | escape %}
+{% endif %}
+
+{% if template contains 'index' %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "PEARL iZUMi",
+      "url": "https://pearlizumi.com/",
+      "logo": "https://cdn.shopify.com/s/files/1/0518/9405/9179/files/Social_image_request-01_bcb854fd-4ab3-49cd-a755-55775d9c58df.png?v=1632157843",
+      "image": "https://i.shgcdn.com/3de6bf59-9758-4874-ad66-6c01ef0ab66f/-/format/auto/-/preview/3000x3000/-/quality/lighter/",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Louisville",
+        "addressRegion": "CO",
+        "addressCountry": "US",
+        "postalCode": "80027",
+        "streetAddress": "101 S Taylor Ave."
+      },
+      "email": "info@pearlizumi.com",
+      "telephone": "800-328-8488",
+      "description": "Order high-quality cycling clothing at PEARL iZUMi. From cycling jerseys and shorts to bike shoes and accessories, you'll find everything you need for comfort, performance, and style on every ride.",
+      "sameAs": [
+        "https://www.instagram.com/pearlizumiofficial/?hl=en",
+        "https://www.facebook.com/pearlizumicycling",
+        "https://www.linkedin.com/company/pearl-izumi/",
+        "https://www.pinterest.com/pearlizumi",
+        "https://www.x.com/pearlizumi",
+        "https://www.youtube.com/pearlizumi"
+      ]
+    }
+  </script>
+{% endif %}
+{% if template contains 'collection' %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "{{ collection_parent }}",
+        "item": "{{store_url}}{{ collection_parent_url }}"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "{{ collection.title }}",
+        "item": "{{canonical_url}}"
+      }]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": {{ collection.title | json }},
+      "description": {{ collection.description | strip_html | escape | json }},
+      "url": {{ canonical_url | json }},
+      "mainEntity": {
+        "@type": "ItemList",
+        "numberOfItems": {{ collection.products_count }},
+        "itemListElement": [
+          {% for product in collection.products limit: 16 %}
+            {
+              "@type": "Product",
+              "name": {{ product.title | json }},
+              "image": {{ product.featured_image | image_url: width: 1000 | json }},
+              "description": {{ product.description | strip_html | escape | json }},
+              "offers": {
+                "@type": "Offer",
+                "sku": {{ product.selected_or_first_available_variant.sku | json }},
+                "availability": {{ product.available | json }},
+                "price": {{ product.price | divided_by: 100.0 | json }},
+                "priceCurrency": {{ cart.currency.iso_code | json }},
+                "url": {{ product.url | prepend: shop.url | json }}
+              }
+            }{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        ]
+      }
+    }
+    </script> 
+  {% endif %}
+
+  {% if template contains 'product' %}
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Brand",
+          "name": "PEARL iZUMi"
+        },
+        "offers": [{
+          "@type": "Offer",
+          "sku": {{ product.selected_or_first_available_variant.sku | json }},
+          "availability": {{ product.available | json }},
+          "price": {{ product.price | divided_by: 100.0 | json }},
+          "priceCurrency": {{ cart.currency.iso_code | json }},
+          "url": {{ product.url | prepend: shop.url | json }}
+        }]
+    </script>
+  {% endif %}
+
+
+{% if page.handle == 'technology' %}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "WebPage",
+    "name": "HIGH-TECH GEAR FOR YEAR-ROUND PERFORMANCE",
+    "url": "https://www.pearlizumi.com/pages/technology",
+    "description": "TECHNOLOGY HIGH-TECH GEAR FOR YEAR-ROUND PERFORMANCE TECHNOLOGY HIGH-TECH GEAR FOR YEAR-ROUND PERFORMANCE The weather may be unpredictable, but your dedication to riding never wavers, whether it’s cold, hot, or anything in between. Our team of engineers and designers is dedicated to creating technical gear that ensures",
+    "provider": {
+      "@type": "Organization",
+      "name": "PEARL iZUMi"
+    }
+  }
+  </script>  
+{% endif %}
+
+{% if article.handle == 'pearl-izumi-journal/off-season-training-guide' %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.pearlizumi.com/blogs/pearl-izumi-journal/off-season-training-guide"
+      },
+      "headline": "Off-Season Training Guide",
+      "description": "You might have heard the terms “in-season” and “off-season.” As they suggest, there’s an ideal season for cycling, training, and racing—and then there’s winter. And though the days are getting longer, the tail end of fickle winter weather can take a toll on our moods, energy levels, and our training schedules. Whether",
+      "image": "https://www.pearlizumi.com/cdn/shop/articles/backup-article-561763418283_516af801-813f-456b-80a9-6b0cfa7bd97c_1440x@2x.jpg?v=1708547539",  
+      "author": {
+        "@type": "Organization",
+        "name": "PEARL iZUMi",
+        "url": "https://www.pearlizumi.com/blogs/pearl-izumi-journal"
+      },  
+      "publisher": {
+        "@type": "Organization",
+        "name": "PEARL iZUMi",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://cdn.shopify.com/s/files/1/0518/9405/9179/files/Social_image_request-01_bcb854fd-4ab3-49cd-a755-55775d9c58df.png?v=1632157843"
+        }
+      },
+      "datePublished": "2024-02-12T00:00:00Z",
+      "dateModified": "2024-02-12T00:00:00Z"
+    }
+  </script>
+{% endif %}
+
+{% if page.handle == 'our-history' %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["Organization", "AboutPage"],
+      "name": "Explore the Legacy of PEARL iZUMi Cycling Innovation | PEARL iZUMi",
+      "url": "https://www.pearlizumi.com/pages/our-history",
+      "logo": "https://cdn.shopify.com/s/files/1/0518/9405/9179/files/Social_image_request-01_bcb854fd-4ab3-49cd-a755-55775d9c58df.png?v=1632157843",
+      "image": "https://i.shgcdn.com/ecfb9785-a929-4e19-ba46-4a331426ff59/-/format/auto/-/preview/3000x3000/-/quality/lighter/-/resize/1200x/",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Louisville",
+        "addressRegion": "CO",
+        "addressCountry": "US",
+        "postalCode": "80027",
+        "streetAddress": "101 S Taylor Ave."
+      },
+      "email": "info@pearlizumi.com",
+      "telephone": "800-328-8488",
+      "description": "Kaizen – an approach of improving daily, always evolving and progressing, to create revolutionary outcomes over time – is what drove our founder, and what continues to drives us day in and day out to create gear that creates happier, drier, faster, warmer, and safer, more comfortable, and more confident riders.",
+      "foundingDate": "1950",
+      "numberOfEmployees": {
+        "@type": "QuantitativeValue",
+        "minValue": 51,
+        "maxValue": 200
+      },
+      "sameAs": [
+        "https://www.instagram.com/pearlizumiofficial/?hl=en",
+        "https://www.facebook.com/pearlizumicycling",
+        "https://www.linkedin.com/company/pearl-izumi/",
+        "https://www.pinterest.com/pearlizumi",
+        "https://www.x.com/pearlizumi",
+        "https://www.youtube.com/pearlizumi"
+      ]
+    }
+  </script>
+{% endif %}
+
+{% if page.handle == 'contact-us' %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["Organization", "ContactPage"],
+      "name": "Contact Us - Customer Support & Inquiries | PEARL iZUMi",
+      "url": "https://www.pearlizumi.com/pages/contact-us",
+      "logo": "https://cdn.shopify.com/s/files/1/0518/9405/9179/files/Social_image_request-01_bcb854fd-4ab3-49cd-a755-55775d9c58df.png?v=1632157843",
+      "image": "https://i.shgcdn.com/64b5bdcf-d61f-4f93-8d08-24b8381d27a0/-/format/auto/-/preview/3000x3000/-/quality/lighter/-/resize/1080x/",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Louisville",
+        "addressRegion": "CO",
+        "addressCountry": "US",
+        "postalCode": "80027",
+        "streetAddress": "101 S Taylor Ave."
+      },
+      "email": "info@pearlizumi.com",
+      "telephone": "800-328-8488",
+      "description": "Reach out to PEARL iZUMi for customer support, product inquiries, or feedback. Let us help you gear up for your next cycling adventure.",
+      "sameAs": [
+        "https://www.instagram.com/pearlizumiofficial/?hl=en",
+        "https://www.facebook.com/pearlizumicycling",
+        "https://www.linkedin.com/company/pearl-izumi/",
+        "https://www.pinterest.com/pearlizumi",
+        "https://www.x.com/pearlizumi",
+        "https://www.youtube.com/pearlizumi"
+      ]
+    }
+  </script>
+{% endif %}
+
+
+
+{% comment %}
+  Page-level Overrides
+
+  Override variable assignments below this
+  using `template contains` and similar operators.
+{% endcomment %}
+
+{%- comment %}</locksmith:3d5a>{% endcomment -%}
+<meta property="og:url" content="{{canonical_url}}">
+<meta property="og:site_name" content="{{shop.name}}">
+{%- comment %}<locksmith:f8ee>{% endcomment -%}
+  {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}
+  {% if var == 'true' %}<meta property="og:type" content="{{social_type | default: 'website'}}">{% endif -%}
+  {%- comment %}original: <meta property="og:type" content="{{social_type | default: 'website'}}">{%- endcomment %}
+{%- comment %}</locksmith:f8ee>{% endcomment -%}
+{%- comment %}<locksmith:1d8e>{% endcomment -%}
+  {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}
+  {% if var == 'true' %}<meta property="og:title" content="{{social_title | default: shop.name}}">{% endif -%}
+  {%- comment %}original: <meta property="og:title" content="{{social_title | default: shop.name}}">{%- endcomment %}
+{%- comment %}</locksmith:1d8e>{% endcomment -%}
+{%- comment %}<locksmith:8bc2>{% endcomment -%}
+  {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}
+  {% if var == 'true' %}<meta property="og:description" content="{{social_description | default: shop.name}}">{% endif -%}
+  {%- comment %}original: <meta property="og:description" content="{{social_description | default: shop.name}}">{%- endcomment %}
+{%- comment %}</locksmith:8bc2>{% endcomment -%}
+{%- comment %}<locksmith:ed61>{% endcomment -%}
+  {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}
+  {% if var == 'true' %}<meta property="og:image" content="http:{{social_image}}">{% endif -%}
+  {%- comment %}original: <meta property="og:image" content="http:{{social_image}}">{%- endcomment %}
+{%- comment %}</locksmith:ed61>{% endcomment -%}
+{%- comment %}<locksmith:302b>{% endcomment -%}
+  {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}
+  {% if var == 'true' %}<meta property="og:image:secure_url" content="https:{{social_image}}">{% endif -%}
+  {%- comment %}original: <meta property="og:image:secure_url" content="https:{{social_image}}">{%- endcomment %}
+{%- comment %}</locksmith:302b>{% endcomment -%}
+{% if social_price %}{%- comment %}<locksmith:31af>{% endcomment -%}{%- capture var %}{% render 'locksmith-variables', variable: 'access_granted' %}{% endcapture %}
+{% if var == 'true' %}<meta property="og:price:amount" content="{{social_price}}">{% endif -%}{%- comment %}original: <meta property="og:price:amount" content="{{social_price}}">{%- endcomment %}{%- comment %}</locksmith:31af>{% endcomment -%}{% endif %}
+{% if social_currency %}{%- comment %}<locksmith:6a9d>{% endcomment -%}{%- capture var %}{% render 'locksmith-variables', variable: 'access_granted' %}{% endcapture %}
+{% if var == 'true' %}<meta property="og:price:currency" content="{{social_currency}}">{% endif -%}{%- comment %}original: <meta property="og:price:currency" content="{{social_currency}}">{%- endcomment %}{%- comment %}</locksmith:6a9d>{% endcomment -%}{% endif %}
+
+{%- comment %}<locksmith:6f29>{% endcomment -%}
+  {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}
+  {% if var == 'true' %}<meta name="twitter:title" content="{{social_title | default: shop.name}}">{% endif -%}
+  {%- comment %}original: <meta name="twitter:title" content="{{social_title | default: shop.name}}">{%- endcomment %}
+{%- comment %}</locksmith:6f29>{% endcomment -%}
+{%- comment %}<locksmith:2afd>{% endcomment -%}
+  {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}
+  {% if var == 'true' %}<meta name="twitter:description" content="{{social_description | default: shop.name}}">{% endif -%}
+  {%- comment %}original: <meta name="twitter:description" content="{{social_description | default: shop.name}}">{%- endcomment %}
+{%- comment %}</locksmith:2afd>{% endcomment -%}
+<meta name="twitter:card" content="summary_large_image">
+{%- comment %}<locksmith:05e5>{% endcomment -%}
+  {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}
+  {% if var == 'true' %}<meta name="twitter:image" content="https:{{social_image}}">{% endif -%}
+  {%- comment %}original: <meta name="twitter:image" content="https:{{social_image}}">{%- endcomment %}
+{%- comment %}</locksmith:05e5>{% endcomment -%}
+{%- comment %}<locksmith:ab17>{% endcomment -%}
+  {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}
+  {% if var == 'true' %}<meta name="twitter:image:width" content="480">{% endif -%}
+  {%- comment %}original: <meta name="twitter:image:width" content="480">{%- endcomment %}
+{%- comment %}</locksmith:ab17>{% endcomment -%}
+{%- comment %}<locksmith:ff01>{% endcomment -%}
+  {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}
+  {% if var == 'true' %}<meta name="twitter:image:height" content="480">{% endif -%}
+  {%- comment %}original: <meta name="twitter:image:height" content="480">{%- endcomment %}
+{%- comment %}</locksmith:ff01>{% endcomment -%}

@@ -1,0 +1,48 @@
+{% liquid
+  assign active_link = ''
+  if template.directory == 'customers'
+    if template.name == 'account' or template.name == 'order'
+      if view_tab == 'order'
+        assign active_link = 'order'
+      else
+        assign active_link = 'profile'
+      endif
+    elsif template.name == 'addresses'
+      assign active_link = 'address'
+    endif
+  endif
+%}
+
+<div class="hidden lg:block lg:w-1/6 lg:px-3">
+  <ul class="list-none lg:py-2">
+    {% if is_member %}
+      <li class="relative group px-4 py-3 mb-5 leading-5 overflow-y-hidden">
+        <a href="/account" class="font-sora font-semibold text-special-s text-black uppercase">{{ 'customer.account.profile_link' | t }}</a>
+        <span class="absolute left-0 w-1 h-full bg-lush transition-all duration-300 ease-in-out hidden lg:block{% if active_link == 'profile' %} top-0{% else %} -top-full group-hover:top-0{% endif %}"></span>
+      </li>
+    {% endif %}
+    <li class="relative group px-4 py-3 mb-5 leading-5 overflow-y-hidden">
+      <a href="/account{% if is_member %}?view_tab=order{% endif %}" class="font-sora font-semibold text-special-s text-black uppercase">{{ 'customer.account.history_link' | t }}</a>
+      <span class="absolute left-0 w-1 h-full bg-lush transition-all duration-300 ease-in-out hidden lg:block{% if active_link == 'order' %} top-0{% else %} -top-full group-hover:top-0{% endif %}"></span>
+    </li>
+    <li class="relative group px-4 py-3 mb-5 leading-5 overflow-y-hidden">
+      <a href="/account/addresses" class="font-sora font-semibold text-special-s text-black uppercase">{{ 'customer.account.addresses_link' | t }}</a>
+      <span class="absolute left-0 w-1 h-full bg-lush transition-all duration-300 ease-in-out hidden lg:block{% if active_link == 'address' %} top-0{% else %} -top-full group-hover:top-0{% endif %}"></span>
+    </li>
+    <li class="relative group px-4 py-3 mb-5 leading-5 overflow-y-hidden">
+      <a href="/account/logout" class="font-sora font-semibold text-special-s text-black uppercase">{{ 'customer.account.sign_out_link' | t }}</a>
+      <span class="absolute left-0 w-1 h-full bg-lush transition-all duration-300 ease-in-out -top-full group-hover:top-0 hidden lg:block"></span>
+    </li>
+  </ul>
+</div>
+
+<div class="p-0 lg:hidden">
+  <select selected="/account" name="accountNavMobile" id="accountNavMobile" onchange="eHS.mobileAccountNavigation.mobileNavHandler(event)">
+    {% if is_member %}
+      <option value="/account"{% if active_link == 'order' %} selected{% endif %}>{{ 'customer.account.profile_link' | t }}</option>
+    {% endif %}
+    <option value="/account{% if is_member %}?view_tab=order{% endif %}"{% if active_link == 'order' %} selected{% endif %}>{{ 'customer.account.history_link' | t }}</option>
+    <option value="/account/addresses"{% if active_link == 'address' %} selected{% endif %}>{{ 'customer.account.addresses_link' | t }}</option>
+    <option value="/account/logout">{{ 'customer.account.sign_out_link' | t }}</option>
+  </select>
+</div>

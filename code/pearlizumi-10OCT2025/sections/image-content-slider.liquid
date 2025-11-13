@@ -1,0 +1,228 @@
+{% liquid
+  if section.settings.slider_style == 'light'
+    assign text_block_bg_class_1 = 'bg-light-sand'
+    assign text_block_bg_class_2 = 'bg-sand'
+    assign text_block_color_class = 'text-black'
+    assign slider_btn_class = 'button-slider-nav-light'
+  endif
+  if section.settings.slider_style == 'dark'
+    assign text_block_bg_class_1 = 'bg-stone'
+    assign text_block_bg_class_2 = 'bg-dark-stone'
+    assign text_block_color_class = 'text-white'
+    assign slider_btn_class = 'button-slider-nav-dark'
+  endif
+  assign mb_class = 'mb-0'
+  if section.settings.enable_bottom_margin
+    assign mb_class = 'mb-20 md:mb-40'
+  endif
+  assign slider_nav = ""
+%}
+<div data-section-id="{{ section.id }}" data-section-type="image-content-slider" id="section-{{ number }}" class="clp-slider relative overflow-hidden {{ mb_class }}">
+  <div class="image-content-slider md:w-full overflow-x-visible">
+    <div class="glide__track" data-glide-el="track">
+      <div class="glide__slides w-full">
+        {% for i in (1..5) %}
+          {% assign key_image = 'image_' | append: i %}
+          {% assign key_subtitle = 'subtitle_' | append: i %}
+          {% assign key_title = 'title_' | append: i %}
+          {% assign key_text = 'text_' | append: i %}
+          {% unless section.settings[key_image] == blank and section.settings[key_subtitle] == blank and section.settings[key_title] == blank and section.settings[key_text] == blank %}
+            <div class="glide__slide w-full md:flex md:flex-wrap">
+              <div class="w-full md:w-1/2">
+                {% if section.settings[key_image] != blank %}
+                  <div class="image-content-slider__image relative">
+                    <img class="lazy absolute inset-0 w-full h-full object-cover" data-src="{{ section.settings[key_image] | img_url: 'master' }}" alt="{{ section.settings[key_image].alt | escape }}" />
+                  </div>
+                {% endif %}
+              </div>
+              <div class="w-full md:w-1/2 {% cycle text_block_bg_class_1, text_block_bg_class_2 %}">
+                <div class="max-w-600 pt-10 px-6 pb-22 md:py-55 md:pl-27.5 xl:pr-0">
+                  {% if section.settings[key_subtitle] != blank %}
+                    <p class="font-sora font-normal text-special uppercase {{ text_block_color_class }} mb-0">{{ section.settings[key_subtitle] }}</p>
+                  {% endif %}
+                  {% if section.settings[key_title] != blank %}
+                    <h3 class="uppercase {{ text_block_color_class }} mt-4 mb-0">{{ section.settings[key_title] }}</h3>
+                  {% endif %}
+                  {% if section.settings[key_text] != blank %}
+                    <p class="{{ text_block_color_class }} mt-6 mb-0 md:mt-8">{{ section.settings[key_text] }}</p>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            {% capture slider_nav %}
+              {{ slider_nav }}
+              <div class="glide__bullet mx-0.5 w-2 h-2 md:w-3 md:h-3 p-0.5 rounded-circle cursor-pointer" data-glide-dir="={{ forloop.index0 }}"><span class="block w-full h-full rounded-circle"></span></div>
+            {% endcapture %}
+          {% endunless %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="glide__bullets absolute bottom-4 w-full md:w-1/2 flex justify-center" data-glide-el="controls[nav]">
+      {{ slider_nav }}
+    </div>
+    <div class="glide__arrows hidden md:flex absolute w-1/2 right-0 bottom-30 pl-27.5" data-glide-el="controls">
+      <a href="#" class="glide__arrow glide__arrow--left button-slider-nav-{{ section.settings.slider_style }} w-12.5 h-12.5 mr-13.5 p-0 rounded-circle flex items-center justify-center" data-glide-dir="<">{% include 'svg-arrow-left' %}</a>
+      <a href="#" class="glide__arrow glide__arrow--right button-slider-nav-{{ section.settings.slider_style }} w-12.5 h-12.5 mr-0 p-0 rounded-circle flex items-center justify-center" data-glide-dir=">">{% include 'svg-arrow-right' %}</a>
+    </div>
+  </div>
+</div>
+{% if section.settings.slider_style == 'light' %}
+  <style>
+    .button-slider-nav-light {
+      background-color: rgba(255, 255, 255, 0.5);
+      color: #000;
+    }
+    .button-slider-nav-light:hover {
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+  </style>
+{% elsif section.settings.slider_style == 'dark' %}
+  <style>
+    .button-slider-nav-dark {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+    }
+    .button-slider-nav-dark:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  </style>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Image Content Slider",
+  "settings": [
+    {
+      "type": "select",
+      "id": "slider_style",
+      "label":"Slider Style (Light/Dark)",
+      "default": "light",
+      "options": [
+        {
+          "label": "Light",
+          "value": "light"
+        },
+        {
+          "label": "Dark",
+          "value": "dark"
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_1",
+      "label": "Subtitle 1",
+      "default": "Type something"
+    },
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "Title 1",
+      "default": "Type something"
+    },
+    {
+      "type": "text",
+      "id": "text_1",
+      "label": "Text 1",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_2",
+      "label": "Subtitle 2"
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "Title 2"
+    },
+    {
+      "type": "text",
+      "id": "text_2",
+      "label": "Text 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image 3"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_3",
+      "label": "Subtitle 3"
+    },
+    {
+      "type": "text",
+      "id": "title_3",
+      "label": "Title 3"
+    },
+    {
+      "type": "text",
+      "id": "text_3",
+      "label": "Text 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Image 4"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_4",
+      "label": "Subtitle 4"
+    },
+    {
+      "type": "text",
+      "id": "title_4",
+      "label": "Title 4"
+    },
+    {
+      "type": "text",
+      "id": "text_4",
+      "label": "Text 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_5",
+      "label": "Image 5"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_5",
+      "label": "Subtitle 5"
+    },
+    {
+      "type": "text",
+      "id": "title_5",
+      "label": "Title 5"
+    },
+    {
+      "type": "text",
+      "id": "text_5",
+      "label": "Text 5"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_bottom_margin",
+      "label": "Enable Bottom Margin",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Content Slider",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

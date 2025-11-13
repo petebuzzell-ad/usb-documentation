@@ -1,0 +1,22 @@
+{% liquid
+  assign bkgd_img = settings.bkgd_image
+  assign logo = settings.splash_logo
+  assign heading = settings.splash_heading
+  assign content = settings.splash_content
+%}
+<div id="splash-page" class="h-screen w-screen relative">
+  <img class="absolute w-full h-full object-cover block" src="{{ bkgd_img | img_url: '1920x' }}" alt="{{ bkgd_img.alt | escape }}" />
+  <div class="splash-box absolute z-1 text-center w-full lg:w-780 px-8 md:px-18 lg:px-0">
+    {% if logo != blank %}
+      <img class="mx-auto" src="{{ logo | img_url: '300x' }}" alt="{{ logo.alt | escape }}">
+    {% endif %}
+    {% if heading != blank %}
+      <h1 class="text-white text-h2 lg:text-h1 font-bold mt-6 lg:mt-8 mb-0 leading-45 lg:leading-56">{{ heading }}</h1>
+    {% endif %}
+    {% if content != blank %}
+      <div class="splash-content text-white mt-5 mx-auto lg:px-6 md:max-w-550">
+        {{ content }}
+      </div>
+    {% endif %}
+  </div>
+</div>

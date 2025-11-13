@@ -1,0 +1,64 @@
+{% liquid
+  assign mb_class = 'mb-0'
+  if block.settings.enable_bottom_margin
+    assign mb_class = 'mb-20 md:mb-40'
+  endif
+%}
+<style>
+  .category-filter-section + [data-section-type="full-cta"] {
+    margin-top: 0;
+  }
+  
+  .category-filter-section + [data-section-type="suggested-products"] {
+    margin-top: 160px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .category-filter-section + [data-section-type="suggested-products"] {
+      margin-top: 80px;
+    }
+  }
+</style>
+
+<div data-section-id="{{ block.id }}" data-section-type="category-filter" id="section-{{ number }}" class="category-filter-section relative mb-0">
+  <div class="bg-dark-stone px-0 md:px-5 overflow-hidden relative">
+    <div class="max-w-full mx-auto md:max-w-1200 xl:max-w-none">
+      <div class="flex flex-wrap -mx-2.5">
+        <div class="cat-filter-container w-full px-2.5 py-7 snap-x snap-mandatory lg:py-10 flex justify-start lg:justify-center">
+
+          {%- if block.settings.title_1 != blank and block.settings.link_1 != blank -%}
+            <a href="{{ block.settings.link_1 }}" class="cat-filter-child block text-white mx-4 uppercase {% if block.settings.link_1 == page.url %}selected{% endif %}">{{ block.settings.title_1 }}</a>
+          {%- endif -%}
+          {%- if block.settings.title_2 != blank and block.settings.link_2 != blank -%}
+            <a href="{{ block.settings.link_2 }}" class="cat-filter-child block text-white mx-4 uppercase {% if block.settings.link_2 == page.url %}selected{% endif %}">{{ block.settings.title_2 }}</a>
+          {%- endif -%}
+          {%- if block.settings.title_3 != blank and block.settings.link_3 != blank -%}
+            <a href="{{ block.settings.link_3 }}" class="cat-filter-child block text-white mx-4 uppercase {% if block.settings.link_3 == page.url %}selected{% endif %}">{{ block.settings.title_3 }}</a>
+          {%- endif -%}
+          {%- if block.settings.title_4 != blank and block.settings.link_4 != blank -%}
+            <a href="{{ block.settings.link_4 }}" class="cat-filter-child block text-white mx-4 uppercase {% if block.settings.link_4 == page.url %}selected{% endif %}">{{ block.settings.title_4 }}</a>
+          {%- endif -%}
+          {%- if block.settings.title_5 != blank and block.settings.link_5 != blank -%}
+            <a href="{{ block.settings.link_5 }}" class="cat-filter-child block text-white mx-4 uppercase {% if block.settings.link_5 == page.url %}selected{% endif %}">{{ block.settings.title_5 }}</a>
+          {%- endif -%}
+          {%- if block.settings.title_6 != blank and block.settings.link_6 != blank -%}
+            <a href="{{ block.settings.link_6 }}" class="cat-filter-child block text-white mx-4 uppercase {% if block.settings.link_6 == page.url %}selected{% endif %}">{{ block.settings.title_6 }}</a>
+          {%- endif -%}
+          {%- if block.settings.title_7 != blank and block.settings.link_7 != blank -%}
+            <a href="{{ block.settings.link_7 }}" class="cat-filter-child block text-white mx-4 uppercase {% if block.settings.link_7 == page.url %}selected{% endif %}">{{ block.settings.title_7 }}</a>
+          {%- endif -%}
+          {%- if block.settings.title_8 != blank and block.settings.link_8 != blank -%}
+            <a href="{{ block.settings.link_8 }}" class="cat-filter-child block text-white mx-4 uppercase {% if block.settings.link_8 == page.url %}selected{% endif %}">{{ block.settings.title_8 }}</a>
+          {%- endif -%}
+          {%- if block.settings.title_9 != blank and block.settings.link_9 != blank -%}
+            <a href="{{ block.settings.link_9 }}" class="cat-filter-child block text-white mx-4 uppercase {% if block.settings.link_9 == page.url %}selected{% endif %}">{{ block.settings.title_9 }}</a>
+          {%- endif -%}
+          {%- if block.settings.title_10 != blank and block.settings.link_10 != blank -%}
+            <a href="{{ block.settings.link_10 }}" class="cat-filter-child block text-white mx-4 uppercase {% if block.settings.link_10 == page.url %}selected{% endif %}">{{ block.settings.title_10 }}</a>
+          {%- endif -%}
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

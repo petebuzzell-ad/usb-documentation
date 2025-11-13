@@ -1,0 +1,93 @@
+{%- if blocks.size > 0 -%}
+  <div class="accordion-group product-accordion flex flex-col border-t-2 border-silver mb-10 mt-10 lg:mt-0">
+    {%- for block in blocks -%}
+      {%- liquid
+        assign technology_tag = 'TechnologyAccordion:' | append: block.settings.name
+        assign value = false
+        assign order = 1
+        assign scale = false
+
+        for tag in product_tags
+          if tag contains technology_tag
+            assign data = tag | split: '|'
+
+            if data.size > 1 and data[1] contains 'Order:'
+              assign order = data[1] | split: ':' | last
+            endif
+
+            assign value = data[0] | split: ':'
+
+            if value.size > 2
+              assign scale = value[2]
+              assign value = value[1]
+            else
+              assign value = value[1]
+            endif
+          endif
+        endfor
+
+        if scale
+          assign scale = scale | at_least: 1 | at_most: 10
+        endif
+
+        unless value
+          continue
+        endunless
+
+        if block.settings.icon_replacement != blank
+          assign icon_value = block.settings.icon_replacement | handleize
+        else 
+          assign icon_value = value | handleize
+        endif
+      -%}
+
+      <div class="border-b-2 border-silver order-{{ order }}">
+        <div
+          id="accordion_{{ value | handleize }}"
+          tabindex="0"
+          class="accordion flex items-center px-6 lg:px-16 py-3 lg:py-6 cursor-pointer"
+          onclick="eHS.theme.accordionHandler(event)">
+          <span class="tech-icon tech-icon__{{ icon_value }}"></span>
+          <p class="m-0 ml-5 lg:ml-8 flex-1 font-sora tracking-normal text-special-s font-semibold lg:font-bold lg:text-h6">{{ block.settings.name }}</p>
+          <div class="px-2 lg:px-5">
+            <span class="flex items-center justify-center w-5 lg:w-8 h-5 lg:h-8 rounded-full border-2 border-black">
+              {% render 'svg-plus', classes: 'p-1 w-5 h-5 collapsed' %}
+              {% render 'svg-minus', classes: 'w-5 h-5 opened' %}
+            </span>
+          </div>
+        </div>
+        <div class="overflow-hidden max-h-0 transition-max-height duration-500 ease-out">
+          <div class="lg:bg-faint-cloud grid grid-cols-1 lg:grid-cols-2 gap-4 px-6 lg:px-0">
+            <div>
+              {%- if block.settings.image != blank -%}
+                <img
+                  src="{{ block.settings.image | image_url }}"
+                  class="w-full min-h-full object-cover"
+                  alt="{{ block.settings.image.alt | default: block.settings.name }}"
+                  loading="lazy" />
+              {%- endif -%}
+            </div>
+            <div class="flex items-center justify-center pt-4 pb-12 lg:py-4">
+              <div class="lg:max-w-550">
+                <div class="w-full lg:max-w-122">
+                  <p class="m-0 font-sora text-special-s font-semibold lg:font-bold lg:text-h5">{{ block.settings.title }}</p>
+                  <div class="mt-3">{{ block.settings.description }}</div>
+                </div>
+
+                {%- if scale -%}
+                  <p class="text-s m-0">{{ block.settings.name }}</p>
+                  <div class="relative mt-2.5 h-1.5 bg-light-grey">
+                    <span
+                      class="absolute left-0 top-0 h-full bg-pine"
+                      style="width: {{ scale | times: 10 }}%;"
+                    ></span>
+                  </div>
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+{%- endif -%}

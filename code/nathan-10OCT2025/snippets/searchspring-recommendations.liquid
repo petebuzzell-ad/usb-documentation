@@ -1,0 +1,27 @@
+{%- comment -%}
+
+  Params:
+    - profile: 'home', '404', etc.
+    - cart: Shopify object -- used on the cart template
+    - product: Shopify object -- used on the PDP
+
+{%- endcomment -%}
+
+{% assign storefront = 'US' %}
+
+{%- if profile and storefront == 'US' -%}
+  {%- if profile == 'home' or profile == '404' -%}
+    <script type="searchspring/personalized-recommendations" profile="{{- profile -}}"></script>
+  {%- elsif profile == 'view-cart' and cart -%}
+    <script type="searchspring/personalized-recommendations" profile="view-cart">
+      seed = [];
+      {% for item in cart.items %}
+        seed.push('{{ item.product.variants[0].sku }}');
+      {% endfor %}
+    </script>
+  {%- elsif profile == 'customers-also-viewed' and product -%}
+    <script type="searchspring/personalized-recommendations" profile="customers-also-viewed">
+      seed = ['{{ product.variants[0].sku }}']
+    </script>
+  {%- endif -%}
+{%- endif -%}

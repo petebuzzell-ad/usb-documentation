@@ -1,0 +1,341 @@
+{% comment %}Don't show hidden products{% endcomment %}
+{% liquid
+  assign is_hidden = false
+  if product.template_suffix == 'hidden'
+    assign is_hidden = true
+  endif %}
+
+{% unless is_hidden %}
+
+{%- liquid
+  assign show_swatches = false
+  assign swatch_src_list = ''
+  assign swatch_color_list = ''
+
+  for image in product.media
+    if image.alt contains 'color_swatch'
+      assign swatch_src = image.src | img_url: '60x'
+      assign swatch_color = image.alt | split: ':' | last
+
+      assign swatch_src_list = swatch_src_list | append: ',' | append: swatch_src
+      assign swatch_color_list = swatch_color_list | append: ',' | append: swatch_color
+    endif
+  endfor
+
+  assign swatch_src_list = swatch_src_list | remove_first: ',' | split: ','
+  assign swatch_color_list = swatch_color_list | remove_first: ',' | split: ','
+-%}
+
+{%- assign color_label = 'color,colour,couleur,cor,colore,farbe,색,色,カラー,färg,farve,szín' | split: ',' -%}
+{%- assign colors_count = 0 -%}
+{%- assign color_option = nil -%}
+{%- for option in product.options_with_values -%}
+  {%- assign downcased_option = option.name | downcase -%}
+  {%- if color_label contains downcased_option -%}
+    {%- assign colors_count = option.values.size -%}
+    {%- assign color_option = option -%}
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- assign gendered = false -%}
+{%- if collection != blank and collection.metafields["global"]["gendered_collection"] != blank -%}
+  {%- capture gender_alt -%}gender:{{collection.metafields["global"]["gendered_collection"]}}
+  {%- endcapture -%}
+  {%- assign gendered = true -%}
+{%- endif -%}
+
+{%- assign current_variant = product.first_available_variant -%}
+{%- assign current_variant_color = current_variant.option1 -%}
+
+{% liquid
+  assign promo_text = ''
+  assign promo_messages = settings.promo_messages | newline_to_br | split: '<br />'
+  for tag in product.tags
+    if tag contains 'promo:'
+      for message in promo_messages
+        if message contains tag
+          assign promo_text = message | remove: tag | remove: '||'
+        endif
+      endfor
+    endif
+  endfor
+  if promo_text == blank
+    if product.metafields["global"]["prd_promotion_text"] != blank
+      assign promo_text = product.metafields["global"]["prd_promotion_text"]
+    elsif current_variant.metafields["global"]["promo_text"] != blank
+      assign promo_text = current_variant.metafields["global"]["promo_text"]
+    endif
+  endif
+%}
+
+{% liquid
+  assign pro_price = false
+  if customer
+    comment
+      check if the customer is a Pro member
+    endcomment
+    assign discount_tag = false
+    assign limit_tag = false
+    for tag in customer.tags
+      if tag contains "discount-"
+        assign discount_tag = tag | remove: "discount-" | plus: 0
+      endif
+      if tag contains "limit-"
+        assign limit_tag = tag | remove: "limit-" | plus: 0
+      endif
+    endfor
+  endif
+
+  if product.first_available_variant != blank
+    assign prod_price = product.first_available_variant.price
+    assign prod_c_price = product.first_available_variant.compare_at_price
+  else
+    assign prod_price = product.variants[0].price
+    assign prod_c_price = product.variants[0].compare_at_price
+  endif
+
+  if prod_price < prod_c_price
+    assign sale = true
+  else
+    assign sale = false
+  endif
+
+  if discount_tag and limit_tag
+    if prod_c_price and prod_c_price > prod_price
+      assign display_price = prod_c_price | money_without_currency
+    else
+      assign display_price = prod_price | money_without_currency
+    endif
+    assign pro_price = 100.00 | minus: discount_tag | times: display_price
+  endif
+%}
+
+{%- assign fav_image = nil -%}
+{%- assign main_image = nil -%}
+{%- assign second_image = nil -%}
+{%- assign men_image = nil -%}
+{%- assign women_image = nil -%}
+{%- assign men_hover_image = nil -%}
+{%- assign women_hover_image = nil -%}
+{%- for image in product.images -%}
+
+  {% if current_variant_color != blank and image.alt contains current_variant_color and image.alt contains 'view:SKU Image Primary' %}
+    {%- assign fav_image = image -%}
+  {% elsif image.alt contains 'view:SKU Image Primary' %}
+    {%- assign main_image = image -%}
+  {% endif %}
+
+  {%- if image.alt contains 'hover_image' -%}
+    {%- if second_image != blank -%}
+      {%- if gender_alt != blank and image.alt contains gender_alt -%}
+        {%- assign second_image = image -%}
+      {%- endif -%}
+    {%- else -%}
+      {%- assign second_image = image -%}
+    {%- endif -%}
+
+    {%- if men_hover_image == blank and image.alt contains 'gender:men' -%}
+      {%- assign men_hover_image = image -%}
+    {%- endif -%}
+    {%- if women_hover_image == blank and image.alt contains 'gender:women' -%}
+      {%- assign women_hover_image = image -%}
+    {%- endif -%}
+  {% else %}
+    {%- if gender_alt != blank and image.alt contains gender_alt -%}
+      {%- assign featured_image = image -%}
+    {%- endif -%}
+
+    {%- if men_image == blank and image.alt contains 'gender:men' -%}
+      {%- assign men_image = image -%}
+    {%- endif -%}
+    {%- if women_image == blank and image.alt contains 'gender:women' -%}
+      {%- assign women_image = image -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- if second_image == blank -%}
+  {%- assign second_image = main_image -%}
+{%- endif -%}
+
+<div class="product-item load-hide" data-slide- {{ number }}>
+  <a href="{{ product.url | within: collection }}" class="product-item__image asdasdsad2">
+    <div class="product-item__image-wrapper" data-tile-image>
+      {% if fav_image %}
+        <img
+        class="lazy product-item__primary-image"
+        data-src="{{fav_image | img_url: '600x'}}"
+        alt="{{fav_image.alt}}"
+        data-gendered="{{gendered}}"
+        loading="eager"
+        >
+        <img
+        class="lazy product-item__secondary-image"
+        data-src="{{fav_image | img_url: '600x'}}"
+        alt="{{fav_image.alt}}"
+        data-gendered="{{gendered}}"
+        loading="lazy"
+        >
+      {% else %}
+        <img
+        class="lazy product-item__primary-image"
+        data-src="{{main_image | img_url: '600x'}}"
+        alt="{{main_image.alt}}"
+        data-gendered="{{gendered}}"
+        loading="eager"
+        >
+        <img
+        class="lazy product-item__secondary-image"
+        data-src="{{second_image | img_url: '600x'}}"
+        alt="{{second_image.alt}}"
+        data-gendered="{{gendered}}"
+        loading="lazy"
+        >
+      {% endif %}
+      {%- render 'product-badge' product: product, classes: 'absolute -bottom-10 md:bottom-auto md:top-5 left-0' -%}
+    </div>
+  </a>
+  <div class="product-item__info">
+    <a href="{{ product.url | within: collection }}" class="product-item__title">{{- product.title -}}</a>
+    {%- if product.metafields["global"]["prd_sub_title"] -%}
+      <div class="product-item__meta">{{- product.metafields["global"]["prd_sub_title"] -}}</div>
+    {%- endif -%}
+    {%- render 'yotpo-plp-rating' product: product -%}
+
+    <!-- Price -->
+    <div class="product-item__price carousel-item-price">
+      {% if pro_price %}
+        <span>{{ pro_price | money }}</span>
+      {% else %}
+        <span class="flex items-center justify-start">
+          <span {% if sale %} class="text-pine" {% endif %}>{{ prod_price | money }}</span>
+          {%- if sale -%}
+            <span class="text-light-stone text-p-s line-through inline-block ml-2.5">{{ prod_c_price | money }}</span>
+          {%- endif -%}
+        </span>
+        {%- if sale -%}
+          {%- assign savings = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round | append: '%' -%}
+          {% comment %} <span class="text-center text-p-xs font-light text-pine tracking-normal font-sora">{{ savings }} Off with code PEARL </span> {% endcomment %}
+        {%- endif -%}
+      {% endif %}
+    </div>
+
+    {%- assign colors_count = 0 -%}
+    {%- for option in product.options_with_values -%}
+      {%- assign downcased_option = option.name | downcase -%}
+      {%- if color_label contains downcased_option -%}
+        {%- assign colors_count = option.values.size -%}
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- for variant in product.variants -%}
+      {%- if variant.available == true -%}
+        {%- assign show_swatches = true -%}
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- if colors_count > 1 and show_swatches == true -%}
+    {%- assign swatch_count = 0 -%}
+    {%- assign real_index = -1 -%}
+
+      <div class="product-item__swatches flex flex-row gap-3 mt-2 lg:mt-4">
+        <div class="flex flex-row gap-2 flex-wrap">
+          {%- for image_src in swatch_src_list -%}
+            {%- assign swatch_color = swatch_color_list[forloop.index0] | handleize -%}
+
+            {%- for variant in product.variants -%}
+              {%- assign variant_color = variant.options[0] | handleize -%}
+              {%- if variant_color == swatch_color and variant.available == true -%}
+                {%- assign variant_to_use = variant -%}
+                {%- assign available = true -%}
+                {%- assign swatch_count = swatch_count | plus: 1 -%}
+                {%- assign real_index = real_index | plus: 1 -%}
+                {%- break -%}
+              {%- endif -%}
+              {%- assign variant_to_use = variant -%}
+              {%- assign available = false -%}
+            {%- endfor -%}
+
+            {%- for image in product.media -%}
+              {%- assign alt_handleized = image.alt | handleize -%}
+              {%- if alt_handleized contains swatch_color and alt_handleized contains 'primary' -%}
+                {%- assign variant_image = image.src -%}
+                {%- assign variant_image_alt = image.alt -%}
+                {% break %}
+              {%- endif -%}
+            {%- endfor -%}
+
+            {%- for image in product.media -%}
+              {%- assign alt_handleized = image.alt | handleize -%}
+              {%- if alt_handleized contains swatch_color and alt_handleized contains 'back' -%}
+                {%- assign variant_secondary_image = image.src -%}
+                {%- assign variant_secondary_image_alt = image.alt -%}
+                {% break %}
+              {%- endif -%}
+            {%- endfor -%}
+
+            {%- assign current_color = current_variant.option1 | handleize -%}
+
+            {%- if available == true and swatch_count < 8 -%}
+              <button data-swatch data-variant={{ variant_to_use.id }} data-variant-available={{ available }} data-color={{ swatch_color }} data-handle={{ product.handle }} data-variant-image={{ variant_image | img_url: 'large' }} data-image-alt={{ variant_image_alt | default: product.handle }} data-variant-secondary-image={{ variant_secondary_image | img_url: 'large' }} data-secondary-image-alt={{ variant_secondary_image_alt | default: product.handle }} data-variant-price={{ variant_to_use.price | money }} data-variant-compare-price={{ variant_to_use.compare_at_price | money | default: 0 }} {% unless available %} disabled {% endunless %} class="option-swatch border border-silver rounded-circle cursor-pointer focus:outline-none hover:border-black {% if current_color == swatch_color %}active order-first {% endif %}{% unless available %}disabled cursor-not-allowed{% endunless %}{%- if real_index > 1 and real_index < 7 -%} swatch-{{ real_index }}{%- endif -%}{%- if real_index >= 7 -%} swatch-overflow{%- endif -%}">
+                <div class="w-full h-full bg-silver rounded-circle" style="background: url('{{ image_src }}') center center / contain"></div>
+              </button>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        <!-- Mobile Swatches -->
+        <div class="swatch-count-container--mobile">
+          {% if swatch_count > 3 %}
+            <a href="{{ product.url | within: collection }}">
+              <span class="text-black text-p-xxs">+
+                {{ swatch_count | minus: 3 }}</span>
+            </a>
+          {% endif %}
+        </div>
+        <!-- Tablet Swatches -->
+        <div class="swatch-count-container--tablet">
+          {% if swatch_count > 2 %}
+            <a href="{{ product.url | within: collection }}">
+              <span class="text-black text-p-xxs">+
+                {{ swatch_count | minus: 2 }}</span>
+            </a>
+          {% endif %}
+        </div>
+        <!-- Small Desktop Swatches -->
+        <div class="swatch-count-container--small-desktop">
+          {% if swatch_count > 5 %}
+            <a href="{{ product.url | within: collection }}">
+              <span class="text-black text-p-xxs">+{{ swatch_count | minus: 5 }}</span>
+            </a>
+          {% endif %}
+        </div>
+        <!-- Desktop Swatches -->
+        <div class="swatch-count-container--desktop">
+          {% if swatch_count > 6 %}
+            <a href="{{ product.url | within: collection }}">
+              <span class="text-black text-p-xxs">+{{ swatch_count | minus: 6 }}</span>
+            </a>
+          {% endif %}
+        </div>
+        <!-- Large Desktop Swatches -->
+        <div class="swatch-count-container--large-desktop">
+          {% if swatch_count > 7 %}
+            <a href="{{ product.url | within: collection }}">
+              <span class="text-black text-p-xxs">+{{ swatch_count | minus: 7 }}</span>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    {%- endif -%}
+    {%- if promo_text -%}
+      <span class="text-p-xs font-light text-pine tracking-normal font-sora">{{ promo_text }}</span>
+    {%- endif -%}
+  </div>
+  <div class="product-item__quickview" data-quickview>
+    <button class="product-item__quickview-btn" onclick="eHS.quickshop.openQuickshop(event,'{{ product.handle }}','{{ current_variant.id }}')">QUICK VIEW</button>
+  </div>
+</div>
+
+{% endunless %}

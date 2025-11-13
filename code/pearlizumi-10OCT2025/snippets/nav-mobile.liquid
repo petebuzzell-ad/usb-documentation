@@ -1,0 +1,375 @@
+{% liquid
+  assign custom_menus = ""
+  assign custom_menu_links = ""
+  assign blog_post_blocks = ""
+
+  for block in section.blocks
+    if block.type == "custom_menu_block"
+      assign menu_handle = block.settings.title
+      assign cta_link_title = block.settings.cta_link_title
+      assign cta_link_url = block.settings.cta_link
+      unless custom_menus contains menu_handle
+        assign custom_menus = custom_menus | append: menu_handle | append: '$$'
+      endunless
+      assign custom_menu_links = custom_menu_links | append: "$$" | append: menu_handle | append: '||' | append: cta_link_title | append: '||' | append: cta_link_url
+    elsif block.type == "featured_blog_post_block"
+      assign menu_handle = block.settings.title
+      assign article_handle = block.settings.article_handle
+      assign blog_post_blocks = blog_post_blocks | append: "$$" | append: menu_handle | append: "||" | append: article_handle
+      unless custom_menus contains menu_handle
+        assign custom_menus = custom_menus | append: menu_handle | append: '$$'
+      endunless
+    endif
+  endfor
+
+  for link in linklists[main_menu].links
+    if custom_menus contains link.handle
+      assign new_string = link.handle | append: '||' | append: link.url
+      assign custom_menus = custom_menus | replace: link.handle, new_string
+    endif
+  endfor
+
+  assign custom_menu_links = custom_menu_links | split: "$$"
+  assign custom_menus_split = custom_menus | split: "$$"
+  assign blog_post_blocks = blog_post_blocks | split: "$$"
+
+  if shop.permanent_domain == 'pearlizumi.myshopify.com'
+    assign storefront = "US"
+  elsif shop.permanent_domain == 'pearlizumi-ca.myshopify.com'
+    assign storefront = "CA"
+  elsif shop.permanent_domain == 'pearl-izumi-int.myshopify.com'
+    assign storefront = "INT"
+  endif
+
+  assign clearance_menu_text = "clearance"
+  if shop.locale == "fr"
+    assign clearance_menu_text = "liquidation"
+  endif
+%}
+<div class="lg:hidden">
+  <!-- Mobile Nav Overlay -->
+  <div id="mobile-nav-overlay" class="fixed top-0 left-0 w-screen h-screen bg-black opacity-0 transition duration-300 ease-in-out pointer-events-none z-10 hidden"></div>
+
+  <!-- Mobile Nav -->
+  <div  id="mobile-nav-main" class="fixed top-0 left-0 w-screen h-screen max-w-nav-mobile overflow-y-scroll bg-faint-cloud border-b border-light-grey z-20 opacity-0 transform -translate-x-full transition duration-300 ease-in-out">
+    <div class="flex items-center justify-between w-full px-7 py-4 border-b border-mobile-nav-border bg-white">
+      <button aria-label="Close Mobile Navigation" data-close-mobile-nav tabindex="0" class="flex items-center pr-2 outline-none active:outline-pine focus:outline-pine" onclick="eHS.navMobile.toggleNav(event)">
+        <span class="sr-only">Close Mobile Navigation</span>
+        {% render 'svg-chevron-left' width: '10px', height: '10px' %}
+        <span class="text-p-s ml-4 text-black" data-menu-title>Back</span>
+      </button>
+      <button aria-label="Toggle Navigation" class="outline-none active:outline-pine focus:outline-pine" onclick="eHS.navMobile.toggleNav(event)">
+        {% render 'svg-close' width: '20px', height: '20px' %}
+        <span class="hidden">Close Mobile Navigation</span>
+      </button>
+    </div>
+    <!-- Main Menu -->
+    <div class="flex flex-row w-full flex-wrap">
+      {% for link in linklists[main_menu].links %}
+        {%- assign submenu = linklists[link.title] -%}
+        {%- assign has_links = false -%}
+        {%- if submenu.links.size > 0 or custom_menus contains link.handle -%}
+          {%- assign has_links = true -%}
+        {%- endif -%}
+        {% assign lower_title = link.title | downcase %}
+        {% if has_links %}
+          <button tabindex="0" aria-label="{{ link.title }} Mobile Mega-Navigation" aria-controls="{{link.title}} Mobile Mega-Navigation" onKeyDown=="eHS.navMobile.toggleSubnavAccordionOnKey(event)" onclick="eHS.navMobile.toggleSubnavAccordion(event)" class="{% if lower_title == 'men' %}active{% endif %} {% if lower_title == 'men' or lower_title == 'women' %}gender-tab-nav order-1{% else %}order-3 main-nav-accrodion{% endif %} flex nav-accordion items-center justify-between w-full px-6 py-4 bg-white text-black">
+            <div class="flex items-center pointer-events-none">
+              <span class="font-sora text-special font-semibold uppercase text-black">{{ link.title }}</span>
+            </div>
+            <div class="open stroke-black hover:stroke-blue pointer-events-none">
+              {% render 'svg-plus' width: '14px', height: '14px' %}
+            </div>
+            <div class="close stroke-black hover:stroke-blue pointer-events-none">
+              {% render 'svg-minus' width: '17px' %}
+            </div>
+          </button>
+        {% else %}
+          <a href="{{ link.url }}"
+            aria-label="{{ link.title }}"
+            class="order-3 flex items-center justify-between w-full px-6 py-4 border-t border-mobile-nav-border font-sora text-special font-semibold uppercase bg-white {% if section.settings.red_clearance == true and link.handle == 'clearance' %}text-red{% else %}text-black{% endif %}">
+            <span class="{% if section.settings.red_clearance == true and link.handle == 'clearance' %}text-red{% else %}text-black{% endif %}">{{ link.title }}</span>
+          </a>
+        {% endif %}
+
+
+        {% if has_links %}
+          <!-- Accordion Content -->
+          <div {% if lower_title == 'men' %}style="max-height:initial"{% endif %} class="w-full overflow-hidden max-h-0 transition-max-height duration-500 ease-out bg-faint-cloud {% if lower_title == 'men' or lower_title == 'women' %}gender-tab-content order-2{% else %}order-3{% endif %}">
+            {% for child_link in submenu.links %}
+              {%- if child_link.links != blank -%}
+                <!-- Accordion Toggle -->
+                <button onclick="eHS.navMobile.toggleSubnavAccordion(event)" class="flex nav-accordion items-center justify-between w-full px-6 py-4 bg-white sub-nav-accordion text-black">
+                  <div class="flex items-center pointer-events-none">
+                    <span class="font-sora text-special font-semibold uppercase text-black">{{ child_link.title }}</span>
+                  </div>
+                  <div class="open stroke-black hover:stroke-blue pointer-events-none">
+                    {% render 'svg-plus' width: '14px', height: '14px' %}
+                  </div>
+                  <div class="close stroke-black hover:stroke-blue pointer-events-none">
+                    {% render 'svg-minus' width: '17px' %}
+                  </div>
+                </button>
+                <!-- Accordion Content -->
+                <div class="overflow-hidden max-h-0 transition-max-height duration-500 ease-out">
+                  <div class="">
+                    {% for grandchild_link in child_link.links %}
+                      {%- comment -%} Hide clearance links from Pro members {%- endcomment -%}
+                      {%- assign lower_title = grandchild_link.title | downcase -%}
+                      {%- unless is_pro and lower_title contains clearance_menu_text  -%}
+                        <a class="block w-full px-6 py-4 text-black" href="{{ grandchild_link.url }}" aria-label="{{ grandchild_link.title }}">
+                          <span class="inline-block text-[15px] leading-[24px] {% if section.settings.red_clearance == true and grandchild_link.handle == 'clearance' %} text-red {% elsif grandchild_link.handle == "all-stories" %} text-pine {% else %} text-black {% endif %} text-p">{{ grandchild_link.title }}</span>
+                        </a>
+                      {%- endunless -%}
+                    {% endfor %}
+                    {%- comment -%} "View All" for 2nd-level links to collections
+                    {%- if child_link.url != "#" -%}
+                      <a class="block w-full px-7 py-4 border-b border-faint-cloud text-black" href="{{ grandchild_link.url }}">
+                        <span class="block text-black text-p">View All {{ child_link.title }}</span>
+                      </a>
+                    {%- endif -%}
+                    {% endcomment %}
+
+                  </div>
+                </div>
+              {%- else -%}
+                {%- comment -%} Hide clearance links from Pro members {%- endcomment -%}
+                {%- assign lower_title = child_link.title | downcase -%}
+                {%- unless is_pro and lower_title contains clearance_menu_text -%}
+                  <a aria-label="{{ child_link.title }}" class="block w-full px-6 py-4 border-b bg-white border-mobile-nav-border font-semibold {% if section.settings.red_clearance == true and child_link.handle == 'clearance' %}text-red{% else %}text-black{% endif %}" href="{{ child_link.url }}">
+                    <span class="block font-sora text-special font-semibold uppercase {% if section.settings.red_clearance == true and child_link.handle == 'clearance' %}text-red{% else %}text-black{% endif %}">{{ child_link.title }}</span>
+                  </a>
+                {%- endunless -%}
+              {%- endif -%}
+            {% endfor %}
+
+
+              {%- comment -%} Custom Link Menus {%- endcomment -%}
+              {%- for menu_data in custom_menus_split -%}
+                {%- assign menu_data_split = menu_data | split: '||' -%}
+                {%- assign menu_handle = menu_data_split[0] -%}
+                {%- assign view_all_link_url = menu_data_split[1] -%}
+                {% if menu_handle == link.handle %}
+                  <div>
+                    <!-- Custom Links -->
+                    {%- for custom_link in custom_menu_links -%}
+                      {%- assign split_data = custom_link | split: '||' -%}
+                      {%- assign handle_match = split_data[0] -%}
+                        {%- if menu_handle == handle_match -%}
+                          {%- assign link_title = split_data[1] -%}
+                          {%- assign link_url = split_data[2] -%}
+                          {%- if link_title != blank and link_url != blank -%}
+                            <a aria-label="{{ link_title }}" class="block w-full px-4 py-3 text-black" href="{{ link_url }}">
+                              <span class="inline-block  text-black  text-p text-[15px]">{{ link_title }}</span>
+                            </a>
+                          {%- endif -%}
+                        {%- endif -%}
+                    {%- endfor -%}
+
+                    <!-- Featured Blog Posts -->
+                    {%- for blog_post in blog_post_blocks -%}
+                      {%- assign split_data = blog_post | split: '||' -%}
+                      {%- assign handle_match = split_data[0] -%}
+                      {%- if menu_handle == handle_match -%}
+                        {%- assign article_handle = split_data[1] -%}
+                        {%- if article_handle != blank -%}
+                          {%- assign article = articles[article_handle] -%}
+                          <a aria-label="{{ article.title }}" class="block w-full px-4 py-3 text-black" href="{{ article.url }}">
+                            <span class="inline-block  text-black  text-p text-[15px]">{{ article.title }}</span>
+                          </a>
+                        {%- endif -%}
+                      {%- endif -%}
+                    {%- endfor -%}
+
+                    <!-- View All Link -->
+                    {%- assign view_all_link_content = "" -%}
+                    {%- if menu_handle == "about" -%}
+                      {%- assign view_all_link_content = "All About PEARL iZUMi" -%}
+                    {%- elsif menu_handle == "inspiration" -%}
+                      {%- assign view_all_link_content = "All Inspiration" -%}
+                    {%- endif -%}
+                    {%- if view_all_link_content != "" -%}
+                      <a aria-label="{{ view_all_link_content }}" class="block w-full px-4 py-3 text-black" href="{{ view_all_link_url }}">
+                        <span class="inline-block  text-black  text-p  text-[15px]">{{ view_all_link_content }}</span>
+                      </a>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+
+              {%- endfor -%}
+
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- Utility Menu -->
+    <div class="px-6 mt-7 pb-36">
+      {%- unless storefront == "INT" -%}
+      <a class="flex items-center text-p-s h-full text-black py-2 px-2.5" href="/account">
+        <span class="text-dark-stone mr-3">
+          {% render 'svg-account' %}
+        </span>
+        {% if customer %}Account{% else %}Sign In{% endif %}
+      </a>
+      {%- endunless -%}
+      <a class="flex items-center text-p-s h-full text-black py-2 px-2.5" href="/pages/store-locator">
+        <span class="text-dark-stone mr-3">
+          {% render 'svg-location-pin' %}
+        </span>
+        {{ 'layout.navigation.find_store' | t }}
+      </a>
+
+      <!-- Country/Language Selector -->
+      <div class="mt-9 w-full">
+        {% render 'language-selector-mobile' %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Submenus -->
+  {% for link in linklists[main_menu].links %}
+    {%- assign submenu = linklists[link.title] -%}
+    {% if submenu.links != blank %}
+      <div id="mobile-nav-menu-{{ link.handle }}" class="fixed top-0 left-0 h-screen w-screen overflow-y-auto max-w-nav-mobile bg-faint-cloud z-30 opacity-0 transform translate-x-full transition duration-300 ease-in-out" data-menu-pan>
+        <div  tabindex="0" data-mobile-menu-header="{{ link.handle }}" class="flex items-center justify-between w-full px-7 py-4 border-b border-mobile-nav-border bg-white">
+          <div tabindex="0" class="flex items-center" role="button" onKeyDown="eHS.navMobile.toggleSubnavOnKey(event, '{{ link.handle }}')" onclick="eHS.navMobile.toggleSubnav(event, '{{ link.handle }}')">
+            {% render 'svg-chevron-left' width: '7px', height: '12px' %}
+            <span class="text-special-s uppercase font-semibold text-black block ml-9">{{ link.title }}</span>
+          </div>
+          <div tabindex="0" onclick="eHS.navMobile.toggleNav(event)" style="margin-right: -5px;">
+            {% render 'svg-close' width: '10px', height: '10px' %}
+          </div>
+        </div>
+        {% for child_link in submenu.links %}
+          {%- if child_link.links != blank -%}
+            <!-- Accordion Toggle -->
+            <button
+            role="button"
+            aria-expanded="false"
+            aria-label="{{ child_link.title }}"
+            aria-controls="{{child_link.handle}}_sub_nav"
+            onKeyDown=="eHS.navMobile.toggleSubnavAccordionOnKey(event)"
+             onclick="eHS.navMobile.toggleSubnavAccordion(event)" class="flex nav-accordion items-center justify-between w-full px-7 py-4 bg-white border-b border-mobile-nav-border text-black">
+              <div class="flex items-center pointer-events-none">
+                <span class="font-sora text-special font-semibold uppercase text-black">{{ child_link.title }}</span>
+              </div>
+              <div class="open stroke-black hover:stroke-blue pointer-events-none">
+                {% render 'svg-plus' width: '14px', height: '14px' %}
+              </div>
+              <div class="close stroke-black hover:stroke-blue pointer-events-none">
+                {% render 'svg-minus' width: '17px' %}
+              </div>
+            </button>
+            <!-- Accordion Content -->
+            <div role="region"
+            id="{{child_link.handle}}_sub_nav"
+            aria-labelledby= "{{ child_link.title }}"
+            class="overflow-hidden hidden max-h-0 transition-max-height duration-500 ease-out bg-faint-cloud">
+              <div class="py-5">
+                {% for grandchild_link in child_link.links %}
+                  {%- comment -%} Hide clearance links from Pro members {%- endcomment -%}
+                  {%- assign lower_title = grandchild_link.title | downcase -%}
+                  {%- unless is_pro and lower_title contains clearance_menu_text  -%}
+                    <a class="block w-full px-7 py-4 border-b border-faint-cloud text-black" href="{{ grandchild_link.url }}">
+                      <span class="inline-block {% if section.settings.red_clearance == true and grandchild_link.handle == 'clearance' %} text-red {% elsif grandchild_link.handle == "all-stories" %} text-pine {% else %} text-black {% endif %} text-p">{{ grandchild_link.title }}</span>
+                    </a>
+                  {%- endunless -%}
+                {% endfor %}
+                {%- comment -%} "View All" for 2nd-level links to collections
+                {%- if child_link.url != "#" -%}
+                  <a class="block w-full px-7 py-4 border-b border-faint-cloud text-black" href="{{ grandchild_link.url }}">
+                    <span class="block text-black text-p">View All {{ child_link.title }}</span>
+                  </a>
+                {%- endif -%}
+                {% endcomment %}
+              </div>
+            </div>
+          {%- else -%}
+            {%- comment -%} Hide clearance links from Pro members {%- endcomment -%}
+            {%- assign lower_title = child_link.title | downcase -%}
+            {%- unless is_pro and lower_title contains clearance_menu_text -%}
+              <a class="block w-full px-7 py-4 border-b bg-white border-mobile-nav-border font-semibold {% if section.settings.red_clearance == true and child_link.handle == 'clearance' %}text-red{% else %}text-black{% endif %}" href="{{ child_link.url }}">
+                <span class="block font-sora text-special font-semibold uppercase {% if section.settings.red_clearance == true and child_link.handle == 'clearance' %}text-red{% else %}text-black{% endif %}">{{ child_link.title }}</span>
+              </a>
+            {%- endunless -%}
+          {%- endif -%}
+        {% endfor %}
+        {%- comment -%} View All for Men + Women top-level collection links {%- endcomment -%}
+        {%- comment -%}
+        {%- assign view_all_link_content = "" -%}
+        {%- if link.handle == "men" or link.handle == "women" or link.handle == "kids" -%}
+          {%- assign view_all_link_content = "View All " | append: link.title -%}
+        {%- endif -%}
+        {%- if view_all_link_content != "" -%}
+          <a class="block w-full px-7 py-4 border-b bg-white border-mobile-nav-border font-semibold {% if section.settings.red_clearance == true and link.handle == 'clearance' %}text-red{% else %}text-black{% endif %}" href="{{ link.url }}">
+            <span class="block font-sora text-special font-semibold uppercase {% if section.settings.red_clearance == true and link.handle == 'clearance' %}text-red{% else %}text-black{% endif %}">{{ view_all_link_content }}</span>
+          </a>
+        {%- endif -%}
+        {%- endcomment -%}
+      </div>
+    {% endif %}
+  {% endfor %}
+
+  {%- comment -%} Custom Link Menus {%- endcomment -%}
+  {%- for menu_data in custom_menus_split -%}
+    {%- assign menu_data_split = menu_data | split: '||' -%}
+    {%- assign menu_handle = menu_data_split[0] -%}
+    {%- assign view_all_link_url = menu_data_split[1] -%}
+    <div id="mobile-nav-menu-{{ menu_handle }}" class="fixed top-0 left-0 h-screen w-screen overflow-y-auto max-w-nav-mobile bg-faint-cloud z-30 opacity-0 transform translate-x-full transition duration-300 ease-in-out" data-menu-pan>
+      <div class="flex items-center justify-between w-full px-7 py-4 border-b border-mobile-nav-border bg-white">
+        <div tabindex="0" class="flex items-center" role="button"  onKeyDown="eHS.navMobile.toggleSubnavOnKey(event, '{{ menu_handle }}')" onclick="eHS.navMobile.toggleSubnav(event, '{{ menu_handle }}')">
+          {% render 'svg-chevron-left' width: '7px', height: '12px' %}
+          <span class="text-special-s uppercase font-semibold text-black block ml-9">{{ menu_handle | capitalize }}</span>
+        </div>
+        <div tabindex="0" onclick="eHS.navMobile.toggleNav(event)" style="margin-right: -5px;">
+          {% render 'svg-close' width: '10px', height: '10px' %}
+        </div>
+      </div>
+
+      <!-- Custom Links -->
+      {%- for custom_link in custom_menu_links -%}
+        {%- assign split_data = custom_link | split: '||' -%}
+        {%- assign handle_match = split_data[0] -%}
+        {%- if menu_handle == handle_match -%}
+          {%- assign link_title = split_data[1] -%}
+          {%- assign link_url = split_data[2] -%}
+          {%- if link_title != blank and link_url != blank -%}
+            <a class="block w-full px-7 py-4 border-b bg-white border-mobile-nav-border font-semibold text-black" href="{{ link_url }}">
+              <span class="block font-sora text-special font-semibold uppercase text-black">{{ link_title }}</span>
+            </a>
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      <!-- Featured Blog Posts -->
+      {%- for blog_post in blog_post_blocks -%}
+        {%- assign split_data = blog_post | split: '||' -%}
+        {%- assign handle_match = split_data[0] -%}
+        {%- if menu_handle == handle_match -%}
+          {%- assign article_handle = split_data[1] -%}
+          {%- if article_handle != blank -%}
+            {%- assign article = articles[article_handle] -%}
+            <a class="block w-full px-7 py-4 border-b bg-white border-mobile-nav-border font-semibold text-black" href="{{ article.url }}">
+              <span class="block font-sora text-special font-semibold uppercase text-black">{{ article.title }}</span>
+            </a>
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      <!-- View All Link -->
+      {%- assign view_all_link_content = "" -%}
+      {%- if menu_handle == "about" -%}
+        {%- assign view_all_link_content = "All About PEARL iZUMi" -%}
+      {%- elsif menu_handle == "inspiration" -%}
+        {%- assign view_all_link_content = "All Inspiration" -%}
+      {%- endif -%}
+      {%- if view_all_link_content != "" -%}
+        <a class="block w-full px-7 py-4 border-b bg-white border-mobile-nav-border font-semibold text-black" href="{{ view_all_link_url }}">
+          <span class="block font-sora text-special font-semibold uppercase text-black">{{ view_all_link_content }}</span>
+        </a>
+      {%- endif -%}
+
+    </div>
+  {%- endfor -%}
+</div>

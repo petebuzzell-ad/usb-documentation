@@ -1,0 +1,68 @@
+{%- comment -%} Customizer PDP {%- endcomment -%}
+{% liquid
+  if shop.permanent_domain == 'pearlizumi.myshopify.com'
+    assign storefront = "US"
+  elsif shop.permanent_domain == 'pearlizumi-ca.myshopify.com'
+    assign storefront = "CA"
+  elsif shop.permanent_domain == 'pearl-izumi-int.myshopify.com'
+    assign storefront = "INT"
+  endif
+
+  assign handles = ''
+
+  for tag in product.tags
+    if tag contains 'custom:'
+      assign the_handle = tag | remove: 'custom:'
+      unless handles == ''
+        assign handles = handles | append: '|'
+      endunless
+      assign handles = handles | append: the_handle
+    endif
+  endfor
+
+  assign all_handles = handles | split: '|' %}
+
+{%- if storefront == "INT" -%}
+  {%- comment -%}
+    Redirect to the homepage on INT storefronts
+  {%- endcomment -%}
+  <script>window.location.replace('/');</script>
+
+{%- elsif storefront == "US" or storefront == "CA" -%}
+  
+  {%- comment -%} Render on the US storefront is the bundle is published {%- endcomment -%}
+  <div id="productCustomTemplate" class="transition-opacity opacity-1 py-10 bxl:py-15" data-handles="{{ handles }}">
+
+    <!-- Bundle Product Main Title & Description -->
+    <div class="mx-auto w-full px-6 bxl:max-w-1/2 text-center mb-8 bxl:mb-20">
+      <h1 class="text-h1-m bxl:text-h2 mx-auto text-center text-black mb-3 bxl:mb-4 font-sora font-semibold uppercase">{{ product.title }}</h1>
+      <p class="text-p-s bxl:text-p text-black">{{ product.description }}</p>
+      {%- render 'countdown' -%}
+    </div>
+
+    {%- comment -%}
+      Render a PDP Display block (Gallery + Buy Box) 
+        for Each Custom Handle
+    {%- endcomment -%}
+    
+    {%- for custom_handle in all_handles -%}
+      {%- assign the_product = all_products[custom_handle] -%}
+      {%- assign i = forloop.index0 -%}
+
+    <div class="w-full md:px-14 bxl:px-22.5 mx-auto transition-opacity" style="max-width: 1380px;">
+        <div class="flex flex-col w-full bxl:flex-row bxl:justify-between">
+          {% render 'custom-product-gallery',
+            i: i,
+            product: the_product %}
+
+          {%- render 'custom-product-buy-box',
+            preorder_message: product.metafields.custom.preorder_message,
+            product: the_product,
+            storefront: storefront,
+            custom_preorder: custom_preorder,
+            index: i -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+{%- endif -%}

@@ -1,0 +1,344 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "fw_fonts_styles_XgyNxH": {
+      "type": "fw-fonts-styles",
+      "settings": {
+        "fw_fonts_styles": true
+      }
+    },
+    "fw_hero_banner_KUQyQQ": {
+      "type": "fw-hero-banner",
+      "settings": {
+        "content_alignment": "center",
+        "background_type": "video",
+        "background_image": "shopify://shop_images/BikePI-F21-Mens-Road-Aspen-5548-2000x1333-282f2dd.webp",
+        "video": "shopify://files/videos/woman-riding-bike-compressed.mp4",
+        "sub_title": "",
+        "title": "Ride like the wind. Not against it.",
+        "text": "<p>Explore the science behind our wind-stopping technologies and find gear that rides as hard as you do.</p>",
+        "button_label": "shop windproof gear",
+        "button_link": "shopify://collections/ride-365-windy-weather"
+      }
+    },
+    "fw_grid_mxcH6b": {
+      "type": "fw-grid",
+      "blocks": {
+        "image_a7LEJ6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/woman-helmet_4f653c22-869a-49bc-b4d8-ae263a350df6.jpg"
+          }
+        },
+        "text_bkTDyE": {
+          "type": "text",
+          "settings": {
+            "title": "why wind protection matters",
+            "text": "<p>Wind cuts fast. And if you’re not protected, it drains heat—and energy—just as quickly. Cool air hits hard at speed, forcing your core temp to drop, stiffening muscles, and shortening rides. </p><p>Our windproof gear is built to block the chill and manage heat—so you stay focused, ride stronger, and bounce back faster.</p>",
+            "button_label": "",
+            "button_link": "#",
+            "show_features": "no",
+            "feature_1_text": "Feature 1 text",
+            "feature_2_text": "Feature 2 text",
+            "feature_3_text": "Feature 3 text",
+            "feature_4_text": "Feature 4 text"
+          }
+        }
+      },
+      "block_order": [
+        "image_a7LEJ6",
+        "text_bkTDyE"
+      ],
+      "settings": {
+        "text_position_mobile": "top"
+      }
+    },
+    "fw_tech_grid_QXdtFq": {
+      "type": "fw-tech-grid",
+      "blocks": {
+        "title_card_QGRUqA": {
+          "type": "title_card",
+          "settings": {
+            "title": "Wind protection technologies"
+          }
+        },
+        "feature_gKkfKV": {
+          "type": "feature",
+          "settings": {
+            "title": "Polartec Wind Pro®",
+            "text": "<p>Insulated fleece engineered for wind resistance. Advanced fleece blocks 4x more wind than regular fleece. Ideal for high-output rides in chilly, gusty weather.</p>",
+            "cfm_rating": "CFM 0-1",
+            "rating_font_color": "#5a4600",
+            "button_label": "shop Polartec Wind Pro gear",
+            "button_link": "shopify://collections/polartec-wind-pro-collection",
+            "image": "shopify://shop_images/Polartec_Wind_Pro.jpg",
+            "bg_color": "#c29802",
+            "font_color": "#ffffff"
+          }
+        },
+        "feature_FCVj3e": {
+          "type": "feature",
+          "settings": {
+            "title": "3l windproof membrane (AmFIB®)",
+            "text": "<p>Windproof + water-resistant + fleece warmth.Keeps you warm in sub-freezing temps with fleece lining + Pi DryTM.</p>",
+            "cfm_rating": "CFM 5-10",
+            "rating_font_color": "#300003",
+            "button_label": "shop AmFIB Gear",
+            "button_link": "shopify://collections/amfib-collection",
+            "image": "shopify://shop_images/3l_windproof_membrane_AmFIB_f67219dd-8f3e-4524-9457-d7f3fe506d66.jpg",
+            "bg_color": "#88474b",
+            "font_color": "#ffffff"
+          }
+        },
+        "feature_hygEQc": {
+          "type": "feature",
+          "settings": {
+            "title": "2l windproof membrane",
+            "text": "<p>Lightweight, breathable, packable protection.Perfect for cooler temps, balancing breathability with barrier performance.</p>",
+            "cfm_rating": "CFM 1-5",
+            "rating_font_color": "#00516a",
+            "button_label": "shop gear with 2l membrane",
+            "button_link": "shopify://collections/2l-windproof-collection",
+            "image": "shopify://shop_images/2l_windproof_membrane.png",
+            "bg_color": "#2eb0d9",
+            "font_color": "#ffffff"
+          }
+        },
+        "feature_qzT3zh": {
+          "type": "feature",
+          "settings": {
+            "title": "barrier fabric",
+            "text": "<p>Packable protection for variable wind conditions.</p>",
+            "cfm_rating": "CFM 5-10",
+            "rating_font_color": "#2a2e1a",
+            "button_label": "shop barrier gear",
+            "button_link": "shopify://collections/barrier-collection",
+            "image": "shopify://shop_images/barrier_fabric.png",
+            "bg_color": "#7e8465",
+            "font_color": "#ffffff"
+          }
+        },
+        "info_xUWGbb": {
+          "type": "info",
+          "settings": {
+            "title": "What is CFM—and why it matters on the bike",
+            "text": "<p>CFM (Cubic Feet per Minute) measures how much air moves through a fabric. The lower the number, the better it blocks wind. A CFM of 0 is fully windproof. Higher CFM fabrics allow airflow—perfect for dumping heat on hard efforts. For comparison? A basic cotton T-shirt has a CFM over 100. Great for the couch. Terrible for a headwind.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "title_card_QGRUqA",
+        "feature_gKkfKV",
+        "feature_FCVj3e",
+        "feature_hygEQc",
+        "feature_qzT3zh",
+        "info_xUWGbb"
+      ],
+      "settings": {}
+    },
+    "fw_product_carousel_FJr88x": {
+      "type": "fw-product-carousel",
+      "blocks": {
+        "product_image_rY9ekT": {
+          "type": "product_image",
+          "settings": {
+            "product": "mens-attack-barrier-jacket-11132304",
+            "custom_image": "shopify://shop_images/Attack_barrier_jacket.jpg",
+            "heading": "",
+            "copy": "",
+            "cta_text": ""
+          }
+        },
+        "product_image_W8eYJL": {
+          "type": "product_image",
+          "settings": {
+            "product": "mens-attack-barrier-vest-11132305",
+            "custom_image": "shopify://shop_images/attack_barrier_vest.jpg",
+            "heading": "",
+            "copy": "",
+            "cta_text": ""
+          }
+        },
+        "product_image_nWeRPB": {
+          "type": "product_image",
+          "settings": {
+            "product": "womens-pro-barrier-jacket-brent-smiths-team-store",
+            "custom_image": "shopify://shop_images/pro_barrier_jacket.jpg",
+            "heading": "",
+            "copy": "",
+            "cta_text": ""
+          }
+        },
+        "product_image_HUhmtj": {
+          "type": "product_image",
+          "settings": {
+            "product": "mens-summit-wind-jacket-19132501",
+            "custom_image": "shopify://shop_images/summit_wind_jacket.jpg",
+            "heading": "",
+            "copy": "",
+            "cta_text": ""
+          }
+        },
+        "product_image_y8BMhU": {
+          "type": "product_image",
+          "settings": {
+            "product": "womens-pro-barrier-vest-11232304",
+            "custom_image": "shopify://shop_images/pro_barrier_vest.jpg",
+            "heading": "",
+            "copy": "",
+            "cta_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_image_rY9ekT",
+        "product_image_W8eYJL",
+        "product_image_nWeRPB",
+        "product_image_HUhmtj",
+        "product_image_y8BMhU"
+      ],
+      "settings": {
+        "title_size": "regular",
+        "title": "top-selling windproof gear",
+        "bg_color": "#f8f6f1",
+        "font_color": "#353b42"
+      }
+    },
+    "fw_text_eVYGRF": {
+      "type": "fw-text",
+      "settings": {
+        "bg_color": "#353b42",
+        "text_color": "#ffffff",
+        "heading": "Layer up. ride on.",
+        "text": "<p>Our System of Dress is built to adapt. Base to shell, every piece works together to regulate heat, manage sweat, and block the elements.</p>",
+        "button_label": "explore ride 365 system",
+        "button_link": "/pages/ride-365?srsltid=AfmBOool87ND1-fMbJt59DLD3eX3EjvoQscUhJWeF0Ci3nT4zcp3SjMJ",
+        "button_outlined": false
+      }
+    },
+    "fw_collection_grid_7ThqrD": {
+      "type": "fw-collection-carousel",
+      "blocks": {
+        "collection_9HPWBT": {
+          "type": "collection",
+          "settings": {
+            "collection": "insulation",
+            "custom_image": "shopify://shop_images/BikePI-F22-Road-Winter-Ned-1436_1.jpg"
+          }
+        },
+        "collection_UrTN6C": {
+          "type": "collection",
+          "settings": {
+            "collection": "cycling-jackets-vests",
+            "custom_image": "shopify://shop_images/BikePI-F22-Road-Winter-Ned-1562_2.jpg"
+          }
+        },
+        "collection_dKLtPY": {
+          "type": "collection",
+          "settings": {
+            "collection": "canyon-mtb-collection",
+            "custom_image": "shopify://shop_images/BikePI-F21-Mens-MTB-Moab-2345_6d6e122f-47ae-4e29-a7e7-38bd8638c8a1.jpg"
+          }
+        },
+        "collection_XFLCxE": {
+          "type": "collection",
+          "settings": {
+            "collection": "cycling-tights-bib-tights",
+            "custom_image": "shopify://shop_images/1L2A0751_2_5ccac1eb-74d4-4059-ab01-936930d6a79c.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "collection_9HPWBT",
+        "collection_UrTN6C",
+        "collection_dKLtPY",
+        "collection_XFLCxE"
+      ],
+      "settings": {
+        "title": "find your windproof fit",
+        "bg_color": "#ffffff",
+        "font_color": "#ffffff",
+        "background_image": "shopify://shop_images/blurry-big.jpg"
+      }
+    },
+    "fw_faq_accordion_KMN7Wd": {
+      "type": "fw-faq-accordion",
+      "blocks": {
+        "faq_item_tw9eWp": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is CFM and why does it matter for cyclists?",
+            "answer": "<p><strong>CFM is a key indicator of how well air moves</strong> through equipment or around the cyclist’s body. Whether it’s for helmets, fans, or clothing, a higher CFM generally means better cooling — a significant performance and comfort factor for any cyclist.</p>"
+          }
+        },
+        "faq_item_WdYNik": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Which technology is best for sub-freezing condition?",
+            "answer": "<p>For sub-freezing rides, look for gear that combines <strong>maximum insulation with full wind and water protection</strong>. Our <strong>AmFIB® softshell technology</strong> is the ideal choice—it’s our warmest outer layer, offering <strong>zero-CFM windproofing</strong>, excellent water resistance, and a cozy fleece interior for insulation. Pair AmFIB® outerwear with a <strong>thermal base layer</strong> and, if needed, a <strong>mid-layer like a fleece or lightweight insulated jacket</strong> to create a system that traps warmth while managing moisture. This layered approach ensures comfort, mobility, and protection even in the coldest conditions.</p>"
+          }
+        },
+        "faq_item_9EkUd6": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What’s the difference between Wind Pro® and Barrier Fabric?",
+            "answer": "<p>WindPro and Pearl iZUMi’s Barrier fabric both offer excellent wind protection, but with different strengths. <strong>Polartec WindPro</strong> is a <strong>high-performance, breathable fleece</strong> that blocks up to 85% of wind while allowing heat and moisture to escape, making it a great choice for active rides in cool, dry conditions. <strong>Pearl iZUMi’s Barrier fabric</strong> delivers <strong>complete windproof protection (0 CFM)</strong> and impressive water resistance, offering reliable comfort and coverage in wet, windy, or variable weather. Both fabrics are thoughtfully engineered to enhance performance and keep cyclists comfortable across a range of conditions.</p>"
+          }
+        },
+        "faq_item_JBAGGK": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I layer windproof gear with other pieces?",
+            "answer": "<p>Absolutely! Pearl iZUMi’s windproof gear, including our Barrier fabric pieces, is designed to layer seamlessly with other apparel. Pairing a windproof outer layer with moisture-wicking base layers or insulating mid-layers allows you to adapt to changing conditions while staying warm, dry, and comfortable. This layering system helps regulate body temperature and maximizes performance whether you're riding in cool breezes or braving harsh winds.</p>"
+          }
+        },
+        "faq_item_Art8it": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I choose the right windproof gear for my climate?",
+            "answer": "<p>Start by considering the typical weather and your activity level. For <strong>cool, dry, and high-output conditions</strong>, lightweight and breathable options like our <strong>PRO or Attack Barrier jackets and vests</strong> offer excellent wind protection without overheating. In <strong>wet, cold, or variable climates</strong>, choose gear with <strong>enhanced water resistance and full windproof coverage</strong>, such as pieces featuring our <strong>AmFIB® softshell or Barrier fabric</strong>, to stay warm and dry. Layering with base and mid-layers gives you flexibility to adjust as conditions change. If you're unsure, our product filters and guides can help match you with the perfect gear for your riding environment.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_tw9eWp",
+        "faq_item_WdYNik",
+        "faq_item_9EkUd6",
+        "faq_item_JBAGGK",
+        "faq_item_Art8it"
+      ],
+      "settings": {
+        "title": "FAQs",
+        "bg_color": "#ffffff",
+        "font_color": "#000000"
+      }
+    },
+    "fw_vibe_image_3NkRzY": {
+      "type": "fw-vibe-image",
+      "settings": {
+        "image": "shopify://shop_images/collage.jpg",
+        "constrain_height": false,
+        "max_height": 500
+      }
+    }
+  },
+  "order": [
+    "fw_fonts_styles_XgyNxH",
+    "fw_hero_banner_KUQyQQ",
+    "fw_grid_mxcH6b",
+    "fw_tech_grid_QXdtFq",
+    "fw_product_carousel_FJr88x",
+    "fw_text_eVYGRF",
+    "fw_collection_grid_7ThqrD",
+    "fw_faq_accordion_KMN7Wd",
+    "fw_vibe_image_3NkRzY"
+  ]
+}

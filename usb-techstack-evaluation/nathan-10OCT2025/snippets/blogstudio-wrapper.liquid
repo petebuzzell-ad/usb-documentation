@@ -1,0 +1,189 @@
+{% if article.image and section.settings.show_featured_image %}
+<div class="article-image align-center {% unless settings.use_fullwidth_layout %}container{% endunless %}">{% render 'responsive-image', image: article.image %}</div>
+{% endif %}
+
+<div class="container">
+    <div class="page-header cf">
+      <h1 class="majortitle">{{ title }}</h1>
+    </div>
+</div><!-- /.pagetitle -->
+
+<div class="article">
+  <div class="container">
+
+    <div class="user-content spaced-row">
+      {{ content }}
+    </div>
+
+    {% if section.settings.show_sharing_icons %}
+    <div class="lightly-spaced-row">
+      {% render 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+    </div>
+    {% endif %}
+
+    <div class="meta">
+      <span class="iconmeta time">
+        {% if section.settings.show_date %}
+          {{ article.published_at | date: format: 'month_date_year' }}
+        {% endif %}
+        {% if section.settings.show_author %}
+          {% if section.settings.show_date %}&mdash;{% endif %}
+          <span class="author">{{ article.author }}</span>
+        {% endif %}
+      </span>
+
+      {% if section.settings.show_article_tags %}
+      {% capture tag_markup %}
+      <div class="iconmeta tags">
+        <span class="label">{{ 'blogs.article.tags' | t }}:</span>
+        {% for tag in article.tags %}
+        {% unless tag contains 'meta-' %}
+        {{ tag | link_to_tag: tag }}
+        {% endunless %}
+        {% endfor %}
+      </div>
+      {% endcapture %}
+      {% if tag_markup contains '</a>' %}{{ tag_markup }}{% endif %}
+      {% endif %}
+    </div>
+
+    <div class="pagination-row pagination-row-tabular">
+      <div class="inner">
+        <span class="prev">
+          {% if blog.previous_article %}
+          <a href="{{ blog.previous_article }}"><span class="icon-small icon-natcol">{% render 'svg-chevron-left' %}</span> <span>{{ 'blogs.article.older_post' | t }}</span></a>
+          {% endif %}
+        </span>
+
+        <span class="back">{{ 'blogs.article.back_to_blog_html' | t: blog: blog.title | link_to: blog.url }}</span>
+
+        <span class="next">
+          {% if blog.next_article %}
+          <a href="{{ blog.next_article }}"><span>{{ 'blogs.article.newer_post' | t }}</span> <span class="icon-small icon-natcol">{% render 'svg-chevron-right' %}</span></a>
+          {% endif %}
+        </span>
+      </div>
+    </div>
+
+  </div><!-- /.container -->
+</div><!-- /.article -->
+
+{% comment %}
+  {
+    "name": "Article pages",
+    "settings": [
+  	  {
+        "type": "checkbox",
+        "id": "show_featured_image",
+        "label": "Show featured image",
+        "default": true
+      },
+  	  {
+        "type": "checkbox",
+        "id": "show_date",
+        "label": "Show date",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_author",
+        "label": "Show author",
+        "default": true
+      },
+  	  {
+        "type": "checkbox",
+        "id": "show_article_tags",
+        "label": "Show article tags",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_sharing_icons",
+        "label": "Show social sharing icons",
+        "default": true
+      }
+	  ]
+  }
+{% endcomment %}
+
+
+
+{% if blog.comments_enabled? %}
+    {% paginate article.comments by 50 %}
+        {% if article.comments != blank %}
+        <div id="comments" class="container cf padded-row">
+            <h4 class="align-centre">{{ 'blogs.comments.title' | t }}</h4>
+
+            {% comment %} Show a comment that was *just* submitted {% endcomment %}
+            {% if comment and comment.status != 'published' %}
+                <div class="comment spaced-row">
+                  <div class="gravatar">
+                    <img src="//www.gravatar.com/avatar/{{ comment.email | remove: ' ' | strip_newlines | downcase | md5 }}?d=https:{{ 'gravatar_def.png' | asset_url | url_escape }}" alt="{{ comment.author }}" />
+                  </div>
+                  <div class="detail">
+                    <p class="author">{{ 'blogs.comments.author_meta_said' | t: author: comment.author }}</p>
+                    <div class="text">{{ comment.content }}</div>
+                  </div>
+                </div>
+            {% endif %}
+
+            {% comment %} Loop through approved comments: {% endcomment %}
+            {% for comment in article.comments %}
+                <div class="comment spaced-row {% if forloop.first %}first{% endif %}">
+                  <div class="gravatar">
+                    <img src="//www.gravatar.com/avatar/{{ comment.email | remove: ' ' | strip_newlines | downcase | md5 }}?d=https:{{ 'gravatar_def.png' | asset_url | url_escape }}" alt="{{ comment.author }}" />
+                  </div>
+                  <div class="detail">
+                    <p class="author">{{ 'blogs.comments.author_meta_said' | t: author: comment.author }}</p>
+                    <div class="text">{{ comment.content }}</div>
+                  </div>
+                </div>
+            {% endfor %}
+        </div> <!-- /#comments -->
+
+        <div class="container pagination-row">{% render 'pagination-control', paginate: paginate %}</div>
+        {% endif %}
+    {% endpaginate %}
+
+    <div id="template" class="container cf form">
+        {% form article %}
+        <h4 id="add-comment-title">{{ 'blogs.comments.form_title' | t }}</h4>
+
+        {% if form.posted_successfully? %}
+        <p>{{ 'blogs.comments.success' | t }}</p>
+        {% endif %}
+
+        {% if blog.moderated? %}
+        <p>{{ 'blogs.comments.moderated' | t }}</p>
+        {% endif %}
+
+        {% if form.errors %}
+            <ul class="errors">
+            {% for field in form.errors %}
+                <li>{{ field | capitalize }} {{ form.errors.messages[field] }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+
+        <div class="input-row {% if form.errors contains 'author' %}has-error{% endif %}">
+            <label for="comment_author">{{ 'blogs.comments.name' | t }}</label>
+            <input type="text" id="comment_author" name="comment[author]" size="40" value="{{form.author}}" />
+        </div>
+        <div class="input-row {% if form.errors contains 'email' %}has-error{% endif %}">
+            <label for="comment_email">{{ 'blogs.comments.email' | t }}</label>
+            <input type="text" id="comment_email" name="comment[email]" size="40" value="{{form.email}}" />
+        </div>
+        <div class="input-row {% if form.errors contains 'body' %}has-error{% endif %}">
+            <label for="comment_body">{{ 'blogs.comments.message' | t }}</label>
+            <textarea id="comment_body" name="comment[body]" cols="40" rows="5">{{form.body}}</textarea>
+        </div>
+
+        <div class="action_bottom">
+            <input type="submit" value="{{ 'blogs.comments.post' | t }}" id="comment-submit" class="btn" />
+        </div>
+
+        {% endform %}
+    </div> <!-- /.form -->
+{% endif %}
+
+{% render 'structured-data-article', article: article %}

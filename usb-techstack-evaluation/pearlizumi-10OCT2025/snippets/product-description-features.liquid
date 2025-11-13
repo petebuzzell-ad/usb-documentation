@@ -1,0 +1,69 @@
+{% assign metafields = product.metafields["global"] %}
+
+{% if metafields["feature_icons"] %}
+  {% assign icons_split = metafields["feature_icons"] | split: ',' %}
+{% endif %}
+
+{% if metafields["feature_1_heading"] %}
+  {% capture features %}
+    <div class="flex">
+      <div class="flex-shrink-0 w-10 lg:w-15 mt-3 mr-10">
+        {% render 'product-features-icon' icon_handle: icons_split[0] %}
+      </div>
+      <div>
+        <h6 class="leading-10 pt-0 mb-0">{{ metafields["feature_1_heading"] }}</h6>
+        <p>{{ metafields["feature_1_copy"] }}</p>
+      </div>
+    </div>
+    <div class="flex">
+      <div class="flex-shrink-0 w-10 lg:w-15 mt-3 mr-10">
+        {% render 'product-features-icon' icon_handle: icons_split[1] %}
+      </div>
+      <div>
+        <h6 class="leading-10 pt-0 mb-0">{{ metafields["feature_2_heading"] }}</h6>
+        <p>{{ metafields["feature_2_copy"] }}</p>
+      </div>
+    </div>
+    <div class="flex">
+      <div class="flex-shrink-0 w-10 lg:w-15 mt-3 mr-10">
+        {% render 'product-features-icon' icon_handle: icons_split[2] %}
+      </div>
+      <div>
+        <h6 class="leading-10 pt-0 mb-0">{{ metafields["feature_3_heading"] }}</h6>
+        <p>{{ metafields["feature_3_copy"] }}</p>
+      </div>
+    </div>
+  {% endcapture %}
+{% endif %}
+
+{% capture content %}
+  <div class="product-description-features lg:bg-ice-grey max-h-0 lg:max-h-unset overflow-hidden transition-max-height duration-500 ease-out">
+    <div class="container px-6 lg:px-8 xl:px-0 lg:flex py-10.5 lg:py-32">
+      {% if product.metafields["global"]["enable_description_section"] == 'true' and metafields["feature_1_heading"] %}
+        <div class="w-full lg:w-1/2 lg:pr-7.5 xl:pr-32 lg:mx-auto">
+          {{ product.description }}
+        </div>
+        <div class="w-full lg:w-1/2 lg:pl-7.5 xl:pl-32">
+          {{ features }}
+        </div>
+      {% elsif product.metafields["global"]["enable_description_section"] == 'true' and metafields["feature_1_heading"] == blank %}
+        <div class="w-full lg:w-1/2 lg:mx-auto">
+          {{ product.description }}
+        </div>
+      {% else %}
+        <div class="w-full lg:hidden lg:mx-auto">
+          {{ product.description }}
+        </div>
+        {% if metafields["feature_1_heading"] %}
+          <div class="w-full lg:w-1/2 lg:mx-auto">
+            {{ features }}
+          </div>
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+{% endcapture %}
+
+{% if product.metafields["global"]["enable_description_section"] == 'true' or metafields["feature_1_heading"] %}
+  {% render 'product-mobile-accordion' title: 'description', content: content, id: 'productDescription' %}
+{% endif %}

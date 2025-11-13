@@ -1,0 +1,21 @@
+<div id="productRecommendations" data-product-id="{{ product.id }}" class="container py-10 lg:py-50">
+  <h3 class="text-center mx-auto pt-0">Related Products</h3>
+  <div class="pb-10 lg:pb-0 px-6 xs:px-10 lg:px-20 relative">
+    <div class="product-recommendations">
+      <div class="glide__track py-4" data-glide-el="track">
+        <div id="recommendationsSlides" class="glide__slides"></div>
+      </div>
+      <div class="absolute left-0 flex items-center justify-between w-full pointer-events-none" style="top: 30%;">
+        <button id="recommendations-prev" class="h-8 px-2 mr-auto pointer-events-auto" onclick="eHS.productRecommendations.goToPreviousSlide()">
+          {% render 'svg-chevron-left' width: '9px', height: '16px' %}
+        </button>
+        <button id="recommendations-next" class="h-8 px-2 ml-auto pointer-events-auto" onclick="eHS.productRecommendations.goToNextSlide()">
+          {% render 'svg-chevron-right' width: '9px', height: '16px' %}
+        </button>
+      </div>
+      <div id="productRecDots" class="absolute left-0 bottom-0 flex items-center justify-center w-full">
+
+      </div>
+    </div>
+  </div>
+</div>

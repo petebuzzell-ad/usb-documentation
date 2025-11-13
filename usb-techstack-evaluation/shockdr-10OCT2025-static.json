@@ -1,0 +1,2089 @@
+{
+  "theme_name": "shockdr-10OCT2025",
+  "apps": [
+    {
+      "id": "855628211100114053",
+      "name": "klaviyo-email-marketing-sms",
+      "path": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+      "enabled": true,
+      "settings": {}
+    },
+    {
+      "id": "17428600031447253342",
+      "name": "attentive",
+      "path": "shopify://apps/attentive/blocks/attn-tag/8df62c72-8fe4-407e-a5b3-72132be30a0d",
+      "enabled": true,
+      "settings": {}
+    },
+    {
+      "id": "5017882195547572635",
+      "name": "sc-easy-redirects",
+      "path": "shopify://apps/sc-easy-redirects/blocks/app/be3f8dbd-5d43-46b4-ba43-2d65046054c2",
+      "enabled": true,
+      "settings": {}
+    },
+    {
+      "id": "2153490007123654574",
+      "name": "consentmo-gdpr",
+      "path": "shopify://apps/consentmo-gdpr/blocks/gdpr_cookie_consent/4fbe573f-a377-4fea-9801-3ee0858cae41",
+      "enabled": true,
+      "settings": {}
+    },
+    {
+      "id": "14724428607702905366",
+      "name": "webrex-seo-optimizer",
+      "path": "shopify://apps/webrex-seo-optimizer/blocks/webrexSeoEmbed/b26797ad-bb4d-48f5-8ef3-7c561521049c",
+      "enabled": true,
+      "settings": {}
+    }
+  ],
+  "scripts": [
+    {
+      "file": "backup_theme.liquid",
+      "type": "inline_script",
+      "content": "const loadingAppearance = {{ loading_appearance | json }};\n    const loaded = sessionStorage.getItem('loaded');\n\n    if (loadingAppearance === 'once') {\n      if (loaded === null) {\n        sessionSto..."
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "inline_script",
+      "content": "if (window.MSInputMethodContext && document.documentMode) {\n      var scripts = document.getElementsByTagName('script')[0];\n      var polyfill = document.createElement(\"script\");\n      polyfill.defer ..."
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "inline_script",
+      "content": "(function(c,l,a,r,i,t,y){\n        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};\n        t=l.createElement(r);t.async=1;t.src=\"https://www.clarity.ms/tag/\"+i;\n        y=l.getElementsByTag..."
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "inline_script",
+      "content": "document.addEventListener('click', function(e) {\n      if(e.target.classList.contains('swatch__link')) {\n        var swatch_url = e.target.href;\n        var swatch_handle = e.target.dataset.swatchHand..."
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "inline_script",
+      "content": "LoopOnstore.init({ \n\t\tkey: \"c48c214b49b5f30f521b12e62722cca8ec3e92ab\", \n\t\tattach: \".cart__buttons .cart__checkout.btn\" \n\t});"
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "external_script",
+      "src": "https://unpkg.com/@loophq/onstore-sdk@latest/dist/loop-onstore-sdk.js"
+    },
+    {
+      "file": "theme.liquid",
+      "type": "inline_script",
+      "content": "const loadingAppearance = {{ loading_appearance | json }};\n    const loaded = sessionStorage.getItem('loaded');\n\n    if (loadingAppearance === 'once') {\n      if (loaded === null) {\n        sessionSto..."
+    },
+    {
+      "file": "theme.liquid",
+      "type": "inline_script",
+      "content": "if (window.MSInputMethodContext && document.documentMode) {\n      var scripts = document.getElementsByTagName('script')[0];\n      var polyfill = document.createElement(\"script\");\n      polyfill.defer ..."
+    },
+    {
+      "file": "theme.liquid",
+      "type": "inline_script",
+      "content": "(function(c,l,a,r,i,t,y){\n        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};\n        t=l.createElement(r);t.async=1;t.src=\"https://www.clarity.ms/tag/\"+i;\n        y=l.getElementsByTag..."
+    },
+    {
+      "file": "theme.liquid",
+      "type": "inline_script",
+      "content": "document.addEventListener('click', function(e) {\n      if(e.target.classList.contains('swatch__link')) {\n        var swatch_url = e.target.href;\n        var swatch_handle = e.target.dataset.swatchHand..."
+    },
+    {
+      "file": "theme.liquid",
+      "type": "inline_script",
+      "content": "LoopOnstore.init({ \n\t\tkey: \"c48c214b49b5f30f521b12e62722cca8ec3e92ab\", \n\t\tattach: \".cart__buttons .cart__checkout.btn\" \n\t});"
+    },
+    {
+      "file": "theme.liquid",
+      "type": "external_script",
+      "src": "https://sapi.negate.io/script/hR3HCU2cfp6z+9u6K2Jr/g==?shop=usbsd.myshopify.com"
+    },
+    {
+      "file": "theme.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "theme.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "theme.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "theme.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "theme.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "theme.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "theme.liquid",
+      "type": "external_script",
+      "src": "https://unpkg.com/@loophq/onstore-sdk@latest/dist/loop-onstore-sdk.js"
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "inline_script",
+      "content": "const loadingAppearance = {{ loading_appearance | json }};\n    const loaded = sessionStorage.getItem('loaded');\n\n    if (loadingAppearance === 'once') {\n      if (loaded === null) {\n        sessionSto..."
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "inline_script",
+      "content": "if (window.MSInputMethodContext && document.documentMode) {\n      var scripts = document.getElementsByTagName('script')[0];\n      var polyfill = document.createElement(\"script\");\n      polyfill.defer ..."
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "inline_script",
+      "content": "(function(c,l,a,r,i,t,y){\n        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};\n        t=l.createElement(r);t.async=1;t.src=\"https://www.clarity.ms/tag/\"+i;\n        y=l.getElementsByTag..."
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "inline_script",
+      "content": "document.addEventListener('click', function(e) {\n      if(e.target.classList.contains('swatch__link')) {\n        var swatch_url = e.target.href;\n        var swatch_handle = e.target.dataset.swatchHand..."
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "inline_script",
+      "content": "LoopOnstore.init({ \n\t\tkey: \"c48c214b49b5f30f521b12e62722cca8ec3e92ab\", \n\t\tattach: \".cart__buttons .cart__checkout.btn\" \n\t});"
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "external_script",
+      "src": "https://sapi.negate.io/script/hR3HCU2cfp6z+9u6K2Jr/g==?shop=usbsd.myshopify.com"
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "external_script",
+      "src": "https://unpkg.com/@loophq/onstore-sdk@latest/dist/loop-onstore-sdk.js"
+    },
+    {
+      "file": "password.liquid",
+      "type": "inline_script",
+      "content": "const loadingAppearance = {{ loading_appearance | json }};\n    const loaded = sessionStorage.getItem('loaded');\n\n    if (loadingAppearance === 'once') {\n      if (loaded === null) {\n        sessionSto..."
+    },
+    {
+      "file": "password.liquid",
+      "type": "inline_script",
+      "content": "if (window.MSInputMethodContext && document.documentMode) {\n      var scripts = document.getElementsByTagName('script')[0];\n      var polyfill = document.createElement(\"script\");\n      polyfill.defer ..."
+    },
+    {
+      "file": "password.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "password.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "password.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "password.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "password.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    }
+  ],
+  "assets": {
+    "css_files": [
+      {
+        "name": "theme.css",
+        "size": 856494,
+        "size_mb": 0.82
+      },
+      {
+        "name": "gift-card.css",
+        "size": 8307,
+        "size_mb": 0.01
+      }
+    ],
+    "js_files": [
+      {
+        "name": "smoothscroll.js",
+        "size": 7971,
+        "size_mb": 0.01
+      },
+      {
+        "name": "ie11.js",
+        "size": 8315,
+        "size_mb": 0.01
+      },
+      {
+        "name": "theme.js",
+        "size": 329545,
+        "size_mb": 0.31
+      },
+      {
+        "name": "custom.js",
+        "size": 500,
+        "size_mb": 0.0
+      },
+      {
+        "name": "vendor.js",
+        "size": 76379,
+        "size_mb": 0.07
+      },
+      {
+        "name": "theme.dev.js",
+        "size": 702082,
+        "size_mb": 0.67
+      },
+      {
+        "name": "photoswipe.js",
+        "size": 41998,
+        "size_mb": 0.04
+      }
+    ],
+    "images": [
+      {
+        "name": "Clear-Iridescent-White-Lux-Swatch.jpg",
+        "size": 1338,
+        "size_mb": 0.0
+      },
+      {
+        "name": "3D-Black-White-Stripes-Swatch.jpg",
+        "size": 1480,
+        "size_mb": 0.0
+      },
+      {
+        "name": "See_Ya_Swatch.jpg",
+        "size": 1372,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Orange_Royal_Swatch.jpg",
+        "size": 1379,
+        "size_mb": 0.0
+      },
+      {
+        "name": "3d-tether-stripes-swatch.jpg",
+        "size": 1500,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Clear_Gold_Lux_Swatch.jpg",
+        "size": 1339,
+        "size_mb": 0.0
+      },
+      {
+        "name": "White-Camo-Swatch.jpg",
+        "size": 1436,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Black-Red-Lux-Swatch.jpg",
+        "size": 1370,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Iridescent-Pink-Swatch.jpg",
+        "size": 1411,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Checker-Swatch.jpg",
+        "size": 1587,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Amoeba-Camo-Swatch.jpg",
+        "size": 1502,
+        "size_mb": 0.0
+      },
+      {
+        "name": "icon-arrow-right.svg",
+        "size": 338,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Gold-Gummies-Swatch.jpg",
+        "size": 1442,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Black-Lux-Gold-Swatch.jpg",
+        "size": 1493,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Shock-Repeat-Swatch.jpg",
+        "size": 1587,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Benjamin_Splatter_Swatch.jpg",
+        "size": 1315,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Graffiti-Swatch.jpg",
+        "size": 1336,
+        "size_mb": 0.0
+      },
+      {
+        "name": "White-ColumbiaBlue-Swatch.jpg",
+        "size": 1508,
+        "size_mb": 0.0
+      },
+      {
+        "name": "blank.svg",
+        "size": 80186,
+        "size_mb": 0.08
+      },
+      {
+        "name": "icon-squiggle.svg",
+        "size": 381,
+        "size_mb": 0.0
+      },
+      {
+        "name": "icon-zoom-out.svg",
+        "size": 479,
+        "size_mb": 0.0
+      },
+      {
+        "name": "icon-chevron-right-bold.svg",
+        "size": 226,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Blue-Black-Swatch.jpg",
+        "size": 1514,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Black-Lux-Iridescent-Swatch.jpg",
+        "size": 1404,
+        "size_mb": 0.0
+      },
+      {
+        "name": "White-Black-Lux-Swatch_NEW.jpg",
+        "size": 1320,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Black-Tie-Dye-Drip-Swatch.jpg",
+        "size": 1533,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Benjamins-Swatch.jpg",
+        "size": 1418,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Black-White-Hounds-Swatch.jpg",
+        "size": 1500,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Gold_Dollar_Smile_Swatch.jpg",
+        "size": 1375,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Black-Gold-Lux-Swatch.jpg",
+        "size": 2020,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Black-White-Swatch.jpg",
+        "size": 1503,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Black-Lux-Swatch.jpg",
+        "size": 1503,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Gold_Money_Bands-Swatch.jpg",
+        "size": 1335,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Black-White-Fang-Swatch.jpg",
+        "size": 1503,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Chrome-Silver-Flag-Swatch.jpg",
+        "size": 1426,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Black-Gold-ChaChing-Swatch.jpg",
+        "size": 1236,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Stars-and-Stripes-Swatch.jpg",
+        "size": 1506,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Iridescent-Refracted-Swatch.jpg",
+        "size": 1925,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Paisley-Black-Swatch.jpg",
+        "size": 1503,
+        "size_mb": 0.0
+      },
+      {
+        "name": "White-Money-Bands-Swatch.jpg",
+        "size": 1379,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Black-Gold-King-Swatch.jpg",
+        "size": 1561,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Camo-Swatch.jpg",
+        "size": 1452,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Stars-Stripes-Gold-Swatch.jpg",
+        "size": 1594,
+        "size_mb": 0.0
+      },
+      {
+        "name": "White-Multi-Color-Lux-Swatch.jpg",
+        "size": 1520,
+        "size_mb": 0.0
+      },
+      {
+        "name": "White_Ice_Cold_Swatch.jpg",
+        "size": 1481,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Black-Red-Swatch.jpg",
+        "size": 1533,
+        "size_mb": 0.0
+      },
+      {
+        "name": "White_Sprinkle_Drip_Swatch.jpg",
+        "size": 1592,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Money-Mouth-Swatch.jpg",
+        "size": 1545,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Black-White-Lux-Swatch.jpg",
+        "size": 1503,
+        "size_mb": 0.0
+      },
+      {
+        "name": "icon-check-swatch.svg",
+        "size": 1092,
+        "size_mb": 0.0
+      },
+      {
+        "name": "White_Navy_Swatch.jpg",
+        "size": 1400,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Black-White-Lux-Swatch_NEW.jpg",
+        "size": 1320,
+        "size_mb": 0.0
+      },
+      {
+        "name": "password-page-background.jpg",
+        "size": 192276,
+        "size_mb": 0.18
+      },
+      {
+        "name": "loading.svg",
+        "size": 335,
+        "size_mb": 0.0
+      },
+      {
+        "name": "ColumbiaBlue-White-Swatch.jpg",
+        "size": 1492,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Royal_Orange_Swatch.jpg",
+        "size": 1434,
+        "size_mb": 0.0
+      },
+      {
+        "name": "White-Iridescent-Lux-Swatch.jpg",
+        "size": 1439,
+        "size_mb": 0.0
+      },
+      {
+        "name": "White-Lux-Swatch.jpg",
+        "size": 1440,
+        "size_mb": 0.0
+      },
+      {
+        "name": "White_Im_Him_Swatch.jpg",
+        "size": 1320,
+        "size_mb": 0.0
+      },
+      {
+        "name": "White-Pink-Swatch.jpg",
+        "size": 1386,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Hi-Mom-Swatch.jpg",
+        "size": 1536,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Red-Drip-Fang-Swatch.jpg",
+        "size": 1492,
+        "size_mb": 0.0
+      },
+      {
+        "name": "White-Red-Swatch.jpg",
+        "size": 1405,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Money_Gold_Band_Chain_Swatch.jpg",
+        "size": 1306,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Benjamin_Lux_Swatch.jpg",
+        "size": 1349,
+        "size_mb": 0.0
+      },
+      {
+        "name": "iridescent-lux-swatch.jpg",
+        "size": 1455,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Multiple_Swatch.jpg",
+        "size": 2019,
+        "size_mb": 0.0
+      },
+      {
+        "name": "usa-flag-swatch.jpg",
+        "size": 1541,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Chrome-Iridescent-Swatch.jpg",
+        "size": 1237,
+        "size_mb": 0.0
+      },
+      {
+        "name": "icon-check.svg",
+        "size": 390,
+        "size_mb": 0.0
+      },
+      {
+        "name": "blank.gif",
+        "size": 1101,
+        "size_mb": 0.0
+      },
+      {
+        "name": "icon-arrow-right-bold.svg",
+        "size": 245,
+        "size_mb": 0.0
+      },
+      {
+        "name": "checker-red-swatch.jpg",
+        "size": 1588,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Multi-Color-Face-Swatch.jpg",
+        "size": 1534,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Your_Speed_Zero_Swatch.jpg",
+        "size": 1397,
+        "size_mb": 0.0
+      },
+      {
+        "name": "White-Black-Swatch.jpg",
+        "size": 1500,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Translucent_Pink_Lux_Swatch.jpg",
+        "size": 1321,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Solid-Black-Swatch.jpg",
+        "size": 1303,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Black-Gold-Chain-Swatch.jpg",
+        "size": 1565,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Multi-Lux-Swatch.jpg",
+        "size": 1513,
+        "size_mb": 0.0
+      },
+      {
+        "name": "icon-zoom-in.svg",
+        "size": 551,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Solid-White-Swatch.jpg",
+        "size": 1283,
+        "size_mb": 0.0
+      },
+      {
+        "name": "White-Gold-Card-Swatch.jpg",
+        "size": 1518,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Chrome-Silver-Stars-and-Stripes-Swatch.jpg",
+        "size": 1447,
+        "size_mb": 0.0
+      },
+      {
+        "name": "icon-chevron-right.svg",
+        "size": 226,
+        "size_mb": 0.0
+      },
+      {
+        "name": "White-Gold-Swatch.jpg",
+        "size": 1444,
+        "size_mb": 0.0
+      },
+      {
+        "name": "The-King-Swatch.jpg",
+        "size": 1525,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Navy_White_Swatch.jpg",
+        "size": 1399,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Red_Gray_Swatch.jpg",
+        "size": 1370,
+        "size_mb": 0.0
+      },
+      {
+        "name": "White-Royal-Swatch.jpg",
+        "size": 1383,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Chrome-Stars-And-Stripes-Swatch.jpg",
+        "size": 1470,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Black-Rainbow-Lux-Swatch.jpg",
+        "size": 1563,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Black-Camo-Swatch.jpg",
+        "size": 1432,
+        "size_mb": 0.0
+      },
+      {
+        "name": "White-Lux-Iridescent-Swatch.jpg",
+        "size": 1413,
+        "size_mb": 0.0
+      },
+      {
+        "name": "White-Gold-Lux-Swatch.jpg",
+        "size": 1528,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Smile-Swatch.jpg",
+        "size": 1483,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Iridescent-Silver-Swatch.jpg",
+        "size": 1960,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Flag-Swatch.jpg",
+        "size": 1528,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Tie-Dye-Swatch.jpg",
+        "size": 1493,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Gray_Red_Swatch.jpg",
+        "size": 1399,
+        "size_mb": 0.0
+      },
+      {
+        "name": "Chrome-Stars-Stripes-Swatch.jpg",
+        "size": 1516,
+        "size_mb": 0.0
+      }
+    ],
+    "fonts": [
+      {
+        "name": "BigShouldersDisplay-Thin.woff",
+        "size": 93813,
+        "size_mb": 0.09
+      },
+      {
+        "name": "BigShouldersDisplay-ExtraLight.woff",
+        "size": 97962,
+        "size_mb": 0.09
+      },
+      {
+        "name": "BigShouldersDisplay-Medium.woff",
+        "size": 99245,
+        "size_mb": 0.09
+      },
+      {
+        "name": "BigShouldersDisplay-Black.woff",
+        "size": 96664,
+        "size_mb": 0.09
+      },
+      {
+        "name": "BigShouldersDisplay-Regular.woff2",
+        "size": 67944,
+        "size_mb": 0.06
+      },
+      {
+        "name": "BigShouldersDisplay-SemiBold.woff",
+        "size": 99413,
+        "size_mb": 0.09
+      },
+      {
+        "name": "BigShouldersDisplay-ExtraBold.woff2",
+        "size": 67976,
+        "size_mb": 0.06
+      },
+      {
+        "name": "BigShouldersDisplay-Bold.woff",
+        "size": 98637,
+        "size_mb": 0.09
+      },
+      {
+        "name": "BigShouldersDisplay-ExtraBold.woff",
+        "size": 99058,
+        "size_mb": 0.09
+      },
+      {
+        "name": "BigShouldersDisplay-ExtraLight.woff2",
+        "size": 66424,
+        "size_mb": 0.06
+      },
+      {
+        "name": "BigShouldersDisplay-Regular.woff",
+        "size": 98590,
+        "size_mb": 0.09
+      },
+      {
+        "name": "BigShouldersDisplay-Bold.woff2",
+        "size": 68144,
+        "size_mb": 0.06
+      },
+      {
+        "name": "BigShouldersDisplay-Medium.woff2",
+        "size": 67946,
+        "size_mb": 0.06
+      },
+      {
+        "name": "BigShouldersDisplay-Black.woff2",
+        "size": 65137,
+        "size_mb": 0.06
+      },
+      {
+        "name": "BigShouldersDisplay-Light.woff2",
+        "size": 67437,
+        "size_mb": 0.06
+      },
+      {
+        "name": "BigShouldersDisplay-Light.woff",
+        "size": 97733,
+        "size_mb": 0.09
+      },
+      {
+        "name": "BigShouldersDisplay-SemiBold.woff2",
+        "size": 80,
+        "size_mb": 0.0
+      }
+    ],
+    "total_size": 3805554,
+    "total_size_mb": 3.63
+  },
+  "code_quality": {
+    "deprecated_tags": [
+      {
+        "file": "snippets/no-blocks.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/announcement.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/list-collections.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 3
+      },
+      {
+        "file": "snippets/image-srcset.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/nav-item.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/video.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 3
+      },
+      {
+        "file": "snippets/products-recently-viewed.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/image-fill.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/shogun-head.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 4
+      },
+      {
+        "file": "snippets/shogun-head.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/shogun-content-handler.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 6
+      },
+      {
+        "file": "snippets/shogun-content-handler.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 6
+      },
+      {
+        "file": "snippets/shogun-content-handler.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/product-grid-item--onboarding.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 3
+      },
+      {
+        "file": "snippets/product-card-inline--onboarding.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/gift-card-recipient-form.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/title-stripped.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/css-variables.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 3
+      },
+      {
+        "file": "snippets/shogun-products.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/shogun-products.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/product.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/product.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 6
+      },
+      {
+        "file": "snippets/subscription-form.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/product-price.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/inventory-countdown.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/header-block.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/comment.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/search-results-product.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/image.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/title-text-reveal-and-highlights.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/title-with-highlights.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/footer.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/notification-form.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/notification-form.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/product-grid-item.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 6
+      },
+      {
+        "file": "snippets/product-grid-item.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 6
+      },
+      {
+        "file": "snippets/footer-copyright.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/footer-copyright.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/countdown-timer.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/section-tab-collections.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/ss-video-image-text-6.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 6
+      },
+      {
+        "file": "sections/ss-video-image-text-6.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/section-text.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/shogun-above.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "sections/shogun-above.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/section-contact-form.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/section-promotion-row.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      },
+      {
+        "file": "sections/section-accordions.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 2
+      },
+      {
+        "file": "sections/section-accordions.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/section-image-with-text.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      },
+      {
+        "file": "sections/collection.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      },
+      {
+        "file": "sections/section-press.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/section-image-accordions.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/section-countdown.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/ss-collection-5.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      },
+      {
+        "file": "sections/section-collection.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 5
+      },
+      {
+        "file": "sections/section-video.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      },
+      {
+        "file": "sections/section-products-with-image.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      },
+      {
+        "file": "sections/section-slideshow.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      },
+      {
+        "file": "sections/api-quickview.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/section-overlapping-images.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      },
+      {
+        "file": "sections/shogun-below.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "sections/shogun-below.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/section-sticky-images-and-text.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/ss-video-with-text.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 7
+      },
+      {
+        "file": "sections/section-banner-image.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/section-look.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/api-predictive-search.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/section-locations.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/article.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/article.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 7
+      },
+      {
+        "file": "sections/section-icons-row.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/section-shoppable-blog.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      },
+      {
+        "file": "sections/shogun-optimizer.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 4
+      },
+      {
+        "file": "sections/shogun-optimizer.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/shogun-helper.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 4
+      },
+      {
+        "file": "sections/shogun-helper.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/section-split-images.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/ss-video-image-text-3.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "sections/ss-video-image-text-3.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "layout/backup_theme.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "layout/backup_theme.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "layout/theme.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "layout/theme.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "layout/theme.shogun.landing.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "layout/theme.shogun.landing.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      },
+      {
+        "file": "layout/password.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "layout/password.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/page.shogun.landing.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/page.shogun.default.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/gift_card.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/collection.shogun.custom.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/article.shogun.custom.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/product.shogun.custom.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/customers/login.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/customers/order.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 3
+      },
+      {
+        "file": "templates/customers/order.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/customers/account.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/customers/activate_account.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/customers/addresses.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      }
+    ],
+    "performance_issues": [
+      {
+        "file": "snippets/search-result-page.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/popular-searches.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/cart-drawer.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 20
+      },
+      {
+        "file": "snippets/nav-drawer.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "snippets/announcement.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 20
+      },
+      {
+        "file": "snippets/product-siblings.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/circle-text.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/list-collections.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 10
+      },
+      {
+        "file": "snippets/grid-layout.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 8
+      },
+      {
+        "file": "snippets/nav-item-mobile.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 14
+      },
+      {
+        "file": "snippets/nav-item.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 15
+      },
+      {
+        "file": "snippets/video.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 7
+      },
+      {
+        "file": "snippets/product-swatch--onboarding.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/products-recently-viewed.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/locations.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 7
+      },
+      {
+        "file": "snippets/photoswipe-video-html.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/image-fill.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "snippets/shogun-head.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "snippets/testimonial-text.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "snippets/shogun-content-handler.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "snippets/product-grid-item--onboarding.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 12
+      },
+      {
+        "file": "snippets/cross-border.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "snippets/rich-text.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 7
+      },
+      {
+        "file": "snippets/product-card-inline--onboarding.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 10
+      },
+      {
+        "file": "snippets/media.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "snippets/product-quick-view-form-onboarding.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 15
+      },
+      {
+        "file": "snippets/gift-card-recipient-form.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "snippets/search-popdown.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/css-variables.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 8
+      },
+      {
+        "file": "snippets/shogun-products.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/shogun-products.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "snippets/product.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/product.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 105
+      },
+      {
+        "file": "snippets/subscription-form.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/subscription-form.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "snippets/product-price.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/upsell-product.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/header-block.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/newsletter-form.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 12
+      },
+      {
+        "file": "snippets/share-button.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/blog-post-grid-item.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/blog-post-grid-item.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/footer-payment.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/testimonial-image.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 6
+      },
+      {
+        "file": "snippets/filter.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 15
+      },
+      {
+        "file": "snippets/image.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/cart-empty-buttons.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/testimonials.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "snippets/footer.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 9
+      },
+      {
+        "file": "snippets/notification-form.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/testimonial-item.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 8
+      },
+      {
+        "file": "snippets/product-grid-item.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 28
+      },
+      {
+        "file": "snippets/footer-copyright.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/collection-grid-item.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 11
+      },
+      {
+        "file": "snippets/cart-line-items.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/countdown-timer.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 6
+      },
+      {
+        "file": "sections/section-tab-collections.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 13
+      },
+      {
+        "file": "sections/section-divider.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/ss-video-image-text-6.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "sections/ss-video-image-text-6.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 50
+      },
+      {
+        "file": "sections/section-text.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 11
+      },
+      {
+        "file": "sections/shogun-above.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/section-contact-form.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 9
+      },
+      {
+        "file": "sections/collection-image-with-title.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 6
+      },
+      {
+        "file": "sections/section-recommended-posts.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "sections/section-columns.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 8
+      },
+      {
+        "file": "sections/section-promotion-row.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 8
+      },
+      {
+        "file": "sections/recent-products.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "sections/section-accordions.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 8
+      },
+      {
+        "file": "sections/api-cart-items.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/section-image-with-text.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 10
+      },
+      {
+        "file": "sections/collection.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 40
+      },
+      {
+        "file": "sections/section-press.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 12
+      },
+      {
+        "file": "sections/section-custom-html.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/section-image-accordions.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 7
+      },
+      {
+        "file": "sections/section-sticky-image-cards.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "sections/section-countdown.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 14
+      },
+      {
+        "file": "sections/blog.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 6
+      },
+      {
+        "file": "sections/ss-collection-5.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "sections/ss-collection-5.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 24
+      },
+      {
+        "file": "sections/section-collection.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 23
+      },
+      {
+        "file": "sections/header.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 29
+      },
+      {
+        "file": "sections/section-products-with-image.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 11
+      },
+      {
+        "file": "sections/section-slideshow.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 15
+      },
+      {
+        "file": "sections/product.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "sections/section-overlapping-images.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 24
+      },
+      {
+        "file": "sections/shogun-below.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/section-image.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "sections/section-banner-text-columns.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 8
+      },
+      {
+        "file": "sections/subcollections.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/subcollections.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 7
+      },
+      {
+        "file": "sections/main-page.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "sections/section-sticky-images-and-text.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 18
+      },
+      {
+        "file": "sections/ss-video-with-text.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/ss-video-with-text.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 20
+      },
+      {
+        "file": "sections/section-product.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "sections/section-banner-image.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 9
+      },
+      {
+        "file": "sections/section-look.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 10
+      },
+      {
+        "file": "sections/api-predictive-search.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/cart.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 15
+      },
+      {
+        "file": "sections/section-products-list.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 41
+      },
+      {
+        "file": "sections/article.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 25
+      },
+      {
+        "file": "sections/section-newsletter.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "sections/section-icons-row.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 8
+      },
+      {
+        "file": "sections/section-shoppable-blog.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 7
+      },
+      {
+        "file": "sections/shogun-optimizer.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/shogun-helper.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/password.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/section-blog.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "sections/section-custom-content.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 14
+      },
+      {
+        "file": "sections/popup.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "sections/related-products.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 6
+      },
+      {
+        "file": "sections/section-split-images.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 7
+      },
+      {
+        "file": "sections/ss-video-image-text-3.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "sections/ss-video-image-text-3.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 24
+      },
+      {
+        "file": "sections/search.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 26
+      },
+      {
+        "file": "layout/backup_theme.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 7
+      },
+      {
+        "file": "layout/theme.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 7
+      },
+      {
+        "file": "layout/theme.shogun.landing.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "layout/password.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "templates/robots.txt.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "templates/gift_card.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "templates/customers/login.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 6
+      },
+      {
+        "file": "templates/customers/order.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "templates/customers/order.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 17
+      },
+      {
+        "file": "templates/customers/account.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "templates/customers/account.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 9
+      },
+      {
+        "file": "templates/customers/register.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "templates/customers/addresses.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "templates/customers/addresses.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "templates/customers/reset_password.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      }
+    ],
+    "custom_sections": 73,
+    "custom_snippets": 167,
+    "total_lines": 60102
+  },
+  "architecture": {
+    "sections_count": 73,
+    "snippets_count": 167,
+    "templates_count": 7,
+    "layouts_count": 4,
+    "locales_count": 6,
+    "has_shogun": true,
+    "has_custom_checkout": false,
+    "complexity_score": 337
+  },
+  "performance_indicators": {}
+}

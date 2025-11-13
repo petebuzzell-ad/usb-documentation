@@ -1,0 +1,70 @@
+{% if paginate.previous or paginate.next %}
+<nav class="pagination--container" aria-label="Pagination">
+  <ul class="flex justify-center items-center lg:mb-20 mb-14">
+
+    {% if paginate.previous %}
+      <li class="bg-ice-grey rounded-sm lg:mr-7.5 mr-6">
+        <a
+          class="flex justify-center items-center"
+          href="{{- paginate.previous.url -}}{%- if grid_list -%}&grid_list{%- endif -%}"
+          aria-label="Go to previous page"
+          style="width: 24px; height: 24px;"
+        >
+          <span class="pagination--chevron-left" aria-hidden="true">
+            {% include 'svg-chevron-left' width: '5px', height: '12px' %}
+          </span>
+        </a>
+      </li>
+    {% endif %}
+
+    {% for part in paginate.parts %}
+      {% if part.is_link %}
+        <li class="text-p text-black font-sora{% unless forloop.last %} mr-2{% endunless %}">
+          <a
+            class="flex justify-center items-center"
+            style="width: 24px;"
+            href="{{ part.url }}{% if grid_list %}&grid_list{% endif %}"
+            aria-label="Go to page {{ part.title }}"
+          >
+            {{ part.title }}
+          </a>
+        </li>
+      {% else %}
+        {% if part.title == '&hellip;' %}
+          <li class="text-p text-black font-sora mr-2 text-center"
+          style="width: 24px;">
+            <span>
+              {{ part.title }}
+            </span>
+          </li>
+        {% else %}
+          <li
+            class="border border-bright-yellow rounded-sm text-bright-yellow mr-2 text-center text-p font-sora"
+            style="width: 24px;"
+            aria-label="Page {{ part.title }}"
+            aria-current="true"
+          >
+            <span>
+              {{ part.title }}
+            </span>
+          </li>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    {% if paginate.next %}
+      <li class="bg-ice-grey rounded-sm lg:ml-7.5 ml-6">
+        <a
+          class="flex justify-center items-center "
+          href="{{- paginate.next.url -}}{%- if grid_list -%}&grid_list{%- endif -%}"
+          aria-label="Go to next page"
+          style="width: 24px; height: 24px;"
+        >
+          <span class="pagination--chevron-right" aria-hidden="true">
+            {% include 'svg-chevron-right' width: '5px', height: '12px' %}
+          </span>
+        </a>
+      </li>
+    {% endif %}
+  </ul>
+</nav>
+{% endif %}

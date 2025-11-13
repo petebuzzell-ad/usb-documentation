@@ -1,0 +1,11 @@
+<div class="search-content-count mb-4.5 max-w-1200 w-full mx-auto flex text-p-s md:leading-38">23 Items</div>
+<div class="search-content__grid max-w-1200 w-full mx-auto">
+  <div class="flex flex-wrap -mx-3">
+    {%- assign page = pages.style-guide -%}
+    {%- render 'content-item', page: page -%}
+    
+    {%- for article in blogs.news.articles -%}
+      {%- render 'content-item', article: article -%}
+    {%- endfor -%}
+  </div>
+</div>

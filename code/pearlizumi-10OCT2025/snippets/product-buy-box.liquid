@@ -1,0 +1,91 @@
+{% liquid
+  assign is_pro_customer = false
+  assign is_ev_customer = false
+  assign is_op_customer = false
+  assign is_any_pro = false
+
+  if customer.tags contains 'Pro Purchase' or customer.tags contains 'PRO PURCHASE'
+    assign is_pro_customer = true
+    assign is_any_pro = true
+  elsif customer.tags contains 'Expert Voice'
+    assign is_ev_customer = true
+    assign is_any_pro = true
+  elsif customer.tags contains 'Outdoor Pro'
+    assign is_op_customer = true
+    assign is_any_pro = true
+  endif
+
+  if customer.tags contains 'Pro Purchase' or customer.tags contains 'PRO PURCHASE'
+    assign threshold = settings.free_shipping_threshold_pro | times: 1
+  elsif customer.tags contains 'Expert Voice'
+    assign threshold = settings.free_shipping_threshold_expert | times: 1
+  elsif customer.tags contains 'Outdoor Pro'
+    assign threshold = settings.free_shipping_threshold_outdoor | times: 1
+  else
+    assign threshold = settings.free_shipping_threshold | times: 1
+  endif
+
+  assign show_buy_locally = false
+  for variant in product.variants
+    unless variant.available
+      assign show_buy_locally = true
+      break
+    endunless
+  endfor
+%}
+
+<!-- Buy Box -->
+<div class="md:pl-8 lg:pl-12 xl:pl-16" data-pdp-buybox>
+
+  <!-- Buy Box Info - Title, Price, Stock, etc. -->
+  <div class="text-center md:text-left">
+    {% render 'product-buy-box-info', product: product, quickview: quickview, storefront: storefront, gift_card: gift_card %}
+  </div>
+
+  {%- comment -%} Buy Box Options {%- endcomment -%}
+  {% render 'product-buy-box-standard',
+    product: product,
+    quickview: quickview,
+    discount_tag: discount_tag,
+    limit_tag: limit_tag,
+    storefront: storefront,
+    gift_card: gift_card
+  %}
+
+  {%- unless quickview or storefront == "INT" -%}
+    <div id="productBuyBoxDetails">
+      <!-- Guarantees & Shipping Info -->
+      <div class="mb-4 flex flex-wrap justify-center md:justify-center gap-1.5 xl:gap-x-8 xl:gap-y-2 items-center">
+        <div class="flex items-center text-p-xxs xl:text-p-xs font-light">
+          <span class="mr-2">{% render 'svg-truck' %}</span>
+          {%- if settings.free_shipping_enabled_pros or settings.free_shipping_enabled_normals -%}
+            {% assign enable_pro_ev = settings.free_shipping_enabled_pro_ev %}
+            {% if enable_pro_ev and is_ev_customer %}
+              {%- if threshold > 0 -%}
+                {{ 'products.product.free_shipping_on_orders_over' | t }} ${{threshold}}
+              {%- else -%}
+                {{ 'products.product.free_shipping_on_all' | t }}
+              {%- endif -%}
+            {%- else -%}
+              {%- if threshold > 0 -%}
+                {{ 'products.product.free_shipping_on_orders_over' | t }} ${{threshold}}
+              {%- else -%}
+                {{ 'products.product.free_shipping_on_all' | t }}
+              {%- endif -%}
+            {%- endif -%}
+          {%- else -%}
+            {{ 'products.product.free_shipping_on_all' | t }}
+          {%- endif -%}
+        </div>
+        <div class="flex items-center text-p-xxs xl:text-p-xs font-light">
+          <span class="mr-2">{% render 'svg-shield' %}</span>
+          {{ 'products.product.lifetime_warranty' | t }}
+        </div>
+      </div>
+    </div>
+
+    {%- if show_buy_locally -%}
+      {%- render 'pdp-locally-embed' -%}
+    {%- endif -%}
+  {%- endunless -%}
+</div>

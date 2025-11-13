@@ -1,0 +1,80 @@
+{% comment %}
+  Set the extension of your color files below. Use 'png', 'jpeg', 'jpg' or 'gif'.
+{% endcomment %}
+
+{% assign file_extension = 'png' %}
+
+{% assign swatch = product-swatch %}
+{% assign found_option = false %}
+{% assign is_color = false %}
+{% assign is_size = false %}
+{% assign option_index = 0 %}
+
+{% for option in product.options %}
+    {% if option == swatch %}
+        {% assign found_option = true %}
+        {% assign option_index = forloop.index0 %}
+        {% assign downcased_option = swatch | downcase %}
+        {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
+            {% assign is_color = true %}
+            {% assign colorOptionName = option %}
+        {% endif %}
+        {% if downcased_option contains 'size' %}
+            {% assign is_size = true %}
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
+<div {% if is_color and product.metafields.colorop.size > 0 %}style="display: none"{%endif%} class="swatch clearfix" data-option-index="{{ option_index }}">
+
+    <div class="option_title" {% if is_color %} style="display: block;"{% endif %}>
+        {{ swatch }}{% if is_color %}: <span>{{ product.options_by_name[colorOptionName].values[0] }}</span>{% endif %}
+        {% if is_size %}
+            <!-- START KiwiSizing code !-->
+            <div id="KiwiSizingChart"
+                 style="margin-top: -8px; margin-left: 8px;"
+                 data-collections="{{ product.collections | map: 'id' | join: ','}}"
+                 data-tags="{{ product.tags | join: ',' | escape}}"
+                 data-product="{{product.id}}"
+                 data-vendor="{{product.vendor | escape}}"
+                 data-type="{{product.type | escape}}">
+            </div>
+            <!-- END KiwiSizing code !-->
+        {% endif %}
+    </div>
+
+  <div class="{% if is_color %}product-swatches{% else %}swatch_boxes{% endif %}">
+    {% assign values = '' %}
+    {% for variant in product.variants %}
+   
+    {%- include 'bold-variant' with variant, hide_action: 'skip' -%}
+    {% assign value = variant.options[option_index] | remove: csp_flag_string %}
+    {% unless values contains value %}
+    {% assign values = values | join: ',' %}
+    {% assign values = values | append: ',' | append: value %}
+    {% assign values = values | split: ',' %}
+      {% if is_color %}
+        {% assign swatchColor = product.metafields.pdp.swatch_color %}
+        {% assign swatchImage = product.metafields.pdp.swatch_image %}
+        <a href="{{ product.url }}" class="{% unless product.available %}soldout{%endunless%} active"  data-image-id="{{variant.featured_image.id}}">
+          <span style="{% if swatchImage != blank %}background-image: url({{ swatchImage }});{% else %}background-color: {{ swatchColor }};{% endif %}"></span>
+        </a>
+      {% else %}
+      <input id="swatch-{{ option_index }}-{{ value | handle }}-{{ product.id }}{% if section.id %}-{{ section.id }}{% endif %}" type="radio" name="option-{{ option_index }}" value="{{ value | escape }}"{% if forloop.first %} checked{% endif %} />
+      <div data-value="{{ value | escape }}" data-id="{{ variant.id }}" class="swatch-element {% if is_color %}color {% endif %} {% if is_size %}size {% endif %}{{ value | handle }}-swatch {% if variant.available %}available{% else %}soldout{% endif %}" {% if product.tags contains 'map-variant-images' %} data-variant-image-id="{{ variant.featured_image.id }}" data-variant-media-id="{{ variant.featured_media.id }}"{% endif %}>
+        {% if is_color %}
+        {% else %}
+        <label for="swatch-{{ option_index }}-{{ value | handle }}-{{ product.id }}{% if section.id %}-{{ section.id }}{% endif %}" data-image-id="{{variant.featured_image.id}}">
+        <script>console.log({{variant |json }});</script>
+          {{ value }}
+          <img class="crossed-out" src="{{ 'soldout.png' | asset_url }}"/>
+        </label>
+        {% endif %}
+      </div>
+      {% endif %}
+
+    
+    {% endunless %}
+    {% endfor %}
+  </div>   
+</div>

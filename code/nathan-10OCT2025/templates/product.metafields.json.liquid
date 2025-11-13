@@ -1,0 +1,16 @@
+{%- layout none -%}
+{
+    {%- if product.metafields.colorop.ordering -%}
+    {% assign ordering = product.metafields.colorop.ordering | replace: "[", "" | replace: "]", "" | replace : "},{", "@@" | replace: "{", "" | replace: "}", "" | split: "@@" %}
+    "colorop": {
+        "ordering": {{ product.metafields.colorop.ordering | json }},
+        "ordering_count": {{ordering.size}}
+    },
+    {%- endif -%}
+    {%- if product.metafields.global.violator_url -%}
+    "global": {
+        "violator_url": {{ product.metafields.global.violator_url | json }}
+    },
+    {%- endif -%}
+    "tags": [{% for tag in product.tags %}{{ tag | downcase | json }}{% unless forloop.last == true %},{%endunless%}{% endfor %}]
+}

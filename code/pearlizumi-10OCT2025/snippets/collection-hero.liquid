@@ -1,0 +1,63 @@
+{%- comment -%}
+
+  Uses the filename from /settings/files as metafield value,
+  then the file_img_url filter to allow for responsive sizing.
+
+  https://shopify.dev/docs/themes/liquid/reference/filters/url-filters#file_img_url
+
+  Recommended size for Mobile: 768px wide x ~300px tall
+  Recommended size for Desktop: 1920px wide x ~500px tall
+
+{%- endcomment -%}
+{%- liquid
+  assign fallback_filename = "collection-hero-fallback.png"
+  assign decorative_filename = "decorative_splash.png"
+
+  if collection.metafields.global.desktop_hero_filename
+    assign desktop_hero_filename = collection.metafields.global.desktop_hero_filename
+  else
+    assign desktop_hero_filename = fallback_filename
+    assign uses_desktop_fallback = true
+  endif
+  if collection.metafields.global.mobile_hero_filename
+    assign mobile_hero_filename = collection.metafields.global.mobile_hero_filename
+  else
+    assign mobile_hero_filename = desktop_hero_filename
+    assign uses_mobile_fallback = true
+  endif
+  
+  assign text_shade = "text-black"
+  if collection.metafields.global.text_shade
+    assign text_shade = collection.metafields.global.text_shade
+  endif
+-%}
+
+<!-- Collection Hero -->
+<section class="relative overflow-hidden">
+  {%- comment -%} Main Hero Images {%- endcomment -%}
+  <picture class="w-full h-full flex max-h-350">
+    <source media="(min-width: 1440px)" srcset="{{- desktop_hero_filename | file_img_url: '1920x' -}}">
+    <source media="(min-width: 1024px)" srcset="{{- desktop_hero_filename | file_img_url: '1440x' -}}">
+    <source media="(min-width: 768px)" srcset="{{- desktop_hero_filename | file_img_url: '1024x' -}}">
+    <img class="object-cover h-auto w-full" src="{{- mobile_hero_filename | file_img_url: '768x' -}}" alt="{{- collection.title -}} Collection Header" loading="eager" fetchpriority="high">
+  {%- comment -%} Fallback Images {%- endcomment -%}
+  </picture>
+
+  {%- comment -%} Decorative Images {%- endcomment -%}
+  {%- if uses_mobile_fallback -%}
+    <img src="{{- decorative_filename | asset_img_url: '240x' -}}" alt="" class="absolute top-0 -left-30 sm:-left-20 md:hidden" style="transform: scaleX(-1)">
+    <img src="{{- decorative_filename | asset_img_url: '240x' -}}" alt="" class="absolute top-0 -right-30 sm:-right-20 md:hidden">
+  {%- endif -%}
+  {%- if uses_desktop_fallback -%}
+    <img src="{{- decorative_filename | asset_img_url: '450x' -}}" alt="" class="absolute top-0 -left-40 hidden md:block" style="transform: scaleX(-1)">
+    <img src="{{- decorative_filename | asset_img_url: '450x' -}}" alt="" class="absolute top-0 -right-40 hidden md:block">
+  {%- endif -%}
+
+  {%- comment -%} Hero Content {%- endcomment -%}
+  <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full px-6 md:px-12 lg:px-24 container">
+    <h1 class="m-0 p-0 text-center {{ text_shade }}">{{- collection.title -}}</h1>
+    {%- if collection.description -%}
+      <p class="text-center text-p hidden lg:block mt-4 mb-0 {{ text_shade }}">{{- collection.description | strip_html -}}</p>
+    {%- endif -%}
+  </div>
+</section>

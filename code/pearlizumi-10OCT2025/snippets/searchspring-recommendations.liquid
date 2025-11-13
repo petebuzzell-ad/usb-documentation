@@ -1,0 +1,54 @@
+{%- comment -%}
+
+  Params:
+    - profile: 'home', '404', etc.
+    - cart: Shopify object -- used on the cart template
+    - product: Shopify object -- used on the PDP
+
+{%- endcomment -%}
+
+{%- if storefront == 'US' -%}
+
+  {%- comment -%}
+
+    Params:
+      - profiles: 'home', '404', etc. -- should be passed as a comma-separated string
+      - cart: Shopify object -- used on the cart template
+      - product: Shopify object -- used on the PDP
+
+    Additional profile-specific option parameters can be added. Please reach out to Searchspring if you want to add filters, categories, limits, etc.
+
+  {%- endcomment -%}
+
+  {% assign profile_array = profiles | split: ',' %}
+  {%- if profiles -%}
+      <script type="searchspring/recommendations">
+          globals = {
+              shopper: {
+                  id: '{% if customer %}{{ customer.id }}{% endif %}'
+              },
+              products: [{%- if template contains 'product' -%}'{{ product.variants[0].sku }}'{% endif %}],
+              cart: [
+                  {% if template contains 'cart' %}
+                      {% for item in cart.items %}
+                          '{{ item.sku }}'{% unless forloop.last %},{% endunless %}
+                      {% endfor %}
+                  {% endif %}
+              ]
+          };
+          profiles = [
+              {% for profile in profile_array %}
+                  {
+                      profile: '{{ profile }}',
+                      selector: '.ss__recs__{{ profile }}'
+                  }{% unless forloop.last %},{% endunless %}
+              {% endfor %}
+          ];
+      </script>
+
+      {% for profile in profile_array %}
+          <div class="ss__recs__{{ profile }}" style="min-height: 500px;"></div>
+      {% endfor %}
+  {%- endif -%}
+
+{%- endif -%}

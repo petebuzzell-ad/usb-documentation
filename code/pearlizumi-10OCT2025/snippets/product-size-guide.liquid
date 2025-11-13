@@ -1,0 +1,70 @@
+{% liquid
+  assign fit_guide = ''
+  assign size_guide = ''
+  assign size_chart = ''
+  assign gender = 'none'
+  assign men = false
+  assign women = false
+
+  for tag in tags
+    if tag contains "fit_guide:"
+      assign fit_guide = tag | remove: "fit_guide:"
+    endif
+    if tag contains "size_guide:"
+      assign size_guide = tag | remove: "size_guide:"
+    endif
+    if tag contains "size_chart:"
+      assign size_chart = tag | remove: "size_chart:"
+    endif
+    if tag contains "gender:Men"
+      assign men = true
+    endif
+    if tag contains "gender:Women"
+      assign women = true
+    endif
+    if tag contains "gender:"
+      assign gender = tag | remove: 'gender:'
+    endif
+  endfor
+
+  if men and women
+    assign gender = 'none'
+  endif %}
+
+<div id="sizeGuide" role="dialog" aria-labelledby="sizeGuide_label" aria-modal="true" data-size-guide class="hidden fixed inset-3 bottom-auto shadow-modal bg-white lg:w-full lg:h-auto lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 lg:max-w-894 z-[999]">
+  <div class="flex flex-col h-full lg:h-screen lg:max-h-800">
+    <div class="size-guide__header border-b border-silver bg-faint-cloud uppercase flex">
+      <ul class="list-none flex-grow px-5 lg:px-20 flex">
+        {% if size_chart != blank %}
+          <button type="button" role="tab" aria-controls="sizeChart" aria-selected="true" class="font-sora text-special-xs lg:text-special font-medium border-b-2 text-pine border-pine hover:border-pine hover:text-pine cursor-pointer mr-4 lg:mr-10 py-4 lg:py-6" data-szg-tab="#sizeChart">Size Chart</button>
+        {% endif %}
+        {% if size_guide != blank %}
+          <button type="button" role="tab" aria-controls="sizeGuide" aria-selected="false" class="font-sora text-special-xs lg:text-special font-medium border-b-2 {% if size_chart == '' %}text-pine border-pine{% else %}text-black border-transparent{% endif %} hover:border-pine hover:text-pine cursor-pointer mr-4 lg:mr-10 py-4 lg:py-6" data-szg-tab="#howToMeasure">How to Measure</button>
+        {% endif %}
+        {% if fit_guide != blank %}
+          <button type="button" role="tab" aria-controls="fitGuide" aria-selected="false" class="font-sora text-special-xs lg:text-special font-medium border-b-2 {% if size_chart == '' and size_guide == '' %}text-pine border-pine{% else %}text-black border-transparent{% endif %} hover:border-pine hover:text-pine cursor-pointer mr-4 lg:mr-10 py-4 lg:py-6" data-szg-tab="#fitGuide">Fit Guide</button>
+        {% endif %}
+      </ul>
+      <button class="size-guide__close cursor-pointer hover:text-pine flex-grow-0 p-4 lg:p-5 border-l border-silver" data-size-guide-close type="button">
+        {% render 'svg-close', classes: 'svg-close w-5 h-5 lg:w-8 lg:h-8' %}
+      </button>
+    </div>
+    <div class="size-guide__content h-screen max-h-600 lg:overflow-y-auto lg:h-full lg:max-h-none pt-6 px-0 pb-8 lg:p-0">
+      {% if size_chart != blank %}
+        <div id="sizeChart" class="tab-content block h-full overflow-y-auto lg:pt-7 lg:pb-21.5 lg:px-20">
+          <div data-size-chart data-szc-name="{{ size_chart }}" data-szc-gender="{{ gender }}" data-prod-id="{{ id }}"></div>
+        </div>
+      {% endif %}
+      {% if size_guide != blank %}
+        <div id="howToMeasure" class="tab-content {% if size_chart == '' %}block{% else %}hidden{% endif %} h-full overflow-y-auto lg:pt-7 lg:pb-21.5 lg:px-20">
+          <div data-size-guides data-szg-name="{{ size_guide }}" data-szg-gender="{{ gender }}" data-prod-id="{{ id }}"></div>
+        </div>
+      {% endif %}
+      {% if fit_guide != blank %}
+        <div id="fitGuide" class="tab-content {% if size_chart == '' and size_guide == '' %}block{% else %}hidden{% endif %} h-full overflow-y-auto lg:pt-7 lg:pb-21.5 lg:px-20">
+          <div data-fit-guide data-ftg-name="{{ fit_guide }}" data-ftg-gender="{{ gender }}" data-prod-id="{{ id }}"></div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

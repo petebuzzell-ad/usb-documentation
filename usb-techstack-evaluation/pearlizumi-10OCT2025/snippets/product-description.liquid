@@ -1,0 +1,125 @@
+<div class="accordion-group product-accordion border-b border-soft-grey">
+  <div class="border-t border-soft-grey pb-2">
+    <div tabindex="0" id="productDescription" class="accordion relative bg-white cursor-pointer pl-3.5 pt-5.5 pb-3.5 pr-12" onclick="eHS.theme.accordionHandler(event)">
+      <p class="font-sora font-semibold m-0 text-special-s pt-0 uppercase">{{ 'products.product.description' | t }}</p>
+      <div class="absolute top-8 right-6 transform translate-x-1/2 -translate-y-1/2">
+        {% render 'svg-plus', classes: 'p-1 w-5 h-5 collapsed' %}
+        {% render 'svg-minus', classes: 'w-5 h-5 opened' %}
+      </div>
+    </div>
+    <div class="px-3.5 overflow-hidden max-h-0 transition-max-height duration-500 ease-out" style="max-height: 500px;">
+      <p class="font-normal text-p-s m-0 mb-3.5">{{ product.description | strip_html }}</p>
+      {% if product.metafields["global"]["prd_prop65warning"] != blank and product.metafields["global"]["prd_prop65warning"] == 'Yes' %}
+        <div class="prop-sixty-five text-center pt-3 pb-5">
+          <p class="flex justify-center items-center text-special-xs tracking-normal mb-0">{% render 'icon-prop-warning' %}<span class="ml-2 mr-1"><strong>WARNING: </strong></span> Cancer and Reproductive Harm </p>
+          <p class="mb-0 text-special-xs tracking-normal"><a target="_blank" href="https://www.p65warnings.ca.gov/">www.P65Warnings.ca.gov</a></p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if product.metafields["global"]["product_features_en"] != blank %}
+    <div class="border-t border-soft-grey pb-2">
+      <div tabindex="0" class="accordion relative bg-white cursor-pointer pl-3.5 pt-5.5 pb-3.5 pr-12" onclick="eHS.theme.accordionHandler(event)">
+        <p class="font-sora font-semibold m-0 text-special-s pt-0 uppercase">{{ 'products.product.features' | t }}</p>
+        <div class="absolute top-8 right-6 transform translate-x-1/2 -translate-y-1/2">
+          {% render 'svg-plus', classes: 'p-1 w-5 h-5 collapsed' %}
+          {% render 'svg-minus', classes: 'w-5 h-5 opened' %}
+        </div>
+      </div>
+      <div class="px-3.5 overflow-hidden max-h-0 transition-max-height duration-500 ease-out">
+        <ul class="font-normal text-p-s m-0 mb-3.5">
+          {% assign features = product.metafields["global"]["product_features_en"] | split: '|' %}
+          {% for feature in features %}
+            <li class="pl-6 relative">{{ feature }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if product.metafields["global"]["prd_app_material_en"] != blank %}
+    <div class="border-t border-soft-grey pb-2">
+      <div tabindex="0" class="accordion relative bg-white cursor-pointer pl-3.5 pt-5.5 pb-3.5 pr-12" onclick="eHS.theme.accordionHandler(event)">
+        <p class="font-sora font-semibold m-0 text-special-s pt-0 uppercase">{{ 'products.product.fabric' | t }}</p>
+        <div class="absolute top-8 right-6 transform translate-x-1/2 -translate-y-1/2">
+          {% render 'svg-plus', classes: 'p-1 w-5 h-5 collapsed' %}
+          {% render 'svg-minus', classes: 'w-5 h-5 opened' %}
+        </div>
+      </div>
+      <div class="px-3.5 overflow-hidden max-h-0 transition-max-height duration-500 ease-out">
+        {% assign features = product.metafields["global"]["prd_app_material_en"] | split: ';' %}
+        {% for feature in features %}
+          <p class="font-normal text-p-s m-0">{{ feature }}</p>
+        {% endfor %}
+        {% if product.metafields["global"]["prd_app_trademarks_en"] != blank %}
+          <div class="flex flex-wrap -mx-2 my-2">
+            {% assign fabrics = product.metafields["global"]["prd_app_trademarks_en"] | split: ';' %}
+            {% for fabric in fabrics %}
+              <div class="w-1/2 md:w-1/4 lg:w-1/2 p-2">
+                <div class="bg-light-sand h-full p-6">
+                  {% assign fabric_svg = fabric | strip | handleize | prepend: 'svg-fabric-' %}
+                  {% capture fabric_content %}{% render fabric_svg %}{% endcapture %}
+                  {% unless fabric_content contains 'Liquid error' %}
+                    {{ fabric_content }}
+                  {% endunless %}
+                  <p class="font-normal leading-5 mt-4 mb-0">{{ fabric | strip }}</p>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+
+  {% if product.metafields["global"]["prd_care_guide_en"] != blank %}
+    <div class="border-t border-soft-grey pb-2">
+      <div tabindex="0" class="accordion relative bg-white cursor-pointer pl-3.5 pt-5.5 pb-3.5 pr-12" onclick="eHS.theme.accordionHandler(event)">
+        <p class="font-sora font-semibold m-0 text-special-s pt-0 uppercase">{{ 'products.product.care' | t }}</p>
+        <div class="absolute top-8 right-6 transform translate-x-1/2 -translate-y-1/2">
+          {% render 'svg-plus', classes: 'p-1 w-5 h-5 collapsed' %}
+          {% render 'svg-minus', classes: 'w-5 h-5 opened' %}
+        </div>
+      </div>
+      <div class="px-3.5 overflow-hidden max-h-0 transition-max-height duration-500 ease-out">
+        <p class="font-normal text-p-s m-0 mb-3.5">{{ product.metafields["global"]["prd_care_guide_en"] }}</p>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if product.metafields["global"]["riding_conditions"] != blank %}
+    <div class="block md:hidden border-t border-soft-grey pb-2">
+      <div tabindex="0" class="accordion relative bg-white cursor-pointer pl-3.5 pt-5.5 pb-3.5 pr-12" onclick="eHS.theme.accordionHandler(event)">
+        <p class="font-sora font-semibold m-0 text-special-s pt-0 uppercase">{{ 'products.product.riding_conditions' | t }}</p>
+        <div class="absolute top-8 right-6 transform translate-x-1/2 -translate-y-1/2">
+          {% render 'svg-plus', classes: 'p-1 w-5 h-5 collapsed' %}
+          {% render 'svg-minus', classes: 'w-5 h-5 opened' %}
+        </div>
+      </div>
+      <div class="px-3.5 overflow-hidden max-h-0 transition-max-height duration-500 ease-out">
+        {% if product.metafields["global"]["riding_conditions_subtitle"] != blank %}
+          <p class="font-normal text-p-s m-0">{{ product.metafields["global"]["riding_conditions_subtitle"] }}</p>
+        {% endif %}
+        <div class="flex flex-wrap -mx-2 my-2">
+          {% assign conditions = product.metafields["global"]["riding_conditions"] | split: '||' %}
+          {% for condition in conditions %}
+            {% assign details = condition | strip | split: ':' %}
+            <div class="w-1/2 p-2">
+              <div class="bg-light-sand h-full p-6">
+                {% assign cond_svg = details[0] | strip | handleize | prepend: 'svg-riding-condition-' %}
+                {% capture cond_icon_content %}{% render cond_svg %}{% endcapture %}
+                {% unless cond_icon_content contains 'Liquid error' %}
+                  {{ cond_icon_content }}
+                {% endunless %}
+                <p class="font-sora font-semibold text-special-xs text-stone mt-4 mb-0 uppercase">{{ details[0] | strip }}</p>
+                <p class="font-normal leading-5 mt-1 m-0">{{ details[1] | strip }}</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+</div>

@@ -1,0 +1,68 @@
+{% liquid
+    if shop.permanent_domain == 'usbns.myshopify.com'
+        assign storefront = "US"
+    endif
+
+    assign image_aspect_class = 'aspect-w-1 lg:aspect-w-3 aspect-h-1 lg:aspect-h-2'
+    if is_featured
+        assign image_aspect_class = 'aspect-w-1 lg:aspect-w-3 aspect-h-1 lg:aspect-h-1'
+    endif
+%}
+
+<div class="group w-full blog-item {{ class }}">
+    {% if article.image.src != blank %}
+        <a href="{{ article.url }}"  class="blog-item__image block {{ image_aspect_class }}">
+            {% if is_featured %}
+                <picture>
+                    <source media="(min-width: 1024px)" srcset="{{ article.image.src | img_url: 'master' }}" />
+                    <img alt="{{ article.title }}" src="{{ article.image.src | img_url: '1x1' }}" class="lazy w-full h-full object-cover" data-src="{{ article.image.src | img_url: '800x' }}" />
+                </picture>
+            {% else %}
+                <picture>
+                    <source media="(min-width: 1024px)" srcset="{{ article.image.src | img_url: '500x' }}" />
+                    <img alt="{{ article.title }}" src="{{ article.image.src | img_url: '1x1' }}" class="lazy w-full h-full object-cover" data-src="{{ article.image.src | img_url: '800x' }}" />
+                </picture>
+            {% endif %}
+        </a>
+    {% endif %}
+    <div class="{% if is_featured %}px-6 pt-10 pb-10 bg-faint-cloud{% else %}px-0 pt-4{% endif %} lg:bg-transparent lg:px-0 lg:pt-4 lg:pb-8">
+        <div class="hover:underline transition duration-300 ease-in-out mb-1 uppercase font-semibold text-p2 text-pine blog-item__eyebrow">
+            {% for tag in article.tags %}
+                {% unless tag contains "Author:" %}
+                    {{ tag | link_to_tag: tag }}
+                    {% break %}
+                {% endunless %}
+            {% endfor %}
+        </div>
+        <a href="{{ article.url }}"  class="block mb-2 h5 text-grey-three font-semibold {% if template.name == 'article' %}text-h6 text-h6-m{% endif %} blog-item__title">
+            {{ article.title }}
+        </a>
+
+        {%-liquid
+            if storefront == "US"
+                assign date_format = "%B %d, %Y"
+            elsif storefront == "CA"
+                assign date_format = "%d %B, %Y"
+            else
+                assign date_format = "%B %d, %Y"
+            endif
+        -%}
+        <a href="{{ article.url }}" class="flex items-center uppercase mb-5 font-semibold text-grey-three text-special-s blog-item__date">
+            <span class="italic">{{ article.published_at | date: date_format }}</span>
+            {%- if article.metafields["global"]["reading_time"] != blank -%}
+                <span class="mx-2 w-1 h-1 rounded-full bg-light-stone"></span>
+                <span class="text-light-stone">{{ article.metafields["global"]["reading_time"] }} Minute Read</span>
+            {%- endif -%}
+        </a>
+        {%- if settings.show_excerpt_in_tiles and article.excerpt != blank -%}
+            <a href="{{ article.url }}">
+                <p class="mb-5 text-p-s text-grey-three blog-item__excerpt">
+                    {{ article.excerpt | truncate: 190 | strip_html }}
+                </p>
+            </a>
+        {%- endif -%}
+        <a href="{{ article.url }}" class="inline-block lg:group-hover:text-orange-one transition duration-300 ease-in-out uppercase font-semibold text-special text-black border-b-2 pb-1 blog-item__link">
+            Read More
+        </a>
+    </div>
+</div>

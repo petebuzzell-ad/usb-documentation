@@ -1,0 +1,27 @@
+{%- render 'search-header' -%}
+
+<div class="tab-content block" id="shopping-results">
+  {%- render 'collection__filter-header' -%}
+  {%- render 'search-shopping__grid' -%}
+</div>
+<div class="tab-content px-6 md:px-12.5 pt-9 md:pt-21.5 pb-50 hidden" id="content-results">
+  {%- render 'search-content__grid' -%}
+</div>
+
+
+{% schema %}
+{
+  "name": "Search page",
+  "settings": [
+    {
+      "type": "range",
+      "id": "per_page",
+      "min": 3,
+      "max": 96,
+      "step": 1,
+      "label": "Items per page",
+      "default": 3
+    }
+  ]
+}
+{% endschema %}

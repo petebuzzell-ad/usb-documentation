@@ -1,0 +1,36 @@
+{% liquid
+  assign show_section = show_section | default: true
+  assign excerpt_content = article.metafields["global"]["custom_excerpt_content"]
+
+  if excerpt_content == blank
+    assign excerpt_content = article.excerpt
+  endif
+%}
+
+{%- if show_section -%}
+  <div class="mb-10 relative">
+    <div class="block relative w-full h-0 pt-122percent md:pt-[56.25%] bg-light-grey">
+      {%- if article.image -%}
+        <img
+          class="lazy absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full object-cover"
+          data-src="{{ article.image | img_url: '1440x', scale: 2 }}"
+          alt="{{- article.title -}}">
+      {%- endif -%}
+    </div>
+
+    <div class="container max-w-full md:max-w-680 relative lg:absolute lg:-bottom-4 lg:left-0 lg:pl-13">
+      <div class="max-w-full w-full lg:max-w-722 inline-block relative bg-transparent lg:bg-dark-stone-overlay px-12 lg:px-17 pt-6 lg:pt-10 lg:pb-12">
+        <div class="w-2 absolute left-6 lg:left-7.5 bottom-0 lg:bottom-12 bg-bright-yellow h-bar-blog-mobile lg:h-bar-blog"></div>
+
+        <h1 class="uppercase text-h5 lg:text-h3 text-black lg:text-white m-0" aria-label="{{- article.title -}}">{{- article.title -}}</h1>
+        {%- if excerpt_content != blank -%}
+          <div class="hidden lg:block text-black lg:text-white text-p-s lg:text-p-lg mt-2 lg:mt-8 font-light">{{- excerpt_content -}}</div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- else -%}
+  <h1 class="mb-6 article__title">
+      {{ article.title }}
+  </h1>
+{%- endif -%}

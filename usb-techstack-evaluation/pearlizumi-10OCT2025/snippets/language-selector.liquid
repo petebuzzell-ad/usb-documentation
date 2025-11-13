@@ -1,0 +1,120 @@
+{% liquid
+  if shop.permanent_domain == 'pearlizumi.myshopify.com'
+    assign storefront = "US"
+  elsif shop.permanent_domain == 'pearlizumi-ca.myshopify.com'
+    assign storefront = "CA"
+  elsif shop.permanent_domain == 'pearl-izumi-int.myshopify.com'
+    assign storefront = "INT"
+  endif
+
+  assign US_ENGLISH_URL = "https://pearlizumi.com"
+  assign INT_ENGLISH_URL = "https://pearlizumi.eu"
+  assign CA_ENGLISH_URL = "https://pearlizumi.ca"
+  assign CA_FRENCH_URL = "https://pearlizumi.ca/fr"
+
+  if storefront == "CA"
+    for language in localization.available_languages
+      if language.iso_code == "fr"
+        assign CA_FRENCH_URL = "https://pearlizumi-ca.myshopify.com/" | append: language.iso_code
+      elsif language.iso_code == "en"
+        assign CA_ENGLISH_URL = "https://pearlizumi-ca.myshopify.com/"
+      endif
+    endfor
+  endif
+
+  assign is_french = false
+  if shop.locale == "fr"
+    assign is_french = true
+  endif
+%}
+
+{%- comment -%} Capture Markup for Selected Country + Language {%- endcomment -%}
+{%- capture US_ENGLISH_SELECTED -%}
+  <span class="text-white">
+    {% render 'svg-flags' country: 'US', classes: 'mr-3' %}
+  </span>
+  <span class="mr-1 inline-block text-white font-sora text-p-s">United States: English</span>
+{%- endcapture -%}
+
+{%- capture CA_ENGLISH_SELECTED -%}
+  <span class="text-white">
+  {% render 'svg-flags' country: 'CA', classes: 'mr-3' %}
+  </span>
+  <span class="mr-1 inline-block text-white font-sora text-p-s">Canada: English</span>
+{%- endcapture -%}
+
+{%- capture CA_FRENCH_SELECTED -%}
+  <span class="text-white">
+    {% render 'svg-flags' country: 'CA', classes: 'mr-3' %}
+  </span>
+  <span class="mr-1 inline-block text-white font-sora text-p-s">Canada: Français</span>
+{%- endcapture -%}
+
+{%- capture INT_ENGLISH_SELECTED -%}
+  <span class="text-white">
+    {% render 'svg-flags' classes: 'mr-3' %}
+  </span>
+  <span class="mr-1 inline-block text-white font-sora text-p-s">International: English</span>
+{%- endcapture -%}
+
+{%- comment -%} Language Country Selector snippet (HTML can be added in settings) {%- endcomment -%}
+{%- if storefront == "CA" and section.settings.language != blank -%}
+  {{- section.settings.language -}}
+{%- else -%}
+  <div tabindex="0" class="hidden md:flex items-center h-full {{ hover_bg_class }} px-2 cursor-pointer text-white w-55.5 relative" data-country-selector onclick="eHS.headerNav.countryDropdown(event)">
+    {%- comment -%} SELECTED LANGUAGE + COUNTRY {%- endcomment -%}
+    {%- if storefront == "US" -%}
+      {{- US_ENGLISH_SELECTED -}}
+    {%- elsif storefront == "CA" -%}
+      {%- if is_french -%}
+        {{- CA_FRENCH_SELECTED -}}
+      {%- else -%}
+        {{- CA_ENGLISH_SELECTED -}}
+      {%- endif -%}
+    {%- elsif storefront == "INT" -%}
+      {{- INT_ENGLISH_SELECTED -}}
+    {%- endif -%}
+    <span class="text-white ml-3 arrow-picker transform transition duration-500 ease-in-out">
+      {% render 'svg-chevron-down' width: '8px' height: '12px' %}
+    </span>
+
+    {%- comment -%} DROPDOWN LIST {%- endcomment -%}
+    <div class="absolute top-full left-0 w-full h-0 hidden bg-faint-cloud border border-silver shadow-country-box pt-5.25 pl-5.25 pr-5.25 pb-7.5 z-21 transition duration-500 ease-in-out" data-country-dropdown>
+      <div class="uppercase font-sora text-black text-special-s">North America</div>
+      <ul class="p-0 list-none mb-6.5">
+        <li>
+          <a class="flex items-center font-sora text-black no-underline text-p-s leading-27 hover:underline hover:text-pine" href="{{ US_ENGLISH_URL }}">
+            {% render 'svg-flags' country: 'US', classes: 'mr-3' %}
+            US: English
+          </a>
+        </li>
+        <li>
+          <a class="flex items-center font-sora text-black no-underline text-p-s leading-27 hover:underline hover:text-pine" href="{{ CA_ENGLISH_URL }}">
+            {% render 'svg-flags' country: 'CA', classes: 'mr-3' %}
+            CAN: English
+          </a>
+        </li>
+        <li>
+          <a class="flex items-center font-sora text-black no-underline text-p-s leading-27 hover:underline hover:text-pine" href="{{ CA_FRENCH_URL }}">
+            {% render 'svg-flags' country: 'CA', classes: 'mr-3' %}
+            CAN: Français
+          </a>
+        </li>
+      </ul>
+
+
+      <div class="uppercase font-sora text-black text-special-s">Europe</div>
+
+      <ul class="p-0 list-none mb-6.5">
+        <li>
+          <a class="flex items-center font-sora text-black no-underline text-p-s leading-27 hover:underline hover:text-pine" href="{{ INT_ENGLISH_URL }}">
+            <span style="color: #4D4D4D">
+              {% render 'svg-flags', classes: 'mr-3' %}
+            </span>
+            EU/UK: English
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+{%- endif -%}

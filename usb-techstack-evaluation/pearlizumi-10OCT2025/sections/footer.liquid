@@ -1,0 +1,350 @@
+{%- if settings.social_facebook_link != blank or settings.social_instagram_link != blank or settings.social_twitter_link
+!= blank or settings.social_youtube_link != blank -%}
+{%- assign social_icons = true -%}
+{%- endif -%}
+
+<footer role="contentinfo" data-section-id="{{ section.id }}" data-section-type="footer-section" class="footer relative">
+
+  <div class="bg-white">
+    <div class="container px-6 sm:max-w-xl sm:mx-auto sm:px-0 lg:max-w-full lg:px-13 xl:max-w-1200 xl:px-0">
+      <div class="flex flex-col py-7 sm:flex-row sm:justify-between lg:-mx-1 lg:py-13 xl:-mx-2.5">
+
+        {% for block in section.blocks %}
+          {% if block.type == 'cta' %}
+            <div class="cta {% if forloop.index < 3 %}right-border{% endif %} py-5 text-center sm:w-full sm:mx-3 sm:flex sm:flex-col sm:items-center sm:justify-between lg:block lg:mx-1 lg:w-full lg:text-left lg:pt-0 xl:mx-2.5 xl:px-4">
+              {% if block.settings.icon_svg != blank or block.settings.icon_img != blank %}
+                <div class="h-10 mb-4 flex justify-center lg:justify-start">
+                  {% if block.settings.icon_svg != blank %}
+                    <span class="sr-only">{{ block.settings.title }}</span>
+                    {{ block.settings.icon_svg }}
+                  {% elsif block.settings.icon_img != blank %}
+                    {% assign block_image = block.settings.icon_img | img_url: 'master' %}
+                    <img data-src="{{ block.settings.icon_img }}" alt="{{ block.settings.icon_img.alt }}" class="lazy" loading="lazy">
+                    <span class="sr-only">{{ block.settings.title }}</span>
+                  {% endif %}
+                </div>
+              {% endif %}
+              {% if block.settings.title != blank %}
+                <h5 class="text-black font-semibold text-h8-m tracking-normal md:text-h6-m md:tracking-normal p-0 mb-2.5 xl:mb-2">{{ block.settings.title }}</h5>
+              {% endif %}
+              {% if block.settings.text != blank %}
+                <p class="text-h1-m text-black font-bold uppercase hidden lg:block lg:mb-4 lg:pr-3">{{ block.settings.text }}</p>
+              {% endif %}
+              {% if block.settings.action_label != blank %}
+                <a href="{% if block.settings.action_url != blank %}{{ block.settings.action_url }}{% else %}#{% endif %}" class="h-5 inline-block font-sora font-semibold text-black text-special-xs uppercase border-b-1.5 border-black hover:border-b-2">{{ block.settings.action_label }}</a>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-dark-stone">
+    <div class="container px-0 sm:max-w-xl sm:mx-auto lg:max-w-full lg:px-13 xl:max-w-1200 xl:px-0">
+      <div class="flex flex-col lg:flex-row lg:flex-wrap xl:-mx-2.5">
+
+        <div class="w-full py-12 text-center lg:w-5/12 lg:text-left pb-12 lg:pb-0 lg:py-18 xl:w-1/2 xl:px-6.5">
+          {% if section.settings.newsletter_title != blank %}
+            <h5 class="font-medium mb-2 text-white">{{ section.settings.newsletter_title | escape }}</h5>
+          {% endif %}
+          {%- if section.settings.newsletter_description -%}
+            <p class="text-white mb-6">{{ section.settings.newsletter_description | escape }}</p>
+          {%- endif -%}
+
+          <!-- Newsletter Form -->
+          <form id="submit-newsletter-form" class="mb-4">
+            <input type="hidden" name="g" value="{{ section.settings.klaviyo_list }}">
+            <div class="flex items-center mx-4 sm:max-w-footer-input sm:mx-auto lg:mx-0 lg:max-w-370">
+              <label class="hidden" for="newsletter-signup">Newsletter Signup</label>
+              <input id="newsletter-signup" type="email" name="email" class="h-10 border-1.5 border-r-0 border-white w-full py-2 pl-4.5 pr-0  flex-grow text-p text-white bg-transparent placeholder-white" placeholder="{{ 'customer.register.email_placeholder' | t }}" aria-label="{{ 'customer.register.email_placeholder' | t }}">
+              <button type="submit" class="h-10 border-1.5 border-white bg-transparent text-white py-2 px-4 focus:outline-none  hover:bg-white hover:text-black sm:px-8 lg:px-5 lg:py-1">
+                <span class="hidden lg:block font-sora font-normal text-special uppercase">{{ 'customer.register.subscribe' | t }}</span>
+                <span class="lg:hidden">{% include 'svg-path' %}</span>
+              </button>
+            </div>
+          </form>
+          <div class="py-2 hidden" data-signup-success>
+            <p tabindex="-1" class="text-white mb-8 flex flex-col">
+              <span>Thanks for subscribing!</span>
+              <span>Check your email for a confirmation message.</span>
+            </p>
+          </div>
+          <div class="py-2 hidden" data-signup-error>
+            <p tabindex="-1">
+              <span class="block text-left sm:max-w-footer-input sm:mx-auto lg:mx-0 lg:max-w-370 text-light-magma text-special-s">
+                <span>Email is invalid!</span>
+              </span>
+            </p>
+          </div>
+
+          {%- assign socials = "instagram, facebook, linkedin, pinterest, twitter, youtube" | split: ', ' -%}
+          {%- if social_icons and section.settings.social_visible -%}
+            <ul class="flex justify-center mb-6 lg:justify-start">
+              {%- for social in socials -%}
+                {%- assign social_link = social | prepend: 'social_' | append: '_link' -%}
+                {%- assign icon_svg = social | prepend: 'svg-' -%}
+                {%- assign share = 'share_' | append: social -%}
+                {%- if settings[social_link] != blank and settings[share] == true -%}
+                  <li class="mx-2 lg:ml-0 lg:mr-4 {{ social }}">
+                    <a href="{{ settings[social_link] | escape }}" class="text-white hover:text-bright-yellow" target="_blank">{%- include icon_svg -%}</a>
+                  </li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          {% endif %}
+        </div>
+
+        <div class="w-full mb-18 sm:px-2.5 lg:w-7/12 lg:px-0 lg:flex lg:justify-around lg:mt-18 xl:w-1/2 lg:mb-0">
+          {% for block in section.blocks %}
+            {% if block.type == 'cta' %}{% continue %}{% endif %}
+
+            <div class="border-t-1.5 border-white lg:border-0 lg:ml-8 xl:m-0 xl:w-full xl:px-6.5">
+              {%- if block.settings.title -%}
+                <div class="relative footer_accordion" data-id="{{ block.id }}">
+                  <h4 class="text-special font-sora font-normal text-white uppercase p-3 mb-0 lg:p-0 lg:mb-5">{{ block.settings.title | escape }}</h4>
+                  {% unless block.type == 'text' %}
+                    <div class="lg:hidden md:block absolute top-1/2 transform -translate-y-1/2 right-3">
+                      <div class="open text-white">
+                        {% include 'svg-chevron-down' %}
+                      </div>
+                      <div class="close text-white">
+                        {% include 'svg-chevron-up' %}
+                      </div>
+                    </div>
+                  {% endunless %}
+                </div>
+              {%- endif -%}
+
+              {%- case block.type -%}
+                {%- when 'text' -%}
+                  <div class="lg:mb-7 mb-6 flex lg:block justify-center">
+                    {% if block.settings.logo != blank %}{{ block.settings.logo }}{% endif %}
+                  </div>
+                  {% if block.settings.text_phone != blank or block.settings.text_store_hours != blank or block.settings.text_email != blank %}
+                    <div class="lg:mb-4 md:mb-6 text-center lg:text-left md:grid md:grid-cols-3 md:gap-2 lg:block">
+                      {% if block.settings.text_phone != blank %}
+                      <p class="font-sora md:text-h5-m tracking-normal text-white lg:mb-2.5 md:mb-0 mb-2">
+                        {{ block.settings.text_phone }}
+                      </p>
+                      {% endif %}
+                      {% if block.settings.text_store_hours != blank %}
+                      <p class="font-sora md:text-h5-m tracking-normal text-white lg:mb-2.5 md:mb-0 mb-2">
+                        {{ block.settings.text_store_hours }}
+                      </p>
+                      {% endif %}
+                      {% if block.settings.text_email != blank %}
+                      <p class="font-sora md:text-h5-m tracking-normal text-white lg:mb-2.5 md:mb-0 mb-4">
+                        {{ block.settings.text_email }}
+                      </p>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+
+                {%- when 'link_list' -%}
+                  {%- assign footer_linklist = block.settings.menu -%}
+                  <div class="max-h-0 lg:max-h-unset overflow-hidden lg:overflow-visible transition-max-height duration-500 ease-out">
+                    <ul class="mx-3 mt-1 mb-4 lg:mx-0 lg:mt-0">
+                      {%- for link in linklists[footer_linklist].links -%}
+                        <li class="text-special-s tracking-normal {% unless link.title contains 'iZUMi' %}capitalize{% endunless %} text-white mb-3">
+                          <a href="{{ link.url }}" {% if link.current %} aria-current="page" {% endif %} aria-label="{{ link.title | escape}}">
+                            {{ link.title | escape }}
+                          </a>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  </div>
+              {%- endcase -%}
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="w-full xl:px-6.5 flex items-end justify-between">
+          <div class="hidden lg:block">
+            {%- render 'svg-logo-outline' -%}
+          </div>
+          <ul class="flex flex-wrap justify-center mb-5 lg:mb-8 lg:justify-start">
+            {% if section.settings.copyrightmenu %}
+              {%- for link in linklists[section.settings.copyrightmenu].links -%}
+                <li class="text-special-xs tracking-normal text-white mb-3 mx-2.5 sm:mx-4 lg:ml-0 lg:mr-8 lg:mb-0">
+                  <a href="{{ link.url }}" {% if link.current %} aria-current="page" {% endif %} aria-label="{{ link.title | escape }}">{{ link.title | escape }}</a>
+                </li>
+              {%- endfor -%}
+            {% endif %}
+
+            <li class="text-special-xs tracking-normal text-white mb-3 mx-2.5 sm:mx-4 lg:ml-0 lg:mr-8 lg:mb-0 flex items-center">
+              <span class="mr-4">&copy;&nbsp;{{ 'now' | date: "%Y" }}</span>{%- render 'svg-logo-white', height: '12px' -%}
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="backToTop" class="opacity-0 transition-all absolute top-6 right-6 w-10 h-10 rounded-full bg-back-to-top shadow-back-to-top cursor-pointer hover:bg-back-to-top-hover lg:w-13 lg:h-13">
+    <span class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4.5 h-2.5 lg:w-5.5 lg:h-3">{% include 'svg-chevron-up' width: '100%', height: '100%' %}</span>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": {
+    "en": "Footer"
+  },
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "newsletter_title",
+      "label": {
+        "en": "Newsletter Heading"
+      },
+      "default": {
+        "en": "Newsletter"
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter_description",
+      "label": {
+        "en": "Newsletter Description"
+      }
+    },
+    {
+      "type": "text",
+      "id": "klaviyo_list",
+      "label": {
+        "en": "Klaviyo List ID"
+      }
+    },
+    {
+      "type": "link_list",
+      "id": "copyrightmenu",
+      "label": {
+        "en": "Copyright Menu"
+      },
+      "default": "footer"
+    },
+    {
+      "type": "checkbox",
+      "id": "social_visible",
+      "label": "Social Icons"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "cta",
+      "name": {
+        "en": "CTA"
+      },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_img",
+          "label": {
+            "en": "CTA Icon (Image)"
+          }
+        },
+        {
+          "type": "textarea",
+          "id": "icon_svg",
+          "label": {
+            "en": "CTA Icon (SVG)"
+          }
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": {
+            "en": "CTA Title"
+          }
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": {
+            "en": "CTA Text"
+          }
+        },
+        {
+          "type": "text",
+          "id": "action_label",
+          "label": {
+            "en": "CTA Action Label"
+          }
+        },
+        {
+          "type": "url",
+          "id": "action_url",
+          "label": {
+            "en": "CTA Action Link"
+          }
+        }
+      ]
+    },
+    {
+      "type": "link_list",
+      "name": {
+        "en": "Menu"
+      },
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": {
+            "en": "Heading"
+          },
+          "default": {
+            "en": "Quick links"
+          }
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": {
+            "en": "Menu"
+          },
+          "default": "footer"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "limit": 1,
+      "name": {
+        "en": "Text"
+      },
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "logo",
+          "label": "Logo"
+        },
+        {
+          "type": "text",
+          "id": "text_phone",
+          "label": {
+          "en": "Phone Number"
+          }
+        },
+        {
+          "type": "text",
+          "id": "text_store_hours",
+          "label": {
+          "en": "Store Hours"
+          }
+        },
+        {
+          "type": "text",
+          "id": "text_email",
+          "label": {
+          "en": "Email"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

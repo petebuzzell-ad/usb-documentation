@@ -1,0 +1,40 @@
+<div class="absolute transform top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center h-full w-full max-w-105">
+  {% assign banner_type = 'promo_message' %}
+  {% if customer %}
+    {% if customer.tags contains 'Pro Purchase' %}
+      {% assign banner_type = 'discount_message_pro' %}
+    {% endif %}
+    {% if customer.tags contains 'Expert Voice' %}
+      {% assign banner_type = 'discount_message_voice' %}
+    {% endif %}
+    {% if customer.tags contains 'Outdoor Pro' %}
+      {% assign banner_type = 'discount_message_outdoor' %}
+    {% endif %}
+  {% endif %}
+  {% assign index = 0 %}
+  {%- for block in section.blocks -%}
+    {%- if block.type == banner_type -%}
+      {% if block.settings.desktop_message != blank and block.settings.mobile_message != blank %}
+        {% assign index = index | plus: 1 %}
+        <div class="promotion_message absolute {% unless index < 2 %}opacity-0 pointer-events-none{% endunless %} transition-opacity duration-700 ease-in-out">
+          <p class="font-lato font-normal text-special-xs text-center {{ text_class }} uppercase m-0 whitespace-nowrap">
+            <!-- Desktop Message -->
+            <span class="lg:block hidden">
+              {{ block.settings.desktop_message | truncate: 50, '' }}
+              {% if block.settings.promo_link != blank and block.settings.promo_link_text != blank %}
+                <a href="{{ block.settings.promo_link }}" class="ml-1 underline {{ text_class }} {{ text_hover_class }}">{{ block.settings.promo_link_text }}</a>
+              {% endif %}
+            </span>
+            <!-- Mobile Message -->
+            <span class="block lg:hidden">
+              {{ block.settings.mobile_message | truncate: 40, '' }}
+              {% if block.settings.promo_link != blank and block.settings.promo_link_text != blank %}
+                <a href="{{ block.settings.promo_link }}" class="ml-1 underline {{ text_class }} {{ text_hover_class }}">{{ block.settings.promo_link_text }}</a>
+              {% endif %}
+            </span>
+          </p>
+        </div>
+      {% endif %}
+    {%- endif -%}
+  {%- endfor -%}
+</div>

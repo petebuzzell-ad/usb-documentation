@@ -1,0 +1,254 @@
+{
+  "sections": {
+    "hero-image": {
+      "type": "hero-image",
+      "settings": {
+        "video": "",
+        "video_1": "",
+        "youtube_video": "https://www.youtube.com/watch?v=H4KpjQ2jwmQ",
+        "subtitle": "",
+        "title": "Pearl izumi films",
+        "text": "",
+        "show_description": true,
+        "btn_text_1": "",
+        "btn_url_1": "",
+        "btn_text_2": "",
+        "btn_url_2": "",
+        "btn_text_3": "",
+        "btn_url_3": "",
+        "show_breadcrumbs": false,
+        "enable_bottom_margin": false
+      }
+    },
+    "3-grid-cta": {
+      "type": "3-grid-cta",
+      "settings": {
+        "title": "",
+        "text": "",
+        "btn_label": "View all",
+        "btn_link": "",
+        "cta_youtube_video_1": "https://youtu.be/8rQGdh3yO3I?t=10",
+        "cta_tag_1": "",
+        "cta_title_1": "Trips for Kids - Providing Opportunity Through Bikes",
+        "cta_info_1": "",
+        "cta_text_1": "A program to combat the physical inactivity, promote equitable access to safe places to play while building self-esteem and environmental stewardship.",
+        "cta_btn_label_1": "watch now",
+        "cta_btn_link_1": "https://youtu.be/8rQGdh3yO3I",
+        "cta_youtube_video_2": "https://youtu.be/paWiFnPp0qQ?t=10",
+        "cta_tag_2": "",
+        "cta_title_2": "Rowdy Gowdy",
+        "cta_info_2": "",
+        "cta_text_2": "After years of riding the local technical trails, Jenn Hess couldn’t help but notice the lack of women mountain biking on the advanced trails.",
+        "cta_btn_label_2": "watch now",
+        "cta_btn_link_2": "https://youtu.be/paWiFnPp0qQ",
+        "cta_youtube_video_3": "https://youtu.be/xINIcgpTyhM",
+        "cta_tag_3": "",
+        "cta_title_3": "Real Fit for Real People in Real Cycling Apparel",
+        "cta_info_3": "",
+        "cta_text_3": "We sweat the details to give you great cycling apparel that fits your style at a tremendous value, so you’ll get the most out of every ride.",
+        "cta_btn_label_3": "watch now",
+        "cta_btn_link_3": "https://youtu.be/xINIcgpTyhM",
+        "enable_bottom_margin": false
+      }
+    },
+    "full-width-cta": {
+      "type": "full-width-cta",
+      "settings": {
+        "video": "",
+        "video_1": "",
+        "youtube_video": "https://youtu.be/FzGnGu_HCh0?t=10",
+        "text_overlay_color": "#262b2c",
+        "overlay_opacity": 0.6,
+        "title": "Soul Riders - Dane & Zach Petersen",
+        "text": "For brothers Dane and Zach Petersen the trails are more than a place to ride—they’re an anchor to past and present.",
+        "enable_description": true,
+        "btn_label_1": "watch now",
+        "btn_link_1": "https://youtu.be/FzGnGu_HCh0",
+        "btn_label_2": "",
+        "btn_link_2": "",
+        "enable_bottom_margin": false
+      }
+    },
+    "3-grid-cta-2": {
+      "type": "3-grid-cta",
+      "settings": {
+        "title": "",
+        "text": "",
+        "btn_label": "View all",
+        "btn_link": "",
+        "cta_youtube_video_1": "https://youtu.be/NiuO9aR--T4",
+        "cta_tag_1": "",
+        "cta_title_1": "Underexposed EP15 - Alsea Falls",
+        "cta_info_1": "",
+        "cta_text_1": "The Fall Creek Day Use Trailhead, which is where you’ll find miles of purpose-built mountain bike trails awaiting your enjoyment.",
+        "cta_btn_label_1": "watch now",
+        "cta_btn_link_1": "https://youtu.be/NiuO9aR--T4",
+        "cta_youtube_video_2": "https://youtu.be/6bTE8QVzXVk",
+        "cta_tag_2": "",
+        "cta_title_2": "The Spirit of RAGBRAI - Small Towns and Tall Tales",
+        "cta_info_2": "",
+        "cta_text_2": "GO RAGBRAI - 2019 was the 48th edition of the Register's Annual Great Bicycle Ride Across Iowa organized by The Des Moines Register newspaper. Many have heard of the weeklong event, but to experience it is something else all together. Go together.",
+        "cta_btn_label_2": "watch now",
+        "cta_btn_link_2": "",
+        "cta_youtube_video_3": "https://youtu.be/F1GfDjyUBJ4",
+        "cta_tag_3": "",
+        "cta_title_3": "Go Josie",
+        "cta_info_3": "",
+        "cta_text_3": "“Cycling is changing my perspective a whole 180.” Paracycling National Champion and Paralympic hopeful Josie Fouts shares her journey into cycling.",
+        "cta_btn_label_3": "watch now",
+        "cta_btn_link_3": "https://youtu.be/F1GfDjyUBJ4",
+        "enable_bottom_margin": false
+      }
+    },
+    "full-width-cta-2": {
+      "type": "full-width-cta",
+      "settings": {
+        "video": "",
+        "video_1": "",
+        "youtube_video": "https://youtu.be/_K8BBnkxON4?t=12",
+        "text_overlay_color": "#262b2c",
+        "overlay_opacity": 0.6,
+        "title": "Ride All the Bikes with Korey Hopkins",
+        "text": "At their heart, bicycles are relatively simple machines, and it is that simplicity that aids in their ability to transcend a rider seeking recreation to nirvana. For me, the diversity in riding multiple disciplines helps keep the flame bright that comes from pushing pedals.",
+        "enable_description": true,
+        "btn_label_1": "watch now",
+        "btn_link_1": "https://youtu.be/AmM3_uYLjZA",
+        "btn_label_2": "",
+        "btn_link_2": "",
+        "enable_bottom_margin": false
+      }
+    },
+    "3-grid-cta-3": {
+      "type": "3-grid-cta",
+      "settings": {
+        "title": "",
+        "text": "",
+        "btn_label": "View all",
+        "btn_link": "",
+        "cta_youtube_video_1": "https://youtu.be/WGh7V2sM618",
+        "cta_tag_1": "",
+        "cta_title_1": "BUILT - EP6 ReActive Adaptations",
+        "cta_info_1": "",
+        "cta_text_1": "The sixth builder in our BUILT series takes us to Crested Butte, Colo. ReActive Adaptations creates innovative handcycles to help change people’s lives. Few builders make these authentically engineered bikes, leading Jake O’Connor to take on the need and open up opportunities for riders looking to ride off-road and on trails.",
+        "cta_btn_label_1": "watch now",
+        "cta_btn_link_1": "https://youtu.be/WGh7V2sM618",
+        "cta_youtube_video_2": "https://youtu.be/3he7jB5cF40",
+        "cta_tag_2": "",
+        "cta_title_2": "SHARED TERRITORY – Borderlands",
+        "cta_info_2": "",
+        "cta_text_2": "SHARED TERRITORY – Borderlands is an exploration of a landscape that has largely been misunderstood through the lens of distant media and political narratives.  This is the story of the Camino del Diablo, a historic route connecting the border town of Sonoyta, Mexico and Yuma, Arizona.",
+        "cta_btn_label_2": "watch now",
+        "cta_btn_link_2": "https://youtu.be/3he7jB5cF40",
+        "cta_youtube_video_3": "https://youtu.be/G5ADrczy7_g",
+        "cta_tag_3": "",
+        "cta_title_3": "1 OF 1 : Spectrum Paint & Powder Works",
+        "cta_info_3": "",
+        "cta_text_3": "Spectrum Paint and Powder Works isn’t shy about what they do our how they do it while being welcoming of any rider looking to have a bike that others will drool over. Especially this masterpiece for the Open House that was to be.",
+        "cta_btn_label_3": "watch now",
+        "cta_btn_link_3": "https://youtu.be/G5ADrczy7_g",
+        "enable_bottom_margin": false
+      }
+    },
+    "full-width-cta-3": {
+      "type": "full-width-cta",
+      "settings": {
+        "video": "",
+        "video_1": "",
+        "youtube_video": "https://youtu.be/Ch5lq5tSfLQ",
+        "text_overlay_color": "#262b2c",
+        "overlay_opacity": 0.6,
+        "title": "Go connected. – DIG EP2 – Fire Mountain Trails",
+        "text": "Cherokee, North Carolina, is home to the people of the Eastern Band of the Cherokee. The Tribe took advantage of their land's beauty to generate an eco-tourism economy and improve their people's health through an active lifestyle. They have created a network of trails to enjoy the beauty of their land while riding, hiking and running.",
+        "enable_description": true,
+        "btn_label_1": "watch now",
+        "btn_link_1": "https://youtu.be/Ch5lq5tSfLQ",
+        "btn_label_2": "",
+        "btn_link_2": "",
+        "enable_bottom_margin": false
+      }
+    },
+    "centered-content": {
+      "type": "centered-content",
+      "disabled": true,
+      "settings": {
+        "video": "",
+        "video_1": "",
+        "youtube_video": "https://youtu.be/FzGnGu_HCh0",
+        "enable_bottom_margin": false
+      }
+    },
+    "text-block": {
+      "type": "text-block",
+      "disabled": true,
+      "settings": {
+        "bg_color": "#C0C0C0",
+        "svg": "",
+        "svg_mobile": "",
+        "text_color": "#000",
+        "heading": "Soul Riders - Dane & Zach Petersen",
+        "body": "<p>For brothers Dane and Zach Petersen the trails are more than a place to ride—they’re an anchor to past and present.</p>",
+        "enable_bottom_margin": false
+      }
+    },
+    "2-grid-cta": {
+      "type": "2-grid-cta",
+      "disabled": true,
+      "settings": {
+        "youtube_video_1": "https://youtu.be/xINIcgpTyhM",
+        "subtitle_1": "",
+        "title_1": "Real Fit for Real People in Real Cycling Apparel",
+        "text_1": "We sweat the details to give you great cycling apparel that fits your style at a tremendous value, so you’ll get the most out of every ride.",
+        "btn_label_1": "Watch now",
+        "btn_link_1": "https://youtu.be/xINIcgpTyhM",
+        "btn_style_1": "outline-dark",
+        "youtube_video_2": "https://youtu.be/NiuO9aR--T4",
+        "subtitle_2": "",
+        "title_2": "Underexposed EP15 - Alsea Falls",
+        "text_2": "The Fall Creek Day Use Trailhead, which is where you’ll find miles of purpose-built mountain bike trails awaiting your enjoyment.",
+        "btn_label_2": "watch now",
+        "btn_link_2": "https://youtu.be/NiuO9aR--T4",
+        "btn_style_2": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "centered-content-2": {
+      "type": "centered-content",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/1900x800.png",
+        "image_mobile": "shopify://shop_images/1024x1200.png",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "enable_bottom_margin": false
+      }
+    },
+    "text-block-2": {
+      "type": "text-block",
+      "disabled": true,
+      "settings": {
+        "bg_color": "#fff",
+        "svg": "",
+        "svg_mobile": "",
+        "text_color": "#000",
+        "heading": "Title",
+        "body": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>",
+        "enable_bottom_margin": false
+      }
+    }
+  },
+  "order": [
+    "hero-image",
+    "3-grid-cta",
+    "full-width-cta",
+    "3-grid-cta-2",
+    "full-width-cta-2",
+    "3-grid-cta-3",
+    "full-width-cta-3",
+    "centered-content",
+    "text-block",
+    "2-grid-cta",
+    "centered-content-2",
+    "text-block-2"
+  ]
+}

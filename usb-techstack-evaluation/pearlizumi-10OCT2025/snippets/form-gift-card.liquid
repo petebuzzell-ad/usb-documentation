@@ -1,0 +1,70 @@
+{% if product.gift_card? %}
+  {% liquid
+    assign id = id | default: 'recipient-form'
+    assign title = settings.gift_title | default: false
+    assign text = settings.gift_body | default: false
+    assign cta = settings.gift_cta | default: 'Send As Gift' %}
+
+  {% form 'product', product %}
+    <div class="recipient-form relative pt-6 border-t border-light-grey border-t-2" data-recipient-form>
+      <div class="absolute bg-white top-0 left-1/2 p-2 font-semibold" style="transform: translate(-50%, -50%)">OR</div>
+
+      {% if title %}<h4 class="text-special-lg text-pine text-center">{{ title | upcase }}</h4>{% endif %}
+      {% if text %}<p>{{ text }}</p>{% endif %}
+
+      {{ form.errors | default_errors }}
+      <div class="relative mb-6 flex flex-col text-left">
+        {% assign id = 'Recipient-name-' | append: id %}
+        {% render 'form-row',
+          id: id,
+          label: 'Recipient Name',
+          value: form.name,
+          key: 'name',
+          name: 'properties[Recipient name]' %}
+      </div>
+
+      <div class="relative mb-6 flex flex-col text-left">
+        {% assign id = 'Recipient-email-' | append: id %}
+        {% render 'form-row',
+          id: id,
+          label: 'Recipient Email',
+          type: 'email',
+          value: form.email,
+          key: 'email',
+          required: 'required',
+          name: 'properties[Recipient email]' %}
+      </div>
+
+      <span class="custom-checkbox custom-date"><span data-char-count>0</span>/250 characters</span>
+      <div class="relative mb-6 flex flex-col text-left">
+        {% assign id = 'Recipient-message-' | append: id %}
+        {% render 'form-row',
+          id: id,
+          label: 'Message',
+          type: 'textarea',
+          value: form.message,
+          key: 'message',
+          name: 'properties[Message]' %}
+      </div>
+
+      <div class="relative mb-6 flex flex-col text-left">
+        {% assign id = 'Recipient-send-on-' | append: id %}
+        {% render 'form-row',
+          id: id,
+          label: 'Select a date to send to recipient:',
+          type: 'date_type',
+          value: form.send_on,
+          key: 'send_on',
+          name: 'properties[Send on]' %}
+      </div>
+
+      <div class="relative">
+        <button data-add-to-cart data-add-gift-messaging name="add" class="button-primary-lg p-4 w-full !max-w-full text-special uppercase font-sora font-semibold" type="submit"
+          onclick="eHS.productBuyBox.addToCart(event)">{{ cta }}</button>
+      </div>
+
+      <input type="hidden" name="properties[__shopify_send_gift_card_to_recipient]" value="true" />
+      <input type="hidden" name="properties[__shopify_offset]" value="" id="Recipient-timezone-offset-{{ id }}" />
+    </div>
+  {% endform %}
+{% endif %}

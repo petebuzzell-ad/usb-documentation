@@ -1,0 +1,40 @@
+<div id="sizeGuide" data-size-guide class="hidden fixed inset-3 bottom-auto shadow-modal z-50 bg-white lg:w-full lg:h-auto lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 lg:max-w-894">
+  <div class="flex flex-col h-full lg:h-screen lg:max-h-800">
+    <div class="size-guide__header border-b border-grey-five bg-faint-cloud uppercase flex">
+      <ul class="list-none flex-grow px-5 lg:px-20 flex">
+        {% if size_chart %}
+          <li class="font-lato text-special-xs lg:text-special font-medium border-b-2 text-orange-one border-orange-one hover:border-orange-one hover:text-orange-one cursor-pointer mr-4 lg:mr-10 py-4 lg:py-6" data-szg-tab="#sizeChart">Size Chart</li>
+        {% endif %}
+        {% if how_to_measure %}
+          <li class="font-lato text-special-xs lg:text-special font-medium border-b-2 {% if size_chart == nil %}text-orange-one border-orange-one{% else %}text-grey-one border-transparent{% endif %} hover:border-orange-one hover:text-orange-one cursor-pointer mr-4 lg:mr-10 py-4 lg:py-6" data-szg-tab="#howToMeasure">How to Measure</li>
+        {% endif %}
+        <li class="font-lato text-special-xs lg:text-special font-medium border-b-2 {% if size_chart == nil and how_to_measure == nil %}text-orange-one border-orange-one{% else %}text-grey-one border-transparent{% endif %} hover:border-orange-one hover:text-orange-one cursor-pointer mr-4 lg:mr-10 py-4 lg:py-6" data-szg-tab="#fitGuide">Fit Guide</li>
+      </ul>
+      <span class="size-guide__close cursor-pointer hover:text-orange-one flex-grow-0 p-4 lg:p-5 border-l border-grey-five">
+        {% render 'svg-close', classes: 'svg-close w-5 h-5 lg:w-8 lg:h-8' %}
+      </span>
+    </div>
+    <div class="size-guide__content h-screen max-h-600 lg:overflow-y-auto lg:h-full lg:max-h-none pt-6 px-0 pb-8 lg:p-0">
+      {% if size_chart %}
+        <div id="sizeChart" class="tab-content block h-full overflow-y-auto lg:pt-7 lg:pb-21.5 lg:px-20">
+          <img data-src="{{ size_chart | img_url: 'master' }}" alt="{{ size_chart_alt }}" class="lazy max-w-max h-full px-8 sm:w-full sm:h-auto lg:px-0" />
+        </div>
+      {% endif %}
+      {% if how_to_measure %}
+        <div id="howToMeasure" class="tab-content {% if size_chart == nil %}block{% else %}hidden{% endif %} h-full overflow-y-auto lg:pt-7 lg:pb-21.5 lg:px-20">
+          <img data-src="{{ how_to_measure | img_url: 'master' }}" alt="{{ how_to_measure_alt }}" class="lazy max-w-max h-full px-8 sm:w-full sm:h-auto lg:px-0" />
+        </div>
+      {% endif %}
+      <div id="fitGuide" class="tab-content {% if size_chart == nil and how_to_measure == nil %}block{% else %}hidden{% endif %} h-full overflow-y-auto lg:pt-7 lg:pb-21.5 lg:px-20">
+        <div class="w-auto h-full lg:h-auto {% if gender == 'unisex' %}flex lg:block{% endif %}">
+          <div class="h-full lg:mb-7 lg:h-auto{% if gender != 'men' and gender != 'unisex' %} hidden{% endif %}">
+            <img data-src="https://cdn.shopify.com/s/files/1/0518/9405/9179/files/fit-mens.png?v=1627049412" class="lazy max-w-max h-full px-8 {% if gender == 'unisex' %}pr-4{% endif %} sm:w-full sm:h-auto lg:px-0" alt="Men Fit Guide" />
+          </div>
+          <div class="h-full lg:h-auto{% if gender != 'women' and gender != 'unisex' %} hidden{% endif %}">
+            <img data-src="https://cdn.shopify.com/s/files/1/0518/9405/9179/files/fit-womens.png?v=1627049412" class="lazy max-w-max h-full px-8 {% if gender == 'unisex' %}pl-4{% endif %} sm:w-full sm:h-auto lg:px-0" alt="Women Fit Guide" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

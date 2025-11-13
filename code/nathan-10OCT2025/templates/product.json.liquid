@@ -1,0 +1,182 @@
+{% layout none %}
+
+{%- comment -%} Take note of any Seasonal Collections contained in this Product, so the Final Sale badge can be omitted {%- endcomment -%}
+{% liquid
+  assign hide_final_sale = false
+  if settings.seasonal_collections != blank
+    assign seasonal_collections = settings.seasonal_collections | split: ','
+    assign product_collection_handles = product.collections | map: "handle"
+    for seasonal_handle in seasonal_collections
+      if product_collection_handles contains seasonal_handle
+        assign hide_final_sale = true
+        break
+      endif
+    endfor
+  endif
+%}
+
+{%- comment -%} Image handling {%- endcomment -%}
+{%- assign sizeguide_image = nil -%}
+{%- assign fitguide_image = nil -%}
+{% capture product_images %}
+  {% for image in product.images %}
+    {%- comment -%} Grab non-gallery images {%- endcomment -%}
+    {%- if image.alt contains "sizeguide" -%}
+      {%- assign sizeguide_image = image.src | product_img_url: 'master' -%}
+    {%- endif -%}
+    {%- if image.alt contains "fitguide" -%}
+      {%- assign fitguide_image = image.src | product_img_url: 'master' -%}
+    {%- endif -%}
+    {%- unless image.alt contains "fitguide" or image.alt contains "sizeguide" or image.alt contains "technology:" or image.alt contains "color_swatch:" -%}
+      ,
+      {
+        "thumb": {{ image.src | product_img_url: '100x' | json }},
+        "main": {{ image.src | product_img_url: '1000x' | json }},
+        "bundle": {{ image.src | product_img_url: '800x' | json }},
+        "master": {{ image.src | product_img_url: 'master' | json }},
+        "alt": {{ image.alt | json }}
+      }
+    {%- endunless -%}
+  {% endfor %}
+{% endcapture %}
+{% assign product_images = product_images | remove_first: ',' %}
+
+{%- capture variant_data -%}
+  {%- for variant in product.variants -%}
+  {%- comment -%}
+    unavailable: variants with no inventory are disabled (ie. discontinued, so hide when sold out)
+    ecomm_disabled: variants are fully disabled regardless of inventory
+  {%- endcomment -%}
+    {%- assign variant_disabled = false -%}
+    {%- assign unavailable_field = variant.metafields.global.unavailable | downcase | strip -%}
+    {%- assign ecomm_disabled_field = variant.metafields.global.ecomm_disabled | downcase | strip -%}
+    {%- assign sku_hide = variant.metafields.custom.sku_hide.value | downcase | strip -%}
+    {%- if unavailable_field == true or unavailable_field == "true" -%}
+      {%- if variant.inventory_quantity == 0 -%}
+        {%- assign variant_disabled = true -%}
+      {%- endif -%}
+    {%- elsif ecomm_disabled_field == true or ecomm_disabled_field == "true" -%}
+      {%- assign variant_disabled = true -%}
+    {%- elsif sku_hide == "true" -%}
+      {%- assign variant_disabled = true -%}
+    {%- endif -%}
+    {%- unless variant_disabled -%}
+      ,
+      {
+        "available": {{ variant.available | json }},
+        "price": {{ variant.price | json }},
+        "compare_at_price": {{ variant.compare_at_price | json }},
+        "featured_image": {
+          "url": {{ variant.featured_image | json }},
+          "position": {{ variant.featured_image.position | json }}
+        },
+        "id": {{ variant.id | json }},
+        "sku": {{ variant.sku | json }},
+        "image": {{ variant.image | json }},
+        "inventory_quantity": {{ variant.inventory_quantity | json }},
+        "option1": {{ variant.option1 | json }},
+        "option2": {{ variant.option2 | json }},
+        "option3": {{ variant.option3 | json }},
+        "options": {{ variant.options | json }},
+        "selected": {{ variant.selected | json }},
+        "title": {{ variant.title | json }},
+        "url": {{ variant.url | json }},
+        {%- comment -%} Variant Metafields {%- endcomment -%}
+        "badge": {{ variant.metafields.global.badge | json }},
+
+        {%- comment -%} updated from salsify {%- endcomment -%}
+        {% if product.tags contains "bundle-test-stocktype" %}
+          "stocktype": "S",
+          {% else %}
+          "stocktype": {{ variant.metafields.stocktype.stocktype | json }},
+        {% endif %}
+        "field_available": {{ variant.metafields.available.available | json }},
+        "lots": {{ variant.metafields.lots.lots | json }},
+        "sku_hide": {{ variant.metafields.custom.sku_hide.value | json }}, {%- comment -%} native metafield {%- endcomment -%}
+        {%- comment -%} end updated fields {%- endcomment -%}
+
+        "color": {
+          "name": {{ variant.metafields.global["sku_col_name_en"] | json }},
+          "primary": {{ variant.metafields.global["sku_col_primary"] | json }},
+          "secondary": {{ variant.metafields.global["sku_col_secondary"] | json }}
+        },
+        "model": {
+          "height": {{ variant.metafields.global["sku_model_height"] | json }},
+          "weight": {{ variant.metafields.global["sku_model_weight"] | json }},
+          "size": {{ variant.metafields.global["sku_model_size"] | json }}
+        }
+      }
+    {%- endunless -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{% assign variant_data = variant_data | remove_first: ',' %}
+
+{%- capture technologies -%}
+  {%- for image in product.images -%}
+    {%- if image.alt contains "technology:" -%}
+      ,
+      {
+        "master": {{ image.src | product_img_url: 'master' | json }},
+        "name": {{ image.alt | remove: 'technology:' | json }}
+      }
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- assign technologies = technologies | remove_first: ',' -%}
+
+{%- capture swatches -%}
+  {%- for image in product.images -%}
+    {%- if image.alt contains "color_swatch:" -%}
+      ,
+      {
+        "master": {{ image.src | product_img_url: 'master' | json }},
+        "name": {{ image.alt | remove: 'color_swatch:' | json }}
+      }
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- assign swatches = swatches | remove_first: ',' -%}
+{
+  "available": {{ product.available | json }},
+  "coming_soon": {{ product.metafields.global.coming_soon | json }},
+  "collections": {{product.collections | json }},
+  "hide_final_sale": {{ hide_final_sale | json }},
+  "compare_at_price_max": {{ product | json }},
+  "compare_at_price_min": {{ product | json }},
+  "compare_at_price_varies": {{ product | json }},
+  "description": {{ product.description | json }},
+  "featured_image": {{ product.featured_image | json }},
+  "featured_media": {{ product.featured_media | json }},
+  "first_available_variant": {{ product.first_available_variant | json }},
+  "handle": {{ product.handle | json }},
+  "has_only_default_variant": {{ product.has_only_default_variant | json }},
+  "id": {{ product.id | json }},
+  {%- comment -%} Images {%- endcomment -%}
+  "images": [
+    {{ product_images }}
+  ],
+  "size_guide": {{ sizeguide_image | json }},
+  "fit_guide": {{ fitguide_image | json }},
+  "technologies": [
+    {{ technologies }}
+  ],
+  "swatches": [
+    {{ swatches }}
+  ],
+  {%- comment -%} End Images {%- endcomment -%}
+  "options": {{ product.options | json }},
+  "options_with_values": {{ product.options_with_values | json }},
+  "price": {{ product.price | json }},
+  "price_max": {{ product.price_max | json }},
+  "price_min": {{ product.price_min | json }},
+  "price_varies": {{ product.price_varies | json }},
+  "selected_variant": {{ product.selected_variant | json }},
+  "selected_or_first_available_variant": {{ product.selected_or_first_available_variant | json }},
+  "tags": {{ product.tags | json }},
+  "title": {{ product.title | json }},
+  "type": {{ product.type | json }},
+  "url": {{ product.url | json }},
+  "variants": [
+    {{ variant_data }}
+  ]
+}

@@ -1,0 +1,15 @@
+<li class="isp_grid_product" product_id="{{ product.id }}">
+	<div class="isp_product_image_wrapper">
+		<a class="isp_product_image_href" href="{{ product.url }}">
+			<img alt="{{ product.title }}" loading="lazy" width height src="{{ product | img_url: '800x' }}" isp_product_id="{{ product.id }}" class="isp_product_image">
+		</a>
+	</div>
+	<div class="isp_product_info">
+		<a class="isp_product_image_href" href="{{ product.url }}"> 
+			<div class="isp_product_title">{{ product.title }}</div> 
+		</a>
+		<div class="isp_product_price_wrapper"> 
+			<span class="isp_product_price money" data-currency="{{ currency.name }}" data-currency-usd="{{ product.price | money_without_currency }}" title="{{ product.price }}">{{ product.price | money }}</span> 
+		</div>
+	</div>
+</li>

@@ -1,0 +1,289 @@
+<style>
+.searchspring--tabbed__recommendations {
+  margin: 2rem 0;
+}
+
+.searchspring--tabbed__recommendations .SectionHeader--center,
+.searchspring--tabbed__recommendations .Container {
+  text-align: center;
+}
+
+.searchspring--tabbed__recommendations .SectionHeader--center .SectionHeader__TabList .u-h1:not(.is-active) {
+  padding-bottom: 3px;
+}
+
+.searchspring--tabbed__recommendations .SectionHeader--center .SectionHeader__TabList .u-h1 {
+  font-size: 18px;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 5px 80px;
+  border-bottom: 2px solid #f2fd66;
+}
+
+.searchspring--tabbed__recommendations .SectionHeader--center .SectionHeader__TabList .u-h1.is-active {
+  background-color: #000;
+  color: #fff;
+  font-weight: bold;
+  border-bottom: none;
+}
+
+.searchspring--tabbed__recommendations .TabPanel {
+  display: none;
+  margin: 1em 0;
+}
+
+.searchspring--tabbed__recommendations .TabPanel.is-active {
+  display: block;
+}
+
+.searchspring--tabbed__recommendations .ss-profile-header {
+  display: none;
+}
+
+.searchspring--tabbed__recommendations .Container .SectionFooter {
+  margin-top: 20px;
+}
+
+.searchspring--tabbed__recommendations .Button {
+  position: relative;
+  display: inline-block;
+  padding: 14px 28px;
+  line-height: normal;
+  border: 1px solid transparent;
+  border-radius: 0;
+  text-transform: uppercase;
+  font-size: 14px;
+  text-align: center;
+  font-family: Gotham Medium, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: transparent;
+  transition: color .45s cubic-bezier(.785, .135, .15, .86), border .45s cubic-bezier(.785, .135, .15, .86);
+  z-index: 1;
+  -webkit-tap-highlight-color: initial;
+  color: #fff;
+  border-color: #1c1b1b;
+  background-color: #1c1b1b;
+}
+
+.searchspring--tabbed__recommendations .Button:hover {
+  background-color: #4d4d4d;
+}
+
+.searchspring--tabbed__recommendations .ss-profile {
+  margin: 0 auto;
+}
+
+.searchspring--tabbed__recommendations .ss-profile .ss-profile-controls .glide__arrow--left {
+  left: -3.25rem;
+}
+
+.searchspring--tabbed__recommendations .ss-profile .ss-profile-controls .glide__arrow--right {
+  right: -3.25rem;
+}
+
+.searchspring--tabbed__recommendations .product-item__price span {
+  color: #000;
+}
+
+.searchspring--tabbed__recommendations .product-item__price span.line-through {
+  color: #8d8d8d;
+  font-weight: 400;
+}
+
+.searchspring--tabbed__recommendations .product-item:hover {
+  border-color: #c9c9c9;
+  box-shadow: 0 0 3px #c9c9c9;
+}
+
+.searchspring--tabbed__recommendations .product-item .product-item__quickview {
+  height: 35px;
+}
+
+.searchspring--tabbed__recommendations .product-item .product-item__quickview .product-item__quickview-btn {
+  height: 35px;
+}
+
+.searchspring--tabbed__recommendations .product-item:hover .product-item__quickview {
+  border-color: #c9c9c9;
+  box-shadow: 0 0 3px #c9c9c9;
+}
+
+.searchspring--tabbed__recommendations .product-item .product-item__quickview-btn {
+  font-weight: normal;
+}
+
+@media screen and (max-width: 767px) {
+
+  .searchspring--tabbed__recommendations .ss-profile {
+    max-width: 100%;
+  }
+
+  .searchspring--tabbed__recommendations .ss-profile .ss-profile-controls .glide__arrow--right {
+    right: 1rem;
+  }
+
+  .searchspring--tabbed__recommendations .ss-profile .ss-profile-controls .glide__arrow--left {
+    left: 1rem;
+  }
+
+  .searchspring--tabbed__recommendations .ss-profile .ss-profile-controls .ss-profile-button {
+    top: 34%;
+  }
+
+  .searchspring--tabbed__recommendations .ss-profile .ss-profile-container {
+    margin: 0;
+
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .searchspring--tabbed__recommendations .ss-profile {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .searchspring--tabbed__recommendations .SectionHeader__TabList {
+    display: block;
+    width: 50%;
+    min-width: 200px;
+    margin: 0 auto;
+  }
+
+  .searchspring--tabbed__recommendations .SectionHeader--center .SectionHeader__TabList .u-h1 {
+    width: 100%;
+    margin: .1em 0;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .searchspring--tabbed__recommendations .ss-profile .ss-profile-controls .ss-profile-button {
+    top: 25%;
+  }
+}
+</style>
+<section class="Section Section--spacingNormal searchspring--tabbed__recommendations" data-section-id="{{ section.id }}" data-section-type="featured-collections" data-settings='{{ section_settings }}'>
+  <header class="SectionHeader SectionHeader--center">
+    <div class="Container">
+    {%- if section.settings.title != blank -%}
+      <h3 class="SectionHeader__SubHeading Heading u-h6">{{ section.settings.title | escape }}</h3>
+    {%- endif -%}
+      <div class="SectionHeader__TabList TabList" role="tablist">
+        {%- for block in section.blocks -%}
+          {%- assign collection = collections[block.settings.collection] -%}
+
+          <button class="Heading u-h1 TabList__Item {% if forloop.first %}is-active{% endif %}" data-action="toggle-tab" aria-controls="block-{{ block.id }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" role="tab">
+            {%- if collection != empty -%}
+              {{- block.settings.title | default: collection.title -}}            
+            {%- endif -%}
+          </button>
+        {%- endfor -%}
+      </div>  
+    </div>
+  </header>
+
+  {%- for block in section.blocks -%}
+    {%- assign collection = collections[block.settings.collection] -%}
+
+    <div class="TabPanel TabPanel--{{ forloop.index }} {% if forloop.first %} is-active{% endif %}" id="block-{{ block.id }}" aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}" role="tabpanel" {{ block.shopify_attributes }}>
+        {%- if collection != empty -%}
+          <script type="searchspring/personalized-recommendations" profile="home-page-collections-{{ forloop.index }}">            
+            options = {
+              categories: [ "{{ collection.id }}" ]
+            };
+          </script>          
+        {%- endif -%}
+      {%- if block.settings.button_text != blank -%}
+        <div class="Container">
+          <div class="SectionFooter">
+            <a href="{{ collection.url }}" class="Button Button--primary">{{ block.settings.button_text | escape }}</a>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endfor -%}  
+</section>
+
+<script>
+  const handleClick = ((e) => {  
+    const inactiveButton = document.querySelector('.searchspring--tabbed__recommendations .SectionHeader__TabList button.is-active');    
+    const activeButton = e.currentTarget;
+    
+    const activeBlockId = activeButton.getAttribute('aria-controls');
+    const activeBlock = document.getElementById(activeBlockId);
+    
+    const inactiveBlockId = inactiveButton.getAttribute('aria-controls');
+    const inactiveBlock = document.getElementById(inactiveBlockId);
+
+    if (e.currentTarget.getAttribute('aria-selected') == 'false') {
+      activeBlock.classList.add('is-active');
+      activeButton.classList.add('is-active');
+      
+      activeButton.setAttribute('aria-selected', 'true');
+      activeBlock.setAttribute('aria-hidden', 'false');
+      
+      inactiveButton.classList.remove('is-active');
+      inactiveButton.setAttribute('aria-selected', 'false');
+      
+      inactiveBlock.classList.remove('is-active');    
+      inactiveBlock.setAttribute('aria-hidden', 'true');   
+    }    
+  })
+  const tabs = document.querySelectorAll('.searchspring--tabbed__recommendations .SectionHeader__TabList button');
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", handleClick);
+  })
+</script>
+
+{% schema %}
+{
+  "name": "SS Featured Collections",
+  "class": "shopify-section--bordered",
+  "max_blocks": 2,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Sub-heading",
+      "default": "Featured collection"
+    }    
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "info": "If none is set, collection title is used."
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button text",
+          "default": "View all products"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Collection",
+      "name": "SS Featured collections",
+      "settings": {},
+      "blocks": [
+        {
+          "type": "collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

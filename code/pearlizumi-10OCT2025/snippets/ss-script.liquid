@@ -1,0 +1,123 @@
+{% if storefront == "CA" %}
+
+	{%- if customer -%}
+		{% capture ss_shopper_config %} shopper.id="{{ customer.id }}"{% endcapture %}
+	{%- endif -%}
+
+	{%- if collection.handle and collection.handle != settings.ss_collection_handle -%}
+		{% capture ss_collection_config %} collection="{{ collection.id }}" collection-name="{{ collection.title | replace: '"', '&quot;' }}" collection-handle="{{ collection.handle }}"{% endcapture %}
+	{%- endif -%}
+
+	{%- if current_tags -%}
+		{% capture ss_tags_config %} tags="{{ current_tags | join: '|' | replace: '"', '&quot;' }}"{% endcapture %}
+	{%- endif -%}
+
+	{%- if customer and customer.tags -%}
+		{% capture ss_customer_tags_config %} customer-tags="{{ customer.tags | join: '|' | replace: '"', '&quot;' }}"{% endcapture %}
+	{%- endif -%}
+
+	{%- if template -%}
+		{% capture ss_template_config %} template="{{ template }}"{% endcapture %}
+	{%- endif -%}
+
+	{% capture ss_defer_config %} hide-content="#searchspring-toolbar-top, #searchspring-filter-summary, #searchspring-product-count, #searchspring-search-summary, #searchspring-content"{% endcapture %}
+	{%- if collection.handle -%}
+		{%- if settings.ss_search_only and collection.handle != settings.ss_collection_handle -%}
+			{% capture ss_defer_config %} defer{% endcapture %}
+		{%- endif -%}
+	{%- else -%}
+		{% capture ss_defer_config %} defer{% endcapture %}
+	{%- endif -%}
+
+	{%- if storefront -%}
+		{%- assign region = storefront -%}
+		{%- if storefront == "CA" and shop.locale == "fr" -%}
+			{%- assign region = "ca-fr" -%}
+		{%- endif -%}
+		{% capture ss_site_instance %} region="{{- region | downcase -}}"{% endcapture %}
+	{%- endif -%}
+
+	{%- if settings.coming_soon_text != blank -%}
+		{% capture coming_soon_text %} coming-soon-text="{{ settings.coming_soon_text | escape }}"{% endcapture %}
+	{%- endif -%}
+
+	{%- assign extra_pro_discount = settings.pro_extra_discount -%}
+	{%- assign extra_pro_discount_amount = settings.extra_pro_discount_amount -%}
+	{% capture bonus_discount %} bonusdiscount="true"{% endcapture %}
+	{% capture bonus_discount_percentage %} bonusdiscount-percentage="{{ extra_pro_discount_amount }}"{% endcapture %}
+	{% comment %} {{ bonus_discount }}{{ bonus_discount_percentage }} {% endcomment %}
+
+	{%  capture ss_swatches %} swatches_enabled="{{ settings.ss_swatches }}"{%  endcapture %}
+	{% capture ss_explosion %} show-colorways="{{ collection.metafields["global"]["ss_explosion"] }}"{% endcapture %}
+
+	{% comment %}Searchspring Script{% endcomment %}
+	<script async src="//cdn.searchspring.net/search/v3/lts/searchspring.catalog.js?{{ settings.ss_site_id }}"{{ ss_shopper_config }}{{ ss_collection_config }}{{ ss_tags_config }}{{ ss_customer_tags_config }}{{ ss_template_config }}{{ ss_defer_config }}{{ ss_site_instance }}{{ coming_soon_text }}{% if extra_pro_discount %}{{ bonus_discount }}{{ bonus_discount_percentage }}{% endif %} hide-final-sale-collections="{{ settings.seasonal_collections }}"{{ ss_swatches }}{{ ss_explosion }}></script>
+
+{% else %}
+
+	{%- if settings.ss_branch_name != blank -%}
+		{% capture ss_branch_name %}/{{ settings.ss_branch_name }}{% endcapture %}
+	{%- endif -%}
+
+	{%- if customer -%}
+        {% assign bonus_discount = 0 %}
+        {% assign extra_discount = 0 %}
+        {% if settings.pro_extra_discount %}
+                {% assign extra_discount = settings.extra_pro_discount_amount %}
+        {% endif %}
+        {% if customer.tags %}
+                {% for tag in customer.tags %}
+                        {% if tag contains 'discount-' %}
+                                {% assign bonus_discount = tag | replace: 'discount-', '' %}
+                        {% endif %}
+                {% endfor %}
+        {% endif %}
+        {% assign bonus_discount = bonus_discount | plus: extra_discount %}
+		{% capture ss_shopper_config %}
+			shopper = {
+							id: "{{ customer.id }}",
+							bonusDiscount: "{{ bonus_discount }}"
+					};
+		{% endcapture %}
+	{%- endif -%}
+
+	{% assign ss_defer_config = ' defer' %}
+	{%- if collection.handle and template contains 'collection' -%}
+		{% assign ss_defer_config = '' %}
+		{%- if collection.handle != settings.ss_collection_handle -%}
+			{% capture ss_collection_config %}
+				collection = { id: "{{ collection.id }}", name: "{{ collection.title | replace: '"', '&quot;' }}", handle: "{{ collection.handle }}" };
+			{% endcapture %}
+		{%- endif -%}
+	{%- endif -%}
+
+	{%- if current_tags -%}
+		{% capture ss_tags_config %}
+			tags = "{{ current_tags | join: '|' | replace: '"', '&quot;' }}";
+		{% endcapture %}
+	{%- endif -%}
+
+	{%- if template -%}
+		{% capture ss_template_config %}
+			template = "{{ template }}";
+		{% endcapture -%}
+	{%- endif -%}
+
+	{% capture ss_money_config %}
+		format = "{{ shop.money_format }}";
+	{% endcapture %}
+
+	{%  capture ss_swatches_config %}
+			showSwatches = "{{ settings.ss_swatches }}";
+	{%  endcapture %}
+
+	{% capture ss_explosion_config %}
+			variantExplosionType = "{{ collection.metafields["global"]["ss_explosion"] }}";
+	{% endcapture %}
+
+	{% comment %}Searchspring Script{% endcomment %}
+	<script src="https://snapui.searchspring.io/{{ settings.ss_site_id }}{{ ss_branch_name }}/bundle.js" id="searchspring-context"{{ ss_defer_config }}>
+		{{ ss_shopper_config }}{{ ss_collection_config }}{{ ss_tags_config }}{{ ss_template_config }}{{ ss_money_config }}{{ ss_explosion_config }}{{ ss_swatches_config }}
+	</script>
+
+{% endif %}

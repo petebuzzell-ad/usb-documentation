@@ -1,0 +1,571 @@
+{% liquid
+  assign hero_height_class = 'max-h-500 md:max-h-800 lg:max-h-full'
+  assign hero_height = section.settings.hero_height
+  if hero_height == 'small'
+    assign hero_height_class = 'max-h-500 md:max-h-800 lg:max-h-720'
+  endif
+%}
+
+<div
+  data-section-id="{{ section.id }}"
+  data-section-type="full-cta"
+  id="section-{{ number }}"
+  class="relative"
+>
+  {% if section.settings.image != blank or section.settings.video != blank or section.settings.youtube_video != blank %}
+    <div class="full-cta__bg w-full h-full {{ hero_height_class }}">
+      {% if section.settings.video != blank %}
+        <video
+          class="w-full min-h-450 object-cover hidden md:block"
+          autoplay="true"
+          loop="true"
+          muted="true"
+          playsinline
+          poster="{{ section.settings.image | img_url: 'master' }}"
+        >
+          {% for source in section.settings.video.sources %}
+            <source src="{{- source.url -}}" type="{{ source.mime_type }}">
+          {% endfor %}
+        </video>
+        <video
+          class="w-full min-h-450 object-cover block md:hidden"
+          autoplay="true"
+          loop="true"
+          muted="true"
+          playsinline
+          poster="{{ section.settings.image_mobile | img_url: 'master' }}"
+        >
+          {% for source in section.settings.video.sources %}
+            <source src="{{- source.url -}}" type="{{ source.mime_type }}">
+          {% endfor %}
+        </video>
+      {% elsif section.settings.youtube_video != blank %}
+        <div class="relative pt-[56.25%] h-full hidden md:block">
+          <img
+            src="{{ section.settings.image | img_url: 'master' }}"
+            alt="Video thumbnail"
+            class="absolute inset-0 w-full h-full object-cover z-10 pointer-events-none transition-opacity duration-500 ease-in-out"
+            id="youtube-poster"
+          >
+          <iframe
+            class="absolute inset-0 z-10"
+            src="https://www.youtube.com/embed/{{ section.settings.youtube_video.id }}?rel=0&version=3&autoplay=1&controls=0&showinfo=0&playlist={{ section.settings.youtube_video.id }}&loop=1&mute=1"
+            width="100%"
+            height="100%"
+            frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            onload="document.getElementById('youtube-poster').style.opacity = 0"
+          ></iframe>
+        </div>
+        <div class="relative pt-[56.25%] h-full md:hidden block">
+          <img
+            src="{{ section.settings.image | img_url: 'master' }}"
+            alt="Video thumbnail"
+            class="absolute inset-0 w-full h-full object-cover z-10 pointer-events-none transition-opacity duration-500 ease-in-out"
+            id="youtube-poster-mobile"
+          >
+          <iframe
+            class="absolute inset-0 z-10"
+            src="https://www.youtube.com/embed/{{ section.settings.youtube_video.id }}?rel=0&version=3&autoplay=1&controls=0&showinfo=0&playlist={{ section.settings.youtube_video.id }}&loop=1&mute=1"
+            width="100%"
+            height="100%"
+            frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            onload="document.getElementById('youtube-poster-mobile').style.opacity = 0"
+          ></iframe>
+        </div>
+      {% elsif section.settings.image != blank %}
+        <picture>
+          <source media="(min-width:1200px)" data-srcset="{{ section.settings.image | img_url: 'master' }}">
+          <source
+            media="(max-width:1199px)"
+            data-srcset="{% if section.settings.image_mobile != blank %}{{ section.settings.image_mobile | img_url: 'master' }}{% endif %}"
+          >
+          <source
+            media="(max-width:767px)"
+            data-srcset="{% if section.settings.image_mobile != blank %}{{ section.settings.image_mobile | img_url: '768x', scale: 2 }}{% endif %}"
+          >
+          <img
+            class="lazy w-full object-cover {{ hero_height_class }}"
+            data-src="{{ section.settings.image | img_url: 'master' }}"
+            alt="{{ section.settings.image.alt | escape }}"
+          >
+        </picture>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div
+    class="absolute left-0 top-0 h-full w-full {% if section.settings.enable_overlay_mobile == true %} block {% else %} hidden {% endif %} {% if section.settings.enable_overlay_desktop == true %} md:block {% else %} md:hidden {% endif %}"
+    style="background-color: {{ section.settings.overlay_color }}; opacity: {{ section.settings.overlay_opacity }};"
+  ></div>
+  <div class="full-cta__content {% if section.settings.enable_below_image == false %} absolute {% endif %} md:absolute inset-0 flex flex-col align-center {{ section.settings.vertical_text_container_position_mobile }} md:{{ section.settings.vertical_text_container_position_desktop }} md:p-6">
+    <div class="w-full max-w-full mx-auto md:max-w-1200 md:flex {{ section.settings.horizontal_text_container_position_desktop }}">
+      <div
+        class="w-full max-w-710 flex flex-col gap-{{ section.settings.layout_space }} py-10 px-6 md:px-15 md:py-15 {{ section.settings.text_align_mobile }} md:{{ section.settings.text_align_desktop }}"
+      >
+        {% if section.settings.sub_title != blank %}
+          <div class="uppercase {{ section.settings.text_color_mobile }} md:{{ section.settings.text_color_desktop }} {{ section.settings.sub_title_size }}">
+            {{ section.settings.sub_title }}
+          </div>
+        {% endif %}
+        {% if section.settings.title != blank %}
+          <{{ section.settings.heading_size }} class="uppercase mb-0 {{ section.settings.text_color_mobile }} md:{{ section.settings.text_color_desktop }}">
+            {{- section.settings.title -}}
+          </{{ section.settings.heading_size }}>
+        {% endif %}
+        {% if section.settings.text != blank %}
+          <div class="mb-0 mx-auto max-w-full-width-content text-p-md {{ section.settings.text_color_mobile }} md:{{ section.settings.text_color_desktop }} {% unless section.settings.enable_description %}hidden md:block{% endunless %} {{ section.settings.text_size }}">
+            {{ section.settings.text }}
+          </div>
+        {% endif %}
+        {% if section.settings.text_align_desktop == 'text-left' %}
+          {% assign button_align_desktop = 'justify-start' %}
+        {% else %}
+          {% if section.settings.text_align_desktop == 'text-center' %}
+            {% assign button_align_desktop = 'justify-center' %}
+          {% else %}
+            {% assign button_align_desktop = 'justify-end' %}
+          {% endif %}
+        {% endif %}
+        {% if section.settings.text_align_mobile == 'text-left' %}
+          {% assign button_align_mobile = 'justify-start' %}
+        {% else %}
+          {% if section.settings.text_align_mobile == 'text-center' %}
+            {% assign button_align_mobile = 'justify-center' %}
+          {% else %}
+            {% assign button_align_mobile = 'justify-end' %}
+          {% endif %}
+        {% endif %}
+        <div class="full-cta__action flex flex-wrap gap-10 {{ button_align_mobile }} md:{{ button_align_desktop }} ">
+          {% capture button_classes %}
+            font-sora font-semibold uppercase text-center transition duration-300 ease-in-out outline-none
+
+            {% if section.settings.cta_style == "normal_text" %}
+              {% if section.settings.text_color_mobile == "force-white" %}
+                text-white hover:underline
+              {% else %}
+                text-black hover:underline
+              {% endif %}
+
+              {% if section.settings.text_color_desktop == "force-white" %}
+                md:text-white md:hover:underline
+              {% else %}
+                md:text-black md:hover:underline
+              {% endif %}
+
+            {% elsif section.settings.cta_style == "fill_background" %}
+              w-62.5 mb-0 !max-w-none !w-fit rounded-[50px] px-3 h-12 leading-[45px] border-2 max-w-btn
+
+              {% if section.settings.text_color_mobile == "force-white" %}
+                text-black bg-white border-white hover:bg-transparent hover:text-white
+              {% else %}
+                text-white bg-black border-black hover:bg-transparent hover:text-black
+              {% endif %}
+
+              {% if section.settings.text_color_desktop == "force-white" %}
+                md:text-black md:bg-white md:border-white md:hover:bg-transparent md:hover:text-white
+              {% else %}
+                md:text-white md:bg-black md:border-black md:hover:bg-transparent md:hover:text-black
+              {% endif %}
+
+            {% else %}
+              w-62.5 mb-0 !max-w-none !w-fit rounded-[50px] px-3 h-12 leading-[45px] border-2 bg-transparent max-w-btn
+
+              {% if section.settings.text_color_mobile == "force-white" %}
+                text-white border-white hover:bg-white hover:text-black hover:shadow-sm
+              {% else %}
+                text-black border-black hover:bg-black hover:text-white hover:shadow-sm
+              {% endif %}
+
+              {% if section.settings.text_color_desktop == "force-white" %}
+                md:text-white md:border-white md:hover:bg-white md:hover:text-black md:hover:shadow-sm
+              {% else %}
+                md:text-black md:border-black md:hover:bg-black md:hover:text-white md:hover:shadow-sm
+              {% endif %}
+            {% endif %}
+          {% endcapture %}
+
+          {% if section.settings.btn_label_1 != blank and section.settings.btn_link_1 != blank %}
+            <a
+              href="{{ section.settings.btn_link_1 }}"
+              class="{{ button_classes | strip }} !max-w-none !w-fit"
+            >
+              {{- section.settings.btn_label_1 -}}
+            </a>
+          {% endif %}
+          {% if section.settings.btn_label_2 != blank and section.settings.btn_link_2 != blank %}
+            <a
+              href="{{ section.settings.btn_link_2 }}"
+              class="{{ button_classes | strip }} !max-w-none !w-fit"
+            >
+              {{- section.settings.btn_label_2 -}}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Full Width CTA",
+  "tag": "section",
+  "class": "full-width-cta",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop Image",
+      "info": "Recommended: 2880px X 1250px"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile Image",
+      "info": "Recommended: 1600px x 1600px"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Background Video (WEBM)"
+    },
+    {
+      "type": "video_url",
+      "id": "youtube_video",
+      "accept": ["youtube"],
+      "label": "Background Video (Youtube)"
+    },
+    {
+      "type": "select",
+      "id": "hero_height",
+      "label": "Hero Height",
+      "options": [
+        {
+          "label": "Normal",
+          "value": "normal"
+        },
+        {
+          "label": "Small",
+          "value": "small"
+        }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Text Background Overlay Color",
+      "default": "#262829"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Text Background Overlay Opacity",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "default": 0.5
+    },
+    {
+      "type": "select",
+      "id": "horizontal_text_container_position_desktop",
+      "label": "Horizontal Text Container Position (Desktop)",
+      "default": "justify-start",
+      "options": [
+        {
+          "label": "Left",
+          "value": "justify-start"
+        },
+        {
+          "label": "Center",
+          "value": "justify-center"
+        },
+        {
+          "label": "Right",
+          "value": "justify-end"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "vertical_text_container_position_desktop",
+      "label": "Vertical Text Container Position (Desktop)",
+      "default": "justify-start",
+      "options": [
+        {
+          "label": "Top",
+          "value": "justify-start"
+        },
+        {
+          "label": "Center",
+          "value": "justify-center"
+        },
+        {
+          "label": "Bottom",
+          "value": "justify-end"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "vertical_text_container_position_mobile",
+      "label": "Vertical Text Container Position (Mobile)",
+      "default": "justify-start",
+      "options": [
+        {
+          "label": "Top",
+          "value": "justify-start"
+        },
+        {
+          "label": "Center",
+          "value": "justify-center"
+        },
+        {
+          "label": "Bottom",
+          "value": "justify-end"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Image with text overlay"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading Size",
+      "default": "h2",
+      "options": [
+        {
+          "label": "H1",
+          "value": "h1"
+        },
+        {
+          "label": "H2",
+          "value": "h2"
+        },
+        {
+          "label": "H3",
+          "value": "h3"
+        },
+        {
+          "label": "H4",
+          "value": "h4"
+        },
+        {
+          "label": "H5",
+          "value": "h5"
+        },
+        {
+          "label": "H6",
+          "value": "h6"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "sub_title",
+      "label": "Sub Title",
+      "default": "Sub Title"
+    },
+    {
+      "type": "select",
+      "id": "sub_title_size",
+      "label": "Sub Title Size",
+      "options": [
+        {
+          "label": "Small",
+          "value": "text-sm"
+        },
+        {
+          "label": "Medium",
+          "value": "text-md"
+        },
+        {
+          "label": "Large",
+          "value": "text-lg"
+        }
+      ]
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.</p>"
+    },
+    {
+      "type": "select",
+      "id": "text_size",
+      "label": "Text Size",
+      "default": "force-text-md",
+      "options": [
+        {
+          "label": "Small",
+          "value": "force-text-sm"
+        },
+        {
+          "label": "Medium",
+          "value": "force-text-md"
+        },
+        {
+          "label": "Large",
+          "value": "force-text-lg"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "text_align_desktop",
+      "label": "Text Align (Desktop)",
+      "default": "text-left",
+      "options": [
+        {
+          "label": "Left",
+          "value": "text-left"
+        },
+        {
+          "label": "Center",
+          "value": "text-center"
+        },
+        {
+          "label": "Right",
+          "value": "text-right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "text_align_mobile",
+      "label": "Text Align (Mobile)",
+      "default": "text-left",
+      "options": [
+        {
+          "label": "Left",
+          "value": "text-left"
+        },
+        {
+          "label": "Center",
+          "value": "text-center"
+        },
+        {
+          "label": "Right",
+          "value": "text-right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "text_color_desktop",
+      "label": "Text Color (Desktop)",
+      "options": [
+        {
+          "label": "Light",
+          "value": "force-white"
+        },
+        {
+          "label": "Dark",
+          "value": "force-black"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "text_color_mobile",
+      "label": "Text Color (Mobile)",
+      "options": [
+        {
+          "label": "Light",
+          "value": "force-white"
+        },
+        {
+          "label": "Dark",
+          "value": "force-black"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_below_image",
+      "label": "Place Text Below Image (Mobile)",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "layout_space",
+      "label": "Layout Space",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_description",
+      "label": "Enable description on mobile?",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "btn_label_1",
+      "label": "Button 1 Label"
+    },
+    {
+      "type": "url",
+      "id": "btn_link_1",
+      "label": "Button 1 Link"
+    },
+    {
+      "type": "text",
+      "id": "btn_label_2",
+      "label": "Button 2 Label"
+    },
+    {
+      "type": "url",
+      "id": "btn_link_2",
+      "label": "Button 2 Link"
+    },
+    {
+      "type": "select",
+      "id": "cta_style",
+      "label": "CTA Style",
+      "options": [
+        {
+          "label": "Fill Background",
+          "value": "fill_background"
+        },
+        {
+          "label": "Outline Button",
+          "value": "outline_button"
+        },
+        {
+          "label": "Normal Text",
+          "value": "normal_text"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_overlay_desktop",
+      "label": "Enable Overlay (Desktop)",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_overlay_mobile",
+      "label": "Enable Overlay (Mobile)",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Full Width CTA"
+    }
+  ]
+}
+{% endschema %}

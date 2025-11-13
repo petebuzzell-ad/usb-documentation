@@ -1,0 +1,33 @@
+{% assign subNav = page.metafields["global"]["side_navigation_handle"] %}
+{% render 'page-side-nav', subNav: subNav, show: 'block lg:hidden mobile__nav relative' %}
+
+<div class="general-content-main bg-white">
+  {% assign desktop_banner = page.metafields["global"]["desktop_header_banner"] %}
+  {% assign mobile_banner = page.metafields["global"]["mobile_header_banner"] %}
+  {% assign text_color = page.metafields.global.header_text_shade %}
+  {% render 'page-header' desktop_banner: desktop_banner mobile_banner: mobile_banner text_color: text_color %}
+  
+  <div class="container mx-auto pt-16 lg:pt-30 px-6 lg:pb-36 pb-30 lg:ml-auto lg:mr-auto pl-6 pr-6 lg:pl-0 lg:pr-0 block lg:grid lg:gap-6
+    {% if subNav %} lg:grid-cols-3 {% else %} lg:grid-cols-6 {% endif %}">
+    {% render 'page-side-nav', subNav: subNav, show: 'hidden lg:block desktop__nav' %}
+    <div class="{% if subNav == blank %}mx-auto col-start-2 col-span-4 {% else %} col-span-2 {% endif %} general-content-template">
+      {% if desktop_banner == blank %}
+      <h1 class="{% if mobile_banner %}hidden lg:block{% endif %}">{{ page.title }}</h1>
+      {% endif %}
+      {% include 'shortcode' load: page.content %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Main Page",
+    "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

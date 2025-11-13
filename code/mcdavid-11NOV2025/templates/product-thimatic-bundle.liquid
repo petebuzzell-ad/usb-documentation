@@ -1,0 +1,7 @@
+{% comment %}
+  The contents of the product.liquid template can be found in /sections/product-template.liquid
+{% endcomment %}
+
+{% section 'product-thimatic-bundle-template' %}
+
+<a href="#" class="mobile-fixed-add-to-cart">ADD TO CART <span class="mobile-fixed-price">{{ product.selected_or_first_available_variant.price | money }}</span></a> 

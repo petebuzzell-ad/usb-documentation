@@ -1,0 +1,24 @@
+{%- assign filtered_terms = search.terms -%}
+
+{%- if filtered_terms contains ' AND ' -%}
+  {%- assign filtered_terms = filtered_terms | split: ' AND ' | last -%}
+{%- else -%}
+  {%- assign filtered_terms = filtered_terms | split: 'product_type:' | last -%}
+{%- endif -%}
+
+<header class="search-header text-center relative min-h-190 md:min-h-258 bg-snow">
+  <div class="search-content absolute z-2 max-w-1200 w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-6 xl:px-0">
+    {%- if search.performed -%}
+      <div class="search-content__description max-w-652 mx-auto mb-0 text-black text-p-lg leading-21 md:leading-28 md:text-h6">37 product results found for</div>
+      <h1 class="search-content__title uppercase text-h5 md:text-h2 text-black max-w-710 mx-auto mb-0 font-semibold">“{{- filtered_terms -}}”</h1>
+    {%- endif -%}
+  </div>
+  <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-52.5 md:max-w-60 grid grid-cols-2 gap-10">
+    <div class="shopping-results h-9.5 md:h-15 border-b-2 cursor-pointer font-sora font-semibold uppercase text-special-s md:text-special-lg tracking-1 md:tracking-1.7 flex items-center justify-center text-pine border-pine" data-tab="#shopping-results">
+      Shopping
+    </div>
+    <div class="content-results h-9.5 md:h-15 border-b-2 cursor-pointer font-sora font-semibold uppercase text-special-s md:text-special-lg tracking-1 md:tracking-1.7 flex items-center justify-center text-black border-transparent lg:hover:border-silver" data-tab="#content-results">
+      Content
+    </div>
+  </div>
+</header>

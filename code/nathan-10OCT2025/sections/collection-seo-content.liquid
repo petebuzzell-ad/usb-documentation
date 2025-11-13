@@ -1,0 +1,15 @@
+{% unless collection.description == '' %}
+  <section class="collection-seo-section">
+    <div class="collection-seo">
+      {{ collection.description }}
+    </div>
+  </section>
+{% endunless %}
+
+{% schema %}
+  {
+    "name": "Collection Description",
+    "class": "section-collection-seo",
+    "settings": []
+  }
+{% endschema %}

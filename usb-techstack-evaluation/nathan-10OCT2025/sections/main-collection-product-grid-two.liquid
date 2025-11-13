@@ -1,0 +1,158 @@
+<div class="banner-desktop-only">
+	<img class="collection_image fade-in lazyautosizes lazyloaded" loading="lazy" width="auto" height="auto" data-src="{{ section.settings.image_desktop_shop_all | img_url: '1024x1024'}}" data-widths="[180, 220, 300, 360, 460, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-sizes="auto" alt="Women's Apparel" sizes="1665px" src="{{ section.settings.image_desktop_shop_all | img_url: '1024x1024' }}">
+	<h1> {{  section.settings.title }}</h1>
+</div>
+<div class="banner-mobile-only"><img class="collection_image fade-in lazyautosizes lazyloaded" data-src="{{ section.settings.image_mobile_shop_all | img_url: '1024x1024' }}" data-widths="[180, 220, 300, 360, 460, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-sizes="auto" alt="Women's Apparel" sizes="375px" src="{{ section.settings.image_mobile_shop_all | img_url: '1024x1024' }}">
+	<h1> {{  section.settings.title_mobile_shop_all }} </h1>
+</div>
+<div id="isp_search_result_page">
+	<div id="isp_search_result_page_container" class="isp_serp_theme_high_fidelity">
+		<div id="isp_center_container" class="isp_center_container isp_center_container_position">
+			{% for block in section.blocks %}
+				{% if block.settings.collection == blank %}
+				{% else %}
+					{% render 'collection-block-shop-all', 
+					collection: collections[block.settings.collection],
+					title_colection: block.settings.title_colection,
+					link_colection: block.settings.link_colection,
+					label_all_colection: block.settings.label_all_colection,
+					i: forloop.index,
+					image: block.settings.image, %}
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+    "name": "Collection Shop All",
+    "class": "section-collection-shop-all",
+    "max_blocks": 20,
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Collection list"
+        },
+		{
+			"type": "image_picker",
+			"id": "image_desktop_shop_all",
+			"label": "Image Desktop"
+		},
+		{
+            "type": "text",
+            "id": "title_mobile_shop_all",
+            "label": "Title",
+            "default": "Banner Title"
+        },
+		{
+			"type": "image_picker",
+			"id": "image_mobile_shop_all",
+			"label": "Image Mobile"
+		},
+        {
+            "type": "select",
+            "id": "layout",
+            "label": "Layout",
+            "options": [
+                {
+                    "value": "columns",
+                    "label": "Collage"
+                },
+                {
+                    "value": "rows",
+                    "label": "Grid"
+                },
+                {
+                    "value": "carousel",
+                    "label": "Carousel"
+                }
+            ],
+            "default": "rows",
+            "info": "Collage will only work when the 'Image shape'  is set to Natural - in Collections / Image shape"
+        },
+        {
+            "type": "range",
+            "id": "grid",
+            "label": "Desktop collections per row",
+            "min": 2,
+            "max": 4,
+            "default": 3
+        },
+        {
+            "type": "select",
+            "id": "grid_mobile",
+            "label": "Mobile collections per row",
+            "options": [
+                {
+                    "value": "1",
+                    "label": "1"
+                },
+                {
+                    "value": "2",
+                    "label": "2"
+                }
+            ],
+            "default": "2"
+        },
+        {
+            "type": "checkbox",
+            "id": "show_view_all",
+            "label": "Show 'View all' link",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "alternate_bg_color",
+            "label": "Use alternate section color",
+            "default": false
+        }
+    ],
+    "blocks": [
+        {
+            "type": "block",
+            "name": "Collection",
+            "settings": [
+				{
+                    "type": "text",
+                    "id": "title_colection",
+                    "label": "Title"
+                },
+				{
+					"type": "url",
+					"id": "link_colection",
+					"label": "Link"
+				},
+				{
+					"type": "text",
+					"id": "label_all_colection",
+					"label": "View All"
+				},
+                {
+                    "type": "collection",
+                    "id": "collection",
+                    "label": "Collection"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Collection list",
+            "settings": {},
+            "blocks": [
+                {
+                    "type": "block"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

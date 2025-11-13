@@ -1,0 +1,227 @@
+{%- if section.blocks.size > 0 -%}
+  <div class="relative overflow-hidden mb-20 md:mb-40">
+    <div class="clp-slider relative">
+      <div class="image-gallery-slider md:w-full overflow-x-visible" {% if section.settings.slider_autoplay == true %}data-autoplay="{{ section.settings.slider_autoplay_interval }}"{% endif %}>
+        <div class="glide__track" data-glide-el="track">
+          <div class="glide__slides w-full">
+            {%- assign i = 0 -%}
+            {%- for block in section.blocks -%}
+              {%- if block.settings.image != blank or block.settings.video != blank -%}
+                {%- assign count = 0 -%}
+                {%- for k in (1..3) -%}
+                  {%- capture cta_title -%}cta_title_{{k}}{%- endcapture -%}
+                  {%- capture cta_url -%}url_{{k}}{%- endcapture -%}
+                  {%- if block.settings[cta_title] != blank and block.settings[cta_url] != blank -%}
+                    {%- assign count = count | plus: 1 -%}
+                  {%- endif -%}
+                {%- endfor -%}
+
+                <div class="glide__slide w-full max-w-full">
+                  {%- if block.settings.image != blank or block.settings.video != blank -%}
+                    <div class="image-gallery-slider__image relative ">
+                      {%- if block.settings.video != blank -%}
+                        <video class="absolute inset-0 w-full h-full object-cover hidden md:block" controls playsinline autoplay loop muted>
+                          <source src="{{block.settings.video}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      {%- else -%}
+                        <img class="absolute inset-0 w-full h-full object-cover hidden md:block" src="{{ block.settings.image | img_url: '1920x' }}" alt="{{ block.settings.image.alt | escape }}" />
+                      {%- endif -%}
+
+                      {%- if block.settings.video_mobile != blank -%}
+                        <video class="absolute inset-0 w-full h-full object-cover block md:hidden" controls playsinline autoplay loop muted>
+                          <source src="{{block.settings.video_mobile}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      {%- elsif block.settings.image_mobile != blank -%}
+                        <img class="absolute inset-0 w-full h-full object-cover block md:hidden" src="{{ block.settings.image_mobile | img_url: '768x' }}" alt="{{ block.settings.image_mobile.alt | escape }}" />
+                      {%- else -%}
+                        <img class="absolute inset-0 w-full h-full object-cover block md:hidden" src="{{ block.settings.image | img_url: '1920x' }}" alt="{{ block.settings.image.alt | escape }}" />
+                      {%- endif -%}
+
+                      {%- if block.settings.title != blank -%}
+                        <div class="max-w-full md:max-w-slider h-max w-full absolute left-0 md:left-1/2 top-1/2 transform md:-translate-x-1/2 -translate-y-1/2 text-center lg:text-{{block.settings.horizontal_position}}">
+                          <div class="w-full md:w-350 md:h-350 lg:w-480 lg:h-480 text-white block md:flex items-center {% if block.settings.horizontal_position == 'center' %}justify-center my-0 mx-auto text-center {% elsif block.settings.horizontal_position == 'right' %} mr-auto lg:mr-0 ml-auto text-center lg:text-left md:justify-center lg:justify-start {% else %}text-center lg:text-left md:justify-center lg:justify-start ml-auto lg:ml-0 mr-auto{% endif %} px-6 py-10 md:px-10 md:py-10 lg:px-10 lg:py-10 {% if block.settings.overlay == true %} bg-dark-stone-overlay {% else %} md:border-white md:border-2 {% endif %}">
+                            <div>
+                              {%- if block.settings.subtitle != blank -%}
+                                <div class="text-special mb-2 lg:mb-4 uppercase font-sora font-medium">{{- block.settings.subtitle -}}</div>
+                              {%- endif -%}
+                              <h2 class="text-h1-m lg:text-h1 mb-6 md:mb-4 uppercase text-white">{{- block.settings.title -}}</h2>
+                              {%- if block.settings.description != blank -%}
+                                <div class="hidden md:block text-p-lg mb-6">{{- block.settings.description -}}</div>
+                              {%- endif -%}
+
+                              {%- assign index = 1 -%}
+                              {%- for k in (1..3) -%}
+                                {%- capture cta_title -%}cta_title_{{k}}{%- endcapture -%}
+                                {%- capture cta_url -%}url_{{k}}{%- endcapture -%}
+                                {%- if block.settings[cta_title] != blank and block.settings[cta_url] != blank -%}
+                                  <a href="{{block.settings[cta_url]}}" class="text-special-xs md:text-special font-sora border border-white border-t-0 border-l-0 border-r-0 border-b-2 {% unless index == count %} mr-8 {% endunless %} uppercase font-normal lg:hover:text-bright-yellow lg:hover:border-bright-yellow">{{- block.settings[cta_title] -}}</a>
+                                  {%- assign index = index | plus: 1 -%}
+                                {%- endif -%}
+                              {%- endfor -%}
+                            </div>
+                          </div>
+                        </div>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              </div>
+
+              {% capture slider_nav %}
+                {{ slider_nav }}
+                <div class="glide__bullet mx-0.5 w-2 h-2 md:w-3 md:h-3 p-0.5 rounded-circle cursor-pointer" data-glide-dir="={{ i }}"><span class="block w-full h-full rounded-circle"></span></div>
+              {% endcapture %}
+              {%- assign i = i | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+
+          </div>
+        </div>
+        {%- unless i == 1 -%}
+          <div class="glide__bullets absolute bottom-16 md:bottom-6 w-full flex justify-center" data-glide-el="controls[nav]">
+            {{- slider_nav -}}
+          </div>
+          <div class="glide__arrows hidden md:flex absolute w-full top-1/2 transform -translate-y-1/2 justify-between px-18" data-glide-el="controls">
+            <a href="#" class="glide__arrow glide__arrow--left button-slider-nav w-12.5 h-12.5 p-0 rounded-circle flex items-center justify-center" data-glide-dir="<">{% include 'svg-arrow-left' %}</a>
+            <a href="#" class="glide__arrow glide__arrow--right button-slider-nav w-12.5 h-12.5 p-0 rounded-circle flex items-center justify-center" data-glide-dir=">">{% include 'svg-arrow-right' %}</a>
+          </div>
+        {%- endunless -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "BCL Hero",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "slider_autoplay",
+      "label": "Auto-rotate Hero slides",
+      "default": true
+    },
+    {
+      "type": "number",
+      "id": "slider_autoplay_interval",
+      "label": "Auto-rotation interval (in seconds)",
+      "default": 5
+    }
+  ],
+  "max_blocks": 7,
+  "blocks": [
+    {
+      "name": "Item",
+      "type": "item",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "hide_slide_from_pros",
+          "default": false,
+          "label": "Hide Slide from Pro Members",
+          "info": "Enable this setting for slide content that you want to ensure is hidden from Pro customers."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image Desktop",
+          "info": "Recommended Size: 2880x1600. Image will be ignored by Video"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Image Mobile",
+          "info": "Recommended Size: 1500x2200. Image will be ignored by Mobile Video"
+        },
+        {
+          "type": "text",
+          "id": "video",
+          "label": "Video Desktop",
+          "info": "Recommended Video Ratio: 16:9"
+        },
+        {
+          "type": "text",
+          "id": "video_mobile",
+          "label": "Video Mobile"
+        },
+        {
+          "type": "checkbox",
+          "id": "overlay",
+          "default": true,
+          "label": "Text Background Overlay"
+        },
+        {
+          "type": "select",
+          "id": "horizontal_position",
+          "options": [
+            { "value": "left", "label": "Left"},
+            { "value": "center", "label": "Center"},
+            { "value": "right", "label": "Right"}
+          ],
+          "label": "Text alignment (Desktop)",
+          "default": "center"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Pearl Izumi Journal"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "title",
+          "default": "BikeStyle"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Going deep in Alsea Falls, Oregon"
+        },
+        {
+          "type": "text",
+          "id": "cta_title_1",
+          "label": "CTA title 1",
+          "default": "Learn more"
+        },
+        {
+          "id": "url_1",
+          "type": "url",
+          "label": "Link 1"
+        },
+        {
+          "type": "text",
+          "id": "cta_title_2",
+          "label": "CTA title 2",
+          "default": "Learn more"
+        },
+        {
+          "id": "url_2",
+          "type": "url",
+          "label": "Link 2"
+        },
+        {
+          "type": "text",
+          "id": "cta_title_3",
+          "label": "CTA title 3",
+          "default": "Learn more"
+        },
+        {
+          "id": "url_3",
+          "type": "url",
+          "label": "Link 3"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "BCL Hero",
+      "category": "Blog"
+    }
+  ]
+}
+
+{% endschema %}

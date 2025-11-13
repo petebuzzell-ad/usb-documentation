@@ -1,0 +1,34 @@
+{%- comment -%}
+
+  HOW TO USE
+
+  To create a new, unique Content Landing Page:
+    - Create Page in the Admin
+    - set Template to page.content-landing
+    - go to More Actions -> Add Metafields to page
+    - in the 'content_landing_key' metafield, enter a unique value (ex. 'abc123')
+    - copy all contents from sections/content-landing.liquid and paste into a new file
+    - name the new file 'content-landing_<key>' with a single underscore + key (ex. 'content-landing_abc123.liquid')
+    - in this file, add a case block that matches the key and use the new section 
+
+{%- endcomment -%}
+
+{% liquid 
+  assign key = page.metafields.global.content_landing_key | handleize
+
+  case key
+
+    when 'mens'
+      section 'kit-landing-mens'
+
+    when 'womens'
+      section 'kit-landing-womens'
+
+    when 'kids'
+      section 'kit-landing-kids'
+
+    else
+      section 'content-landing'
+
+  endcase
+%}

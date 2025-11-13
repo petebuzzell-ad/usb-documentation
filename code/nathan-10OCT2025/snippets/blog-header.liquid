@@ -1,0 +1,36 @@
+{%-liquid
+  assign desktop_banner = blog.metafields["global"]["desktop_header_banner"]
+  assign mobile_banner = blog.metafields["global"]["mobile_header_banner"]
+-%}
+  
+<div class="blog__header relative {% if desktop_banner or mobile_banner %}mb-8 lg:mb-10 h-285 lg:h-500{% else %}h-208 lg:h-330{% endif %}">
+  {% if desktop_banner or mobile_banner %}
+    <div class="blog__header--image">
+      <picture>
+        <source media="(min-width: 768px)" srcset="{{ desktop_banner }}" />
+        <source media="(max-width: 767px)"
+            data-srcset="{% if mobile_banner != blank %}{{ mobile_banner }}{% else %}{{ desktop_banner }}{% endif %}" />
+        <img alt="A lazy image" class="lazy w-full object-cover h-285 lg:h-500" data-src="{{ desktop_banner }}"/>
+      </picture>
+    </div>
+    <div class="blog__header--content absolute min-w-275 max-w-90% lg:max-w-85% px-10 py-16 lg:py-20 lg:px-16 top-1/2 left-1/2 transform -translate-y-2/4 -translate-x-2/4 bg-black bg-opacity-60">
+      <h1 class="blog__header--line mb-0 z-1 text-white text-center">
+        {% if current_tags %}
+            {{ current_tags.first | upcase }}
+        {% else %}
+            {{ blog.title }}
+        {% endif %}
+      </h1>
+    </div>
+  {% else %}
+    <div class="blog__header--content absolute min-w-275 max-w-90% lg:max-w-85% px-10 py-16 lg:py-20 lg:px-16 top-1/2 left-1/2 transform -translate-y-2/4 -translate-x-2/4">
+      <h1 class="blog__header--line text-center mb-0">
+        {% if current_tags %}
+          {{ current_tags.first | upcase }}
+        {% else %}
+            {{ blog.title }}
+        {% endif %}
+      </h1>
+    </div>
+  {% endif %}
+</div>

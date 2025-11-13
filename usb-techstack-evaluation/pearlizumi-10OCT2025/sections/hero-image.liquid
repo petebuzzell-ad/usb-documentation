@@ -1,0 +1,220 @@
+{%- liquid
+  assign btn_1 = false
+  assign btn_2 = false
+  assign btn_count = 0
+  if section.settings.btn_text_1 != blank and section.settings.btn_url_1 != blank
+    assign btn_1 = true
+    assign btn_count = btn_count | plus: 1
+  endif
+  if section.settings.btn_text_2 != blank and section.settings.btn_url_2 != blank
+    assign btn_2 = true
+    assign btn_count = btn_count | plus: 1
+  endif
+  if section.settings.btn_text_3 != blank and section.settings.btn_url_3 != blank
+    assign btn_3 = true
+    assign btn_count = btn_count | plus: 1
+  endif
+-%}
+{% assign mb_class = 'mb-0' %}{% if section.settings.enable_bottom_margin %}{% assign mb_class = 'mb-20 md:mb-40' %}{% endif %}
+
+<div data-section-id="{{ section.id }}" data-section-type="hero" id="section-{{ number }}" class="relative block {{ mb_class }}">
+  {% assign content_text_color_class = "text-black" %}
+  {% assign breadcrumbs_text_color_class = "text-black" %}
+  {% assign breadcrumbs_overlay_class = "" %}
+  {% if section.settings.image != blank or section.settings.video != blank or section.settings.youtube_video != blank %}
+    {% assign content_text_color_class = "text-white" %}
+    {% assign breadcrumbs_text_color_class = "text-light-grey" %}
+    {% assign breadcrumbs_overlay_class = "bg-dark-stone-overlay" %}
+  {% endif %}
+
+  {% if section.settings.show_breadcrumbs %}
+    <div class="hero__breadcrumbs absolute w-full flex justify-center z-1 my-4">
+      <div class="hero__breadcrumbs-inner px-2 {{ breadcrumbs_overlay_class }} {{ breadcrumbs_text_color_class }}">
+        {% render 'snippet-hero-breadcrumbs' %}
+      </div>
+    </div>
+  {% endif %}
+
+  {% assign content_class = "relative" %}
+  {% if section.settings.image != blank or section.settings.video != blank or section.settings.youtube_video != blank %}
+    <div class="hero__bg relative">
+      {% if section.settings.image != blank %}
+        <picture>
+          <source media="(min-width:1024px)" data-srcset="{{ section.settings.image | img_url: 'master' }}">
+          <source media="(max-width:1023px)" data-srcset="{% if section.settings.image_mobile != blank %}{{ section.settings.image_mobile | img_url: 'master' }}{% endif %}">
+          <source media="(max-width:767px)" data-srcset="{% if section.settings.image_mobile != blank %}{{ section.settings.image_mobile | img_url: '768x', scale: 2 }}{% endif %}">
+          <img class="lazy hero__bg-image object-cover mx-auto" data-src="{{ section.settings.image | img_url: 'master' }}" alt="{{ section.settings.image.alt | escape }}" />
+        </picture>
+      {% elsif section.settings.video != blank or section.settings.video_1 != blank %}
+        <video class="w-full min-h-400 lg:min-h-560 object-cover" autoplay="true" loop="true" muted="true" playsinline>
+          <source src="{{ section.settings.video }}" type="video/webm" />
+          <source src="{{ section.settings.video_1 }}" type="video/mp4" />
+        </video>
+      {% elsif section.settings.youtube_video != blank %}
+        <div class="relative pt-[56.25%] min-h-400 lg:min-h-560">
+          <iframe class="absolute inset-0" src="https://www.youtube.com/embed/{{ section.settings.youtube_video.id }}?rel=0&version=3&autoplay=1&controls=0&showinfo=0&playlist={{ section.settings.youtube_video.id }}&loop=1&mute=1" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      {% endif %}
+    </div>
+    {% assign content_class = "absolute" %}
+  {% endif %}
+
+  {%- if btn_count == 1 -%}
+  <a class="hero__content block {{ content_class }} w-full lg:h-full bottom-0 lg:flex lg:flex-col lg:align-center lg:justify-center"
+    href="{% if btn_1 == true %}{{section.settings.btn_url_1}}{% endif %}{% if btn_2 == true %}{{section.settings.btn_url_2}}{% endif %}{% if btn_3 == true %}{{section.settings.btn_url_3}}{% endif %}">
+  {%- else -%}
+  <div class="hero__content block {{ content_class }} w-full lg:h-full bottom-0 lg:flex lg:flex-col lg:align-center lg:justify-center">
+  {%- endif -%}
+    <div class="text-center py-0 lg:py-30">
+      <div class="lg:max-w-full-width-content bg-dark-stone-overlay p-6 md:p-15 m-auto">
+        {% if section.settings.subtitle != blank %}
+          <p class="font-sora font-normal text-special uppercase mb-0 {{ content_text_color_class }}">{{ section.settings.subtitle }}</p>
+        {% endif %}
+        {% if section.settings.title != blank %}
+          <h2 class="uppercase mb-0 {{ content_text_color_class }}">{{ section.settings.title }}</h2>
+        {% endif %}
+        {% if section.settings.text != blank %}
+          <p class="mt-4.5 mb-0 mx-auto text-p-lg {{ content_text_color_class }} {% if section.settings.show_description == false %}hidden md:block{% endif %}">{{ section.settings.text }}</p>
+        {% endif %}
+
+        <div class="flex items-center justify-center">
+          {%- if btn_1 == true -%}
+            {%- if btn_count == 1 -%}
+              <span class="font-sora font-semibold text-special-xs md:text-special uppercase text-white border-b-1.5 border-white hover:text-bright-yellow hover:border-bright-yellow mt-4 md:mt-6">{{section.settings.btn_text_1}}</span>
+            {%- else -%}
+              <a href="{{section.settings.btn_url_1}}" class="font-sora font-semibold text-special-xs md:text-special cursor-pointer uppercase text-white border-b-1.5 border-white hover:text-bright-yellow hover:border-bright-yellow mt-4 md:mt-6">{{section.settings.btn_text_1}}</a>
+            {%- endif -%}
+          {%- endif -%}
+          {%- if btn_2 == true -%}
+            {%- if btn_count == 1 -%}
+              <span class="font-sora font-semibold text-special-xs md:text-special uppercase text-white border-b-1.5 border-white hover:text-bright-yellow hover:border-bright-yellow mt-4 md:mt-6">{{section.settings.btn_text_2}}</span>
+            {%- else -%}
+              <a href="{{section.settings.btn_url_2}}" class="font-sora font-semibold text-special-xs md:text-special cursor-pointer uppercase text-white border-b-1.5 border-white hover:text-bright-yellow hover:border-bright-yellow mt-4 md:mt-6 ml-6 md:ml-7.5">{{section.settings.btn_text_2}}</a>
+            {%- endif -%}
+          {%- endif -%}
+          {%- if btn_3 == true -%}
+            {%- if btn_count == 1 -%}
+              <span class="font-sora font-semibold text-special-xs md:text-special uppercase text-white border-b-1.5 border-white hover:text-bright-yellow hover:border-bright-yellow mt-4 md:mt-6">{{section.settings.btn_text_3}}</span>
+            {%- else -%}
+              <a href="{{section.settings.btn_url_3}}" class="font-sora font-semibold text-special-xs md:text-special cursor-pointer uppercase text-white border-b-1.5 border-white hover:text-bright-yellow hover:border-bright-yellow mt-4 md:mt-6 ml-6 md:ml-7.5">{{section.settings.btn_text_3}}</a>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  {%- if btn_count == 1 -%}
+  </a>
+  {%- else -%}
+  </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Hero Image",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Desktop Image",
+        "info": "Recommended: 2880px X 1250px"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_mobile",
+        "label": "Mobile Image",
+        "info": "Recommended: 1600px x 1600px"
+      },
+      {
+        "type": "url",
+        "id": "video",
+        "label": "Background Video (WEBM)"
+      },
+      {
+        "type": "url",
+        "id": "video_1",
+        "label": "Background Video (MP4)"
+      },
+      {
+        "type": "video_url",
+        "id": "youtube_video",
+        "accept": ["youtube"],
+        "label": "Background Video (Youtube)"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "SubHeading"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Image with text overlay"
+      },
+      {
+        "type": "textarea",
+        "id": "text",
+        "label": "Text",
+        "default": "Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story."
+      },
+      {
+        "type": "checkbox",
+        "id": "show_description",
+        "label": "Show Description on Mobile",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "btn_text_1",
+        "label": "Button 1 Text",
+        "default": "Button"
+      },
+      {
+        "type": "url",
+        "id": "btn_url_1",
+        "label": "Button 1 URL"
+      },
+      {
+        "type": "text",
+        "id": "btn_text_2",
+        "label": "Button 2 Text",
+        "default": "Button"
+      },
+      {
+        "type": "url",
+        "id": "btn_url_2",
+        "label": "Button 2 URL"
+      },
+      {
+        "type": "text",
+        "id": "btn_text_3",
+        "label": "Button 3 Text",
+        "default": "Button"
+      },
+      {
+        "type": "url",
+        "id": "btn_url_3",
+        "label": "Button 3 URL"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_breadcrumbs",
+        "label": "Show Breadcrumbs",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_bottom_margin",
+        "label": "Enable Bottom Margin",
+        "default": true
+      }
+  ],
+  "presets": [
+    {
+      "name": "Hero Image"
+    }
+  ]
+}
+
+{% endschema %}

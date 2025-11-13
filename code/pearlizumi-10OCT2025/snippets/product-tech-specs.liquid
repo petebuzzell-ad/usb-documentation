@@ -1,0 +1,188 @@
+{%- comment -%}
+RidingConditions:Sun
+RidingConditions:Rain
+RidingConditions:Heat
+RidingConditions:Cold
+
+Technology:Breathable|Order:1
+Technology:Go Fresh|Order:2
+Technology:Sweat Management|Order:3
+Technology:Pedal to Zero|Order:4
+
+Sport:Road
+Weight:9grams
+Fit:Form
+Pedal To Zero:26.6mi
+{%- endcomment -%}
+
+{%- assign riding_conditions = '' -%}
+{%- assign technology = '' -%}
+{%- assign other_specs = false -%}
+{%- assign order_callbacks = 'order-1 order-2 order-3 order-4 order-5' -%}
+
+{%- for tag in product.tags -%}
+  {%- if tag contains 'TechnologyAccordion:Pedal To Zero' -%}
+    {%- assign has_pedal_accordion = true -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- for tag in product.tags -%}
+  {%- if tag contains 'RidingConditions:' -%}
+    {%- assign data = tag | split: '|' -%}
+    {%- assign order = 1 -%}
+    {%- if data.size > 1 and data[1] contains 'Order:' -%}
+      {%- assign order = data[1] | split: ':' | last -%}
+    {%- endif -%}
+    {%- assign value = data[0] | split: ':' -%}
+    {%- if value.size > 2 -%}
+      {%- assign value = value[2] -%}
+    {%- else -%}
+      {%- assign value = value[1] -%}
+    {%- endif -%}
+
+    {%- capture item -%}
+      <div class="flex items-center py-2.5 lg:py-0 border-t border-light-grey lg:border-0 order-{{ order }}">
+        <span class="tech-icon tech-icon__{{ value | handleize }}"></span>
+        <span class="text-p-ms ml-2.5">{{ value }}</span>
+      </div>
+    {%- endcapture%}
+    {%- assign riding_conditions = riding_conditions | append: item -%}
+  {%- elsif tag contains 'TechnologyIcon:' -%}
+    {%- assign data = tag | split: '|' -%}
+    {%- assign order = 1 -%}
+    {%- if data.size > 1 and data[1] contains 'Order:' -%}
+      {%- assign order = data[1] | split: ':' | last -%}
+    {%- endif -%}
+    {%- assign value = data[0] | split: ':' -%}
+    {%- assign value = value[1] -%}
+
+    {%- capture item -%}
+      <div class="flex items-center py-2.5 lg:py-0 border-t border-light-grey lg:border-0 order-{{ order }}">
+        <span class="tech-icon tech-icon__{{ value | handleize }}"></span>
+        <span class="text-p-ms ml-2.5">{{ value }}</span>
+      </div>
+    {%- endcapture%}
+    {%- assign technology = technology | append: item -%}
+  {%- elsif tag contains 'Sport:' -%}
+    {%- assign other_specs = true -%}
+    {%- assign value = tag | split: ':' | last -%}
+    {%- capture sport_spec -%}
+      <div class="text-special-mxs lg:text-special-ms py-2.5 lg:px-10 border-b border-soft-grey lg:border-b-0 lg:border-r">
+        <span class="font-semibold uppercase">Sport: </span>
+        <span>{{ value }}</span>
+      </div>
+    {%- endcapture -%}
+  {%- elsif tag contains 'Weight:' -%}
+    {%- assign other_specs = true -%}
+    {%- assign value = tag | split: ':' | last -%}
+    {%- capture weight_spec -%}
+      <div class="text-special-mxs lg:text-special-ms py-2.5 lg:px-10 border-b border-soft-grey lg:border-b-0 lg:border-r">
+        <span class="font-semibold uppercase">Weight: </span>
+        <span>{{ value }}</span>
+      </div>
+    {%- endcapture -%}
+  {%- elsif tag contains 'fit:' -%}
+    {%- assign other_specs = true -%}
+    {%- assign value = tag | split: ':' | last -%}
+    {%- capture fit_spec -%}
+      <div class="text-special-mxs lg:text-special-ms py-2.5 lg:px-10 border-b border-soft-grey lg:border-b-0 lg:border-r">
+        <span class="font-semibold uppercase">Fit: </span>
+        <span>{{ value }}</span>
+      </div>
+    {%- endcapture -%}
+  {%- elsif tag contains 'Pedal To Zero:' -%}
+    {%- assign other_specs = true -%}
+    {%- assign value = tag | split: ':' | last -%}
+    {%- capture pedal_spec -%}
+      <div class="text-special-mxs lg:text-special-ms py-2.5 lg:px-10 border-b border-soft-grey lg:border-b-0 lg:border-r">
+        <span class="font-semibold uppercase">Pedal To Zero: </span>
+        {%- if has_pedal_accordion -%}
+          <span class="text-pine">{{ value }}</span>
+        {%- else -%}
+          <a
+            href="#accordion_pedal-to-zero" 
+            class="text-pine"
+            onclick="eHS.theme.accordionOpen(event)">
+            {{ value }}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endcapture -%}
+  {%- endif -%}
+{%- endfor -%}
+
+<div class="px-6 lg:px-0" data-expandable-content>
+  <div class="transition-max-height duration-500 ease-out product-tech-specs" data-expandable-content-inner>
+    {%- if riding_conditions != blank or technology != blank -%}
+      <div class="w-full lg:px-14 xl:px-22.5 max-w-[124.5rem] mx-auto lg:pt-12 lg:pb-10 lg:border-t lg:border-soft-grey">
+        <div class="flex flex-col lg:flex-row gap-1.5 lg:gap-12 xl:gap-30">
+          {%- if riding_conditions != blank -%}
+            <div class="px-6 pt-6 pb-3 bg-faint-cloud lg:p-0 lg:bg-transparent">
+              <div class="text-special-mxs lg:text-special-ms font-semibold uppercase">{{ 'products.product.riding_conditions' | t }}</div>
+              <div class="flex flex-col lg:flex-row lg:items-center lg:gap-4 mt-5">
+                {{ riding_conditions }}
+              </div>
+            </div>
+          {%- endif -%}
+          {%- if technology != blank -%}
+            <div class="px-6 pt-6 pb-3 bg-faint-cloud lg:p-0 lg:bg-transparent">
+              <div class="text-special-mxs lg:text-special-ms font-semibold uppercase">{{ 'products.product.technology' | t }}</div>
+              <div class="flex flex-col lg:flex-row lg:items-center lg:gap-4 mt-5">
+                {{ technology }}
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- if other_specs or product.metafields["global"]["prd_care_guide_en"] != blank -%}
+      <div class="w-full lg:px-14 xl:px-22.5 max-w-[124.5rem] mx-auto lg:py-6 lg:border-t lg:border-soft-grey">
+        <div class="flex flex-col lg:flex-row lg:-mx-10 lg:items-center px-6 py-4 bg-faint-cloud lg:p-0 lg:bg-transparent mt-1.5 lg:mt-0">
+          {{ sport_spec}}
+          {{ weight_spec}}
+          {{ fit_spec}}
+          {{ pedal_spec}}
+
+          {%- if product.metafields["global"]["prd_care_guide_en"] != blank -%}
+            <div class="text-special-mxs lg:text-special-ms py-2.5 lg:px-10">
+              <span class="font-semibold uppercase">Care: </span>
+              <a
+              href="#"
+              class="text-pine"
+              onClick="eHS.productBuyBox.showCareInstruction(event)"
+              role="button"
+              aria-label="See Care Instructions"
+            >
+              See Care Instructions
+            </a>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+  <div class="lg:hidden p-4 text-center bg-faint-cloud border-t border-light-grey mt-1.5" data-expandable-content-toggler>
+    <span class="inline-block font-sora font-semibold text-special-xxs uppercase border-b-1.5 border-black">Show More</span>
+  </div>
+</div>
+
+{%- if product.metafields["global"]["prd_care_guide_en"] != blank -%}
+  <div id="careInstruction" data-care-instruction class="hidden fixed inset-3 bottom-auto shadow-modal z-50 bg-white lg:w-full lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 lg:max-w-894">
+    <div class="flex flex-col lg:max-h-800">
+      <div class="border-b border-silver bg-faint-cloud uppercase flex">
+        <div class="flex-grow px-5 lg:px-20 py-4 lg:py-6 flex font-sora text-special-mxs lg:text-special font-medium">
+          Care Instructions
+        </div>
+        <span class="care-instruction__close cursor-pointer hover:text-pine flex-grow-0 p-4 lg:p-5 border-l border-silver">
+          {% render 'svg-close', classes: 'svg-close w-5 h-5 lg:w-8 lg:h-8' %}
+        </span>
+      </div>
+      <div class="max-h-600 lg:overflow-y-auto lg:max-h-none pt-6 px-0 pb-8 lg:p-0">
+        <div class="block h-full overflow-y-auto lg:pt-7 lg:pb-21.5 px-6 lg:px-20">
+          <p class="m-0">{{ product.metafields["global"]["prd_care_guide_en"] }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endif -%}

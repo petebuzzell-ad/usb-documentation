@@ -1,0 +1,34 @@
+<style>
+  {%- for block in section.blocks -%}
+    {%- assign svg_icon = block.settings.svg | strip_newlines | url_escape -%}
+    .tech-icon.tech-icon__{{ block.settings.title | handleize }} {
+      background-image: url('data:image/svg+xml,{{ svg_icon }}');
+    }
+  {%- endfor -%}
+</style>
+
+{% schema %}
+  {
+    "name": "Technology Icons",
+    "tag": "section",
+    "blocks": [
+      {
+        "type": "tech_icon",
+        "name": "Technology Icon",
+        "settings": [
+          {
+            "id": "title",
+            "type": "text",
+            "label": "Title",
+            "info": "Title must match product tag Technology:Title or RidingConditions:Title"
+          },
+          {
+            "id": "svg",
+            "type": "html",
+            "label": "SVG"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

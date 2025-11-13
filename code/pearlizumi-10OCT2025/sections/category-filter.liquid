@@ -1,0 +1,189 @@
+{% liquid
+  assign mb_class = 'mb-0'
+  if section.settings.enable_bottom_margin
+    assign mb_class = 'mb-20 md:mb-40'
+  endif
+%}
+<style>
+  .category-filter-section + [data-section-type="full-cta"] {
+    margin-top: 0;
+  }
+  
+  .category-filter-section + [data-section-type="suggested-products"] {
+    margin-top: 160px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .category-filter-section + [data-section-type="suggested-products"] {
+      margin-top: 80px;
+    }
+  }
+</style>
+
+<div data-section-id="{{ section.id }}" data-section-type="category-filter" id="section-{{ number }}" class="category-filter-section relative mb-0">
+  <div class="bg-dark-stone px-0 md:px-5 overflow-hidden relative">
+    <div class="max-w-full mx-auto md:max-w-1200 xl:max-w-none">
+      <div class="flex flex-wrap -mx-2.5">
+        <div class="cat-filter-container w-full px-2.5 py-7 snap-x snap-mandatory lg:py-10 flex justify-start lg:justify-center">
+          {%- if section.settings.title_1 != blank and section.settings.link_1 != blank -%}
+            <a href="{{ section.settings.link_1 }}" class="cat-filter-child block text-white mx-4 uppercase {% if section.settings.link_1 == page.url %}selected{% endif %}">{{ section.settings.title_1 }}</a>
+          {%- endif -%}
+          {%- if section.settings.title_2 != blank and section.settings.link_2 != blank -%}
+            <a href="{{ section.settings.link_2 }}" class="cat-filter-child block text-white mx-4 uppercase {% if section.settings.link_2 == page.url %}selected{% endif %}">{{ section.settings.title_2 }}</a>
+          {%- endif -%}
+          {%- if section.settings.title_3 != blank and section.settings.link_3 != blank -%}
+            <a href="{{ section.settings.link_3 }}" class="cat-filter-child block text-white mx-4 uppercase {% if section.settings.link_3 == page.url %}selected{% endif %}">{{ section.settings.title_3 }}</a>
+          {%- endif -%}
+          {%- if section.settings.title_4 != blank and section.settings.link_4 != blank -%}
+            <a href="{{ section.settings.link_4 }}" class="cat-filter-child block text-white mx-4 uppercase {% if section.settings.link_4 == page.url %}selected{% endif %}">{{ section.settings.title_4 }}</a>
+          {%- endif -%}
+          {%- if section.settings.title_5 != blank and section.settings.link_5 != blank -%}
+            <a href="{{ section.settings.link_5 }}" class="cat-filter-child block text-white mx-4 uppercase {% if section.settings.link_5 == page.url %}selected{% endif %}">{{ section.settings.title_5 }}</a>
+          {%- endif -%}
+          {%- if section.settings.title_6 != blank and section.settings.link_6 != blank -%}
+            <a href="{{ section.settings.link_6 }}" class="cat-filter-child block text-white mx-4 uppercase {% if section.settings.link_6 == page.url %}selected{% endif %}">{{ section.settings.title_6 }}</a>
+          {%- endif -%}
+          {%- if section.settings.title_7 != blank and section.settings.link_7 != blank -%}
+            <a href="{{ section.settings.link_7 }}" class="cat-filter-child block text-white mx-4 uppercase {% if section.settings.link_7 == page.url %}selected{% endif %}">{{ section.settings.title_7 }}</a>
+          {%- endif -%}
+          {%- if section.settings.title_8 != blank and section.settings.link_8 != blank -%}
+            <a href="{{ section.settings.link_8 }}" class="cat-filter-child block text-white mx-4 uppercase {% if section.settings.link_8 == page.url %}selected{% endif %}">{{ section.settings.title_8 }}</a>
+          {%- endif -%}
+          {%- if section.settings.title_9 != blank and section.settings.link_9 != blank -%}
+            <a href="{{ section.settings.link_9 }}" class="cat-filter-child block text-white mx-4 uppercase {% if section.settings.link_9 == page.url %}selected{% endif %}">{{ section.settings.title_9 }}</a>
+          {%- endif -%}
+          {%- if section.settings.title_10 != blank and section.settings.link_10 != blank -%}
+            <a href="{{ section.settings.link_10 }}" class="cat-filter-child block text-white mx-4 uppercase {% if section.settings.link_10 == page.url %}selected{% endif %}">{{ section.settings.title_10 }}</a>
+          {%- endif -%}
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Category Filter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "Category Title 1",
+      "default": "Road"
+    },
+    {
+      "type": "url",
+      "id": "link_1",
+      "label": "Category Link 1"
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "Category Title 2",
+      "default": "Mountain"
+    },
+    {
+      "type": "url",
+      "id": "link_2",
+      "label": "Category Link 2"
+    },
+    {
+      "type": "text",
+      "id": "title_3",
+      "label": "Category Title 3",
+      "default": "Gravel"
+    },
+    {
+      "type": "url",
+      "id": "link_3",
+      "label": "Category Link 3"
+    },
+    {
+      "type": "text",
+      "id": "title_4",
+      "label": "Category Title 4",
+      "default": "Indoor, Spin & Fitness"
+    },
+    {
+      "type": "url",
+      "id": "link_4",
+      "label": "Category Link 4"
+
+    },
+    {
+      "type": "text",
+      "id": "title_5",
+      "label": "Category Title 5"
+    },
+    {
+      "type": "url",
+      "id": "link_5",
+      "label": "Category Link 5"
+    },
+    {
+      "type": "text",
+      "id": "title_6",
+      "label": "Category Title 6"
+    },
+    {
+      "type": "url",
+      "id": "link_6",
+      "label": "Category Link 6"
+    },
+    {
+      "type": "text",
+      "id": "title_7",
+      "label": "Category Title 7"
+    },
+    {
+      "type": "url",
+      "id": "link_7",
+      "label": "Category Link 7"
+    },
+    {
+      "type": "text",
+      "id": "title_8",
+      "label": "Category Title 8"
+    },
+    {
+      "type": "url",
+      "id": "link_8",
+      "label": "Category Link 8"
+    },
+    {
+      "type": "text",
+      "id": "title_9",
+      "label": "Category Title 9"
+    },
+    {
+      "type": "url",
+      "id": "link_9",
+      "label": "Category Link 9"
+    },
+    {
+      "type": "text",
+      "id": "title_10",
+      "label": "Category Title 10"
+    },
+    {
+      "type": "url",
+      "id": "link_10",
+      "label": "Category Link 10"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_bottom_margin",
+      "label": "Enable Bottom Margin",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category Filter",
+      "category": "Custom"
+    }
+  ]
+}
+
+{% endschema %}

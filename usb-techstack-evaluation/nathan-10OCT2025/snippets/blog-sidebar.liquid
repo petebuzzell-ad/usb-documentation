@@ -1,0 +1,125 @@
+
+{% if section.settings.display_sidebar_blog_page %}
+<div class="lg:col-span-2 col-span-6 lg:mb-0 mb-8">
+  {% if section.blocks.size > 0 %}
+    {% for block in section.blocks %}
+      {%- case block.type -%}
+        {%- when 'image' -%}
+          {% if block.settings.image != blank %}
+            <div class="lg:mb-16 mb-12">
+              {% if block.settings.link != blank %}
+                <a {% if block.settings.ext_link %}target="_blank"{% endif %} href="{% if block.settings.link == empty %}#{% else %}{{ block.settings.link }}{% endif %}">
+              {% endif %}
+                <img src="{{ block.settings.image | img_url: 'master' }}" class="w-full rounded-sm"/>
+              {% if block.settings.link != blank %}
+                </a>
+              {% endif %}
+            </div>
+          {% endif %}
+        {%- when 'posts' -%}
+          <div class="lg:mb-16 mb-12">
+            {% if block.settings.title != blank %}
+              <h4 class="pt-0 pb-2 border-b mb-6 border-stone text-black">{{ block.settings.title }}</h4>
+            {% endif %}
+            <div class="grid grid-cols-5 gap-x-4 items-center mb-6">
+              <div class="col-span-2">
+                {% if block.settings.link_1 != blank %}
+                  <a {% if block.settings.ext_link_1 %}target="_blank"{% endif %} href="{% if block.settings.link_1 != blank %}{{ block.settings.link_1 }}{% else %}#{% endif %}">
+                {% endif %}
+                {% if block.settings.image_1 != blank %}
+                  <img src="{{ block.settings.image_1 | img_url: 'master' }}" class="w-full rounded-sm"/>
+                {% endif %}
+                {% if block.settings.link_1 != blank %}
+                  </a>
+                {% endif %}
+              </div>
+              <div class="col-span-3">
+                {% if block.settings.link_1 != blank %}
+                  <a {% if block.settings.ext_link_1 %}target="_blank"{% endif %} href="{% if block.settings.link_1 != blank %}{{ block.settings.link_1 }}{% else %}#{% endif %}">
+                {% endif %}
+                {% if block.settings.title_1 != blank %}
+                  <h6 class="p-0 m-0">{{ block.settings.title_1 }}</h6>
+                {% endif %}
+                {% if block.settings.link_1 != blank %}
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+            <div class="grid grid-cols-5 gap-x-4 items-center mb-6">
+              <div class="col-span-2">
+                {% if block.settings.link_2 != blank %}
+                  <a {% if block.settings.ext_link_2 %}target="_blank"{% endif %} href="{% if block.settings.link_2 != blank %}{{ block.settings.link_2 }}{% else %}#{% endif %}">
+                {% endif %}
+                {% if block.settings.image_2 != blank %}
+                  <img src="{{ block.settings.image_2 | img_url: 'master' }}" class="w-full rounded-sm"/>
+                {% endif %}
+                {% if block.settings.link_2 != blank %}
+                  </a>
+                {% endif %}
+              </div>
+              <div class="col-span-3">
+                {% if block.settings.link_2 != blank %}
+                  <a {% if block.settings.ext_link_2 %}target="_blank"{% endif %} href="{% if block.settings.link_2 != blank %}{{ block.settings.link_2 }}{% else %}#{% endif %}">
+                {% endif %}
+                {% if block.settings.title_2 != blank %}
+                  <h6 class="p-0 m-0">{{ block.settings.title_2 }}</h6>
+                {% endif %}
+                {% if block.settings.link_2 != blank %}
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+            <div class="grid grid-cols-5 gap-x-4 items-center mb-6">
+              <div class="col-span-2">
+                {% if block.settings.link_3 != blank %}
+                  <a {% if block.settings.ext_link_3 %}target="_blank"{% endif %} href="{% if block.settings.link_3 != blank %}{{ block.settings.link_3 }}{% else %}#{% endif %}">
+                {% endif %}
+                {% if block.settings.image_3 != blank %}
+                  <img src="{{ block.settings.image_3 | img_url: 'master' }}" class="w-full rounded-sm"/>
+                {% endif %}
+                {% if block.settings.link_3 != blank %}
+                  </a>
+                {% endif %}
+              </div>
+              <div class="col-span-3">
+                {% if block.settings.link_3 != blank %}
+                  <a {% if block.settings.ext_link_3 %}target="_blank"{% endif %} href="{% if block.settings.link_3 != blank %}{{ block.settings.link_3 }}{% else %}#{% endif %}">
+                {% endif %}
+                {% if block.settings.title_3 != blank %}
+                  <h6 class="p-0 m-0">{{ block.settings.title_3 }}</h6>
+                {% endif %}
+                {% if block.settings.link_3 != blank %}
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+            <div class="grid grid-cols-5 gap-x-4 items-center">
+              <div class="col-span-2">
+                {% if block.settings.link_4 != blank %}
+                  <a {% if block.settings.ext_link_4 %}target="_blank"{% endif %} href="{% if block.settings.link_4 != blank %}{{ block.settings.link_4 }}{% else %}#{% endif %}">
+                {% endif %}
+                {% if block.settings.image_4 != blank %}
+                  <img src="{{ block.settings.image_4 | img_url: 'master' }}" class="w-full rounded-sm"/>
+                {% endif %}
+                {% if block.settings.link_4 != blank %}
+                  </a>
+                {% endif %}
+              </div>
+              <div class="col-span-3">
+                {% if block.settings.link_4 != blank %}
+                  <a {% if block.settings.ext_link_4 %}target="_blank"{% endif %} href="{% if block.settings.link_4 != blank %}{{ block.settings.link_4 }}{% else %}#{% endif %}">
+                {% endif %}
+                {% if block.settings.title_4 != blank %}
+                  <h6 class="p-0 m-0">{{ block.settings.title_4 }}</h6>
+                {% endif %}
+                {% if block.settings.link_4 != blank %}
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+      {% endcase %}
+    {% endfor %}
+  {% endif %}
+</div>
+{% endif %}

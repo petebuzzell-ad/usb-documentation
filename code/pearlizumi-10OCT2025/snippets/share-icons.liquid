@@ -1,0 +1,31 @@
+{% assign share_url = social_url | url_param_escape %}
+
+<div class="flex items-center">
+  <a
+    class="share-buttons--button share-buttons--facebook mr-5"
+    target="_blank"
+    href="//www.facebook.com/sharer.php?u={{ share_url }}">
+    {% render 'svg-facebook' width: '28px', height: '28px', fill: '#212721' %}
+  </a>
+
+  <a
+    class="share-buttons--button share-buttons--twitter mr-5"
+    target="_blank"
+    href="//twitter.com/share?url={{ share_url }}">
+    {% render 'svg-twitter' width: '28px', height: '28px', fill: '#212721'%}
+  </a>
+
+  <a
+    class="share-buttons--button share-buttons--linkedin mr-5"
+    target="_blank"
+    href="//www.linkedin.com/shareArticle?mini=true&url={{ share_url }}&title={{ share_title }}">
+    {% render 'svg-linkedin' width: '28px', height: '28px', fill: '#212721' %}
+  </a>
+
+  <a
+    class="share-buttons--button share-buttons--pinterest"
+    target="_blank"
+    href="//pinterest.com/pin/create/button/?url={{ share_url }}&amp;media={{ share_image }}&amp;description={{ share_title }}">
+    {% render 'svg-pinterest' width: '28px', height: '28px', fill: '#212721' %}
+  </a>
+</div>

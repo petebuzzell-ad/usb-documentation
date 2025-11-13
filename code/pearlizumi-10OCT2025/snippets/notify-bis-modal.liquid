@@ -1,0 +1,291 @@
+<style>
+.notify-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 125ms;
+  z-index: 101;
+}
+
+.notify-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#klaviyo-backinstock-form {
+  position: relative;
+  background: #fff;
+  padding: 3rem;
+  width: clamp(348px, 60dvw, 512px);
+
+  @media only screen and (max-width: 767px) {
+    padding: 2.25rem 1.5rem;
+  }
+
+  .close-notify {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+  }
+
+  h3 {
+    padding-top: 0.5rem;
+  }
+
+  .form-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    & > div {
+      color: #4D4D4D;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+
+      label {
+        color: #4D4D4D;
+        font-size: 15px;
+      }
+    }
+
+    input, select {
+      padding: 0.675rem;
+    }
+  }
+
+  button {
+    padding: 0 1rem;
+    margin: 2rem auto 0.25rem;
+    width: 100%;
+    max-width: 100%;    
+  }
+
+  #notify-success {
+    color: green;
+    font-weight: 600;
+    text-align: center;
+    padding-top: 1rem;      
+  }
+
+  .bis-custom-select {
+    position: relative; 
+
+    select {
+      -webkit-appearance: none; 
+      -moz-appearance: none;    
+      appearance: none;     
+    }   
+    &::after {
+      content: ''; 
+      background-image: url('https://cdn.shopify.com/s/files/1/0518/9405/9179/files/chevron.svg?v=1757012611');
+      background-repeat: no-repeat;
+      background-position: center, center;
+      position: absolute;
+      top: 68%;
+      right: 0.825rem;
+      width: 1rem;
+      height: 1rem;       
+      transform: translateY(-50%); 
+      pointer-events: none; 
+      color: #333; 
+      z-index: 1;
+    } 
+  } 
+}
+</style>
+
+{% comment %} {%- liquid
+  
+-%} {% endcomment %}
+
+{% assign variant_ids = '' %}
+{% for variant in product.variants %}
+  {% assign variant_ids = variant_ids | append: variant.id %}
+  {% unless forloop.last %}{% assign variant_ids = variant_ids | append: ',' %}{% endunless %}
+{% endfor %}
+
+{% assign variant_arr = variant_ids | split: ',' %}
+
+{%- for vid in variant_arr -%}
+  {%- assign vid_num = vid | strip | times: 1 -%}
+  {%- assign v = product.variants | where: 'id', vid_num | first -%}
+  {%- assign stocktypes = stocktypes | append: v.metafields.stocktype.stocktype | append: '::' -%}
+{%- endfor -%}
+
+<!-- Hidden by default -->
+<article id="notify_modal" class="notify-modal" role="dialog" aria-modal="true" aria-labelledby="notify-title-{{ product_id | default: product.id }}">
+  <form id="klaviyo-backinstock-form">
+    <span data-close-modal class="close-notify" aria-label="Close dialog">
+      <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="20px" height="20px"><path d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z"/></svg>
+    </span>
+    <h4>{{ settings.klaviyo_bis_heading | default: '' | escape }}</h4>
+    <div class="form-content">
+      <div>
+        <label>Email</label>
+        <input type="email" name="email" class="border border-silver focus:border-black" required />
+      </div>
+
+      <div class="bis-custom-select">
+        <label>Out of Stock Variant</label>
+        <select name="variant_id" class="border border-silver focus:border-black">
+          <!-- Populate this via JS -->
+        </select>
+      </div>
+
+      <input type="hidden" name="product_id" value="{{ product.id }}">
+    </div>
+    <button type="submit" class="button-primary">Notify Me</button>
+    <div id="notify-success" style="display:none">{{ settings.klaviyo_success_msg | default: '' | escape }}</div>
+  </form>
+</article>
+
+<script>
+  const form = document.getElementById('klaviyo-backinstock-form')
+  const successMsg = document.getElementById('notify-success')
+  const variantDropdown = form.querySelector('select[name="variant_id"]')
+  const stocktypez = `{{stocktypes}}`.split('::')
+
+  const variants = {{product.variants | json}}
+  const product = {{product | json}}
+  const stockstypes = product.variants.map((varr) => varr.metafields?.stocktype?.stocktype)
+
+  const variantDataElement = document.getElementById('ProductVariantsJson')
+  const productVariants = JSON.parse(variantDataElement.textContent)
+  const oosVariants = productVariants.filter(variant => !variant.available)
+
+  const allVarBtns = document.querySelectorAll('button[data-option]')
+  const sizeBtns = document.querySelectorAll('.option-wrapper button')
+
+  const getSelectedVar = (btns) => {
+    btns.forEach((btn) => {
+      const currentVar = document.querySelector('[data-option-label="color"]')?.textContent + ' / ' + document.querySelector('[data-option="size"].active.disabled')?.dataset.value.toUpperCase()
+      const oosSelect = [...document.querySelector('select[name="variant_id"]').options]
+      oosSelect.forEach((option) => {
+        if (option.textContent === currentVar) option.selected = true
+      })
+    })
+  }
+
+  allVarBtns.forEach((btn) => btn.addEventListener('click', () => {
+    getSelectedVar(sizeBtns)
+  }))
+
+  // Populate dropdown with OOS variants
+  function populateOOSVariants(productVariants) {
+    variantDropdown.innerHTML = ''
+      
+    productVariants.forEach((variant, i) => {
+      if (variant.available === false && stocktypez[i] === 'S') {
+        const option = document.createElement('option')
+        option.value = variant.id
+        option.textContent = variant.title
+        variantDropdown.appendChild(option)
+      }
+    })
+  }
+
+  populateOOSVariants(productVariants)
+
+  function closeNotifyModal() {
+    document.body.style.overflowY = 'auto'  
+    notify_modal.classList.remove('open')
+    successMsg.style.display = 'none'
+    form.reset()
+  }
+
+  document.querySelector('[data-close-modal]').addEventListener('click', () => {
+    closeNotifyModal()
+  })
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeNotifyModal()
+  }) 
+
+  document.addEventListener('click', function(e) {
+    const modalOpen = document.querySelector('.notify-modal.open')
+    const isInsideParent = e.target.closest('#klaviyo-backinstock-form')
+    if (!isInsideParent && !!modalOpen) closeNotifyModal()
+  })   
+
+  variantDropdown.addEventListener('change', (e) => {
+    successMsg.style.display = 'none'
+  })
+    
+
+  // On form submit
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const formData = new FormData(form)
+    const formValues = Object.fromEntries(formData)    
+
+    const KLAVIYO_COMPANY_ID = "{{ settings.klaviyo_public_key | default: '' | escape }}"
+    const url = `https://a.klaviyo.com/client/back-in-stock-subscriptions?company_id=${KLAVIYO_COMPANY_ID}`
+    if (!KLAVIYO_COMPANY_ID) {
+      console.warn('Klaviyo company_id missing: set settings.klaviyo_public_key in theme settings')
+    } 
+
+    const payload = {
+      data: {
+        type: 'back-in-stock-subscription',
+        attributes: {
+          channels: ['EMAIL'],
+          profile: {
+            data: {
+              type: 'profile',
+              attributes: { email: formValues.email }
+            }
+          }
+        },
+        relationships: {
+          variant: {
+            data: {
+              type: 'catalog-variant',
+              id: `$shopify:::$default:::${formValues.variant_id}`
+            }
+          }
+        }
+      }
+    };
+
+    try {
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+          accept: 'application/vnd.api+json',
+          'content-type': 'application/vnd.api+json',
+          revision: '2025-07-15'
+        },
+        body: JSON.stringify(payload),
+        mode: 'cors'
+      });
+
+      // Safely parse JSON only if it exists
+      const text = await res.text();
+      const data = text ? JSON.parse(text) : null;
+
+      if (res.ok) {
+        console.log('Back-in-stock subscription successful:', data);
+        successMsg.style.display = 'block'        
+      } else {
+        console.error('Klaviyo error:', data);
+        alert(data?.errors?.[0]?.detail || 'Subscription failed');
+      }
+    } catch (err) {
+      console.error('Network error:', err);
+    }
+  })
+
+  document.addEventListener('DOMContentLoaded', (e) => { 
+    setTimeout(() => getSelectedVar(sizeBtns), 500)
+  })  
+</script>

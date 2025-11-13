@@ -1,0 +1,78 @@
+{% liquid
+  assign pro_homepage_enabled = settings.enable_pro_homepage
+  assign ev_homepage_enabled = settings.enable_ev_homepage
+  assign op_homepage_enabled = settings.enable_op_homepage
+  
+  assign is_pro_customer = false
+  assign is_ev_customer = false
+  assign is_op_customer = false
+  if customer.tags contains 'Pro Purchase'
+    assign is_pro_customer = true
+  elsif customer.tags contains 'Expert Voice'
+    assign is_ev_customer = true
+  elsif customer.tags contains 'Outdoor Pro'
+    assign is_op_customer = true
+  endif
+
+  assign use_pro_homepage = false
+  assign use_ev_homepage = false
+  assign use_op_homepage = false
+
+  if pro_homepage_enabled and is_pro_customer
+    assign use_pro_homepage = true
+  elsif ev_homepage_enabled and is_ev_customer
+    assign use_ev_homepage = true
+  elsif op_homepage_enabled and is_op_customer
+    assign use_op_homepage = true
+  endif
+%}
+
+{%- if use_op_homepage -%}
+  {%- if section.settings.title != blank and section.settings.code != blank -%}
+    <div class="container max-w-full md:max-w-680 lg:max-w-920 xl:max-w-1200 mb-20 md:mb-40">
+      <h3 class="text-h5 lg:text-h3 uppercase mb-1 px-6 md:px-0">{{- section.settings.title -}}</h3>
+      {%- if section.settings.description != blank -%}
+        <p class="mb-4 lg:mb-8 px-6 md:px-0">{{- section.settings.description -}}</p>
+      {%- endif -%}
+      <div>
+        {{-section.settings.code-}}
+      </div>
+    </div>
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Instagram Gallery (Out)",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Instagram Gallery (Out)"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title",
+      "default": "Instagram"
+    },
+    {
+      "type": "html",
+      "id": "description",
+      "label": "Description",
+      "default": "Description goes here"
+    },
+    {
+      "type": "html",
+      "id": "code",
+      "label": "Code snippet"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Instagram Gallery (Out)",
+      "category": "Homepage"
+    }
+  ]
+}
+
+{% endschema %}

@@ -1,0 +1,13 @@
+<div class="search-shopping__grid block xl:max-w-1200 w-full mx-auto px-6 xl:px-0 lg:mt-40.5 xl:mt-0">
+  <div class="flex flex-wrap -mx-3">
+    {%- for product in collections.all.products -%}
+      {%- render 'product-item', product: product -%}
+    {%- endfor -%}
+  </div>
+
+  <div class="collection-grid-load">
+    <div class="block md:grid md:grid-cols-3 md:gap-6">
+      <button class="collection-grid__viewmore button button-secondary">VIEW MORE</button>
+    </div>
+  </div>
+</div>

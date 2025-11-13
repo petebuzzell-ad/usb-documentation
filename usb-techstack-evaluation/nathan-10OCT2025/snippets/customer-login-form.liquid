@@ -1,0 +1,65 @@
+<div id="CustomerLoginForm" class="{{ classes }}">
+  {% form 'customer_login', class: 'account-form lg:max-w-387' %}
+
+  {% assign has_message = false %}
+  {% if form.errors != blank %}
+  {% assign has_message = true %}
+  {% endif %}
+
+  <h2 class="text-h3-m lg:text-h3 uppercase mb-2 lg:mb-3">{{ 'customer.login.title' | t }}</h2>
+
+  <div class="text-p-s font-lato font-normal text-success-one border-l-3 border-success-one w-full px-5 py-0 mt-4 mb-7 hidden recover-message-mobile" data-recover-success>
+    {{ 'customer.recover_password.success' | t }}
+  </div>
+
+  {%- if pro_customer_page -%}
+    <p class="text-p-s lg:text-p">If you are a registered Pro member, please sign in below.</p>
+  {%- endif -%}
+
+  {{ form.errors | default_errors }}
+
+  <div class="relative mb-6 input-wrap w-full">
+    <input type="email" name="customer[email]" id="CustomerEmail"
+      class="border border-grey-five focus:border-grey-one text-grey-one text-p font-lato w-full h-12 pt-5 pb-1 px-3 outline-none appearance-none"
+      placeholder="{{ 'customer.login.email' | t }}" spellcheck="false" autocomplete="off" autocapitalize="off"
+      onblur="eHS.customerLogin.validateFieldsOnBlur(event)" data-required aria-label="Customer Email Input"
+    >
+
+    <div class="text-red flex items-center mt-2 hidden" data-error-container>
+      <span class="mr-2.5">
+        {% include 'svg-alert' %}
+      </span>
+      <span class="font-normal text-p-xs text-grey-one" data-error-text></span>
+    </div>
+  </div>
+
+  <div class="relative mb-9 input-wrap w-full">
+    {% if form.password_needed %}
+    <input type="password" name="customer[password]" id="CustomerPassword"
+      placeholder="{{ 'customer.login.password' | t }}" aria-label="Customer Password Input">
+    {% endif %}
+  </div>
+
+  {%- comment -%} Sign In Button{%- endcomment -%}
+  <button type="button" class="form-submit button button-primary mb-7 w-full max-w-full py-4.5 cursor-pointer">{{ 'customer.login.sign_in' | t }}</button>
+
+  {% if form.password_needed %}
+    <a href="#recover" class="inline-block text-special mb-2 lg:mb-0 font-lato font-semibold uppercase text-grey-one hover:text-blue-one border-b-2 border-grey-one hover:border-blue-one" id="RecoverPassword"
+      onclick="eHS.customerLogin.toggleRecoverPasswordForm()">
+      {{ 'customer.login.forgot_password' | t }}
+    </a>
+  {% endif %}
+
+  {% if shop.checkout.guest_login %}
+    <div class="login_guest mt-10">
+      <h2 class="text-h3-m lg:text-h3 uppercase mb-3">{{ 'customer.login.guest_title' | t }}</h2>
+
+      {% form 'guest_login' %}
+      <input type="submit" class="button button-secondary w-full max-w-full lg:max-w-60 text-white cursor-pointer" style="color: white !important" value="{{ 'customer.login.guest_continue' | t }}" aria-label="{{ 'customer.login.guest_continue' | t }}">
+      {% endform %}
+    </div>
+  {% endif %}
+
+  {% endform %}
+
+</div>

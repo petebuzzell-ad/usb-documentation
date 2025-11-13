@@ -1,0 +1,147 @@
+{% comment %}
+    ** Featured promotions - homepage partial **
+    - Draggable section
+    - Uses blocks
+{% endcomment %}
+<div class="full-width">
+    {% include 'include-featured-promotions' %}
+</div>
+
+{% schema %}
+    {
+    "name": "Featured promotions",
+    "class": "featured-promotions-section",
+    "max_blocks": 12,
+    "settings": [
+    {
+    "type": "range",
+    "id": "featured_promos_per_row",
+    "label": "Promotions per row",
+    "min": 2,
+    "max": 4,
+    "step": 1,
+    "default": 3
+    },
+    {
+    "type": "checkbox",
+    "id": "featured_promos_grid",
+    "label": "Wide display",
+    "default": true
+    },
+    {
+    "type": "select",
+    "id": "featured_links_animation",
+    "label": "Promotions animation",
+    "options": [
+    {
+    "value": "",
+    "label": "None"
+    },
+    {
+    "value": "fadeIn",
+    "label": "Fade In"
+    },
+    {
+    "value": "fadeInUp",
+    "label": "Fade Up"
+    },
+    {
+    "value": "fadeInDown",
+    "label": "Fade Down"
+    }
+    ],
+    "default": "fadeInDown"
+    },
+    {
+    "type": "select",
+    "id": "feature_style",
+    "label": "Promotions style",
+    "options": [
+    {
+    "value": "circle",
+    "label": "Circle"
+    },
+    {
+    "value": "square",
+    "label": "Square"
+    },
+    {
+    "value": "rounded",
+    "label": "Rounded"
+    }
+    ],
+    "default": "square"
+    },
+    {
+    "type": "checkbox",
+    "id": "promo_text_on_image_enabled",
+    "label": "Show title on image",
+    "default": true
+    }
+    ],
+    "blocks": [
+    {
+    "type": "image",
+    "name": "Promotion",
+    "settings": [
+    {
+    "type": "image_picker",
+    "id": "image",
+    "label": "Image",
+    "info": "840 x 840px recommended"
+    },
+    {
+    "type": "url",
+    "id": "link",
+    "label": "Link"
+    },
+    {
+    "type": "text",
+    "id": "title",
+    "label": "Header",
+    "default": "Feature"
+    },
+    {
+    "type": "richtext",
+    "id": "text",
+    "label": "Text",
+    "default": "<p>Promotion description details.</p>"
+    },
+    {
+    "type": "text",
+    "id": "button_label",
+    "label": "Button label"
+    }
+    ]
+    }
+    ],
+    "presets": [{
+    "name": "Featured promotions",
+    "category": "Image",
+    "settings": {
+    "featured_promos_grid": true
+    },
+    "blocks": [
+    {
+    "type": "image",
+    "settings": {
+
+    }
+    },
+    {
+    "type": "image",
+    "settings": {
+
+    }
+    },
+    {
+    "type": "image",
+    "settings": {
+
+    }
+    }
+    ]
+    }]
+    }
+
+{% endschema %}

@@ -1,0 +1,267 @@
+{% assign mb_class = 'mb-0' -%}
+{%- if section.settings.enable_bottom_margin %}{% assign mb_class = 'mb-20' %}{% endif %}
+<div
+  data-section-id="{{ section.id }}"
+  data-section-type="multi-column-cta"
+  class="relative overflow-hidden {{ mb_class }} bg-{{ section.settings.background | default: 'white' }}"
+>
+  <div class="2xl:mx-auto max-w-full md:max-w-1396 py-10 md:py-20 lg:mx-[90px] md:mx-14 mx-4">
+    <div class="section-header flex flex-col items-{{ section.settings.header_alignment }}">
+      {% if section.settings.subheading != blank %}
+        <div class="text-sm font-semibold tracking-wider uppercase mb-2">
+          {{ section.settings.subheading }}
+        </div>
+      {% endif %}
+      {% if section.settings.title != blank %}
+        <{{ section.settings.title_tag }} class="uppercase mb-4 text-[{{ section.settings.title_color }}]">
+          {{ section.settings.title }}
+        </{{ section.settings.title_tag }}>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <p class="mb-6 text-base">{{ section.settings.text }}</p>
+      {% endif %}
+      {% if section.settings.btn_label != blank and section.settings.btn_link != blank %}
+        <a
+          href="{{ section.settings.btn_link }}"
+          class="min-w-[200px] inline-block {{ section.settings.section_cta_style }} text-center"
+        >
+          <span class="font-sora text-special uppercase font-semibold">{{ section.settings.btn_label }}</span>
+        </a>
+      {% endif %}
+    </div>
+
+    <div
+      class="multi-column-carousel overflow-x-visible {{ section.settings.mobile_stack }} mt-10 relative"
+      data-multi-column-carousel
+      data-set="{{ section.blocks.size }}"
+    >
+      <div class="glide__track" data-glide-el="track">
+        <div class="glide__slides gap-6">
+          {% for block in section.blocks %}
+            <div class="relative bg-{{ block.settings.bg_color_mobile }} md:bg-{{ block.settings.bg_color }}">
+              {% if block.settings.image != blank %}
+                <div class="{% if section.settings.aspect_ratio == 'match-first' %} {% if forloop.first != true %} h-full following-mc-image {% else %} h-fit first-mc-image {% endif %} {% else %} aspect-[1/1] {% endif %} overflow-hidden">
+                  <img
+                    src="{{ block.settings.image | img_url: 'master' }}"
+                    alt="{{ block.settings.image.alt | escape }}"
+                    class="w-full h-full object-cover {% if section.settings.zoom_hover %} hover:scale-[1.1] transition-transform duration-300 ease-in-out {% endif %}"
+                  >
+                </div>
+              {% endif %}
+              <div class="p-4 flex flex-col items-{{ section.settings.block_alignment }} {% if section.settings.image_overlay %} absolute top-0 left-0 w-full h-full bg-black bg-opacity-20 justify-center {% endif %}">
+                {% if block.settings.subheading != blank %}
+                  <div class="text-sm uppercase mb-1 tracking-wide text-{{ section.settings.block_alignment }} text-[{{ section.settings.block_subheading_color }}]">
+                    {{ block.settings.subheading }}
+                  </div>
+                {% endif %}
+                {% if block.settings.title != blank %}
+                  <{{ section.settings.column_title_tag }} class="text-lg font-bold mb-2 text-{{ section.settings.block_alignment }}">
+                    {{- block.settings.title -}}
+                  </{{ section.settings.column_title_tag }}>
+                {% endif %}
+                {% if block.settings.text != blank %}
+                  <p class="text-sm mb-3 text-{{ section.settings.block_alignment }}">{{ block.settings.text }}</p>
+                {% endif %}
+                {% if block.settings.btn_label != blank and block.settings.btn_link != blank %}
+                  <a
+                    href="{{ block.settings.btn_link }}"
+                    class="inline-block text-sm font-medium {{ section.settings.block_cta_style }} text-center"
+                  >
+                    {{- block.settings.btn_label -}}
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div
+        class="glide__arrows absolute w-full h-0 top-1/2 -translate-y-1/2 left-1/2 transform -translate-x-1/2 flex justify-between {% if block_size == 3 %} md:!hidden {% endif %}"
+        data-glide-el="controls"
+      >
+        <button
+          type="button"
+          class="glide__arrow glide__arrow--left h-full flex items-center ml-1 md:-ml-6"
+          data-glide-dir="<"
+          aria-label="Previous slide"
+        >
+          <span class="button-slider-nav-light w-8 !h-8 md:w-12.5 md:!h-12.5 m-0 p-0 rounded-circle !flex items-center justify-center transform scale-50 md:scale-100 !bg-white opacity-90 !border-opacity-90">
+            {% render 'svg-arrow-left', classes: 'hidden md:block' %}
+            {% render 'svg-arrow-left', width: '14px', height: '9px', classes: 'block md:hidden' %}
+          </span>
+        </button>
+        <button
+          type="button"
+          class="glide__arrow glide__arrow--right h-full flex items-center mr-1 md:-mr-6"
+          data-glide-dir=">"
+          aria-label="Next slide"
+        >
+          <span class="button-slider-nav-light w-8 !h-8 md:w-12.5 md:!h-12.5 m-0 p-0 rounded-circle !flex items-center justify-center transform scale-50 md:scale-100 !bg-white opacity-90 !border-opacity-90">
+            {% render 'svg-arrow-right', classes: 'hidden md:block' %}
+            {% render 'svg-arrow-right', width: '14px', height: '9px', classes: 'block md:hidden' %}
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Multi Column Content CTA",
+
+  "settings": [
+    { "type": "text", "id": "subheading", "label": "Section Subheading" },
+    { "type": "text", "id": "title", "label": "Section Title" },
+    { "type": "textarea", "id": "text", "label": "Section Description" },
+    { "type": "text", "id": "btn_label", "label": "Section Button Label" },
+    { "type": "url", "id": "btn_link", "label": "Section Button Link" },
+    {
+      "type": "select",
+      "id": "title_tag",
+      "label": "Section Title Tag",
+      "options": [
+        { "label": "H1", "value": "h1" },
+        { "label": "H2", "value": "h2" },
+        { "label": "H3", "value": "h3" },
+        { "label": "H4", "value": "h4" },
+        { "label": "H5", "value": "h5" },
+        { "label": "H6", "value": "h6" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Section Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "column_title_tag",
+      "label": "Column Title Tag",
+      "options": [
+        { "label": "H1", "value": "h1" },
+        { "label": "H2", "value": "h2" },
+        { "label": "H3", "value": "h3" },
+        { "label": "H4", "value": "h4" },
+        { "label": "H5", "value": "h5" },
+        { "label": "H6", "value": "h6" }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "select",
+      "id": "header_alignment",
+      "label": "Section Title Alignment",
+      "options": [
+        { "label": "Left", "value": "start" },
+        { "label": "Center", "value": "center" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "block_alignment",
+      "label": "Column Title Alignment",
+      "options": [
+        { "label": "Left", "value": "start" },
+        { "label": "Center", "value": "center" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "Image Aspect Ratio",
+      "options": [
+        { "label": "Square", "value": "square" },
+        { "label": "Match First", "value": "match-first" }
+      ],
+      "default": "square"
+    },
+    { "type": "checkbox", "id": "zoom_hover", "label": "Enable image zoom on hover (desktop only)", "default": false },
+    {
+      "type": "checkbox",
+      "id": "mobile_stack",
+      "label": "Enable mobile stacking instead of carousel",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "image_overlay",
+      "label": "Enable Image Overlay",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "section_cta_style",
+      "label": "Section CTA Button Style",
+      "options": [
+        { "label": "Primary", "value": "button-primary" },
+        { "label": "Secondary", "value": "button-secondary" },
+        { "label": "Outline", "value": "button-outline" },
+        { "label": "Link", "value": "button-link underline" }
+      ],
+      "default": "button-primary"
+    },
+    {
+      "type": "select",
+      "id": "block_cta_style",
+      "label": "Column CTA Button Style",
+      "options": [
+        { "label": "Primary", "value": "button-primary" },
+        { "label": "Secondary", "value": "button-secondary" },
+        { "label": "Outline", "value": "button-outline" },
+        { "label": "Link", "value": "button-link underline" }
+      ],
+      "default": "button-link underline"
+    },
+    {
+      "type": "color",
+      "id": "block_subheading_color",
+      "label": "Subheading color for blocks",
+      "default": "#000000"
+    },
+    { "type": "checkbox", "id": "enable_bottom_margin", "label": "Enable Bottom Margin", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Column Block",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Column Image" },
+        { "type": "text", "id": "subheading", "label": "Subheading" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "text", "label": "Text" },
+        { "type": "text", "id": "btn_label", "label": "Button Label" },
+        { "type": "url", "id": "btn_link", "label": "Button Link" },
+        {
+          "type": "select",
+          "id": "bg_color",
+          "label": "Desktop Background Color",
+          "options": [
+            { "label": "White", "value": "white" },
+            { "label": "Stone", "value": "stone" },
+            { "label": "Pine", "value": "pine" }
+          ],
+          "default": "white"
+        },
+        {
+          "type": "select",
+          "id": "bg_color_mobile",
+          "label": "Mobile Background Color",
+          "options": [
+            { "label": "White", "value": "white" },
+            { "label": "Stone", "value": "stone" },
+            { "label": "Pine", "value": "pine" }
+          ],
+          "default": "white"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [{ "name": "Multi Column Content CTA", "category": "Custom" }]
+}
+{% endschema %}

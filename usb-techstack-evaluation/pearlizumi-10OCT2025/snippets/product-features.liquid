@@ -1,0 +1,16 @@
+<div class="product-features w-full">
+  <div class="flex -mx-1 xl:-mx-0.5">
+    {% if product.metafields["global"]["pf_fit"] != blank or product.metafields["global"]["pf_support"] != blank or product.metafields["global"]["pf_compatibility"] != blank %}
+      {% if product.metafields["global"]["pf_fit"] != blank %}
+        {% render 'product-features-item' feature: product.metafields["global"]["pf_fit"] %}
+      {% elsif product.metafields["global"]["pf_support"] != blank %}
+        {% render 'product-features-item' feature: product.metafields["global"]["pf_support"] %}
+      {% elsif product.metafields["global"]["pf_compatibility"] != blank %}
+        {% render 'product-features-item' feature: product.metafields["global"]["pf_compatibility"] %}
+      {% endif %}
+    {% endif %}
+    {% if product.metafields["global"]["pf_sustainability"] != blank %}
+      {% render 'product-features-item' feature: product.metafields["global"]["pf_sustainability"] %}
+    {% endif %}
+  </div>
+</div>

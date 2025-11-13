@@ -1,0 +1,13 @@
+{%- if storefront == "US" -%}
+  {%- assign YOTPO_APP_KEY = "pmWolFdgdwsQiYcf6mwD4brB8WpueUjAz2HfEPeC" -%}
+{%- elsif storefront == "CA" -%}
+  {%- assign YOTPO_APP_KEY = "ariFs8SUVilZwqEFMSwPnQnNSzxSg3A9uoHGSuzo" -%}
+{%- elsif storefront == "INT" -%}
+  {%- assign YOTPO_APP_KEY = "fGBKNwCIlBgsO8XpATN4xFQdEQ4pTYKjEQbTzb98" -%}
+{%- endif -%}
+
+{%- unless storefront == "INT" -%}
+<script type="text/javascript">
+  (function e() { var e = document.createElement("script"); e.type = "text/javascript", e.async = true, e.src = "//staticw2.yotpo.com/{{- YOTPO_APP_KEY -}}/widget.js"; var t = document.getElementsByTagName("script")[0]; t.parentNode.insertBefore(e, t) })();
+</script>
+{%- endunless -%}

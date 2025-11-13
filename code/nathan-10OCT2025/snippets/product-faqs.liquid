@@ -1,0 +1,38 @@
+{% if product.metafields["global"]["faqs"] %}
+  {% assign raw_faqs = product.metafields["global"]["faqs"] %}
+  {% assign faq_array = raw_faqs | split: '|' %}
+
+  {% capture content %}
+  <div class="container px-6 lg:px-8 xl:px-0 max-h-0 lg:max-h-unset overflow-hidden transition-max-height duration-500 ease-out lg:py-50">
+    <h3 class="pt-0 mx-auto text-left lg:text-center">Frequently Asked Questions</h3>
+
+    {% for faq in faq_array %}
+      {% assign split_faq = faq | split: '\' %}
+
+      <div class="hidden lg:block border border-stone hover:shadow-sm rounded-lg lg:mb-6 mb-4.5 transition duration-300 ease-in-out">
+        <div tabindex="0" class="accordion relative bg-white cursor-pointer py-5.5 lg:pl-8 lg:pr-16 pl-5 pr-12 rounded-lg group transition-colors duration-300 ease-in-out" onclick="eHS.theme.accordionHandler(event)">
+          <h5 class="m-0 font-semibold lg:text-h4-m text-h6-m group-hover:text-bright-yellow pt-0">{{ split_faq[0] }}</h5>
+          <div class="absolute top-6 lg:right-8 right-5 fill-black stroke-black transition duration-500 ease-in-out group-hover:fill-lush group-hover:stroke-lush">
+            <!-- Ddd wrappers that you can target with the Tailwind @apply statement instead of traversing the DOM into elements -->
+            <div class="open">
+              {% render 'svg-plus-circle' width: '24px', height: '24px' %}
+            </div>
+            <div class="close">
+              {% render 'svg-minus-circle' width: '24px', height: '24px' %}
+            </div>
+          </div>
+        </div>
+        <div class="bg-ice-grey rounded-lg rounded-t-none overflow-hidden max-h-0 transition-max-height duration-500 ease-out">
+          <p class="m-0 border-t border-light-grey lg:px-8 lg:pt-6 pb-11 px-5 py-7">{{ split_faq[1] }}</p>
+        </div>
+      </div>
+
+      <div class="lg:hidden">
+        <p><strong>{{ split_faq[0] }}</strong><br>{{ split_faq[1] }}</p>
+      </div>
+    {% endfor %}
+  </div>
+  {% endcapture %}
+
+  {% render 'product-mobile-accordion' title: 'frequently asked questions', content: content, is_last: true %}
+{% endif %}

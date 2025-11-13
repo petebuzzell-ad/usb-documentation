@@ -1,0 +1,58 @@
+{% liquid
+  assign is_pro_customer = false
+  assign is_ev_customer = false
+  assign is_op_customer = false
+  assign is_pro = false
+  if customer.tags contains 'Pro Purchase' or customer.tags contains 'PRO PURCHASE'
+    assign is_pro_customer = true
+    assign is_pro = true
+    assign threshold = settings.free_shipping_threshold_pro | times: 100
+  elsif customer.tags contains 'Expert Voice'
+    assign is_ev_customer = true
+    assign is_pro = true
+    assign threshold = settings.free_shipping_threshold_expert | times: 100
+  elsif customer.tags contains 'Outdoor Pro'
+    assign is_op_customer = true
+    assign is_pro = true
+    assign threshold = settings.free_shipping_threshold_outdoor | times: 100
+  else
+    assign threshold = settings.free_shipping_threshold | times: 100
+  endif
+
+  assign show_widget = false
+  if enabled_ev and is_ev_customer
+    assign show_widget = true
+  elsif enabled_ev == false and is_pro and enabled_for_pros
+    assign show_widget = true
+  elsif is_pro == false and enabled_for_normals
+    assign show_widget = true
+  endif
+
+  assign difference = threshold | minus: cart.total_price
+  assign threshold_met = false
+  assign bar_bg_class = 'bg-dark-green'
+  if difference <= 0
+    assign threshold_met = true
+    assign bar_bg_class = 'bg-dark-green'
+  endif
+
+  assign success_message = settings.free_shipping_success
+  assign progress_percentage = cart.total_price | times: 100 | divided_by: threshold | at_most: 100
+%}
+
+{%- capture progress_message -%}
+  {{ difference | money }} away from FREE Shipping
+{%- endcapture -%}
+
+{%- if show_widget -%}
+<div class="flex flex-col items-center pb-8" data-free-shipping-widget data-threshold="{{ threshold }}">
+  <p class="font-sora font-semibold text-center text-p-ms text-black uppercase mb-1.5" aria-label="{%- if threshold_met -%}{{- success_message -}}{%- else -%}{{- progress_message -}}{%- endif -%}" data-widget-message>
+    {%- if threshold_met -%}{{- success_message -}}{%- else -%}{{- progress_message -}}{%- endif -%}
+  </p>
+  <div data-shipping-progress-bar class="rounded h-1.5 w-full max-w-60 md:max-w-52.5 bg-light-grey relative border-dark-green border">
+    <span class="text-p-xxs font-semibold leading-11 absolute top-1/2 transform -translate-y-1/2 right-full pr-1">$0</span>
+    <div class="rounded h-full {{ bar_bg_class }} absolute left-0" style="width: {{ progress_percentage }}%" data-progress-bar></div>
+    <span class="text-p-xxs font-semibold leading-11 absolute top-1/2 transform -translate-y-1/2 left-full pl-1">{{- threshold | money_without_trailing_zeros -}}</span>
+  </div>
+</div>
+{%- endif -%}

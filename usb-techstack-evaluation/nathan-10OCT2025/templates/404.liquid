@@ -1,0 +1,16 @@
+{% liquid
+	if shop.permanent_domain == 'usbns.myshopify.com'
+		assign storefront = "US"
+	endif
+%}
+
+<div class="bg-faint-cloud">
+	<div class="w-full md:max-w-629 md:max-w-hero-content md:px-0 px-7 text-center pt-26.5 pb-75 md:pt-61.5 md:pb-92.25 mx-auto">
+	  <h3 class="mb-3.5 md:mb-4 uppercase text-special text-grey-three font-semibold">404 ERROR: PAGE NOT FOUND</h3>
+	  <h1 class="md:text-h1 text-h1-m mb-3.5 md:mb-4 text-grey-three uppercase">We’re sorry!</h1>
+	  <p class="pt-0 tracking-normal font-normal m-0 md:mb-8 mb-8 text-grey-three text-p-lg">This page stepped out for a quick ride. Please go back to our homepage to restart your browsing experience.</p>
+	  <a href="/" class="button button-primary mx-auto max-w-btn">Continue Shopping</a>
+	</div>
+</div>
+
+{%- render 'searchspring-recommendations' profile: '404' storefront: storefront -%}

@@ -1,0 +1,679 @@
+{% comment %}
+** Header - default view **
+- Static section
+{% endcomment %}
+
+{% comment %}Mobile navigation{% endcomment %}
+<div class="new-header-wrapper">
+  {% assign total_help_text = 0 %}
+    {% assign now_date = 'now' | date: '%s' %}
+    {% if section.settings.help_text != "" %}
+        {% assign help_text_valid = true %}
+        {% if section.settings.help_text_start_date != "" %}
+            {% assign help_text_start_date = section.settings.help_text_start_date | date: '%s' %}
+            {% if help_text_start_date > now_date %}
+                {% assign help_text_valid = false %}
+            {% endif %}
+        {% endif %}
+        {% if section.settings.help_text_end_date != "" %}
+            {% assign help_text_end_date = section.settings.help_text_end_date | date: '%s' %}
+            {% if help_text_end_date < now_date %}
+                {% assign help_text_valid = false %}
+            {% endif %}
+        {% endif %}
+        {% if help_text_valid %}
+            {% assign total_help_text = total_help_text | plus: 1 %}
+        {% endif %}
+    {% endif %}
+
+    {% if section.settings.help_text2 != "" %}
+        {% assign help_text2_valid = true %}
+        {% if section.settings.help_text2_start_date != "" %}
+            {% assign help_text2_start_date = section.settings.help_text2_start_date | date: '%s' %}
+            {% if help_text2_start_date > now_date %}
+                {% assign help_text2_valid = false %}
+            {% endif %}
+        {% endif %}
+        {% if section.settings.help_text2_end_date != "" %}
+            {% assign help_text2_end_date = section.settings.help_text2_end_date | date: '%s' %}
+            {% if help_text2_end_date < now_date %}
+                {% assign help_text2_valid = false %}
+            {% endif %}
+        {% endif %}
+        {% if help_text2_valid %}
+            {% assign total_help_text = total_help_text | plus: 1 %}
+        {% endif %}
+    {% endif %}
+
+    {% if section.settings.help_text3 != "" %}
+        {% assign help_text3_valid = true %}
+        {% if section.settings.help_text3_start_date != "" %}
+            {% assign help_text3_start_date = section.settings.help_text3_start_date | date: '%s' %}
+            {% if help_text3_start_date > now_date %}
+                {% assign help_text3_valid = false %}
+            {% endif %}
+        {% endif %}
+        {% if section.settings.help_text3_end_date != "" %}
+            {% assign help_text3_end_date = section.settings.help_text3_end_date | date: '%s' %}
+            {% if help_text3_end_date < now_date %}
+                {% assign help_text3_valid = false %}
+            {% endif %}
+        {% endif %}
+        {% if help_text3_valid %}
+            {% assign total_help_text = total_help_text | plus: 1 %}
+        {% endif %}
+    {% endif %}
+
+    {% if total_help_text > 0 %}
+        <div style="position:relative;{% if section.settings.help_text_color != blank %} color: {{section.settings.help_text_color}};{% endif %}{% if section.settings.help_text_bg_color != blank %} background-color: {{section.settings.help_text_bg_color}};{% endif %}" class="help_banner">
+        {% if total_help_text > 1 %}<div class="promo-bar-slider">{% endif %}
+            {% if help_text_valid %}<div class="promo-bar-slide">{{ section.settings.help_text }}</div>{% endif %}
+            {% if help_text2_valid %}<div class="promo-bar-slide">{{ section.settings.help_text2 }}</div>{% endif %}
+            {% if help_text3_valid %}<div class="promo-bar-slide">{{ section.settings.help_text3 }}</div>{% endif %}
+        {% if total_help_text > 1 %}</div>{% endif %}
+        {% if section.settings.brace_finder %}
+          <a href="{{ section.settings.brace_finder_url }}" class="header-brace-finder">{{ section.settings.brace_finder_label }}</a>
+        {% endif %}
+        </div>
+    {% endif %}
+
+  <div class="new-header {% if template == "index" %} is-absolute{% endif %} {% if total_help_text > 0 %} has-announcement{% endif %}">
+
+    <div class="new-header-mobile desktop-hide">
+      <a class="mobile_nav dropdown_link" data-dropdown-rel="menu" data-no-instant="true"><div> <span></span> <span></span> <span></span></div></a>
+      <a href="/search" class="dropdown_link" data-dropdown-rel="search" data-no-instant="true">{% render 'icon-search' %}</a>
+    </div>
+    <div class="new-header-logo">
+      {% if template != 'index' %}<a href="{{ shop.url }}">{% endif %}
+      {%- if section.settings.logo_white -%}
+      {{
+        section.settings.logo_white
+        | image_url: height: 35
+        | image_tag: loading: 'eager', fetchpriority: 'high', alt: shop.name, height: 35, class: "logo logo-white"
+      }}
+      {%- endif -%}
+      {%- if section.settings.logo_colored -%}
+      {{
+        section.settings.logo_colored
+        | image_url: height: 35
+        | image_tag: loading: 'eager', fetchpriority: 'high', alt: shop.name, height: 35, class: "logo logo-colored"
+      }}
+      {%- endif -%}
+      {% if template != 'index' %}</a>{% endif %}
+    </div>
+    <div class="new-header-menu mobile-hide">
+      <ul>
+        {% for link in linklists[section.settings.main_linklist].links %}
+        <li><a href="{{ link.url }}" title="{{ link.title }}" {% if link.links.size > 0 %}aria-expanded="false" aria-controls="meganav-{{ link.title | handleize }}"{% endif %}>{% if link.title == "HEX®" %}<img src="{{ 'Hex_Logo_Red.svg' | asset_url }}" alt="HEX®" width="72" height="14">{% else %}{{ link.title }}{% endif %}</a>
+          {% if link.links.size > 0 %}
+            {% liquid 
+              assign handleized_link_title = link.title | handleize
+              assign link_title_description = false
+              assign meganav_has_promo = false
+              for block in section.blocks
+                if block.settings.trigger == handleized_link_title
+                  assign link_title_description = block.settings.description
+                  if block.settings.activate_promo
+                    assign meganav_has_promo = true
+                    assign meganav_promo_image = block.settings.image
+                    assign meganav_promo_pre_header = block.settings.pre_header
+                    assign meganav_promo_header = block.settings.header
+                    assign meganav_promo_link_label = block.settings.link_label
+                    assign meganav_promo_link_url = block.settings.link_url
+                  endif
+                  break
+                endif
+              endfor
+            %}
+          <div id="meganav-{{ link.title | handleize }}" class="meganav" data-count="{{ forloop.index }}">
+            <div class="meganav-container">
+              {% assign sublinks_size = link.links.size %}
+              {% assign links_in_first_column = 0 %} {% comment %} this means 1 {% endcomment %}
+              {% if sublinks_size > 3 %}
+                {% assign links_in_first_column = sublinks_size | minus: 3 %}
+              {% endif %}
+              <div class="meganav-column column1">
+                {% assign downcase_title = link.title | downcase %}
+                <h3>{% if downcase_title == 'braces & supports' %}SportMed®{% else %}{{ downcase_title | escape }}{% endif %}</h3>
+                {% if link_title_description and link_title_description != "" %}<p class="meganav-item-description">{{ link_title_description | escape }}</p>{% endif %}
+                <ul>
+                  {% for i in (0..links_in_first_column) %}
+                    <li><a href="{{ link.links[i].url }}"><strong>{{ link.links[i].title | escape }}</strong></a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+              {% if sublinks_size > 1 %}
+                {% assign sublinks_size_index0 = sublinks_size | minus: 1 %}
+                {% assign next_columns_start = links_in_first_column | plus: 1 %}
+                {% for i in (next_columns_start..sublinks_size_index0) %}
+                  <div class="meganav-column">
+                    <h4>{{ link.links[i].title }}</h4>
+                    <ul>
+                      {% for sub_sub_link in link.links[i].links %}
+                        {% liquid 
+                          assign has_description = false
+                          assign bolded = false
+                          assign sub_sub_link_title = sub_sub_link.title
+                          if sub_sub_link.title contains '%%'
+                            assign has_description = true
+                            assign bolded = true
+                            assign split_title_description = sub_sub_link_title | split: '%%'
+                            assign sub_sub_link_title = split_title_description.first
+                            assign sub_sub_link_description = split_title_description.last
+                          endif
+                          if sub_sub_link_title contains '**'
+                            assign bolded = true
+                            assign sub_sub_link_title = sub_sub_link_title | replace: '**', ''
+                          endif
+                        %}
+                        <li><a href="{{ sub_sub_link.url }}">{% if bolded %}<strong>{% endif %}{{ sub_sub_link_title | escape }}{% if bolded %}</strong>{% endif %}{%- if has_description %}<p  class="meganav-item-description">{{ sub_sub_link_description | escape }}</p>{%- endif -%}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                {% endfor %}
+              {% endif %}
+              {% if meganav_has_promo %}
+                <div class="meganav-column meganav-promo">
+                  {% if meganav_promo_image != blank %}
+                    {% if meganav_promo_link_url %}<a href="{{ meganav_promo_link_url }}">{% endif %}
+                    {{ meganav_promo_image | image_url: width: 300 | image_tag }}
+                    {% if meganav_promo_link_url %}</a>{% endif %}
+                  {% endif %}
+                  <h3 class="pre-header">{{ meganav_promo_pre_header }}</h3>
+                  <h2>{{ meganav_promo_header }}</h2>
+                  {% if meganav_promo_link_label != blank %}
+                    {% if meganav_promo_link_url %}<a href="{{ meganav_promo_link_url }}" class="promo-link">{% endif %}
+                      {{ meganav_promo_link_label | escape }}
+                    {% if meganav_promo_link_url %}</a>{% endif %}
+                  {% endif %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="new-header-icons">
+      <div class="search_container mobile-hide" data-autocomplete-{{ settings.enable_autocomplete }}>
+        <form action="/search" class="search_form">
+            {% if settings.search_option != 'everything' %}
+            <input type="hidden" name="type" value="product" />
+            {% endif %}
+            <span class="icon-search search-submit"></span>
+            <input aria-labe="Search" type="text" name="q" placeholder="{{ 'general.search.title' | t: shop_name: shop.name }}" value="{% if search and search.results.first.price %}{{ search.terms | replace: '*', '' }}{% endif %}" autocapitalize="off" autocomplete="off" autocorrect="off" />
+        </form>
+      </div>
+      {% if shop.customer_accounts_enabled %}
+        <a href="/account" title="{{ 'layout.customer.my_account' | t }} {% if customer %}({{ customer.email }}){% endif %}">{% render 'icon-account' %}</a>
+      {% endif %}
+      <div class="cart_container">
+        <a href="javascript:void(0);" class="fancybox mini_cart dropdown_link" title="{{ 'layout.general.cart' | t | escape }}">{% render 'icon-cart' %}</a>
+        <span class="cart_count" data-count="{{ cart.item_count }}">{{ cart.item_count }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="dropdown_container center" data-dropdown="search">
+    <div class="dropdown">
+      <form action="/search" class="header_search_form">
+        {% if settings.search_option != 'everything' %}
+          <input type="hidden" name="type" value="product" />
+        {% endif %}
+        <span class="icon-search search-submit"></span>
+        <input type="text" name="q" placeholder="{{ 'general.search.title' | t: shop_name: shop.name }}" autocapitalize="off" autocomplete="off" autocorrect="off" class="search-terms" />
+      </form>
+    </div>
+  </div>
+  <div class="dropdown_container" data-dropdown="menu">
+    <div class="dropdown">
+      <ul class="menu" id="mobile_menu">
+        {% include 'mobile-menu' with section.settings.main_linklist %}
+        {% if section.settings.phone_number != blank %}
+          <li><a href="tel:+{{ section.settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '-', '' }}">{{ section.settings.phone_number }}</a></li>
+        {% endif %}
+        {% comment %}
+          {% if shop.customer_accounts_enabled %}
+            {% if customer %}
+              <li>
+                <a href="/account" data-no-instant>{{ customer.name }}</a>
+              </li>
+              <li data-no-instant>
+                {{ 'layout.customer.log_out' | t | customer_logout_link }}
+              </li>
+            {% else %}
+              <li data-no-instant>
+                {{ 'layout.customer.log_in' | t | customer_login_link }}
+              </li>
+            {% endif %}
+          {% endif %}
+          {% if settings.show_multiple_currencies %}
+            <li>
+              {% include 'currencies-switcher' %}
+            </li>
+          {% endif %}
+        {% endcomment %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% unless settings.cart_action == 'ajax' and template contains 'cart' %}
+  <div id="inline1" class="addtocart_popup white-popup mfp-with-anim mfp-hide">
+   <div class="cart_content animated fadeIn">
+     <div class="drawer_close">
+       <span class="dd_close"></span>
+     </div>
+     <div class="js-empty-cart__message {% if cart.item_count > 0 %}hidden{% endif %}">
+       <p class="empty_cart">{{ 'layout.general.empty_cart' | t }}</p>
+     </div>
+     <form action="/checkout" method="post" data-money-format="{{ shop.money_format }}" data-shop-currency="{{ shop.currency }}" data-shop-name="{{ shop.name | escape }}" class="js-cart_content__form {% if cart.item_count == 0 %}hidden{% endif %}">
+       <a class="cart_content__continue-shopping secondary_button">
+         {{ 'cart.general.continue_shopping_link_html' | t }}
+       </a>
+       {% if cart.total_price >= settings.free_shipping_threshold %}
+       <p class="earned-free-shipping">{% include 'icon-checkbox' %} YOU'VE EARNED FREE SHIPPING!</p>
+       {% endif %}
+       <ul class="cart_items js-cart_items clearfix">
+         {% assign total_saving = 0 %}
+         {% for item in cart.items %}
+         
+           {% if item.variant.compare_at_price > item.variant.price %}
+             {% assign saving = item.variant.compare_at_price | minus: item.variant.price | times: item.quantity %}
+             {% assign total_saving = saving | plus: total_saving %}
+           {% endif %}
+
+           <li class="cart_item clearfix">
+             
+               {% if item.image %}
+                 <div class="cart_image">
+                   <a href="{% if item.variant.metafields.secomapp.freegifts %}{{ item.product.url }}{% else %}{{ item.url }}{% endif %}">
+                   <img src="{{ item | img_url: '320x' }}" alt="{{ item.title | remove: '/ Default Title'| remove: 'Default Title' | remove: '/ Default' | remove: 'Default' | replace: '(Freegifts)', ''  | escape }}" class="lazyload" />
+                   </a>
+                 </div>
+               {% endif %}
+
+               <div class="cart_item__title">
+                 <div class="item_title">
+                   <a href="{% if item.variant.metafields.secomapp.freegifts %}{{ item.product.url }}{% else %}{{ item.url }}{% endif %}">{{ item.product.title }}<span class="tdf-cart-item-t"></span></a>
+                   {% unless item.product.has_only_default_variant or item.variant.title contains "Title" %}
+                     -
+                     {% for option in item.product.options %}
+                       {{ item.variant.options[forloop.index0] }} {% unless forloop.last %}/{% endunless %}
+                     {% endfor %}
+                   {% endunless %}
+                   
+                   {% if item.title contains 'Auto renew' %}
+                   {% if item.properties %}
+                     {% for p in item.properties %}
+                       {% if p.first == 'shipping_interval_frequency' %}
+                       <div class="line-item">Auto-Delivered every {{p.last}} Month(s)</div>
+                       {% endif %}
+                     {% endfor %}
+                   {% endif %}
+                   {% else %}
+                   {% if item.properties %}
+                     {% for p in item.properties %}
+                       {% if p.last != blank %}
+                         <div class="line-item">
+                           {{ p.first }}: {{ p.last }}
+                         </div>
+                       {% endif %}
+                     {% endfor %}
+                   {% endif %}
+                   {% endif %}
+                 </div>
+                 <div class="left product-quantity-box">
+                   <span class="ss-icon product-minus js-change-quantity" data-func="minus"><span class="icon-minus"></span></span>
+                   <input {% if item.variant.metafields.secomapp.freegifts %}readonly{% endif %} type="number" min="0" size="2" class="quantity" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" data-line-id="{{ forloop.index }}" />
+                   <span class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>
+                 </div>
+               </div>
+
+             <strong class="right price">
+               {% if item.price < item.variant.compare_at_price %}
+                 <span class="money was_price">{{ item.variant.compare_at_price | money }}</span>
+               {% endif %}
+
+               <span class="money">{{ item.price | money }}</span>
+             </strong>
+           </li>
+         {% endfor %}
+       </ul>
+       <hr />
+       <ul>
+         <li class="cart_subtotal js-cart_subtotal">
+           <span class="right">
+             <span class="money"><span style="display:none" class="tdf-cart-total-flag"></span>{{ cart.total_price | money }}</span>
+           </span>
+           <span>{{ 'layout.general.subtotal' | t }}</span>
+         </li>
+         {% if settings.display_savings %}
+           <li class="cart_savings sale js-cart_savings">
+             {% if total_saving > 0 %}
+               <span class="right">
+                 <span class="money">{{ total_saving | money }}</span>
+               </span>
+               <span>{{ 'layout.general.savings' | t }}</span>
+             {% endif %}
+           </li>
+         {% endif %}
+         
+         <li class="continue_shop">
+           <a href="javascript:void(0);">Continue Shopping ></a>
+         </li>
+         
+         
+         <li>
+           {% if settings.display_special_instructions and settings.go_to_checkout %}
+             <textarea id="note" name="note" rows="2" placeholder="{{ 'layout.general.cart_note' | t }}" class="clearfix">{{ cart.note }}</textarea>
+           {% endif %}
+
+           {% if settings.display_tos_checkbox and settings.go_to_checkout %}
+             <p class="tos">
+               <input type="checkbox" class="tos_agree" id="sliding_agree" required />
+                 <label class="tos_label">
+                   {{ 'cart.general.agree_to_terms_html' | t }}
+                 </label>
+                 {% if settings.tos_page != blank %}
+                   <a href="{{ pages[settings.tos_page].url }}" target="_blank" class="tos_icon">{{ 'cart.general.view_terms' | t }}</a>
+                 {% endif %}
+             </p>
+           {% endif %}
+
+           {% if settings.cart_message != blank %}
+             <div class="cart_text">
+               {{ settings.cart_message }}
+             </div>
+           {% endif %}
+
+           {% if settings.go_to_checkout %}
+             <button type="submit" class="action_button add_to_cart">{% if settings.show_lock_icon %}<span class="icon-lock"></span>{% endif %}{{ 'layout.general.checkout' | t }}</button>
+           {% else %}
+             <button type="submit" class="action_button add_to_cart">{% if settings.show_lock_icon %}<span class="icon-lock"></span>{% endif %}{{ 'layout.general.go_to_cart' | t }} </button>
+           {% endif %}
+         </li>
+       </ul>
+     </form>
+   </div>
+  </div>
+ {% endunless %}
+
+<style>
+  {% if section.settings.help_text_link_color %}
+  .help_banner p a {
+    color: {{section.settings.help_text_link_color}} !important;
+  }  
+  .help_banner p a span {
+      color: {{section.settings.help_text_link_color}} !important;
+  }
+  {% endif %}
+  {% if section.settings.brace_finder %}
+    .header-brace-finder {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 30px;
+      font-family: DINOT-Bold,sans-serif;
+      color: {{ section.settings.brace_finder_color }};
+      background-color: {{ section.settings.brace_finder_bg_color }};
+    }
+    @media (max-width: 1200px) {
+      .header-brace-finder {
+        display: none;
+      }
+    }
+  {% endif %}
+</style>
+
+<script>
+window.onscroll = function() {stickyHeaderFunction()};
+var stickyHeader = document.querySelector(".new-header-wrapper");
+var stickyOffset = stickyHeader.offsetTop;
+function stickyHeaderFunction() {
+  if (window.pageYOffset > stickyOffset) {
+    stickyHeader.classList.add("sticky");
+  } else {
+    stickyHeader.classList.remove("sticky");
+  }
+}
+
+document.querySelectorAll('.new-header-menu > ul > li').forEach(element => {
+  if(element.querySelector('.meganav')) {
+    element.onmouseover = function() {
+      element.querySelector('a[aria-expanded]').setAttribute('aria-expanded',true)
+    }
+    element.onfocusin = function() {
+      element.querySelector('a[aria-expanded]').setAttribute('aria-expanded',true)
+    }
+    element.onmouseout = function() {
+      element.querySelector('a[aria-expanded]').setAttribute('aria-expanded',false)
+    }
+    element.onfocusout = function() {
+      element.querySelector('a[aria-expanded]').setAttribute('aria-expanded',false)
+    }
+  }
+  
+})
+</script>
+
+{% schema %}
+
+{
+  "name": "Header",
+  "class": "header-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Announcement bar"
+    },
+    {
+      "type": "richtext",
+      "id": "promo_text",
+      "label": "Promo Text",
+      "info": "Maximum character limit is 170"
+    },
+    {
+      "type": "richtext",
+      "id": "promo_discount",
+      "label": "Discount Text",
+      "info": "Maximum character limit is 170"
+    },
+    {
+      "type": "richtext",
+      "id": "help_text",
+      "label": "Help Text",
+      "info": "Maximum character limit is 170"
+    },
+    {
+      "type": "text",
+      "id": "help_text_start_date",
+      "label": "Help Text Start Date",
+      "info": "Optional. Leave blank if not used. Please use this format: yyyy-mm-dd hh:mm:ss (2021-09-21 00:00:00)"
+    },
+    {
+      "type": "text",
+      "id": "help_text_end_date",
+      "label": "Help Text End Date",
+      "info": "Optional. Leave blank if not used. Please use this format: yyyy-mm-dd hh:mm:ss (2021-09-21 23:59:59)"
+    },
+    {
+    "type": "richtext",
+    "id": "help_text2",
+    "label": "Help Text 2",
+    "info": "Maximum character limit is 170"
+    },
+    {
+      "type": "text",
+      "id": "help_text2_start_date",
+      "label": "Help Text 2 Start Date",
+      "info": "Optional. Leave blank if not used. Please use this format: yyyy-mm-dd hh:mm:ss (2021-09-21 00:00:00)"
+    },
+    {
+      "type": "text",
+      "id": "help_text2_end_date",
+      "label": "Help Text 2 End Date",
+      "info": "Optional. Leave blank if not used. Please use this format: yyyy-mm-dd hh:mm:ss (2021-09-21 23:59:59)"
+    },    
+    {
+    "type": "richtext",
+    "id": "help_text3",
+    "label": "Help Text 3",
+    "info": "Maximum character limit is 170"
+    },
+    {
+      "type": "text",
+      "id": "help_text3_start_date",
+      "label": "Help Text 3 Start Date",
+      "info": "Optional. Leave blank if not used. Please use this format: yyyy-mm-dd hh:mm:ss (2021-09-21 00:00:00)"
+    },
+    {
+      "type": "text",
+      "id": "help_text3_end_date",
+      "label": "Help Text 3 End Date",
+      "info": "Optional. Leave blank if not used. Please use this format: yyyy-mm-dd hh:mm:ss (2021-09-21 23:59:59)"
+    },
+    {
+      "type": "color",
+      "id": "help_text_color",
+      "label": "Help Text Color"
+    },
+    {
+    "type": "color",
+    "id": "help_text_link_color",
+    "label": "Help Text Link Color"
+    },
+    {
+      "type": "color",
+      "id": "help_text_bg_color",
+      "label": "Help Text Background Color"
+    },
+
+    {
+      "type": "header",
+      "content": "Brace Finder link"
+    },
+    {
+      "type": "checkbox",
+      "id": "brace_finder",
+      "label": "SHOW Brace Finder",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "brace_finder_label",
+      "label": "Brace Finder Label"
+    },
+    {
+      "type": "url",
+      "id": "brace_finder_url",
+      "label": "Brace Finder URL"
+    },
+    {
+      "type": "color",
+      "id": "brace_finder_bg_color",
+      "label": "Brace Finder Background"
+    },
+    {
+      "type": "color",
+      "id": "brace_finder_color",
+      "label": "Brace Finder Text"
+    },
+    {
+     "type": "header",
+     "content": "Logos"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_white",
+      "label": "Logo White",
+      "info": "40px height recommended"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_colored",
+      "label": "Logo Colored",
+      "info": "40px height recommended"
+    },
+    {
+     "type": "header",
+     "content": "Menus"
+    },
+    {
+      "type": "link_list",
+      "id": "main_linklist",
+      "label": "Main menu"
+    },
+    {
+     "type": "header",
+     "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "fixed_header",
+      "label": "Fixed ('sticky') header",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "meganav",
+      "name": "Meganav",
+      "settings": [
+        {
+          "type": "text",
+          "id": "trigger",
+          "label": "Trigger menu",
+          "info": "Use a handleized version of the main menu item. For example 'cups-compression'"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Meganav description",
+          "info": "It will show up in the first column, under the title"
+        },
+        {
+          "type": "header",
+          "content": "Promo"
+        },
+        {
+          "type": "checkbox",
+          "id": "activate_promo",
+          "label": "Activate promo",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Promo Image"
+        },
+        {
+          "type": "text",
+          "id": "pre_header",
+          "label": "Promo pre-header"
+        },
+        {
+          "type": "text",
+          "id": "header",
+          "label": "Promo header"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Promo link label"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Promo link URL",
+          "info": "This link will also be applied to the image (if used)"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

@@ -1,0 +1,98 @@
+{%- liquid
+  assign on_sale = false
+  assign is_new = false
+  assign other_tag = nil
+
+  assign coming_soon_text = settings.coming_soon_text
+
+  for tag in product.tags
+    if tag contains "badge:"
+      assign badge_text = tag | remove: 'badge:' | downcase
+      if badge_text contains 'new'
+        assign is_new = true
+      else
+        assign other_tag = badge_text | replace: '-', ' '
+      endif
+    endif
+  endfor
+
+  assign hide_final_sale = false
+  if settings.seasonal_collections != blank
+    assign seasonal_collections = settings.seasonal_collections | split: ','
+    assign product_collection_handles = product.collections | map: "handle"
+    for seasonal_handle in seasonal_collections
+      if product_collection_handles contains seasonal_handle
+        assign hide_final_sale = true
+        break
+      endif
+    endfor
+  endif
+
+  if current_variant != blank
+    if current_variant.price < current_variant.compare_at_price
+      assign on_sale = true
+    endif
+    assign stocktype = current_variant.metafields.stocktype.stocktype
+    if current_variant.metafields.global.badge != blank
+      assign badge_text = current_variant.metafields.global.badge | downcase
+      if badge_text == 'new' or badge_text == 'NEW' or badge_text == 'New'
+        assign is_new = true
+      else
+        assign other_tag = badge_text | replace: '-', ' '
+      endif
+    endif
+  else
+      if product.first_available_variant != blank
+        assign stocktype = product.first_available_variant.metafields.stocktype.stocktype
+        assign badge_text = product.first_available_variant.metafields.global.badge | downcase
+        if product.first_available_variant.price < product.first_available_variant.compare_at_price
+          assign on_sale = true
+        endif
+      else
+        assign stocktype = product.variants[0].metafields.stocktype.stocktype
+        assign badge_text = product.variants[0].metafields.global.badge | downcase
+        if product.variants[0].price < product.variants[0].compare_at_price
+          assign on_sale = true
+        endif
+      endif
+      if badge_text == 'new' or badge_text == 'NEW' or badge_text == 'New' or badge_text == 'new color' or badge_text == 'New Color' or badge_text == 'NEW COLOR'
+        assign is_new = true
+        assign new_tag = badge_text | replace: '-', ' '
+      else
+        assign other_tag = badge_text | replace: '-', ' '
+      endif
+  endif
+
+-%}
+
+{%- comment -%}
+  - Any product with stock type U or O and a compare _at price, the final sale badge would appear automatically ✔
+  - Any product with stock type S and a compare_at price, the Sale badge would appear automatically ✔
+  - If stock type S AND variant is OOS, change badge to Coming Soon ✔
+{%- endcomment -%}
+
+{%- if product.available == false and stocktype != 'S' -%}
+  <span class="product-badge product-badge--out-of-stock {{classes}}">
+    OUT OF STOCK
+  </span>
+{%- elsif product.available == false and stocktype == 'S' -%}
+  <span class="product-badge product-badge--coming-soon {{classes}}">
+    COMING SOON
+  </span>
+{%- elsif on_sale and stocktype == 'S' or stocktype == 'R' -%}
+  <span class="product-badge product-badge--sale {{classes}}">
+    SALE
+  </span>
+{%- elsif on_sale and stocktype == 'U' or stocktype == 'U2' or stocktype == 'O' -%}
+  <span class="product-badge product-badge--final-sale {{classes}}">
+    FINAL SALE
+  </span>
+{%- elsif is_new -%}
+  <span class="product-badge product-badge--new {{classes}}">
+    {{- new_tag -}}
+  </span>
+{%- elsif other_tag != blank -%}
+  <span class="product-badge product-badge--{{ other_tag | handleize }} {{classes}}">
+    {{- other_tag -}}
+  </span>
+{%- endif -%}

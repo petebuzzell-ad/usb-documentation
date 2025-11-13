@@ -1,0 +1,143 @@
+{%- comment -%}
+  Check URL Param to render page
+  https://community.shopify.com/c/Shopify-Design/URL-Parameters-in-LIQUID/m-p/808960/highlight/true#M203580
+
+  Example Expertvoice link:
+  https://usbns.myshopify.com/account/register?view=expertvoice&firstName=Cameron&lastName=Brown&email=cameron.brown@ehousestudio.com&d=20&limit=1000&code=CnekmNIboa9U
+
+
+  Note: MUST include all URL params above, otherwise the normal Registration form will be shown (even on this template).
+
+
+  Note: URL `code=` param MUST match one of these below, and the discount + limit must match this table
+
+  D   | Limit | GROUP NAME                  | Group Code
+  -------------------------------------------------------------
+  20%   1,000   EXPERTICTY INDUSTRY - TIER 1  CnekmNIboa9U
+  40%   1,000   EXPERTICTY INDUSTRY - TIER 2  1qYSZF0rJFT1
+  40%   1,000   EXPERTICTY INDUSTRY - TIER 3  Wu3kCxaxrI9q
+  50%   1,000   EXPERTICTY INDUSTRY - TIER 3  2fSHDnKdt6hA
+  40%   2,000   EXPERTICTY INDUSTRY - TIER 3  vHQwfUNYdhTE
+
+{%- endcomment -%}
+{%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+{%- liquid
+  assign page_url = contentForQuerystring | split: '"pageurl":"' | last | split: '"' | first | split: '.myshopify.com' | last | replace: '\/','/' | replace: '%20',' ' | replace: '\u0026','&'
+  assign param_firstname = ''
+  assign param_lastname = ''
+  assign param_email = ''
+  assign param_discount = ''
+  assign param_limit = ''
+  assign param_group_code = ''
+
+  assign log3 = ''
+  for i in (1..1)
+    unless page_url contains "?"
+      break
+    endunless
+    assign query_string = page_url | split: '?' | last
+    assign qry_parts= query_string | split: '&'
+    for part in qry_parts
+      assign key_and_value = part | split: '='
+      if key_and_value.size > 1
+        if key_and_value[0] == 'firstName'
+          assign param_firstname = key_and_value[1] | url_decode
+        elsif key_and_value[0] == 'lastName'
+          assign param_lastname = key_and_value[1] | url_decode
+        elsif key_and_value[0] == 'email'
+          assign param_email = key_and_value[1] | url_decode
+        elsif key_and_value[0] == 'd'
+          assign param_discount = key_and_value[1] | url_decode
+        elsif key_and_value[0] == 'limit'
+          assign param_limit = key_and_value[1] | url_decode
+        elsif key_and_value[0] == 'code'
+          assign param_group_code = key_and_value[1] | url_decode
+        endif
+
+        assign log3 = log3 | append: key_and_value[0] | append: '=' | append: key_and_value[1] |append: '\n'
+
+      endif
+    endfor
+  endfor
+
+  assign show_expertvoice_form = false
+  assign login_link = "/account/login"
+  if param_firstname != blank and param_lastname != blank and param_email != blank and param_discount != blank and param_limit != blank and param_group_code != blank
+    comment
+      Check Group Code Validity (weak authentication)
+    endcomment
+    assign ev_tier_1 = "CnekmNIboa9U##discount-20$$limit-1000"
+    assign ev_tier_2 = "1qYSZF0rJFT1##discount-40$$limit-1000"
+    assign ev_tier_3a = "Wu3kCxaxrI9q##discount-40$$limit-1000"
+    assign ev_tier_3b = "2fSHDnKdt6hA##discount-50$$limit-1000"
+    assign ev_tier_3c = "vHQwfUNYdhTE##discount-40$$limit-2000"
+
+    assign valid_ev_group_codes = ev_tier_1 | append: '||' | append: ev_tier_2 | append: '||' | append: ev_tier_3a | append: '||' | append: ev_tier_3b | append: '||' | append: ev_tier_3c
+    assign valid_ev_group_codes = valid_ev_group_codes | split: '||'
+
+    assign log1 = ''
+    assign log2 = 'param_group_code: ' | append: param_group_code | append: ', param_discount: ' | append: param_discount | append: ', param_limit: ' | append: param_limit
+    for group_data in valid_ev_group_codes
+      assign expected_code = group_data | split: '##' | first
+      assign chunk = group_data | split: '##' | last
+      assign expected_discount = chunk | split: '$$' | first | remove: 'discount-'
+      assign expected_limit = chunk | split: '$$' | last | remove: 'limit-'
+      if param_group_code == expected_code and param_discount == expected_discount and param_limit == expected_limit
+        assign show_expertvoice_form = true
+        break
+      endif
+    endfor
+
+  endif
+
+  if shop.permanent_domain == 'usbns.myshopify.com'
+    assign storefront = "US"
+  endif
+-%}
+
+{%- comment -%}
+<script>console.log("{{ log3 }}")</script>
+<script>console.log("{{ log1 }}")</script>
+<script>console.log("{{ log2 }}")</script>
+<script>console.log("is valid: {{ show_expertvoice_form }}")</script>
+{%- endcomment -%}
+
+{%- if storefront == "US" -%}
+
+{%- if show_expertvoice_form -%}
+  {%- capture login_link -%}/account/login?referrer=expertvoice&firstName={{ param_firstname | url_encode }}&lastName={{ param_lastname | url_encode }}&email={{ param_email | url_encode }}&d={{ param_discount | url_encode }}&limit={{ param_limit | url_encode }}&code={{ param_group_code | url_encode }}{%- endcapture -%}
+{%- endif -%}
+
+<div class="xl:px-0 w-full max-w-840 mx-auto lg:px-15.5 md:px-11 px-6">
+  <div class="account_page mx-auto text-center lg:pb-20 pb-14" >
+    <div class="register-account">
+
+      {%- comment -%} Pro Member Benefits Richtext {%- endcomment -%}
+      {%- if show_expertvoice_form -%}
+        {%- assign benefits_page_handle = "expertvoice-membership-benefits" -%}
+        <div class="rte pt-8 lg:pt-16 general-content-template text-left">
+          {% include 'shortcode' load: pages[benefits_page_handle].content %}
+        </div>
+
+        {% render 'customer-registration-form'
+            view: 'expertvoice'
+            firstname: param_firstname
+            lastname: param_lastname
+            email: param_email
+            discount_level: param_discount
+            purchase_limit: param_limit
+            group_code: param_group_code
+        %}
+      {%- else -%}
+        {% render 'customer-registration-form' %}
+      {%- endif -%}
+
+
+    </div>
+  </div>
+</div>
+
+{%- else -%}
+  {%- comment -%} Canada site has no affiliate account creation, so redirect these templates to the normal flow. International has no accounts {%- endcomment -%}
+  <script>window.location.replace("/account/register");</script>
+{%- endif -%}

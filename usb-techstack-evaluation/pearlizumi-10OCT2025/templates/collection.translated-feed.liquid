@@ -1,0 +1,33 @@
+{%- comment -%}
+
+  NOTE: This file outputs a JSON LINES format.
+  https://jsonlines.org/examples/
+
+  The purpose of this file is serve French data translations to SearchSpring for indexing purposes.
+
+  DO NOT reformat the Liquid blocks, as they are currently set up to properly output one JSON object per line
+
+Testing French translations for:
+  tags:
+    - sub-type:Hat --> sub-type:Chapeau
+    - sub-type:Pant --> sub-type:Pantalon
+    - sub-type:Socks --> sub-type:Des Chaussettes
+
+  products:
+    - 5 panel hiker hat
+    - flash reflective sock
+    - men's rove pant
+
+{%- endcomment -%}
+{%- comment -%}
+{%- layout none -%}
+{%- assign handles = "5-panel-hiker-hat-14162004|" | split: '|' -%}
+{%- for handle in handles -%}
+{%- assign product = all_products[handle] -%}
+{%- comment -%} Get variant data {%- endcomment -%}
+{%- capture variant_data -%}{%- for variant in product.variants -%},{"available": {{ variant.available | json }}, "compare_at_price": {{ variant.compare_at_price | json }}, "featured_image": { "url": {{ variant.featured_image | json }}, "position": {{ variant.featured_image.position | json }} }, "id": {{ variant.id | json }}, "sku": {{ variant.sku | json }}, "image": {{ variant.image | json }}, "inventory_quantity": {{ variant.inventory_quantity | json }}, "option1": {{ variant.option1 | json }}, "option2": {{ variant.option2 | json }}, "option3": {{ variant.option3 | json }}, "options": {{ variant.options | json }}, "price": {{ variant.price | json }}, "title": {{ variant.title | json }}, "url": {{ variant.url | json }}]}{%- endfor -%}{%- endcapture -%}
+{%- assign variant_data = variant_data | remove_first: ',' -%}
+{%- capture french_data_properties -%}"fr_tags": {{ product.tags | json }}{%- endcapture -%}
+{ {{ french_data_properties }},"available": {{ product.available | json }}, "collections": {{ product.collections | json }}, "compare_at_price_max": {{ product | json }}, "compare_at_price_min": {{ product | json }}, "compare_at_price_varies": {{ product | json }}, "description": {{ product.description | json }}, "featured_image": {{ product.featured_image | json }}, "featured_media": {{ product.featured_media | json }}, "first_available_variant": {{ product.first_available_variant | json }}, "handle": {{ product.handle | json }}, "has_only_default_variant": {{ product.has_only_default_variant | json }}, "id": {{ product.id | json }}, "images": {{ product_images | json }}, "options": {{ product.options | json }}, "options_with_values": {{ product.options_with_values | json }}, "price": {{ product.price | json }}, "price_max": {{ product.price_max | json }}, "price_min": {{ product.price_min | json }}, "price_varies": {{ product.price_varies | json }}, "selected_variant": {{ product.selected_variant | json }}, "selected_or_first_available_variant": {{ product.selected_or_first_available_variant | json }}, "tags": {{ product.tags | json }}, "title": {{ product.title | json }}, "type": {{ product.type | json }}, "url": {{ product.url | json }}, "variants": [ {{ variant_ data }}]}
+{% endfor -%}{%- comment -%} notice the liquid syntax to allow for new line here {%- endcomment -%}
+{%- endcomment -%}

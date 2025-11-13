@@ -1,0 +1,132 @@
+{%- assign number_of_comments = article.comments_count -%}
+
+{% comment %}
+  If a comment was just submitted but requires moderation, we have an extra comment to count.
+{% endcomment %}
+{% if comment and comment.status != 'published' %}
+  {% assign number_of_comments = article.comments_count | plus: 1 %}
+{% endif %}
+
+<h3 class="border-b border-silver pb-8 md:pb-10 mb-6 md:mb-8 uppercase">Comments</h3>
+
+<div id="comments" class="pb-4">
+  {% if comment and comment.status and paginate.current_page == 1 %}
+    <p class="form-success">
+      {% if blog.moderated? and comment.status != 'published' %}
+        {{ 'blogs.comments.success_moderated' | t }}
+      {% else %}
+        {{ 'blogs.comments.success' | t }}
+      {% endif %}
+    </p>
+  {% endif %}
+
+  {% if number_of_comments > 0 %}
+    <ul>
+      {% comment %}
+        Display comment from URL parameters if it is waiting moderation
+      {% endcomment %}
+      {% if comment and comment.status != 'published' %}
+        {% capture date %}{{ comment.created_at | time_tag: format: 'month_day_year' }} at {{ comment.created_at | date: '%I:%M %p' }}{% endcapture %}
+        <li id="{{ comment.id }}" class="border-b border-silver mb-8">
+          <h6 class="mb-0">{{ comment.author | strip_html }}</h6>
+          <p class="text-special-xs font-semibold font-sora text-stone uppercase mb-0">
+            {{ date | strip_html }} - {{ comment.created_at }}
+          </p>
+          <p class="px-8 py-8 mb-0 font-sora text-p">
+            {{ comment.content | strip_html }}
+          </p>
+        </li>
+      {% endif %}
+
+      {% for comment in article.comments %}
+        {% capture date %}{{ comment.created_at | time_tag: format: 'month_day_year' }} at {{ comment.created_at | date: '%I:%M %p' }}{% endcapture %}
+        <li id="{{ comment.id }}" class="border-b border-silver mb-6 md:mb-8">
+          <h6 class="mb-1">{{ comment.author | strip_html }}</h6>
+          <p class="text-special-xs font-semibold font-sora text-stone uppercase mb-0">{{ date | strip_html }}</p>
+          <p class="pt-6 pb-6 md:pb-8 m-0 font-sora text-p">
+            {{ comment.content | strip_html }}
+          </p>
+          {% comment %} <p>{{ 'blogs.article.comment_meta_html' | t: author: comment.author, date: date }}</p>{% endcomment %}
+        </li>
+      {% endfor %}
+    </ul>
+
+    {% if paginate.pages > 1 %}
+      {% include 'pagination' %}
+    {% endif %}
+  {% endif %}
+</div>
+
+{% form 'new_comment', article %}
+  <h5 class="mb-1">{{ 'blogs.comments.title' | t }}</h5>
+  <p class="font-sora text-p-s">Your email address will not be published</p>
+
+  {{ form.errors | default_errors }}
+
+  <div class="flex flex-col mb-6">
+
+  <label for="CommentBody" class="uppercase font-semibold font-sora text-special-s mb-1.5"> Comment* </label>
+
+  <textarea
+    {% if form.errors contains 'body' %}
+      aria-errormessage="body_error"
+    {% endif %}
+    name="comment[body]"
+    id="CommentBody"
+    rows="3"
+    class="border border-silver focus:border-black text-black text-p-s font-sora w-full pt-1 pt-2 pb-2 px-2 outline-none appearance-none {% if form.errors contains 'body' %}input-error{% endif %}"
+  >
+        {{- form.body -}}
+    </textarea>
+    {% if form.errors contains 'body' -%}
+        <span class="text-xs text-red" id="body_error">Comment can't be blank.</span>
+      {%- endif %}
+  </div>
+
+<div class="flex flex-col mb-6">
+    <label for="CommentAuthor" class="uppercase font-semibold font-sora text-special-s mb-1.5"> Name* </label>
+
+    <input
+      type="text"
+      {% if form.errors contains 'author' %}
+        aria-errormessage="author_error"
+      {% endif %}
+      name="comment[author]"
+      id="CommentAuthor"
+      class="border border-silver focus:border-black text-black text-p-s font-sora w-full pt-2 pb-2 px-2 outline-none appearance-none {% if form.errors contains 'author' %}input-error{% endif %}"
+      value="{{ form.author }}"
+      autocapitalize="words"
+    >
+    {% if form.errors contains 'author' -%}
+      <span  class="text-xs text-red" id="author_error">Author can't be blank.</span>
+    {%- endif %}
+</div>
+
+<div class="flex flex-col mb-6">
+
+  <label for="CommentEmail" class="uppercase font-semibold font-sora text-special-s mb-1.5"> Email* </label>
+
+  <input
+  {% if form.errors contains 'email' %}
+    aria-errormessage="email_error"
+  {% endif %}
+    type="email"
+    name="comment[email]"
+    id="CommentEmail"
+    class="border border-silver focus:border-black text-black text-p-s font-sora w-full pt-2 pb-2 px-2  outline-none appearance-none {% if form.errors contains 'email' %}input-error{% endif %}"
+    value="{{ form.email }}"
+    spellcheck="false"
+    autocomplete="off"
+    autocapitalize="off"
+  >
+  {% if form.errors contains 'email' -%}
+    <span class="text-xs text-red" id="email_error">Email can't be blank.</span>
+  {%- endif %}
+</div>
+
+  <input
+    type="submit"
+    class="btn button button-outline-dark mb-14 md:mb-20 w-full md:w-350 max-w-full"
+    value="{{ 'blogs.comments.post' | t }}"
+  >
+{% endform %}

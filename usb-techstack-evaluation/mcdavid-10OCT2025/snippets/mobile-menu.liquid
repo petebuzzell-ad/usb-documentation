@@ -1,0 +1,78 @@
+{% for link in linklists[mobile-menu].links %}
+  {% if linklists[link.handle] == empty %}
+    <li data-mobile-dropdown-rel="{{ link.handle }}">
+      {% if link.url == 'http://' or link.url == '' or link.url == '/' or link.url == 'https://' or link.url == '#' %}
+        <a data-no-instant href="{{ link.url }}" class="parent-link--false">
+          {{ link.title }}
+        </a>
+      {% else %}
+        <a data-no-instant href="{{ link.url }}" class="parent-link--true">
+          {{ link.title }}
+        </a>
+      {% endif %}
+    </li>
+  {% else %}
+    <li data-mobile-dropdown-rel="{{ link.handle }}" class="sublink">
+      {% if link.url == 'http://' or link.url == '' or link.url == '/' or link.url == 'https://' or link.url == '#' %}
+        <a data-no-instant href="{{ link.url }}" class="parent-link--false">
+         {{ link.title }} <span class="right icon-down-arrow"></span>
+        </a>
+      {% else %}
+        <a data-no-instant href="{{ link.url }}" class="parent-link--true">
+        {% if linklists[mobile-menu].title contains 'Right Menu' %}
+        <i class="mobile-shop-by">Shop By&nbsp;</i>
+        {% endif %}
+          {{ link.title }} <span class="right icon-down-arrow"></span>
+        </a>
+      {% endif %}
+      <ul class="first-level-children">
+        {% assign sublinks_size = link.links.size %}
+        {% assign links_in_first_column = 0 %} {% comment %} this means 1 {% endcomment %}
+        {% if sublinks_size > 3 %}
+          {% assign links_in_first_column = sublinks_size | minus: 3 %}
+        {% endif %}
+        {% if sublinks_size > 1 %}
+          {% assign sublinks_size_index0 = sublinks_size | minus: 1 %}
+          {% assign next_columns_start = links_in_first_column | plus: 1 %}
+          {% for i in (next_columns_start..sublinks_size_index0) %}
+            <li class="sublink">
+              {% if link.links[i].url == 'http://' or link.links[i].url == '' or link.links[i].url == '/' or link.links[i].url == 'https://' or link.links[i].url == '#' %}
+                <a data-no-instant href="{{ link.links[i].url }}" class="parent-link--false">
+                  {{ link.links[i].title }} <span class="right icon-down-arrow"></span>
+                </a>
+              {% else %}
+                <a data-no-instant href="{{ link.links[i].url }}" class="parent-link--true">
+                  {{ link.links[i].title }} <span class="right icon-down-arrow"></span>
+                </a>
+              {% endif %}
+              <ul>
+                {% for sub_sub_link in link.links[i].links %}
+                  {% liquid 
+                    assign has_description = false
+                    assign bolded = false
+                    assign sub_sub_link_title = sub_sub_link.title
+                    if sub_sub_link.title contains '%%'
+                      assign has_description = true
+                      assign bolded = true
+                      assign split_title_description = sub_sub_link_title | split: '%%'
+                      assign sub_sub_link_title = split_title_description.first
+                      assign sub_sub_link_description = split_title_description.last
+                    endif
+                    if sub_sub_link_title contains '**'
+                      assign bolded = true
+                      assign sub_sub_link_title = sub_sub_link_title | replace: '**', ''
+                    endif
+                  %}
+                  <li><a href="{{ sub_sub_link.url }}">{% if bolded %}<strong>{% endif %}{{ sub_sub_link_title | escape }}{% if bolded %}</strong>{% endif %}{%- if has_description %}<p  class="meganav-item-description">{{ sub_sub_link_description | escape }}</p>{%- endif -%}</a></li>
+                {% endfor %}
+              </ul>
+            </li>
+          {% endfor %}
+        {% endif %}
+        {% for i in (0..links_in_first_column) %}
+          <li><a href="{{ link.links[i].url }}"><strong>{{ link.links[i].title | escape }}</strong></a></li>
+        {% endfor %}
+      </ul>
+    </li>
+  {% endif %}
+{% endfor %}

@@ -1,0 +1,59 @@
+{% assign desktop_banner = section.settings.image %}
+{% assign mobile_banner = section.settings.image_mobile %}
+
+{%- if section.settings.title != blank -%}
+<div class="relative {% if desktop_banner != blank %} md:mb-20 md:h-500 lg:mb-20 {% else %} md:h-330 {% endif %} {% if mobile_banner != blank %} mb-10 h-285 {% else %} h-165 {% endif %}">
+  {% if desktop_banner or mobile_banner %}
+    <div>
+      {%- if desktop_banner != blank -%}
+        <img alt="{{desktop_banner.alt}}" class="lazy w-full object-cover h-500 hidden md:block" data-src="{{ desktop_banner | img_url: "1920x" }}"/>
+      {%- endif -%}
+      {%- if mobile_banner != blank -%}
+        <img alt="{{mobile_banner.alt}}" class="lazy w-full object-cover h-285 block md:hidden" data-src="{{ mobile_banner | img_url: "768x" }}"/>
+      {%- endif -%}
+    </div>
+    <div class="blog__header--content absolute min-w-275 max-w-90% lg:max-w-85% px-2.5 py-8 lg:py-17.5 lg:px-22.5 top-1/2 left-1/2 transform -translate-y-2/4 -translate-x-2/4 {% if desktop_banner != blank %}md:bg-black md:bg-opacity-60{% else %}md:bg-transparent md:bg-opacity-100{% endif %} {% if mobile_banner != blank %}bg-black bg-opacity-60{% else %}bg-transparent bg-opacity-100{% endif %}">
+      <h1 class="relative mb-0 z-1 {% if desktop_banner != blank %}md:text-white{% else %}md:text-black{% endif %} {% if mobile_banner != blank %}text-white{% else %}text-black{% endif %} text-center font-semibold">
+        {{- section.settings.title -}}
+        <span class="absolute w-4/5 h-0.75 md:h-1 left-1/10 {% if desktop_banner != blank %}md:bg-sand{% else %}md:bg-pine{% endif %} {% if mobile_banner != blank %}bg-sand{% else %}bg-pine{% endif %} -bottom-1.5"></span>
+      </h1>
+    </div>
+  {% else %}
+    <div class="blog__header--content absolute min-w-275 max-w-90% lg:max-w-85% px-2.5 py-8 lg:py-17.5 lg:px-22.5 top-1/2 left-1/2 transform -translate-y-2/4 -translate-x-2/4">
+      <h1 class="blog__header--line blog__header--green-line text-center mb-0 font-semibold">{{- section.settings.title -}}</h1>
+    </div>
+  {% endif %}
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Stores Page Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop Image",
+      "info": "Recommended size: 1440x400"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile Image",
+      "info": "Recommended size: 750x560"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title",
+      "default": "Dealer Locations"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stores Page Banner",
+      "category": "Section"
+    }
+  ]    
+}
+{% endschema %}

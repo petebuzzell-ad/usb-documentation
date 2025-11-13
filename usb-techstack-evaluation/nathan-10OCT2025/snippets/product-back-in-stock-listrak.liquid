@@ -1,0 +1,90 @@
+<div data-bis-notify-form id="productBackInStockListrak" class="hidden" style="background-color: rgba(81,88,85,0.7);">
+  <div class="bis-modal">
+    <div class="notify-bar relative flex justify-end items-end pl-6 lg:pl-10">
+      <div id="closeBISModal" class="absolute top-0 right-0 cursor-pointer" onclick="CloseBIS();">
+        <span class="block px-3 pt-3 lg:pt-6 lg:px-6 relative">{%- render 'svg-close' -%}</span>
+      </div>
+    </div>
+    <div class="bis-form pt-9 px-4 pb-10 lg:p-10">
+      <h5 class="text-h5 mb-3">{{ product.title }}</h5>
+      <div data-size-color-info class="mb-3 flex hidden"></div>
+      <p class="mb-6">Register to receive a notification when this item comes back in stock.</p>
+      <a href="/pages/privacy-policy" class="text-special mb-9 inline-block font-lato font-normal uppercase border-b-1.5 hover:border-b-2">Privacy Notice</a>
+
+      <div id="BISInputs">
+        <label for="txtProductSKU" class="hidden">Product SKU field</label>
+        <input data-bis-notify-sku id="txtProductSKU" type="hidden" name="txtProductSKU">
+        <label for="txtEmailAddress" class="hidden">Email field</label>
+        <input id="txtEmailAddress" class="p-s w-full py-3.5 px-3 bg-white border border-grey-five items-stretch rounded-none font-lato text-base" type="email" name="txtEmailAddress" placeholder="Enter your email" onfocusout="ValidateEmailFocus()">
+        <p id="txtEmailAddressError" class="hidden p-s text-red py-1 mb-0 form-error">The email you entered is invalid.</p>
+        <div class="flex items-center mt-4">
+          <label class="checkbox-container" for="optIn">Opt in to receive PEARL iZUMi Emails
+            <input type="checkbox" id="optIn" name="optIn" value="yes">
+            <span class="l-checkmark"></span>
+          </label>
+        </div>
+        <button class="button-primary-lg mt-5 p-4 w-full max-w-full text-special uppercase font-lato font-semibold" onclick="SubmitAlert(); return false;" name="SubmitAlert">Notify Me When Available</button>
+      </div>
+
+      <div id="BISSuccessMessage" class="hidden text-center">
+        <h6 class="mt-6">You're in! We'll let you know when it's back.</h6>
+      </div>
+
+      <script type="text/javascript">
+          function CloseBIS() {
+            var modal = document.getElementById('productBackInStockListrak');
+            var emailAddress = document.getElementById('txtEmailAddress');
+            var inputs = document.getElementById('BISInputs');
+            var successMessage = document.getElementById('BISSuccessMessage');
+            modal.classList.add('hidden');
+            emailAddress.value = '';
+            inputs.classList.remove('hidden');
+            successMessage.classList.add('hidden');
+          }
+          function SubmitAlert () {
+            var productSKU = document.getElementById('txtProductSKU').value;
+            var emailAddress = document.getElementById('txtEmailAddress');
+            var optIn = document.getElementById('optIn');
+            var emailAddressError = document.getElementById('txtEmailAddressError');
+            var inputs = document.getElementById('BISInputs');
+            var successMessage = document.getElementById('BISSuccessMessage');
+            if (validateEmail(emailAddress.value)) {
+              emailAddress.classList.remove('error');
+              emailAddressError.classList.add('hidden');
+
+              //add email to newsletter
+              if (optIn.checked) {
+                _ltk.Signup.SetEmailValue('BIS', emailAddress.value);
+                _ltk.Signup.SetValue('BIS','ltkSaved','true');
+                _ltk.Signup.Subscribe('BIS');
+              }
+              //add alert to Listrak
+              _ltk.Alerts.AddAlert(emailAddress.value, productSKU, 'BIS');
+              _ltk.Alerts.Submit();
+
+              inputs.classList.add('hidden');
+              successMessage.classList.remove('hidden');
+            } else {
+              emailAddress.classList.add('error');
+              emailAddressError.classList.remove('hidden');
+            }
+          }
+          function ValidateEmailFocus() {
+            var emailAddress = document.getElementById('txtEmailAddress');
+            var emailAddressError = document.getElementById('txtEmailAddressError');
+            if (validateEmail(emailAddress.value)) {
+              emailAddress.classList.remove('error');
+              emailAddressError.classList.add('hidden');
+            } else {
+              emailAddress.classList.add('error');
+              emailAddressError.classList.remove('hidden');
+            }
+          }
+          function validateEmail(email) {
+            var regex = /^\S+@\S+\.\S+$/
+            return regex.test(email)
+          }
+      </script>
+    </div>
+  </div>
+</div>

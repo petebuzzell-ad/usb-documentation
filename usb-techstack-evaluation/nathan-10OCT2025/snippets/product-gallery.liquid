@@ -1,0 +1,129 @@
+{% liquid
+  assign gallery_video = product.metafields["global"]["product_videos_en"]
+  assign video_id = false
+  if gallery_video != blank
+    assign video_id = gallery_video | split: '/' | last | remove: "watch?v=" | strip
+  endif
+%}
+<!-- Product Gallery -->
+<div class="relative pt-0 mobile:w-full opacity-0 transition-all duration-200" data-pg {% if video_id%}data-video-id="{{ video_id | escape }}"{% endif %}>
+  <!-- Product Gallery Thumbnails -->
+  <div class="absolute top-0 left-0 hidden lg:block w-12.5 h-12.5 mr-12.5 overflow-visible transform rotate-90">
+    <div id="galleryThumbs" class="relative w-580 h-12.5">
+      <div class="product-gallery__thumbnails">
+        <div class="glide__track" data-glide-el="track">
+          <div class="glide__slides h-full" data-pg-thumb-slides>
+            {% if video_id %}
+              <div class="thumbnail thumbnail--video relative border-2 border-transparent h-full hover:border-grey-five cursor-pointer transform -rotate-90 group">
+                <img src="https://img.youtube.com/vi/{{ video_id }}/0.jpg" class="absolute w-full h-full object-cover -z-1" />
+                <span class="play-video-btn block w-full pt-[100%] cursor-pointer z-1">
+                  <span class="absolute bg-orange-one group-hover:bg-[orange-two] block rounded-full inset-1/4 z-1 opacity-80"></span>
+                  {%- render 'svg-play-light', classes: 'absolute z-2 top-1/2 left-1/2 cursor-pointer transform -translate-y-1/2 -translate-x-1/3 w-2 h-3' -%}
+                </span>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="absolute left-0 top-0 flex items-center justify-between h-full w-full pointer-events-none">
+        <button id="thumb-prev" class="h-13.5 w-13.5 bg-white focus:outline-none pointer-events-auto cursor-auto">
+          <span class="h-12.5 w-12.5 px-2 border-2.5 border-grey-three hover:bg-orange-one hover:text-white hover:border-white rounded-circle text-grey-three transform scale-40 flex items-center justify-center cursor-pointer">
+            {% render 'svg-arrow-left' %}
+          </span>
+        </button>
+        <button id="thumb-next" class="h-13.5 w-13.5 bg-white focus:outline-none pointer-events-auto cursor-auto transform translate-x-full">
+          <span class="h-12.5 w-12.5 px-2 border-2.5 border-grey-three hover:bg-orange-one hover:text-white hover:border-white rounded-circle text-grey-three transform scale-40 flex items-center justify-center cursor-pointer">
+            {% render 'svg-arrow-right' %}
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-full lg:pl-25">
+    <div class="product-gallery relative bg-faint-cloud pt-[100%]">
+
+        <!-- Badge -->
+        <span class="absolute top-3.5 md:top-8 left-0 z-2" data-badge-container>
+          {%- render 'product-badge' product: product -%}
+        </span>
+
+      <!-- Main Gallery -->
+      <div class="absolute inset-0 glide__track" data-glide-el="track">
+        <div class="glide__slides h-full" data-pg-main-slides>
+          {% if video_id %}
+            <div class="product-video">
+              <div class="w-full relative lg:pt-[100%]">
+                <div class="block pt-[100%] lg:hidden group">
+                  <img src="https://img.youtube.com/vi/{{ video_id }}/0.jpg" class="absolute w-full h-full top-0 left-0 object-cover -z-1" />
+                  <span class="absolute bg-lush block group-hover:bg-light-lush rounded-full w-12 h-12 z-1 opacity-80 top-1/2 left-1/2 cursor-pointer transform -translate-x-1/2 -translate-y-1/2"
+                    data-video-modal-id="gallery_video_modal" data-gallery-video-btn>
+                    {%- render 'svg-play-light', classes: 'absolute z-2 top-1/2 left-1/2 cursor-pointer transform -translate-y-1/2 -translate-x-1/3 w-4 h-6' -%}
+                  </span>
+                </div>
+                <iframe id="gallery_video" class="absolute inset-0 hidden opacity-0 invisible lg:opacity-100 lg:visible lg:block" src="https://www.youtube.com/embed/{{ video_id }}?playlist={{ video_id }}&loop=1&rel=0&iv_load_policy=3&modestbranding=1&controls=0&showinfo=0&mute=1" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      {%- comment -%} Don't render mobile markup on quickview {%- endcomment -%}
+      {%- unless quickview -%}
+        <!-- Mobile Gallery Video Modal -->
+        <div id="gallery_video_modal" class="hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 shadow-modal max-w-1010 w-full z-50">
+          <span class="absolute left-auto right-1 -top-14 xl:top-auto xl:bottom-full xl:right-auto xl:left-full shadow-modal rounded-full bg-white w-10 h-10 flex items-center justify-center cursor-pointer" data-gallery-video-modal-close>
+            {%- render 'svg-close' -%}
+          </span>
+          <div class="relative h-0 w-full pt-[56.25%]">
+            <iframe class="absolute inset-0" src="https://www.youtube.com/embed/{{ video_id }}?playlist={{ video_id }}&loop=1&rel=0&iv_load_policy=3&modestbranding=1&controls=0&showinfo=0&mute=1" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      {%- endunless -%}
+
+      {%- unless quickview -%}
+        <!-- Magnifier -->
+        <span class="hidden lg:flex lg:items-center lg:justify-center w-15 h-15 rounded-circle absolute bottom-2.5 left-2.5 bg-opacity-20 bg-white hover:bg-opacity-100 text-grey-three cursor-pointer" data-pg-zoom-trigger>
+          {% render 'svg-magnifier' %}
+        </span>
+      {%- endunless -%}
+      <div class="hidden fixed w-full h-full px-20 py-10 top-0 left-0 z-30 bg-white overflow-y-auto" data-pg-zoom>
+        <div class="relative max-w-1320 mx-auto">
+          <button class="sticky w-0 h-0 right-0 top-0 transform translate-x-5 float-right" data-pg-zoom-close>
+            {% render 'svg-close' width: '40px', height: '40px' %}
+          </button>
+          <div class="w-full" data-pg-zoom-slides></div>
+        </div>
+      </div>
+      <!-- Product Gallery Dots -->
+      <div class="flex justify-center items-center absolute w-full bottom-2.5 lg:hidden" data-pg-dots>
+        {% if gallery_video != blank %}
+          <div class="dot rounded-full w-1.5 h-1.5 md:w-2.5 md:h-2.5 bg-grey-five mx-1 cursor-pointer dot--video"></div>
+        {% endif %}
+      </div>
+    </div>
+    {%- if quickview -%}
+      <div class="text-center mt-6">
+        <a data-quickview-view-product-details href="{{product.selected_or_first_available_variant.url}}" class="inline-flex items-center mx-auto text-special font-medium border border-b-2 border-l-0 border-r-0 border-t-0 font-lato uppercase hover:text-blue-one">
+          {%- render 'svg-eye' -%}
+          <span class="ml-2">{{ 'products.product.view_details' | t }}</span>
+        </a>
+      </div>
+    {%- else -%}
+      <div class="px-6 lg:px-0 my-2 lg:mt-4 lg:mb-8 font-normal text-p-xs lg:text-p-s text-grey-three" data-pg-model-info>&nbsp;</div>
+    {%- endif -%}
+  </div>
+
+  {% if product.metafields["global"]["featured_quote"] %}
+    <div class="hidden lg:block mt-20 text-center">
+      <div class="flex w-full justify-center items-center mb-5">
+        {% for number in (1..5) %}
+          {% render 'svg-review-star' %}
+        {% endfor %}
+      </div>
+      <div>
+        <p>{{ product.metafields["global"]["featured_quote"] }}</p>
+        <span class="p-s font-lato text-stone"><i>- {{ product.metafields["global"]["featured_quote_author"] }}&nbsp;&nbsp;Verified Buyer</i></span>
+      </div>
+    </div>
+  {% endif %}
+</div>

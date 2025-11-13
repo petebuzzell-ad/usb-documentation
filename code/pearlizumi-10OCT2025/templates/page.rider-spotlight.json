@@ -1,0 +1,187 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "fw_fonts_styles_XgyNxH": {
+      "type": "fw-fonts-styles",
+      "settings": {
+        "fw_fonts_styles": true
+      }
+    },
+    "fw_hero_banner_KUQyQQ": {
+      "type": "fw-hero-banner",
+      "settings": {
+        "content_alignment": "left",
+        "background_type": "image",
+        "background_image": "shopify:\/\/shop_images\/0a9ce901d4ca464b7785615a055b10a55c4c1d35.jpg",
+        "video": "shopify:\/\/files\/videos\/woman-riding-bike-compressed.mp4",
+        "sub_title": "Rider Spotlight",
+        "title": "Brendan<br>Johnston",
+        "text": "",
+        "button_label": "",
+        "button_link": "shopify:\/\/collections\/ride-365-windy-weather"
+      }
+    },
+    "fw_grid_mxcH6b": {
+      "type": "fw-grid",
+      "blocks": {
+        "image_a7LEJ6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/square-in-square.jpg"
+          }
+        },
+        "text_bkTDyE": {
+          "type": "text",
+          "settings": {
+            "title": "\"Get out on your bike as often as you can.\"",
+            "text": "<p>Widely considered Australia’s top off-road racer, Brendan Johnston is an eight-time national champion with six XC Marathon titles and a growing list of gravel accolades. He holds the Aussie Triple Crown—Port to Port, Reef to Reef, and Cape to Cape—and consistently ranks among the top endurance performers nationally and internationally.<\/p>",
+            "button_label": "",
+            "button_link": "#",
+            "show_features": "yes",
+            "feature_1_icon": "shopify:\/\/shop_images\/icon-cup.svg",
+            "feature_1_text": "8 time Australian Champion",
+            "feature_2_icon": "shopify:\/\/shop_images\/icon-p.svg",
+            "feature_2_text": "Pi Athlete Since January, 2024",
+            "feature_3_icon": "shopify:\/\/shop_images\/icon-mountain.svg",
+            "feature_3_text": "MTB \/ Gravel Off Road Racer",
+            "feature_4_text": "Feature 4 text"
+          }
+        }
+      },
+      "block_order": [
+        "image_a7LEJ6",
+        "text_bkTDyE"
+      ],
+      "settings": {
+        "text_position_mobile": "bottom"
+      }
+    },
+    "fw_product_carousel_FJr88x": {
+      "type": "fw-product-carousel",
+      "blocks": {
+        "product_image_rY9ekT": {
+          "type": "product_image",
+          "settings": {
+            "product": "mens-transfer-mesh-sleeveless-baselayer-11122502",
+            "custom_image": "shopify:\/\/shop_images\/transfer_mesh_baselayer_d598a459-6864-44c8-86c3-d9d841f130f9.png",
+            "heading": "Comfort Starts Here.",
+            "copy": "Perfect for moisture management; keeping me dry and comfortable throughout my rides.",
+            "cta_text": "shop now"
+          }
+        },
+        "product_image_W8eYJL": {
+          "type": "product_image",
+          "settings": {
+            "product": "mens-pro-mesh-jersey-11122101",
+            "custom_image": "shopify:\/\/shop_images\/pro_mesh_jersey.png",
+            "heading": "Cool Under Pressure.",
+            "copy": "The Pro Mesh Jersey is fantastic for its breathability and comfort during intense rides.",
+            "cta_text": "shop now"
+          }
+        },
+        "product_image_nWeRPB": {
+          "type": "product_image",
+          "settings": {
+            "product": "mens-pro-bib-shorts-11112201",
+            "custom_image": "shopify:\/\/shop_images\/pro_bib_short.png",
+            "heading": "No Slip, No Sore.",
+            "copy": "My go-to short for training. Fit and feel are very good, with the chamois staying in place on long rides. Comfortable without being bulky.",
+            "cta_text": "shop now"
+          }
+        },
+        "product_image_HUhmtj": {
+          "type": "product_image",
+          "settings": {
+            "product": "mens-pro-air-gloves-14142301",
+            "custom_image": "shopify:\/\/shop_images\/pro_air_glove.png",
+            "heading": "Snug. Soft. Strong.",
+            "copy": "One of my favorite pieces for training on cooler days. The fit is tight but not constricting, with comfortable stretch.",
+            "cta_text": "shop now"
+          }
+        },
+        "product_image_y8BMhU": {
+          "type": "product_image",
+          "settings": {
+            "product": "merino-air-7-sock-14352305",
+            "custom_image": "shopify:\/\/shop_images\/merino_air_socks.png",
+            "heading": "Warmth Without Bulk.",
+            "copy": "A very good sock for cool days.  Thin enough to fit like a normal sock, and super warm when paired with shoe covers.",
+            "cta_text": "shop now"
+          }
+        }
+      },
+      "block_order": [
+        "product_image_rY9ekT",
+        "product_image_W8eYJL",
+        "product_image_nWeRPB",
+        "product_image_HUhmtj",
+        "product_image_y8BMhU"
+      ],
+      "settings": {
+        "title_size": "larger",
+        "title": "Brendan’s Gear must haves",
+        "bg_color": "#f8f6f1",
+        "font_color": "#ffffff",
+        "background_image": "shopify:\/\/shop_images\/Untitled_3da8ec05-e073-461a-afa6-559ab7ccadfd.jpg"
+      }
+    },
+    "fw_social_media_links_YXHtMx": {
+      "type": "fw-social-media-links",
+      "blocks": {
+        "social_media_link_7ApJEh": {
+          "type": "social_media_link",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/icon-insta.svg",
+            "link_url": "https:\/\/www.instagram.com\/trekky91\/?hl=en"
+          }
+        },
+        "social_media_link_H9eVna": {
+          "type": "social_media_link",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/icon-face.svg",
+            "link_url": "https:\/\/www.facebook.com\/p\/Brendan-Johnston-100063506413493\/"
+          }
+        },
+        "social_media_link_nJfACm": {
+          "type": "social_media_link",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/icon-strava_373d1631-5a85-458a-96a7-4653feee0546.svg",
+            "link_url": "https:\/\/www.strava.com\/pros\/886869"
+          }
+        }
+      },
+      "block_order": [
+        "social_media_link_7ApJEh",
+        "social_media_link_H9eVna",
+        "social_media_link_nJfACm"
+      ],
+      "settings": {
+        "heading": "follow brendan on social media"
+      }
+    },
+    "fw_vibe_image_3NkRzY": {
+      "type": "fw-vibe-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Frame_1538232414_6b6868bd-ca21-4462-a2fd-391bf81fcef9.jpg",
+        "constrain_height": false,
+        "max_height": 500
+      }
+    }
+  },
+  "order": [
+    "fw_fonts_styles_XgyNxH",
+    "fw_hero_banner_KUQyQQ",
+    "fw_grid_mxcH6b",
+    "fw_product_carousel_FJr88x",
+    "fw_social_media_links_YXHtMx",
+    "fw_vibe_image_3NkRzY"
+  ]
+}

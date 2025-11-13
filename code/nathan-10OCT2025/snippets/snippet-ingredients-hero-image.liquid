@@ -1,0 +1,44 @@
+<div data-section-id="{{ section.id }}" data-section-type="hero-section" class="lg:mb-30 md:mb-18 mb-16">
+  {% if section.settings.image_1 != blank %}
+    {% assign section_image_1 = section.settings.image_1 | img_url: 'master' %}
+  {% endif %}
+
+  {% if section.settings.image_1_mobile != blank %}
+    {% assign section_image_mobile_1 = section.settings.image_1_mobile | img_url: 'master' %}
+  {% endif %}
+  {% if section_image_1 != blank %}
+  <style>
+    .bg_container-{{ section.id }} {
+      background-image: url('{{ section_image_1 }}');
+    }
+
+    @media screen and (max-width: 768px) {
+      .bg_container-{{ section.id }} {
+          {%- if section_image_mobile_1 !=blank -%}
+            background-image: url('{{ section_image_mobile_1 }}');
+          {%- else -%}
+            background-image: url('{{ section_image_1 }}'); 
+          {%- endif -%}
+      }
+    }
+  </style>
+  {% endif %}
+  <div class="relative{% if section_image_1 != blank %} bg_container-{{ section.id }} bg-no-repeat bg-cover bg-center{% else %} bg-{{ section.settings.bg_color_1 }}{% endif %}{% if section_image_1 == blank and section.settings.text_1 == blank %} lg:min-h-240 min-h-160{% endif %}">
+
+    <div
+      class="w-full md:max-w-hero-content md:px-0 px-7 text-center lg:py-35 py-30 mx-auto">
+      <div class="bg-opacity-60 rounded-sm md:p-10 p-6 {% if section.settings.overlay == 'black-overlay' %}bg-black {% elsif section.settings.overlay == 'white-overlay' %}bg-ice-grey {% else %} bg-transparent{% endif %}">
+        {%- if section.settings.title_1 != blank -%}
+          <h1 class="lg:text-h1 text-h3 tracking-normal lg:mb-10 mb-8 text-{{ section.settings.text_color_1 }}">
+            {{ section.settings.title_1 | escape }}
+          </h1>
+        {%- endif -%}
+        {%- if section.settings.text_1 != blank -%}
+          <h5 class="tracking-normal pt-0 font-semibold m-0 lg:px-19.5 text-{{ section.settings.text_color_1 }}">
+            {{ section.settings.text_1 }}
+          </h5>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>

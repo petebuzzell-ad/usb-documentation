@@ -1,0 +1,68 @@
+{% liquid
+  if block.settings.slider_style == 'light'
+    assign text_block_bg_class_1 = 'bg-light-sand'
+    assign text_block_bg_class_2 = 'bg-sand'
+    assign text_block_color_class = 'text-black'
+    assign slider_btn_class = 'button-slider-nav-light'
+  endif
+  if block.settings.slider_style == 'dark'
+    assign text_block_bg_class_1 = 'bg-stone'
+    assign text_block_bg_class_2 = 'bg-dark-stone'
+    assign text_block_color_class = 'text-white'
+    assign slider_btn_class = 'button-slider-nav-dark'
+  endif
+  assign mb_class = 'mb-0'
+  if block.settings.enable_bottom_margin
+    assign mb_class = 'mb-20 md:mb-40'
+  endif
+  assign slider_nav = ""
+%}
+<div data-section-id="{{ block.id }}" data-section-type="image-content-slider" id="section-{{ number }}" class="clp-slider relative overflow-hidden {{ mb_class }}">
+  <div class="image-content-slider md:w-full overflow-x-visible">
+    <div class="glide__track" data-glide-el="track">
+      <div class="glide__slides w-full">
+        {% for i in (1..5) %}
+          {% assign key_image = 'image_' | append: i %}
+          {% assign key_subtitle = 'subtitle_' | append: i %}
+          {% assign key_title = 'title_' | append: i %}
+          {% assign key_text = 'text_' | append: i %}
+          {% unless block.settings[key_image] == blank and block.settings[key_subtitle] == blank and block.settings[key_title] == blank and block.settings[key_text] == blank %}
+            <div class="glide__slide w-full md:flex md:flex-wrap">
+              <div class="w-full md:w-1/2">
+                {% if block.settings[key_image] != blank %}
+                  <div class="image-content-slider__image relative">
+                    <img class="lazy absolute inset-0 w-full h-full object-cover" data-src="{{ block.settings[key_image] | img_url: 'master' }}" alt="{{ block.settings[key_image].alt | escape }}" />
+                  </div>
+                {% endif %}
+              </div>
+              <div class="w-full md:w-1/2 {% cycle text_block_bg_class_1, text_block_bg_class_2 %}">
+                <div class="max-w-600 pt-10 px-6 pb-22 md:py-55 md:pl-27.5 xl:pr-0">
+                  {% if block.settings[key_subtitle] != blank %}
+                    <p class="font-sora font-normal text-special uppercase {{ text_block_color_class }} mb-0">{{ block.settings[key_subtitle] }}</p>
+                  {% endif %}
+                  {% if block.settings[key_title] != blank %}
+                    <h3 class="uppercase {{ text_block_color_class }} mt-4 mb-0">{{ block.settings[key_title] }}</h3>
+                  {% endif %}
+                  {% if block.settings[key_text] != blank %}
+                    <p class="{{ text_block_color_class }} mt-6 mb-0 md:mt-8">{{ block.settings[key_text] }}</p>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            {% capture slider_nav %}
+              {{ slider_nav }}
+              <div class="glide__bullet mx-0.5 w-2 h-2 md:w-3 md:h-3 p-0.5 rounded-circle cursor-pointer" data-glide-dir="={{ forloop.index0 }}"><span class="block w-full h-full rounded-circle"></span></div>
+            {% endcapture %}
+          {% endunless %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="glide__bullets absolute bottom-4 w-full md:w-1/2 flex justify-center" data-glide-el="controls[nav]">
+      {{ slider_nav }}
+    </div>
+    <div class="glide__arrows hidden md:flex absolute w-1/2 right-0 bottom-30 pl-27.5" data-glide-el="controls">
+      <a href="#" class="glide__arrow glide__arrow--left button-slider-nav-{{ block.settings.slider_style }} w-12.5 h-12.5 mr-13.5 p-0 rounded-circle flex items-center justify-center" data-glide-dir="<">{% include 'svg-arrow-left' %}</a>
+      <a href="#" class="glide__arrow glide__arrow--right button-slider-nav-{{ block.settings.slider_style }} w-12.5 h-12.5 mr-0 p-0 rounded-circle flex items-center justify-center" data-glide-dir=">">{% include 'svg-arrow-right' %}</a>
+    </div>
+  </div>
+</div>

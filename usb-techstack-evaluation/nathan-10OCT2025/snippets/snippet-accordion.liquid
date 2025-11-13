@@ -1,0 +1,159 @@
+<div data-section-id="{{ block.id }}" data-section-type="accordion-section" class="lg:mb-30 md:mb-18 mb-16">
+  <div class="container mx-auto xl:px-0 md:px-11 px-6">
+    {% if block.settings.title_7 != blank %}
+    <div class="text-center">
+      <h2 class="tracking-normal md:mb-12 mb-6">{{ block.settings.title_7 | escape }}</h2>
+    </div>
+    {% endif %}
+    {% if block.settings.text_heading_1 != blank %}
+    <div
+      class="border border-stone hover:shadow-sm rounded-lg lg:mb-6 mb-4.5 transition duration-300 ease-in-out lg:max-w-accordion-content w-full mx-auto">
+      <div
+        class="accordion relative bg-white cursor-pointer py-5.5 lg:pl-8 lg:pr-16 pl-5 pr-12 rounded-lg group transition-colors duration-300 ease-in-out"
+        tabindex="0" onclick="eHS.theme.accordionHandler(event)">
+        <h5 class="m-0 font-semibold lg:text-h4-m text-h6-m group-hover:text-bright-yellow pt-0">
+          {{ block.settings.text_heading_1 | escape }}
+        </h5>
+        <div
+          class="absolute top-6 lg:right-8 right-5 fill-black stroke-black transition duration-500 ease-in-out group-hover:fill-lush group-hover:stroke-lush">
+          <!-- Ddd wrappers that you can target with the Tailwind @apply statement instead of traversing the DOM into elements -->
+          <div class="open">
+            {% render 'svg-plus-circle' width: '24px', height: '24px' %}
+          </div>
+          <div class="close">
+            {% render 'svg-minus-circle' width: '24px', height: '24px' %}
+          </div>
+        </div>
+      </div>
+      {% if block.settings.text_body_1 != blank %}
+      <div
+        class="bg-ice-grey rounded-lg rounded-t-none overflow-hidden max-h-0 transition-max-height duration-500 ease-out">
+        <p class="m-0 border-t border-light-grey lg:px-8 lg:pt-6 pb-11 px-5 py-7 font-medium">
+          {{ block.settings.text_body_1 }}
+        </p>
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+    {% if block.settings.text_heading_2 != blank %}
+    <div
+      class="border border-stone hover:shadow-sm rounded-lg lg:mb-6 mb-4.5 transition duration-300 ease-in-out lg:max-w-accordion-content w-full mx-auto">
+      <div
+        class="accordion relative bg-white cursor-pointer py-5.5 lg:pl-8 lg:pr-16 pl-5 pr-12 rounded-lg group transition-colors duration-300 ease-in-out"
+        tabindex="0" onclick="eHS.theme.accordionHandler(event)">
+        <h5 class="m-0 font-semibold lg:text-h4-m text-h6-m group-hover:text-bright-yellow pt-0">
+          {{ block.settings.text_heading_2 | escape }}
+        </h5>
+        <div
+          class="absolute top-6 lg:right-8 right-5 fill-black stroke-black transition duration-500 ease-in-out group-hover:fill-lush group-hover:stroke-lush">
+          <!-- Ddd wrappers that you can target with the Tailwind @apply statement instead of traversing the DOM into elements -->
+          <div class="open">
+            {% render 'svg-plus-circle' width: '24px', height: '24px' %}
+          </div>
+          <div class="close">
+            {% render 'svg-minus-circle' width: '24px', height: '24px' %}
+          </div>
+        </div>
+      </div>
+      {% if block.settings.text_body_2 != blank %}
+      <div
+        class="bg-ice-grey rounded-lg rounded-t-none overflow-hidden max-h-0 transition-max-height duration-500 ease-out">
+        <p class="m-0 border-t border-light-grey lg:px-8 lg:pt-6 pb-11 px-5 py-7 font-medium">
+          {{ block.settings.text_body_2 }}
+        </p>
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+    {% if block.settings.text_heading_3 != blank %}
+    <div
+      class="border border-stone hover:shadow-sm rounded-lg lg:mb-6 mb-4.5 transition duration-300 ease-in-out lg:max-w-accordion-content w-full mx-auto">
+      <div
+        class="accordion relative bg-white cursor-pointer py-5.5 lg:pl-8 lg:pr-16 pl-5 pr-12 rounded-lg group transition-colors duration-300 ease-in-out"
+        tabindex="0" onclick="eHS.theme.accordionHandler(event)">
+        <h5 class="m-0 font-semibold lg:text-h4-m text-h6-m group-hover:text-bright-yellow pt-0">
+          {{ block.settings.text_heading_3 | escape }}
+        </h5>
+        <div
+          class="absolute top-6 lg:right-8 right-5 fill-black stroke-black transition duration-500 ease-in-out group-hover:fill-lush group-hover:stroke-lush">
+          <!-- Ddd wrappers that you can target with the Tailwind @apply statement instead of traversing the DOM into elements -->
+          <div class="open">
+            {% render 'svg-plus-circle' width: '24px', height: '24px' %}
+          </div>
+          <div class="close">
+            {% render 'svg-minus-circle' width: '24px', height: '24px' %}
+          </div>
+        </div>
+      </div>
+      {% if block.settings.text_body_3 != blank %}
+      <div
+        class="bg-ice-grey rounded-lg rounded-t-none overflow-hidden max-h-0 transition-max-height duration-500 ease-out">
+        <p class="m-0 border-t border-light-grey lg:px-8 lg:pt-6 pb-11 px-5 py-7 font-medium">
+          {{ block.settings.text_body_3 }}
+        </p>
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+    {% if block.settings.text_heading_4 != blank %}
+    <div
+      class="border border-stone hover:shadow-sm rounded-lg lg:mb-6 mb-4.5 transition duration-300 ease-in-out lg:max-w-accordion-content w-full mx-auto">
+      <div
+        class="accordion relative bg-white cursor-pointer py-5.5 lg:pl-8 lg:pr-16 pl-5 pr-12 rounded-lg group transition-colors duration-300 ease-in-out"
+        tabindex="0" onclick="eHS.theme.accordionHandler(event)">
+        <h5 class="m-0 font-semibold lg:text-h4-m text-h6-m group-hover:text-bright-yellow pt-0">
+          {{ block.settings.text_heading_4 | escape }}
+        </h5>
+        <div
+          class="absolute top-6 lg:right-8 right-5 fill-black stroke-black transition duration-500 ease-in-out group-hover:fill-lush group-hover:stroke-lush">
+          <!-- Ddd wrappers that you can target with the Tailwind @apply statement instead of traversing the DOM into elements -->
+          <div class="open">
+            {% render 'svg-plus-circle' width: '24px', height: '24px' %}
+          </div>
+          <div class="close">
+            {% render 'svg-minus-circle' width: '24px', height: '24px' %}
+          </div>
+        </div>
+      </div>
+      {% if block.settings.text_body_4 != blank %}
+      <div
+        class="bg-ice-grey rounded-lg rounded-t-none overflow-hidden max-h-0 transition-max-height duration-500 ease-out">
+        <p class="m-0 border-t border-light-grey lg:px-8 lg:pt-6 pb-11 px-5 py-7 font-medium">
+          {{ block.settings.text_body_4 }}
+        </p>
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+    {% if block.settings.text_heading_5 != blank %}
+    <div
+      class="border border-stone hover:shadow-sm rounded-lg lg:mb-6 mb-4.5 transition duration-300 ease-in-out lg:max-w-accordion-content w-full mx-auto">
+      <div
+        class="accordion relative bg-white cursor-pointer py-5.5 lg:pl-8 lg:pr-16 pl-5 pr-12 rounded-lg group transition-colors duration-300 ease-in-out"
+        tabindex="0" onclick="eHS.theme.accordionHandler(event)">
+        <h5 class="m-0 font-semibold lg:text-h4-m text-h6-m group-hover:text-bright-yellow pt-0">
+          {{ block.settings.text_heading_5 | escape }}
+        </h5>
+        <div
+          class="absolute top-6 lg:right-8 right-5 fill-black stroke-black transition duration-500 ease-in-out group-hover:fill-lush group-hover:stroke-lush">
+          <!-- Ddd wrappers that you can target with the Tailwind @apply statement instead of traversing the DOM into elements -->
+          <div class="open">
+            {% render 'svg-plus-circle' width: '24px', height: '24px' %}
+          </div>
+          <div class="close">
+            {% render 'svg-minus-circle' width: '24px', height: '24px' %}
+          </div>
+        </div>
+      </div>
+      {% if block.settings.text_body_5 != blank %}
+      <div
+        class="bg-ice-grey rounded-lg rounded-t-none overflow-hidden max-h-0 transition-max-height duration-500 ease-out">
+        <p class="m-0 border-t border-light-grey lg:px-8 lg:pt-6 pb-11 px-5 py-7 font-medium">
+          {{ block.settings.text_body_5 }}
+        </p>
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</div>

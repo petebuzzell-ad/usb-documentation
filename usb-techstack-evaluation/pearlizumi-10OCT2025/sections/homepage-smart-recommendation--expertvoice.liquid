@@ -1,0 +1,67 @@
+{%- comment -%}
+
+{% liquid
+  assign pro_homepage_enabled = settings.enable_pro_homepage
+  assign ev_homepage_enabled = settings.enable_ev_homepage
+  assign op_homepage_enabled = settings.enable_op_homepage
+
+  assign is_pro_customer = false
+  assign is_ev_customer = false
+  assign is_op_customer = false
+  if customer.tags contains 'Pro Purchase' or customer.tags contains 'PRO PURCHASE'
+    assign is_pro_customer = true
+  elsif customer.tags contains 'Expert Voice'
+    assign is_ev_customer = true
+  elsif customer.tags contains 'Outdoor Pro'
+    assign is_op_customer = true
+  endif
+
+  assign use_pro_homepage = false
+  assign use_ev_homepage = false
+  assign use_op_homepage = false
+
+  if pro_homepage_enabled and is_pro_customer
+    assign use_pro_homepage = true
+  elsif ev_homepage_enabled and is_ev_customer
+    assign use_ev_homepage = true
+  elsif op_homepage_enabled and is_op_customer
+    assign use_op_homepage = true
+  endif
+%}
+
+{%- if use_ev_homepage -%}
+  {%- if section.settings.title != blank -%}
+    {%- render 'snippet-smart-recommendation' block: section -%}
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Smart Recommendation(Exp)",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Smart Recommendation(Exp)"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Recommended For You"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_bottom_margin",
+      "label": "Enable Bottom Margin",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Smart Recommendation(Exp)",
+      "category": "Homepage"
+    }
+  ]
+}
+{% endschema %}
+{%- endcomment -%}

@@ -1,0 +1,11 @@
+{%- for block in section.blocks -%}
+  {%- if collection.handle == block.settings.collection and block.settings.seo_title != blank and block.settings.seo_content != blank -%}
+    <hr class="mt-0 mb-10 max-w-1200 w-full mx-auto border-silver">
+    <div class="mb-27.5 max-w-1200 w-full mx-auto">
+      <h3 class="text-h6 mb-3 font-semibold">{{block.settings.seo_title}}</h3>
+      <div class="text-p">
+        {{block.settings.seo_content}}
+      </div>
+    </div>
+  {%- endif -%}
+{%- endfor -%}

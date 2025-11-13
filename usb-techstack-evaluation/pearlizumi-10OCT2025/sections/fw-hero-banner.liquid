@@ -1,0 +1,114 @@
+<div class="fw-hero-banner" id="section-{{ section.id }}">
+  {% if section.settings.background_type == 'video' and section.settings.video != blank %}
+    <div class="fw-hero-banner__media fw-hero-banner__media--video">
+      {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true }}
+    </div>
+  {% elsif section.settings.background_image != blank %}
+    <div class="fw-hero-banner__media fw-hero-banner__media--image">
+      {{
+        section.settings.background_image
+        | img_url: '2048x'
+        | img_tag: section.settings.title, '', 'fw-hero-banner__image'
+      }}
+    </div>
+  {% endif %}
+
+  {% assign content_alignment = section.settings.content_alignment %}
+
+  <div class="fw-hero-banner__content fw-hero-banner__content--{{ content_alignment }}">
+    {% if section.settings.sub_title != blank %}
+      <span class="fw-hero-banner__sub-title">{{ section.settings.sub_title }}</span>
+    {% endif %}
+
+    {% if section.settings.title != blank %}
+      <h1 class="fw-hero-banner__title">{{ section.settings.title }}</h1>
+    {% endif %}
+
+    <div class="fw-hero-banner__text">
+      {% if section.settings.text != blank %}
+        {{ section.settings.text }}
+      {% endif %}
+    </div>
+
+    {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+      <a class="fw-button" href="{{ section.settings.button_link }}">
+        {{- section.settings.button_label -}}
+      </a>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FW Hero Banner",
+  "tag": "section",
+  "class": "fw-hero-banner",
+  "settings": [
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "Content alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Reft" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "background_type",
+      "label": "Background type",
+      "default": "image",
+      "options": [
+        { "value": "image", "label": "Image" },
+        { "value": "video", "label": "Video" }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video"
+    },
+    {
+      "type": "text",
+      "id": "sub_title",
+      "label": "Subtitle",
+      "default": "Hero subtitle"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Heading",
+      "default": "Hero heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Rich text",
+      "default": "<p>Hero subheading</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Shop now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "FW Hero Banner"
+    }
+  ]
+}
+{% endschema %}

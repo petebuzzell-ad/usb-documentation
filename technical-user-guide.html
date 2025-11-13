@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <title>Technical User Guide - USB - McDavid eCommerce Documentation</title>
+    <link rel="icon" type="image/webp" href="assets/favicon.webp">
+    <link rel="stylesheet" href="arcadia-style.css">
+</head>
+<body>
+    <!-- Header will be loaded dynamically by component-loader.js -->
+    <div id="header-container"></div>
+    
+    <div class="container">
+        <div class="two-column-layout">
+            <!-- Enhanced Table of Contents Sidebar -->
+            <nav class="toc-sidebar">
+                <h3>Table of Contents</h3>
+<ul>
+<li><a href="#developer-documentation-for-usb-mcdavid">Developer Documentation for USB - McDavid</a>
+</ul>
+</li>
+<li><a href="#navigation-implementation">Navigation Implementation</a>
+<ul>
+<li><a href="#header-menu-system">Header Menu System</a>
+</ul>
+</li>
+<ul>
+<li><a href="#footer-menu-system">Footer Menu System</a>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#template-system">Template System</a>
+<ul>
+<li><a href="#product-templates">Product Templates</a>
+</ul>
+</li>
+<ul>
+<li><a href="#app-block-support">App Block Support</a>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#customizer-sections">Customizer Sections</a>
+<ul>
+<li><a href="#header-section">Header Section</a>
+</ul>
+</li>
+<ul>
+<li><a href="#footer-section">Footer Section</a>
+</ul>
+</li>
+<ul>
+<li><a href="#product-template-sections">Product Template Sections</a>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#code-patterns">Code Patterns</a>
+<ul>
+<li><a href="#menu-access">Menu Access</a>
+</ul>
+</li>
+<ul>
+<li><a href="#metafield-access">Metafield Access</a>
+</ul>
+</li>
+<ul>
+<li><a href="#app-block-rendering">App Block Rendering</a>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#snippet-usage">Snippet Usage</a>
+<ul>
+<li><a href="#menu-snippets">Menu Snippets</a>
+</ul>
+</li>
+<ul>
+<li><a href="#product-snippets">Product Snippets</a>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#settings-schema-reference">Settings Schema Reference</a>
+<ul>
+<li><a href="#global-settings">Global Settings</a>
+</ul>
+</li>
+<ul>
+<li><a href="#header-settings">Header Settings</a>
+</ul>
+</li>
+<ul>
+<li><a href="#footer-settings">Footer Settings</a>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#template-assignments">Template Assignments</a>
+<ul>
+<li><a href="#product-templates">Product Templates</a>
+</ul>
+</li>
+<ul>
+<li><a href="#page-templates">Page Templates</a>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#custom-functionality">Custom Functionality</a>
+<ul>
+<li><a href="#multi-brand-support">Multi-Brand Support</a>
+</ul>
+</li>
+<ul>
+<li><a href="#mega-menu-system">Mega Menu System</a>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#troubleshooting">Troubleshooting</a>
+<ul>
+<li><a href="#menu-not-displaying">Menu Not Displaying</a>
+</ul>
+</li>
+<ul>
+<li><a href="#app-blocks-not-rendering">App Blocks Not Rendering</a>
+</ul>
+</li>
+<ul>
+<li><a href="#metafields-not-displaying">Metafields Not Displaying</a>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#code-references-summary">Code References Summary</a>
+</li>
+</ul>
+</ul>
+            </nav>
+            
+            <!-- Main Content Area -->
+            <main>
+                <section id="technical-user-guide">
+<h1>Technical User Guide</h1>
+<section id="developer-documentation-for-usb-mcdavid">
+<h2>Developer Documentation for USB - McDavid</h2>
+
+<hr>
+
+<section id="navigation-implementation">
+<h2>Navigation Implementation</h2>
+
+<section id="header-menu-system">
+<h3>Header Menu System</h3>
+
+<strong>Section:</strong> <code>sections/header-md.liquid</code>  
+<strong>Menu Setting:</strong> <code>section.settings.main_linklist</code>
+
+<strong>Code Reference:</strong>
+<pre><code class="language-liquid">{% for link in linklists[section.settings.main_linklist].links %}
+  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+<p>
+{% endfor %}
+</p>
+</code></pre>
+<p>
+Location: Line 106
+</p>
+
+<strong>Menu Rendering:</strong>
+<ul>
+<li>Desktop menu: Rendered inline in header section</li>
+<li>Mobile menu: Uses <code>snippets/mobile-menu.liquid</code></li>
+<li>Mega menu: Automatic for items with submenus (lines 108-192)</li>
+</ul>
+
+<strong>Mega Menu Implementation:</strong>
+<ul>
+<li><strong>Automatic Detection:</strong> Mega menu displays when <code>link.links.size > 0</code> (line 108)</li>
+<li><strong>Block Matching:</strong> Menu items matched to blocks via handleized title comparison (line 114)</li>
+<li><strong>Block-Based Promo Content:</strong> Promotional blocks appear in rightmost column when <code>activate_promo</code> is true (line 116)</li>
+<li><strong>Configurable Descriptions:</strong> Menu item descriptions via block <code>description</code> setting (line 115)</li>
+<li><strong>Multi-Column Layout:</strong></li>
+<li>First column: "Browse All" link + main submenu items + description</li>
+<li>Additional columns: Submenu categories with their items</li>
+<li>Rightmost column: Promotional content (if enabled)</li>
+<li><strong>Special Formatting:</strong></li>
+<li>Menu items with <code><strong></code> are bolded</li>
+<li>Menu items with <code>%%</code> show descriptions (format: <code>Title%%Description</code>)</li>
+<li>HEX® logo: Menu item titled exactly "HEX®" displays logo image instead of text (line 107)</li>
+<li>SportMed® branding: "Braces & Supports" displays as "SportMed®" in mega menu</li>
+<li></strong>Code Reference:<strong> <code>sections/header-md.liquid</code> lines 107-196 (exact implementation)</li>
+<li></strong>Accessibility:<strong> Mega menu includes ARIA attributes (<code>aria-expanded</code>, <code>aria-controls</code>) for screen readers</li>
+</ul>
+
+<section id="footer-menu-system">
+<h3>Footer Menu System</h3>
+
+</strong>Section:<strong> <code>sections/footer-md.liquid</code>  
+</strong>Menu Settings:<strong>
+<ul>
+<li><code>section.settings.footer_column2_menu</code> (line 61)</li>
+<li><code>section.settings.footer_column3_menu</code> (line 71)</li>
+<li><code>section.settings.footer_column4_menu</code> (line 81)</li>
+</ul>
+
+</strong>Code Reference:<strong>
+<pre><code class="language-liquid">{% for link in linklists[section.settings.footer_column2_menu].links %}
+  <li><p><a href="{{ link.url }}">{{ link.title }}</a></p></li>
+<p>
+{% endfor %}
+</p>
+</code></pre>
+
+</strong>Footer Structure:<strong>
+<ul>
+<li>Column-based layout</li>
+<li>Each column has independent menu</li>
+<li>Column titles configurable via section settings</li>
+</ul>
+
+<hr>
+
+<section id="template-system">
+<h2>Template System</h2>
+
+<section id="product-templates">
+<h3>Product Templates</h3>
+
+</strong>Default Template:<strong>
+<ul>
+<li>File: <code>sections/product-template.liquid</code></li>
+<li>JSON: <code>templates/product.json</code></li>
+<li>Standard product display with app block support</li>
+</ul>
+
+</strong>HEX® Template:<strong>
+<ul>
+<li>File: <code>sections/product-template-hexviz.liquid</code></li>
+<li>JSON: <code>templates/product.hexviz.json</code></li>
+<li>HEX® visualization features</li>
+</ul>
+
+</strong>MyoVolt Template:<strong>
+<ul>
+<li>File: <code>sections/product-template-myovolt.liquid</code></li>
+<li>JSON: <code>templates/product.myovolt.json</code></li>
+<li>MyoVolt-specific features and metafields</li>
+</ul>
+
+</strong>Template Assignment:<strong>
+<ul>
+<li>Selected via template suffix in Shopify Admin</li>
+<li>Template configuration in JSON files</li>
+<li>Section type matches template suffix</li>
+</ul>
+
+<section id="app-block-support">
+<h3>App Block Support</h3>
+
+</strong>Implementation Pattern:<strong>
+<pre><code class="language-liquid"><div class="product-app-blocks">
+<p>
+  {%- for block in section.blocks -%}
+    {% if block.type == '@app' %}
+        {% render block %}
+    {% endif %}
+  {%- endfor -%}
+</p>
+</div>
+</code></pre>
+
+</strong>Templates with App Blocks:<strong>
+<ul>
+<li><code>product-template.liquid</code> (line 412-418)</li>
+<li><code>product-template-hexviz.liquid</code> (line 387-393)</li>
+<li><code>product-template-myovolt.liquid</code> (line 319-325)</li>
+<li><code>product-details-template.liquid</code> (line 326-332)</li>
+<li><code>product-full-width-images-template.liquid</code> (line 336-342)</li>
+</ul>
+
+<hr>
+
+<section id="customizer-sections">
+<h2>Customizer Sections</h2>
+
+<section id="header-section">
+<h3>Header Section</h3>
+
+</strong>File:<strong> <code>sections/header-md.liquid</code>  
+</strong>Type:<strong> Static section
+
+</strong>Key Settings:<strong>
+<ul>
+<li><code>main_linklist</code> - Main navigation menu</li>
+<li><code>logo_white</code> - White logo (homepage)</li>
+<li><code>logo_colored</code> - Colored logo (other pages)</li>
+<li><code>help_text</code>, <code>help_text2</code>, <code>help_text3</code> - Announcement bar messages</li>
+<li><code>help_text_start_date</code>, <code>help_text_end_date</code> - Message date ranges</li>
+<li><code>brace_finder</code> - Brace finder link toggle</li>
+<li><code>brace_finder_url</code> - Brace finder URL</li>
+<li><code>brace_finder_label</code> - Brace finder label</li>
+</ul>
+
+</strong>Blocks:<strong>
+<ul>
+<li>Mega menu promo blocks</li>
+<li>Block type: <code>meganav</code> (defined in schema at line 623)</li>
+<li>Settings:</li>
+<li><code>trigger</code> (text) - Menu item handle (handleized version, e.g., 'cups-compression')</li>
+<li><code>description</code> (text) - Description text shown in first column under title</li>
+<li><code>activate_promo</code> (checkbox) - Enable promotional content</li>
+<li><code>image</code> (image_picker) - Promo image</li>
+<li><code>pre_header</code> (text) - Small text above main header</li>
+<li><code>header</code> (text) - Main promotional headline</li>
+<li><code>link_label</code> (text) - Button/link text</li>
+<li><code>link_url</code> (url) - Destination URL for promotional link</li>
+<li></strong>Code Reference:<strong> <code>sections/header-md.liquid</code> lines 107-196 (mega menu rendering), lines 620-677 (schema definition)</li>
+<li></strong>Block Matching:<strong> Blocks matched to menu items via <code>block.settings.trigger == handleized_link_title</code> (line 114)</li>
+</ul>
+
+<section id="footer-section">
+<h3>Footer Section</h3>
+
+</strong>File:<strong> <code>sections/footer-md.liquid</code>  
+</strong>Type:<strong> Static section
+
+</strong>Key Settings:<strong>
+<ul>
+<li><code>footer_logo_image</code> - Footer logo</li>
+<li><code>footer_usb_logo</code> - USB logo</li>
+<li><code>newsletter_title</code> - Newsletter section title</li>
+<li><code>newsletter_text</code> - Newsletter description</li>
+<li><code>footer_column2_title</code> - Column 2 title</li>
+<li><code>footer_column2_menu</code> - Column 2 menu</li>
+<li><code>footer_column3_title</code> - Column 3 title</li>
+<li><code>footer_column3_menu</code> - Column 3 menu</li>
+<li><code>footer_column4_title</code> - Column 4 title</li>
+<li><code>footer_column4_menu</code> - Column 4 menu</li>
+</ul>
+
+</strong>Social Media:<strong>
+<ul>
+<li>Configured via global settings</li>
+<li>Icons: Instagram, TikTok, Facebook, YouTube, Twitter/X</li>
+<li>Settings: <code>instagram_link</code>, <code>tiktok_link</code>, <code>facebook_link</code>, <code>youtube_link</code>, <code>twitter_link</code></li>
+</ul>
+
+<section id="product-template-sections">
+<h3>Product Template Sections</h3>
+
+</strong>Default Product Template:<strong>
+<ul>
+<li>File: <code>sections/product-template.liquid</code></li>
+<li>Supports app blocks</li>
+<li>Custom metafield display</li>
+<li>Product form integration</li>
+</ul>
+
+</strong>Settings:<strong>
+<ul>
+<li><code>product_images_position</code> - Image gallery position</li>
+<li><code>product_description_position</code> - Description position</li>
+<li><code>review_position</code> - Review section position</li>
+<li><code>gallery_arrows</code> - Image navigation arrows</li>
+</ul>
+
+</strong>Blocks:<strong>
+<ul>
+<li>App blocks (<code>@app</code> type)</li>
+<li>Custom content blocks</li>
+<li>Product form blocks</li>
+</ul>
+
+<hr>
+
+<section id="code-patterns">
+<h2>Code Patterns</h2>
+
+<section id="menu-access">
+<h3>Menu Access</h3>
+
+</strong>Header Menu:<strong>
+<pre><code class="language-liquid">{% for link in linklists[section.settings.main_linklist].links %}
+  <!-- Menu item -->
+<p>
+{% endfor %}
+</p>
+</code></pre>
+
+</strong>Footer Menu:<strong>
+<pre><code class="language-liquid">{% for link in linklists[section.settings.footer_column2_menu].links %}
+  <!-- Footer link -->
+<p>
+{% endfor %}
+</p>
+</code></pre>
+
+<section id="metafield-access">
+<h3>Metafield Access</h3>
+
+</strong>Product Metafields:<strong>
+<pre><code class="language-liquid">{{ product.metafields.custom.best_for }}
+<p>
+{{ product.metafields.custom.product_family }}
+{{ product.metafields.custom.features }}
+{{ product.metafields.custom.details }}
+{{ product.metafields.custom.care }}
+{{ product.metafields.custom.description_image }}
+</p>
+</code></pre>
+
+</strong>Conditional Rendering Pattern:<strong>
+<pre><code class="language-liquid">{% if product.metafields.custom.best_for != blank %}
+  <div class="best-for">
+    <span>Best For:</span> {{ product.metafields.custom.best_for }}
+  </div>
+<p>
+{% endif %}
+</p>
+</code></pre>
+
+</strong>MyoVolt Metafields:<strong>
+<pre><code class="language-liquid">{{ product.metafields.myovolt.hero_image_desktop.value | image_url: width: 800 | image_tag }}
+<p>
+{{ product.metafields.myovolt.hero_image_mobile.value | image_url: width: 800 | image_tag }}
+{{ product.metafields.myovolt.hero_description }}
+{{ product.metafields.myovolt.video.value | video_tag: autoplay: true, loop: true, muted: true }}
+</p>
+</code></pre>
+
+</strong>File Reference Access:<strong>
+<ul>
+<li>File references require <code>.value</code> property: <code>product.metafields.myovolt.hero_image_desktop.value</code></li>
+<li>Use Liquid filters for image/video rendering: <code>image_url</code>, <code>image_tag</code>, <code>video_tag</code></li>
+</ul>
+
+</strong>Metaobject Access:<strong>
+<pre><code class="language-liquid">{% for feature in product.metafields.custom.features.value %}
+  <h5>{{ feature.title }}</h5>
+  <p>{{ feature.description }}</p>
+<p>
+{% endfor %}
+</p>
+</code></pre>
+
+</strong>List Metafield Access:<strong>
+<pre><code class="language-liquid">{% for detailsItem in product.metafields.custom.details.value %}
+  <div class="product-description-item">
+    <h5>{% render 'shortcode' load: detailsItem %}</h5>
+  </div>
+<p>
+{% endfor %}
+</p>
+</code></pre>
+
+</strong>Rich Text Metafield Access:<strong>
+<pre><code class="language-liquid">{{ product.metafields.myovolt.description | metafield_tag }}
+<p>
+{{ product.metafields.myovolt.treatment_mode_1_description | metafield_tag }}
+</p>
+</code></pre>
+
+</strong>Code References:<strong>
+<ul>
+<li><code>sections/product-template.liquid</code> lines 420-424 (best_for)</li>
+<li><code>sections/product-template.liquid</code> lines 532-548 (features)</li>
+<li><code>sections/product-template-myovolt.liquid</code> lines 519-536 (hero images and video)</li>
+<li><code>sections/product-template-myovolt.liquid</code> lines 587-604 (treatment modes)</li>
+</ul>
+
+<section id="app-block-rendering">
+<h3>App Block Rendering</h3>
+
+</strong>Standard Pattern:<strong>
+<pre><code class="language-liquid"><div class="product-app-blocks">
+<p>
+  {%- for block in section.blocks -%}
+    {% if block.type == '@app' %}
+        {% render block %}
+    {% endif %}
+  {%- endfor -%}
+</p>
+</div>
+</code></pre>
+
+</strong>Code References:<strong>
+<ul>
+<li><code>sections/product-template.liquid</code> lines 412-418 (exact implementation)</li>
+<li><code>sections/product-template-hexviz.liquid</code> lines 387-393</li>
+<li><code>sections/product-template-myovolt.liquid</code> lines 319-325</li>
+</ul>
+
+</strong>Display Position:<strong>
+<ul>
+<li>App blocks appear in <code>product-app-blocks</code> div container</li>
+<li>Positioned above "Best For" metafield</li>
+<li>Positioned before "Add to Cart" button</li>
+<li>Only renders blocks with <code>block.type == '@app'</code></li>
+</ul>
+
+</strong>Block Configuration:<strong>
+<ul>
+<li>Blocks added via Theme Customizer → Product pages → Add block</li>
+<li>App blocks automatically available from installed apps</li>
+<li>Block settings configured in Theme Customizer or app interface</li>
+</ul>
+
+<hr>
+
+<section id="snippet-usage">
+<h2>Snippet Usage</h2>
+
+<section id="menu-snippets">
+<h3>Menu Snippets</h3>
+
+</strong>Desktop Menu:<strong>
+<pre><code class="language-liquid">{% include 'menu' with section.settings.main_linklist %}
+</code></pre>
+
+</strong>Mobile Menu:<strong>
+<pre><code class="language-liquid">{% include 'mobile-menu' with section.settings.main_linklist %}
+</code></pre>
+
+</strong>Files:<strong>
+<ul>
+<li><code>snippets/menu.liquid</code> - Desktop menu rendering</li>
+<li><code>snippets/mobile-menu.liquid</code> - Mobile menu rendering</li>
+</ul>
+
+<section id="product-snippets">
+<h3>Product Snippets</h3>
+
+</strong>Product Form:<strong>
+<pre><code class="language-liquid">{% include 'product-form' with 'product' %}
+</code></pre>
+
+</strong>Product Images:<strong>
+<pre><code class="language-liquid">{% include 'product-images' %}
+</code></pre>
+
+</strong>Files:<strong>
+<ul>
+<li><code>snippets/product-form.liquid</code> - Add to cart form</li>
+<li><code>snippets/product-images.liquid</code> - Image gallery</li>
+<li><code>snippets/product-swatch.liquid</code> - Color swatches</li>
+</ul>
+
+<hr>
+
+<section id="settings-schema-reference">
+<h2>Settings Schema Reference</h2>
+
+<section id="global-settings">
+<h3>Global Settings</h3>
+
+</strong>Brand Selection:<strong>
+<pre><code class="language-json">{
+<p>
+  "id": "site_brand",
+  "type": "select",
+  "options": [
+    {"value": "SD", "label": "ShockDoctor"},
+    {"value": "MD", "label": "McDavid"},
+    {"value": "NS", "label": "Nathan"},
+    {"value": "CS", "label": "Cutters"}
+  ]
+}
+</p>
+</code></pre>
+
+</strong>Location:<strong> <code>config/settings_schema.json</code>
+
+<section id="header-settings">
+<h3>Header Settings</h3>
+
+</strong>Menu Settings:<strong>
+<ul>
+<li><code>main_linklist</code> - Main navigation menu (link_list type)</li>
+<li>Menu assigned in Theme Customizer → Header section</li>
+</ul>
+
+</strong>Logo Settings:<strong>
+<ul>
+<li><code>logo_white</code> - White logo image</li>
+<li><code>logo_colored</code> - Colored logo image</li>
+</ul>
+
+<section id="footer-settings">
+<h3>Footer Settings</h3>
+
+</strong>Menu Settings:<strong>
+<ul>
+<li><code>footer_column2_menu</code> - Column 2 menu (link_list type)</li>
+<li><code>footer_column3_menu</code> - Column 3 menu (link_list type)</li>
+<li><code>footer_column4_menu</code> - Column 4 menu (link_list type)</li>
+</ul>
+
+</strong>Title Settings:<strong>
+<ul>
+<li><code>footer_column2_title</code> - Column 2 title</li>
+<li><code>footer_column3_title</code> - Column 3 title</li>
+<li><code>footer_column4_title</code> - Column 4 title</li>
+</ul>
+
+<hr>
+
+<section id="template-assignments">
+<h2>Template Assignments</h2>
+
+<section id="product-templates">
+<h3>Product Templates</h3>
+
+</strong>Default:<strong>
+<ul>
+<li>Template: <code>product</code> (no suffix)</li>
+<li>Section: <code>product-template</code></li>
+</ul>
+
+</strong>HEX®:<strong>
+<ul>
+<li>Template: <code>product.hexviz</code></li>
+<li>Section: <code>product-template-hexviz</code></li>
+</ul>
+
+</strong>MyoVolt:<strong>
+<ul>
+<li>Template: <code>product.myovolt</code></li>
+<li>Section: <code>product-template-myovolt</code></li>
+</ul>
+
+</strong>Assignment:<strong>
+<ul>
+<li>Selected in Shopify Admin → Product → Template</li>
+<li>Template suffix determines section used</li>
+</ul>
+
+<section id="page-templates">
+<h3>Page Templates</h3>
+
+</strong>Available Templates:<strong>
+<ul>
+<li><code>page</code> - Default page template</li>
+<li><code>page.sidebar</code> - Page with sidebar</li>
+<li><code>page.banner</code> - Page with banner</li>
+<li><code>page.details</code> - Detailed page template</li>
+<li><code>page.multi-column</code> - Multi-column layout</li>
+<li><code>page.gallery</code> - Gallery template</li>
+<li><code>page.faq</code> - FAQ template</li>
+<li><code>page.contact</code> - Contact template</li>
+</ul>
+
+</strong>Sections:<strong>
+<ul>
+<li><code>sections/page-template.liquid</code></li>
+<li><code>sections/page-sidebar-template.liquid</code></li>
+<li><code>sections/page-banner-template.liquid</code></li>
+<li><code>sections/page-details-template.liquid</code></li>
+</ul>
+
+<hr>
+
+<section id="custom-functionality">
+<h2>Custom Functionality</h2>
+
+<section id="multi-brand-support">
+<h3>Multi-Brand Support</h3>
+
+</strong>Implementation:<strong>
+<ul>
+<li>Brand-specific sections (header-md, footer-md)</li>
+<li>Brand selection via <code>site_brand</code> setting</li>
+<li>Conditional section rendering</li>
+</ul>
+
+</strong>Code Pattern:<strong>
+<pre><code class="language-liquid">{% if settings.site_brand == "MD" %}
+<p>
+  {% section 'header-md' %}
+  {% section 'footer-md' %}
+{% endif %}
+</p>
+</code></pre>
+
+<section id="mega-menu-system">
+<h3>Mega Menu System</h3>
+
+</strong>Features:<strong>
+<ul>
+<li>Automatic detection of nested menus</li>
+<li>Block-based promo content</li>
+<li>Configurable descriptions</li>
+<li>Multi-column layout</li>
+</ul>
+
+</strong>Block Configuration:<strong>
+<ul>
+<li>Block type: <code>mega_menu_promo</code></li>
+<li>Trigger: Menu item handle (case-sensitive)</li>
+<li>Promo content: Image, text, links</li>
+</ul>
+
+<hr>
+
+<section id="troubleshooting">
+<h2>Troubleshooting</h2>
+
+<section id="menu-not-displaying">
+<h3>Menu Not Displaying</h3>
+
+</strong>Check:<strong>
+<ol>
+<li>Menu exists in Shopify Admin → Navigation</li>
+<li>Menu assigned in Theme Customizer → Header/Footer</li>
+<li>Menu has items</li>
+<li>Section settings saved</li>
+
+</strong>Code Verification:<strong>
+<ul>
+<li>Check <code>section.settings.main_linklist</code> in header section</li>
+<li>Verify menu handle matches Shopify menu handle</li>
+</ul>
+
+<section id="app-blocks-not-rendering">
+<h3>App Blocks Not Rendering</h3>
+
+</strong>Check:<strong>
+<ol>
+<li>App block added in Theme Customizer</li>
+<li>Block type is <code>@app</code></li>
+<li>App block code present in section</li>
+<li>Section supports blocks</li>
+
+</strong>Code Verification:<strong>
+<ul>
+<li>Check for <code>{% render block %}</code> in section</li>
+<li>Verify block type check: <code>{% if block.type == '@app' %}</code></li>
+</ul>
+
+<section id="metafields-not-displaying">
+<h3>Metafields Not Displaying</h3>
+
+</strong>Check:<strong>
+<ol>
+<li>Metafield exists on product</li>
+<li>Metafield namespace/key correct</li>
+<li>Metafield value populated</li>
+<li>Liquid syntax correct</li>
+
+</strong>Code Pattern:<strong>
+<pre><code class="language-liquid">{% if product.metafields.custom.best_for != blank %}
+</ol>
+<p>
+  {{ product.metafields.custom.best_for }}
+{% endif %}
+</p>
+</code></pre>
+
+<hr>
+
+<section id="code-references-summary">
+<h2>Code References Summary</h2>
+
+</strong>Header Menu:<strong>
+<ul>
+<li><code>sections/header-md.liquid</code> line 106</li>
+</ul>
+
+</strong>Footer Menus:<strong>
+<ul>
+<li><code>sections/footer-md.liquid</code> lines 61, 71, 81</li>
+</ul>
+
+</strong>Product Metafields:<strong>
+<ul>
+<li><code>sections/product-template.liquid</code> line 420</li>
+</ul>
+
+</strong>App Blocks:<strong>
+<ul>
+<li><code>sections/product-template.liquid</code> lines 412-418</li>
+<li><code>sections/product-template-hexviz.liquid</code> lines 387-393</li>
+<li><code>sections/product-template-myovolt.liquid</code> lines 319-325</li>
+</ul>
+
+</strong>Settings Schema:**
+<ul>
+<li><code>config/settings_schema.json</code></li>
+</ul>
+
+<hr>
+
+<em>This technical guide provides code-level documentation for developers. All code references include file paths and line numbers for verification.</em>
+
+
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Footer will be loaded dynamically by component-loader.js -->
+    <div id="footer-container"></div>
+    
+    <!-- Component Loader: Dynamically loads header.html and footer.html -->
+    <script src="component-loader.js"></script>
+    
+    <!-- Enhanced TOC: Adds scroll-based highlighting and smooth navigation -->
+    <script src="enhanced-toc/enhanced-toc.js"></script>
+</body>
+</html>

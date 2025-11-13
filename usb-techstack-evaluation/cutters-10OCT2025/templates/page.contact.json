@@ -1,0 +1,186 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "settings": {}
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_page_title": true,
+        "bg_color": "",
+        "gradient": "",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "59699d9d-c66c-4bd5-a248-64f1b1587cd5": {
+      "type": "section-banner-image",
+      "blocks": {
+        "template--18952593998145__59699d9d-c66c-4bd5-a248-64f1b1587cd5-16831285413c69ee80-0": {
+          "type": "subheading",
+          "settings": {
+            "text": "<p>Contact Us</p>",
+            "size": 100
+          }
+        },
+        "template--18952593998145__59699d9d-c66c-4bd5-a248-64f1b1587cd5-16831285413c69ee80-1": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>Tell Us How We Can Help</p>",
+            "size": 180,
+            "heading_highlight_type": "italics",
+            "highlight_color": "rgba(0,0,0,0)",
+            "highlight_text_color": ""
+          }
+        },
+        "template--18952593998145__59699d9d-c66c-4bd5-a248-64f1b1587cd5-16831285413c69ee80-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Email: cs@cutterssports.com</strong></p>",
+            "size": 155
+          }
+        },
+        "text_jyRFrY": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Phone Number:</strong><a href=\"tel:1-800-233-6956\"><strong> 800-233-6956</strong></a><strong> (Monday-Friday 8am-5pm PST)</strong></p>",
+            "size": 155
+          }
+        },
+        "template--18952593998145__59699d9d-c66c-4bd5-a248-64f1b1587cd5-16831285413c69ee80-3": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "stacked_button": false,
+            "button_1_text": "Shop All",
+            "button_1_link": "shopify://collections/all",
+            "button_1_color": "btn--white",
+            "button_1_style": "btn--solid-border",
+            "button_1_size": "btn--small",
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_color": "btn--black",
+            "button_2_style": "btn--solid",
+            "button_2_size": "btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "template--18952593998145__59699d9d-c66c-4bd5-a248-64f1b1587cd5-16831285413c69ee80-0",
+        "template--18952593998145__59699d9d-c66c-4bd5-a248-64f1b1587cd5-16831285413c69ee80-1",
+        "template--18952593998145__59699d9d-c66c-4bd5-a248-64f1b1587cd5-16831285413c69ee80-2",
+        "text_jyRFrY",
+        "template--18952593998145__59699d9d-c66c-4bd5-a248-64f1b1587cd5-16831285413c69ee80-3"
+      ],
+      "settings": {
+        "height": "one-third-height",
+        "enable_mobile_height": false,
+        "mobile_height": "four-fifty-height-mobile",
+        "image": "shopify://shop_images/CS23_PLP_Banner_LinemanGloves_OPT.jpg",
+        "overlay_opacity": 10,
+        "transition": "zoom-out",
+        "enable_zoom_animation": true,
+        "enable_card_scrolling": false,
+        "increase_border_radius": true,
+        "text_position": "center",
+        "text_alignment": "text-left",
+        "text_color": "text-light",
+        "width": "wrapper--full",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "contact-form": {
+      "type": "section-contact-form",
+      "blocks": {
+        "contact-form-0": {
+          "type": "heading",
+          "settings": {
+            "title": "Contact us"
+          }
+        },
+        "contact-form-2": {
+          "type": "email",
+          "settings": {
+            "title": "Email",
+            "required": true
+          }
+        },
+        "contact-form-1": {
+          "type": "text",
+          "settings": {
+            "title": "First Name",
+            "required": false
+          }
+        },
+        "text_EaATUg": {
+          "type": "text",
+          "settings": {
+            "title": "Last Name",
+            "required": false
+          }
+        },
+        "radio_fCAE4V": {
+          "type": "radio",
+          "settings": {
+            "title": "Case Type",
+            "required": false,
+            "label-one": "Order Issue",
+            "label-two": "Returns",
+            "label-three": "Product Information",
+            "label-four": "Warranty Issue",
+            "label-five": "Privacy Requests",
+            "label-six": ""
+          }
+        },
+        "contact-form-3": {
+          "type": "body",
+          "settings": {
+            "title": "Message",
+            "required": true
+          }
+        }
+      },
+      "block_order": [
+        "contact-form-0",
+        "contact-form-2",
+        "contact-form-1",
+        "text_EaATUg",
+        "radio_fCAE4V",
+        "contact-form-3"
+      ],
+      "settings": {
+        "button_color": "btn--black",
+        "button_style": "btn--solid",
+        "button_size": "btn--medium",
+        "bg_color": "",
+        "gradient": "",
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "main",
+    "59699d9d-c66c-4bd5-a248-64f1b1587cd5",
+    "contact-form",
+    "shogun-optimizer"
+  ]
+}

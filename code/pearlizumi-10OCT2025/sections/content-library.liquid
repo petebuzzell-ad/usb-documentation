@@ -1,0 +1,139 @@
+{%- if section.settings.cl_header != blank and section.settings.cl_subheader != blank -%}
+  <div class="container mx-auto max-w-85% md:max-w-680 lg:max-w-hero-content mt-12 md:mt-20 mb-10 md:mb-20">
+    <h1 class="mb-4 text-center text-2xl md:text-4xl uppercase">{{ section.settings.cl_header }}</h1>
+    <p class="text-center text-sm md:text-base">{{ section.settings.cl_subheader }}</p>
+  </div>
+{%- endif -%}
+
+<div class="mb-20 pt-2 block md:px-8 xl:px-0 max-w-screen-lg mx-auto">
+  {% for block in section.blocks %}
+
+    {% liquid
+    assign image_one = block.settings.cta_image_one
+    assign image_two = block.settings.cta_image_two
+    assign header_one = block.settings.cta_header_one
+    assign header_two = block.settings.cta_header_two
+    assign description_one = block.settings.cta_description_one
+    assign description_two = block.settings.cta_description_two
+    assign url_one = block.settings.cta_url_one
+    assign url_two = block.settings.cta_url_two
+    %}
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-4 lg:gap-x-6 mb-6">
+      {%- if image_one != blank and header_one != blank and url_one != blank -%}
+        <a class="block w-full" href="{{ url_one }}">
+          <div class="h-112.5 lg:h-130 w-full overflow-hidden relative group transition-all duration-300 ease-in-out">
+            <img class="lazy object-cover w-full h-full" data-src="{{ image_one | img_url: '800x' }}" alt="{{ image_one.alt }}" loading="lazy">
+            <div class="absolute left-0 bottom-0 w-full bg-dark-stone-overlay md:hover:bg-dark-stone-overlay-hover px-6 xl:px-8 py-8 md:py-6 xl:py-12 text-white text-h4-m lg:text-h4 tracking-0.8 md:tracking-1 font-medium flex items-center justify-between">
+              <div class="flex justify-center flex-col w-full max-w-70.5 md:max-w-65 lg:max-w-387">
+                <span class="w-adjust text-xl lg:text-2xl mb-2">{{- header_one -}}</span>
+                <span class="w-adjust font-light text-xs lg:text-sm lg:hidden lg:group-hover:block">{{- description_one -}}</span>
+              </div>
+              <span class="w-7.5 h-7.5 lg:w-8 lg:h-8 rounded-full block opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 ease-in-out text-black">
+                <span class="w-full h-full flex items-center justify-center opacity-70 lg:opacity-70 lg:hover:opacity-90 bg-faint-cloud rounded-full">
+                  {% render 'svg-arrow-right', width: '16.8px', height: '11.52px' %}
+                </span>
+              </span>
+              <div class="bg-lush absolute bottom-full left-0 lg:-left-full group-hover:left-0 w-full h-2 transition-all duration-300 ease-in-out  block"></div>
+            </div>
+          </div>
+        </a>
+      {%- endif -%}
+      {%- if image_two != blank and header_two != blank and url_two != blank -%}
+        <a class="block w-full" href="{{ url_two }}">
+          <div class="h-112.5 lg:h-130 w-full overflow-hidden relative group transition-all duration-300 ease-in-out">
+            <img class="lazy object-cover w-full h-full" data-src="{{ image_two | img_url: '800x' }}" alt="{{ image_two.alt }}" loading="lazy">
+            <div class="absolute left-0 bottom-0 w-full bg-dark-stone-overlay md:hover:bg-dark-stone-overlay-hover px-6 xl:px-8 py-8 md:py-6 xl:py-12 text-white text-h4-m lg:text-h4 tracking-0.8 md:tracking-1 font-medium flex items-center justify-between">
+              <div class="flex justify-center flex-col w-full max-w-70.5 md:max-w-65 lg:max-w-387">
+                <span class="w-adjust text-xl lg:text-2xl mb-2">{{- header_two -}}</span>
+                <span class="w-adjust font-light text-xs lg:text-sm lg:hidden lg:group-hover:block">{{- description_two -}}</span>
+              </div>
+              <span class="w-7.5 h-7.5 lg:w-8 lg:h-8 rounded-full block opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 ease-in-out text-black">
+                <span class="w-full h-full flex items-center justify-center opacity-70 lg:opacity-70 lg:hover:opacity-90 bg-faint-cloud rounded-full">
+                  {% render 'svg-arrow-right', width: '16.8px', height: '11.52px' %}
+                </span>
+              </span>
+              <div class="bg-lush absolute bottom-full left-0 lg:-left-full group-hover:left-0 w-full h-2 transition-all duration-300 ease-in-out  block"></div>
+            </div>
+          </div>
+        </a>
+      {%- endif -%}
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+
+{
+  "name": "Content Library",
+  "settings": [
+    {
+      "type": "text",
+      "id": "cl_header",
+      "label": "Header for kit landing page",
+      "info": "Large header at top of kit landing page (ie. Men's, Women's, Kid's)."
+    }, {
+      "type": "text",
+      "id": "cl_subheader",
+      "label": "Subheader for kit landing page",
+      "info": "Subheader that lives under large header at top of kit landing page."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "CTA",
+      "name": "CTA Row",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "cta_image_one",
+          "label": "CTA Image One",
+          "info": "Image for first CTA. Recommended size of around 800px by 800px."
+        }, {
+          "type": "text",
+          "id": "cta_header_one",
+          "label": "CTA Header One",
+          "info": "Header for first CTA."
+        }, {
+          "type": "text",
+          "id": "cta_description_one",
+          "label": "CTA Description One",
+          "info": "Description for first CTA. Recommend around 15 words and/or 70 characters or less."
+        }, {
+          "type": "url",
+          "id": "cta_url_one",
+          "label": "CTA URL One",
+          "info": "URL for first CTA."
+        }, {
+          "type": "image_picker",
+          "id": "cta_image_two",
+          "label": "CTA Image Two",
+          "info": "Image for second CTA. Recommended size of around 800px by 800px."
+        }, {
+          "type": "text",
+          "id": "cta_header_two",
+          "label": "CTA Header Two",
+          "info": "Header for second CTA."
+        }, {
+          "type": "text",
+          "id": "cta_description_two",
+          "label": "CTA Description Two",
+          "info": "Description for Second CTA. Recommend around 15 words and/or 70 characters or less."
+        }, {
+          "type": "url",
+          "id": "cta_url_two",
+          "label": "CTA URL Two",
+          "info": "URL for second CTA."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Content Library",
+      "category": "Section"
+    }
+  ]   
+}
+
+{% endschema %}

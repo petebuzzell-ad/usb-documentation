@@ -1,0 +1,120 @@
+{% assign mb_class = 'mb-0' %}{% if section.settings.enable_bottom_margin %}{% assign mb_class = 'mb-20 md:mb-40' %}{% endif %}
+  <div data-section-id="{{ section.id }}" data-section-type="accordion" id="section-{{ number }}" class="relative px-6 {{ mb_class }}">
+    <div class="w-full max-w-full md:max-w-1200 mx-auto">
+      <div class="flex justify-center -mx-2.5">
+        <div class="w-full md:w-2/3 px-2.5">
+          {% if section.settings.title != blank %}
+            <h3 class="uppercase mb-8 md:mb-16 overflow-hidden">
+              {%- if underline == true -%}
+                <span class="relative">
+                  <span class="z-1 relative">{{ section.settings.title }}</span>
+                  <span class="absolute left-0 bottom-0 bg-sand z-0 w-underline-mobile h-4 lg:w-underline-sp-desktop lg:h-5.5"></span>
+                </span>
+              {%- else -%}
+                {{ section.settings.title }}
+              {%- endif -%}
+            </h3>
+          {% endif %}
+          <div class="accordion-group">
+            {% for i in (1..6) %}
+              {% liquid
+                assign heading_key = i | prepend: 'accordion_heading_'
+                assign content_key = i | prepend: 'accordion_content_'
+                assign key = 'heading||content' | split: '||'
+                assign variable = section.settings[heading_key] | append: '||' | append: section.settings[content_key] | split: '||'
+              %}
+              {% if section.settings[heading_key] != blank and section.settings[content_key] != blank %}
+                {% include 'shortcode-accordion' variable: variable key: key %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% schema %}
+{
+  "name": "Accordion 2",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Accordion Title"
+    },
+    {
+      "type": "text",
+      "id": "accordion_heading_1",
+      "label": "Accordion 1 Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "accordion_content_1",
+      "label": "Accordion 1 Content"
+    },
+    {
+      "type": "text",
+      "id": "accordion_heading_2",
+      "label": "Accordion 2 Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "accordion_content_2",
+      "label": "Accordion 2 Content"
+    },
+    {
+      "type": "text",
+      "id": "accordion_heading_3",
+      "label": "Accordion 3 Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "accordion_content_3",
+      "label": "Accordion 3 Content"
+    },
+    {
+      "type": "text",
+      "id": "accordion_heading_4",
+      "label": "Accordion 4 Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "accordion_content_4",
+      "label": "Accordion 4 Content"
+    },
+    {
+      "type": "text",
+      "id": "accordion_heading_5",
+      "label": "Accordion 5 Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "accordion_content_5",
+      "label": "Accordion 5 Content"
+    },
+    {
+      "type": "text",
+      "id": "accordion_heading_6",
+      "label": "Accordion 6 Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "accordion_content_6",
+      "label": "Accordion 6 Content"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_bottom_margin",
+      "label": "Enable Bottom Margin",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Accordion 2"
+    }
+  ]
+}
+
+  {% endschema %}
+  

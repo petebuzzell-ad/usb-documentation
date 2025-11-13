@@ -1,0 +1,71 @@
+{% comment %}Don't show hidden products{% endcomment %}
+{%- liquid 
+  assign title_tag = title_tag | default: 'h3'
+-%}
+
+{% liquid
+  assign is_hidden = false
+  if product.template_suffix == 'hidden'
+    assign is_hidden = true
+  endif %}
+
+{% unless is_hidden %}
+
+{%- liquid 
+  assign discount_tag = false
+  assign limit_tag = false
+  if customer
+    for tag in customer.tags
+      if tag contains "discount-"
+        assign discount_tag = tag | remove: "discount-" | plus: 0
+      endif
+      if tag contains "limit-"
+        assign limit_tag = tag | remove: "limit-" | plus: 0
+      endif
+    endfor
+  endif
+
+  assign is_pro = false
+  if discount_tag and limit_tag
+    assign is_pro = true
+  endif
+  
+-%}
+
+<article class="product-tile flex flex-col justify-between rounded group md:hover:shadow-sm md:focus-within:shadow-sm transition-shadow transition-300 ease-in-out">
+  <a class="h-full focus:outline-lush" href="{{ product.url | within: collection }}">
+    <!-- Product Image -->
+    <div class="p-1 pb-0 md:px-3 lg:px-5">
+      <img class="lazy mx-auto" data-src="{%- unless loaded == false -%}{{ product.featured_image | img_url: '342x' }}{%- else -%}data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=={%- endunless -%}" alt="{{ primary_title }}" loading="lazy" />
+    </div>
+    <!-- Product Details -->
+    <div class="special-xs font-semibold text-center flex-grow">
+      <!-- Badge Container -->
+      <div class="h-6 mt-2 flex justify-center items-center">
+        {%- render 'product-tile-tags', product: product -%}
+      </div>
+      <!-- Title -->
+      <{{title_tag }} class="pt-2 px-2 m-0 special-md normal-case">{{ product.title }}</{{title_tag }}>
+      <!-- Bottomline -->
+      <div class="px-2 md:px-4 my-1.5">
+        {%- render 'collection-star-rating', product: product -%}
+      </div>
+      <!-- Price -->
+      {%- render 'product-tile-pricing', product: product, is_pro: is_pro, pro_discount: discount_tag -%}
+      
+      <!-- Promo Message -->
+      {%- if product.metafields.global.promo_message != blank -%}
+        <p class="font-sora text-p-s text-red italic capitalize mt-2 mb-0">{{- product.metafields.global.promo_message -}}</p>
+      {%- endif -%}
+    </div>
+  </a>
+  <!-- Quick Shop Button -->
+  <div class="px-3.5 md:px-8 md:pb-8 lg:pb-4 xl:opacity-0 xl:group-hover:opacity-100 xl:group-focus:opacity-100 xl:focus-within:opacity-100 transition-opacity transition-300 ease-in-out">  
+    {%- if show_quickbuy -%}
+      <button class="button button-light text-special-xs border lg:border-2 py-2.5 px-3 focus:outline-lush" data-quickshop-modal data-product-id="{{- product.id -}}" onclick="eHS.productTile.handleQuickShopClick(event, '{{ product.handle }}')">Quick Shop</button>
+    {%- else -%}
+      <a class="button button-light text-special-xs border lg:border-2 py-2.5 px-3 focus:outline-lush" href="{{- product.url -}}">View Options</a>
+    {%- endif -%}
+  </div>
+</article>
+{% endunless %}

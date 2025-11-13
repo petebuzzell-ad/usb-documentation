@@ -1,0 +1,55 @@
+<div data-section-id="{{ block.id }}" data-section-type="spacer" class="relative py-10 md:py-20 bg-{{ block.settings.bg_color }}"></div>
+
+{% schema %}
+{
+  "name": "Spacer",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "bg_color",
+      "label": "Spacing Background Color",
+      "default": "white",
+      "options": [
+        {
+          "label": "White",
+          "value": "white"
+        },
+        {
+          "label": "Black",
+          "value": "black"
+        },
+        {
+          "label": "Light Magma",
+          "value": "light-magma"
+        },
+        {
+          "label": "Lush",
+          "value": "lush"
+        },
+        {
+          "label": "Pine",
+          "value": "pine"
+        },
+        {
+          "label": "Sand",
+          "value": "sand"
+        },
+        {
+          "label": "Silver",
+          "value": "silver"
+        },
+        {
+          "label": "Stone",
+          "value": "stone"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Spacer"
+    }
+  ]  
+}
+{% endschema %}

@@ -1,0 +1,370 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "disabled": true,
+      "settings": {}
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_page_title": true,
+        "bg_color": "",
+        "gradient": "",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "disabled": true,
+      "settings": {}
+    },
+    "section_video_Nz6MxV": {
+      "type": "section-video",
+      "custom_css": [
+        "H2 {line-height: 0.9;}"
+      ],
+      "name": "Video",
+      "settings": {
+        "video_height": "seven-fifty-height",
+        "enable_mobile_height": false,
+        "mobile_height": "six-fifty-height-mobile",
+        "text_width": "normal",
+        "text_position": "middle-center",
+        "video_link_bg": "https://cdn.shopify.com/videos/c/o/v/cf60d8e9df68477b9839d676fc718a91.mp4",
+        "video_link": "",
+        "overlay_opacity": 10,
+        "text_color": "text-light",
+        "title": "<h2>CAN'T</h2><h2>GUARD</h2><h2>GRIP</h2>",
+        "heading_size": 160,
+        "heading_highlight_type": "underline-hand-drawn",
+        "highlight_color": "#000000",
+        "highlight_text_color": "",
+        "text": "",
+        "text_size": 100,
+        "button_1_text": "",
+        "button_1_link": "",
+        "button_1_color": "btn--white",
+        "button_1_style": "btn--solid-border",
+        "button_1_size": "btn--medium",
+        "button_2_text": "",
+        "button_2_link": "",
+        "button_2_color": "btn--black",
+        "button_2_style": "btn--solid",
+        "button_2_size": "btn--medium"
+      }
+    },
+    "section_banner_image_W3WUx9": {
+      "type": "section-banner-image",
+      "blocks": {
+        "heading_ywfTak": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>built for flag football </p>",
+            "size": 180,
+            "heading_highlight_type": "underline-hand-drawn",
+            "highlight_color": "#000000",
+            "highlight_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_ywfTak"
+      ],
+      "disabled": true,
+      "name": "Banner image",
+      "settings": {
+        "height": "six-fifty-height",
+        "enable_mobile_height": false,
+        "mobile_height": "four-fifty-height-mobile",
+        "image": "shopify://shop_images/Group_1897.jpg",
+        "overlay_opacity": 10,
+        "transition": "zoom-out",
+        "enable_zoom_animation": true,
+        "enable_card_scrolling": false,
+        "increase_border_radius": true,
+        "content_width": 80,
+        "text_position": "center",
+        "text_alignment": "text-center",
+        "text_color": "text-light",
+        "width": "wrapper--full",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "section_text_47dRwh": {
+      "type": "section-text",
+      "blocks": {
+        "text_FEKbzU": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Unlock your potential with elite stickiness and unmatched durability that excels in all conditions.</p>",
+            "size": 155
+          }
+        },
+        "button_9mrpEc": {
+          "type": "button",
+          "settings": {
+            "button_text": "Shop All Gloves",
+            "button_link": "shopify://collections/gloves",
+            "button_color": "btn--black",
+            "button_style": "btn--solid",
+            "button_size": "btn--medium"
+          }
+        }
+      },
+      "block_order": [
+        "text_FEKbzU",
+        "button_9mrpEc"
+      ],
+      "name": "Text",
+      "settings": {
+        "text_position": "center",
+        "bg_color": "",
+        "gradient": "",
+        "text_color": "text-dark",
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section_text_RdqFjE": {
+      "type": "section-text",
+      "blocks": {
+        "heading_Drw43A": {
+          "type": "heading",
+          "settings": {
+            "text": "<h2>SHOP BY STYLE</h2>",
+            "size": 90,
+            "heading_highlight_type": "underline-hand-drawn",
+            "highlight_color": "#000000",
+            "highlight_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_Drw43A"
+      ],
+      "name": "Text",
+      "settings": {
+        "text_position": "center",
+        "bg_color": "",
+        "gradient": "",
+        "text_color": "text-dark",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "section_grid_GkaKeh": {
+      "type": "section-grid",
+      "blocks": {
+        "image_9EaqkX": {
+          "type": "image",
+          "settings": {
+            "width": "33.33",
+            "image": "shopify://shop_images/CU_GIRLS_FLAG_REV_X_1_1_1.webp",
+            "overlay_opacity": 10,
+            "text_position": "bottom-left",
+            "subheading": "",
+            "title": "Shop Game Day Pro",
+            "text": "Prints and solids in Adult and Youth sizes BEST FOR ALL YOUTH SIZES FOR FLAG FOOTBALL",
+            "button_1_text": "SHOP NOW",
+            "button_1_link": "https://cutterssports.com/products/multi-drip-game-day-pro-limited-edition-receiver-gloves",
+            "button_2_text": "",
+            "button_2_link": "",
+            "overlay_text_color": "text-light"
+          }
+        },
+        "image_rXVKhP": {
+          "type": "image",
+          "settings": {
+            "width": "33.33",
+            "image": "shopify://shop_images/AKR37653_2.webp",
+            "overlay_opacity": 5,
+            "text_position": "bottom-left",
+            "subheading": "",
+            "title": "SHOP REV PRO 6.0",
+            "text": "Superior C-Tack® grip worn by pros BEST FOR ELITE FLAG FOOTBALL ATHLETES",
+            "button_1_text": "SHOP NOW",
+            "button_1_link": "shopify://products/rev-pro-6-solid-receiver-football-gloves-pink",
+            "button_2_text": "",
+            "button_2_link": "",
+            "overlay_text_color": "text-light"
+          }
+        },
+        "image_rCcwRU": {
+          "type": "image",
+          "settings": {
+            "width": "33.33",
+            "image": "shopify://shop_images/CU_GIRLS_FLAG_REV_X_3_2.webp",
+            "overlay_opacity": 5,
+            "text_position": "bottom-left",
+            "subheading": "",
+            "title": "Shop  Rev X",
+            "text": "Premium leather & maximum grip BEST FOR SOFTEST, MOST COMFORTABLE FIT",
+            "button_1_text": "SHOP NOW",
+            "button_1_link": "shopify://products/rev-x-receiver-gloves-white-shock-green",
+            "button_2_text": "",
+            "button_2_link": "",
+            "overlay_text_color": "text-light"
+          }
+        }
+      },
+      "block_order": [
+        "image_9EaqkX",
+        "image_rXVKhP",
+        "image_rCcwRU"
+      ],
+      "name": "Grid",
+      "settings": {
+        "desktop_height": "five-fifty-height",
+        "enable_mobile_height": false,
+        "mobile_height": "four-fifty-height-mobile",
+        "heading_size": 110,
+        "text_size": 100,
+        "button_1_color": "btn--white",
+        "button_1_style": "btn--text",
+        "button_1_size": "btn--small",
+        "button_2_color": "btn--black",
+        "button_2_style": "btn--text",
+        "button_2_size": "btn--medium",
+        "section_bg_color": "",
+        "gradient": "",
+        "enable_slider_mobile": true,
+        "columns_mobile": "1",
+        "overlay_text": true,
+        "width": "wrapper",
+        "add_gutter": true,
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "section_collection_iD43gC": {
+      "type": "section-collection",
+      "name": "Featured collection",
+      "settings": {
+        "collection": "essential-flag-football-gear",
+        "products_layout": "carousel",
+        "products_limit": 8,
+        "products_per_row_on_desktop": 4,
+        "columns_mobile": "1",
+        "text_alignment": "text-center",
+        "title": "<p>ESSENTIAL FLAG FOOTBALL GEAR</p>",
+        "heading_size": 100,
+        "heading_highlight_type": "underline-hand-drawn",
+        "highlight_color": "#000000",
+        "highlight_text_color": "",
+        "text": "",
+        "text_size": 100,
+        "button_position": "top",
+        "button_text": "Shop Now",
+        "button_color": "btn--black",
+        "button_style": "btn--text",
+        "button_size": "btn--medium",
+        "bg_color": "",
+        "enable_slider_mobile": true,
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section_shop_the_look_banner_9rYmcB": {
+      "type": "section-shop-the-look-banner",
+      "blocks": {
+        "product_wBP9wU": {
+          "type": "product",
+          "settings": {
+            "product": "rev-x-receiver-gloves-white-columbia-blue",
+            "position_x_desktop": 20,
+            "position_y_desktop": 69,
+            "position_x_mobile": 21,
+            "position_y_mobile": 42,
+            "info_bubbles_position_desktop": 55,
+            "info_bubbles_position_mobile": 5
+          }
+        },
+        "product_YpR7Ky": {
+          "type": "product",
+          "settings": {
+            "product": "rev-x-receiver-gloves-white-shock-green",
+            "position_x_desktop": 76,
+            "position_y_desktop": 59,
+            "position_x_mobile": 75,
+            "position_y_mobile": 45,
+            "info_bubbles_position_desktop": 5,
+            "info_bubbles_position_mobile": 30
+          }
+        },
+        "product_hDTrG8": {
+          "type": "product",
+          "settings": {
+            "product": "rev-x-receiver-gloves-white-pink",
+            "position_x_desktop": 56,
+            "position_y_desktop": 40,
+            "position_x_mobile": 39,
+            "position_y_mobile": 66,
+            "info_bubbles_position_desktop": 15,
+            "info_bubbles_position_mobile": 25
+          }
+        }
+      },
+      "block_order": [
+        "product_wBP9wU",
+        "product_YpR7Ky",
+        "product_hDTrG8"
+      ],
+      "disabled": true,
+      "name": "Shop the Look Banner",
+      "settings": {
+        "image": "shopify://shop_images/CU_GIRLS_FLAG_REV_X_1_1.webp",
+        "aspect_ratio_desktop": 0.6,
+        "show_arrow": false,
+        "initial_open_card": true,
+        "product_card_aspect_ratio": 0.9,
+        "button_color": "btn--black",
+        "button_style": "btn--solid",
+        "title": "",
+        "heading_size": 100,
+        "text": "",
+        "text_size": 100,
+        "text_alignment": "text-center",
+        "aspect_ratio_mobile": 1.5,
+        "popup_heading": "",
+        "show_free_shipping_message": true,
+        "text_color": "text-light",
+        "hotspot_color": "#000000",
+        "bg_color": "#000000",
+        "gradient": "",
+        "hotspot_contents_text_color": "text-light",
+        "hotspot_contents_bg_color": "#000000",
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "main",
+    "shogun-optimizer",
+    "section_video_Nz6MxV",
+    "section_banner_image_W3WUx9",
+    "section_text_47dRwh",
+    "section_text_RdqFjE",
+    "section_grid_GkaKeh",
+    "section_collection_iD43gC",
+    "section_shop_the_look_banner_9rYmcB"
+  ]
+}

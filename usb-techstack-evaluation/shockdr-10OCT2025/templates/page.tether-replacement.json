@@ -1,0 +1,160 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_page_title": true,
+        "bg_color_secondary": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "59699d9d-c66c-4bd5-a248-64f1b1587cd5": {
+      "type": "section-banner-image",
+      "blocks": {
+        "template--18952593998145__59699d9d-c66c-4bd5-a248-64f1b1587cd5-16831285413c69ee80-1": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>NEED A REPLACEMENT TETHER? WE'VE GOT YOU COVERED.</p>",
+            "size": 95,
+            "heading_highlight_type": "italics",
+            "highlight_color": "rgba(0,0,0,0)",
+            "highlight_text_color": "#000000"
+          }
+        },
+        "text_zgHX3g": {
+          "type": "text",
+          "settings": {
+            "text": "<p>If your tether is damaged or defective, we’ll send you a free replacement—no matter where you bought it.</p>",
+            "size": 100
+          }
+        }
+      },
+      "block_order": [
+        "template--18952593998145__59699d9d-c66c-4bd5-a248-64f1b1587cd5-16831285413c69ee80-1",
+        "text_zgHX3g"
+      ],
+      "settings": {
+        "height": "one-third-height",
+        "enable_mobile_height": true,
+        "mobile_height": "five-fifty-height-mobile",
+        "image": "shopify://shop_images/SD25_Ecomm_PLP-Header_Bolt.webp",
+        "overlay_opacity": 10,
+        "transition": "zoom-out",
+        "enable_zoom_animation": true,
+        "enable_card_scrolling": false,
+        "increase_border_radius": true,
+        "text_width": "normal",
+        "text_position": "center",
+        "text_color": "text-light"
+      }
+    },
+    "17538995431b850393": {
+      "type": "apps",
+      "blocks": {
+        "forms_inline_hd8FeP": {
+          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+          "settings": {
+            "form_id": "585577",
+            "text_color": "#202020",
+            "button_background_color": "#ff4400",
+            "button_label_color": "#ffffff",
+            "links_color": "#1878b9",
+            "errors_color": "#e02229",
+            "text_alignment": "center",
+            "form_alignment": "center",
+            "padding_top": 0,
+            "padding_bottom": 24,
+            "padding_right": 0,
+            "padding_left": 0
+          }
+        }
+      },
+      "block_order": [
+        "forms_inline_hd8FeP"
+      ],
+      "settings": {
+        "bg_color": "",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section_accordions_rhA4nR": {
+      "type": "section-accordions",
+      "blocks": {
+        "text_DRYPL3": {
+          "type": "text",
+          "settings": {
+            "title": "How Do I Request a Replacement Tether?",
+            "text": "<p>If your football tether is damaged or defective, simply contact our customer service team via email or phone. We may ask for a photo of the issue and proof of purchase. Once approved, we’ll send you a replacement at no cost.</p>"
+          }
+        },
+        "text_r3BLAe": {
+          "type": "text",
+          "settings": {
+            "title": "Do I Need to Have Purchased the Tether From Your Website?",
+            "text": "<p>Nope! Whether you bought your tether from our website, Dick's Sporting Goods, Amazon, or another authorized retailer, you're still eligible for a replacement—just be ready to provide proof of purchase and a photo of the damaged item.</p>"
+          }
+        },
+        "text_VJULVj": {
+          "type": "text",
+          "settings": {
+            "title": "How Long Does it Take to Receive My Replacement?",
+            "text": "<p>Once your replacement request is approved, we’ll process the order within 1–2 business days. Shipping times may vary depending on your location, but most customers receive their tether within 5–7 business days.</p>"
+          }
+        },
+        "text_R7TJVr": {
+          "type": "text",
+          "settings": {
+            "title": "Is There a Cost For the Replacement Tether?",
+            "text": "<p>No, approved replacement tethers are provided at no charge. We also cover the shipping cost, so you won’t pay anything out of pocket.</p>"
+          }
+        },
+        "text_kYCU7e": {
+          "type": "text",
+          "settings": {
+            "title": "Can I Get a Refund Instead of a Replacement?",
+            "text": "<p>We do not offer refunds for damaged tethers, but we’re happy to send you a new one. Our goal is to ensure your gear performs as expected so you can stay game-ready.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_DRYPL3",
+        "text_r3BLAe",
+        "text_VJULVj",
+        "text_R7TJVr",
+        "text_kYCU7e"
+      ],
+      "settings": {
+        "layout": "two-columns",
+        "show_accordion_divider": false,
+        "title": "Frequently Asked Questions",
+        "subheading": "",
+        "text": "",
+        "tabs_bg_color": "#fafafa",
+        "bg_color_secondary": false,
+        "text_color": "text-dark",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "main",
+    "59699d9d-c66c-4bd5-a248-64f1b1587cd5",
+    "17538995431b850393",
+    "section_accordions_rhA4nR"
+  ]
+}

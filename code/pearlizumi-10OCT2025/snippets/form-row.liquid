@@ -1,0 +1,57 @@
+{% liquid
+  assign required = required | default: ''
+  assign is_date = false
+  assign value = value | default: ''
+%}
+
+{% if type == 'date_type' %}
+  {% assign is_date = true %}
+  <!-- Pikaday Library -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+  <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+  <label for="{{ id }}" class="custom-checkbox custom-date">{{ label }}</label>
+{% endif %}
+
+{% if type == 'textarea' %}
+  <textarea
+    class="max-w-full border border-silver focus:border-black text-black text-p font-sora w-full px-3 pt-5 pb-1 outline-none appearance-none"
+    rows="5"
+    id="{{ id }}"
+    name="{{ name }}"
+    maxlength="250"
+    placeholder=""
+    aria-label="{{ label }} 250"
+    {{ error }}>{{ value | default: '' }}</textarea>
+{% else %}
+  <input
+  class="max-w-full border border-silver focus:border-black text-black text-p font-sora w-full h-12 px-3 {% if is_date %}py-2{% else %}pt-5 pb-1{% endif %} outline-none appearance-none{% if value == '' %} is-empty{% endif %}"
+    id="{{ id }}"
+    type="text"
+    {% if pattern %}pattern="{{ pattern }}"{% endif %}
+    name="{{ name }}"
+    value="{{ value }}"
+    {% if type == 'date_type' %}
+      onkeydown="return false"
+      placeholder="Click to choose date"
+      style="cursor: pointer;"
+    {% endif %}
+    {% if is_date %}
+      onblur="eHS.customerLogin.validateDate(event)"
+    {% else %}
+      {% unless required == '' %}
+        onblur="eHS.customerLogin.validateFieldsOnBlur(event)"
+      {% endunless %}
+    {% endif %}
+    {{ required }} {{ error }} />
+{% endif %}
+
+{% unless is_date %}
+<label for="{{ id }}">{{ label }}</label>
+{% endunless %}
+
+<div class="text-red flex items-center mt-2 form-error hidden" data-error-container>
+  <span class="mr-2.5">{% render 'svg-alert' %}</span>
+  <span class="font-normal text-p-xs text-black" data-error-text>
+    {% if type == 'email' %}Please enter a valid email address{% endif %}
+  </span>
+</div>

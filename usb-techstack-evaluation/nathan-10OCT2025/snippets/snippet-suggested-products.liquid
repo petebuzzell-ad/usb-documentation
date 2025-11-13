@@ -1,0 +1,70 @@
+{%- if customer -%}
+  {%- comment -%} check if the customer is a Pro member {%- endcomment -%}
+  {%- assign has_discount_tag = false -%}
+  {%- assign has_limit_tag = false -%}
+  {%- for tag in customer.tags -%}
+    {%- if tag contains "discount-" -%}
+      {%- assign has_discount_tag = true -%}
+    {%- endif -%}
+    {%- if tag contains "limit-" -%}
+      {%- assign has_limit_tag = true -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{% assign products_list = block.settings.product_list %}
+
+{% assign mb_class = 'mb-0' %}{% if block.settings.enable_bottom_margin %}{% assign mb_class = 'mb-20 md:mb-40' %}{% endif %}
+<div data-section-id="{{ block.id }}" data-section-type="suggested-products" id="section-{{ number }}" class="relative px-6 overflow-hidden {{ mb_class }}">
+  <div class="w-full max-w-full mx-auto">
+    <div class="flex items-center justify-between mb-6 md:mb-10">
+      {% if block.settings.title != blank %}
+        <h3 class="uppercase mb-0 overflow-hidden w-full mr-4">
+          {%- if underline == true -%}
+            <span class="relative">
+              <span class="z-1 relative">{{ block.settings.title }}</span>
+              <span class="absolute left-0 bottom-0 bg-sand z-0 w-underline-sp-mobile h-4 lg:w-underline-desktop lg:h-5.5"></span>
+            </span>
+          {%- else -%}
+            {{ block.settings.title }}
+          {%- endif -%}
+        </h3>
+        {% if block.settings.btn_link != blank %}
+          {% assign btn_link = block.settings.btn_link %}
+          {% if block.settings.btn_label != blank and btn_link != blank %}
+            {% assign button_label = block.settings.btn_label %}
+            <a href="{{ btn_link }}" class="button-outline-stone w-full hidden md:flex justify-center items-center"><span class="font-sora text-special uppercase font-semibold">{{ button_label }}</span></a>
+            <a href="{{ btn_link }}" class="border-b-2 border-black md:hidden" style="min-width: fit-content"><span class="font-sora text-special-xs uppercase font-semibold">{{ 'general.clp.shop_all' | t }}</span></a>
+          {% endif %}
+        {% endif %}
+      {% endif %}
+    </div>
+    {% if products_list != blank %}
+      <div class="clp-slider relative">
+        <div class="product-carousel overflow-x-visible -ml-3">
+          <div class="glide__track" data-glide-el="track">
+            <div class="glide__slides">
+              {% for product in products_list %}
+                {%- render 'product-carousel-item', product: product, number: forloop.index -%}
+              {% endfor %}
+            </div>
+          </div>
+          <div class="glide__arrows absolute w-screen h-0 top-0 left-1/2 transform -translate-x-1/2 flex justify-end px-1 md:px-6" data-glide-el="controls">
+            <a href="#" class="glide__arrow glide__arrow--left h-full hidden items-center" data-glide-dir="<">
+              <span class="button-slider-nav-light w-6 h-6 md:w-12.5 md:h-12.5 m-0 p-0 rounded-circle flex items-center justify-center transform scale-50 md:scale-100">
+                {% render 'svg-arrow-left', classes: 'hidden md:block' %}
+                {% render 'svg-arrow-left', width: '14px', height: '9px', classes: 'block md:hidden' %}
+              </span>
+            </a>
+            <a href="#" class="glide__arrow glide__arrow--right h-full flex items-center" data-glide-dir=">">
+              <span class="button-slider-nav-light w-6 h-6 md:w-12.5 md:h-12.5 m-0 p-0 rounded-circle flex items-center justify-center transform scale-50 md:scale-100">
+                {% render 'svg-arrow-right', classes: 'hidden md:block' %}
+                {% render 'svg-arrow-right', width: '14px', height: '9px', classes: 'block md:hidden' %}
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>

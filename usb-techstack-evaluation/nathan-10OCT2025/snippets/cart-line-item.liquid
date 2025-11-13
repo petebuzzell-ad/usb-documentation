@@ -1,0 +1,179 @@
+{% liquid
+  assign promo_text = ''
+  assign promo_messages = settings.promo_messages | newline_to_br | split: '<br />'
+  for tag in item.product.tags
+    if tag contains 'promo:'
+      for message in promo_messages
+        if message contains tag
+          assign promo_text = message | remove: tag | remove: '||'
+        endif
+      endfor
+    endif
+  endfor
+  if promo_text == blank
+    if item.product.metafields["global"]["prd_promotion_text"] != blank
+      assign promo_text = item.product.metafields["global"]["prd_promotion_text"]
+    elsif item.variant.metafields["global"]["promo_text"] != blank
+      assign promo_text = item.variant.metafields["global"]["promo_text"]
+    endif
+  endif
+%}
+
+<!-- Cart Line Item -->
+<div class="lineItemElement stocktype-{{ item.variant.metafields.stocktype.stocktype }} relative p-6 lg:px-0 lg:py-8 opacity-0 transition-opacity" data-line-item data-id="{{ item.id }}" data-variant="{{ item.variant | json | escape }}">
+  <!-- Cart Line Item - Inner -->
+  <div class="flex justify-start">
+    <!-- Product Image -->
+    <div class="flex-shrink-0 flex flex-col justify-start align-center w-1/4 pr-1 md:pr-4">
+      <a aria-label="Line Item - {{ item.title | escape }}" href="{{ item.url }}" class="">
+        <img class="rounded-sm w-full image_cart lg:w-40 lg:mx-auto object-cover object-top" src="{{ item | img_url: '163x' }}" alt="{{ item.title | escape }}">
+      </a>
+
+      <!-- Remove Link: Mobile -->
+      <a data-remove-link data-remove="'{{ item.key }}'" class="mobile-remove md:hidden flex items-center mt-5 text-blue-one underline" href="/cart/change?line={{ line }}&amp;quantity=0">
+        {% render 'svg-close' width: '16px' height: '16px' %}
+        <span class="font-semibold uppercase text-special-xs underline" role="alert">Remove</span>
+      </a>
+    </div>
+
+    <div  class="w-3/4 pl-3 md:pl-4 flex flex-col flex-wrap items-start justify-between">
+      <!-- Product Details -->
+      <div data-product-details class="w-full md:w-1/2 mb-2 md:mb-0 md:pr-6">
+        <a aria-label="Product - {{- item.product.title -}}" href="{{ item.url }}" class="block text-black mb-1">
+          <span class="h5 font-semibold tracking-normal text-grey-one">{{- item.product.title -}}</span>
+        </a>
+
+        <!-- Item Price -->
+        {%- unless item.product.tags contains 'gift-for-good' -%}
+          <div class="text-p-s lg:text-p text-stone font-semibold mb-1 lg:mb-2 flex flex-wrap flex-row items-baseline justify-start">
+            {%- if item.variant.compare_at_price > item.variant.price -%}
+            {%- comment -%}
+
+            Hiding inline pricing because it's adding complexity to an otherwise already complex pricing scheme.
+            Can be re-integrated later by using the updated pricing logic applied on PDP.
+
+            <span class="text-pine mr-1.5">{{ item.price | money }}{{- CAD_pricing -}}</span>
+            <span class="text-light-stone font-normal text-p-xs lg:text-p-s"><s>{{ item.variant.compare_at_price | money }}{{- CAD_pricing -}}</s></span>
+            {%- endcomment -%}
+            {%- comment -%}
+              note: deprecated, but perfect for this use case
+              https://shopify.dev/api/liquid/objects/deprecated-objects#line_item-total_discount
+            {%- endcomment -%}
+            {%- elsif item.total_discount > 0 -%}
+              {%- comment -%}
+
+              TODO: Update this to reflect complex line-level discounts
+                - check total discount condition
+                - math --> check total line-level savings (ie. $40)
+
+              <p class="text-stone w-full m-0">Total line price:</p>
+              <span class="text-pine mr-1.5">{{ item.price | money }}{{- CAD_pricing -}}</span>
+              <span class="text-light-stone font-normal text-p-xs lg:text-p-s"><s>{{ item.original_line_price | money }}{{- CAD_pricing -}}</s></span>
+              {%- endcomment -%}
+            {%- elsif item.variant.compare_at_price > item.variant.price -%}
+              <span class="text-pine mr-1.5">{{ item.price | money }}{{- CAD_pricing -}}</span>
+              <span class="text-light-stone font-normal text-p-xs lg:text-p-s"><span>{{ item.variant.compare_at_price | money }}{{- CAD_pricing -}}</span></span>
+            {%- comment -%}
+              note: deprecated, but perfect for this use case
+              https://shopify.dev/api/liquid/objects/deprecated-objects#line_item-total_discount
+            {%- endcomment -%}
+
+            {%- else -%}
+            {%- comment -%}
+            <span>{{ item.price | money }}{{- CAD_pricing -}}</span>
+            {%- endcomment -%}
+            {%- endif -%}
+
+            <p class=" w-auto text-p-xs text-dark-stone m-0 mb-2 bg-sand bg-opacity-60 px-2 py-1 " data-line-message>{{ item.message }}</p>
+
+            {%- comment -%} Hide Promo Text from Pros {%- endcomment -%}
+            {%- unless is_pro == true -%}
+              <!-- Promo Message -->
+              {%- if promo_text != blank -%}
+                {%- comment -%} safeguard measure in case metafield import doesn't work properly {%- endcomment -%}
+                {%- unless promo_text contains "DELETE" -%}
+                  <span class="block w-full text-p-xs text-pine">{{- promo_text -}}</span>
+                {%- endunless -%}
+              {%- endif -%}
+            {%- endunless -%}
+
+          </div>
+        {%- endunless -%}
+
+        {%- comment -%} Variant Options {%- endcomment -%}
+        {%- unless item.variant.title contains 'Default' or item.variant.options.size == 1 -%}
+          <div class="font-semibold text-special-xs text-pine uppercase max-w-40 md:max-w-full mb-1">
+            {% for option in item.product.options %}
+              <span class="inline-block text-p2 text-grey-three">{{ option }}: {{ item.variant.options[forloop.index0] }}</span> <br />
+            {% endfor %}
+          </div>
+        {%- endunless -%}
+
+        {% comment %} - Any product with stock type U or O and a compare _at price, the final sale badge would appear automatically {% endcomment %}
+        {%- if item.variant.metafields.stocktype.stocktype and item.variant.metafields.stocktype.stocktype == 'U' or item.variant.metafields.stocktype.stocktype == 'O' -%}
+          {%- if item.variant.compare_at_price > item.variant.price -%}
+          <div class="font-semibold text-special-xs text-red max-w-40 md:max-w-full">
+            <span class="inline-block mb-1">FINAL SALE - no returns or exchanges</span>
+          </div>
+          {%- endif -%}
+        {%- endif -%}
+
+        {%- comment -%} Line Item Properties {%- endcomment -%}
+        {%- assign property_size = item.properties | size -%}
+        {%- if property_size > 0 -%}
+          <div class="font-semibold text-special-xs text-stone uppercase max-w-40 md:max-w-full mb-1">
+            {%- for p in item.properties -%}
+              {%- assign first_character = p.first | slice: 0 -%}
+              {% unless p.last == blank or first_character == "_" %}
+                <span class="inline-block mb-1">{{ p.first }}: {{ p.last }}</span> <br />
+              {% endunless %}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        <!-- Remove Link: Desktop -->
+        <a data-remove-link data-remove="'{{ item.key }}'" class="hidden md:flex items-center mt-5 text-blue-one underline" href="/cart/change?line={{ line }}&amp;quantity=0">
+          {% render 'svg-close' width: '16px' height: '16px' %}
+          <span class="font-semibold uppercase text-special-xs hover:underline" role="alert">Remove</span>
+        </a>
+      </div>
+
+      <div data-quantity-block class="w-full md:w-1/2 flex items-center justify-between  md:items-start mt-4">
+        {%- unless item.product.tags contains 'gift-for-good' -%}
+        <!-- Quantity Selector -->
+        <div class="w-15.5 md:w-17.5">
+          {% render 'cart-quantity-selector' item: item, line: line %}
+        </div>
+        {%- endunless -%}
+
+        <!-- Line Price -->
+        <div class="flex-shrink-0 flex flex-col flex-col-reverse justify-start text-black lg:min-w-20 ml-auto font-semibold text-p-xl tracking-normal relative">
+          {% if item.variant.compare_at_price > item.variant.price %}
+            <span class="text-grey-four text-p-s  font-normal text-right absolute right-0 top-0 transform -translate-y-full ">
+              <span data-compare-at-line-price data-original-line-price class="text-pine line-through">{{ item.variant.compare_at_price | times: item.quantity | money }}{{- CAD_pricing -}}</span></span>
+ 
+            <span class="text-blue-one text-p-lg" data-line-price>{{ item.final_line_price | money }}{{- CAD_pricing -}}</span>
+
+           
+          {%- comment -%}
+            note: deprecated, but perfect for this use case
+            https://shopify.dev/api/liquid/objects/deprecated-objects#line_item-total_discount
+          {%- endcomment -%}
+          {%- elsif item.total_discount > 0 -%}
+            {%- comment -%} Cart Script discount{%- endcomment -%}
+            <span class="text-blue-one" data-line-price>{{ item.final_line_price | money }}{{- CAD_pricing -}}</span>
+            <span class="text-pine text-p-s lg:text-p-lg font-normal text-right absolute right-0 top-0 transform -translate-y-full md:translate-y-full"><s data-original-line-price>{{ item.original_line_price | money }}{{- CAD_pricing -}}</s></span>
+          {%- else -%}
+            <span class="" data-line-price>{{ item.final_line_price | money }}{{- CAD_pricing -}}</span>
+            {%- comment -%} Needed as items can adjust asynchronously {%- endcomment -%}
+            <span class="hidden text-pine text-p-s lg:text-p-lg font-normal text-right absolute right-0 top-0 transform -translate-y-full md:translate-y-full"><s data-original-line-price>{{ item.original_line_price | money }}{{- CAD_pricing -}}</s></span>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+

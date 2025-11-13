@@ -1,0 +1,117 @@
+<div id="isp_search_result_page">
+	<div id="isp_search_result_page_container" class="isp_serp_theme_high_fidelity">
+		<div id="isp_center_container" class="isp_center_container isp_center_container_position">
+			<div class="collection-wrapper-item">
+				<ul id="isp_search_results_container">
+					{% for block in section.blocks %}
+						{% assign title_products_list = block.settings.title_products_list %}
+						{% assign link_products = block.settings.link_products %}
+						{% assign label_all_products = block.settings.label_all_products %}
+						{% assign link_products_mob = block.settings.link_products_mob %}
+						{% assign label_all_products_mob = block.settings.label_all_products_mob %}
+						{% case block.type %}
+							{% when 'block-1' %}  
+							<div class="title-collection title-one">
+								<h1>{{ title_products_list }} </h1>
+								<a class="hide-the-sh-one" href="{{ link_products }}"> {{ label_all_products }} </a>
+							</div>
+							{% when 'block-2' %}  
+							{% if block.settings.product == blank %}
+							{% else %}
+								{% render 'product-block-shop-all', 
+								product: block.settings.product,
+								i: forloop.index,
+								image: block.settings.image, %}
+							{% endif %}
+							{% when 'block-3' %}
+								<div class="title-collection hide-the-sh">
+									<a class="button btn_show_mob" href="{{ link_products_mob }}"> {{ label_all_products_mob }} </a>
+								</div>
+						{% endcase %} 
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+    "name":"Products custom list",
+    "class":"products-custom-list",
+    "blocks":[
+        {
+            "type":"block-1",
+            "name":"---Title Link---",
+            "settings":[
+                {
+                    "type":"text",
+                    "id":"title_products_list",
+                    "label":"Title products List"
+                },
+                {
+                    "type":"url",
+                    "id":"link_products",
+                    "label":"Link products"
+                },
+                {
+                    "type":"text",
+                    "id":"label_all_products",
+                    "label":"Label"
+                }
+            ]
+        },
+        {
+            "type":"block-2",
+            "name":"Product",
+            "settings":[
+                {
+                    "type":"product",
+                    "id":"product",
+                    "label":"Product"
+                },
+                {
+                    "type":"image_picker",
+                    "id":"image",
+                    "label":"Image"
+                }
+            ]
+        },
+        {
+            "type":"block-3",
+            "name":"---Title Link Mob---",
+            "settings":[
+                {
+                    "type":"url",
+                    "id":"link_products_mob",
+                    "label":"Link products Mobile"
+                },
+                {
+                    "type":"text",
+                    "id":"label_all_products_mob",
+                    "label":"Label Mobile"
+                }
+            ]
+        }
+    ],
+    "presets":[
+        {
+            "name":"Products custom list",
+            "settings":{
+                
+            },
+            "blocks":[
+                {
+                    "type":"block-1"
+                },
+                {
+                    "type":"block-2"
+                },
+                {
+                    "type":"block-3"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

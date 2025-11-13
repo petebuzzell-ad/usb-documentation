@@ -1,0 +1,703 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow": {
+      "type": "section-slideshow",
+      "blocks": {
+        "slideshow-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HeaderBanner_2230e16f-1c13-4c64-9098-14c3f0566000.jpg",
+            "image_mobile": "shopify://shop_images/HeaderBanner_eb7709db-5cd1-44c7-aff1-a923f1599237.jpg",
+            "overlay_opacity": 10,
+            "content_width": 80,
+            "text_position": "center",
+            "text_alignment": "text-center",
+            "text_color": "text-dark",
+            "subheading": "About",
+            "title": "<h1><em>CUTTERS SPORTS</em></h1>",
+            "heading_size": 150,
+            "heading_highlight_type": "highlight-color",
+            "highlight_color": "#00ff43",
+            "highlight_text_color": "#00ff43",
+            "text": "",
+            "text_size": 100,
+            "stacked_button": false,
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_1_color": "btn--white",
+            "button_1_style": "btn--solid-border",
+            "button_1_size": "btn--large",
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_color": "btn--black",
+            "button_2_style": "btn--solid",
+            "button_2_size": "btn--large",
+            "video_text": "",
+            "video_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slideshow-0"
+      ],
+      "settings": {
+        "slide_height": "six-fifty-height",
+        "enable_mobile_height": false,
+        "mobile_slide_height": "five-fifty-height-mobile",
+        "show_nav_dots": true,
+        "show_nav_arrows": true,
+        "show_arrow_down": false,
+        "autoplay": false,
+        "duration": 4,
+        "transition": "fade",
+        "enable_zoom_animation": true,
+        "enable_card_scrolling": false,
+        "increase_border_radius": true
+      }
+    },
+    "section_overlapping_images_PF3RtH": {
+      "type": "section-overlapping-images",
+      "settings": {
+        "text_position": "right",
+        "text_alignment": "center",
+        "images_width": 750,
+        "images_offset": 60,
+        "image_1": "shopify://shop_images/CU24_MHJ_Arizona-OPT---ABOUT-US.jpg",
+        "image_link_1": "",
+        "image_2": "shopify://shop_images/CUTTERS-8.jpg",
+        "image_link_2": "",
+        "hide_image_2": false,
+        "subheading": "",
+        "title": "<p>Our Mission</p>",
+        "heading_size": 100,
+        "heading_highlight_type": "circle",
+        "highlight_color": "#00ff43",
+        "highlight_text_color": "#000000",
+        "description": "<p>At Cutters Sports, our mission is to design and deliver high-performance gloves that blend innovation, durability, and style. From youth athletes to professionals, we aim to elevate every player's game by providing gear that’s engineered for excellence. We don’t just set the standard, we redefine it—game after game, season after season.</p>",
+        "text_size": 100,
+        "button_text": "",
+        "button_link": "",
+        "button_color": "btn--black",
+        "button_style": "btn--solid",
+        "button_size": "btn--small",
+        "video_text": "",
+        "video_link": "",
+        "bg_color": "",
+        "gradient": "",
+        "animation": "horizontal",
+        "animation_intensity": 50,
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section_text_WfGcTc": {
+      "type": "section-text",
+      "blocks": {
+        "subheading_QHdjbm": {
+          "type": "subheading",
+          "settings": {
+            "text": "<p>Our Purpose</p>",
+            "size": 175,
+            "margin_bottom": 16
+          }
+        },
+        "heading_i7ryGi": {
+          "type": "heading",
+          "settings": {
+            "text": "<h3>Cutters is <em>all about The Grip</em>. </h3><h3>Our construction is unstoppable, our design incredible and our technology <em>unbeatable</em>.</h3>",
+            "size": 75,
+            "heading_highlight_type": "highlight-color",
+            "highlight_color": "#00ff43",
+            "highlight_text_color": "#00ff43"
+          }
+        },
+        "split_text_FwhF7f": {
+          "type": "split-text",
+          "settings": {
+            "text_left": "<p>Former University of Ottawa Gee-Gees wide receiver Jeff Beraznik founded the Cutters brand in Canada, after a hand injury forced him to wear gloves. Not satisfied with any available football gloves on the market, he came across industrial gloves used by glass handlers and cutters.</p>",
+            "size_left": 100,
+            "text_right": "<p>The gloves did the trick and inspired the development and progression from the initial concept to today’s sought-after high-performance sports gloves. This was the launching pad for Cutters and C-TACK grip technology in 1997.</p>",
+            "size_right": 100
+          }
+        }
+      },
+      "block_order": [
+        "subheading_QHdjbm",
+        "heading_i7ryGi",
+        "split_text_FwhF7f"
+      ],
+      "settings": {
+        "text_position": "left",
+        "bg_color": "",
+        "gradient": "",
+        "text_color": "text-dark",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section_video_RBwYYe": {
+      "type": "section-video",
+      "settings": {
+        "video_height": "six-fifty-height",
+        "enable_mobile_height": false,
+        "mobile_height": "six-fifty-height-mobile",
+        "text_width": "normal",
+        "text_position": "middle-center",
+        "video_link_bg": "https://cdn.shopify.com/videos/c/o/v/58dda8e6b79c46ad94766b82cf1e1174.mp4",
+        "video_link": "",
+        "overlay_opacity": 10,
+        "text_color": "text-light",
+        "title": "",
+        "heading_size": 100,
+        "heading_highlight_type": "italics",
+        "highlight_color": "#d43747",
+        "highlight_text_color": "#000000",
+        "text": "",
+        "text_size": 100,
+        "button_1_text": "",
+        "button_1_link": "",
+        "button_1_color": "btn--white",
+        "button_1_style": "btn--solid-border",
+        "button_1_size": "btn--medium",
+        "button_2_text": "",
+        "button_2_link": "",
+        "button_2_color": "btn--black",
+        "button_2_style": "btn--solid",
+        "button_2_size": "btn--medium"
+      }
+    },
+    "section_text_PFw4RU": {
+      "type": "section-text",
+      "blocks": {
+        "heading_aiz7Wf": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>Our Technology</p>",
+            "size": 100,
+            "heading_highlight_type": "italics",
+            "highlight_color": "#d43747",
+            "highlight_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "heading_aiz7Wf"
+      ],
+      "settings": {
+        "text_position": "center",
+        "bg_color": "",
+        "gradient": "",
+        "text_color": "text-dark",
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section_columns_pHwwy6": {
+      "type": "section-columns",
+      "blocks": {
+        "text_block_HaQqw4": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify://shop_images/CU_TechIcons-CTACK_dec18f77-1f99-4102-ad4b-bf7981ce4175.png",
+            "image_width": 100,
+            "title": "",
+            "heading_size": 120,
+            "text": "",
+            "text_size": 100,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--medium",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "text_block_wURTFL": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify://shop_images/CU_TechIcons-RevTack.png",
+            "image_width": 100,
+            "title": "",
+            "heading_size": 120,
+            "text": "",
+            "text_size": 100,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--medium",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "text_block_7E4wfB": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify://shop_images/CU_TechIcons-MachineWashable.png",
+            "image_width": 100,
+            "title": "",
+            "heading_size": 120,
+            "text": "",
+            "text_size": 100,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--medium",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "text_block_Rrzg3M": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify://shop_images/CU_TechIcons-AllWeather.png",
+            "image_width": 100,
+            "title": "",
+            "heading_size": 120,
+            "text": "",
+            "text_size": 100,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--medium",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_HaQqw4",
+        "text_block_wURTFL",
+        "text_block_7E4wfB",
+        "text_block_Rrzg3M"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": 120,
+        "align_text": "text-left",
+        "columns": 4,
+        "columns_mobile": "1",
+        "show_images": true,
+        "show_borders": false,
+        "equalize_height": true,
+        "desktop_aspect_ratio": 0.8,
+        "mobile_aspect_ratio": 0.8,
+        "bg_color": "",
+        "gradient": "",
+        "color_borders": "#000000",
+        "layout_mobile": "grid",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section_icons_row_ct6HhM": {
+      "type": "section-icons-row",
+      "blocks": {
+        "text_biMqM4": {
+          "type": "text",
+          "settings": {
+            "icon_name": "truck",
+            "icon_image": "shopify://shop_images/CU_TechIcons-CTACK_dec18f77-1f99-4102-ad4b-bf7981ce4175.png",
+            "title": "TEST TEST",
+            "text": "<p>Testing 123</p>"
+          }
+        },
+        "text_Mk6Rt9": {
+          "type": "text",
+          "settings": {
+            "icon_name": "check",
+            "title": "Free Returns",
+            "text": "<p>within 30 days of purchase</p>"
+          }
+        },
+        "text_YQeFEX": {
+          "type": "text",
+          "settings": {
+            "icon_name": "clock",
+            "title": "Feature",
+            "text": "<p>123 123</p>"
+          }
+        },
+        "text_CFdrXN": {
+          "type": "text",
+          "settings": {
+            "icon_name": "eco-friendly",
+            "title": "1% Donated",
+            "text": "<p>to forest conservation</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_biMqM4",
+        "text_Mk6Rt9",
+        "text_YQeFEX",
+        "text_CFdrXN"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "alignment": "center",
+        "columns": 2,
+        "icons_width": 100,
+        "show_vertical_borders": true,
+        "show_top_border": true,
+        "show_bottom_border": true,
+        "heading_size": 120,
+        "text_size": 100,
+        "bg_color": "",
+        "gradient": "",
+        "text_color": "#333333",
+        "box_color": "",
+        "color_border": "#333333",
+        "button_text": "",
+        "button_link": "",
+        "button_color": "btn--black",
+        "button_style": "btn--solid",
+        "button_size": "btn--medium",
+        "layout_mobile": "grid",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section_image_with_text_FpGwzf": {
+      "type": "section-image-with-text",
+      "blocks": {
+        "heading_dDqptp": {
+          "type": "heading",
+          "settings": {
+            "title": "<p>C-TACK® <em>PERFORMANCE GRIP</em></p>",
+            "size": 120,
+            "text_position": "left",
+            "heading_highlight_type": "highlight-color",
+            "highlight_color": "#00ff43",
+            "highlight_text_color": "#00ff43",
+            "spacing_bottom": 12
+          }
+        },
+        "text_DNQDre": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our C-TACK Performance Grip Material incorporates traction right into the fabric. This innovation not only creates a strong and sticky grip, but one that’s durable, self-restoring and performs in all weather conditions. When your Cutters gloves get dirty, simply machine wash or wipe down with a damp towel and the grip will be restored.</p>",
+            "size": 100,
+            "text_position": "left",
+            "spacing_bottom": 12
+          }
+        }
+      },
+      "block_order": [
+        "heading_dDqptp",
+        "text_DNQDre"
+      ],
+      "settings": {
+        "show_accordion_divider": true,
+        "increase_border_radius": false,
+        "section_height": "six-fifty-height",
+        "enable_mobile_height": false,
+        "mobile_height": "four-fifty-height-mobile",
+        "layout": "inline",
+        "image_location": "right",
+        "image_width": "standard",
+        "image": "shopify://shop_images/UNITEDSPB_240801_Cutters_148_14268fce-bc2c-401a-af26-8f63b0af747c.jpg",
+        "block_bg_color": "",
+        "text_color": "text-dark",
+        "bg_color": "",
+        "gradient": "",
+        "section_width": "wrapper",
+        "add_gutter": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section_image_with_text_N69Ft6": {
+      "type": "section-image-with-text",
+      "blocks": {
+        "heading_RqAHjd": {
+          "type": "heading",
+          "settings": {
+            "title": "<p>REV-TACK <em>RECHARGE </em>TECHNOLOGY</p>",
+            "size": 120,
+            "text_position": "left",
+            "heading_highlight_type": "highlight-color",
+            "highlight_color": "#00ff43",
+            "highlight_text_color": "#00ff43",
+            "spacing_bottom": 12
+          }
+        },
+        "text_VewwDi": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The advanced REV-TACK grip technology redefines durability and performance by being self-restoring. Its innovative design ensures that even after heavy use, a simple wipe with a damp cloth is all it takes to restore its superior stickiness. This means you can rely on consistent, high-level grip throughout your entire game or training session without worrying about wear and tear. With REV-TACK, you get the best of both worlds: long-lasting performance and easy maintenance, so you can focus on what really matters—your game.</p>",
+            "size": 100,
+            "text_position": "left",
+            "spacing_bottom": 12
+          }
+        }
+      },
+      "block_order": [
+        "heading_RqAHjd",
+        "text_VewwDi"
+      ],
+      "settings": {
+        "show_accordion_divider": true,
+        "increase_border_radius": false,
+        "section_height": "six-fifty-height",
+        "enable_mobile_height": false,
+        "mobile_height": "four-fifty-height-mobile",
+        "layout": "inline",
+        "image_location": "left",
+        "image_width": "standard",
+        "image": "shopify://shop_images/66cf959134454bf4b7e17ebb_usb_brand_cs_newimage2-p-1600.webp",
+        "block_bg_color": "",
+        "text_color": "text-dark",
+        "bg_color": "",
+        "gradient": "",
+        "section_width": "wrapper",
+        "add_gutter": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section_image_with_text_b96GW9": {
+      "type": "section-image-with-text",
+      "blocks": {
+        "heading_Qt7z3t": {
+          "type": "heading",
+          "settings": {
+            "title": "<p><em>INNOVATIVE</em> HIGHEST PERFORMANCE GRIP</p>",
+            "size": 120,
+            "text_position": "left",
+            "heading_highlight_type": "highlight-color",
+            "highlight_color": "#00ff43",
+            "highlight_text_color": "#00ff43",
+            "spacing_bottom": 12
+          }
+        },
+        "text_cUXnGX": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The best grip means nothing without consistency, reliability, and durability. Cutters football gloves deliver in all weather—rain or cold won’t impact their performance. They’re also machine-washable, ensuring they stay clean and fresh. Plus, with Rev Tack Recharge, these gloves offer unrivaled grip reinforcement, setting a new standard in performance.</p>",
+            "size": 100,
+            "text_position": "left",
+            "spacing_bottom": 12
+          }
+        }
+      },
+      "block_order": [
+        "heading_Qt7z3t",
+        "text_cUXnGX"
+      ],
+      "settings": {
+        "show_accordion_divider": true,
+        "increase_border_radius": false,
+        "section_height": "six-fifty-height",
+        "enable_mobile_height": false,
+        "mobile_height": "four-fifty-height-mobile",
+        "layout": "inline",
+        "image_location": "right",
+        "image_width": "standard",
+        "image": "shopify://shop_images/66cf95f2d9b252125a82fa45_usb_brand_cs_newimage3-p-1600.webp",
+        "block_bg_color": "",
+        "text_color": "text-dark",
+        "bg_color": "",
+        "gradient": "",
+        "section_width": "wrapper",
+        "add_gutter": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_page_title": true,
+        "bg_color": "",
+        "gradient": "",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section_testimonials_NqzGTd": {
+      "type": "section-testimonials",
+      "blocks": {
+        "text_QFiJ6M": {
+          "type": "text",
+          "settings": {
+            "star_rating": 5,
+            "enable_border": true,
+            "heading": "We let our reviews speak for themselves.",
+            "text_size": 125,
+            "subheading": "<p>4.98 average<br/>213 reviews</p>",
+            "block_color": "#000000",
+            "text_color": "text-light",
+            "text_alignment": "text-left"
+          }
+        },
+        "testimonial_XjWxgw": {
+          "type": "testimonial",
+          "settings": {
+            "star_rating": 5,
+            "enable_border": true,
+            "heading": "Champion Worthy Gloves",
+            "text_size": 125,
+            "text": "<p>These gloves are amazing. I can't rave enough about them. We won the Tournament Championship in Orlando and were undefeated 6-0 scoring 147 pts and only giving up 19 pts in Girls 14u and finishing 2nd overall in the ESPN Tournament at Disney.  So, thank you for your quality gloves.</p>",
+            "content_size": 100,
+            "customer_name": "Natalie F.",
+            "subheading": "<p>Tampa, Florida</p>"
+          }
+        },
+        "testimonial_eMqjJB": {
+          "type": "testimonial",
+          "settings": {
+            "star_rating": 5,
+            "enable_border": true,
+            "heading": "Best Gloves",
+            "text_size": 125,
+            "text": "<p>These gloves are amazing. I have a pair and use them all the time when I’m playing ultimate frisbee. The grip is the best on the market. I would and have recommended not only these gloves but every pair of cutters out there. #gripofgreatness</p>",
+            "content_size": 100,
+            "customer_name": "Blake M.",
+            "subheading": "<p>River Falls, Wisconsin</p>"
+          }
+        },
+        "testimonial_tKgwjB": {
+          "type": "testimonial",
+          "settings": {
+            "star_rating": 5,
+            "enable_border": true,
+            "heading": "Best Lineman Gloves!",
+            "text_size": 125,
+            "text": "<p>My son only wears Cutters lineman gloves! He just started his college football career and needed new gloves!</p>",
+            "content_size": 100,
+            "customer_name": "Lynn C.",
+            "subheading": "<p>Frederick, Maryland</p>"
+          }
+        },
+        "testimonial_R7aTXN": {
+          "type": "testimonial",
+          "settings": {
+            "star_rating": 5,
+            "enable_border": true,
+            "heading": "The Real Deal!",
+            "text_size": 125,
+            "text": "<p>Cutters are the best football gloves on the market…period!</p>",
+            "content_size": 100,
+            "customer_name": "Feliciano D.",
+            "subheading": "<p>Muncy, Pennsylvania</p>"
+          }
+        },
+        "testimonial_x9BK7W": {
+          "type": "testimonial",
+          "settings": {
+            "star_rating": 5,
+            "enable_border": true,
+            "heading": "They Are Great!",
+            "text_size": 125,
+            "text": "<p>They fit great the gloves form to your hand and are compatible. My son tried them on and said he would catch every football with<br/>those on because the grip is amazing !</p>",
+            "content_size": 100,
+            "customer_name": "Michelle B.",
+            "subheading": "<p>Orlando, FL</p>"
+          }
+        },
+        "testimonial_pMxU8K": {
+          "type": "testimonial",
+          "settings": {
+            "star_rating": 5,
+            "enable_border": true,
+            "heading": "Best Gloves Ever!",
+            "text_size": 125,
+            "text": "<p>Best gloves to ever exist they been the best since they<br/>first came out.</p>",
+            "content_size": 100,
+            "customer_name": "CeeJay",
+            "subheading": "<p>Indio, CA</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_QFiJ6M",
+        "testimonial_XjWxgw",
+        "testimonial_eMqjJB",
+        "testimonial_tKgwjB",
+        "testimonial_R7aTXN",
+        "testimonial_x9BK7W",
+        "testimonial_pMxU8K"
+      ],
+      "settings": {
+        "subheading": "",
+        "subheading_size": 100,
+        "title": "OVER 50,000+  5-Star REVIEWS",
+        "heading_size": 100,
+        "text_alignment": "text-left",
+        "bg_color": "",
+        "gradient": "",
+        "testimonial_block_color": "#ffffff",
+        "star_color": "#b9fc9d",
+        "testimonial_text_color": "text-dark",
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section_collection_fryQjE": {
+      "type": "section-collection",
+      "disabled": true,
+      "settings": {
+        "collection": "new-releases",
+        "products_layout": "carousel",
+        "products_limit": 8,
+        "products_per_row_on_desktop": 4,
+        "columns_mobile": "2",
+        "text_alignment": "text-left",
+        "title": "<p><em>NEW</em> RELEASES</p>",
+        "heading_size": 100,
+        "heading_highlight_type": "highlight",
+        "highlight_color": "#00ff43",
+        "highlight_text_color": "#000000",
+        "text": "<p>Use this text to share information about your collection with your customers.</p>",
+        "text_size": 100,
+        "button_position": "top",
+        "button_text": "Shop Now",
+        "button_color": "btn--black",
+        "button_style": "btn--text",
+        "button_size": "btn--large",
+        "bg_color": "",
+        "enable_slider_mobile": true,
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "slideshow",
+    "section_overlapping_images_PF3RtH",
+    "section_text_WfGcTc",
+    "section_video_RBwYYe",
+    "section_text_PFw4RU",
+    "section_columns_pHwwy6",
+    "section_icons_row_ct6HhM",
+    "section_image_with_text_FpGwzf",
+    "section_image_with_text_N69Ft6",
+    "section_image_with_text_b96GW9",
+    "main",
+    "section_testimonials_NqzGTd",
+    "section_collection_fryQjE"
+  ]
+}

@@ -1,0 +1,39 @@
+{% assign mb_class = 'mb-0' %}{% if block.settings.enable_bottom_margin %}{% assign mb_class = 'mb-20 md:mb-40' %}{% endif %}
+<div data-section-id="{{ block.id }}" data-section-type="smart-recommendation-cart" class="relative px-6 overflow-hidden {{ mb_class }}">
+  <div class="w-full max-w-full md:max-w-680 lg:max-w-920 xl:max-w-1200 mx-auto">
+    <div class="flex items-center justify-between mb-6 md:mb-10">
+      {% if block.settings.title != blank %}
+        <h3 class="uppercase mb-0">{{ block.settings.title }}</h3>
+      {% endif %}
+    </div>
+    {%- comment -%} collection will be replaced with the one from SearchSpring {%- endcomment -%}
+    {% assign products = collections["all"].products %}
+
+    <div class="clp-slider relative">
+      <div class="product-carousel overflow-x-visible">
+        <div class="glide__track" data-glide-el="track">
+          <div class="glide__slides">
+            {%- assign handles = 'test-womens-select-glove-dupe,test-attack-full-finger-glove,womens-attack-jersey,test-womens-classic-jersey,womens-elite-pursuit-short-sleeve-graphic-jersey' | split: ',' -%}
+            {%- for handle in handles -%}
+              {%- assign smart_product = all_products[handle] -%}
+              {%- if smart_product -%}
+                {%- render 'snippet-upsell-item', product: smart_product, location: 'cart' -%}
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+        <div class="glide__arrows absolute w-screen top-1/4-screen md:top-48 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-between px-1 md:px-6" data-glide-el="controls">
+          <a href="#" class="glide__arrow glide__arrow--left button-slider-nav-light w-6 h-6 md:w-12.5 md:h-12.5 m-0 p-0 rounded-circle !flex items-center justify-center transform scale-50 md:scale-100" data-glide-dir="<">
+            {% render 'svg-arrow-left', classes: 'hidden md:block' %}
+            {% render 'svg-arrow-left', width: '14px', height: '9px', classes: 'block md:hidden' %}
+          </a>
+          <a href="#" class="glide__arrow glide__arrow--right button-slider-nav-light w-6 h-6 md:w-12.5 md:h-12.5 m-0 p-0 rounded-circle !flex items-center justify-center transform scale-50 md:scale-100" data-glide-dir=">">
+            {% render 'svg-arrow-right', classes: 'hidden md:block' %}
+            {% render 'svg-arrow-right', width: '14px', height: '9px', classes: 'block md:hidden' %}
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,113 @@
+<div
+  class="fw-collection-carousel__wrapper"
+  id="section-{{ section.id }}"
+  style="background-color: {{ section.settings.bg_color }}; color: {{ section.settings.font_color }};{% if section.settings.background_image != blank %} background-image: url('{{ section.settings.background_image | img_url: '2048x' }}');{% endif %}"
+>
+  {%- if section.settings.title != blank -%}
+    <div class="fw-collection-carousel__title">
+      <h2 style="color: {{ section.settings.font_color }};">{{ section.settings.title }}</h2>
+    </div>
+  {%- endif -%}
+
+  <div class="fw-collection-carousel__container">
+    <div id="fw-collection-carousel-{{ section.id }}" class="fw-collection-carousel__track" data-carousel="track">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'collection' -%}
+          <div class="fw-collection-carousel__card">
+            {%- assign collection = block.settings.collection -%}
+            {%- assign image = block.settings.custom_image | default: collection.featured_image -%}
+            <a href="{{ collection.url }}" class="fw-collection-carousel__card-link">
+              <div class="fw-collection-carousel__image-wrapper">
+                {%- if image != blank -%}
+                  {{ image | img_url: '800x' | img_tag: collection.title | escape }}
+                {%- else -%}
+                  {{ collection.featured_image | img_url: '800x' | img_tag: collection.title | escape }}
+                {%- endif -%}
+              </div>
+              <div class="fw-collection-carousel__text-wrapper">
+                <h3 class="fw-collection-carousel__card-title">{{ collection.title }}</h3>
+                <p class="fw-collection-carousel__card-description">Shop Collection</p>
+              </div>
+            </a>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+      <div class="fw-collection-carousel__card fw-collection-carousel__card--blank"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    var elem = document.getElementById('fw-collection-carousel-{{ section.id }}');
+    console.log(elem);
+    var flkty = new Flickity(elem, {
+      // options
+      cellAlign: 'left',
+      contain: true,
+      groupCells: '100%',
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "FW collection Carousel",
+  "tag": "section",
+  "class": "fw-collection-carousel",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "Featured collections"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#F8F6F1"
+    },
+    {
+      "type": "color",
+      "id": "font_color",
+      "label": "Font color",
+      "default": "#000000"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_image",
+          "label": "Custom Image",
+          "info": "Optional: Overrides collection featured image if selected"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Block",
+      "blocks": [
+        {
+          "type": "collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

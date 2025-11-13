@@ -1,0 +1,69 @@
+{% liquid
+  assign mb_class = 'mb-0'
+  if block.settings.enable_bottom_margin
+    assign mb_class = 'mb-20 md:mb-40'
+  endif
+
+  assign hero_height_class = 'max-h-500 md:max-h-800 lg:max-h-full'
+  assign hero_height = block.settings.hero_height
+  if hero_height == 'small'
+    assign hero_height_class = 'max-h-500 md:max-h-800 lg:max-h-720'
+  endif
+%}
+
+<div data-section-id="{{ block.id }}" data-section-type="full-cta" id="section-{{ number }}" class="relative {{ mb_class }}">
+
+  {% assign content_text_color_class = "text-black" %}
+  {% if block.settings.image != blank or block.settings.video != blank or block.settings.youtube_video != blank %}
+    {% assign content_text_color_class = "text-white" %}
+  {% endif %}
+
+  {% if block.settings.image != blank or block.settings.video != blank or block.settings.youtube_video != blank %}
+    <div class="full-cta__bg w-full h-full {{ hero_height_class }}">
+      {% if block.settings.image != blank %}
+        <picture>
+          <source media="(min-width:1200px)" data-srcset="{{ block.settings.image | img_url: 'master' }}">
+          <source media="(max-width:1199px)" data-srcset="{% if block.settings.image_mobile != blank %}{{ block.settings.image_mobile | img_url: 'master' }}{% endif %}">
+          <source media="(max-width:767px)" data-srcset="{% if block.settings.image_mobile != blank %}{{ block.settings.image_mobile | img_url: '768x', scale: 2 }}{% endif %}">
+          <img class="lazy w-full object-cover {{ hero_height_class }}" data-src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image.alt | escape }}" />
+        </picture>
+      {% elsif block.settings.video != blank or block.settings.video_1 != blank %}
+        <video class="w-full min-h-450 object-cover" autoplay="true" loop="true" muted="true" playsinline>
+          <source src="{{ block.settings.video }}" type="video/webm" />
+          <source src="{{ block.settings.video_1 }}" type="video/mp4" />
+        </video>
+      {% elsif block.settings.youtube_video != blank %}
+        <div class="relative pt-[56.25%] h-full">
+          <iframe class="absolute inset-0" src="https://www.youtube.com/embed/{{ block.settings.youtube_video.id }}?rel=0&version=3&autoplay=1&controls=0&showinfo=0&playlist={{ block.settings.youtube_video.id }}&loop=1&mute=1" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      {% endif %}
+      {% if block.settings.overlay_color != blank and block.settings.overlay_opacity != blank %}
+        <div class="full-cta__bg-overlay absolute w-full h-full inset-0" style="background-color: {{ block.settings.overlay_color }}; opacity: {{ block.settings.overlay_opacity }};"></div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class="full-cta__content absolute inset-0 flex flex-col align-center justify-end md:justify-center md:px-6">
+    <div class="w-full max-w-full mx-auto md:max-w-1200">
+      <div class="w-full max-w-710 py-10 px-6 md:px-15 md:py-15" style="background-color: rgba({{ block.settings.text_overlay_color }}, {{ block.settings.overlay_opacity }});">
+        {% if block.settings.title != blank %}
+          <h2 class="uppercase mb-0 {{ content_text_color_class }}">{{ block.settings.title }}</h2>
+        {% endif %}
+        {% if block.settings.text != blank %}
+          <p class="mt-4 mb-0 mx-auto md:mt-8 max-w-full-width-content text-p-md {{ content_text_color_class }} {% unless block.settings.enable_description %}hidden md:block{% endunless %}">{{ block.settings.text }}</p>
+        {% endif %}
+        <div class="full-cta__action flex flex-wrap">
+          {% if block.settings.btn_label_1 != blank and block.settings.btn_link_1 != blank %}
+            <a href="{{ block.settings.btn_link_1 }}" class="{% if content_text_color_class == "text-white" %} button-outline-light {% else %} button-outline-dark {% endif %} hidden xl:block w-62.5 mr-10 mb-0 mt-4 md:mt-10">{{ block.settings.btn_label_1 }}</a>
+            <a href="{{ block.settings.btn_link_1 }}" class="inline-block xl:hidden font-semibold text-special-xs mt-4 px-0 h-5 border border-t-0 border-l-0 border-r-0 border-b-2 uppercase font-sora {% if content_text_color_class == "text-white" %} text-white border-white {% else %} text-black border-black {% endif %} mr-6">{{ block.settings.btn_label_1 }}</a>
+          {% endif %}
+          {% if block.settings.btn_label_2 != blank and block.settings.btn_link_2 != blank %}
+            <a href="{{ block.settings.btn_link_2 }}" class="{% if content_text_color_class == "text-white" %} button-outline-light {% else %} button-outline-dark {% endif %} hidden xl:block w-62.5 mr-10 mb-0 mt-4 md:mt-10">{{ block.settings.btn_label_2 }}</a>
+            <a href="{{ block.settings.btn_link_2 }}" class="inline-block xl:hidden font-semibold text-special-xs mt-4 px-0 h-5 border border-t-0 border-l-0 border-r-0 border-b-2 uppercase font-sora {% if content_text_color_class == "text-white" %} text-white border-white {% else %} text-black border-black {% endif %}">{{ block.settings.btn_label_2 }}</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

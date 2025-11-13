@@ -1,0 +1,208 @@
+{% assign mb_class = 'mb-0' %}{% if block.settings.enable_bottom_margin %}{% assign mb_class = 'mb-20' %}{% endif %}
+<div data-section-id="{{ section.id }}" data-section-type="3-grid" class="relative px-6 md:px-5 overflow-hidden {{ mb_class }} bg-{{ section.settings.background | default: 'white' }}">
+  <div class="mx-auto max-w-full md:max-w-680 lg:max-w-920 xl:max-w-1200 py-10 md:py-20">
+    <div class="flex flex-wrap justify-between">
+      {% if section.settings.title != blank %}
+        <h2 class="uppercase w-full mb-8 overflow-hidden {% if section.settings.background == 'pine' %} text-white {% endif %}">
+          {{ section.settings.title }}
+        </h2>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <p class="w-full lg:max-w-500 mb-4 lg:mb-10 {% if section.settings.background == 'pine' %} text-white {% endif %}">{{ section.settings.text }}</p>
+      {% endif %}
+      {% if section.settings.btn_label != blank and section.settings.btn_link != blank %}
+        <a href="{{ section.settings.btn_link }}" class="w-full mb-10 hidden lg:flex items-center justify-center {% if section.settings.background == 'pine' %} button-outline-light {% else %} button-outline-stone {% endif %}"><span class="font-sora text-special uppercase font-semibold">{{ section.settings.btn_label }}</span></a>
+        <a href="{{ section.settings.btn_link }}" class="border-b-2 mb-8 lg:hidden {% if section.settings.background == 'pine' %} bg-transparent border-white text-white  hover:bg-transparent {% else %} border-black {% endif %}"><span class="font-sora text-special uppercase font-semibold">{{ section.settings.btn_label }}</span></a>
+      {% endif %}
+    </div>
+    <div class="clp-slider relative">
+      <div class="grid-slider md:w-full overflow-x-visible">
+        <div class="glide__track" data-glide-el="track">
+          <div class="glide__slides md:w-auto md:flex md:flex-wrap md:-mx-2.5">
+            {% for block in section.blocks %}
+              {% assign key_image = 'image' %}
+              {% assign key_video = 'youtube_video' %}
+              {% assign key_tag = 'tag' %}
+              {% assign key_title = 'title' %}
+              {% assign key_info = 'info' %}
+              {% assign key_text = 'text' %}
+              {% assign key_btn_label = 'btn_label' %}
+              {% assign key_btn_link = 'btn_link' %}
+              {% if block.settings[key_image] != blank or
+                    block.settings[key_video] != blank or
+                    block.settings[key_tag] != blank or
+                    block.settings[key_title] != blank or
+                    block.settings[key_info] != blank or
+                    block.settings[key_text] != blank or
+                    block.settings[key_btn_label] != blank or
+                    block.settings[key_btn_link] != blank %}
+                <div class="glide__slide md:w-1/3 md:px-2.5">
+                  {% if block.settings[key_video] != blank %}
+                    {% if block.settings[key_image] != blank %}
+                      <div class="relative" data-section-type="centered-content">
+                        <div class="centered-content__video relative pt-[100%] opacity-0" data-yt-video-id="{{ block.settings[key_video].id }}">
+                          <iframe id="yt_video_{{ block.id }}_{{ i }}" class="absolute inset-0" src="https://www.youtube.com/embed/{{ block.settings[key_video].id }}?rel=0&version=3&controls=0&showinfo=0&playlist={{ block.settings[key_video].id }}&loop=1&mute=1" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="absolute inset-0 bg-white z-1 h-0 pt-[100%]">
+                          <img class="lazy absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full object-cover" data-src="{{ block.settings[key_image] | img_url: 'master' }}" alt="{{ block.settings[key_image].alt | escape }}" />
+                          <span class="play-video-btn bg-bright-yellow hover:bg-[faded-bright-yellow] w-8.5 h-8.5 lg:w-23.5 lg:h-23.5 rounded-full absolute top-1/2 left-1/2 cursor-pointer transform -translate-x-1/2 -translate-y-1/2 z-1" data-video="{{video_src | strip }}">
+                            {%- render 'svg-play-light', classes: 'absolute z-2 top-1/2 left-1/2 cursor-pointer transform -translate-y-1/2 -translate-x-1/3 w-4 h-6 lg:w-8 lg:h-12' -%}
+                          </span>
+                        </div>
+                      </div>
+                    {% else %}
+                      <div class="relative pt-[100%]">
+                        <iframe class="absolute inset-0" src="https://www.youtube.com/embed/{{ block.settings[key_video].id }}?rel=0&version=3&autoplay=1&controls=0&showinfo=0&playlist={{ block.settings[key_video].id }}&loop=1&mute=1&autoplay=1" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      </div>
+                    {% endif %}
+                  {% elsif block.settings[key_image] != blank %}
+                    <a class="relative pt-[100%] block" href="{{block.settings[key_btn_link]}}">
+                      <img class="lazy absolute inset-0 w-full h-full object-cover" data-src="{{ block.settings[key_image] | img_url: 'master' }}" alt="{{ block.settings[key_image].alt | escape }}" />
+                    </a>
+                  {% endif %}
+                  <div class="pr-4 pt-4 whitespace-normal">
+                    {% if block.settings[key_tag] != blank %}
+                      {%- comment -%} No Shopify-tag links for launch -- they're using their external blog {%- endcomment -%}
+                      {%- comment -%}
+                      {% assign blog_url = block.settings[key_tag] | handleize | prepend: '/blogs/' %}
+                      <a href="{{ blog_url }}" class="font-sora font-normal text-special-s md:text-special uppercase mb-1 hover:border hover:border-l-0 hover:border-r-0 hover:border-t-0 hover:border-b-2 {% if section.settings.background == 'pine' %} text-white hover:border-white {% else %} text-pine hover:border-pine {% endif %}">
+                      {%- endcomment -%}
+                        <div class="font-sora font-normal text-special-s md:text-special uppercase mb-1 {% if section.settings.background == 'pine' %}text-white{% else %}text-pine {% endif %}">
+                          {{- block.settings[key_tag] -}}
+                        </div>
+                        {%- comment -%}
+                      </a>
+                      {%- endcomment -%}
+                    {% endif %}
+                    {% if block.settings[key_title] != blank %}
+                      <a class="block font-semibold md:hover:underline mb-2 md:text-h5 md:tracking-normal {% if section.settings.background == 'pine' %} text-white {% else %}  md:hover:text-pine {% endif %}" href="{{ block.settings[key_btn_link] }}">{{ block.settings[key_title] }}</a>
+                    {% endif %}
+                    {% if block.settings[key_info] != blank %}
+                      <p class="font-sora font-semibold text-p-s uppercase tracking-1 mb-4 {% if section.settings.background == 'pine' %} text-white {% else %} text-stone {% endif %}">{{ block.settings[key_info] }}</p>
+                    {% endif %}
+                    {% if block.settings[key_text] != blank %}
+                      <p class="text-p-s mb-6 {% if section.settings.background == 'pine' %} text-white {% else %} text-stone {% endif %}">{{ block.settings[key_text] }}</p>
+                    {% endif %}
+                    {% if block.settings[key_btn_label] != blank and block.settings[key_btn_link] != blank %}
+                      <a href="{{ block.settings[key_btn_link] }}" class="font-sora font-normal uppercase text-special border-b-2 {% if section.settings.background == 'pine' %} text-white border-white md:hover:border-bright-yellow md:hover:text-bright-yellow {% else %} text-black md:hover:text-pine border-black md:hover:border-pine {% endif %}">{{ block.settings[key_btn_label] }}</a>
+                    {% endif %}
+                  </div>
+                </div>
+                {% capture slider_nav %}
+                  {{ slider_nav }}
+                  <div class="glide__bullet mx-0.5 w-2 h-2 md:w-3 md:h-3 p-0.5 rounded-circle cursor-pointer" data-glide-dir="={{ forloop.index0 }}"><span class="block w-full h-full rounded-circle"></span></div>
+                {% endcapture %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="glide__bullets w-full flex justify-center mt-10 md:hidden" data-glide-el="controls[nav]">
+          {{ slider_nav }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "BCL CTA Grid",
+  "settings": [
+    {
+      "type": "select",
+      "id": "background",
+      "options": [
+        { "value": "white", "label": "White"},
+        { "value": "pine", "label": "Green"},
+        { "value": "sand", "label": "Sand"}
+      ],
+      "label": "Background Color",
+      "default": "white"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button Label",
+      "default": "View all"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_bottom_margin",
+      "label": "Enable Bottom Margin",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "cta",
+      "name": "CTA",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "video_url",
+          "id": "youtube_video",
+          "accept": ["youtube"],
+          "label": "Youtube Video"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Tag"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "info",
+          "label": "Info"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "btn_label",
+          "label": "Button Label",
+          "default": "Read more"
+        },
+        {
+          "type": "url",
+          "id": "btn_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "BCL CTA Grid",
+      "category": "Blog"
+    }
+  ]
+}
+
+{% endschema %}

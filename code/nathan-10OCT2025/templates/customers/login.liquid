@@ -1,0 +1,119 @@
+{%- comment -%}
+  Check URL Param for different PRO experiences
+  https://community.shopify.com/c/Shopify-Design/URL-Parameters-in-LIQUID/m-p/808960/highlight/true#M203580
+
+  expertvoice example: https://usbns.myshopify.com/account/login?referrer=expertvoice&firstName=Cameron&lastName=Brown&email=cameron.brown@ehousestudio.com&d=20&limit=1000&code=CnekmNIboa9U
+{%- endcomment -%}
+{%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+{%- liquid
+  assign page_url = contentForQuerystring | split: '"pageurl":"' | last | split: '"' | first | split: '.myshopify.com' | last | replace: '\/','/' | replace: '%20',' ' | replace: '\u0026','&'
+  assign param_referrer = false
+  assign param_firstname = false
+  assign param_lastname = false
+  assign param_email = false
+  assign param_discount = false
+  assign param_group_code = false
+  assign param_limit = false
+
+  for i in (1..1)
+    unless page_url contains "?"
+      break
+    endunless
+    assign query_string = page_url | split: '?' | last
+    assign qry_parts= query_string | split: '&'
+    for part in qry_parts
+      assign key_and_value = part | split: '='
+      if key_and_value.size > 1
+        if key_and_value[0] == 'referrer'
+          assign param_referrer = key_and_value[1]
+        elsif key_and_value[0] == 'firstName'
+          assign param_firstname = key_and_value[1] | url_decode
+        elsif key_and_value[0] == 'lastName'
+          assign param_lastname = key_and_value[1] | url_decode
+        elsif key_and_value[0] == 'email'
+          assign param_email = key_and_value[1] | url_decode
+        elsif key_and_value[0] == 'd'
+          assign param_discount = key_and_value[1] | url_decode
+        elsif key_and_value[0] == 'limit'
+          assign param_limit = key_and_value[1] | url_decode
+        elsif key_and_value[0] == 'code'
+          assign param_group_code = key_and_value[1] | url_decode
+        endif
+      endif
+    endfor
+  endfor
+
+  if shop.permanent_domain == 'usbns.myshopify.com'
+    assign storefront = "US"
+  endif
+-%}
+
+{%- comment -%}
+  If a customer uses Expert Voice parameters but isn't coming from the expertvoice.com domain,
+  show them the normal experience
+{%- endcomment -%}
+{%- if param_referrer == "expertvoice" -%}
+  <script>
+    //if(!document.referrer.includes("expertvoice.com")) {
+    //  window.location.replace("/account/login")
+    //}
+  </script>
+{%- endif -%}
+
+<section class="account_page min-h-3/4-screen">
+    <style>
+    .emergency-messaging p {
+      margin: 20px 0 20px 0 !important;
+    }
+    </style>
+  {%- if settings.login_page_messaging != blank -%}
+    {%- unless param_referrer -%}
+      <div class="emergency-messaging mx-auto mt-10 p-4 max-w-lg border border-grey-one text-center">{{ settings.login_page_messaging }}</div>
+    {%- else -%}
+    {%- comment -%}
+      10/1/2021 ^
+
+      ATTENTION:Please note that we have a new website and require existing customers and Pro program members to  create a new
+      account. Once created, check your inbox for an activation email. If you need any assistance please contact customer
+      service at cs@nathansports.com.
+
+    {%- endcomment -%}
+      {%- if param_referrer == "expertvoice" -%}
+        {%- capture register_link -%}/account/register?view=expertvoice&firstName={{ param_firstname | url_encode }}&lastName={{ param_lastname | url_encode }}&email={{ param_email | url_encode }}&d={{ param_discount | url_encode }}&limit={{ param_limit | url_encode }}&code={{ param_group_code | url_encode }}{%- endcapture -%}
+        <div class="emergency-messaging mx-auto mt-10 p-4 max-w-lg border border-grey-one text-center">
+
+          <p><strong>ATTENTION EXPERTVOICE!</strong> Do not leave this page without reading this:</p>
+          <ul>
+            <li><p><strong>Haven’t logged into your PEARL iZUMi account since BEFORE October 2021 or need to create a new account?</strong>
+          Welcome! We have a new site! <a href="{{ register_link }}">Click here</a> to finishing setting up your new account to access your ExpertVoice discount.</p></li>
+            <li><p><strong>Logged into Your Account AFTER October 2021? Simply sign in below!</strong></p></li>
+            <li><p><strong>Still Having issues?</strong> Please contact customer service at <a href="mailto:cs@nathansports.com">cs@nathansports.com</a>.</p></li>
+          </ul>
+        </div>
+      {%- elsif param_referrer == "outdoorprolink" -%}
+        {%- assign register_link = "/account/register?view=outdoorprolink" -%}
+        <div class="emergency-messaging mx-auto mt-10 p-4 max-w-lg border border-grey-one text-center">
+          <p>
+            <strong>Attention Outdoor Prolink Program Members:</strong>
+          </p>
+          <p>
+            Please note that we have a new website and require existing <strong>Outdoor Prolink program members</strong> to create a new account.
+            Once created, check your inbox for an <strong>activation email</strong>.
+
+            If you need any assistance please contact customer service at <a href="mailto:cs@nathansports.com">cs@nathansports.com</a>.
+          </p>
+        </div>
+      {%- endif -%}
+    {%- endunless -%}
+  {%- endif -%}
+
+  {%- include 'customer-login-landing'
+        referrer: param_referrer
+        firstname: param_firstname
+        lastname: param_lastname
+        email: param_email
+        discount_level: param_discount
+        purchase_limit: param_limit
+        group_code: param_group_code
+  -%}
+</section>

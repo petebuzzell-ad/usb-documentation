@@ -1,0 +1,215 @@
+{% liquid
+  assign hover_bg_class = 'hover:bg-dark-stone'
+  if section.settings.bg_color == 'pine'
+    assign hover_bg_class = 'hover:bg-dark-green'
+  elsif section.settings.bg_color == 'dark-stone'
+    assign hover_bg_class = 'hover:bg-black'
+  endif
+
+  if shop.permanent_domain == 'pearlizumi.myshopify.com'
+    assign storefront = "US"
+  elsif shop.permanent_domain == 'pearlizumi-ca.myshopify.com'
+    assign storefront = "CA"
+  elsif shop.permanent_domain == 'pearl-izumi-int.myshopify.com'
+    assign storefront = "INT"
+  endif
+%}
+<!-- Utility Bar -->
+<div class="relative flex items-center justify-start lg:justify-between h-7.5 md:h-9 px-10.5 md:px-14 lg:px-20 bg-{{ section.settings.bg_color }} z-[102]" data-utility-bar>
+  <!-- Country/Language Selector -->
+  {% render 'language-selector' hover_bg_class: hover_bg_class %}
+
+  <!-- Promo Banner -->
+  {%- if section.settings.enable_promo == true -%} 
+    {%- include 'promo-banner' -%}
+  {%- endif -%}
+
+  <!-- Store Finder + Sign In -->
+  <div class="flex items-center h-full">
+    <a class="hidden lg:flex items-center text-p-s h-full text-white mr-3 px-2.5 {{ hover_bg_class }}" href="/pages/store-locator">
+      <span class="text-white">
+        {% render 'svg-location-pin' %}
+      </span>
+      {{ 'layout.navigation.find_store' | t }}
+    </a>
+    
+    {%- unless storefront == "INT" -%}
+    <a class="hidden lg:flex items-center text-p-s h-full text-white px-2.5 {{ hover_bg_class }}" href="/account">
+      <span class="text-white">
+        {% render 'svg-account' %}
+      </span>
+      {% if customer %}{{ 'layout.customer.account' | t }}{% else %}{{ 'layout.customer.log_in' | t }}{% endif %}
+    </a>
+    {%- endunless -%}
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Utility Bar",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Promo Settings"
+      },
+      {
+        "label": "Enable Promo Text",
+        "type": "checkbox",
+        "id": "enable_promo",
+        "default": true
+      },
+      {
+        "label": "Banner Background Color",
+        "type": "select",
+        "id": "bg_color",
+        "default": "stone",
+        "options": [
+          {
+            "value": "pine",
+            "label": "Pine"
+          },
+          {
+            "value": "stone",
+            "label": "Stone"
+          },
+          {
+            "value": "dark-stone",
+            "label": "Dark Stone"
+          }
+        ]
+      },
+      {
+        "label": "Code Snippet from Language app",
+        "type": "html",
+        "id": "language"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "promo_message",
+        "name": "Promo Message (Global)",
+        "settings": [
+          {
+            "type": "text",
+            "id": "desktop_message",
+            "label": "Desktop Message",
+            "default": "Free Shipping on Orders Over $50.",
+            "info": "The desktop message will be truncated over 50 characters."
+          },
+          {
+            "type": "text",
+            "id": "mobile_message",
+            "label": "Mobile Message",
+            "default": "Free Shipping on Orders Over $50.",
+            "info": "The mobile message will be truncated over 40 characters."
+          },
+          {
+            "type": "text",
+            "id": "promo_link_text",
+            "label": "Promo Link Text",
+            "default": "Details"
+          },
+          {
+            "id": "promo_link",
+            "type": "url",
+            "label": "Promo Link URL"
+          }
+        ]
+      },
+      {
+        "type": "discount_message_pro",
+        "name": "Message (Pro Purchase)",
+        "settings": [
+          {
+            "type": "text",
+            "id": "desktop_message",
+            "label": "Desktop Message",
+            "default": "Free Shipping on Orders Over $50.",
+            "info": "The desktop message will be truncated over 50 characters."
+          },
+          {
+            "type": "text",
+            "id": "mobile_message",
+            "label": "Mobile Message",
+            "default": "Free Shipping on Orders Over $50.",
+            "info": "The mobile message will be truncated over 40 characters."
+          },
+          {
+            "type": "text",
+            "id": "promo_link_text",
+            "label": "Promo Link Text",
+            "default": "Details"
+          },
+          {
+            "id": "promo_link",
+            "type": "url",
+            "label": "Promo Link URL"
+          }
+        ]
+      },
+      {
+        "type": "discount_message_voice",
+        "name": "Message (Expert Voice)",
+        "settings": [
+          {
+            "type": "text",
+            "id": "desktop_message",
+            "label": "Desktop Message",
+            "default": "Free Shipping on Orders Over $50.",
+            "info": "The desktop message will be truncated over 50 characters."
+          },
+          {
+            "type": "text",
+            "id": "mobile_message",
+            "label": "Mobile Message",
+            "default": "Free Shipping on Orders Over $50.",
+            "info": "The mobile message will be truncated over 40 characters."
+          },
+          {
+            "type": "text",
+            "id": "promo_link_text",
+            "label": "Promo Link Text",
+            "default": "Details"
+          },
+          {
+            "id": "promo_link",
+            "type": "url",
+            "label": "Promo Link URL"
+          }
+        ]
+      },
+      {
+        "type": "discount_message_outdoor",
+        "name": "Message (Outdoor Pro)",
+        "settings": [
+          {
+            "type": "text",
+            "id": "desktop_message",
+            "label": "Desktop Message",
+            "default": "Free Shipping on Orders Over $50.",
+            "info": "The desktop message will be truncated over 50 characters."
+          },
+          {
+            "type": "text",
+            "id": "mobile_message",
+            "label": "Mobile Message",
+            "default": "Free Shipping on Orders Over $50.",
+            "info": "The mobile message will be truncated over 40 characters."
+          },
+          {
+            "type": "text",
+            "id": "promo_link_text",
+            "label": "Promo Link Text",
+            "default": "Details"
+          },
+          {
+            "id": "promo_link",
+            "type": "url",
+            "label": "Promo Link URL"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

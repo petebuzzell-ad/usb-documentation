@@ -1,0 +1,147 @@
+<div  data-section-id="{{ section.id }}" data-section-type="slideshow-section" class="lg:mb-30 md:mb-18 mb-16">
+  <div class="container mx-auto md:px-11 xl:px-0">
+    {% if section.settings.image_desk != blank %}
+    <div class="relative flex{% if section.settings.image_position == 'right' %} md:flex-row-reverse{% else %} md:flex-row{% endif %} flex-col">
+      <div class="md:max-w-65% w-full">
+        {% if section.settings.image_desk != blank %}
+          {% assign section_image = section.settings.image_desk | img_url: 'master'  %}
+        {% endif %}
+        
+        {% if section.settings.image_mob != blank %}
+          {% assign section_image_mobile = section.settings.image_mob | img_url: 'master'  %}
+        {% endif %}
+        <picture>
+          <source media="(max-width: 767px)" data-srcset="{%- if section_image_mobile != blank -%}{{ section_image_mobile }}{%- else -%}{{ section_image }}{%- endif -%}">
+          <source media="(min-width: 768px)" data-srcset="{{ section_image }}">
+          <img data-src="{{ section_image }}" alt="{{ section.settings.image.alt }}" class="lazy w-full md:rounded-sm loaded">
+        </picture>
+      </div>
+      
+      <div class="md:absolute md:w-5/6 md:max-w-1/2 max-w-85% py-10 px-5 mx-auto -mt-18 md:m-0 md:mt-0 xl:py-20 xl:px-20 md:py-10 md:px-9 transform w-full lg:bottom-24 md:bottom-14{% if section.settings.image_position == 'right' %}  md:right-1/2{% else %} md:left-1/2{% endif %}{% if section.settings.overlay == 'white-overlay' %} text-black{% elsif section.settings.overlay == 'black-overlay' %} text-white{% else %}{% if section.settings.text_color == 'white' %} text-white{% else %} text-black{% endif %}{%endif%}">
+        {% if section.settings.overlay == 'white-overlay' %}
+          <div class="fixed top-0 left-0 right-0 bottom-0 rounded-sm bg-ice-grey -z-1 opacity-100"></div>
+        {% elsif section.settings.overlay == 'black-overlay' %}
+          <div class="fixed top-0 left-0 right-0 bottom-0 rounded-sm bg-black -z-1 opacity-100"></div>
+        {% endif %}
+        {% if section.settings.sub_title != blank %}
+        <p class="{% if section.settings.overlay == 'white-overlay' %}text-special-md font-semibold{% else %}special{% endif %} md:mb-4 mb-2 text-center text-{{ section.settings.text_color }}">
+          {{ section.settings.sub_title }}
+        </p>
+        {% endif %}
+        {% if section.settings.text != blank %}
+        <h2 class="text-center lg:mb-8 md:mb-6 tracking-normal md:leading-40 xl:px-10 text-{{ section.settings.text_color }}">
+          {{ section.settings.text }}
+        </h2>
+        {% endif %}
+        {% if section.settings.description != blank %}
+        <p class="text-center lg:mb-8 mb-6 text-p-x font-medium tracking-normal text-{{ section.settings.text_color }}">
+          {{ section.settings.description }}
+        </p>
+        {% endif %}
+        {% if section.settings.button != blank %}
+        <a href="{% if section.settings.link == empty %}#{% else %}{{ section.settings.link }}{% endif %}" class="button{% if section.settings.overlay == 'white-overlay' %} button-dark{% else %} button-light{% endif %} mx-auto font-semibold md:max-w-btn max-w-btn-sm">
+          {{ section.settings.button }}
+        </a>
+        {% endif %}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Banner With Text",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_desk",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mob",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "radio",
+      "id": "image_position",
+      "label": "Image Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "overlay",
+      "label":"Overlay",
+      "default": "none",
+      "options": [
+        {
+          "label": "Light Grey",
+          "value": "white-overlay"
+        },
+        {
+          "label": "Black",
+          "value": "black-overlay"
+        },
+        {
+          "label": "None",
+          "value": "none"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "text_color",
+      "label":"Text Color",
+      "default": "white",
+      "options": [
+        {
+          "label": "White",
+          "value": "white"
+        },
+        {
+          "label": "Black",
+          "value": "black"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "sub_title",
+      "label": "Title",
+      "default": "Image with text overlay"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "button",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner With Text",
+      "category": "Banner"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,35 @@
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+-%}
+
+<div class="fixed lg:sticky z-[100] w-full bottom-0 lg:bottom-auto top-auto lg:top-20 flex items-center justify-between py-6 lg:py-5 px-6 md:px-14 lg:px-24 bg-white shadow-sticky-atc-mobile lg:shadow-sticky-atc" data-pdp-sticky-atc>
+  <div class="flex-1 hidden lg:flex items-center px-4 gap-8">
+    <img src="{{ product.featured_image | image_url: width: 100 }}" alt="{{ product.title }}" class="block aspect-square w-[50px] object-contain" data-pdp-sticky-atc-image />
+    <div class="flex flex-col gap-1">
+      <h2 class="text-h5-m xl:text-h5 font-sora font-semibold text-black tracking-normal m-0">{{ product.title }}</h2>
+
+      {%- unless product.has_only_default_variant -%}
+        <div class="flex items-center gap-2" data-pdp-sticky-atc-options>
+          {%- for option in product.options -%}
+            <div class="text-special-xs text-stone font-bold uppercase">
+              <span>{{ option }}:</span>
+              <span data-option-index="{{ forloop.index0 }}">{{ current_variant.options[forloop.index0] }}</span>
+            </div>
+
+            {%- unless forloop.last -%}
+              <div class="w-px h-3 bg-stone"></div>
+            {%- endunless -%}
+          {%- endfor -%}
+        </div>
+      {%- endunless -%}
+    </div>
+  </div>
+  <div class="w-full lg:w-auto">
+    <button
+      data-add-to-cart=""
+      name="add"
+      class="button button-primary py-2 px-4 w-full text-special uppercase font-lato font-semibold" type="submit" onclick="eHS.productBuyBox.addToCart(event)">
+      Add To Cart
+    </button>
+  </div>
+</div>

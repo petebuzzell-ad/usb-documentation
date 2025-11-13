@@ -1,0 +1,512 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Nathan Sports",
+    "theme_version": "1.0.0",
+    "theme_author": "eHouse Studio",
+    "theme_documentation_url": "https://docs.google.com/document/d/1f34FRolgdqH2n2iZPnKMdplo1Ck49LUp8q4OFgQ1dE8",
+    "theme_support_url": "https://github.com/the-couch/slater-theme"
+  },
+  {
+    "name": "Pro Member Features",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Enable Pro Homepage sections"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_pro_homepage",
+        "label": "Enable Pro Purchase Homepage Sections",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_ev_homepage",
+        "label": "Enable ExpertVoice Homepage Sections",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_op_homepage",
+        "label": "Enable Outdoor Prolink Homepage Sections",
+        "default": false
+      },
+      {
+        "type": "richtext",
+        "id": "login_page_messaging",
+        "label": "Login Page Messaging",
+        "info": "This is a safeguard in case you need to quickly show messaging to your customers when they're logging in."
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "select",
+        "id": "type_base_size",
+        "label": "Base size",
+        "default": "16px",
+        "options": [
+          {
+            "value": "14px",
+            "label": "14px"
+          },
+          {
+            "value": "15px",
+            "label": "15px"
+          },
+          {
+            "value": "16px",
+            "label": "16px"
+          },
+          {
+            "value": "17px",
+            "label": "17px"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "General colors"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary color",
+        "default": "#000",
+        "info": "Used for text links, and primary buttons"
+      },
+      {
+        "type": "color",
+        "id": "color_body_text",
+        "label": "Text color",
+        "default": "#000",
+        "info": "Color used for content and paragraph text"
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Social sharing options"
+      },
+      {
+        "type": "checkbox",
+        "id": "share_facebook",
+        "label": "Share on Facebook",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_instagram",
+        "label": "Share on Instagram",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_twitter",
+        "label": "Tweet on Twitter",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_linkedin",
+        "label": "Pin on Linkedin",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_pinterest",
+        "label": "Pin on Pinterest",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_youtube",
+        "label": "Share on Youtube",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Sharing links"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook link"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram link"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "Twitter link"
+      },
+      {
+        "type": "text",
+        "id": "social_linkedin_link",
+        "label": "Linkedin link"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_link",
+        "label": "Pinterest link"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": "Youtube link"
+      }
+    ]
+  },
+  {
+    "name": "Product Feature Icons",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Sustainability Icon"
+      },
+      {
+        "type": "image",
+        "id": "sustainability_icon",
+        "label": "Sustainability Icon (PNG)"
+      },
+      {
+        "type": "textarea",
+        "id": "sustainability_icon_svg",
+        "label": "Sustainability Icon (SVG)"
+      },
+      {
+        "type": "header",
+        "content": "Shirt Icon"
+      },
+      {
+        "type": "image",
+        "id": "shirt_icon",
+        "label": "Shirt Icon (PNG)"
+      },
+      {
+        "type": "textarea",
+        "id": "shirt_icon_svg",
+        "label": "Shirt Icon (SVG)"
+      },
+      {
+        "type": "header",
+        "content": "Jacket Icon"
+      },
+      {
+        "type": "image",
+        "id": "jacket_icon",
+        "label": "Jacket Icon (PNG)"
+      },
+      {
+        "type": "textarea",
+        "id": "jacket_icon_svg",
+        "label": "Jacket Icon (SVG)"
+      },
+      {
+        "type": "header",
+        "content": "Shorts Icon"
+      },
+      {
+        "type": "image",
+        "id": "short_icon",
+        "label": "Shorts Icon (PNG)"
+      },
+      {
+        "type": "textarea",
+        "id": "shorts_icon_svg",
+        "label": "Shorts Icon (SVG)"
+      },
+      {
+        "type": "header",
+        "content": "Shoe Icon"
+      },
+      {
+        "type": "image",
+        "id": "shoe_icon",
+        "label": "Shoe Icon (PNG)"
+      },
+      {
+        "type": "textarea",
+        "id": "shoe_icon_svg",
+        "label": "Shoe Icon (SVG)"
+      },
+      {
+        "type": "header",
+        "content": "Sock Icon"
+      },
+      {
+        "type": "image",
+        "id": "sock_icon",
+        "label": "Sock Icon (PNG)"
+      },
+      {
+        "type": "textarea",
+        "id": "sock_icon_svg",
+        "label": "Sock Icon (SVG)"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "cart_notes_enable",
+        "label": "Enable cart notes",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Free Shipping",
+        "info": "NOTE: These settings only affect the front-end messaging for Free Shipping. The backend component for Free Shipping will be configurable in the Script Editor app."
+      },
+      {
+        "type": "checkbox",
+        "id": "free_shipping_enabled_normals",
+        "label": "Enable Free Shipping for Non-Pros (when threshold is met)",
+        "info": "Free Shipping dependent on threshold below. Note: this does not apply to Rates set in the Shopify settings -- ex. if your default rate is Free Shipping, they will receive free shipping.",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "free_shipping_enabled_pros",
+        "label": "Enable Free Shipping for Pros (when threshold is met)",
+        "info": "Free Shipping dependent on threshold below.",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "continue_shopping_text",
+        "label": "Continue Shopping Text",
+        "default": "Continue Shopping"
+      },
+      {
+        "type": "url",
+        "id": "continue_shopping_link",
+        "label": "continue_shopping_link",
+        "info": "Continue Shopping Link"
+      },
+      {
+        "type": "text",
+        "id": "free_shipping_threshold",
+        "label": "Free Shipping Threshold (Normal)",
+        "info": "Site messaging will show Free Shipping progress based on this purchase threshold (in $) for customers who do not have any customer tags",
+        "default": "0"
+      },
+      {
+        "type": "text",
+        "id": "free_shipping_threshold_outdoor",
+        "label": "Free Shipping Threshold (Outdoor Pro)",
+        "info": "Site messaging will show Free Shipping progress based on this purchase threshold (in $) for customers who have 'Outdoor Pro' tags",
+        "default": "175"
+      },
+      {
+        "type": "text",
+        "id": "free_shipping_threshold_expert",
+        "label": "Free Shipping Threshold (Expert Voice)",
+        "info": "Site messaging will show Free Shipping progress based on this purchase threshold (in $) for customers who have 'Expert Voice' tags",
+        "default": "175"
+      },
+      {
+        "type": "text",
+        "id": "free_shipping_threshold_pro",
+        "label": "Free Shipping Threshold (Pro Purchase)",
+        "info": "Site messaging will show Free Shipping progress based on this purchase threshold (in $) for customers who have 'Pro Purchase' tags",
+        "default": "175"
+      },
+      {
+        "type": "text",
+        "id": "free_shipping_success",
+        "label": "Free Shipping Success Message",
+        "default": "Congrats! You get free shipping"
+      },
+      {
+        "type": "text",
+        "id": "shipping_taxes_message",
+        "label": "Shipping and Taxes Message",
+        "info": "Message for non-Pro users",
+        "default": "*Shipping & taxes calculated at checkout"
+      }
+    ]
+  },
+  {
+    "name": "Brand Value Call Out",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "brand_value_callout_show",
+        "label": "Show/Hide",
+        "default": false
+      },
+      {
+        "type": "richtext",
+        "id": "brand_value_callout_content",
+        "label": "Content"
+      },
+      {
+        "type": "image_picker",
+        "id": "brand_value_callout_icon",
+        "label": "Icon"
+      },
+      {
+        "type": "textarea",
+        "id": "brand_value_callout_svg",
+        "label": "Optional SVG Icon",
+        "info": "If populated, will overwrite upload jpg/png field."
+      },
+      {
+        "type": "select",
+        "id": "brand_value_callout_bg_color",
+        "label": "Background Color",
+        "options": [
+          {
+            "value": "orange-four",
+            "label": "Light Orange"
+          },
+          {
+            "value": "grey-seven",
+            "label": "Light Grey"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Blog",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_excerpt_in_tiles",
+        "label": "Show Excerpt In Blog Tiles",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon image",
+        "info": "Will be scaled down to 32 x 32px"
+      }
+    ]
+  },
+  {
+    "name": "Product Promotional Message",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Product Tag : Messages"
+      },
+      {
+        "type": "textarea",
+        "id": "promo_messages",
+        "label": "Promotional Messages"
+      }
+    ]
+  },
+  {
+    "name": "Product - Gift Card Buy Box",
+    "settings": [
+      {
+        "type": "header",
+        "content": "PDP - Gift Card Buy Box"
+      },
+      {
+        "type": "text",
+        "id": "gift_title",
+        "label": "Title",
+        "default": "Send as a gift!"
+      },
+      {
+        "type": "text",
+        "id": "gift_body",
+        "label": "Detail",
+        "default": "Explanation messaging to support customer understanding that gift cards can be sent directly to the recipient. Fill out the fields below:"
+      },
+      {
+        "type": "text",
+        "id": "gift_cta",
+        "label": "Gift Card Add To Cart CTA",
+        "default": "Send as Gift"
+      }
+    ]
+  },
+  {
+    "name": "Searchspring",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "ss_enable",
+        "label": "Enable Searchspring",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "ss_search_only",
+        "label": "Search only",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "ss_swatches",
+        "label": "Enable Color Swatches",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "ss_site_id",
+        "label": "Site ID",
+        "default": "xfnyl9"
+      },
+      {
+        "type": "text",
+        "id": "ss_collection_handle",
+        "label": "Search collection handle",
+        "default": "shop"
+      }
+    ]
+  },
+  {
+    "name": "Badge Overrides",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Removing 'Final Sale' from Seasonal Discounts"
+      },
+      {
+        "type": "text",
+        "id": "seasonal_collections",
+        "label": "Seasonal Collection Handles",
+        "info": "Please include the collection handles for all seasonal promo collections, separated by a comma. ex. staff-picks,best-sellers"
+      },
+      {
+        "type": "header",
+        "content": "Overriding 'Out of Stock' Badge for Items Coming Soon"
+      },
+      {
+        "type": "text",
+        "id": "coming_soon_text",
+        "label": "'Coming Soon' Badge Text",
+        "info": "This text will be displayed on Out of Stock products/variants that have their 'coming_soon' metafield set to 'true'",
+        "default": "Coming Soon"
+      }
+    ]
+  }
+]

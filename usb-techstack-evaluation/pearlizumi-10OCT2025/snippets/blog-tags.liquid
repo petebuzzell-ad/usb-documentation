@@ -1,0 +1,36 @@
+<div class="flex md:items-center border-t border-b border-silver py-6 md:py-8 mb-14 md:flex-row flex-col">
+  {% if article.tags != blank %}
+    <div class="flex md:items-center flex-1 justify-start md:flex-row flex-col">
+      <h5 class="uppercase font-sora font-semibold text-special p-0 mr-3 md:mb-0 mb-4">Tags:</h5>
+      <ul class="flex items-center p-0 flex-wrap -mx-1">
+        {% for tag in article.tags %}
+          {%- unless tag contains 'Author:' -%}
+            <li class="group flex border border-black bg-white hover:bg-black text-black justify-center items-center transition duration-300 ease-in-out py-3 px-4 m-1">
+              <a class="group-hover:text-white text-special-s uppercase font-semibold transition duration-300 ease-in-out leading-14 " href="{{ blog.url }}/tagged/{{ tag | handleize }}">
+                {{ tag }}
+              </a>
+            </li>
+          {%- endunless -%}
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  {% if has_share %}
+    <div class="flex flex-row md:items-center md:pt-0 pt-4">
+      <h5 class="uppercase font-sora font-semibold text-special p-0 mr-3 md:mb-0 mb-4">Share:</h5>
+      <ul role="list" class="list-none flex">
+        <li role="listitem" aria-label="Facebook">
+          <a href="#" class="blog-share-icon group hover:text-pine transition duration-300 ease-in-out" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436');return false;">
+            {% render 'svg-facebook' %}
+          </a>
+        </li>
+        <li class="ml-4 md:ml-6" role="listitem" aria-label="Twitter">
+          <a arria-li class="group hover:text-pine transition duration-300 ease-in-out" target="_blank" href="http://twitter.com/share?text={{ article.title }}&url={{ article.url }}">
+            {% render 'svg-twitter' %}
+          </a>
+        </li>
+      </ul>
+    </div>
+  {% endif %}
+</div>

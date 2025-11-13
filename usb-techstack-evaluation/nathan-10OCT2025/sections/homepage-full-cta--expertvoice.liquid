@@ -1,0 +1,136 @@
+{% liquid
+  assign pro_homepage_enabled = settings.enable_pro_homepage
+  assign ev_homepage_enabled = settings.enable_ev_homepage
+  assign op_homepage_enabled = settings.enable_op_homepage
+
+  assign is_pro_customer = false
+  assign is_ev_customer = false
+  assign is_op_customer = false
+  if customer.tags contains 'Pro Purchase'
+    assign is_pro_customer = true
+  elsif customer.tags contains 'Expert Voice'
+    assign is_ev_customer = true
+  elsif customer.tags contains 'Outdoor Pro'
+    assign is_op_customer = true
+  endif
+
+  assign use_pro_homepage = false
+  assign use_ev_homepage = false
+  assign use_op_homepage = false
+
+  if pro_homepage_enabled and is_pro_customer
+    assign use_pro_homepage = true
+  elsif ev_homepage_enabled and is_ev_customer
+    assign use_ev_homepage = true
+  elsif op_homepage_enabled and is_op_customer
+    assign use_op_homepage = true
+  endif
+%}
+
+{%- if use_ev_homepage -%}
+  {%- if section.settings.title != blank and section.settings.image != blank -%}
+    {%- assign count = 0 -%}
+    {%- if section.settings.url_1 != blank and section.settings.cta_title_1 != blank and section.settings.url_2 != blank and section.settings.cta_title_2 != blank -%}
+      {%- assign count = 2 -%}
+    {%- elsif section.settings.url_1 != blank and section.settings.cta_title_1 != blank or section.settings.url_2 != blank and section.settings.cta_title_2 != blank -%}
+      {%- assign count = 1 -%}
+    {%- endif -%}
+
+    <div class="mb-0 {% if section.settings.show_margin %}md:mb-40{% endif %} relative">
+      {%- if count == 1 -%}
+        <a class="block relative w-full h-0 pt-122percent md:pt-[56.25%]" href="{{ section.settings.url_1 | default: section.settings.url_2 }}">
+      {%- else -%}
+        <div class="block relative w-full h-0 pt-122percent md:pt-[56.25%]">
+      {%- endif -%}
+        <img class="lazy absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full object-cover" data-src="{{ section.settings.image | img_url: '1440x', scale: 2 }}" alt="{{- section.settings.image.alt -}}">
+      {%- if count == 1 -%}
+        </a>
+      {%- else -%}
+        </div>
+      {%- endif -%}
+
+      <div class="container max-w-full md:max-w-680 lg:max-w-920 xl:max-w-1200 relative md:absolute bottom-0 left-1/2 transform -translate-x-1/2">
+        <div class="max-w-full w-full md:max-w-722 inline-block relative bg-transparent md:bg-dark-stone-overlay px-12 md:px-17 py-20 pt-6 md:pt-20">
+          <div class="w-2 absolute left-6 md:left-7.5 bottom-20 bg-pine h-full md:h-bar"></div>
+
+          <h3 class="uppercase mb-2 md:mb-8 text-h5 lg:text-h3 text-black md:text-white">{{- section.settings.title -}}</h3>
+          {%- if section.settings.description != blank -%}
+            <div class="mb-4 md:mb-8 text-black md:text-white text-p-s md:text-p-lg">{{- section.settings.description -}}</div>
+          {%- endif -%}
+
+          {%- if section.settings.url_1 != blank and section.settings.cta_title_1 != blank -%}
+            <a href="{{section.settings.url_1}}" class="mr-4.5 md:mr-5.5 inline-block uppercase text-special-xs md:text-special font-sora font-normal border border-t-0 border-r-0 border-b-2 border-l-0 text-black md:text-white md:hover:text-bright-yellow border-black md:border-white md:hover:border-bright-yellow">{{- section.settings.cta_title_1 -}}</a>
+          {%- endif -%}
+          {%- if section.settings.url_2 != blank and section.settings.cta_title_2 != blank -%}
+            <a href="{{section.settings.url_2}}" class="inline-block uppercase text-special-xs md:text-special font-sora font-normal border border-t-0 border-r-0 border-b-2 border-l-0 text-black md:text-white md:hover:text-bright-yellow border-black md:border-white hover:border-bright-yellow">{{- section.settings.cta_title_2 -}}</a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Full Width CTA (Exp)",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Full Width CTA (Exp)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Recommended size: 2880x1600"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title",
+      "default": "Bibs or Shorts?"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "Choose the best fit for you. This guide helps you choose the right shorts to get the most out of every ride."
+    },
+    {
+      "type": "text",
+      "id": "cta_title_1",
+      "label": "CTA title 1",
+      "default": "Take the quiz"
+    },
+    {
+      "id": "url_1",
+      "type": "url",
+      "label": "Link 1"
+    },
+    {
+      "type": "text",
+      "id": "cta_title_2",
+      "label": "CTA title 2",
+      "default": "Learn more"
+    },
+    {
+      "id": "url_2",
+      "type": "url",
+      "label": "Link 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_margin",
+      "label": "Enable Bottom Margin",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Full Width CTA (Exp)",
+      "category": "Homepage"
+    }
+  ]
+}
+
+{% endschema %}

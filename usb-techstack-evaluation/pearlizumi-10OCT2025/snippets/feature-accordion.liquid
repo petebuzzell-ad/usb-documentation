@@ -1,0 +1,24 @@
+{%- comment -%} Feature Accordion {%- endcomment -%}
+<div>
+  <div class="accordion-group product-accordion">
+    {% if product.metafields["global"]["product_features_en"] != blank %}
+      <div class="border-t border-soft-grey pb-2">
+        <div tabindex="0" class="accordion relative bg-white cursor-pointer pl-0 pt-2.5 pb-0.5 bxl:pt-5.5 bxl:pb-3.5 pr-12" onclick="eHS.theme.accordionHandler(event)">
+          <p class="font-sora font-semibold m-0 text-special-s pt-0 uppercase">{{ 'products.product.features' | t }}</p>
+          <div class="absolute top-5 bxl:top-8 right-6 transform translate-x-1/2 -translate-y-1/2">
+            {% render 'svg-plus', classes: 'p-1 w-5 h-5 collapsed' %}
+            {% render 'svg-minus', classes: 'w-5 h-5 opened' %}
+          </div>
+        </div>
+        <div class="px-3.5 overflow-hidden max-h-0 transition-max-height duration-500 ease-out">
+          <ul class="font-normal text-p-s m-0 mb-3.5">
+            {% assign features = product.metafields["global"]["product_features_en"] | split: '|' %}
+            {% for feature in features %}
+              <li class="pl-6 relative">{{ feature }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>

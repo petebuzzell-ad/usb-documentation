@@ -1,0 +1,58 @@
+{% if collection.metafields.custom.seo_description != blank %}
+  <div id="seo-content-json" class="hidden h-[250px]"></div>
+  <div class="lg:max-w-full lg:px-13 xl:max-w-1200 xl:mx-auto border border-[#EAEAEA] md:p-8 p-6 relative md:mx-[90px] mx-4 my-6">
+    <div id="seo-rendered-content" class="h-[250px] overflow-hidden" aria-label="SEO Content">
+      {%- if collection.metafields.custom.seo_description != blank -%}
+        {{ collection.metafields.custom.seo_description | metafield_tag }}
+      {%- endif -%}
+    </div>
+    <div
+      id="loadMoreContainer"
+      class="absolute left-0 bottom-0 w-full h-23 bg-gradient-to-t from-white via-white to-transparent"
+    >
+      <button
+        id="loadMoreBtn"
+        class="text-[13px] font-semibold leading-[20px] tracking-[1px] uppercase underline cursor-pointer mx-auto w-full mt-[51px]"
+        aria-expanded="false"
+        aria-controls="seo-rendered-content"
+      >        
+        SHOW MORE
+      </button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.getElementById('seo-rendered-content')
+      const loadMoreCont = document.getElementById('loadMoreContainer')
+      const loadMoreBtn = document.getElementById('loadMoreBtn')
+      if (!(content && loadMoreCont && loadMoreBtn)) return
+
+      const gradient = ['bg-gradient-to-t','from-white','via-white','to-transparent']
+      const MORE = 'SHOW MORE', LESS = 'SHOW LESS'
+
+      function expand(on) {
+        content.classList.toggle('h-fit', on)
+        content.classList.toggle('h-[250px]', !on)
+        loadMoreCont.classList.toggle('bg-transparent', on)
+        gradient.forEach(cls => loadMoreCont.classList.toggle(cls, !on))
+        loadMoreBtn.textContent = on ? LESS : MORE
+        loadMoreBtn.setAttribute('aria-expanded', on)
+      }
+
+      loadMoreBtn.addEventListener('click', () => expand(!content.classList.contains('h-fit')))
+    })
+  </script>
+{% endif %}
+{% schema %}
+{
+  "name": "PLP SEO section",
+  "class": "plp-seo-section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "PLP SEO section"
+    }
+  ]
+}
+{% endschema %}

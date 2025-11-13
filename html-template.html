@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <title>[CLIENT_NAME] eCommerce Documentation</title>
+    <link rel="icon" type="image/webp" href="assets/favicon.webp">
+    <link rel="stylesheet" href="arcadia-style.css">
+</head>
+<body>
+    <!-- Header will be loaded dynamically by component-loader.js -->
+    <div id="header-container"></div>
+    
+    <div class="container">
+        <!-- 
+            TEMPLATE USAGE OPTIONS:
+            
+            OPTION 1: INDEX PAGE (Documentation Hub)
+            Use this structure for your main index.html page that lists all documentation.
+            Remove the two-column layout and TOC sidebar below.
+        -->
+        
+        <!-- INDEX PAGE STRUCTURE (Uncomment for index/home page) -->
+        <!--
+        <h1>eCommerce Platform Documentation</h1>
+        
+        <h2>Internal Documentation</h2>
+        <ul class="toc-list">
+            <li class="doc-item">
+                <a href="[MAIN_DOC].html" class="doc-link">Main Platform Documentation</a>
+                <div class="doc-description">Comprehensive guide covering platform architecture, content management, product management, site configuration, and operational procedures.</div>
+            </li>
+            
+            <li class="doc-item">
+                <a href="[MIDDLEWARE_DOC].html" class="doc-link">[TECHNICAL_SYSTEM] Documentation</a>
+                <div class="doc-description">Detailed documentation of the [TECHNICAL_SYSTEM] including [KEY_COMPONENTS] and data flow architecture.</div>
+            </li>
+            
+            <!-- Add additional documentation items as needed -->
+        </ul>
+
+        <h2>External Resources</h2>
+        <ul class="toc-list">
+            <li class="doc-item">
+                <a target="_blank" href="[EXTERNAL_RESOURCE_URL]" class="doc-link">[EXTERNAL_RESOURCE_NAME]</a>
+                <div class="doc-description">[EXTERNAL_RESOURCE_DESCRIPTION]</div>
+            </li>
+            <!-- Add additional external resources as needed -->
+        </ul>
+        -->
+        
+        <!-- 
+            OPTION 2: DOCUMENTATION PAGE WITH ENHANCED TOC
+            Use this structure for individual documentation pages with sidebar navigation.
+            Remove the INDEX PAGE STRUCTURE above if using this.
+        -->
+        
+        <div class="two-column-layout">
+            <!-- Enhanced Table of Contents Sidebar -->
+            <nav class="toc-sidebar">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#introduction">Introduction</a></li>
+                    <li><a href="#architecture">Architecture</a>
+                        <ul>
+                            <li><a href="#system-overview">System Overview</a></li>
+                            <li><a href="#integrations">Integrations</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#procedures">Procedures</a>
+                        <ul>
+                            <li><a href="#content-management">Content Management</a></li>
+                            <li><a href="#product-management">Product Management</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#troubleshooting">Troubleshooting</a></li>
+                    <!-- Customize TOC items to match your content sections -->
+                </ul>
+            </nav>
+            
+            <!-- Main Content Area -->
+            <main>
+                <!-- 
+                    CONTENT STRUCTURE:
+                    Each major section should have an id matching the TOC links above.
+                    Use <section id="section-name"> for each section.
+                -->
+                
+                <section id="introduction">
+                    <h1>Platform Documentation</h1>
+                    <p>This documentation provides comprehensive guidance for managing and operating the [CLIENT_NAME] eCommerce platform.</p>
+                </section>
+                
+                <section id="architecture">
+                    <h2>Platform Architecture</h2>
+                    
+                    <section id="system-overview">
+                        <h3>System Overview</h3>
+                        <p>High-level overview of the platform architecture and key components.</p>
+                    </section>
+                    
+                    <section id="integrations">
+                        <h3>Integrations</h3>
+                        <p>Documentation of platform integrations and data flows.</p>
+                    </section>
+                </section>
+                
+                <section id="procedures">
+                    <h2>Operational Procedures</h2>
+                    
+                    <section id="content-management">
+                        <h3>Content Management</h3>
+                        <p>Procedures for managing content on the platform.</p>
+                    </section>
+                    
+                    <section id="product-management">
+                        <h3>Product Management</h3>
+                        <p>Procedures for managing products and inventory.</p>
+                    </section>
+                </section>
+                
+                <section id="troubleshooting">
+                    <h2>Troubleshooting</h2>
+                    <p>Common issues and their solutions.</p>
+                </section>
+                
+                <!-- Add your documentation content here -->
+                <!-- Remember: Each section needs an id matching your TOC links -->
+            </main>
+        </div>
+        
+    </div>
+    
+    <!-- Footer will be loaded dynamically by component-loader.js -->
+    <div id="footer-container"></div>
+    
+    <!-- Component Loader: Dynamically loads header.html and footer.html -->
+    <script src="component-loader.js"></script>
+    
+    <!-- Enhanced TOC: Adds scroll-based highlighting and smooth navigation -->
+    <script src="enhanced-toc/enhanced-toc.js"></script>
+    
+    <!-- 
+        CUSTOMIZATION NOTES:
+        
+        1. HEADER/FOOTER:
+           - Copy header-template.html to header.html and customize placeholders
+           - Copy footer-template.html to footer.html and customize placeholders
+           - component-loader.js will automatically load these files
+        
+        2. TABLE OF CONTENTS:
+           - Customize the .toc-sidebar navigation above to match your content
+           - Ensure each section has an id that matches the href in TOC links
+           - Enhanced TOC will automatically highlight current section as user scrolls
+        
+        3. CONTENT:
+           - Add your documentation content in <section> elements
+           - Each section must have an id attribute matching your TOC links
+           - Use semantic HTML structure (h1, h2, h3, etc.)
+        
+        4. STYLING:
+           - arcadia-style.css provides base styling
+           - Customize CSS variables in :root for brand colors
+           - Header/footer styles are included in arcadia-style.css
+        
+        5. ASSETS:
+           - Place client logo in assets/ directory
+           - Place favicon in assets/ directory
+           - Add home-icon-svgrepo-com.svg and burger-menu-svgrepo-com.svg to assets/
+           - Add Green_Arcadia Digital.png to assets/ for footer
+    -->
+</body>
+</html>

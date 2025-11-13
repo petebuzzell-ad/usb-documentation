@@ -1,0 +1,48 @@
+{%- comment -%}
+  Note: This file should be kept updated to be used as a reference for any third parties (mainly SearchSpring).
+  
+  Logic breakdown
+    - Use the Highest Possible Discount % available
+      - for Clearance Items + Pro customers, this involves comparing the Clearance % to the Pro Discount %
+
+  For SearchSpring:
+    - Pro Status is denoted by the Customer tags:
+      must have a "discount-<#>" and "limit-<#>" tag
+      the discount and limit are the value after the dash (ie. discount-40 limit-1000)
+{%- endcomment -%}
+
+{%- comment -%} Pro Customer detected {%- endcomment -%}
+{%- assign applied_price = nil -%}
+{%- assign previous_price = nil -%}
+{%- if is_pro and pro_discount > 0 -%}
+  {%- assign pro_multiplier = 100 | minus: pro_discount -%}
+  {%- if product.compare_at_price > product.price -%}
+    {%- comment -%} Determine the higher discount, clearance or Pro {%- endcomment -%}
+    {%- assign clearance_discount = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price -%}
+    {%- assign previous_price = product.compare_at_price -%}
+    {%- if clearance_discount > pro_discount -%}
+      {%- comment -%} Show Clearance {%- endcomment -%}
+      {%- assign applied_price = product.price -%}
+    {%- else -%}
+      {%- comment -%} Show Pro Discounted Price {%- endcomment -%}
+      {%- assign applied_price = product.compare_at_price | times: pro_multiplier | divided_by: 100 -%}
+    {%- endif -%}
+  {%- else -%}
+  {%- comment -%} Not a Clearance Item - use Pro Discount {%- endcomment -%}
+    {%- assign applied_price = product.price | times: pro_multiplier | divided_by: 100 -%}
+    {%- assign previous_price = product.price -%}
+  {%- endif -%}
+{%- else -%}
+  {%- comment -%} Not a Pro Customer {%- endcomment -%}
+  {%- assign applied_price = product.price -%}
+  {%- if product.compare_at_price > product.price -%}
+    {%- assign previous_price = product.compare_at_price -%}
+  {%- endif -%}
+{%- endif -%}
+
+{%- if previous_price != nil -%}
+  <p class="mr-2.5 text-h6 text-stone font-normal"><s>{{ previous_price | money }}</s></p>
+  <p class="text-pine font-bold m-0">{{ applied_price | money }}</p>
+{%- else -%}
+  <p class="text-h6 text-black font-bold m-0">{{ applied_price | money }}</p>
+{%- endif -%}

@@ -1,0 +1,204 @@
+{% liquid
+  assign current_variant = product.selected_or_first_available_variant
+
+  assign color_option_index = nil
+  for option in product.options
+    assign option_lower = option | downcase
+    if option_lower == 'color' or option_lower == 'couleur'
+      assign color_option_index = forloop.index0
+      break
+    endif
+  endfor
+
+  assign on_sale_colors = ""
+  assign regular_price = nil
+  for variant in product.variants
+    unless variant.metafields.global.unavailable == "true" or variant.metafields.global.unavailable == true
+      if variant.price < variant.compare_at_price
+        comment
+          Hide Clearance functionality for Pros
+        endcomment
+        if discount_tag and limit_tag
+          break
+        endif
+
+        assign price_comb = variant.price | append: '::' | append: variant.compare_at_price | append: '::'
+        assign on_sale_colors_with_price = on_sale_colors | split: '||'
+        assign not_found = true
+        assign on_sale_colors = ""
+        for colors_with_price in on_sale_colors_with_price
+          assign colors_with_price_new = colors_with_price
+          if colors_with_price contains price_comb
+            assign color_option_name1 = '::' | append: variant.options[color_option_index] | append: '##'
+            assign color_option_name2 = '##' | append: variant.options[color_option_index] | append: '##'
+            unless colors_with_price contains color_option_name1 or colors_with_price contains color_option_name2
+              assign colors_with_price_new = colors_with_price_new | append: variant.options[color_option_index] | append: '##'
+            endunless
+            assign not_found = false
+          endif
+          assign on_sale_colors = on_sale_colors | append: colors_with_price_new | append: '||'
+        endfor
+        if not_found
+          assign on_sale_colors = on_sale_colors | append: price_comb | append: variant.options[color_option_index] | append: '##'
+        endif
+      else
+        assign regular_price = variant.price
+      endif
+    endunless
+  endfor
+
+  assign client_confirmed = false
+  if storefront == "INT" and client_confirmed == true
+    assign on_sale_colors = ""
+    assign regular_price = nil
+  endif
+
+  assign size_guide = false
+  for tag in product.tags
+    if tag contains "fit_guide:"
+      assign size_guide = true
+    endif
+    if tag contains "size_guide:"
+      assign size_guide = true
+    endif
+    if tag contains "size_chart:"
+      assign size_guide = true
+    endif
+  endfor
+%}
+
+<!-- Price Container -->
+{%- unless storefront == "INT" -%}
+  <div class="md:hidden mt-8">
+  <div data-final-sale-buybox class="hidden">
+    {% if settings.final_sale_link %}
+    <a href="{{ settings.final_sale_link }}" target="_blank">
+    {% endif %}
+      <span class="product-badge !text-dark-stone !py-1">Final Sale</span>
+    {% if settings.final_sale_link %}
+    </a>
+    {% endif %}
+  </div>
+  </div>
+  <div class="flex items-center justify-start md:hidden mt-4 mb-4 gap-2.5">
+    <div class="flex gap-2.5">
+      {%- comment -%} Clearance Pricing {%- endcomment -%}
+      {% if current_variant.compare_at_price and current_variant.price < current_variant.compare_at_price %}
+        <span data-product-price class="text-h6 font-sora font-semibold text-red tracking-normal align-right">{{ current_variant.price | money }}</span>
+        <span data-compare-price class="text-h6 font-sora font-light line-through text-light-stone tracking-normal align-right">{{ current_variant.compare_at_price | money }}</span>
+      {%- comment -%} Member Pricing (clearance takes precedence) {%- endcomment -%}
+      {% elsif pro_price %}
+        <span data-product-price class="text-h6 font-sora font-semibold text-stone tracking-normal align-right">{{ pro_price | money }}</span>
+        <span data-compare-price class="text-h6 font-sora font-light line-through text-light-stone tracking-normal align-right"></span>
+      {%- comment -%} Regular Pricing {%- endcomment -%}
+      {% else %}
+        <span data-product-price class="text-h6 font-sora font-semibold text-stone tracking-normal align-right">{{ current_variant.price | money }}</span>
+        <span data-compare-price class="text-h6 font-sora font-light line-through text-light-stone tracking-normal align-right"></span>
+      {% endif %}
+    </div>
+    <span class="inline-block font-sora font-normal text-xl text-dark-stone text-right" data-promo-message>
+      <span data-promo-message-percent-off></span>
+    </span>
+  </div>
+  <div class="flex items-center justify-start gap-2 md:hidden text-xs text-success-green font-semibold font-sora mb-5"><span class="h-[18px] w-[18px] {% if promo_text %}hidden{% endif %}" data-promo-icon>{% render 'promo-message-icon' %}</span><span data-promo-message-text>{{- promo_text -}}</span></div>
+  
+{%- endunless -%}
+
+<div id="productOptions{% if quickview %}QuickView{% endif %}">
+  {% if product.options and product.options[0] != "Title" %}
+    <div>
+      <div class="divide-y divide-light-grey border-t border-light-grey w-full">
+        {%- comment -%} Show Color First {%- endcomment -%}
+        {%- for option in product.options_with_values -%}
+          {%- assign option_handle = option.name | handleize -%}
+          {%- if option_handle == 'color' or option_handle == 'couleur' -%}
+            {%- assign option_num = forloop.index0 -%}
+            <div>{%- comment -%} Wrapper to allow Divide-Y border between Groups {%- endcomment -%}
+              {%- render 'product-buy-box-option-group'
+                option: option,
+                option_handle: option_handle,
+                option_num: option_num,
+                quickview: quickview,
+                on_sale_colors: on_sale_colors,
+                regular_price: regular_price,
+                discount_tag: discount_tag,
+                limit_tag: limit_tag,
+                storefront: storefront,
+                gift_card: gift_card
+              -%}
+            </div>
+            {%- endif -%}
+        {%- endfor -%}
+
+        {%- comment -%} For some reason, the French site is hiding color option groups ... check the JS {%- endcomment -%}
+        {%- for option in product.options_with_values -%}
+          {%- assign option_handle = option.name | handleize -%}
+          {%- unless option_handle == 'color' or option_handle == 'couleur' -%}
+            {%- assign option_num = forloop.index0 -%}
+            <div {% if storefront == "US" %} class="border-t border-light-grey" {% endif %}>{%- comment -%} Wrapper to allow Divide-Y border between Groups {%- endcomment -%}
+              {%- render 'product-buy-box-option-group'
+                option: option,
+                option_handle: option_handle,
+                option_num: option_num,
+                size_guide: size_guide,
+                product: product,
+                quickview: quickview,
+                discount_tag: discount_tag,
+                limit_tag: limit_tag,
+                storefront: storefront,
+                gift_card: gift_card,
+                product_type: product.type
+              -%}
+            </div>
+          {%- endunless -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+{%- if storefront == "US" -%}
+  <!-- Truefit box -->
+  <div class="tfc-fitrec-product pt-4" data-styleid="{{ product.id }}" data-locale="en_US" data-userid="{{ customer.id }}"></div>
+{%- endif -%}
+
+{%- unless storefront == "INT" -%}
+
+  <div id="productForm{% if quickview %}QuickView{% endif %}" class="mb-5">
+    {%-liquid
+      assign form_id = 'AddToCartForm'
+      assign form_class = 'form-vertical'
+      if quickview
+        assign form_id = form_id | append: 'QuickView'
+      endif
+    -%}
+
+    {%- form 'product', product, id: form_id, class: form_class -%}
+      <div class="hidden">
+        <input id="quantity{% if quickview %}QuickView{% endif %}" type="text" value="1" name="quantity" />
+      </div>
+      <div class="flex h-15 mt-8 relative">
+        <div class="hidden">
+          <div class="w-20 h-inherit mr-2" data-quantity-wrapper>
+            {% render 'product-quantity-selector', quickview: quickview %}
+          </div>
+        </div>
+        <button data-add-to-cart name="add" class="button-primary-lg p-4 w-full !max-w-full text-special uppercase font-sora font-semibold" type="submit"
+          onclick="{% if quickview %}eHS.quickviewProductBuyBox.addToCart(event){% else %}eHS.productBuyBox.addToCart(event){% endif %}">Add To Cart</button>
+      </div>
+      <div class="text-center text-xs mt-3 pb-3 border-b border-light-grey">
+        {{ form | payment_terms }}
+      </div>
+    {%- endform -%}
+    {%- render 'form-gift-card', product: product -%}
+  </div>
+{%- endunless -%}
+
+<script type="application/json" id="ProductVariantsJson">
+  {{ product.variants | json }}
+</script>
+
+{% render 'notify-bis-modal' %}
+
+
+

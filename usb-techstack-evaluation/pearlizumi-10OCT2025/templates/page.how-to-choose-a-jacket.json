@@ -1,0 +1,149 @@
+{
+  "sections": {
+    "full-width-cta": {
+      "type": "full-width-cta",
+      "settings": {
+        "image": "shopify://shop_images/hero2_58ecbf8b-bee0-43fc-bb08-130467db77ad.jpg",
+        "image_mobile": "shopify://shop_images/hero2mob_ac5bddec-16df-4b3a-beab-da4fadcce6ac.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "hero_height": "normal",
+        "text_overlay_color": "#262b2c",
+        "overlay_opacity": 0.6,
+        "title": "Choosing Your <br>Outerwear",
+        "text": "",
+        "enable_description": false,
+        "btn_label_1": "",
+        "btn_link_1": "",
+        "btn_label_2": "",
+        "btn_link_2": "",
+        "enable_bottom_margin": false
+      }
+    },
+    "text-block": {
+      "type": "text-block",
+      "settings": {
+        "bg_color": "#000",
+        "svg": "",
+        "text_color": "#fff",
+        "heading": "",
+        "body": "<p>We understand that you can't combat capricious weather with a cookie-cutter approach to outerwear. Our collection includes everything from packable water repellent emergency shells for \"just in case\" protection to purpose-built waterproof rain jackets for riders who won't take a day off during downpours. </p><p></p><p>Now's the perfect time to update your wardrobe to keep you warm and dry this spring and shrug off cold weather, so you'll never have to miss a ride. Shop by weather condition below.</p>",
+        "enable_bottom_margin": true
+      }
+    },
+    "full-width-cta-reversible": {
+      "type": "full-width-cta-reversible",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/1_926d5c72-9836-485d-a878-a857e845c94b.jpg",
+        "image_position": "left",
+        "subtitle": "",
+        "title": "Rove Barrier Jacket",
+        "text": "<p>This casual jacket includes all the technology you've come to expect from us, plus some special details to improve your ride.</p>",
+        "btn_label": "Play video",
+        "btn_link": "https://youtu.be/-aZQhKTtADw",
+        "btn_style": "secondary",
+        "enable_bottom_margin": true
+      }
+    },
+    "suggested-products": {
+      "type": "suggested-products",
+      "settings": {
+        "title": "Windy Days",
+        "btn_label": "All Wind Jackets",
+        "btn_link": "shopify://collections/windy-day-jacket-collection",
+        "product_list": [
+          "mens-expedition-alpha-jacket-11132306",
+          "womens-expedition-alpha-jacket-11232306",
+          "mens-quest-barrier-convertible-jacket-11132009",
+          "womens-quest-barrier-convertible-jacket-11232008",
+          "mens-zephrr-barrier-jacket-11132006",
+          "womens-prospect-barrier-jacket-17232201",
+          "womens-zephrr-barrier-vest-11232006",
+          "womens-zephrr-barrier-jacket-11232007"
+        ],
+        "enable_bottom_margin": false
+      }
+    },
+    "full-width-cta-reversible-2": {
+      "type": "full-width-cta-reversible",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/WxB.jpg",
+        "image_position": "left",
+        "subtitle": "",
+        "title": "Torrent WxB Jacket",
+        "text": "<p>This lightweight jacket sheds water like no other thanks to our PI DRY® finish, which offers permanent water repellency for a lifetime of performance. We used a stretch nylon fabric to achieve a close-to-body fit that still allows for movement on the bike. A highly breathable water-proof membrane and taped seams provide absolute protection, with rapid moisture vapor transfer to keep you dry inside. A high collar helps keep the rain out and the cut is just generous enough to accommodate layers beneath. And it's packable enough to easily stash in a jersey pocket.</p>",
+        "btn_label": "Play video",
+        "btn_link": "https://youtu.be/WFG3yIxEsjs",
+        "btn_style": "secondary",
+        "enable_bottom_margin": true
+      }
+    },
+    "suggested-products-2": {
+      "type": "suggested-products",
+      "settings": {
+        "title": "Rainy Days",
+        "btn_label": "All Rain Jackets",
+        "btn_link": "shopify://collections",
+        "product_list": [
+          "mens-attack-wxb-jacket-11132202",
+          "mens-canyon-2-5l-wxb-rain-jacket-19132204",
+          "mens-pro-neoshell-wxb-jacket-11132201",
+          "womens-monsoon-wxb-hooded-jacket-11232010",
+          "mens-monsoon-wxb-jacket-11132003",
+          "mens-summit-3l-wxb-jacket-19132205",
+          "mens-summit-pro-neoshell-wxb-jacket-19132206",
+          "mens-summit-wxb-jacket-19131901",
+          "mens-quest-wxb-rain-jacket-11132301",
+          "mens-monsoon-wxb-hooded-jacket-11132013",
+          "womens-summit-3l-wxb-jacket-19232203",
+          "womens-wxb-jacket-11231820"
+        ],
+        "enable_bottom_margin": false
+      }
+    },
+    "full-width-cta-reversible-3": {
+      "type": "full-width-cta-reversible",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/3_38b42427-ea50-407e-9859-f6e6623676f9.jpg",
+        "image_position": "right",
+        "subtitle": "",
+        "title": "PRO Insulated Jacket",
+        "text": "<p>Imagine a cycling jacket that is soft, warm and manages moisture no matter what the conditions. Thanks to ultra-soft PolarTec Alpha Direct insulation and a highly breathable membrane, this jacket delivers, without the bulk. It's warm enough that a base layer is all you need underneath to stay comfortable on all but the coldest days. It features two zippered front pockets as well as a rear zippered pocket for storage.</p>",
+        "btn_label": "Play video",
+        "btn_link": "https://youtu.be/d2ng3-Pz8HQ",
+        "btn_style": "secondary",
+        "enable_bottom_margin": true
+      }
+    },
+    "suggested-products-3": {
+      "type": "suggested-products",
+      "settings": {
+        "title": "For the Coldest Days",
+        "btn_label": "All Cold Weather Jackets",
+        "btn_link": "shopify://collections/jackets-for-the-coldest-days-collection",
+        "product_list": [
+          "mens-quest-amfib-jacket-11132103",
+          "womens-quest-amfib-jacket-11232102",
+          "womens-attack-amfib-lite-jacket-11232101",
+          "mens-pro-amfib-shell-11131903",
+          "mens-attack-amfib-lite-jacket-11132102"
+        ],
+        "enable_bottom_margin": false
+      }
+    }
+  },
+  "order": [
+    "full-width-cta",
+    "text-block",
+    "full-width-cta-reversible",
+    "suggested-products",
+    "full-width-cta-reversible-2",
+    "suggested-products-2",
+    "full-width-cta-reversible-3",
+    "suggested-products-3"
+  ]
+}

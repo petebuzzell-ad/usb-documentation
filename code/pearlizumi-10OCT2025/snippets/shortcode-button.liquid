@@ -1,0 +1,6 @@
+{%- capture btn_type -%}{% include 'shortcode-render' render:'type' %}{%- endcapture -%}
+{%- capture btn_title -%}{% include 'shortcode-render' render:'title' %}{%- endcapture -%}
+{%- capture btn_link -%}{% include 'shortcode-render' render:'link' %}{%- endcapture -%}
+{%- if btn_title != blank and btn_link != blank -%}
+  <a href="{{btn_link}}" class="button {% if btn_type == 'second' %}button-secondary{% else %}button-outline-dark{% endif %}">{{btn_title}}</a>
+{%- endif -%}

@@ -1,0 +1,69 @@
+{% liquid
+  assign load = ''
+  for tag in product.tags
+    if tag contains 'shop-the-look'
+      assign load = load | append: tag | append: '|'
+    endif
+  endfor
+  assign loads = load | split: '|'
+%}
+{% assign html_desktop = '' %}
+{% assign html_mobile = '' %}
+{% for item in loads limit: 4 %}
+  {% assign items = item | replace: 'shop-the-look:', '' | split: '::' %}
+  {% capture item_html_desktop %}{% render 'product-item-shop-the-look' product_handle: items[0], variant_id: items[1], mobile: false %}{% endcapture %}
+  {% capture item_html_mobile %}{% render 'product-item-shop-the-look' product_handle: items[0], variant_id: items[1], mobile: true %}{% endcapture %}
+  {% capture html_desktop %}
+    {{ html_desktop }}
+    <div class="w-1/2 xl:w-1/4">
+      {{ item_html_desktop }}
+    </div>
+  {% endcapture %}
+  {% capture html_mobile %}
+    {{ html_mobile }}
+    {{ item_html_mobile }}
+  {% endcapture %}
+{% endfor %}
+
+{% if loads.size > 0 %}
+
+  {% if view == 'desktop' %}
+    <div class="hidden lg:block lg:pl-25 lg:mt-8">
+      <div class="hidden lg:block border-t border-soft-grey">
+        <h6 class="font-lato font-bold text-grey-three text-special-s uppercase mt-4 mb-6">Shop the look</h6>
+        <div class="pdp-shop-the-look flex flex-wrap -mx-1.5">
+          {{ html_desktop }}
+        </div>
+      </div>
+      {% comment %} {%- render 'quickshop-modal' -%} {% endcomment %}
+    </div>
+  {% elsif view == 'mobile' %}
+    <div class="block lg:hidden border-t-1 border-soft-grey px-6 py-10 md:px-14 overflow-x-hidden">
+      <h3 class="uppercase mb-8">Shop the look</h3>
+      <div class="pdp-shop-the-look block lg:hidden clp-slider relative">
+        <div class="product-carousel overflow-x-visible relative">
+          <div class="glide__track" data-glide-el="track">
+            <div class="glide__slides">
+              {{ html_mobile }}
+            </div>
+          </div>
+          <div class="glide__arrows absolute w-screen h-0 top-0 left-1/2 transform -translate-x-1/2 flex justify-between px-1 md:px-6" data-glide-el="controls">
+            <a href="#" class="glide__arrow glide__arrow--left h-full flex items-center" data-glide-dir="<">
+              <span class="button-slider-nav-light w-6 h-6 md:w-12.5 md:h-12.5 m-0 p-0 rounded-circle flex items-center justify-center transform scale-50 md:scale-100">
+                {% render 'svg-arrow-left', classes: 'hidden md:block' %}
+                {% render 'svg-arrow-left', width: '14px', height: '9px', classes: 'block md:hidden' %}
+              </span>
+            </a>
+            <a href="#" class="glide__arrow glide__arrow--right h-full flex items-center" data-glide-dir=">">
+              <span class="button-slider-nav-light w-6 h-6 md:w-12.5 md:h-12.5 m-0 p-0 rounded-circle flex items-center justify-center transform scale-50 md:scale-100">
+                {% render 'svg-arrow-right', classes: 'hidden md:block' %}
+                {% render 'svg-arrow-right', width: '14px', height: '9px', classes: 'block md:hidden' %}
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+{% endif %}

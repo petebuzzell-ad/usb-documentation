@@ -1,0 +1,15 @@
+{% liquid
+  if shop.permanent_domain == 'usbns.myshopify.com'
+    assign date_format = "%B %d, %Y"
+  else
+    assign date_format = "%B %d, %Y"
+  endif
+%}
+
+<div class="flex items-center uppercase mb-6 font-semibold text-stone text-special-s blog-item__date">
+  <span>{{ article.published_at | date: date_format }}</span>
+  {%- if article.metafields["global"]["reading_time"] != blank -%}
+    <span class="mx-2 w-1 h-1 rounded-full bg-light-stone"></span>
+    <span class="text-light-stone">{{ article.metafields["global"]["reading_time"] }} Minute Read</span>
+  {%- endif -%}
+</div>

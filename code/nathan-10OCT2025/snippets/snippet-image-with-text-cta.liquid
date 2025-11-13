@@ -1,0 +1,93 @@
+<div data-block-id="{{ block.id }}" data-block-type="image-with-text-cta-block" class="lg:mb-30 md:mb-18 mb-16">
+  <div class="container mx-auto xl:px-0 md:px-11 px-6">
+    {% if block.settings.heading_8 != blank %}
+    <div class="text-center">
+      <h2 class="tracking-normal mb-12">{{ block.settings.heading_8 | escape }}</h2>
+    </div>
+    {% endif %}
+    <div class="grid grid-cols-2 md:gap-6 gap-12 md:mb-18 mb-8">
+      <div class="md:col-span-1 col-span-2">
+        {%- if block.settings.button_label_8 != blank -%}
+        <a
+          href="{% if block.settings.button_link_8 != blank %}{{ block.settings.button_link_8 }}{% else %}#{% endif %}">
+          {%- endif -%}
+          <div class="mb-6">
+            {% if block.settings.image_8 != blank %}
+            {% assign block_image_8 = block.settings.image_8 | img_url: 'master' %}
+            {% endif %}
+            {% if block.settings.image_8_mobile != blank %}
+            {% assign block_image_mobile_8 = block.settings.image_8_mobile | img_url: 'master' %}
+            {% endif %}
+            {% if block_image_8 != blank %}
+            <picture>
+              <source media="(max-width: 767px)"
+                data-srcset="{%- if block_image_mobile_8 != blank -%}{{ block_image_mobile_8 }}{%- else -%}{{ block_image_8 }}{%- endif -%}">
+              <source media="(min-width: 768px)" data-srcset="{{ block_image_8 }}">
+              <img data-src="{{ block_image_8 }}" alt="{{ block_image_8.alt }}" class="lazy w-full">
+            </picture>
+            {% endif %}
+          </div>
+          <div class="text-center">
+            {% if block.settings.title_8 != blank %}
+            <h2 class="lg:text-h4 text-h5 font-semibold mb-6 tracking-normal">{{ block.settings.title_8 | escape }}</h2>
+            {% endif %}
+            {% if block.settings.text_8 != blank %}
+            <p class="lg:text-h6 text-h6-m tracking-normal lg:px-14.5 font-medium md:mb-12 mb-6">
+              {{ block.settings.text_8 }}
+            </p>
+            {% endif %}
+            {%- if block.settings.button_label_8 != blank -%}
+            <div class="button button-{{ block.settings.button_8 }} font-semibold mx-auto md:max-w-btn max-w-btn-sm">
+              {{ block.settings.button_label_8 | escape }}
+            </div>
+            {%- endif -%}
+          </div>
+          {%- if block.settings.button_label_8 != blank -%}
+        </a>
+        {%- endif -%}
+      </div>
+      <div class="md:col-span-1 col-span-2">
+        {%- if block.settings.button_label_9 != blank -%}
+        <a
+          href="{% if block.settings.button_link_9 != blank %}{{ block.settings.button_link_9 }}{% else %}#{% endif %}">
+          {%- endif -%}
+          <div class="mb-6">
+            {% if block.settings.image_9 != blank %}
+            {% assign block_image_9 = block.settings.image_9 | img_url: 'master' %}
+            {% endif %}
+            {% if block.settings.image_9_mobile != blank %}
+            {% assign block_image_mobile_9 = block.settings.image_9_mobile | img_url: 'master' %}
+            {% endif %}
+            {% if block_image_9 != blank %}
+            <picture>
+              <source media="(max-width: 767px)"
+                data-srcset="{%- if block_image_mobile_9 != blank -%}{{ block_image_mobile_9 }}{%- else -%}{{ block_image_9 }}{%- endif -%}">
+              <source media="(min-width: 768px)" data-srcset="{{ block_image_9 }}">
+              <img data-src="{{ block_image_9 }}" alt="{{ block_image_9.alt }}" class="lazy w-full">
+            </picture>
+            {% endif %}
+          </div>
+          <div class="text-center">
+            {% if block.settings.title_9 != blank %}
+            <h2 class="lg:text-h4 text-h5 font-semibold mb-6 tracking-normal">{{ block.settings.title_9 | escape }}</h2>
+            {% endif %}
+            {% if block.settings.text_9 != blank %}
+            <p class="lg:text-h6 text-h6-m tracking-normal lg:px-14.5 font-medium md:mb-12 mb-6">
+              {{ block.settings.text_9 }}
+            </p>
+            {% endif %}
+            {%- if block.settings.button_label_9 != blank -%}
+            <div
+              href="{% if block.settings.button_link_9 != blank %}{{ block.settings.button_link_9 }}{% else %}#{% endif %}"
+              class="button button-{{ block.settings.button_9 }} font-semibold mx-auto md:max-w-btn max-w-btn-sm">
+              {{ block.settings.button_label_9 | escape }}
+            </div>
+            {%- endif -%}
+          </div>
+          {%- if block.settings.button_label_9 != blank -%}
+        </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+{%- comment -%} Note: this uses a variable "desktop" media query because the Bundle PDP uses 'bxl' instead of 'lg' {%- endcomment -%}
+{% liquid
+  assign desktop_alignment_class = "lg:items-center"
+  assign tablet_max_width_class = ""
+  if bundle == true
+    assign desktop_alignment_class = "bxl:items-center"
+    assign tablet_max_width_class = "md:max-w-722"
+  endif
+%}
+<div id="miniCartModal" class="fixed top-0 left-0 w-screen h-screen flex {{ desktop_alignment_class }} justify-center p-4 z-20" style="display: none; background-color: rgba(81,88,85,0.7);">
+  <div id="miniCartContents" class="w-full max-w-450 {{ tablet_max_width_class }} lg:max-w-840 h-max relative"></div>
+</div>

@@ -1,0 +1,40 @@
+{%- if paginate.pages > 1 -%}
+    <nav class="container sm:max-w-xl sm:mx-auto sm:px-0 lg:max-w-full lg:px-13 xl:max-w-1200 xl:px-0 pb-16 blog-pagination">
+        <ol class="flex justify-center pagination">
+            {%- for part in paginate.parts -%}
+                <h2>{{ forloop.index }}</h2>
+                {%- assign partTitle = part.title -%}
+                {%- if part.title < 10 -%}
+                    {%- assign partTitle = part.title | prepend: '0' -%}
+                {%- endif -%}
+                {%- if part.is_link -%}
+                    <li class="mx-4 font-sora text-p text-stone hover:text-pine transition duration-300 ease-in-out">
+                        <a href="{{ part.url }}">
+                            {{ partTitle }}
+                        </a>
+                    </li>
+                    {% if forloop.index == 2 %}
+                      <li class="mx-4 mt-2.5 w-65">
+                          <hr class="my-0" />
+                      </li>
+                    {% endif %}
+                {%- else -%}
+                    {%- if part.title == paginate.current_page -%}
+                      <li class="mx-4 text-p text-black font-sora font-semibold active hover:text-pine transition duration-300 ease-in-out" aria-current="page">
+                          {{ partTitle }}
+                      </li>
+                      {% if forloop.index == 3 %}
+                        <li class="mx-4 mt-2.5 w-65">
+                            <hr class="my-0" />
+                        </li>
+                      {% endif %}
+                    {%- else -%}
+                      <li class="mx-4 mt-2.5 w-65">
+                          <hr class="my-0" />
+                      </li>
+                    {%- endif -%}
+                {%- endif -%}
+            {%- endfor -%}
+        </ol>
+    </nav>
+{%- endif -%}

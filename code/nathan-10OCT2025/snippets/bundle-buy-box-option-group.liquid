@@ -1,0 +1,66 @@
+{%- unless option_handle == 'color' or quickview -%}
+  {%- assign size_chart_trigger = 'select-size' -%}
+{%- endunless -%}
+
+<!-- Option Label Row -->
+<div tabindex="0" class="flex items-center {% if size_guide %}justify-between{% else %}justify-start{% endif %} {{ size_chart_trigger }}">
+  <!-- Label -->
+  <div class="text-special-s font-lato font-semibold my-4">
+    <span>{{ option.name | upcase }}:&nbsp;</span>
+    <span data-option-label="{{- option_handle -}}"></span>
+  </div>
+</div>
+
+{%- comment -%} Color Options {%- endcomment -%}
+{% if option_handle == 'color' or option_handle == 'couleur' %}
+
+  <div class="flex flex-wrap mb-1 last:mb-2 last:pb-8" data-option-group="{{- option_handle -}}" data-option-num="{{ option_num }}">
+    {% for value in option.values %}
+      <button data-option="{{ option_handle }}" data-value="{{ value | handleize }}"
+        style="padding: 3px;"
+        class="option-swatch w-7.5 h-7.5 bxl:w-9 bxl:h-9 border border-grey-five rounded-circle mr-2 mb-2 bxl:mr-4 bxl:mb-3 cursor-pointer focus:outline-none hover:border-grey-one"
+        onclick="eHS.bundleBuyBoxes.handleOptionSelect('{{ group_num }}', '{{ product.handle }}', '{{ option.name }}', {{ option_num }}, '{{ value | handleize }}')"
+      >
+        <div class="swatch-{{ value | handleize }} w-full h-full bg-grey-five rounded-circle"></div>
+      </button>
+    {% endfor %}
+  </div>
+
+{% else %}
+  {%- comment -%}Size Options{%- endcomment -%}
+  {%- comment -%}
+    Mobile - Dropdown
+      - handleOptionSelect is called with no selectedValue param, and isDropdown = true
+      - we need to pass the element instead of the value to get the value programatically
+  {%- endcomment -%}
+  <select data-option-dropdown name="{{ option_handle }}" id="{{ option_handle }}Dropdown" class="bxl:hidden w-full block h-8 text-center text-p-s border border-grey-five mb-4 px- py-0 px-2 bg-white"
+    onchange="eHS.bundleBuyBoxes.handleOptionSelect('{{ group_num }}', '{{ product.handle }}', '{{ option.name }}', {{ option_num }}, this, true)"
+  >
+    {% for value in option.values %}
+        <option value="{{ value | handleize }}">{{ value }}</option>
+      {% endfor %}
+  </select>
+  {%- comment -%} Desktop - Buttons {%- endcomment -%}
+  <div class="hidden bxl:grid grid-flow-row grid-cols-5 gap-2 mb-2 {% if option.values.size == 1 %}hidden{% endif %}"
+    data-option-group="{{- option_handle -}}" data-option-num="{{ option_num }}"
+  >
+    {% for value in option.values %}
+      <div class="option-wrapper">
+        <button data-option="{{ option_handle }}" data-value="{{ value | handleize }}"
+          class="option border border-grey-five h-8 p-2 leading-4 cursor-pointer font-lato text-grey-one text-special-s text-center w-full focus:outline-none hover:border-grey-one"
+          onclick="eHS.bundleBuyBoxes.handleOptionSelect('{{ group_num }}', '{{ product.handle }}', '{{ option.name | downcase }}', {{ option_num }}, '{{ value | handleize }}')"
+        >
+          {{ value }}
+        </button>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<style>
+  .ks-chart-container.sizing-chart-container.ks-container-with-modal {
+    width: fit-content !important;
+    font-size: 14px !important;
+    color: #ffa400 !important;
+  }
+</style>

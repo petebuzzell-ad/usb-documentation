@@ -1,0 +1,49 @@
+{% liquid
+  if storefront == "US"
+    assign store_GTM_id = "GTM-WQ2J9QP"
+    assign store_script_id = "667de3aedc5847acd8b96e4a4b602d40141438dc"
+    assign script_version = "3.1.9"
+  elsif storefront == "CA"
+    assign store_GTM_id = "GTM-TSC6D7M"
+    assign store_script_id = "eb9b04e6514526908264af3fd289bb4822001005"
+    assign script_version = "3.1.9"
+  endif
+%}
+
+{%- unless storefront == "INT" -%}
+  <script id="elevar-dl-listener-config" type="application/json">{"data_layer_listener_script": "https://shopify-gtm-suite.getelevar.com/shops/{{- store_script_id -}}/{{- script_version -}}/events.js", "ss_url": null, "signing_key": null, "myshopify_domain": null}</script>
+  <script>
+    (() => {
+      const configElement = document.getElementById("elevar-dl-listener-config");
+
+      if (!configElement) {
+        console.error("Elevar: DLL Config element not found");
+        return;
+      }
+
+      const config = JSON.parse(configElement.textContent);
+
+      const script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = config.data_layer_listener_script;
+
+      script.onerror = function () {
+        console.error("Elevar: DLL JS script failed to load");
+      };
+      script.onload = function () {
+        if (!window.ElevarGtmSuiteListener) {
+          console.error("Elevar: `ElevarGtmSuiteListener` is not defined");
+          return;
+        }
+
+        window.ElevarGtmSuiteListener.handlers.listen({
+          ssUrl: config.ss_url,
+          signingKey: config.signing_key,
+          myshopifyDomain: config.myshopify_domain
+        });
+      };
+
+      document.head.appendChild(script, document.currentScript);
+    })();
+  </script>
+{%- endunless -%}

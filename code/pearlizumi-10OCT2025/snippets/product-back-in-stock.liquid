@@ -1,0 +1,26 @@
+{%- capture is_hidden -%}
+  {%- if product.available -%}
+    hidden
+  {%- endif -%}
+{%- endcapture -%}
+{%- capture is_quickshop -%}
+  {%- if quickshop -%}qs-{%- endif -%}
+{%- endcapture -%}
+<div id="productBackInStock{% if quickview %}QuickView{% endif %}" class="{{ is_hidden }} mt-8 mb-10 p-10 border-2 border-black rounded-sm">
+  <div id="productBackInStockMain{% if quickview %}QuickView{% endif %}">
+    <p class="special-s mb-1">NOTIFY ME WHEN THIS IS AVAILABLE</p>
+    <p class="p-s">Enter your phone number or email address below to be notified when this item is back in stock:</p>
+    <div id="phoneInput{% if quickview %}QuickView{% endif %}" class="relative flex w-full">
+      <input id="intlTel{% if quickview %}QuickView{% endif %}" class="p-s w-full py-3.5 pl-15 bg-ice-grey rounded-l-sm items-stretch font-sora" type="text" placeholder="Enter Number" type="tel" onkeyup="eHS.{%- if quickshop -%}quickshop.backInStock{%- else -%}productBackInStock{%- endif -%}.inputPhone(event)">
+      <button class="button button-dark rounded-l-none flex-shrink-0 px-1" style="width: 88px; font-size: 11px;" onclick="eHS.{%- if quickshop -%}quickshop.backInStock{%- else -%}productBackInStock{%- endif -%}.submitPhoneNumber()">TEXT ME</button>
+    </div>
+    <div id="emailInput{% if quickview %}QuickView{% endif %}" class="flex w-full mt-3.5">
+      <input class="p-s w-full py-3.5 pl-5 bg-ice-grey rounded-l-sm items-stretch font-sora" type="text" placeholder="you@example.com" type="email" onchange="eHS.{%- if quickshop -%}quickshop.backInStock{%- else -%}productBackInStock{%- endif -%}.inputEmail(event)">
+      <button class="button button-dark rounded-l-none flex-shrink-0 px-1" style="width: 88px; font-size: 11px;" onclick="eHS.{%- if quickshop -%}quickshop.backInStock{%- else -%}productBackInStock{%- endif -%}.submitEmail()">EMAIL ME</button>
+    </div>
+  </div>
+  <div id="productBackInStockSuccess{% if quickview %}QuickView{% endif %}" style="display: none;">
+    <p class="special-s mb-1">SUCCESS!</p>
+    <p class="p-s mb-0">You will be notified when the selected product is back in stock. Thanks!</p>
+  </div>
+</div>

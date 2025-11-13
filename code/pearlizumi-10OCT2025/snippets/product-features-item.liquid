@@ -1,0 +1,39 @@
+{% liquid
+  assign details = feature | split: '||'
+  for d in details
+    assign detail = d | split: '::'
+    if detail[0] == 'icon'
+      assign icon = detail[1] | downcase
+    endif
+    if detail[0] == 'type'
+      assign type = detail[1]
+    endif
+    if detail[0] == 'blurb'
+      assign blurb = detail[1]
+    endif
+    if detail[0] == 'learn_more'
+      assign learn_more = detail[1]
+    endif
+  endfor
+%}
+
+{% if feature != blank %}
+  <div class="w-full h-45 mx-1 p-8 lg:mx-0.5 lg:px-4 lg:pt-9 lg:pb-12 bg-faint-cloud flex flex-col items-center text-center">
+    <span class="h-9.5 text-pine">
+      {% assign icon_png = icon | append: '_icon' %}
+      {% assign icon_svg = icon | append: '_icon_svg' %}
+      {% if settings[icon_svg] != blank %}
+        {{ settings[icon_svg] }}
+      {% elsif settings[icon_png] != blank %}
+        <img data-src="{{ settings[icon_png] }}" class="lazy" loading="lazy" />
+      {% endif %}
+    </span>
+    <p class="font-sora text-special-xs lg:text-special-s font-semibold uppercase mb-1">{{ type }}</p>
+    <p class="font-normal text-p-xs leading-tight mb-1">{{ blurb }}</p>
+    {% if icon == 'sustainability' %}
+      <a href="{{ learn_more }}" target="_blank" class="font-normal text-p-xs text-pine border-b-1.5 border-transparent hover:border-pine">Learn more</a>
+    {% else %}
+      <a href="javascript:void(0)" class="font-normal text-p-xs text-pine border-b-1.5 border-transparent hover:border-pine">Learn more</a>
+    {% endif %}
+  </div>
+{% endif %}

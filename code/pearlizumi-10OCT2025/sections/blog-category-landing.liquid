@@ -1,0 +1,92 @@
+{%-liquid
+  assign blog = blogs[section.settings.blog]
+  assign title = section.settings.title | default: blog.title
+
+  assign categories = section.blocks
+-%}
+<div class="px-6 md:px-14 lg:px-22.5 pb-14 md:pb-30">
+  <div class="px-10 py-10 md:py-30 text-center blog-category-landing__header">
+    <h1 class="m-0">{{ title }}</h1>
+  </div>
+
+  {%- if categories.size > 0 -%}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-8 md:gap-y-18">
+      {%- for category in categories -%}
+        {%-liquid
+          assign title = category.settings.title | default: category.settings.tag
+        -%}
+        <a href="{% if category.settings.tag contains 'All' %}{{ blog.url }}{% else %}{{ blog.url }}/tagged/{{ category.settings.tag | handleize }}{% endif %}" class="block group">
+          <div class="aspect-w-1 aspect-h-1">
+            {%- if category.settings.image -%}
+              <picture>
+                <source media="(min-width: 1024px)" srcset="{{ category.settings.image.src | img_url: '500x' }}" />
+                <img alt="{{ category.settings.tag }}" class="lazy w-full h-full object-cover" data-src="{{ category.settings.image.src | img_url: '800x' }}" loading="lazy"/>
+              </picture>
+            {%- endif -%}
+          </div>
+          <h5 class="mt-4 mb-0 group-hover:text-pine transition duration-300 ease-in-out">{{ title }}</h5>
+          {% if category.settings.info != blank %}
+            <p class="font-sora font-semibold text-p-s uppercase tracking-1 mb-4 text-stone">{{ category.settings.info }}</p>
+          {% endif %}
+          {% if category.settings.text != blank %}
+            <p class="text-p-s mb-6 text-stone">{{ category.settings.text }}</p>
+          {% endif %}
+        </a>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Blog Category Landing",
+  "settings": [
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "info": "If blank, blog title will be displayed instead."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Tag",
+          "info": "Blog post tag to be filtered"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "info": "If blank, tag will be displayed instead"
+        },
+        {
+          "type": "text",
+          "id": "info",
+          "label": "Info"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,13 @@
+{%- liquid
+  if storefront == "US"
+    assign avantlink_id = "1020053"
+  endif
+-%}
+<!-- AvantLink Sitewide script -->
+<script type="text/javascript">
+  (function() {
+    var avm = document.createElement('script'); avm.type = 'text/javascript'; avm.async = true;
+    avm.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.avmws.com/{{ avantlink_id }}/';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(avm, s);
+  })();
+</script>

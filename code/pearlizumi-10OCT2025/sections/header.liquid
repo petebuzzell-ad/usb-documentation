@@ -1,0 +1,273 @@
+{% liquid
+  assign is_pro_member = false
+  if customer
+    assign has_discount_tag = false
+    assign has_limit_tag = false
+    for tag in customer.tags
+      if tag contains "discount-"
+        assign has_discount_tag = true
+      endif
+      if tag contains "limit-"
+        assign has_limit_tag = true
+      endif
+    endfor
+    if has_discount_tag and has_limit_tag
+      assign is_pro_member = true
+    endif
+  endif
+
+  if shop.permanent_domain == 'pearlizumi.myshopify.com'
+    assign storefront = "US"
+  elsif shop.permanent_domain == 'pearlizumi-ca.myshopify.com'
+    assign storefront = "CA"
+  elsif shop.permanent_domain == 'pearl-izumi-int.myshopify.com'
+    assign storefront = "INT"
+  endif
+
+  assign main_menu = section.settings.main_menu
+%}
+<!-- Main Header -->
+<header id="header" class="relative z-[101] bg-white">
+  <!-- Desktop Header -->
+  <div class="mobile:hidden relative lg:flex items-center justify-between h-20 md:px-14 lg:px-22.5 border-b border-light-grey shadow-nav" data-site-header-inner>
+    <a href="/" class="flex items-center justify-start h-auto z-2">
+      <span class="sr-only">{{ shop.name }}</span>
+      <span class="w-full max-w-52.5">
+        {%- if section.settings.logo != blank -%}
+          <img src="{{ section.settings.logo | image_url }}" alt="{{ section.settings.logo.alt }}" class="w-full max-h-[29px]" />
+        {%- else -%}
+          {% render 'svg-logo-horizontal-desktop' %}
+        {%- endif -%}
+      </span>
+    </a>
+
+    {%- comment -%} Desktop Nav = always centered until XL screens {%- endcomment -%}
+    <!-- <div class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2"> -->
+      {%- include 'nav-desktop' is_pro: is_pro_member, main_menu: main_menu -%}
+    <!-- </div> -->
+
+    <!-- Nav Search Form-->
+    <div class="hidden xl:block group relative xl:max-w-btn-sm 1.5xl:max-w-75 w-full ml-auto cursor-pointer z-2" data-search-wrapper>
+      {%- render 'search-form', storefront: storefront -%}
+    </div>
+
+    <!-- Nav Icons -->
+    <div class="flex items-center z-2">
+      <!-- Search Icon -->
+      <button id="mobile_search" aria-label="Mobile Search" tabindex="0" onclick="eHS.navMobile.toggleSearchForm(event)" class="hidden lg:block xl:hidden stroke-black cursor-pointer hover:stroke-pine transition duration-300 ease-in-out">
+        {% render 'svg-search' %}
+      </button>
+
+      {%- unless storefront == "INT" -%}
+        <!-- Cart Icon -->
+        <a data-cart-open href="/cart" class="group relative ml-8 fill-black transition duration-300 ease-in-out">
+          <span class="sr-only">Cart</span>
+          {% render 'svg-cart' %}
+          <span class="cart-count hidden absolute -top-2.5 -right-2.5 items-center justify-center rounded-full w-5 h-5 bg-bright-yellow border-2 border-white font-semibold font-sora" style="font-size: 11px;">cart icon</span>
+        </a>
+      {%- endunless -%}
+    </div>
+  </div>
+
+  <!-- Mobile Header -->
+  <div class="lg:hidden flex items-center justify-between h-15 md:h-21.5 mobile:px-6 md:px-14 lg:px-30 shadow-nav border-b border-light-grey">
+    <!-- Menu & Search -->
+    <div class="flex items-center">
+      <div data-mobile-menu-toggle tabindex="0" onclick="eHS.navMobile.toggleNav(event, 'main')" class="-ml-2 mr-2.5 sm:mr-10 stroke-black hover:stroke-lush transition duration-300 ease-in-out">
+        {% render 'svg-menu' %}
+      </div>
+      <button id="mobile_search" aria-label="Mobile Search" tabindex="0" onclick="eHS.navMobile.toggleSearchForm(event)" class="mr-2.5 sm:mr-10 stroke-black hover:stroke-lush transition duration-300 ease-in-out">
+        {% render 'svg-search' %}
+      </button>
+    </div>
+    <!-- Site Logo -->
+    <a href="/" class="text-center px-4 h-full flex items-center justify-center w-full">
+      <span class="sr-only">{{ shop.name }}</span>
+      <span>
+        {%- if section.settings.logo != blank -%}
+          <img src="{{ section.settings.logo | image_url }}" alt="{{ section.settings.logo.alt }}" class="max-w-full max-h-[29px]" />
+        {%- else -%}
+          {% render 'svg-logo-horizontal', prefix: 'mobile-logo-' class: 'min-w-140' %}
+        {%- endif -%}
+      </span>
+    </a>
+
+    <!-- Account & Cart -->
+    <div class="flex items-center">
+      {%- comment -%} Hide Account Link on INT {%- endcomment -%}
+      {%- unless storefront == "INT" -%}
+        <!-- Account Link -->
+        <a href="/account" class="ml-2.5 sm:ml-10 fill-black hover:fill-lush transition duration-300 ease-in-out">
+          <span class="sr-only">Account</span>
+          <span class="text-dark-stone">
+            {% render 'svg-account' width: '31px' height: '31px' %}
+          </span>
+        </a>
+        <!-- Cart Link -->
+        <a data-cart-open href="/cart" class="relative ml-2.5 sm:ml-10 fill-black hover:fill-lush transition duration-300 ease-in-out">
+          <span class="sr-only">Cart</span>
+          {% render 'svg-cart' %}
+          <span
+            class="cart-count hidden absolute -top-2 -right-2 items-center justify-center rounded-full w-5 h-5 bg-lush border-2 border-white font-semibold font-sora text-p-xs text-black"></span>
+        </a>
+      {%- else -%}
+        {%- comment -%} Placeholders to keep Logo centered on INT {%- endcomment -%}
+        <div class="ml-2.5 sm:ml-10">
+          <span class="block w-7.5"></span>
+        </div>
+        <div class="relative ml-2.5 sm:ml-10">
+          <span class="block w-7.5"></span>
+        </div>
+      {%- endunless -%}
+
+    </div>
+  </div>
+  {% include 'nav-mobile' is_pro: is_pro_member, main_menu: main_menu %}
+      {%- if template.name == 'product' -%}
+      {%- render 'pdp-sticky-atc' -%}
+    {%- endif -%}
+</header>
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Navigation Settings"
+      },
+      {
+        "type": "link_list",
+        "id": "main_menu",
+        "label": "Main Menu",
+        "default": "main-menu"
+      },
+      {
+        "type": "checkbox",
+        "id": "red_clearance",
+        "label": "Make Clearance links red?",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo",
+        "info": "Recommended image dimensions: 210px x 29px."
+      }
+    ],
+    "blocks": [
+      {
+        "type": "featured_cta_block",
+        "name": "CTA Media Block",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Media Content Block",
+            "info": "This block will appear in the desktop navigation dropdown, under the top-level link that is assigned in the 'Menu Handle' field."
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Menu Parent Link Handle",
+            "info": "Please enter the top-level menu link handle to assign this CTA block (ie. MEN = men, WOMEN = women, etc.)"
+          },
+          {
+            "type": "image_picker",
+            "id": "cta_image",
+            "label": "CTA Image",
+            "info": "Recommended image dimensions: 282px x 230px. Note: The media block will not render until an image is selected."
+          },
+          {
+            "type": "radio",
+            "id": "cta_type",
+            "label": "CTA Display Type",
+            "options": [
+              { "value": "last_submenu", "label": "Last Submenu (ie. Beginner Guides)" },
+              { "value": "custom_link", "label": "Single Link (ie. Shop All Kids)" }
+            ],
+            "default": "last_submenu",
+            "info": "This selection will accompany the fields below. If you select 'Menu', you can leave the 'Link' content fields blank."
+          },
+          {
+            "type": "header",
+            "content": "Link Display"
+          },
+          {
+            "type": "text",
+            "id": "cta_link_text",
+            "label": "CTA Link Text"
+          },
+          {
+            "id": "cta_link",
+            "type": "url",
+            "label": "CTA Link URL"
+          },
+          {
+            "id": "svg",
+            "type": "html",
+            "label": "Menu Background Text",
+            "info": "SVG is required"
+          }
+        ]
+      },
+      {
+        "type": "custom_menu_block",
+        "name": "Custom Menu Block",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Custom Menu Media Block",
+            "info": "This block will appear in the desktop navigation dropdown, under the top-level link that is assigned in the 'Menu Handle' field."
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Menu Parent Link Handle",
+            "info": "Please enter the top-level menu link handle to assign this CTA block (ie. ABOUT = about, INSPIRATION = inspiration, etc.)"
+          },
+          {
+            "type": "image_picker",
+            "id": "cta_image",
+            "label": "CTA Image",
+            "info": "Recommended image dimensions: 290px x 230px"
+          },
+          {
+            "type": "text",
+            "id": "cta_link_title",
+            "label": "CTA Link Header",
+            "info": "This will show as the header of your media block on Desktop, and the title of your link on Mobile. (ie. Our Social Purpose)"
+          },
+          {
+            "type": "text",
+            "id": "cta_link_text",
+            "label": "CTA Link Text",
+            "info": "This will show as a short blurb/paragraph on desktop screens only."
+          },
+          {
+            "id": "cta_link",
+            "type": "url",
+            "label": "CTA Link URL"
+          }
+        ]
+      },
+      {
+        "type": "featured_blog_post_block",
+        "name": "Blog Post Block",
+        "limit": 4,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Menu Parent Link Handle",
+            "info": "Please enter the top-level menu link handle to assign this CTA block (ie. ABOUT = about, INSPIRATION = inspiration, etc.)"
+          },
+          {
+            "type": "article",
+            "id": "article_handle",
+            "label": "Article"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

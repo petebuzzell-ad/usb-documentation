@@ -1,0 +1,2227 @@
+{
+  "theme_name": "cutters-10OCT2025",
+  "overall_score": 69.75,
+  "scores": {
+    "app_ecosystem": 75,
+    "technical_performance": 60,
+    "accessibility": 40,
+    "consumer_privacy": 85,
+    "theme_architecture": 75
+  },
+  "static_analysis": {
+    "theme_name": "cutters-10OCT2025",
+    "apps": [
+      {
+        "id": "855628211100114053",
+        "name": "klaviyo-email-marketing-sms",
+        "path": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+        "enabled": true,
+        "settings": {}
+      },
+      {
+        "id": "17428600031447253342",
+        "name": "attentive",
+        "path": "shopify://apps/attentive/blocks/attn-tag/8df62c72-8fe4-407e-a5b3-72132be30a0d",
+        "enabled": true,
+        "settings": {}
+      },
+      {
+        "id": "5017882195547572635",
+        "name": "sc-easy-redirects",
+        "path": "shopify://apps/sc-easy-redirects/blocks/app/be3f8dbd-5d43-46b4-ba43-2d65046054c2",
+        "enabled": true,
+        "settings": {}
+      },
+      {
+        "id": "2153490007123654574",
+        "name": "consentmo-gdpr",
+        "path": "shopify://apps/consentmo-gdpr/blocks/gdpr_cookie_consent/4fbe573f-a377-4fea-9801-3ee0858cae41",
+        "enabled": true,
+        "settings": {}
+      },
+      {
+        "id": "4705145147225299685",
+        "name": "tolstoy-shoppable-video-quiz",
+        "path": "shopify://apps/tolstoy-shoppable-video-quiz/blocks/widget-block/06fa8282-42ff-403e-b67c-1936776aed11",
+        "enabled": true,
+        "settings": {}
+      },
+      {
+        "id": "17868308261682785792",
+        "name": "armex",
+        "path": "shopify://apps/armex/blocks/armex-extension/7fd274f7-e6a1-4512-8228-f11c90d2ef69",
+        "enabled": true,
+        "settings": {}
+      },
+      {
+        "id": "10372961000425990538",
+        "name": "uso-ultimate-special-offers",
+        "path": "shopify://apps/uso-ultimate-special-offers/blocks/app-embed/27e7496f-1710-4d6e-8269-9d221925aac7",
+        "enabled": true,
+        "settings": {
+          "use_custom_template": false,
+          "template_liquid": "{% raw %}\n\n<script id=\"saso-volume-discount-tiers\" type=\"text/x-handlebars-template\" data-no-instant>\n<div class=\"saso-volume-discount-tiers\">\n<h4>{{{product_message}}}</h4>\n<table class=\"saso-table\">\n<thead>\n<tr>\n<th>Minimum Qty</th>\n<th>{{# if price_type_flat}}Price per item{{/if}}{{# if price_type_percent}}Discount{{/if}}</th>\n<!--<th>&nbsp;</th>-->\n</tr>\n</thead>\n<tbody>\n{{#tiers}}\n<tr>\n<td>{{{quantity}}}+</td>\n<td>{{{price.title}}}<!-- {{{price_flat.title}}} --></td>\n<!-- <td><a href=\"#\" class=\"saso-add-to-cart\" data-quantity=\"{{{quantity}}}\">Add to Cart</a></td> -->\n</tr>\n{{/tiers}}\n</tbody>\n</table>\n</div>\n</script>\n\n<script id=\"saso-cross-sell-popup\" type=\"text/x-handlebars-template\" data-no-instant>\n<div class=\"saso-cross-sell-popup {{#if products.length}}{{else}}saso-cross-sell-popup0{{/if}}\">\n<span class=\"saso-message\">{{{notifications_message}}}</span>\n<br>\n<div class=\"saso-products-container\">\n<table><tr>\n{{#products}}\n<td class=\"saso-product-container\" data-product-id=\"{{id}}\" data-variant-id=\"{{variants.0.id}}\">\n<div class=\"saso-image\"><a href=\"/products/{{handle}}\" class=\"saso-crosssell-nav\" data-product-id=\"{{id}}\"><img src=\"{{image.src}}\" /></a></div>\n<div class=\"saso-title\">{{{title}}}</div>\n<div class=\"saso-variants-container\" style=\"{{{variants_style}}}\">{{{variants_select}}}</div>\n<span class=\"saso-price\">{{{variants.0.price}}}</span>\n<span class=\"saso-was-price\">{{{variants.0.compare_at_price}}}</span>\n<br>\n<button type=\"button\" class=\"saso-add-to-cart saso-crosssell-nav\" data-product-id=\"{{{id}}}\" data-variant-id=\"{{{variants.0.id}}}\">Add to Cart</button>\n</td>\n{{/products}}\n</tr></table>\n</div>\n{{# if click_here}}<a href=\"{{{click_here}}}\" class=\"saso-click-here\"><button type=\"button\" class=\"saso-click-here\">Click here to browse all choices</button></a>{{/if}}\n<div class=\"saso-hide-when-embedded\">\n<p><a href=\"#\" class=\"saso-close\">No thanks</a></p>\n</div>\n</div>\n</script>\n\n<script id=\"saso-bundle-popup\" type=\"text/x-handlebars-template\" data-no-instant>\n<div class=\"saso-cross-sell-popup saso-bundle-popup\">\n<span class=\"saso-message\">{{{notifications_message}}}</span>\n<br>\n\n<div class=\"saso-products-container\">\n{{#products}}\n<div class=\"saso-product-container\" data-product-id=\"{{id}}\" data-variant-id=\"{{variants.0.id}}\" data-quantity=\"{{quantity}}\">\n<div class=\"saso-image\">\n<a href=\"/products/{{handle}}\" class=\"saso-crosssell-nav\" data-product-id=\"{{id}}\"><img src=\"{{image.src}}\" /></a>\n<div class=\"saso-quantity-container\">\n{{{quantityx}}}\n</div>\n</div>\n<div class=\"saso-product-info\">\n<div class=\"saso-title\">{{{title}}}</div>\n<div class=\"saso-variants-container\" style=\"{{{variants_style}}}\">{{{variants_select}}}</div>\n<span class=\"saso-price\">{{{variants.0.price}}}</span>\n</div>\n</div>\n<div class=\"saso-plus-container\">\n<div class=\"saso-plus-container-inner\">+</div>\n</div>\n{{/products}}\n</div>\n\n<table><tr class=\"saso-bundle-row\">\n<td class=\"saso-equal-container\">\n=\n</td>\n<td class=\"saso-bundle-price-container\">\n{{{bundle_price_title}}}\n</td>\n</tr></table>\n\n\n<button type=\"button\" class=\"saso-add-to-cart saso-bundle-add-to-cart\">Add entire Bundle to cart</button>\n<div class=\"saso-bundle-success\">{{{message_after}}}</div>\n\n</div>\n</script>\n\n<script id=\"saso-use-discount-code-cart\" type=\"text/x-handlebars-template\" data-no-instant>\n<div class=\"saso-use-discount-code-cart-container\">\n<input type=\"text\" class=\"saso-use-discount-code-cart-code\" placeholder=\"Discount code\">\n<button type=\"button\" class=\"saso-use-discount-code-cart-apply btn btn--secondary button\">Apply</button>\n</div>\n</script>\n\n<script id=\"saso-use-discount-instead\" type=\"text/x-handlebars-template\" data-no-instant>\n<div class=\"saso-use-discount-instead-container\">\n<label style=\"font-weight: normal; cursor: pointer;\"><input type=\"checkbox\" id=\"saso-use-discount-code-instead-check\"> I will be using a coupon instead</label>\n</div>\n</script>\n\n{% endraw %}"
+        }
+      }
+    ],
+    "scripts": [
+      {
+        "file": "backup_theme.liquid",
+        "type": "inline_script",
+        "content": "const loadingAppearance = {{ loading_appearance | json }};\n    const loaded = sessionStorage.getItem('loaded');\n\n    if (loadingAppearance === 'once') {\n      if (loaded === null) {\n        sessionSto..."
+      },
+      {
+        "file": "backup_theme.liquid",
+        "type": "inline_script",
+        "content": "if (window.MSInputMethodContext && document.documentMode) {\n      var scripts = document.getElementsByTagName('script')[0];\n      var polyfill = document.createElement(\"script\");\n      polyfill.defer ..."
+      },
+      {
+        "file": "backup_theme.liquid",
+        "type": "inline_script",
+        "content": "(function(c,l,a,r,i,t,y){\n        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};\n        t=l.createElement(r);t.async=1;t.src=\"https://www.clarity.ms/tag/\"+i;\n        y=l.getElementsByTag..."
+      },
+      {
+        "file": "backup_theme.liquid",
+        "type": "inline_script",
+        "content": "document.addEventListener('click', function(e) {\n      if(e.target.classList.contains('swatch__link')) {\n        var swatch_url = e.target.href;\n        var swatch_handle = e.target.dataset.swatchHand..."
+      },
+      {
+        "file": "backup_theme.liquid",
+        "type": "inline_script",
+        "content": "LoopOnstore.init({ \n\t\tkey: \"a4cf6c9726e4cdc1dd510335216df8e2c5278551\", \n\t\tattach: \".cart__buttons .cart__checkout.btn\" \n\t});"
+      },
+      {
+        "file": "backup_theme.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "backup_theme.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "backup_theme.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "backup_theme.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "backup_theme.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "backup_theme.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "backup_theme.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "backup_theme.liquid",
+        "type": "external_script",
+        "src": "https://unpkg.com/@loophq/onstore-sdk@latest/dist/loop-onstore-sdk.js"
+      },
+      {
+        "file": "theme.liquid",
+        "type": "inline_script",
+        "content": "const loadingAppearance = {{ loading_appearance | json }};\n    const loaded = sessionStorage.getItem('loaded');\n\n    if (loadingAppearance === 'once') {\n      if (loaded === null) {\n        sessionSto..."
+      },
+      {
+        "file": "theme.liquid",
+        "type": "inline_script",
+        "content": "if (window.MSInputMethodContext && document.documentMode) {\n      var scripts = document.getElementsByTagName('script')[0];\n      var polyfill = document.createElement(\"script\");\n      polyfill.defer ..."
+      },
+      {
+        "file": "theme.liquid",
+        "type": "inline_script",
+        "content": "(function(c,l,a,r,i,t,y){\n        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};\n        t=l.createElement(r);t.async=1;t.src=\"https://www.clarity.ms/tag/\"+i;\n        y=l.getElementsByTag..."
+      },
+      {
+        "file": "theme.liquid",
+        "type": "inline_script",
+        "content": "document.addEventListener('click', function(e) {\n      if(e.target.classList.contains('swatch__link')) {\n        var swatch_url = e.target.href;\n        var swatch_handle = e.target.dataset.swatchHand..."
+      },
+      {
+        "file": "theme.liquid",
+        "type": "inline_script",
+        "content": "LoopOnstore.init({ \n\t\tkey: \"a4cf6c9726e4cdc1dd510335216df8e2c5278551\", \n\t\tattach: \".cart__buttons .cart__checkout.btn\" \n\t});"
+      },
+      {
+        "file": "theme.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "theme.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "theme.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "theme.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "theme.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "theme.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "theme.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "theme.liquid",
+        "type": "external_script",
+        "src": "https://unpkg.com/@loophq/onstore-sdk@latest/dist/loop-onstore-sdk.js"
+      },
+      {
+        "file": "theme.shogun.landing.liquid",
+        "type": "inline_script",
+        "content": "const loadingAppearance = {{ loading_appearance | json }};\n    const loaded = sessionStorage.getItem('loaded');\n\n    if (loadingAppearance === 'once') {\n      if (loaded === null) {\n        sessionSto..."
+      },
+      {
+        "file": "theme.shogun.landing.liquid",
+        "type": "inline_script",
+        "content": "if (window.MSInputMethodContext && document.documentMode) {\n      var scripts = document.getElementsByTagName('script')[0];\n      var polyfill = document.createElement(\"script\");\n      polyfill.defer ..."
+      },
+      {
+        "file": "theme.shogun.landing.liquid",
+        "type": "inline_script",
+        "content": "(function(c,l,a,r,i,t,y){\n        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};\n        t=l.createElement(r);t.async=1;t.src=\"https://www.clarity.ms/tag/\"+i;\n        y=l.getElementsByTag..."
+      },
+      {
+        "file": "theme.shogun.landing.liquid",
+        "type": "inline_script",
+        "content": "document.addEventListener('click', function(e) {\n      if(e.target.classList.contains('swatch__link')) {\n        var swatch_url = e.target.href;\n        var swatch_handle = e.target.dataset.swatchHand..."
+      },
+      {
+        "file": "theme.shogun.landing.liquid",
+        "type": "inline_script",
+        "content": "LoopOnstore.init({ \n\t\tkey: \"a4cf6c9726e4cdc1dd510335216df8e2c5278551\", \n\t\tattach: \".cart__buttons .cart__checkout.btn\" \n\t});"
+      },
+      {
+        "file": "theme.shogun.landing.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "theme.shogun.landing.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "theme.shogun.landing.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "theme.shogun.landing.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "theme.shogun.landing.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "theme.shogun.landing.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "theme.shogun.landing.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "theme.shogun.landing.liquid",
+        "type": "external_script",
+        "src": "https://unpkg.com/@loophq/onstore-sdk@latest/dist/loop-onstore-sdk.js"
+      },
+      {
+        "file": "password.liquid",
+        "type": "inline_script",
+        "content": "const loadingAppearance = {{ loading_appearance | json }};\n    const loaded = sessionStorage.getItem('loaded');\n\n    if (loadingAppearance === 'once') {\n      if (loaded === null) {\n        sessionSto..."
+      },
+      {
+        "file": "password.liquid",
+        "type": "inline_script",
+        "content": "if (window.MSInputMethodContext && document.documentMode) {\n      var scripts = document.getElementsByTagName('script')[0];\n      var polyfill = document.createElement(\"script\");\n      polyfill.defer ..."
+      },
+      {
+        "file": "password.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "password.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "password.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "password.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "password.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      },
+      {
+        "file": "password.liquid",
+        "type": "external_script",
+        "src": "{{ "
+      }
+    ],
+    "assets": {
+      "css_files": [
+        {
+          "name": "section-video.css",
+          "size": 1258,
+          "size_mb": 0.0
+        },
+        {
+          "name": "section-grid.css",
+          "size": 16790,
+          "size_mb": 0.02
+        },
+        {
+          "name": "section-recommended-posts.css",
+          "size": 630,
+          "size_mb": 0.0
+        },
+        {
+          "name": "section-contact-form.css",
+          "size": 1558,
+          "size_mb": 0.0
+        },
+        {
+          "name": "section-featured-collection.css",
+          "size": 16590,
+          "size_mb": 0.02
+        },
+        {
+          "name": "section-subcollections.css",
+          "size": 1929,
+          "size_mb": 0.0
+        },
+        {
+          "name": "theme.css",
+          "size": 499985,
+          "size_mb": 0.48
+        },
+        {
+          "name": "section-shoppable-blog-posts.css",
+          "size": 11913,
+          "size_mb": 0.01
+        },
+        {
+          "name": "section-split-images.css",
+          "size": 3144,
+          "size_mb": 0.0
+        },
+        {
+          "name": "section-popup.css",
+          "size": 12678,
+          "size_mb": 0.01
+        },
+        {
+          "name": "template-cart.css",
+          "size": 5154,
+          "size_mb": 0.0
+        },
+        {
+          "name": "template-product.css",
+          "size": 9971,
+          "size_mb": 0.01
+        },
+        {
+          "name": "section-sticky-images-and-text.css",
+          "size": 30677,
+          "size_mb": 0.03
+        },
+        {
+          "name": "section-icons-row.css",
+          "size": 17774,
+          "size_mb": 0.02
+        },
+        {
+          "name": "section-image-accordions.css",
+          "size": 12811,
+          "size_mb": 0.01
+        },
+        {
+          "name": "section-sticky-image-cards.css",
+          "size": 16647,
+          "size_mb": 0.02
+        },
+        {
+          "name": "section-header-navigation.css",
+          "size": 27502,
+          "size_mb": 0.03
+        },
+        {
+          "name": "section-image.css",
+          "size": 3805,
+          "size_mb": 0.0
+        },
+        {
+          "name": "section-newsletter.css",
+          "size": 2030,
+          "size_mb": 0.0
+        },
+        {
+          "name": "section-look.css",
+          "size": 7065,
+          "size_mb": 0.01
+        },
+        {
+          "name": "section-collection-image-with-title.css",
+          "size": 1635,
+          "size_mb": 0.0
+        },
+        {
+          "name": "template-customer.css",
+          "size": 7444,
+          "size_mb": 0.01
+        },
+        {
+          "name": "section-products-list.css",
+          "size": 7459,
+          "size_mb": 0.01
+        },
+        {
+          "name": "section-hero-scrolling.css",
+          "size": 13191,
+          "size_mb": 0.01
+        },
+        {
+          "name": "section-testimonials.css",
+          "size": 8416,
+          "size_mb": 0.01
+        },
+        {
+          "name": "section-press.css",
+          "size": 5154,
+          "size_mb": 0.0
+        },
+        {
+          "name": "section-related-products.css",
+          "size": 591,
+          "size_mb": 0.0
+        },
+        {
+          "name": "section-slideshow.css",
+          "size": 10227,
+          "size_mb": 0.01
+        },
+        {
+          "name": "section-collection-list.css",
+          "size": 12695,
+          "size_mb": 0.01
+        },
+        {
+          "name": "template-password.css",
+          "size": 2011,
+          "size_mb": 0.0
+        },
+        {
+          "name": "section-announcement.css",
+          "size": 10469,
+          "size_mb": 0.01
+        },
+        {
+          "name": "section-columns.css",
+          "size": 12347,
+          "size_mb": 0.01
+        },
+        {
+          "name": "section-custom-content.css",
+          "size": 9884,
+          "size_mb": 0.01
+        },
+        {
+          "name": "section-text.css",
+          "size": 4425,
+          "size_mb": 0.0
+        },
+        {
+          "name": "section-tab-collections.css",
+          "size": 4026,
+          "size_mb": 0.0
+        },
+        {
+          "name": "section-overlapping-images.css",
+          "size": 4726,
+          "size_mb": 0.0
+        },
+        {
+          "name": "template-blog.css",
+          "size": 1731,
+          "size_mb": 0.0
+        },
+        {
+          "name": "template-search.css",
+          "size": 7143,
+          "size_mb": 0.01
+        },
+        {
+          "name": "section-countdown.css",
+          "size": 7374,
+          "size_mb": 0.01
+        },
+        {
+          "name": "section-locations.css",
+          "size": 2135,
+          "size_mb": 0.0
+        },
+        {
+          "name": "section-promotion-row.css",
+          "size": 12097,
+          "size_mb": 0.01
+        },
+        {
+          "name": "gift-card.css",
+          "size": 8307,
+          "size_mb": 0.01
+        },
+        {
+          "name": "template-page.css",
+          "size": 333,
+          "size_mb": 0.0
+        },
+        {
+          "name": "section-accordions.css",
+          "size": 4185,
+          "size_mb": 0.0
+        },
+        {
+          "name": "template-collection.css",
+          "size": 26658,
+          "size_mb": 0.03
+        },
+        {
+          "name": "section-blog.css",
+          "size": 472,
+          "size_mb": 0.0
+        },
+        {
+          "name": "section-image-with-text.css",
+          "size": 23877,
+          "size_mb": 0.02
+        },
+        {
+          "name": "template-article.css",
+          "size": 1392,
+          "size_mb": 0.0
+        },
+        {
+          "name": "section-featured-product.css",
+          "size": 379,
+          "size_mb": 0.0
+        },
+        {
+          "name": "section-shop-the-look-banner.css",
+          "size": 2209,
+          "size_mb": 0.0
+        },
+        {
+          "name": "section-footer.css",
+          "size": 12405,
+          "size_mb": 0.01
+        },
+        {
+          "name": "section-banner-with-text-columns.css",
+          "size": 9491,
+          "size_mb": 0.01
+        },
+        {
+          "name": "section-banner-image.css",
+          "size": 8491,
+          "size_mb": 0.01
+        }
+      ],
+      "js_files": [
+        {
+          "name": "smoothscroll.js",
+          "size": 7971,
+          "size_mb": 0.01
+        },
+        {
+          "name": "theme-editor.js",
+          "size": 675,
+          "size_mb": 0.0
+        },
+        {
+          "name": "ie11.js",
+          "size": 8315,
+          "size_mb": 0.01
+        },
+        {
+          "name": "theme.js",
+          "size": 371849,
+          "size_mb": 0.35
+        },
+        {
+          "name": "custom.js",
+          "size": 500,
+          "size_mb": 0.0
+        },
+        {
+          "name": "vendor.js",
+          "size": 75670,
+          "size_mb": 0.07
+        },
+        {
+          "name": "theme.dev.js",
+          "size": 790402,
+          "size_mb": 0.75
+        },
+        {
+          "name": "photoswipe.js",
+          "size": 41998,
+          "size_mb": 0.04
+        }
+      ],
+      "images": [
+        {
+          "name": "Hi-Viz-Yellow-Swatch.jpg",
+          "size": 1600,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Black-Red-Lux-Swatch.jpg",
+          "size": 1370,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Danger_Swatch_NEW.jpg",
+          "size": 1412,
+          "size_mb": 0.0
+        },
+        {
+          "name": "icon-arrow-right.svg",
+          "size": 338,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Black-Gold-Swatch.jpg",
+          "size": 1595,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Red-White-Lux-Swatch.jpg",
+          "size": 2113,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Multi-Drip-Swatch.jpg",
+          "size": 2027,
+          "size_mb": 0.0
+        },
+        {
+          "name": "blank.svg",
+          "size": 80186,
+          "size_mb": 0.08
+        },
+        {
+          "name": "icon-squiggle.svg",
+          "size": 381,
+          "size_mb": 0.0
+        },
+        {
+          "name": "icon-zoom-out.svg",
+          "size": 479,
+          "size_mb": 0.0
+        },
+        {
+          "name": "icon-chevron-right-bold.svg",
+          "size": 226,
+          "size_mb": 0.0
+        },
+        {
+          "name": "White-MultiDrip_Swatch_NEW.jpg",
+          "size": 1533,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Money-Maker-Swatch.jpg",
+          "size": 1462,
+          "size_mb": 0.0
+        },
+        {
+          "name": "white_shock_green_swatch.jpg",
+          "size": 843,
+          "size_mb": 0.0
+        },
+        {
+          "name": "White-Black-Lux-Swatch_NEW.jpg",
+          "size": 1320,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Black-Topo-Swatch.jpg",
+          "size": 2012,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Black-Gold-Lux-Swatch.jpg",
+          "size": 2020,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Black-White-Swatch.jpg",
+          "size": 1503,
+          "size_mb": 0.0
+        },
+        {
+          "name": "glove_swatch_red_white_blue.jpg",
+          "size": 1007,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Checker-Black-White-Swatch.jpg",
+          "size": 1663,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Drip_Face_Swatch_NEW.jpg",
+          "size": 1534,
+          "size_mb": 0.0
+        },
+        {
+          "name": "White-Money-Bands-Swatch.jpg",
+          "size": 1379,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Black-Silver-Iridescent-Swatch.jpg",
+          "size": 1835,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Merica-Swatch.jpg",
+          "size": 2427,
+          "size_mb": 0.0
+        },
+        {
+          "name": "White_Sprinkle_Drip_Swatch.jpg",
+          "size": 1592,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Money-Mouth-Swatch.jpg",
+          "size": 1545,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Black-White-Lux-Swatch.jpg",
+          "size": 2106,
+          "size_mb": 0.0
+        },
+        {
+          "name": "icon-check-swatch.svg",
+          "size": 1092,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Feed-Me-Swatch.jpg",
+          "size": 1520,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Black-White-Lux-Swatch_NEW.jpg",
+          "size": 1320,
+          "size_mb": 0.0
+        },
+        {
+          "name": "password-page-background.jpg",
+          "size": 192276,
+          "size_mb": 0.18
+        },
+        {
+          "name": "loading.svg",
+          "size": 335,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Merica_NEW.jpg",
+          "size": 1365,
+          "size_mb": 0.0
+        },
+        {
+          "name": "White-Tattoo-Swatch.jpg",
+          "size": 2209,
+          "size_mb": 0.0
+        },
+        {
+          "name": "White-Black-Lux-Swatch.jpg",
+          "size": 2024,
+          "size_mb": 0.0
+        },
+        {
+          "name": "White-Pink-Swatch.jpg",
+          "size": 1386,
+          "size_mb": 0.0
+        },
+        {
+          "name": "White-Topo-Swatch.jpg",
+          "size": 2127,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Hi-Mom-Swatch.jpg",
+          "size": 1536,
+          "size_mb": 0.0
+        },
+        {
+          "name": "White-Red-Swatch.jpg",
+          "size": 1405,
+          "size_mb": 0.0
+        },
+        {
+          "name": "white_columbia_blue_Swatch.jpg",
+          "size": 4601,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Straight-Cash-Lux-Swatch_NEW.jpg",
+          "size": 1365,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Multiple_Swatch.jpg",
+          "size": 2019,
+          "size_mb": 0.0
+        },
+        {
+          "name": "icon-check.svg",
+          "size": 390,
+          "size_mb": 0.0
+        },
+        {
+          "name": "blank.gif",
+          "size": 1101,
+          "size_mb": 0.0
+        },
+        {
+          "name": "icon-arrow-right-bold.svg",
+          "size": 245,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Drip-Face-Swatch.jpg",
+          "size": 2202,
+          "size_mb": 0.0
+        },
+        {
+          "name": "glove_swatch_king_primary.jpg",
+          "size": 908,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Multi-Color-Face-Swatch.jpg",
+          "size": 1534,
+          "size_mb": 0.0
+        },
+        {
+          "name": "White-Black-Swatch.jpg",
+          "size": 1500,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Solid-Black-Swatch.jpg",
+          "size": 1303,
+          "size_mb": 0.0
+        },
+        {
+          "name": "icon-zoom-in.svg",
+          "size": 551,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Solid-White-Swatch.jpg",
+          "size": 1283,
+          "size_mb": 0.0
+        },
+        {
+          "name": "icon-chevron-right.svg",
+          "size": 226,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Danger-Swatch.jpg",
+          "size": 2317,
+          "size_mb": 0.0
+        },
+        {
+          "name": "White-Gold-Swatch.jpg",
+          "size": 1536,
+          "size_mb": 0.0
+        },
+        {
+          "name": "The-King-Swatch.jpg",
+          "size": 2400,
+          "size_mb": 0.0
+        },
+        {
+          "name": "black_red_swatch.jpg",
+          "size": 881,
+          "size_mb": 0.0
+        },
+        {
+          "name": "White-Royal-Swatch.jpg",
+          "size": 1383,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Red-White-Lux-Swatch_NEW.jpg",
+          "size": 1408,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Smile-Swatch.jpg",
+          "size": 1483,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Straight-Cash-Swatch.jpg",
+          "size": 2134,
+          "size_mb": 0.0
+        },
+        {
+          "name": "SHH-Swatch.jpg",
+          "size": 1519,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Black-Gold-Lux-Swatch_NEW.jpg",
+          "size": 1374,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Flag-Swatch.jpg",
+          "size": 2054,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Tie-Dye-Swatch.jpg",
+          "size": 2206,
+          "size_mb": 0.0
+        },
+        {
+          "name": "Stars-Stripes-Swatch.jpg",
+          "size": 2024,
+          "size_mb": 0.0
+        }
+      ],
+      "fonts": [],
+      "total_size": 2617273,
+      "total_size_mb": 2.5
+    },
+    "code_quality": {
+      "deprecated_tags": [
+        {
+          "file": "snippets/toggle-ellipsis.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/accordions.liquid",
+          "pattern": "\\{\\%\\s*capture\\s+",
+          "count": 2
+        },
+        {
+          "file": "snippets/accordions.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 3
+        },
+        {
+          "file": "snippets/no-blocks.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/announcement.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/list-collections.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 3
+        },
+        {
+          "file": "snippets/nav-item-mobile.liquid",
+          "pattern": "\\{\\%\\s*assign\\s+",
+          "count": 4
+        },
+        {
+          "file": "snippets/image-srcset.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/nav-item.liquid",
+          "pattern": "\\{\\%\\s*assign\\s+",
+          "count": 8
+        },
+        {
+          "file": "snippets/nav-item.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 2
+        },
+        {
+          "file": "snippets/video.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 5
+        },
+        {
+          "file": "snippets/products-recently-viewed.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/photoswipe-video-html.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 2
+        },
+        {
+          "file": "snippets/image-fill.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/product-card-inline.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/multicolumn.liquid",
+          "pattern": "\\{\\%\\s*assign\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/multicolumn.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/shogun-head.liquid",
+          "pattern": "\\{\\%\\s*assign\\s+",
+          "count": 4
+        },
+        {
+          "file": "snippets/shogun-head.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/shogun-content-handler.liquid",
+          "pattern": "\\{\\%\\s*assign\\s+",
+          "count": 8
+        },
+        {
+          "file": "snippets/shogun-content-handler.liquid",
+          "pattern": "\\{\\%\\s*capture\\s+",
+          "count": 6
+        },
+        {
+          "file": "snippets/shogun-content-handler.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/product-grid-item--onboarding.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 3
+        },
+        {
+          "file": "snippets/product-card-inline--onboarding.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 2
+        },
+        {
+          "file": "snippets/product-quick-view-form-onboarding.liquid",
+          "pattern": "\\{\\%\\s*capture\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/gift-card-recipient-form.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/title-stripped.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/css-variables.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 4
+        },
+        {
+          "file": "snippets/shogun-products.liquid",
+          "pattern": "\\{\\%\\s*assign\\s+",
+          "count": 2
+        },
+        {
+          "file": "snippets/shogun-products.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/product.liquid",
+          "pattern": "\\{\\%\\s*capture\\s+",
+          "count": 4
+        },
+        {
+          "file": "snippets/product.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 6
+        },
+        {
+          "file": "snippets/subscription-form.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/product-price.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/inventory-countdown.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/header-block.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/breadcrumbs.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/comment.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/search-results-product.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/image.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/title-text-reveal-and-highlights.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/title-with-highlights.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/footer.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/notification-form.liquid",
+          "pattern": "\\{\\%\\s*assign\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/notification-form.liquid",
+          "pattern": "\\{\\%\\s*capture\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/product-grid-item.liquid",
+          "pattern": "\\{\\%\\s*assign\\s+",
+          "count": 6
+        },
+        {
+          "file": "snippets/product-grid-item.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 6
+        },
+        {
+          "file": "snippets/footer-copyright.liquid",
+          "pattern": "\\{\\%\\s*capture\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/footer-copyright.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "snippets/countdown-timer.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "sections/section-hero-scrolling.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 2
+        },
+        {
+          "file": "sections/section-tab-collections.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "sections/section-banner-image-callouts.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "sections/ss-video-image-text-6.liquid",
+          "pattern": "\\{\\%\\s*assign\\s+",
+          "count": 6
+        },
+        {
+          "file": "sections/ss-video-image-text-6.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "sections/section-text.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "sections/section-shop-the-look-banner.liquid",
+          "pattern": "\\{\\%\\s*capture\\s+",
+          "count": 1
+        },
+        {
+          "file": "sections/shogun-above.liquid",
+          "pattern": "\\{\\%\\s*assign\\s+",
+          "count": 2
+        },
+        {
+          "file": "sections/shogun-above.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "sections/section-contact-form.liquid",
+          "pattern": "\\{\\%\\s*capture\\s+",
+          "count": 1
+        },
+        {
+          "file": "sections/section-promotion-row.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 2
+        },
+        {
+          "file": "sections/section-image-with-text.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 5
+        },
+        {
+          "file": "sections/collection.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 2
+        },
+        {
+          "file": "sections/section-press.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "sections/section-image-accordions.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "sections/section-countdown.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "sections/section-collection.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 5
+        },
+        {
+          "file": "sections/section-video.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 2
+        },
+        {
+          "file": "sections/section-products-with-image.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 2
+        },
+        {
+          "file": "sections/section-slideshow.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 2
+        },
+        {
+          "file": "sections/api-quickview.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "sections/section-overlapping-images.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 2
+        },
+        {
+          "file": "sections/shogun-below.liquid",
+          "pattern": "\\{\\%\\s*assign\\s+",
+          "count": 2
+        },
+        {
+          "file": "sections/shogun-below.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "sections/section-sticky-images-and-text.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "sections/ss-video-with-text.liquid",
+          "pattern": "\\{\\%\\s*assign\\s+",
+          "count": 7
+        },
+        {
+          "file": "sections/section-banner-image.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "sections/ss-image-with-text-4.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "sections/section-look.liquid",
+          "pattern": "\\{\\%\\s*capture\\s+",
+          "count": 1
+        },
+        {
+          "file": "sections/api-predictive-search.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "sections/section-locations.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "sections/article.liquid",
+          "pattern": "\\{\\%\\s*assign\\s+",
+          "count": 1
+        },
+        {
+          "file": "sections/article.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 7
+        },
+        {
+          "file": "sections/section-icons-row.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "sections/section-shoppable-blog.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 2
+        },
+        {
+          "file": "sections/shogun-optimizer.liquid",
+          "pattern": "\\{\\%\\s*assign\\s+",
+          "count": 4
+        },
+        {
+          "file": "sections/shogun-optimizer.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "sections/shogun-helper.liquid",
+          "pattern": "\\{\\%\\s*assign\\s+",
+          "count": 4
+        },
+        {
+          "file": "sections/shogun-helper.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "sections/section-split-images.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "sections/ss-video-image-text-3.liquid",
+          "pattern": "\\{\\%\\s*assign\\s+",
+          "count": 2
+        },
+        {
+          "file": "sections/ss-video-image-text-3.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "layout/backup_theme.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "layout/theme.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "layout/theme.shogun.landing.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 2
+        },
+        {
+          "file": "layout/password.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "templates/page.shogun.landing.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "templates/page.shogun.default.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "templates/gift_card.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "templates/collection.shogun.custom.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "templates/article.shogun.custom.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "templates/product.shogun.custom.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "templates/customers/login.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "templates/customers/order.liquid",
+          "pattern": "\\{\\%\\s*assign\\s+",
+          "count": 3
+        },
+        {
+          "file": "templates/customers/order.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "templates/customers/account.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "templates/customers/activate_account.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 1
+        },
+        {
+          "file": "templates/customers/addresses.liquid",
+          "pattern": "\\{\\%\\s*comment\\s+",
+          "count": 2
+        }
+      ],
+      "performance_issues": [
+        {
+          "file": "snippets/accordions.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 14
+        },
+        {
+          "file": "snippets/search-result-page.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "snippets/popular-searches.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "snippets/cart-drawer.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 28
+        },
+        {
+          "file": "snippets/nav-drawer.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 6
+        },
+        {
+          "file": "snippets/announcement.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 23
+        },
+        {
+          "file": "snippets/product-siblings.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 2
+        },
+        {
+          "file": "snippets/circle-text.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "snippets/list-collections.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 10
+        },
+        {
+          "file": "snippets/cart-empty-collections.liquid",
+          "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "snippets/cart-empty-collections.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 4
+        },
+        {
+          "file": "snippets/grid-layout.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 13
+        },
+        {
+          "file": "snippets/nav-item-mobile.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 17
+        },
+        {
+          "file": "snippets/nav-item.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 18
+        },
+        {
+          "file": "snippets/video.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 9
+        },
+        {
+          "file": "snippets/product-swatch--onboarding.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "snippets/products-recently-viewed.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 2
+        },
+        {
+          "file": "snippets/locations.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 7
+        },
+        {
+          "file": "snippets/photoswipe-video-html.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "snippets/image-fill.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 3
+        },
+        {
+          "file": "snippets/product-card-inline.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 18
+        },
+        {
+          "file": "snippets/multicolumn.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 20
+        },
+        {
+          "file": "snippets/product-accordions.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 5
+        },
+        {
+          "file": "snippets/shogun-head.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 4
+        },
+        {
+          "file": "snippets/testimonial-text.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 5
+        },
+        {
+          "file": "snippets/shogun-content-handler.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 6
+        },
+        {
+          "file": "snippets/product-grid-item--onboarding.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 13
+        },
+        {
+          "file": "snippets/cross-border.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 4
+        },
+        {
+          "file": "snippets/rich-text.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 7
+        },
+        {
+          "file": "snippets/product-card-inline--onboarding.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 10
+        },
+        {
+          "file": "snippets/media.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 4
+        },
+        {
+          "file": "snippets/product-quick-view-form-onboarding.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 22
+        },
+        {
+          "file": "snippets/gift-card-recipient-form.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 5
+        },
+        {
+          "file": "snippets/search-popdown.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 2
+        },
+        {
+          "file": "snippets/css-variables.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 8
+        },
+        {
+          "file": "snippets/shogun-products.liquid",
+          "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "snippets/shogun-products.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 4
+        },
+        {
+          "file": "snippets/product.liquid",
+          "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "snippets/product.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 128
+        },
+        {
+          "file": "snippets/subscription-form.liquid",
+          "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+          "count": 2
+        },
+        {
+          "file": "snippets/subscription-form.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 3
+        },
+        {
+          "file": "snippets/product-price.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 4
+        },
+        {
+          "file": "snippets/upsell-product.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 2
+        },
+        {
+          "file": "snippets/header-block.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "snippets/newsletter-form.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 12
+        },
+        {
+          "file": "snippets/share-button.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 2
+        },
+        {
+          "file": "snippets/blog-post-grid-item.liquid",
+          "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "snippets/blog-post-grid-item.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 2
+        },
+        {
+          "file": "snippets/footer-payment.liquid",
+          "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "snippets/footer-payment.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "snippets/testimonial-image.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 6
+        },
+        {
+          "file": "snippets/filter.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 13
+        },
+        {
+          "file": "snippets/image.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "snippets/cart-empty-buttons.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 4
+        },
+        {
+          "file": "snippets/testimonials.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 7
+        },
+        {
+          "file": "snippets/footer.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 9
+        },
+        {
+          "file": "snippets/cart-empty-message.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "snippets/testimonial-item.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 8
+        },
+        {
+          "file": "snippets/product-grid-item.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 27
+        },
+        {
+          "file": "snippets/footer-copyright.liquid",
+          "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "snippets/collection-grid-item.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 11
+        },
+        {
+          "file": "snippets/cart-line-items.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 6
+        },
+        {
+          "file": "snippets/countdown-timer.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 8
+        },
+        {
+          "file": "sections/section-hero-scrolling.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 14
+        },
+        {
+          "file": "sections/section-tab-collections.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 14
+        },
+        {
+          "file": "sections/section-banner-image-callouts.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 10
+        },
+        {
+          "file": "sections/section-divider.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 2
+        },
+        {
+          "file": "sections/ss-video-image-text-6.liquid",
+          "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+          "count": 4
+        },
+        {
+          "file": "sections/ss-video-image-text-6.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 50
+        },
+        {
+          "file": "sections/section-text.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 11
+        },
+        {
+          "file": "sections/section-shop-the-look-banner.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 21
+        },
+        {
+          "file": "sections/shogun-above.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "sections/section-contact-form.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 10
+        },
+        {
+          "file": "sections/collection-image-with-title.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 6
+        },
+        {
+          "file": "sections/section-recommended-posts.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 5
+        },
+        {
+          "file": "sections/section-columns.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 10
+        },
+        {
+          "file": "sections/section-promotion-row.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 11
+        },
+        {
+          "file": "sections/recent-products.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 4
+        },
+        {
+          "file": "sections/api-cart-items.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "sections/section-image-with-text.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 23
+        },
+        {
+          "file": "sections/collection.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 39
+        },
+        {
+          "file": "sections/section-press.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 13
+        },
+        {
+          "file": "sections/section-custom-html.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "sections/section-image-accordions.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 7
+        },
+        {
+          "file": "sections/section-sticky-image-cards.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 3
+        },
+        {
+          "file": "sections/section-countdown.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 21
+        },
+        {
+          "file": "sections/blog.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 7
+        },
+        {
+          "file": "sections/mobile-menu.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 7
+        },
+        {
+          "file": "sections/section-collection.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 30
+        },
+        {
+          "file": "sections/header.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 30
+        },
+        {
+          "file": "sections/section-video.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "sections/section-products-with-image.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 16
+        },
+        {
+          "file": "sections/section-slideshow.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 16
+        },
+        {
+          "file": "sections/product.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 4
+        },
+        {
+          "file": "sections/section-overlapping-images.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 29
+        },
+        {
+          "file": "sections/shogun-below.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "sections/section-image.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 4
+        },
+        {
+          "file": "sections/section-banner-text-columns.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 8
+        },
+        {
+          "file": "sections/subcollections.liquid",
+          "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "sections/subcollections.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 8
+        },
+        {
+          "file": "sections/main-page.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 4
+        },
+        {
+          "file": "sections/section-sticky-images-and-text.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 23
+        },
+        {
+          "file": "sections/ss-video-with-text.liquid",
+          "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "sections/ss-video-with-text.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 20
+        },
+        {
+          "file": "sections/section-product.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 4
+        },
+        {
+          "file": "sections/section-banner-image.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 10
+        },
+        {
+          "file": "sections/ss-image-with-text-4.liquid",
+          "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+          "count": 2
+        },
+        {
+          "file": "sections/ss-image-with-text-4.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 17
+        },
+        {
+          "file": "sections/section-look.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 18
+        },
+        {
+          "file": "sections/api-predictive-search.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "sections/cart.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 21
+        },
+        {
+          "file": "sections/section-products-list.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 39
+        },
+        {
+          "file": "sections/article.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 25
+        },
+        {
+          "file": "sections/section-newsletter.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 5
+        },
+        {
+          "file": "sections/section-icons-row.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 10
+        },
+        {
+          "file": "sections/section-shoppable-blog.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 8
+        },
+        {
+          "file": "sections/shogun-optimizer.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "sections/shogun-helper.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "sections/password.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "sections/section-blog.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 7
+        },
+        {
+          "file": "sections/section-custom-content.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 16
+        },
+        {
+          "file": "sections/popup.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 4
+        },
+        {
+          "file": "sections/related-products.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 9
+        },
+        {
+          "file": "sections/section-split-images.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 7
+        },
+        {
+          "file": "sections/ss-video-image-text-3.liquid",
+          "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+          "count": 3
+        },
+        {
+          "file": "sections/ss-video-image-text-3.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 24
+        },
+        {
+          "file": "sections/search.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 27
+        },
+        {
+          "file": "layout/backup_theme.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 8
+        },
+        {
+          "file": "layout/theme.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 8
+        },
+        {
+          "file": "layout/theme.shogun.landing.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 3
+        },
+        {
+          "file": "layout/password.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 3
+        },
+        {
+          "file": "templates/robots.txt.liquid",
+          "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+          "count": 2
+        },
+        {
+          "file": "templates/gift_card.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 3
+        },
+        {
+          "file": "templates/customers/login.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 6
+        },
+        {
+          "file": "templates/customers/order.liquid",
+          "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+          "count": 3
+        },
+        {
+          "file": "templates/customers/order.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 17
+        },
+        {
+          "file": "templates/customers/account.liquid",
+          "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "templates/customers/account.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 9
+        },
+        {
+          "file": "templates/customers/register.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 5
+        },
+        {
+          "file": "templates/customers/addresses.liquid",
+          "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+          "count": 1
+        },
+        {
+          "file": "templates/customers/addresses.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 3
+        },
+        {
+          "file": "templates/customers/reset_password.liquid",
+          "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+          "count": 2
+        }
+      ],
+      "custom_sections": 81,
+      "custom_snippets": 175,
+      "total_lines": 73969
+    },
+    "architecture": {
+      "sections_count": 81,
+      "snippets_count": 175,
+      "templates_count": 7,
+      "layouts_count": 4,
+      "locales_count": 7,
+      "has_shogun": true,
+      "has_custom_checkout": false,
+      "complexity_score": 361
+    },
+    "performance_indicators": {}
+  },
+  "calibre_data": null,
+  "recommendations": [
+    "Priority: Address critical issues immediately",
+    "Optimize asset sizes for better performance",
+    "Implement accessibility widget for legal compliance"
+  ]
+}

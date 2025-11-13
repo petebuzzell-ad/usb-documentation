@@ -1,0 +1,60 @@
+{% comment %} <script type="text/JavaScript">(function(){
+  var a={};
+  function g(l){
+  a[l]=function(r,e,o){
+  var w=window,d=document,p=[],t,s,x;
+  w.tfcapi=t=w.tfcapi||function(){
+  t.q=t.q||[];
+  t.q.push(arguments);};
+  o && !!o.deviceType && p.push('deviceType=' + o.deviceType);
+  o&&o.autoCalculate===false&&p.push('autoCalculate=false');
+  x=d.getElementsByTagName('script')[0];
+  s=d.createElement('script');
+  s.type='text/javascript';s.async=true;
+  s.src='https://'+r+'-cdn'+(e==='dev'||e==='staging'?'.'+e:'')+
+  '.truefitcorp.com/fitrec/'+r+'/js/'+l+'.js?'+p.join('&');
+  x.parentNode.insertBefore(s,x);}}
+  g('fitrec');
+  g('tracker');
+  return a;
+  // Don't change anything above this line
+})().fitrec('izu',
+ {% if theme.role == 'unpublished' %} 'staging' {% else %} 'prod' {% endif %});</script> {% endcomment %}
+ <script type="text/javascript">
+(function () {
+  const apiLoaders = {};
+
+  function loadScript(type) {
+    apiLoaders[type] = function (brand, env, options = {}) {
+      const w = window;
+      const d = document;
+      const t = w.tfcapi = w.tfcapi || function () {
+        t.q = t.q || [];
+        t.q.push(arguments);
+      };
+
+      const params = [];
+      if (options.deviceType) params.push(`deviceType=${options.deviceType}`);
+      if (options.autoCalculate === false) params.push('autoCalculate=false');
+
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+
+      const envSuffix = env === 'dev' || env === 'staging' ? `.${env}` : '';
+      script.src = `https://${brand}-cdn${envSuffix}.truefitcorp.com/fitrec/${brand}/js/${type}.js?${params.join('&')}`;
+
+      const firstScript = d.getElementsByTagName('script')[0];
+      firstScript.parentNode.insertBefore(script, firstScript);
+    };
+  }
+
+  // Register loaders
+  loadScript('fitrec');
+  loadScript('tracker');
+
+  return apiLoaders;
+})().fitrec(
+  'izu',
+ {% if theme.role == 'unpublished' %} 'staging' {% else %} 'prod' {% endif %});</script>
+</script>

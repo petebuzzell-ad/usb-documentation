@@ -1,0 +1,252 @@
+
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    jQuery(function() {
+        var $module = jQuery('#m-1576521026176').children('.module');
+        $module.gfV3Product();
+    });
+  
+    jQuery(function() {
+        var $module = jQuery('#m-1576521026176-0').children('.module');
+        var effect = $module.attr('data-effect');
+        $module.gfV3ProductImage({
+            'effect': effect
+        })
+    });
+  
+    jQuery(function() {
+        var $module = jQuery('#m-1576521026176-1').children('.module');
+    });
+  
+    jQuery(function() {
+        var $module = jQuery('#m-1576521031152').children('.module');
+        $module.gfV3Product();
+    });
+  
+    jQuery(function() {
+        var $module = jQuery('#m-1576521031152-0').children('.module');
+        var effect = $module.attr('data-effect');
+        $module.gfV3ProductImage({
+            'effect': effect
+        })
+    });
+  
+    jQuery(function() {
+        var $module = jQuery('#m-1576521031152-1').children('.module');
+    });
+  
+    jQuery(function() {
+        var $module = jQuery('#m-1576521037873').children('.module');
+        $module.gfV3Product();
+    });
+  
+    jQuery(function() {
+        var $module = jQuery('#m-1576521037873-0').children('.module');
+        var effect = $module.attr('data-effect');
+        $module.gfV3ProductImage({
+            'effect': effect
+        })
+    });
+  
+    jQuery(function() {
+        var $module = jQuery('#m-1576521037873-1').children('.module');
+    });
+  
+          jQuery(function() {
+  var $module = jQuery('#m-1576711434408').children('.module');
+  $module.gfV3Product();
+}); 
+      
+          jQuery(function() {
+    var $module = jQuery('#m-1576711434408-0').children('.module');
+    var effect = $module.attr('data-effect');
+    $module.gfV3ProductImage({
+        'effect': effect
+    })
+});
+      
+          jQuery(function() {
+  var $module = jQuery('#m-1576711434408-1').children('.module');
+});
+      
+          jQuery(function() {
+  var $module = jQuery('#m-1576711434408-3').children('.module');
+  $module.gfV3ProductCartButton({ onItemAdded: function(data) {}});
+}); 
+      
+          jQuery(function() {
+  var $module = jQuery('#m-1576711455846').children('.module');
+  $module.gfV3Product();
+}); 
+      
+          jQuery(function() {
+    var $module = jQuery('#m-1576711455846-0').children('.module');
+    var effect = $module.attr('data-effect');
+    $module.gfV3ProductImage({
+        'effect': effect
+    })
+});
+      
+          jQuery(function() {
+  var $module = jQuery('#m-1576711455846-1').children('.module');
+});
+      
+          jQuery(function() {
+  var $module = jQuery('#m-1576711455846-3').children('.module');
+  $module.gfV3ProductCartButton({ onItemAdded: function(data) {}});
+}); 
+      
+          jQuery(function() {
+  var $module = jQuery('#m-1576711496304').children('.module');
+  $module.gfV3Product();
+}); 
+      
+          jQuery(function() {
+    var $module = jQuery('#m-1576711496304-0').children('.module');
+    var effect = $module.attr('data-effect');
+    $module.gfV3ProductImage({
+        'effect': effect
+    })
+});
+      
+          jQuery(function() {
+  var $module = jQuery('#m-1576711496304-1').children('.module');
+});
+      
+          jQuery(function() {
+  var $module = jQuery('#m-1576711496304-3').children('.module');
+  $module.gfV3ProductCartButton({ onItemAdded: function(data) {}});
+}); 
+      
+    jQuery(function() {
+        try {
+            var $module = jQuery('#m-1576711407430').children('.module');
+            var navspeed = $module.data('navspeed'),
+                autoplaytimeout = $module.data('autoplaytimeout'),
+                autoplayhoverpause = $module.data('autoplayhoverpause'),
+                navlg = $module.data('navlg'),
+                navmd = $module.data('navmd'),
+                navsm = $module.data('navsm'),
+                navxs = $module.data('navxs'),
+                collg = $module.data('collg'),
+                colmd = $module.data('colmd'),
+                colsm = $module.data('colsm'),
+                colxs = $module.data('colxs'),
+                dotslg = $module.data('dotslg'),
+                dotsmd = $module.data('dotsmd'),
+                dotssm = $module.data('dotssm'),
+                dotsxs = $module.data('dotsxs'),
+                marginlg = parseInt($module.data('marginlg')),
+                marginmd = parseInt($module.data('marginmd')),
+                marginsm = parseInt($module.data('marginsm')),
+                marginxs = parseInt($module.data('marginxs'));
+
+            var mode = jQuery('.gryffeditor').hasClass('editing') ? 'dev' : 'production';
+            if(mode == 'production') {
+                var autoplay = $module.data('autoplay'),
+                    loop = $module.data('loop');
+            } else {
+                var autoplay = 0,
+                    loop = 0;
+            }
+
+            var initCarousel = function() {
+                $module.owlCarousel({
+                    mouseDrag: false,
+                    autoplayHoverPause: autoplayhoverpause,
+                    autoplay: autoplay,
+                    autoplayTimeout: autoplaytimeout,
+                    loop: false,
+                    rewind: loop,
+                    navSpeed: navspeed,
+                    autoWidth: !1,
+                    responsiveClass:true,
+                    responsive:{
+                        0:{
+                            items:colxs,
+                            nav: navxs,
+                            dots:dotsxs,
+                            margin: marginxs
+                        },
+                        768:{
+                            items:colsm,
+                            nav: navsm,
+                            dots:dotssm,
+                            margin: marginsm
+                        },
+                        992:{
+                            items:colmd,
+                            nav: navmd,
+                            dots:dotsmd,
+                            margin: marginmd
+                        },
+                        1200:{
+                            items:collg,
+                            nav: navlg,
+                            dots:dotslg,
+                            margin: marginlg
+                        }
+                    }
+                });
+            }
+              
+            // Fix nested carousel bug
+            if ($module.parent().parent().closest('.module-wrap[data-label="Carousel"]').length > 0) {
+                setTimeout(function() {
+                    initCarousel();
+                }, 300)
+            } else {
+                initCarousel();
+            }
+        } catch(err) {}
+
+    });
+  

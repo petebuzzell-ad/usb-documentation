@@ -1,0 +1,222 @@
+<div class="fw-grid" id="section-{{ section.id }}">
+  {% assign text_position_mobile = section.settings.text_position_mobile %}
+  <div
+    class="fw-grid__container fw-grid__container--text-position-mobile-{{ text_position_mobile }}"
+    style="grid-template-columns:repeat({{ section.blocks.size | default: 1 }}, 1fr);"
+  >
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'image' -%}
+          <div class="fw-grid__block fw-grid__block--image" {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              {{ block.settings.image | img_url: '800x' | img_tag: block.settings.image.alt, 'fw-grid__image' }}
+            {%- endif -%}
+          </div>
+        {%- when 'video' -%}
+          <div class="fw-grid__block fw-grid__block--video" {{ block.shopify_attributes }}>
+            {%- if block.settings.video != blank -%}
+              {{
+                block.settings.video
+                | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, class: 'fw-grid__video'
+              }}
+            {%- endif -%}
+          </div>
+        {%- when 'text' -%}
+          <div class="fw-grid__block fw-grid__block--text" {{ block.shopify_attributes }}>
+            <div class="text-wrapper">
+              {%- if block.settings.title != blank -%}
+                <h3 class="fw-grid__title fw-grid__title--{{ block.settings.title_size }}">
+                  {{ block.settings.title }}
+                </h3>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                <div class="fw-grid__text">{{ block.settings.text }}</div>
+              {%- endif -%}
+              {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
+                <div class="fw-grid__cta">
+                  <a href="{{ block.settings.button_link }}" class="fw-button--outlined">
+                    {{- block.settings.button_label -}}
+                  </a>
+                </div>
+              {%- endif -%}
+              {% if block.settings.show_features == 'yes' %}
+                <ul class="fw-grid__features">
+                  {% if block.settings.feature_1_icon != blank and block.settings.feature_1_text != blank %}
+                    <li>
+                      <img src="{{ block.settings.feature_1_icon | image_url }}" alt="" width="" height="">
+                      {{ block.settings.feature_1_text }}
+                    </li>
+                  {% endif %}
+
+                  {% if block.settings.feature_2_icon != blank and block.settings.feature_2_text != blank %}
+                    <li>
+                      <img src="{{ block.settings.feature_2_icon | image_url }}" alt="" width="" height="">
+                      {{ block.settings.feature_2_text }}
+                    </li>
+                  {% endif %}
+
+                  {% if block.settings.feature_3_icon != blank and block.settings.feature_3_text != blank %}
+                    <li>
+                      <img src="{{ block.settings.feature_3_icon | image_url }}" alt="" width="" height="">
+                      {{ block.settings.feature_3_text }}
+                    </li>
+                  {% endif %}
+
+                  {% if block.settings.feature_4_icon != blank and block.settings.feature_4_text != blank %}
+                    <li>
+                      <img src="{{ block.settings.feature_4_icon | image_url }}" alt="" width="" height="">
+                      {{ block.settings.feature_4_text }}
+                    </li>
+                  {% endif %}
+                </ul>
+              {% endif %}
+            </div>
+          </div>
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FW Grid",
+  "tag": "section",
+  "class": "fw-grid",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "select",
+      "id": "text_position_mobile",
+      "label": "Text position on mobile",
+      "default": "top",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "bottom", "label": "Bottom" }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "select",
+          "id": "title_size",
+          "label": "Title size",
+          "default": "large",
+          "options": [
+            { "value": "large", "label": "Large" },
+            { "value": "small", "label": "Small" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Rich text",
+          "default": "<p>Some description.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Read more"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "select",
+          "id": "show_features",
+          "label": "Show features",
+          "default": "no",
+          "options": [
+            { "value": "yes", "label": "Yes" },
+            { "value": "no", "label": "No" }
+          ]
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_1_icon",
+          "label": "Feature 1 icon"
+        },
+        {
+          "type": "text",
+          "id": "feature_1_text",
+          "label": "Feature 1 text",
+          "default": "Feature 1 text"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_2_icon",
+          "label": "Feature 2 icon"
+        },
+        {
+          "type": "text",
+          "id": "feature_2_text",
+          "label": "Feature 2 text",
+          "default": "Feature 2 text"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_3_icon",
+          "label": "Feature 3 icon"
+        },
+        {
+          "type": "text",
+          "id": "feature_3_text",
+          "label": "Feature 3 text",
+          "default": "Feature 3 text"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_4_icon",
+          "label": "Feature 4 icon"
+        },
+        {
+          "type": "text",
+          "id": "feature_4_text",
+          "label": "Feature 4 text",
+          "default": "Feature 4 text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FW Grid",
+      "blocks": [{ "type": "image" }, { "type": "text" }, { "type": "video" }]
+    }
+  ]
+}
+{% endschema %}

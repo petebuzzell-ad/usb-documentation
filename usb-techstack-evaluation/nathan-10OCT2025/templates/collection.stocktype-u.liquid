@@ -1,0 +1,74 @@
+{%- comment -%}
+
+https://pearlizumi-ca.myshopify.com/collections/all?view=stocktype-u
+
+{%- endcomment -%}
+{% layout none %}
+{
+{% paginate collection.products by 1000 %}
+"products": [
+  {% for product in collection.products %}
+    {%- capture variant_data -%}
+      {%- for variant in product.variants -%}
+      {%- comment -%}
+        unavailable: variants with no inventory are disabled (ie. discontinued, so hide when sold out)
+        ecomm_disabled: variants are fully disabled regardless of inventory
+      {%- endcomment -%}
+        {%- assign variant_disabled = false -%}
+        {%- assign unavailable_field = variant.metafields.global.unavailable | downcase | strip -%}
+        {%- assign ecomm_disabled_field = variant.metafields.global.ecomm_disabled | downcase | strip -%}
+        {%- if unavailable_field == true or unavailable_field == "true" -%}
+          {%- if variant.inventory_quantity == 0 -%}
+            {%- assign variant_disabled = true -%}
+          {%- endif -%}
+        {%- elsif ecomm_disabled_field == true or ecomm_disabled_field == "true" -%}
+          {%- assign variant_disabled = true -%}
+        {%- endif -%}
+        {%- unless variant_disabled -%}
+          ,
+          {
+            "available": {{ variant.available | json }},
+            "stocktype": {{ variant.metafields.stocktype.stocktype | json }},
+            "sku": {{ variant.sku | json }},
+            "id": {{ variant.id | json }}
+            {%- comment -%}
+            "compare_at_price": {{ variant.compare_at_price | json }},
+            "featured_image": {
+              "url": {{ variant.featured_image | json }},
+              "position": {{ variant.featured_image.position | json }}
+            },
+            "image": {{ variant.image | json }},
+            "inventory_quantity": {{ variant.inventory_quantity | json }},
+            "option1": {{ variant.option1 | json }},
+            "option2": {{ variant.option2 | json }},
+            "option3": {{ variant.option3 | json }},
+            "options": {{ variant.options | json }},
+            "price": {{ variant.price | json }},
+            "selected": {{ variant.selected | json }},
+            "title": {{ variant.title | json }},
+            "url": {{ variant.url | json }},
+            "badge": {{ variant.metafields.global.badge | json }},
+            "color": {
+              "name": {{ variant.metafields.global["sku_col_name_en"] | json }},
+              "primary": {{ variant.metafields.global["sku_col_primary"] | json }},
+              "secondary": {{ variant.metafields.global["sku_col_secondary"] | json }}
+            },
+            "model": {
+              "height": {{ variant.metafields.global["sku_model_height"] | json }},
+              "weight": {{ variant.metafields.global["sku_model_weight"] | json }},
+              "size": {{ variant.metafields.global["sku_model_size"] | json }}
+            }
+            {%- endcomment -%}
+          }
+        {%- endunless -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+    {% assign variant_data = variant_data | remove_first: ',' %}
+    {
+      "title": {{ product.title | json }},
+      "variants": [{{ variant_data }}]
+    }{%- unless forloop.last -%},{%- endunless -%}
+{% endfor %}
+]
+{% endpaginate %}
+}

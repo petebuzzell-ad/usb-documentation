@@ -1,0 +1,65 @@
+{%-liquid
+  assign menu_items = section.blocks
+-%}
+<div class="justify-center items-center bg-white hidden lg:flex shadow-nav blog-menu">
+    <a href="/blogs/pearl-izumi-journal" class="group relative mx-4 h-14 uppercase flex justify-center items-center font-semibold text-special-xs">
+        <span class="group-hover:text-grey-four {% if request.path == '/blogs/pearl-izumi-journal' %}text-pine{% endif %}">All Posts</span>
+        <div class="absolute left-0 w-full h-px opacity-0 bg-orange-one group-hover:opacity-100 transition-opacity duration-300 ease-in-out {% if request.path == '/blogs/pearl-izumi-journal' %}opacity-100{% endif %}" style="bottom: 0px;"></div>
+    </a>
+    {% for item in menu_items %}
+        {%- assign handle = item.settings.blog_tag -%}
+        <a class="group relative mx-4 h-14 uppercase flex justify-center items-center font-semibold text-special-xs" href="/blogs/pearl-izumi-journal/tagged/{{ handle | handleize }}">
+            <span class="group-hover:text-grey-four {% if current_tags.first == handle %}text-pine{% endif %}">{{ handle }}</span>
+            <div class="absolute left-0 w-full h-px opacity-0 bg-orange-one group-hover:opacity-100 transition-opacity duration-300 ease-in-out {% if current_tags.first  ==  handle %}opacity-100{% endif %}" style="bottom: 0px;"></div>
+        </a>
+    {% endfor %}
+</div>
+
+<div class="bg-white z-1 lg:hidden blog-menu-mobile" data-blog-menu>
+    <div class="relative px-6 h-14 uppercase flex items-center justify-between font-normal text-special-s border-b border-silver blog-menu-mobile__header" data-blog-menu-header>
+        <span>
+            {% if current_tags %}
+                {{ current_tags.first }}
+            {% else %}
+                All Posts
+            {% endif %}
+        </span>
+        {% render 'svg-chevron-down' %}
+    </div>
+    <div class="hidden z-1 absolute bg-white w-full t-150 blog-menu-mobile__items shadow-nav" data-blog-menu-items>
+        <a class="group relative px-6 h-14 uppercase flex items-center font-normal text-special-s border-b border-silver" href="/blogs/pearl-izumi-journal">
+            <span class="group-hover:text-grey-four">All Posts</span>
+        </a>
+    {% for item in menu_items %}
+        {%- assign handle = item.settings.blog_tag -%}
+        <a class="group relative px-6 h-14 uppercase flex items-center font-normal text-special-s border-b border-silver" href="/blogs/pearl-izumi-journal/tagged/{{ handle | handleize }}">
+            <span class="group-hover:text-grey-four">{{ handle | capitalize }}</span>
+        </a>
+    {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Blog Menu",
+  "settings": [],
+  "blocks": [
+    {
+      "name": "Menu Item",
+      "type": "menu_item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "blog_tag",
+          "label": "Blog Tag"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog Menu"
+    }
+  ]
+}
+{% endschema %}

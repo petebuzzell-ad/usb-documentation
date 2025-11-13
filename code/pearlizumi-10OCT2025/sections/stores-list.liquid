@@ -1,0 +1,115 @@
+{%- if section.blocks.size > 0 -%}
+<section class="container max-w-full md:max-w-680 lg:max-w-920 xl:max-w-1200 mb-10 lg:mb-20 pl-6 lg:pl-0">
+  {%- if section.settings.title != blank -%}
+    <h1 class="font-semibold text-h3-m mb-6 lg:mb-10 uppercase lg:text-h3 text-center lg:text-left pr-6 lg:pr-0">{{- section.settings.title -}}</h1>
+  {%- endif -%}
+
+  <div class="grid grid-cols-1 gap-y-8 lg:gap-y-16">
+    {%- assign i = 0 -%}
+    {%- for block in section.blocks -%}
+      {%- if block.settings.image != blank and block.settings.title != blank -%}
+        {%- assign modulo_i = i | modulo: 3 -%}
+        {%- if modulo_i == 0 -%}
+          <div class="w-full overflow-x-auto pb-2.5 md:pb-0">
+            <div class="{% if forloop.last %}block md:grid{% else %}grid{% endif %} grid-cols-3 gap-x-5 lg:gap-x-6 w-max md:w-full">
+        {%- endif -%}
+            <div class="text-center lg:text-left w-60.5 md:w-full lg:max-w-full">
+              {%- if block.settings.url != blank -%}
+                <a href="{{block.settings.url}}" class="block relative h-0 pt-7/10 mb-4 overflow-hidden">
+              {%- else -%}
+                <div class="block relative h-0 pt-7/10 mb-4 overflow-hidden">
+              {%- endif -%}
+                <img src="{{ block.settings.image | img_url: '768x' }}" alt="{{block.settings.image.alt}}" class="absolute w-full h-full object-cover top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              {%- if block.settings.url != blank -%}
+                </a>
+              {%- else -%}
+                </div>
+              {%- endif -%}
+
+              <div class="text-h6 lg:text-h5 mb-2 lg:mb-3 font-semibold">{{- block.settings.title -}}</div>
+
+              {%- if block.settings.subtitle != blank -%}
+                <div class="text-p-xs lg:text-p-s mb-3 font-medium text-pine">{{- block.settings.subtitle -}}</div>
+              {%- endif -%}
+              {%- if block.settings.table != blank -%}
+                <div class="stores-table text-p-s lg:text-p font-medium mb-3">{{- block.settings.table -}}</div>
+              {%- endif -%}
+              {%- if block.settings.url != blank -%}
+                <a href="{{- block.settings.url -}}" class="text-special-xs lg:text-special uppercase font-sora font-semibold border border-l-0 border-r-0 border-t-0 border-b-2 hover:text-pine hover:border-pine">
+                  Store Details
+                </a>
+              {%- else -%}
+                <span class="text-special-xs lg:text-special uppercase font-sora font-semibold">Coming Soon</span>
+              {%- endif -%}
+            </div>
+        {%- if modulo_i == 2 -%}
+            </div>
+          </div>
+        {%- endif -%}
+        {%- assign i = i | plus: 1 -%}
+      {%- endif -%}
+    {%- endfor -%}
+    <!-- End Div -->
+    {%- assign modulo_i = i | modulo: 3 -%}
+    {%- if i > 0 and modulo_i != 0 -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Stores List",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title",
+      "default": "Featured Brand Stores"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "store",
+      "name": "Store Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Store Banner",
+          "info": "Recommended size: 768x540"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle"
+        },
+        {
+          "type": "richtext",
+          "id": "table",
+          "label": "Time Table"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Store Details URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stores List",
+      "category": "Section"
+    }
+  ]   
+}
+{% endschema %}

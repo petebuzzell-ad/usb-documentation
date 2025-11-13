@@ -1,0 +1,57 @@
+{%- comment -%} omit on INT store until Listrak has associated Site ID for INT storefront {%- endcomment -%}
+{%- unless storefront == "INT" -%}
+
+<!-- Listrak Analytics – Javascript Framework -->
+{%- comment -%} Customer Tracking {%- endcomment -%}
+{% if customer %}
+<script type="text/javascript">
+  var ltkCustObj = { "firstname": "{{customer.first_name}}", "lastname": "{{customer.last_name}}", "email": "{{customer.email}}"};
+</script>
+{% endif %}
+
+{%- comment -%} Determine Site ID from Storefront (passed as param) {%- endcomment -%}
+{%- if storefront == "US" -%}
+  {%- assign site_id = "MlOcLQD1Cj3j" -%}
+{%- elsif storefront == "CA" -%}
+  {%- assign site_id = "YOTImIkwJCZV" -%}
+{%- endif -%}
+
+<script type="text/javascript">
+  {%- comment -%} Generic Tracking {%- endcomment -%}
+  var biJsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+  (function (d, s, id, tid, vid) {
+    var js, ljs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return; js = d.createElement(s); js.id = id;
+    js.src = biJsHost + "cdn.listrakbi.com/scripts/script.js?m=" + tid + "&v=" + vid;
+    ljs.parentNode.insertBefore(js, ljs);
+  })(document, 'script', 'ltkSDK', '{{ site_id }}', '1');
+  {%- comment -%} TODO: Update the above ID for CA/INT sites if needed {%- endcomment -%}
+
+
+  (function () {
+      if (typeof _ltk == 'object') { ltkCode(); } else { (function (d) { if (document.addEventListener) document.addEventListener('ltkAsyncListener', d); else { e = document.documentElement; e.ltkAsyncProperty = 0; e.attachEvent('onpropertychange', function (e) { if (e.propertyName == 'ltkAsyncProperty') { d(); } }); } })(function () { ltkCode(); }); } function ltkCode() {
+        _ltk_util.ready(function () {
+          /********** Begin Custom Code **********/
+          
+          // Footer Newsletter Signup Trigger
+          _ltk.Signup.New('Footer', 'ContactFooter-email', _ltk.Signup.TYPE.CLICK, 'Subscribe');
+
+          // Customer Creation
+          {%- if template.name == 'register' -%}
+            _ltk.Signup.New('Account', 'Email', _ltk.Signup.TYPE.DEFAULT, '#create_customer input[type="button"]');
+            _ltk.Signup.SetField('Account', 'FirstName');
+            _ltk.Signup.SetField('Account', 'LastName');
+            _ltk.Signup.SetField('Account', 'Phone');
+            _ltk.Signup.SetField('Account', 'ZipCode');
+            _ltk.Signup.SetField('Account', 'Gender', { dropdown: "text" });
+            _ltk.Signup.SetField('Account', 'Birthday');
+            _ltk.Signup.SetOptIn('Account', 'marketing');
+          {%- endif -%}
+
+          /********** End Custom Code ************/
+        })
+      }
+  })();
+</script>
+
+{%- endunless -%}

@@ -1,0 +1,223 @@
+
+<div class="px-6 py-9 md:px-11 lg:py-23 mx-auto lg:max-w-894 lg:px-0">
+  <h1 class="uppercase mb-6 lg:mb-11">{{ section.settings.page_title | default: page.title }}</h1>
+
+  {% if section.settings.contact_phone != blank %}
+    <h8 class="block font-sora font-semibold uppercase mb-2.5 lg:mb-3.5">Give us a call</h8>
+    <a href="tel:{{ section.settings.contact_phone }}" class="inline-block font-semibold text-h4 text-black mb-2.5 lg:mb-3.5 lg:hover:text-pine lg:hover:underline">{{ section.settings.contact_phone }}</a>
+    {% if section.settings.contact_hours != blank %}
+      <p class="font-normal mb-9">Our office hours are <b>{{ section.settings.contact_hours }}</b>. Due to an increase in call volume, response times may be longer than usual.  Voicemail will be returned in the order they are received.</p>
+    {% endif %}
+  {% endif %}
+
+  {% if section.settings.livechat_link != blank %}
+    <h8 class="block font-sora font-semibold uppercase mb-2.5">Chat with an associate</h8>
+    {% if section.settings.livechat_content != blank %}
+      <p class="font-normal mb-9 lg:mb-5">{{ section.settings.livechat_content }}</p>
+    {% endif %}
+    <a href="{{ section.settings.livechat_link }}" class="button-outline-stone font-semibold mb-18 lg:mb-12.5">Live Chat</a>
+  {% endif %}
+
+  {% if section.settings.store_link != blank %}
+    <h8 class="block font-sora font-semibold uppercase mb-2.5">Visit a store</h8>
+    {% if section.settings.store_content != blank %}
+      <p class="font-normal mb-9 lg:mb-5">{{ section.settings.store_content }}</p>
+    {% endif %}
+    <a href="{{ section.settings.store_link }}" class="button-outline-stone font-semibold mb-18 lg:mb-16">Find a store</a>
+  {% endif %}
+
+  <h8 class="block font-sora font-semibold uppercase mb-2.5">Send an email</h8>
+
+  <div class="w-full lg:max-w-full-width-content">
+    {% if section.settings.contact_email_service != blank %}
+      <p class="font-normal mb-9">
+        Fill out the form below or email us for customer service at
+        <a href="mailto:{{ section.settings.contact_email_service }}" class="text-pine lg:hover:underline">{{ section.settings.contact_email_service }}</a>{% if section.settings.contact_email_order != blank %} or for custom orders at <a href="mailto:{{ section.settings.contact_email_order }}" class="text-pine lg:hover:underline">{{ section.settings.contact_email_order }}</a>{% endif %}.
+      </p>
+    {% endif %}
+
+    {%- comment -%} Contact Form {%- endcomment -%}
+    {% form 'contact', id: 'ContactForm', class: 'contact-form flex flex-wrap justify-center lg:-mx-3' %}
+      {% if form.posted_successfully? %}
+        <div class="text-p-s font-sora font-normal text-pine border-l-3 border-pine w-full px-5 py-0 mt-4 mb-7 lg:mx-3" data-contact-success>
+          {{ 'contact.form.post_success' | t }}
+        </div>
+      {% endif %}
+      {%- comment -%} Errors {%- endcomment -%}
+      {% if form.errors %}
+        <div class="w-full lg:px-3">
+          <div class="errors lg:py-1 xs:mb-0 lg:mb-0">
+            <ul class="font-normal">
+              {% for field in form.errors %}
+                <li>
+                  {{ form.errors.messages[field] }}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endif %}
+
+      {%- comment -%} Name {%- endcomment -%}
+      <div class="w-full lg:w-1/2 lg:px-3">
+        <div class="relative mb-6">
+          <input type="text"
+            class="border border-silver focus:border-black text-black text-p font-sora w-full h-12 pt-5 pb-1 px-3 outline-none appearance-none"
+            name="contact[name]" id="ContactForm-name" placeholder=" " value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+            onblur="eHS.customerLogin.validateFieldsOnBlur(event)" data-required
+          >
+          <label for="ContactForm-name">{{ 'contact.form.name' | t }}*</label>
+          <div class="text-red flex items-center mt-2 hidden" data-error-container>
+            <span class="mr-2.5">
+              {% render 'svg-alert' %}
+            </span>
+            <span class="font-normal text-p-xs text-black" data-error-text></span>
+          </div>
+        </div>
+      </div>
+
+      {%- comment -%} Email {%- endcomment -%}
+      <div class="w-full lg:w-1/2 lg:px-3">
+        <div class="relative mb-6">
+          <input type="email" name="contact[email]" id="ContactForm-email"
+            class="border border-silver focus:border-black text-black text-p font-sora w-full h-12 pt-5 pb-1 px-3 outline-none appearance-none"
+            placeholder=" " value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" spellcheck="false" autocorrect="off" autocomplete="off" autocapitalize="off" data-required
+            onblur="eHS.customerLogin.validateFieldsOnBlur(event)"
+          >
+          <label for="ContactForm-email">{{ 'contact.form.email' | t }}*</label>
+          <div class="text-red flex items-center mt-2 hidden" data-error-container>
+            <span class="mr-2.5">
+              {% render 'svg-alert' %}
+            </span>
+            <span class="font-normal text-p-xs text-black" data-error-text></span>
+          </div>
+        </div>
+      </div>
+
+      {%- comment -%} Phone {%- endcomment -%}
+      <div class="w-full lg:w-1/2 lg:px-3">
+        <div class="relative mb-6">
+          <input type="tel" name="contact[phone]" id="ContactForm-phone"
+            class="border border-silver focus:border-black text-black text-p font-sora w-full h-12 pt-5 pb-1 px-3 outline-none appearance-none"
+            placeholder=" " value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+          >
+          <label for="ContactForm-phone">{{ 'contact.form.phone' | t }}</label>
+          <div class="text-red flex items-center mt-2 hidden" data-error-container>
+            <span class="mr-2.5">
+              {% render 'svg-alert' %}
+            </span>
+            <span class="font-normal text-p-xs text-black" data-error-text></span>
+          </div>
+        </div>
+      </div>
+
+      {%- comment -%} Topic {%- endcomment -%}
+      <div class="w-full lg:w-1/2 lg:px-3">
+        <div class="relative mb-6">
+          <select name="contact[topic]" id="ContactForm-topic"
+            class="border border-silver focus:border-black text-black text-p font-sora w-full h-12 pt-5 pb-1 pl-3 pr-12.5 outline-none appearance-none"
+            placeholder=" " onchange="eHS.customerLogin.handleSelection(this)">
+            <option value=""></option>
+            <option value="Customer Service">{{ 'contact.form.topic_customer_service' | t }}</option>
+            <option value="Custom Orders">{{ 'contact.form.topic_custom_orders' | t }}</option>
+          </select>
+          <label for="ContactForm-topic">{{ 'contact.form.topic_prompt' | t }}</label>
+          <span class="absolute right-5 top-1/2 transform -translate-y-1/2">
+            {% render 'svg-arrow-down', width: '10px', height: '7.5px' %}
+          </span>
+        </div>
+      </div>
+
+      {%- comment -%} Message {%- endcomment -%}
+      <div class="w-full lg:px-3 text-center">
+        <div class="relative mb-6">
+          <textarea name="contact[message]" id="ContactForm-message"
+            class="border border-silver focus:border-black text-black text-p font-sora w-full h-330 pt-6 pb-1 px-3 outline-none appearance-none"
+            placeholder=" "
+          ></textarea>
+          <label for="ContactForm-message">{{ 'contact.form.message_label' | t }}</label>
+          <div class="text-red flex items-center mt-2 hidden" data-error-container>
+            <span class="mr-2.5">
+              {% render 'svg-alert' %}
+            </span>
+            <span class="font-normal text-p-xs text-black" data-error-text></span>
+          </div>
+        </div>
+      </div>
+
+      {%- comment -%} Submit Contact Form + Cancel {%- endcomment -%}
+      <div class="w-full lg:px-3 text-center">
+        <button type="button" class="form-submit button-primary-lg mb-10 w-full max-w-full py-4.5 cursor-pointer">{{ 'contact.form.submit' | t }}</button>
+        <a href="/"
+          class="inline-block text-special mb-8 font-sora font-semibold uppercase text-black hover:text-pine border-b-2 border-black hover:border-pine">
+          {{ 'contact.form.cancel' | t }}
+        </a>
+      </div>
+    {% endform %}
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "Contact us page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "page_title",
+      "label": "Page Title"
+    },
+    {
+      "type": "text",
+      "id": "contact_phone",
+      "label": "Contact Phone"
+    },
+    {
+      "type": "text",
+      "id": "contact_hours",
+      "label": "Contact Hours"
+    },
+    {
+      "type": "text",
+      "id": "contact_email_service",
+      "label": "Contact Email For Customer Service"
+    },
+    {
+      "type": "text",
+      "id": "contact_email_order",
+      "label": "Contact Email For Custom Order"
+    },
+    {
+      "type": "text",
+      "id": "contact_address",
+      "label": "Contact Address"
+    },
+    {
+      "type": "textarea",
+      "id": "livechat_content",
+      "label": "Live Chat Content"
+    },
+    {
+      "type": "url",
+      "id": "livechat_link",
+      "label": "Live Chat Link"
+    },
+    {
+      "type": "textarea",
+      "id": "store_content",
+      "label": "Find A Store Content"
+    },
+    {
+      "type": "url",
+      "id": "store_link",
+      "label": "Find A Store Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact us page",
+      "category": "Section"
+    }
+  ]  
+}
+{% endschema %}

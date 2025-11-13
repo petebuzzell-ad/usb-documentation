@@ -1,0 +1,91 @@
+<!-- Option Label Row -->
+<div class="flex items-center {% if size_guide %}justify-between{% else %}justify-start{% endif %}">
+  <!-- Label -->
+  <div class="text-special-s font-sora font-semibold my-4">
+    <span>{{ option.name | upcase }}:&nbsp;</span>
+    <span data-option-label="{{- option_handle -}}"></span>
+  </div>
+  {%- comment -%} TODO: add functionality for size guide - quick fix for launch{%- endcomment -%}
+  {%- if size_guide -%}
+  <a href="#" class="flex items-center justify-start" onclick="eHS.bundleBuyBoxes.showSizeGuide(event,'{{ group_num }}','{{product.handle}}')">
+      <span class="text-stone mr-2">
+      {%- render 'svg-tape-measure' -%}
+      </span>
+      <span class="text-p-xs text-pine">{{ 'products.product.view_size_guide' | t }}</span>
+  </a>
+  {% liquid
+      assign size_chart = nil
+      assign how_to_measure = nil
+      for image in product.images
+      if image.alt contains 'sizeguide'
+          assign size_chart = image
+      endif
+      if image.alt contains 'fitguide'
+          assign how_to_measure = image
+      endif
+      endfor
+      assign gender = nil
+      for tag in product.tags
+      if tag contains 'gender:'
+          assign gender = tag | remove: 'gender:' | downcase
+      endif
+      endfor
+  %}
+  {% render 'product-size-guide'
+      id: product.id,
+      tags: product.tags,
+      size_chart: size_chart,
+      size_chart_alt: product.metafields["global"]["size_guide_alt"],
+      how_to_measure: how_to_measure,
+      how_to_measure_alt: product.metafields["global"]["how_to_measure_alt"],
+      gender: gender
+  %}
+  {%- endif -%}
+</div>
+
+{%- comment -%} Color Options {%- endcomment -%}
+{% if option_handle == 'color' or option_handle == 'couleur' %}
+
+  <div class="flex flex-wrap mb-1 last:mb-2 last:pb-8" data-option-group="{{- option_handle -}}" data-option-num="{{ option_num }}">
+    {% for value in option.values %}
+      <button data-option="{{ option_handle }}" data-value="{{ value | handleize }}"
+        style="padding: 3px;"
+        class="option-swatch w-7.5 h-7.5 bxl:w-9 bxl:h-9 border border-light-grey rounded-circle mr-2 mb-2 bxl:mr-4 bxl:mb-3 cursor-pointer focus:outline-none hover:border-black"
+        onclick="eHS.bundleBuyBoxes.handleOptionSelect('{{ group_num }}', '{{ product.handle }}', '{{ option.name }}', {{ option_num }}, '{{ value | handleize }}')"
+      >
+        <div class="swatch-{{ value | handleize }} w-full h-full bg-silver rounded-circle"></div>
+      </button>
+    {% endfor %}
+  </div>
+
+{% else %}
+  {%- comment -%}Size Options{%- endcomment -%}
+  {%- comment -%}
+    Mobile - Dropdown
+      - handleOptionSelect is called with no selectedValue param, and isDropdown = true
+      - we need to pass the element instead of the value to get the value programatically
+  {%- endcomment -%}
+  <select aria-label="Size Options" data-option-dropdown name="{{ option_handle }}" id="{{ option_handle }}Dropdown" class="bxl:hidden w-full block h-8 text-center text-p-s border border-silver mb-4"
+    onchange="eHS.bundleBuyBoxes.handleOptionSelect('{{ group_num }}', '{{ product.handle }}', '{{ option.name }}', {{ option_num }}, this, true)"
+  >
+    {% for value in option.values %}
+        <option value="{{ value | handleize }}">{{ value }}</option>
+      {% endfor %}
+  </select>
+  {%- comment -%} Desktop - Buttons {%- endcomment -%}
+  <div class="hidden bxl:grid grid-flow-row grid-cols-5 gap-2 mb-2 {% if option.values.size == 1 %}hidden{% endif %}"
+    data-option-group="{{- option_handle -}}" data-option-num="{{ option_num }}" data-product-type="{{ product_type }}"
+  >
+    {% assign sorted_values = option.values | sort %}
+    {% for value in sorted_values %}
+      <div class="option-wrapper item-{{ forloop.index }}">
+        <button data-option="{{ option_handle }}" data-value="{{ value | handleize }}"
+          class="option border border-silver h-8 p-2 leading-4 cursor-pointer font-sora text-black text-special-s text-center w-full focus:outline-none hover:border-black"
+          onclick="eHS.bundleBuyBoxes.handleOptionSelect('{{ group_num }}', '{{ product.handle }}', '{{ option.name | downcase }}', {{ option_num }}, '{{ value | handleize }}')"
+        >
+          {{ value }}
+        </button>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}

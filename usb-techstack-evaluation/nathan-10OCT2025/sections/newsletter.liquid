@@ -1,0 +1,64 @@
+{% assign brightness = section.settings.color_bg | color_brightness %}
+{% assign alpha = section.settings.color_bg | color_extract: 'alpha' %}
+<style type="text/css">
+  .section-id-{{ section.id }} {
+    background: {{ section.settings.color_bg }};
+  }
+  {% if brightness < 190 and alpha > 0 %}
+  .section-id-{{ section.id }},
+  .section-id-{{ section.id }} .hometitle,
+  .section-id-{{ section.id }} a {
+    color: #fff;
+  }
+  {% endif %}
+</style>
+
+<div class="section-signup section-id-{{ section.id }}">
+  <div class="container strongly-padded-row align-center">
+
+    <h1 class="hometitle h4-style in-content">{{ section.settings.title | escape }}</h1>
+
+    <div class="user-content lightly-spaced-row">{{ section.settings.subheading }}</div>
+
+    {% render 'signup-form', custom_form_id: 'newsletter_signup' %}
+
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Newsletter",
+    "class": "section-newsletter",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Subscribe to our newsletter"
+      },
+	    {
+        "type": "richtext",
+        "id": "subheading",
+        "label": "Subheading",
+        "default": "<p>Promotions, new products and sales. Directly to your inbox.</p>"
+      },
+      {
+        "type": "color",
+        "id": "color_bg",
+        "label": "Background color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "paragraph",
+        "content": "Customers who subscribe will have their email address added to the “accepts marketing” [customer list](/admin/customers?query=&accepts_marketing=1)"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Newsletter",
+        "category": "Promotional",
+        "settings": {}
+      }
+    ]
+  }
+{% endschema %}

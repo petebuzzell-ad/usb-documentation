@@ -1,0 +1,387 @@
+{% if settings.ss_enable %}
+  <div class="collection-filter-sort" id="searchspring-toolbar-top">
+    {% comment %}Searchspring Filters{% endcomment %}
+  </div>
+
+  <div id="searchspring-product-count">
+    {%comment%}Searchspring Search Summary / Product Count{% endcomment %}
+  </div>
+{% else %}
+  <div class="collection-filter-sort">
+    <div class="collection-filter-sort--inner">
+      <div class="collection-filter--header">
+        <span class="collection-filter-cta">
+          {%- render 'svg-filter'
+            , classes: 'mr-2' -%} FILTER
+          <span data-filter-count>4</span>
+        </span>
+        <div class="collection-filter--group">
+          <div class="collection-filter--group__header">
+            Filter by
+            <div class="collection-filter--group__close">
+              {%- render 'svg-close' -%}
+            </div>
+          </div>
+
+          <div class="collection-filter--group__inner">
+            <div class="collection-filter--item ">
+              <span class="collection-sort--item__selected">
+                Sleeve Length
+              </span>
+              {%- render 'svg-arrow-down' -%}
+
+              <span class="collection-filter--clear">Clear</span>
+
+              <ul class="filter-dropdown">
+                <li>
+                  <label class="custom-checkbox">Long Sleeve <input checked="checked" name="sleeve-length" type="checkbox" value="Long Sleeve">
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+                <li>
+                  <label class="custom-checkbox">Short Sleeve <input name="sleeve-length" type="checkbox" value="Short Sleeve">
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+                <li>
+                  <label class="custom-checkbox">Sleeveless <input name="sleeve-length" type="checkbox" value="Sleeveless">
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+                <li data-apply>
+                  <button data-filter-option="sleeve-length">APPLY</button>
+                </li>
+              </ul>
+            </div>
+
+            <div class="collection-filter--item ">
+              <span class="collection-sort--item__selected">Fit</span>
+              {%- render 'svg-arrow-down' -%}
+
+              <span class="collection-filter--clear">Clear</span>
+
+              <ul class="filter-dropdown">
+                <li>
+                  <label class="custom-checkbox">Race Fit <input checked="checked" name="fit" type="checkbox" value="Race Fit">
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+                <li>
+                  <label class="custom-checkbox">Fitted Fit <input name="fit" type="checkbox" value="Fitted Fit">
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+                <li>
+                  <label class="custom-checkbox">Form Fit <input name="fit" type="checkbox" value="Form Fit">
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+                <li>
+                  <label class="custom-checkbox">Standard Fit <input name="fit" type="checkbox" value="Standard Fit">
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+                <li>
+                  <label class="custom-checkbox">Relaxed Fit <input name="fit" type="checkbox" value="Relaxed Fit">
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+                <li data-apply>
+                  <button data-filter-option="sleeve-length">APPLY</button>
+                </li>
+              </ul>
+            </div>
+
+            <div class="collection-filter--item ">
+              <span class="collection-sort--item__selected">Running Conditions</span>
+              {%- render 'svg-arrow-down' -%}
+              <span class="collection-filter--clear">Clear</span>
+
+              <ul class="filter-dropdown">
+                <li>
+                  <label class="custom-checkbox">Heat
+                    <span class="filter-dropdown__count text-light-stone inline-block lg:hidden">(10)</span>
+                    <input checked="checked" name="running-conditions" type="checkbox" value="Heat">
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+                <li>
+                  <label class="custom-checkbox">Cold
+                    <span class="filter-dropdown__count text-light-stone inline-block lg:hidden">(10)</span>
+                    <input name="running-conditions" type="checkbox" value="Cold">
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+                <li>
+                  <label class="custom-checkbox">Rain
+                    <span class="filter-dropdown__count text-light-stone inline-block lg:hidden">(10)</span>
+                    <input name="running-conditions" type="checkbox" value="Rain">
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+                <li>
+                  <label class="custom-checkbox">Wind
+                    <span class="filter-dropdown__count text-light-stone inline-block lg:hidden">(10)</span>
+                    <input name="running-conditions" type="checkbox" value="Wind">
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+                <li>
+                  <label class="custom-checkbox">Sun
+                    <span class="filter-dropdown__count text-light-stone inline-block lg:hidden">(10)</span>
+                    <input name="running-conditions" type="checkbox" value="Sun">
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+                <li>
+                  <label class="custom-checkbox">Low Light
+                    <span class="filter-dropdown__count text-light-stone inline-block lg:hidden">(10)</span>
+                    <input name="running-conditions" type="checkbox" value="Low Light">
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+                <li data-apply>
+                  <button data-filter-option="sleeve-length">APPLY</button>
+                </li>
+              </ul>
+            </div>
+
+            <div class="collection-filter--item ">
+              <span class="collection-sort--item__selected">Material</span>
+              {%- render 'svg-arrow-down' -%}
+
+              <span class="collection-filter--clear">Clear</span>
+
+              <ul class="filter-dropdown">
+                <li>
+                  <label class="custom-checkbox">Merino Wool <input checked="checked" name="material" type="checkbox" value="Merino Wool">
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+                <li>
+                  <label class="custom-checkbox">Transfer <input name="material" type="checkbox" value="Transfer">
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+                <li>
+                  <label class="custom-checkbox">Recycled Material <input name="material" type="checkbox" value="Recycled Material">
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+                <li data-apply>
+                  <button data-filter-option="sleeve-length">APPLY</button>
+                </li>
+              </ul>
+            </div>
+
+            <div class="collection-filter--item ">
+              <span class="collection-sort--item__selected">Size</span>
+              {%- render 'svg-arrow-down' -%}
+
+              <span class="collection-filter--clear">Clear</span>
+
+              <ul class="filter-dropdown multi-lines">
+                <li>
+                  <label class="custom-checkbox">XS <input checked="checked" name="size" type="checkbox" value="XS">
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+                <li>
+                  <label class="custom-checkbox">S <input name="size" type="checkbox" value="S">
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+                <li>
+                  <label class="custom-checkbox">M <input name="size" type="checkbox" value="M">
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+                <li>
+                  <label class="custom-checkbox">L <input name="size" type="checkbox" value="L">
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+                <li>
+                  <label class="custom-checkbox">XL <input name="size" type="checkbox" value="XL">
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+                <li>
+                  <label class="custom-checkbox">XXL <input name="size" type="checkbox" value="XXL">
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+                <li>
+                  <label class="custom-checkbox">XXXL <input name="size" type="checkbox" value="XXXL">
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+                <li data-apply>
+                  <button data-filter-option="sleeve-length">APPLY</button>
+                </li>
+              </ul>
+            </div>
+
+            <div class="collection-filter--item ">
+              <span class="collection-sort--item__selected">
+                Color
+                <span class="collection-sort--item__selected--details">
+                  Purple, Black
+                </span>
+              </span>
+              {%- render 'svg-arrow-down' -%}
+              <span class="collection-filter--clear">Clear</span>
+
+              <ul class="filter-dropdown color-lines">
+                <li>
+                  <label>
+                    <input checked="checked" name="color" type="checkbox" value="red">
+                    <span class="checkmark">
+                      <span class="checkmark-inner" style="background-color: #DB162F"></span>
+                    </span>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input name="color" type="checkbox" value="brown">
+                    <span class="checkmark">
+                      <span class="checkmark-inner" style="background-color: #F8A03A"></span>
+                    </span>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input name="color" type="checkbox" value="yellow">
+                    <span class="checkmark">
+                      <span class="checkmark-inner" style="background-color: #BFD157"></span>
+                    </span>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input name="color" type="checkbox" value="green">
+                    <span class="checkmark">
+                      <span class="checkmark-inner" style="background-color: #BFD157"></span>
+                    </span>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input name="color" type="checkbox" value="blue">
+                    <span class="checkmark">
+                      <span class="checkmark-inner" style="background-color: #5385E3"></span>
+                    </span>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input name="color" type="checkbox" value="purple">
+                    <span class="checkmark">
+                      <span class="checkmark-inner" style="background-color: #866AD8"></span>
+                    </span>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input name="color" type="checkbox" value="white">
+                    <span class="checkmark">
+                      <span class="checkmark-inner bg-white"></span>
+                    </span>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input name="color" type="checkbox" value="black">
+                    <span class="checkmark">
+                      <span class="checkmark-inner bg-black"></span>
+                    </span>
+                  </label>
+                </li>
+                <li data-apply>
+                  <button data-filter-option="sleeve-length">APPLY</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <button id="collection-filter--btn" type="button">SHOW RESULTS (11)</button>
+        </div>
+      </div>
+
+      <div class="collection-sort--header">
+        <div class="collection-count">
+          <span>{{- collection.products_count | default: '37' -}}</span>&nbsp;Items
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="collection-sort-cta">
+            {%- render 'svg-sort'
+              , classes: 'mr-2' -%} SORT
+          </span>
+
+          <div class="collection-sort--wrapper">
+            <div class="collection-filter--group__header">
+              Sort
+              <div class="collection-filter--group__close">
+                {%- render 'svg-close' -%}
+              </div>
+            </div>
+            <div class="collection-sort--item ">
+              {%- if collection != blank -%}
+                {%- assign sort_options = collection.sort_options -%}
+              {%- else -%}
+                {%- assign sort_options = collections.all.sort_options -%}
+              {%- endif -%}
+              <span class="collection-sort--item__selected">
+                {%- if template contains 'collection' -%}
+                  {%- assign current_sort_option = nil -%}
+                  {%- for option in sort_options -%}
+                    {%- if collection.sort_by != blank -%}
+                      {%- if option.value == collection.sort_by -%}
+                        {{- option.name | replace: ',', ':' -}}
+                        {%- assign current_sort_option = option -%}
+                        {%- break -%}
+                      {%- endif -%}
+                    {%- else -%}
+                      {%- if option.value == collection.default_sort_by -%}
+                        {{- option.name | replace: ',', ':' -}}
+                        {%- assign current_sort_option = option -%}
+                        {%- break -%}
+                      {%- endif -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                {%- elsif template contains 'search' -%}
+                  Best selling
+                {%- endif -%}
+              </span>
+              {%- render 'svg-arrow-down' -%}
+
+              <ul class="sort-dropdown">
+                {%- for option in sort_options -%}
+                  <li data-value="{{option.value}}">
+                    <label class="custom-radio">
+                      {{- option.name | replace: ',', ':' -}} <input
+                        type="radio"
+                        name="sort"
+                        value="{{option.value}}"
+                        {% if current_sort_option != nil and current_sort_option.value == option.value %}
+                          checked
+                        {% endif %}>
+                      <span class="checkmark"></span>
+                    </label>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+            <button id="collection-sort--btn" type="button">SHOW RESULTS</button>
+          </div>
+        </div>
+      </div>
+
+      {%- render 'collection__filters' -%}
+    </div>
+  </div>
+
+  <div class="collection-count">
+    <span>{{- collection.products_count | default: '37' -}}</span>&nbsp;Items
+  </div>
+{% endif %}

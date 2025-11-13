@@ -1,0 +1,48 @@
+<div data-section-id="{{ block.id }}" data-section-type="full-width-section" class="lg:mb-30 md:mb-18 mb-16">
+  {% if block.settings.image_6 != blank %}
+  {% assign block_image_6 = block.settings.image_6 | img_url: 'master' %}
+  {% endif %}
+
+  {% if block.settings.image_6_mobile != blank %}
+  {% assign block_image_mobile_6 = block.settings.image_6_mobile | img_url: 'master' %}
+  {% endif %}
+  {% if block_image_6 != blank %}
+  <style>
+    .bg_container-{{ block.id }} {
+      background-image: url('{{ block_image_6 }}');
+    }
+
+    @media screen and (max-width: 768px) {
+      .bg_container-{{ block.id }} {
+          {%- if block_image_mobile_6 !=blank -%}
+            background-image: url('{{ block_image_mobile_6 }}');
+          {%- else -%}
+            background-image: url('{{ block_image_6 }}'); 
+          {%- endif -%}
+      }
+    }
+  </style>
+  {% endif %}
+  <div class="relative{% if block_image_6 != blank %} bg_container-{{ block.id }} bg-no-repeat bg-cover bg-center{% else %} bg-{{ block.settings.bg_color_6 }}{% endif %}">
+
+    <div class="w-full lg:max-w-full-width-content md:max-w-hero-content md:px-0 px-7 text-center lg:py-35 py-30 mx-auto">
+      {%- if block.settings.title_6 != blank -%}
+      <h1 class="lg:text-h2 text-h4 tracking-normal md:mb-10 mb-8 text-{{ block.settings.text_color_6 }}">
+        {{ block.settings.title_6 | escape }}
+      </h1>
+      {%- endif -%}
+      {%- if block.settings.text_6 != blank -%}
+      <h5
+        class="pt-0 tracking-normal md:font-bold font-semibold m-0 md:px-45 md:mb-10 mb-8 text-{{ block.settings.text_color_6 }}">
+        {{ block.settings.text_6 }}
+      </h5>
+      {%- endif -%}
+      {%- if block.settings.button_label_6 != blank -%}
+      <a href="{% if block.settings.button_link_6 != blank %}{{ block.settings.button_link_6 }}{% else %}#{% endif %}"
+        class="button button-{{ block.settings.button_6 }} font-semibold mx-auto md:max-w-btn max-w-btn-sm">
+        {{ block.settings.button_label_6 | escape }}
+      </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>

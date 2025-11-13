@@ -1,0 +1,131 @@
+{%- comment -%}
+  Params:
+    referrer - expertvoice / outdoorprolink / pro
+    firstname - used for expertvoice
+    lastname - used for expertvoice
+    email - used for expertvoice
+    discount_level - used for expertvoice
+    purchase_limit - used for expertvoice
+    group_code - used for expertvoice
+
+    D   | Limit | GROUP NAME                  |   Group Code
+  -------------------------------------------------------------
+    20%   1,000   EXPERTICTY INDUSTRY - TIER 1    CnekmNIboa9U
+    30%   1,000   EXPERTICTY INDUSTRY - TIER 2a   97e7Dce6134E
+    40%   1,000   EXPERTICTY INDUSTRY - TIER 2    1qYSZF0rJFT1
+    40%   1,000   EXPERTICTY INDUSTRY - TIER 3    Wu3kCxaxrI9q
+    50%   1,000   EXPERTICTY INDUSTRY - TIER 3b   2fSHDnKdt6hA
+    40%   2,000   EXPERTICTY INDUSTRY - TIER 3c   vHQwfUNYdhTE
+
+    https://pearlizumi.com/account/login?referrer=expertvoice&firstName=Taylor&lastName=Sharkley&email=taylor.sharkley@gmail.com&d=30&limit=1000&code=97e7Dce6134E
+
+{%- endcomment -%}
+{%- liquid
+  assign is_valid_expertvoice_url = false
+  assign register_link = "/account/register"
+  if referrer == 'expertvoice' and firstname != blank and lastname != blank and email != blank and discount_level != blank and purchase_limit != blank and group_code != blank
+    comment
+      Check Group Code Validity (weak authentication)
+    endcomment
+    assign ev_tier_1 = "CnekmNIboa9U##discount-20$$limit-1000"
+    assign ev_tier_2 = "1qYSZF0rJFT1##discount-40$$limit-1000"
+    assign ev_tier_2a = "97e7Dce6134E##discount-30$$limit-1000"
+    assign ev_tier_3a = "Wu3kCxaxrI9q##discount-40$$limit-1000"
+    assign ev_tier_3b = "2fSHDnKdt6hA##discount-50$$limit-1000"
+    assign ev_tier_3c = "vHQwfUNYdhTE##discount-40$$limit-2000"
+
+    assign valid_ev_group_codes = ev_tier_1 | append: '||' | append: ev_tier_2 | append: '||' | append: ev_tier_2a | append: '||' | append: ev_tier_3a | append: '||' | append: ev_tier_3b | append: '||' | append: ev_tier_3c
+    assign valid_ev_group_codes = valid_ev_group_codes | split: '||'
+
+    for group_data in valid_ev_group_codes
+      assign expected_code = group_data | split: '##' | first
+      assign chunk = group_data | split: '##' | last
+      assign expected_discount = chunk | split: '$$' | first | remove: 'discount-'
+      assign expected_limit = chunk | split: '$$' | last | remove: 'limit-'
+      assign log1 = log1 | append: 'expected_code: ' | append: expected_code | append: ', expected_discount: ' | append: expected_discount |append: ', expected_limit: ' | append: expected_limit | append: '\n'
+      if group_code == expected_code and discount_level == expected_discount and purchase_limit == expected_limit
+        assign is_valid_expertvoice_url = true
+        break
+      endif
+    endfor
+
+  endif
+
+-%}
+
+{%- if is_valid_expertvoice_url -%}
+  {%- capture register_link -%}/account/register?view=expertvoice&firstName={{ firstname | url_encode }}&lastName={{ lastname | url_encode }}&email={{ email | url_encode }}&d={{ discount_level | url_encode }}&limit={{ purchase_limit | url_encode }}&code={{ group_code | url_encode }}{%- endcapture -%}
+{%- elsif referrer == "outdoorprolink" -%}
+  {%- assign register_link = "/account/register?view=outdoorprolink" -%}
+{%- elsif referrer == "pro" -%}
+  {%- assign register_link = "/account/register?view=pro" -%}
+{%- endif -%}
+
+{%- comment -%}
+<script>console.log(`
+  referrer: {{ referrer }}
+  firstname: {{ firstname }}
+  lastname: {{ lastname }}
+  email: {{ email }}
+  discount_level: {{ discount_level }}
+  purchase_limit: {{ purchase_limit }}
+  `)</script>
+{%- endcomment -%}
+
+{%- comment -%} Login Landing Page {%- endcomment -%}
+<div class="mx-auto w-full max-w-600 px-6 md:px-14 lg:pt-25 lg:pb-75 lg:px-22.5 lg:max-w-1200 flex flex-wrap">
+  {%- comment -%} Recover Password Success Message {%- endcomment -%}
+  <div
+    class="text-p-s font-sora font-normal text-pine border-l-3 border-pine w-full px-5 py-1 mb-10 hidden recover-message-desktop"
+    data-recover-success>
+    {{ 'customer.recover_password.success' | t }}
+  </div>
+
+  {%- comment -%} Desktop - Left / Sign In Column {%- endcomment -%}
+  <div class="account_page mx-auto text-left w-full lg:w-1/2">
+    {%- assign pro_customer_page = false -%}
+    {%- if is_valid_expertvoice_url or referrer == "outdoorprolink" or referrer == "pro" -%}
+      {% assign pro_customer_page = true %}
+    {%- endif -%}
+    {% include 'customer-login-form' classes: "w-full pt-8 pb-10 lg:p-0 lg:border-r lg:border-silver" pro_customer_page: pro_customer_page %}
+    {% include 'customer-password-recovery-form' %}
+  </div>
+
+  {%- comment -%} Desktop - Right / Register Prompt Column {%- endcomment -%}
+  <div class="border-t border-silver py-9 mb-6 w-full lg:w-1/2 lg:border-none lg:py-0 lg:mb-0" data-register-block>
+    <div class="lg:max-w-387 lg:float-right">
+      <h2 class="text-h3-m lg:text-h3 uppercase mb-2 lg:mb-3">
+        {%- if referrer == "pro" -%}
+          {{ 'customer.register.apply' | t }}
+        {%- else -%}
+          {{ 'customer.register.title' | t }}
+        {%- endif -%}
+      </h2>
+      {%- if pro_customer_page -%}
+        <p class="font-normal text-p-s lg:text-p text-black mb-4">
+          {%- comment -%} Expert Voice Greeting {%- endcomment -%}
+          {%- if is_valid_expertvoice_url -%}
+            <strong>{{ 'customer.account.greeting' | t }}, {{ firstname }}! </strong>
+          {%- endif -%}
+          {%- comment -%} Pro Member Registration Prompt {%- endcomment -%}
+          {{ 'customer.register.member_prompt' | t }}
+        </p>
+      {%- else -%}
+        {%- comment -%} Normal Registration Prompt{%- endcomment -%}
+        <ul class="registration-prompt font-normal text-p-s lg:text-p text-black mb-8">
+          <li class="pl-6 relative">{{ 'customer.register.register_prompt_1' | t }}</li>
+          <li class="pl-6 relative">{{ 'customer.register.register_prompt_2' | t }}</li>
+        </ul>
+      {%- endif -%}
+      <a href="{{ register_link }}" class="button-secondary max-w-full lg:max-w-60">
+        {%- if referrer == "pro" -%}
+          {{ 'customer.login.apply' | t }}
+        {%- else -%}
+          {{ 'customer.login.sign_up' | t }}
+        {%- endif -%}
+      </a>
+    </div>
+  </div>
+</div>
+
+</div>

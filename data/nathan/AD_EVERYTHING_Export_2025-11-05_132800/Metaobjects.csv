@@ -1,0 +1,16 @@
+ID,Handle,Command,Display Name,Status,Updated At,Definition: Handle,Definition: Name,Top Row,Row #,Field,Value
+127363022936,black-hex-print-1,MERGE,Black/Hex Print,,2025-08-04 10:59:14 -0700,shopify--color-pattern,Color,true,1,label,Black/Hex Print
+127363022936,black-hex-print-1,MERGE,Black/Hex Print,,2025-08-04 10:59:14 -0700,shopify--color-pattern,Color,,2,color,#000000
+127363022936,black-hex-print-1,MERGE,Black/Hex Print,,2025-08-04 10:59:14 -0700,shopify--color-pattern,Color,,3,image,
+127363022936,black-hex-print-1,MERGE,Black/Hex Print,,2025-08-04 10:59:14 -0700,shopify--color-pattern,Color,,4,color_taxonomy_reference,gid://shopify/TaxonomyValue/1
+127363022936,black-hex-print-1,MERGE,Black/Hex Print,,2025-08-04 10:59:14 -0700,shopify--color-pattern,Color,,5,pattern_taxonomy_reference,gid://shopify/TaxonomyValue/2874
+127363678296,hi-vis-yellow-hex,MERGE,Hi Vis/Yellow Hex Print,,2025-08-04 11:49:32 -0700,shopify--color-pattern,Color,true,6,label,Hi Vis/Yellow Hex Print
+127363678296,hi-vis-yellow-hex,MERGE,Hi Vis/Yellow Hex Print,,2025-08-04 11:49:32 -0700,shopify--color-pattern,Color,,7,color,#FFE500
+127363678296,hi-vis-yellow-hex,MERGE,Hi Vis/Yellow Hex Print,,2025-08-04 11:49:32 -0700,shopify--color-pattern,Color,,8,image,
+127363678296,hi-vis-yellow-hex,MERGE,Hi Vis/Yellow Hex Print,,2025-08-04 11:49:32 -0700,shopify--color-pattern,Color,,9,color_taxonomy_reference,gid://shopify/TaxonomyValue/14
+127363678296,hi-vis-yellow-hex,MERGE,Hi Vis/Yellow Hex Print,,2025-08-04 11:49:32 -0700,shopify--color-pattern,Color,,10,pattern_taxonomy_reference,gid://shopify/TaxonomyValue/2874
+127362629720,black-hex-print,MERGE,Black/Hex Print,,2025-08-04 10:57:17 -0700,shopify--color-pattern,Color,true,11,label,Black/Hex Print
+127362629720,black-hex-print,MERGE,Black/Hex Print,,2025-08-04 10:57:17 -0700,shopify--color-pattern,Color,,12,color,#000000
+127362629720,black-hex-print,MERGE,Black/Hex Print,,2025-08-04 10:57:17 -0700,shopify--color-pattern,Color,,13,image,
+127362629720,black-hex-print,MERGE,Black/Hex Print,,2025-08-04 10:57:17 -0700,shopify--color-pattern,Color,,14,color_taxonomy_reference,gid://shopify/TaxonomyValue/1
+127362629720,black-hex-print,MERGE,Black/Hex Print,,2025-08-04 10:57:17 -0700,shopify--color-pattern,Color,,15,pattern_taxonomy_reference,gid://shopify/TaxonomyValue/2874

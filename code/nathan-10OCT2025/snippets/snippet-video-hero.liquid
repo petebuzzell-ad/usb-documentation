@@ -1,0 +1,22 @@
+<div data-section-id="{{ block.id }}" data-section-type="hero-video" class="lg:mb-30 md:mb-18 mb-16">
+  <div class="relative overflow-hidden {% if block_image_1 == blank and block.settings.text_1 == blank %} lg:min-h-240 min-h-160{% endif %}" style="height: {{ block.settings.video_hero_height }}vh;">
+    <div class="absolute top-0 left-0 w-full h-full md:px-0 px-7 text-center lg:py-35 py-30 mx-auto z-10 flex items-center justify-center">
+      <div class="md:max-w-hero-content">
+        {%- if block.settings.video_hero_heading != blank -%}
+          <h1 class="lg:text-h1 text-h3 tracking-normal lg:mb-10 mb-8 text-{{ block.settings.video_hero_text_color }}">
+            {{ block.settings.video_hero_heading | escape }}
+          </h1>
+        {%- endif -%}
+        {%- if block.settings.video_hero_text != blank -%}
+          <h5 class="tracking-normal pt-0 font-semibold m-0 lg:px-19.5 text-{{ block.settings.video_hero_text_color }}">
+            {{ block.settings.video_hero_text }}
+          </h5>
+        {%- endif -%}
+      </div>
+    </div>
+    <video id="heroVideo" class="absolute w-screen h-full object-cover object-center top-0 left-0 z-0" poster="{{ block.settings.video_hero_poster }}" playsinline autoplay loop muted >
+      <source src="{{ block.settings.video_hero_url_webm }}" type="video/webm" />
+      <source src="{{ block.settings.video_hero_url_mp4 }}" type="video/mp4" />
+    </video>
+  </div>
+</div>

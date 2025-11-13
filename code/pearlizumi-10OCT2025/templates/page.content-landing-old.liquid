@@ -1,0 +1,255 @@
+{%- comment -%}
+
+  HOW TO USE
+
+  To create a new, unique Content Landing Page:
+    - Create Page in the Admin
+    - set Template to page.content-landing
+    - go to More Actions -> Add Metafields to page
+    - in the 'content_landing_key' metafield, enter a unique value (ex. 'abc123')
+    - copy all contents from sections/content-landing.liquid and paste into a new file
+    - name the new file 'content-landing_<key>' with a single underscore + key (ex. 'content-landing_abc123.liquid')
+    - in this file, add a case block that matches the key and use the new section
+
+
+    TODO: delete these -- 
+      New Arrivals - All
+      New BikeStyle Arrivals - All
+      New Glove Arrivals
+      New Gravel Arrivals
+      New Jersey Arrivals
+      New Mountain Bike Arrivals - All
+      New Road Arrivals - All
+      New Shorts Arrivals
+      New Sock Arrivals
+      PRO Collection
+      New BikeStyle Arrivals 
+
+{%- endcomment -%}
+
+{% liquid 
+  assign key = page.metafields.global.content_landing_key | handleize
+
+  case key
+
+    when 'all-about-chamois'
+      section 'content-landing_all-about-chamois'
+
+    when 'athlete-crew'
+      section 'content-landing_athlete-crew'
+
+    when 'careers'
+      section 'content-landing_careers'
+
+    when 'charities'
+      section 'content-landing_charities'
+
+    when 'cold-gear'
+      section 'content-landing_cold-gear'
+
+    when 'crew'
+      section 'content-landing_crew'
+
+    when 'dei'
+      section 'content-landing_dei'
+
+    when 'events'
+      section 'content-landing_events'
+
+    when 'everyday-value'
+      section 'content-landing_everyday-value'
+
+    when 'expertise'
+      section 'content-landing_expertise'
+
+    when 'factory-store-park-city'
+      section 'content-landing_factory-store-park-city'
+
+    when 'factory-store-silverthorne'
+      section 'content-landing_factory-store-silverthorne'  
+
+    when 'featured-styles'
+      section 'content-landing_featured-styles'
+
+    when 'film'
+      section 'content-landing_film'
+
+    when 'fitness'
+      section 'content-landing_fitness'
+
+    when 'gift-guide'
+      section 'content-landing_gift-guide'
+    
+    when 'gloves-guide'
+      section 'content-landing_gloves-guide'
+    
+    when 'go-grants'
+      section 'content-landing_go-grants'
+
+    when 'gravel'
+      section 'content-landing_gravel'
+
+    when 'here-we-go'
+      section 'content-landing_here-we-go'
+
+    when 'how-to-choose-a-jacket'
+      section 'content-landing_how-to-choose-a-jacket'
+
+    when 'how-to-choose-a-jersey'
+      section 'content-landing_how-to-choose-a-jersey'
+
+    when 'how-to-choose-a-short'
+      section 'content-landing_how-to-choose-a-short'
+
+    when 'how-to-choose-cycling-shoes'
+      section 'content-landing_how-to-choose-cycling-shoes'
+
+    when 'how-to-choose-tights-guide'
+      section 'content-landing_how-to-choose-tights-guide'
+
+    when 'innovation'
+      section 'content-landing_innovation'
+
+    when 'kids-collection'
+      section 'content-landing_kids-collection'
+
+    when 'levitate-chamois'
+      section 'content-landing_levitate-chamois'
+
+    when 'library'
+      section 'content-landing_library'
+
+    when 'mens-collection'
+      section 'content-landing_mens-collection'
+
+    when 'mens-mountain-bike-beginners-guide'
+      section 'content-landing_mens-mountain-bike-beginners-guide'
+
+    when 'mens-road-beginners-guide'
+      section 'content-landing_mens-road-beginners-guide'
+    
+    when 'more-trail'
+      section 'content-landing_more-trail'
+    
+    when 'mountain-bike'
+      section 'content-landing_mountain-bike'
+
+    when 'mountain-bike-cold-gear'
+      section 'content-landing_mountain-bike-cold-gear'
+
+    when 'mountain-bike-experience'
+      section 'content-landing_mountain-bike-experience'
+
+    when 'new-arrivals-all'
+      section 'content-landing_new-arrivals-all'
+
+    when 'new-bikestyle-arrivals-all'
+      section 'content-landing_new-bikestyle-arrivals-all'
+
+    when 'new-glove-arrivals'
+      section 'content-landing_new-glove-arrivals'
+
+    when 'new-gravel-arrivals'
+      section 'content-landing_new-gravel-arrivals'
+
+    when 'new-jersey-arrivals'
+      section 'content-landing_new-jersey-arrivals'
+
+    when 'new-mountain-bike-arrivals-all'
+      section 'content-landing_new-mountain-bike-arrivals-all'
+
+    when 'new-mountain-bike-protection'
+      section 'content-landing_new-mountain-bike-protection'
+
+    when 'new-road-arrivals-all'
+      section 'content-landing_new-road-arrivals-all'
+
+    when 'new-shorts-arrivals'
+      section 'content-landing_new-shorts-arrivals'
+
+    when 'new-sock-arrivals'
+      section 'content-landing_new-sock-arrivals'
+
+    when 'new-tights-arrivals'
+      section 'content-landing_new-tights-arrivals'
+
+    when 'origins'
+      section 'content-landing_origins'
+
+    when 'outerwear'
+      section 'content-landing_outerwear'
+
+    when 'our-social-purpose'
+      section 'content-landing_our-social-purpose'
+
+    when 'pedal-to-zero'
+      section 'content-landing_pedal-to-zero'
+
+    when 'pro'
+      section 'content-landing_pro'
+    
+    when 'pro-collection'
+      section 'content-landing_pro-collection'
+
+    when 'pro-shorts'
+      section 'content-landing_pro-shorts'
+
+    when 'pro-system'
+      section 'content-landing_pro-system'
+
+    when 'quality'
+      section 'content-landing_quality'
+
+    when 'rain-gear'
+      section 'content-landing_rain-gear'
+
+    when 'ride-365'
+      section 'content-landing_ride-365'
+    
+    when 'ride-there'
+      section 'content-landing_ride-there'
+
+    when 'size-guides-and-fit'
+      section 'content-landing_size-guides-and-fit'
+
+    when 'sustainability'
+      section 'content-landing_sustainability'
+
+    when 'technology'
+      section 'content-landing_technology'
+
+    when 'test-lab'
+      section 'content-landing_test-lab'
+
+    when 'upcycling'
+      section 'content-landing_upcycling'
+
+    when 'values'
+      section 'content-landing_values'
+
+    when 'we-campaign'
+      section 'content-landing_we-campaign'
+    
+    when 'we-ride-finder'
+      section 'content-landing_we-ride-finder'
+
+    when 'wear-tester'
+      section 'content-landing_wear-tester'
+
+    when 'wind-gear'
+      section 'content-landing_wind-gear'
+
+    when 'womens-collection'
+      section 'content-landing_womens-collection'
+
+    when 'womens-mountain-bike-beginners-guide'
+      section 'content-landing_womens-mtb-beginners-guide'
+
+    when 'womens-road-beginners-guide'
+      section 'content-landing_womens-road-beginners-guide'
+
+    else
+      section 'content-landing'
+
+  endcase
+%}

@@ -1,0 +1,97 @@
+<div data-block-id="{{ block.id }}" data-block-type="icon-with-text-block"
+  class="lg:mb-30 md:mb-18 mb-16 bg-{{ block.settings.bg_color_12 }} lg:pt-30 lg:pb-35 py-14 px-6">
+  <div class="main_content">
+    {% if block.settings.heading_9 != blank %}
+    <div class="text-center">
+      <h2 class="tracking-normal lg:mb-10 mb-6">{{ block.settings.heading_9 | escape }}</h2>
+    </div>
+    {% endif %}
+    {% if block.settings.text_intro_9 != blank %}
+    <p class="md:text-h6 text-h6-m tracking-normal font-medium lg:mb-18 mb-12 md:w-112.5 mx-auto text-center">
+      {{ block.settings.text_intro_9 }}
+    </p>
+    {% endif %}
+  </div>
+  <div class="grid grid-cols-4 md:gap-11 gap-10 xl:px-30 lg:px-10 px-0">
+    <div class="md:col-span-1 col-span-2">
+      <div class="inner_content">
+        {% if block.settings.svg_12 %}
+        <div
+          class="icon_inner flex justify-center items-center bg-white xl:w-52.5 xl:h-52.5 lg:w-40 lg:h-40 w-35 h-35 mb-6 rounded-circle m-auto">
+          {{ block.settings.svg_12 }}
+        </div>
+        {% endif %}
+        <div class="text-center">
+          {% if block.settings.title_12 != blank %}
+          <h2 class="text-h6 font-semibold lg:mb-4 mb-2 tracking-normal">{{ block.settings.title_12 | escape }}</h2>
+          {% endif %}
+          {% if block.settings.text_12 != blank %}
+          <p class="lg:text-h6 text-special-s tracking-normal font-medium mb-0">
+            {{ block.settings.text_12 }}
+          </p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="md:col-span-1 col-span-2">
+      <div class="inner_content">
+        {% if block.settings.svg_13 %}
+        <div
+          class="icon_inner flex justify-center items-center bg-white xl:w-52.5 xl:h-52.5 lg:w-40 lg:h-40 w-35 h-35 mb-6 rounded-circle m-auto">
+          {{ block.settings.svg_13 }}
+        </div>
+        {% endif %}
+        <div class="text-center">
+          {% if block.settings.title_13 != blank %}
+          <h2 class="text-h6 font-semibold lg:mb-4 mb-2 tracking-normal">{{ block.settings.title_13 | escape }}</h2>
+          {% endif %}
+          {% if block.settings.text_13 != blank %}
+          <p class="lg:text-h6 text-special-s tracking-normal font-medium mb-0">
+            {{ block.settings.text_13 }}
+          </p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="md:col-span-1 col-span-2">
+      <div class="inner_content">
+        {% if block.settings.svg_14 %}
+        <div
+          class="icon_inner flex justify-center items-center bg-white xl:w-52.5 xl:h-52.5 lg:w-40 lg:h-40 w-35 h-35 mb-6 rounded-circle m-auto">
+          {{ block.settings.svg_14 }}
+        </div>
+        {% endif %}
+        <div class="text-center">
+          {% if block.settings.title_14 != blank %}
+          <h2 class="text-h6 font-semibold lg:mb-4 mb-2 tracking-normal">{{ block.settings.title_14 | escape }}</h2>
+          {% endif %}
+          {% if block.settings.text_14 != blank %}
+          <p class="lg:text-h6 text-special-s tracking-normal font-medium mb-0">
+            {{ block.settings.text_14 }}
+          </p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="md:col-span-1 col-span-2">
+      <div class="inner_content">
+        {% if block.settings.svg_15 %}
+        <div
+          class="icon_inner flex justify-center items-center bg-white xl:w-52.5 xl:h-52.5 lg:w-40 lg:h-40 w-35 h-35 mb-6 rounded-circle m-auto">
+          {{ block.settings.svg_15 }}
+        </div>
+        {% endif %}
+        <div class="text-center">
+          {% if block.settings.title_15 != blank %}
+          <h2 class="text-h6 font-semibold lg:mb-4 mb-2 tracking-normal">{{ block.settings.title_15 | escape }}</h2>
+          {% endif %}
+          {% if block.settings.text_15 != blank %}
+          <p class="lg:text-h6 text-special-s tracking-normal font-medium mb-0">
+            {{ block.settings.text_15 }}
+          </p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

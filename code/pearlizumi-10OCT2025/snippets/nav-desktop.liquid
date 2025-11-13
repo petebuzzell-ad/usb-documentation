@@ -1,0 +1,314 @@
+{%- liquid
+  assign custom_menus = ''
+  assign custom_menu_links = ''
+  assign media_blocks = ''
+  assign blog_post_blocks = ''
+
+  for block in section.blocks
+    if block.type == 'featured_cta_block'
+      assign menu_handle = block.settings.title
+      assign cta_image = block.settings.cta_image
+      if cta_image != blank
+        assign cta_image = block.settings.cta_image | img_url: '282x'
+      endif
+      if block.settings.cta_type == 'last_submenu'
+        assign media_blocks = media_blocks | append: '$$' | append: menu_handle | append: '||' | append: cta_image | append: '||' | append: block.settings.cta_type
+      elsif block.settings.cta_type == 'custom_link'
+        assign cta_link_text = block.settings.cta_link_text
+        assign cta_link_url = block.settings.cta_link
+        assign media_blocks = media_blocks | append: '$$' | append: menu_handle | append: '||' | append: cta_image | append: '||' | append: cta_link_text | append: '##' | append: cta_link_url
+      endif
+    elsif block.type == 'custom_menu_block'
+      assign menu_handle = block.settings.title
+      assign cta_image = block.settings.cta_image | img_url: '282x'
+      assign cta_link_title = block.settings.cta_link_title
+      assign cta_link_text = block.settings.cta_link_text
+      assign cta_link_url = block.settings.cta_link
+      unless custom_menus contains menu_handle
+        assign custom_menus = custom_menus | append: menu_handle | append: '$$'
+      endunless
+      assign custom_menu_links = custom_menu_links | append: '$$' | append: menu_handle | append: '||' | append: cta_image | append: '||' | append: cta_link_title | append: '||' | append: cta_link_text | append: '||' | append: cta_link_url
+    elsif block.type == 'featured_blog_post_block'
+      assign menu_handle = block.settings.title
+      assign article_handle = block.settings.article_handle
+      assign blog_post_blocks = blog_post_blocks | append: '$$' | append: menu_handle | append: '||' | append: article_handle
+      unless custom_menus contains menu_handle
+        assign custom_menus = custom_menus | append: menu_handle | append: '$$'
+      endunless
+    endif
+  endfor
+  assign media_blocks = media_blocks | split: '$$'
+  assign custom_menu_links = custom_menu_links | split: '$$'
+  assign custom_menus_split = custom_menus | split: '$$'
+  assign blog_post_blocks = blog_post_blocks | split: '$$'
+
+  assign clearance_menu_text = 'clearance'
+  if shop.locale == 'fr'
+    assign clearance_menu_text = 'liquidation'
+  endif
+  assign width_fallbacks = 'w-1/2 w-1/3 w-1/4 w-1/5 w-1/6'
+-%}
+<!-- Desktop Nav -->
+<nav class="absolute w-full top-0 left-1/2 transform -translate-x-1/2">
+  <ul class="flex w-max list-none mx-auto" data-nav-list>
+    {% for link in linklists[main_menu].links %}
+      {%- comment -%}
+        Check Media Blocks to Determine if Submenu Should Be Captured
+        + Assign Other CTA Variables in Outer Loop
+        Note: submenu = linklists[handle_capitalized] shouldn't technically work
+        ie. linklists["Women"] vs. linklists["women"]
+      {%- endcomment -%}
+      {%- liquid
+        assign submenu = linklists[link.handle]
+        if submenu.links.size == 0
+          assign handle_capitalized = link.handle | capitalize
+          assign submenu = linklists[handle_capitalized]
+        endif
+        assign hide_top_link = false
+        if link.url == '#'
+          assign hide_top_link = true
+        endif
+        assign capture_last_submenu = false
+        assign last_submenu = false
+        assign cta_image = false
+        assign cta_link_text = false
+        assign cta_link_url = false
+        for block in media_blocks
+          assign block_data = block | split: '||'
+          if block_data[0] == link.handle
+            assign cta_image = block_data[1]
+            if block_data[2] == 'last_submenu'
+              assign capture_last_submenu = true
+            else
+              assign link_data = block_data[2] | split: '##'
+              assign cta_link_text = link_data | first
+              assign cta_link_url = link_data | last
+            endif
+            break
+          endif
+        endfor
+
+        assign menu_svg = null
+        for block in section.blocks
+          if block.type == 'featured_cta_block' and block.settings.title == link.handle
+            assign menu_svg = block.settings.svg
+            break
+          endif
+        endfor
+      -%}
+      <li
+        class="group"
+        data-top-level-nav
+        role="tablist"
+        tabindex="{%- if forloop.first -%}0{%- else -%}-1{%- endif -%}"
+        aria-label="{{ link.title }}"
+        aria-controls="{{ link.title }}_menu"
+        aria-selected="{%- if forloop.first -%}ture{%- else -%}false{%- endif -%}"
+        {% unless link.title == 'Clearance' %}
+        x-data="{ isOpen: false, timer: null }"
+        x-init="$refs.dropdown.classList.remove('group-hover:!block')"
+        @mouseenter="clearTimeout(timer); isOpen = true"
+        @mouseleave="timer = setTimeout(() => {isOpen = false}, 300)"
+        @click="isOpen = true"
+        @keydown.enter="timer = setTimeout(() => {isOpen = true}, 300)"
+        @keydown.escape="timer = setTimeout(() => {isOpen = false}, 300)"
+        @click.away="isOpen = false"
+        data-meganav-toplink
+        {% endunless %}
+      >
+        {%- unless hide_top_link -%}
+          <a aria-label="{{ link.title }}"
+            href="{{ link.url }}"
+            class="top-level relative flex items-center h-20 transition-colors duration-300 ease-in-out lg:mx-4 group-hover:text-pine"
+            role="link"
+          >
+        {%- else -%}
+          <div tabindex="0" aria-label="{{ link.title }}" class="top-level relative flex items-center h-20 group-hover:text-pine transition-colors duration-300 ease-in-out lg:mx-4 cursor-default">
+        {%- endunless -%}
+        <span class="font-sora font-semibold text-special-s uppercase">{{ link.title }}</span>
+        <!-- Underline -->
+        <div
+          class="absolute left-0 w-full h-px opacity-0 bg-pine group-hover:opacity-100 transition-opacity duration-300 ease-in-out"
+          style="bottom: 1px;"
+        ></div>
+        {%- unless hide_top_link -%}</a>{%- else -%}</div>{%- endunless -%}
+        <!-- Dropdown Content -->
+        {% unless link.title == 'Clearance' %}
+          <div
+            id="{{ link.title }}_menu"
+            tabindex="0"
+            role="tabpanel"
+            aria-labelledby="{{ link.title }}_menu"
+            x-show="isOpen"
+            x-ref="dropdown"
+            class="absolute top-full left-0 z-[101] border-b group-hover:!block"
+            style="display: none; border-color: #EDEDED;"
+          >
+            <div
+              class="flex items-start justify-center w-screen py-12.5 px-22.5 min-h-460"
+              style="background-color: #FCFCFC"
+            >
+              {%- unless custom_menus contains link.handle -%}
+                {% liquid
+                  assign num_columns = submenu.links.size
+                  if capture_last_submenu
+                    assign num_columns = num_columns | minus: 1
+                  endif
+                %}
+                <!-- Submenus -->
+                <div class="flex items-start justify-end w-full relative z-10" data-dropdown-content>
+                  {% for child_link in submenu.links %}
+                    {%- unless forloop.last and capture_last_submenu == true -%}
+                      {%- comment -%} Set column width {%- endcomment -%}
+                      {%- assign num_columns = 4 -%}
+                      {%- if submenu.links.size > 4 -%}
+                        {%- assign num_columns = submenu.links.size -%}
+                      {%- endif -%}
+                      {%- if capture_last_submenu == true -%}
+                        {%- assign num_columns = num_columns | minus: 1 -%}
+                      {%- endif -%}
+                      <!-- Submenu Column -->
+                      <div class="block w-1/{{ num_columns }} pr-6">
+                        <!-- Column Header Link -->
+                        <span class="block mb-4 font-sora font-semibold text-special-s uppercase text-black cursor-default">
+                          {{- child_link.title -}}
+                        </span>
+                        <!-- Column Link List -->
+                        <ul class="block list-none">
+                          {%- for grandchild_link in child_link.links -%}
+                            {%- comment -%} Hide clearance links from Pro members {%- endcomment -%}
+                            {%- assign lower_title = grandchild_link.title | downcase -%}
+
+                              <li class="mb-1 ">
+                                <a class="inline-block megamenu-link-link {% if section.settings.red_clearance == true and grandchild_link.handle == "clearance" %} text-red {% elsif grandchild_link.handle == "all-stories" %} text-pine {% else %} text-black hover:text-pine {% endif %} hover:underline text-p-s h-full"
+                                  href="{{- grandchild_link.url -}}"
+                                  role="link"
+                                  aria-label="{{ grandchild_link.title }}"
+                                  >
+                                  {{ grandchild_link.title }}
+                                </a>
+                              </li>
+
+                          {%- endfor -%}
+                        </ul>
+                      </div>
+                    {%- else -%}
+                      {%- capture last_submenu -%}
+                        <!-- Submenu Column -->
+                        <div class="block">
+                          <!-- Column Header Link -->
+                          <a class="block mb-2 font-sora font-semibold text-special-xs uppercase text-black"
+                          href="{{- child_link.url -}}"
+                          role="link"
+                          aria-label="{{ child_link.title }}"
+                       >
+                         {{ child_link.title }}
+                       </a>
+                          <!-- Column Link List -->
+                          <ul class="block list-none">
+                            {%- for grandchild_link in child_link.links -%}
+                              {%- assign lower_title = grandchild_link.title | downcase -%}
+                              {%- unless is_pro and lower_title contains clearance_menu_text -%}
+                                <li class="">
+                                  <a class="block text-black hover:text-pine text-p-lg w-full h-full whitespace-nowrap hover:underline"
+                                    href="{{- grandchild_link.url -}}"
+                                    role="link"
+                                    aria-label="{{ grandchild_link.title }}"
+                                  >
+                                    {{ grandchild_link.title }}
+                                  </a>
+                                </li>
+                              {%- endunless -%}
+                            {%- endfor -%}
+                          </ul>
+                        </div>
+                      {%- endcapture -%}
+                    {%- endunless -%}
+                  {% endfor %}
+                </div>
+                <!-- CTA Block -->
+                {%- if cta_image != blank -%}
+                  <div class="flex flex-col w-full max-w-70.5 xl:mr-24" data-dropdown-content>
+                    <!-- Image -->
+                    <img data-src="{{ cta_image }}" alt="Dropdown Menu CTA Image {{ cta_image }}" class="lazy w-full">
+                    <!-- Content -->
+                    <div class="mt-4">
+                      {%- if last_submenu -%}
+                        {%- comment -%} Captured Submenu {%- endcomment -%}
+                        {{- last_submenu -}}
+                      {%- elsif cta_link_text and cta_link_url -%}
+                        {%- comment -%} Link {%- endcomment -%}
+                        <a class="hover:text-pine hover:underline" href="{{- cta_link_url -}}">{{- cta_link_text -}}</a>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                {%- endif -%}
+              {%- else -%}
+                <ul class="flex justify-start items-start">
+                  {%- for menu_handle in custom_menus_split -%}
+                    {%- for custom_link in custom_menu_links -%}
+                      {%- assign split_data = custom_link | split: '||' -%}
+                      {%- assign handle_match = split_data[0] -%}
+                      {%- if menu_handle == link.handle and link.handle == handle_match -%}
+                        {%- assign link_image = split_data[1] -%}
+                        {%- assign link_title = split_data[2] -%}
+                        {%- assign link_text = split_data[3] -%}
+                        {%- assign link_url = split_data[4] -%}
+                        {%- if link_image != blank and link_title != blank and link_url != blank -%}
+                          <li class="block w-full h-full max-w-70.5 mr-4 hover-line">
+                            <a class="block h-full" href="{{- link_url -}}">
+                              {%- if link_image -%}
+                                <img class="lazy w-full" data-src="{{- link_image -}}" alt="Dropdown Link Image  {{- link_image -}}">
+                              {%- endif -%}
+                              <span class="hover-content block font-sora font-semibold text-black text-special-lg uppercase mt-5 mb-1">
+                                {{- link_title -}}
+                              </span>
+                              <p class="hover-content text-black text-p-s m-0">{{ link_text }}</p>
+                            </a>
+                          </li>
+                        {%- endif -%}
+                      {%- endif -%}
+                    {%- endfor -%}
+
+                    {%- for blog_post in blog_post_blocks -%}
+                      {%- assign split_data = blog_post | split: '||' -%}
+                      {%- assign handle_match = split_data[0] -%}
+                      {%- if menu_handle == link.handle and link.handle == handle_match -%}
+                        {%- assign article_handle = split_data[1] -%}
+                        {%- if article_handle != blank -%}
+                          {%- liquid
+                            assign article = articles[article_handle]
+                            assign excerpt_content = article.metafields.global.custom_excerpt_content
+
+                            if excerpt_content == blank
+                              assign excerpt_content = article.excerpt
+                            endif
+                          -%}
+
+                          <li class="block w-full h-full max-w-70.5 mr-4 hover-line">
+                            <a class="block h-full" href="{{- article.url -}}">
+                              <img class="lazy w-full" data-src="{{- article.image | image_url -}}" alt="{{article.image.alt}}">
+                              <span class="hover-content block font-sora font-semibold text-black text-special-lg uppercase mt-5 mb-1">
+                                {{- article.title -}}
+                              </span>
+                              <p class="hover-content text-black text-p-s m-0">
+                                {{ excerpt_content | truncate: 190 | strip_html }}
+                              </p>
+                            </a>
+                          </li>
+                        {%- endif -%}
+                      {%- endif -%}
+                    {%- endfor -%}
+                  {%- endfor -%}
+                </ul>
+              {%- endunless -%}
+            </div>
+            {%- if menu_svg != blank -%}
+              <div class="absolute bottom-0 lg:left-5 lg:max-w-550 xl:max-w-full z-0">{{- menu_svg -}}</div>
+            {%- endif -%}
+          </div>
+        {% endunless %}
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

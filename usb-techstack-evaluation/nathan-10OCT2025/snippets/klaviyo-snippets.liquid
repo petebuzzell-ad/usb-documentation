@@ -1,0 +1,45 @@
+{% comment %} Klaviyo Script {% endcomment %}
+<script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Mjp2Dt"></script>
+
+
+{% comment %} Klaviyo OOS {% endcomment %}
+<script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
+<script>
+  var klaviyo = klaviyo || [];
+  const modal_styles = "@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap'); #container {border-radius: 0px;} #klaviyo-bis-modal {max-width: 550px; font-family: 'Lato';} .modal-title {font-family: 'Lato'; font-size: 20px; font-weight: 900; letter-spacing: 0px; color: #414042;} .modal-title + p{font-size: 16px; color: #414042; font-family: 'Lato';} .modal-title + p a {text-decoration: underline;} .modal-title + p a:hover {color: #005784;} .submit-container button {padding: 21px 15px; border: none; font-size: 14px; font-weight: 900; font-family: 'Lato'; color: white; background-color: #161718; text-transform: uppercase; } .submit-container button:hover {background-color: #414042; color: white;} .form-group input,.form-group select { border-radius: 0;font-family: 'Lato';font-size: 14px;height: 50px;border-color: #C5C5C5;outline: none;} .form-group input:active,.form-group select:active {border-color: #414042;}"
+
+
+  klaviyo.init({
+    account: "Mjp2Dt",
+    platform: "shopify"
+  });
+
+  klaviyo.enable("backinstock",{ 
+    trigger: {
+      product_page_text: "Notify Me When Available",
+      product_page_class: "btn",
+      product_page_text_align: "center",
+      product_page_margin: "0px",
+      replace_anchor: false
+    },
+    modal: {
+      headline: "{product_name}",
+      body_content: "Register to receive a notification when this item comes back in stock. <a href='/pages/privacy-policy'>Privacy Notice</a>",
+      email_field_label: "Email",
+      button_label: "Notify me when available",
+      subscription_success_label: "You're in! We'll let you know when it's back.",
+      footer_content: '',
+      additional_styles: modal_styles,
+      drop_background_color: "#000",
+      background_color: "#fff",
+      text_color: "#222",
+      button_text_color: "#fff",
+      button_background_color: "#439fdb",
+      close_button_color: "#ccc",
+      error_background_color: "#fcd6d7",
+      error_text_color: "#C72E2F",
+      success_background_color: "#d3efcd",
+      success_text_color: "#1B9500"
+    }
+  });
+</script>

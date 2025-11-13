@@ -1,0 +1,167 @@
+{% assign featured_image = bold_selected_or_first_available_variant.featured_media | default: product.featured_media %}
+  {% capture list %}
+    {% for media in product.media %}{% comment %}EasyvideoAdapterBegin{% endcomment %}{% capture evRender %}{% render 'easyvideo-adapter', evaMedia: media, evaRender: true, shortAdapter: false, forloop: forloop, easyvideo_iterator: easyvideo_iterator %}{% endcapture %}{% assign evRender = evRender | split: '|' %}{% assign evRenderFirst = evRender[0] | strip %}{% if evRenderFirst == 'continue' %}{% continue %}{% endif %}{% assign easyvideo_media_width = evRenderFirst | plus: 0 %}{% assign easyvideo_media_height = evRender[1] | strip | plus: 0 %}{% assign easyvideo_media_aspect_ratio = evRender[2] | strip | plus: 0 %}{% assign easyvideo_video_source = evRender[3] | strip %}{% assign easyvideo_selected_media = evRender[4] | strip %}{% assign easyvideo_iterator = evRender[5] | strip | plus: 0 %}{% comment %}EasyvideoAdapterEnd{% endcomment %}
+      {% comment %}Loop through images only once{% endcomment %}
+      {{ media.id }}`~`{{ media.alt }}`~`{{ media.preview_image | product_img_url: '100x' }}`~`{{ media.preview_image | product_img_url: '200x' }}`~`{{ media.preview_image | product_img_url: '400x' }}`~`{{ media.preview_image | product_img_url: '600x' }}`~`{{ media.preview_image | product_img_url: '800x' }}`~`{{ media.preview_image | product_img_url: '1200x' }}`~`{{ media.preview_image | product_img_url: '2000x' }}`~`{{-media.preview_image.width-}}px`~`{{-media.preview_image.height-}}px`~`{{-media.media_type-}}{% if forloop.last == false %}^{% endif %}
+    {% endfor %}
+  {% endcapture %}
+  {% assign image_list = list | split: "^" %}
+ 
+<div class="gallery-wrap js-product-page-gallery clearfix
+            gallery-arrows--{{section.settings.gallery_arrows}}
+            {% if section.settings.product_thumbs %} {{ section.settings.thumbnail_position }} {% endif %}
+            ">
+
+
+          <div class="mobile-only">
+            {% if product.available %}
+              {% if settings.sale_banner_enabled and bold_compare_at_price_max > bold_price %}
+                <div class="sale_banner_product">{{ 'collections.general.sale' | t }}</div>
+              {% endif %}
+            {% endif %}
+            {% if collection_handles contains 'new' %}
+              <div class="new_banner_product">{{ 'collections.general.new' | t }}</div>
+            {% endif %}
+            {% if collection_handles contains 'pre-order' %}
+              <div class="preorder_banner_product">{{ 'collections.general.pre_order' | t }}</div>
+            {% endif %}
+            {% if product.tags contains 'new' %}
+              <div class="new_banner">New</div>
+            {% endif %}
+          </div>
+
+  <div class="slick-navigation">
+    <button class="slick-prev slick-arrow" aria-label="Previous" type="button" style="">Previous</button>
+    <span class="pagingInfo"></span>
+    <button class="slick-next slick-arrow" aria-label="Next" type="button" style="">Next</button>
+  </div>
+
+  <div class="product_gallery js-product-gallery desktop product-{{ product.id }}-gallery
+              {% if product.media.size > 1 %} multi-image {% endif %}
+              {% if product.media.size <= 1 %} single-image {% endif %}
+              transparentBackground--{{settings.slideshow_button_style}}
+              slideshow_animation--{{ section.settings.slideshow_animation }}
+              popup-enabled--{{ section.settings.enable_product_lightbox }}"
+      data-zoom="{{ section.settings.activate_zoom }}"
+      data-autoplay="{{ section.settings.activate_autoplay }}">
+
+      
+
+      {% for media in product.media %}{% comment %}EasyvideoAdapterBegin{% endcomment %}{% capture evRender %}{% render 'easyvideo-adapter', evaMedia: media, evaRender: true, shortAdapter: false, forloop: forloop, easyvideo_iterator: easyvideo_iterator %}{% endcapture %}{% assign evRender = evRender | split: '|' %}{% assign evRenderFirst = evRender[0] | strip %}{% if evRenderFirst == 'continue' %}{% continue %}{% endif %}{% assign easyvideo_media_width = evRenderFirst | plus: 0 %}{% assign easyvideo_media_height = evRender[1] | strip | plus: 0 %}{% assign easyvideo_media_aspect_ratio = evRender[2] | strip | plus: 0 %}{% assign easyvideo_video_source = evRender[3] | strip %}{% assign easyvideo_selected_media = evRender[4] | strip %}{% assign easyvideo_iterator = evRender[5] | strip | plus: 0 %}{% comment %}EasyvideoAdapterEnd{% endcomment %}
+        {% capture image_id %}{{ media.preview_image.id }}{% endcapture %}
+        {% capture image_alt %}{{ media.alt }}{% endcapture %}
+        {% capture image_100x %}{{ media.preview_image | product_img_url: '100x' }}{% endcapture %}
+        {% capture image_200x %}{{ media.preview_image | product_img_url: '200x' }}{% endcapture %}
+        {% capture image_400x %}{{ media.preview_image | product_img_url: '400x' }}{% endcapture %}
+        {% capture image_600x %}{{ media.preview_image | product_img_url: '600x' }}{% endcapture %}
+        {% capture image_800x %}{{ media.preview_image | product_img_url: '800x' }}{% endcapture %}
+        {% capture image_1200x %}{{ media.preview_image | product_img_url: '1200x' }}{% endcapture %}
+        {% capture image_2000x %}{{ media.preview_image | product_img_url: '2000x' }}{% endcapture %}
+        {% capture image_5000x %}{{ media.preview_image | product_img_url: '5000x' }}{% endcapture %}
+        {% capture media_type %}{{- media.media_type -}}{% endcapture %}
+        {% capture media_host %}{{- media.host -}}{% endcapture %}
+        {% capture original_image_width %}{% if media_type == "video" or media_type == "external_video" %}1000px{% else %}{{- media.preview_image.width -}}px{% endif %}{% endcapture %}
+        {% capture original_image_height %}{% if media_type == "video" or media_type == "external_video" %}1000px{% else %}{{- media.preview_image.height -}}px{% endif %}{% endcapture %}
+        {% if false and image_alt contains 'youtube' or image_alt contains 'vimeo' %}
+            {% assign lazyframesrc = image_alt | split: 'src="' %}
+            {% assign lazyframesrc = lazyframesrc[1] | split: '"' | first %}
+        {% endif %}
+
+        
+        <div class="gallery-cell type--{{media_type}} {% if media_type == "video" %}lazyframe videotag{% endif %} {% if image_alt contains 'youtube' or image_alt contains 'vimeo' %}lazyframe lazyvideo--product-video{% endif %}" data-ratio="16:9" data-initinview="true" data-src="{{ lazyframesrc }}" data-thumb="{{ image_large }}" data-title="{% if image_alt contains 'youtube' or image_alt contains 'vimeo' or media_type == "video" %}{{ product.title }}{% else %}{{ image_alt | escape }}{% endif %}" data-image-height="{{ original_image_height | strip }}" data-image-width="{{ original_image_width | strip }}">
+          {% if image_alt contains 'youtube' or image_alt contains 'vimeo'  or media_type == "video" %}
+            {% if media_type == "video" %}
+              <div>
+                {{ media | video_tag: image_size: '400x', controls: true }}
+              </div>
+            {% else %}
+              {% assign src = image_alt | split: 'src="' %}
+              {% assign src = src[1] | split: '"' | first %}
+
+              {% if src contains '?' %}
+                {% assign src = src | append: '&amp;autoplay=1&amp;rel=0' %}
+              {% else %}
+                {% assign src = src | append: '?autoplay=1&amp;rel=0' %}
+              {% endif %}
+
+              <div>
+                <a href="{{ src }}" title="{{ product.title | escape }}">
+                  {{ image_alt }}
+                </a>
+              </div>
+            {% endif %}
+          {% else %}
+            {% if section.settings.enable_product_lightbox %}
+              <a  href="{% if media_type contains 'video' and media_host == 'youtube'  %}https://youtube.com/watch?v={{media.external_id}}{% else %}{{ image_5000x }}{% endif %}"
+                  class="lightbox"
+                  data-fancybox="{{ product.id }}"
+                  rel="product-lightbox">
+            {% endif %}
+            {% if image_width == 'full' %}
+              <div class="image__container" style="max-width: {{original_image_width}}">
+                {% if media_type contains 'video' %}<span class="easyvideo-overlay-play-icon">{% endif %}
+                <img  src="{{ image_1200x }}"
+                      alt="{{ image_alt | escape }}"
+                      class=" lazyload {{ settings.image_loading_style }}"
+                      data-index="{{ easyvideo_iterator }}"
+                      data-image-id="{{ image_id }}"
+                      />
+                {% if media_type contains 'video' %}</span>{% endif %}
+              </div>
+            {% else %}
+              <div class="image__container" style="max-width: {{original_image_width}}">
+                {% if media_type contains 'video' %}<span class="easyvideo-overlay-play-icon">{% endif %}
+                <img  src="{{ image_100x }}"
+                      alt="{{ image_alt | escape }}"
+                      class=" lazyload {{ settings.image_loading_style }}"
+                      data-index="{{ easyvideo_iterator }}"
+                      data-image-id="{{ image_id }}"
+                      data-sizes="{% if section.settings.enable_product_lightbox %}100vw{% else %}auto{% endif %}"
+                      data-aspectratio="{{ original_image_height }}/{{ original_image_width }}"
+                      data-src="{{ image_2000x }}"
+                      srcset=" {{ image_200x }} 200w,
+                                    {{ image_400x }} 400w,
+                                    {{ image_600x }} 600w,
+                                    {{ image_800x }} 800w,
+                                    {{ image_1200x }} 1200w,
+                                    {{ image_2000x }} 2000w"
+                       />
+                {% if media_type contains 'video' %}</span>{% endif %}
+              </div>
+            {% endif %}
+            {% if section.settings.enable_product_lightbox %}
+              </a>
+            {% endif %}
+          {% endif %}
+        </div>
+      {% endfor %}
+  </div>
+  {% if section.settings.product_thumbs %}
+    {% if product.media.size > 1 and image_width != 'full' %}
+      <div class="product_gallery_nav product_gallery_nav--{{ section.settings.thumbnail_position }} product-{{ product.id }}-gallery-nav">
+
+          {% for image_item in image_list %}{% comment %}EasyvideoAdapterBegin{% endcomment %}{% capture evRender %}{% render 'easyvideo-adapter', evaMedia: image_item, evaRender: true, shortAdapter: false, forloop: forloop, easyvideo_iterator: easyvideo_iterator %}{% endcapture %}{% assign evRender = evRender | split: '|' %}{% assign evRenderFirst = evRender[0] | strip %}{% if evRenderFirst == 'continue' %}{% continue %}{% endif %}{% assign easyvideo_media_width = evRenderFirst | plus: 0 %}{% assign easyvideo_media_height = evRender[1] | strip | plus: 0 %}{% assign easyvideo_media_aspect_ratio = evRender[2] | strip | plus: 0 %}{% assign easyvideo_video_source = evRender[3] | strip %}{% assign easyvideo_selected_media = evRender[4] | strip %}{% assign easyvideo_iterator = evRender[5] | strip | plus: 0 %}{% comment %}EasyvideoAdapterEnd{% endcomment %}
+            {% assign image = image_item | split: "`~`" %}
+            {% capture image_id %}{{ image[0] | strip }}{% endcapture %}
+            {% capture image_alt %}{{ image[1] | strip }}{% endcapture %}
+            {% capture image_100x %}{{ image[2] }}{% endcapture %}
+            {% capture image_200x %}{{ image[3] }}{% endcapture %}
+            {% capture image_400x %}{{ image[4] }}{% endcapture %}
+            {% capture image_600x %}{{ image[5] }}{% endcapture %}
+            {% capture image_800x %}{{ image[6] }}{% endcapture %}
+            {% capture image_1200x %}{{ image[7] }}{% endcapture %}
+            {% capture image_2000x %}{{ image[8] }}{% endcapture %}
+            {% capture media_type %}{{ image[11] }}{% endcapture %}
+            <div class="gallery-cell media-type--{{media_type}}" data-title="{{ image_alt | escape }}">
+                <img  src="{{ image_400x }}"
+                      alt="{{ image_alt | escape }}"
+                      data-index="{{ easyvideo_iterator }}"
+                      data-image-id="{{ image_id }}"
+                      data-featured-image="{{featured_image.id}}"
+                      />
+            </div>
+          {% endfor %}
+      </div>
+    {% endif %}
+  {% endif %}
+</div>

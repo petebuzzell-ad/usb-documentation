@@ -1,0 +1,85 @@
+{%- unless template.name contains 'cart' -%}
+    {%- if customer -%}
+      {%- comment -%} check if the customer is a Pro member {%- endcomment -%}
+      {%- assign discount_tag = false -%}
+      {%- assign limit_tag = false -%}
+      {%- for tag in customer.tags -%}
+        {%- if tag contains 'discount-' -%}
+          {%- assign discount_tag = tag | remove: 'discount-' | plus: 0 -%}
+        {%- endif -%}
+        {%- if tag contains 'limit-' -%}
+          {%- assign limit_tag = tag | remove: 'limit-' | plus: 0 -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+  
+    <div
+      data-cart-drawer-overlay
+      class="fixed top-0 left-0 w-screen h-screen flex justify-end"
+      style=" background-color: rgba(81,88,85,0.7);"
+    >
+      <div id="cartDrawer" data-cart-drawer class="bg-white w-full lg:w-480 flex font-lato flex-col ">
+        <div id="cartHeader" class="flex justify-between items-center px-4 py-5 border-b border-grey-five">
+          <div class="flex gap-2">
+            <button data-close-cart aria-label="Close" class="text-2xl text-black cursor-pointer">{%- render 'svg-close' -%}</button>
+            <h5 class="m-0 font-lato text-h7 font-bold text-grey-three">My Cart</h5>
+          </div>
+  
+          <h5 data-items-count class="m-0 font-lato text-pine text-h5 font-semibold">0 items</h5>
+        </div>
+  
+        {%- if settings.free_shipping_enabled_pros or settings.free_shipping_enabled_normals -%}
+          <div data-freeshipping-block class="py-5 px-6">
+            {%- render 'cart-shipping-widget', enabled_for_pros: true, enabled_for_normals: false -%}
+          </div>
+        {%- endif -%}
+  
+        <div data-cart-empty class="flex justify-center grow">
+          <div class="flex justify-center flex-col">
+            <p class="font-lato text-center text-p1 text-dark-stone !mb-4">Your cart is currently empty.</p>
+            <a
+              href="{{ settings.continue_shopping_link |  default: '/cart'}}"
+              class="button-primary-lg bg-grey-one lg:bg-grey-three w-350 !max-w-350 text-p2 uppercase font-lato font-semibold text-white hover:text-white px-3 py-4 text-center tracking-1"
+              >
+              {{ settings.continue_shopping_text }}
+              
+              </a
+            >
+          </div>
+        </div>
+  
+        <div data-cart-container class="overflow-scroll divide-y divide-silver border-silver flex-col grow"></div>
+  
+        <div data-cart-upsell class="my-6 hidden">
+          <span class="text-special-mxs lg:text-special-ms font-semibold uppercase text-center block">you may also like</span>
+  
+          {% for product in collections['all'].products limit: 1 %}
+            <div class="featured-product-slide lg:p-4 whitespace-normal">
+              {%- render 'product-tile', product: product -%}
+            </div>
+           
+           {% endfor %}       
+        </div>
+  
+        <div data-cart-footer class="px-4 py-5">
+          <div class="flex items-center justify-between font-lato font-semibold text-special-lg text-black mb-4 ">
+            <span class="text-h7-m  ">Subtotal</span>
+  
+            <span class=" text-h7-m  tracking-normal " data-total-price=""></span>
+          </div>
+  
+          <a href="/cart" class="button button-primary block mt-2 text-center text-p2 w-full !max-w-full uppercase font-lato font-bold"
+            >View Cart & Checkout</a
+          >
+        </div>
+      </div>
+    </div>
+  {%- endunless -%}
+  
+  {% schema %}
+  {
+    "name": "Cart Drawer",
+    "settings": [
+    ]
+  }
+  {% endschema %}

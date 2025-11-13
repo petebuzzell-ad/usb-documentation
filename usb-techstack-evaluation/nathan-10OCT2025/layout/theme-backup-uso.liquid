@@ -1,0 +1,167 @@
+{% include 'shogun-content-handler' %}
+<!DOCTYPE html>
+<html class="no-js" lang="{{ shop.locale }}">
+<head>
+    {% include 'elevar-head' %}
+{% include 'kiwiSizing' %}
+  <!-- Symmetry 4.11.1 -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="theme-color" content="{{ settings.btn_col }}">
+
+  {% if template == "product" and product.tags contains 'Violator' %}
+    <meta name="robots" content="noindex, nofollow">
+    <script>
+      window.location.href ="/";
+    </script>
+  {% endif %}
+
+  {% if template == "product" and product.metafields.robots.noindex.size > 0 and product.metafields.robots.noindex == "true" %}
+    <meta name="robots" content="noindex, nofollow">
+  {% endif %}
+
+  {% if settings.favicon != blank and settings.favicon contains '.png' %}
+  <link rel="shortcut icon" href="{{ settings.favicon | img_url: 'master' }}" type="image/png" />
+  {% elsif settings.favicon != blank and settings.favicon contains '.ico' %}
+  <link rel="shortcut icon" href="{{ settings.favicon | img_url: 'master' }}" type="image/x-icon" />
+  {% endif %}
+
+  <title>
+    {{ page_title }}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+  </title>
+  {% if page_description %}
+  {% assign page_meta_description = page_description | escape %}
+  {% if template == 'collection' %}
+    {% if current_tags %}
+    {% assign filter_tag = current_tags[0] | replace: " ", "-" | downcase %}
+    {% assign subcollection_meta_description = filter_tag | append: "-meta-description" %}
+    {% endif %}
+    {% if current_tags and filter_tag and collection.metafields.subcollection[subcollection_meta_description] %}
+      {% assign page_meta_description = collection.metafields.subcollection[subcollection_meta_description] | escape %}
+    {% endif %}
+  {% endif %}
+  <meta name="description" content="{{ page_meta_description }}" />
+  {% endif %}
+  <link rel="canonical" href="{{ canonical_url }}" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  {% render 'social-meta-tags' %}
+  {{ 'styles.css' | asset_url | stylesheet_tag }}
+  {{ 'custom.css' | asset_url | stylesheet_tag }}
+
+  <script>
+    window.theme = window.theme || {};
+    theme.money_format = {{ shop.money_format | json }};
+    theme.strings = {
+      previous: {{ 'general.accessibility_labels.previous' | t | json }},
+      next: {{ 'general.accessibility_labels.next' | t | json }},
+      addressError: {{ 'map.errors.address_error' | t | json }},
+      addressNoResults: {{ 'map.errors.address_no_results' | t | json }},
+      addressQueryLimit: {{ 'map.errors.address_query_limit_html' | t | json }},
+      authError: {{ 'map.errors.auth_error' | t | json }},
+      icon_labels_left: {{ 'general.icon_labels.left' | t | escape | json }},
+      icon_labels_right: {{ 'general.icon_labels.right' | t | escape | json }},
+      icon_labels_down: {{ 'general.icon_labels.down' | t | escape | json }},
+      icon_labels_close: {{ 'general.icon_labels.close' | t | escape | json }},
+      cart_terms_confirmation: {{ 'cart.terms.confirmation' | t | json }},
+      products_listing_from: {{ 'products.listing.from' | t | json }},
+      layout_live_search_see_all: {{ 'layout.live_search.see_all' | t | json }},
+      products_product_add_to_cart: {{ 'products.product.add_to_cart' | t | json }},
+      products_product_pre_order: {{ 'products.product.pre_order' | t | json }},
+      products_variant_no_stock: {{ 'products.variant.no_stock' | t | json }},
+      products_variant_non_existent: {{ 'products.variant.non_existent' | t | json }},
+      onlyXLeft: {{ 'products.labels.only_x_left' | t: quantity: '[[ quantity ]]' | json }},
+      products_product_unit_price_separator: {{ 'products.product.unit_price_separator' | t | json }},
+      general_navigation_menu_toggle_aria_label: {{ 'general.navigation.menu_toggle_aria_label' | t | json }},
+      products_added_notification_title: {{ 'products.added_notification.title' | t | json }},
+      products_added_notification_item: {{ 'products.added_notification.item' | t | json }},
+      products_added_notification_unit_price: {{ 'products.added_notification.unit_price' | t | json }},
+      products_added_notification_quantity: {{ 'products.added_notification.quantity' | t | json }},
+      products_added_notification_total_price: {{ 'products.added_notification.total_price' | t | json }},
+      products_added_notification_shipping_note: {{ 'products.added_notification.shipping_note' | t | json }},
+      products_added_notification_keep_shopping: {{ 'products.added_notification.keep_shopping' | t | json }},
+      products_added_notification_cart: {{ 'products.added_notification.cart' | t | json }},
+      products_product_adding_to_cart: {{ 'products.product.adding_to_cart' | t | json }},
+      products_product_added_to_cart: {{ 'products.product.added_to_cart' | t | json }},
+      products_added_notification_subtotal: {{ 'products.added_notification.subtotal' | t | json }}
+    };
+    theme.routes = {
+      search_url: '{{ routes.search_url }}',
+      cart_url: '{{ routes.cart_url }}',
+      cart_add_url: '{{ routes.cart_add_url }}',
+      cart_change_url: '{{ routes.cart_change_url }}'
+    };
+    theme.settings = {
+      cart_type: {{ settings.cart_type | json }},
+      prod_thumb_detail_show: {{ settings.prod_thumb_detail_show | json }},
+      show_size_chart: {{ settings.show_size_chart | json }}
+    };
+    document.documentElement.className = document.documentElement.className.replace('no-js', '');
+  </script>
+
+  {{ 'vendor.js'  | asset_url | script_tag }}
+
+  {{ content_for_header }}
+
+  {% render 'shogun-head' %}
+</head>
+
+<body class="template-{{ template | split: '.' | first }} {{handle}}">
+  <a class="skip-link visually-hidden" href="#content">{{ 'general.accessibility_labels.skip_to_content' | t }}</a>
+
+  {% section 'header' %}
+
+  <div id="CartDrawer" class="drawer drawer--right">
+    <div class="drawer__header">
+      <div class="drawer__title h3">SHOPPING BAG</div>
+      <div class="drawer__close js-drawer-close">
+        <button type="button" class="icon-fallback-text">
+          <span class="icon icon-x" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+    <div id="CartContainer"></div>
+  </div>
+
+  <main id="content" role="main">
+    <div class="container cf">
+
+      {{ content_for_layout }}
+
+    </div><!-- /.container -->
+  </main><!-- /#content -->
+
+  <div id="pagefooter">
+    {% section 'cross-page-promos' %}
+
+    {% section 'footer' %}
+  </div><!-- /#pagefooter -->
+
+
+  {{ 'theme.js'  | asset_url | script_tag }}
+  {{ 'custom.js'  | asset_url | script_tag }}
+
+  {{ 'handlebars.min.js' | asset_url | script_tag }}
+  {% include 'ajax-cart-template' %}
+  {{ 'ajax-cart.js' | asset_url | script_tag }}
+  <script>
+    $(function() {
+      ajaxCart.init({
+        formSelector: 'form[data-ajax-add-to-cart="true"]',
+        cartContainer: '#CartContainer',
+        addToCartSelector: 'input[type="submit"]',
+        cartCountSelector: '.cart-link__count',
+        cartCostSelector: '#CartCost',
+        moneyFormat: {{ shop.money_format | json }}
+      });
+    });
+    $(document.body).on('afterCartLoad.ajaxCart', function(evt, cart) {
+      // Bind to 'afterCartLoad.ajaxCart' to run any javascript after the cart has loaded in the DOM
+      theme.RightDrawer.open();
+    });
+  </script>
+
+{% include 'elevar-body-end' %}
+<!--Gorgias Chat Widget Start--><script id="gorgias-chat-widget-install">!function(_){_.GORGIAS_CHAT_APP_ID="4459",_.GORGIAS_CHAT_BASE_URL="us-east1-898b.production.gorgias.chat",_.GORGIAS_API_BASE_URL="config.gorgias.chat";var e=new XMLHttpRequest;e.open("GET","https://config.gorgias.chat/applications/4459",!0),e.onload=function(t){if(4===e.readyState)if(200===e.status){var n=JSON.parse(e.responseText);if(!n.application||!n.bundleVersion)throw new Error("Missing fields in the response body - https://config.gorgias.chat/applications/4459");if(_.GORGIAS_CHAT_APP=n.application,_.GORGIAS_CHAT_BUNDLE_VERSION=n.bundleVersion,n&&n.texts&&(_.GORGIAS_CHAT_TEXTS=n.texts),n&&n.sspTexts&&(_.GORGIAS_CHAT_SELF_SERVICE_PORTAL_TEXTS=n.sspTexts),!document.getElementById("gorgias-chat-container")){var o=document.createElement("div");o.id="gorgias-chat-container",document.body.appendChild(o);var r=document.createElement("script");r.setAttribute("defer",!0),r.src="https://client-builds.production.gorgias.chat/{bundleVersion}/static/js/main.js".replace("{bundleVersion}",n.bundleVersion),document.body.appendChild(r)}}else console.error("Failed request GET - https://config.gorgias.chat/applications/4459")},e.onerror=function(_){console.error(_)},e.send()}(window||{});</script><script id="gorgias-chat-shopify-install">!function(_){_.SHOPIFY_PERMANENT_DOMAIN="{{shop.permanent_domain}}",_.SHOPIFY_CUSTOMER_ID="{{customer.id}}",_.SHOPIFY_CUSTOMER_EMAIL="{{customer.email}}"}(window||{});</script><!--Gorgias Chat Widget End--></body>
+</html>

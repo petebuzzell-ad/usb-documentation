@@ -1,0 +1,30 @@
+{%- assign split_content = page.content | split: '[accordion heading="' -%}
+{%- capture qa_blocks -%}
+  {% for chunk in split_content %}
+    {%- comment -%} Skip first chunk since it's content before the FAQs {%- endcomment -%}
+    {%- if forloop.index0 == 0 -%}
+      {%- continue -%}
+    {%- endif -%}
+    {%- assign split_again = chunk | remove_first: '"' | split: 'content="' -%}
+    {%- assign question = split_again | first | strip_html -%}
+    {%- assign answer = split_again | last | split: '"]' | first  -%}
+    ,{
+      "@type": "Question",
+      "name": "{{ question }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ answer }}"
+      }
+    }
+  {% endfor %}
+{%- endcapture -%}
+{%- assign qa_blocks = qa_blocks | remove_first: ',' -%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {{ qa_blocks }}
+    ]
+  }
+</script>

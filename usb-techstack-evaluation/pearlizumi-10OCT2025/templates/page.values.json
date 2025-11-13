@@ -1,0 +1,171 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "full_width_cta_xDY6qt": {
+      "type": "full-width-cta",
+      "name": "Full Width CTA",
+      "settings": {
+        "image": "shopify://shop_images/hero2_fba17d3c-ef7d-4d7e-bae1-66fa5f4dbee5.jpg",
+        "image_mobile": "shopify://shop_images/hero2mob_92f3b76e-80ca-4f0c-a163-41d32ed73139.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "hero_height": "normal",
+        "text_overlay_color": "38,43,44",
+        "overlay_opacity": 0.6,
+        "title": "MISSION & VALUES",
+        "text": "We don’t see ourselves as just a cycling company. We’re part of a much bigger mission. We unlock the power of inspiration & impact. It’s why we show up to work and it’s what keeps us moving forward, together. We’re committed to connecting more people to cycling and empowering them to go by bike, because we think bikes help us live a deeper, richer and more rewarding life.",
+        "enable_description": true,
+        "btn_label_1": "",
+        "btn_link_1": "",
+        "btn_label_2": "",
+        "btn_link_2": "",
+        "enable_bottom_margin": true
+      }
+    },
+    "full_width_cta_reversible_KVf3xp": {
+      "type": "full-width-cta-reversible",
+      "name": "Reversible Full Width CTA",
+      "settings": {
+        "image": "shopify://shop_images/FC1.jpg",
+        "image_position": "left",
+        "subtitle": "",
+        "title": "Therefore, it’s our mission to:",
+        "text": "Inspire a spirit of freedom and performance for cyclists everywhere, and a love of cycling for future generations. Positively impact people, communities and the environment. And we do this by living five core values, which guide our decisions and shape our perspectives on the world around us. You’ll find these values literally etched  in the floors and walls of our headquarters, but more importantly, in the hearts of every PEARL iZUMi employee.",
+        "btn_label": "",
+        "btn_link": "",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "text_block_frABPz": {
+      "type": "text-block",
+      "name": "Text Block",
+      "settings": {
+        "bg_color": "black",
+        "svg": "",
+        "svg_mobile": "",
+        "text_color": "white",
+        "heading": "Our values are more than words. We live them, encourage them and protect them day in and day out.",
+        "body": "",
+        "enable_bottom_margin": true
+      }
+    },
+    "full_width_cta_reversible_qaRMhp": {
+      "type": "full-width-cta-reversible",
+      "name": "Reversible Full Width CTA",
+      "settings": {
+        "image": "shopify://shop_images/trust.jpg",
+        "image_position": "right",
+        "subtitle": "",
+        "title": "Trust",
+        "text": "Whether protecting you from the elements or being transparent about our business, we see trust as a core product attribute and a building block of a responsible business.",
+        "btn_label": "",
+        "btn_link": "",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "full_width_cta_reversible_W3TpJV": {
+      "type": "full-width-cta-reversible",
+      "name": "Reversible Full Width CTA",
+      "settings": {
+        "image": "shopify://shop_images/craft.jpg",
+        "image_position": "right",
+        "subtitle": "",
+        "title": "Craft",
+        "text": "We were founded by a passionate craftsman. His attention to detail, quest to innovate the material and the making of it, and passion for precision guides our hand in the creation of every product and program we develop.",
+        "btn_label": "",
+        "btn_link": "",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "full_width_cta_reversible_geggbq": {
+      "type": "full-width-cta-reversible",
+      "name": "Reversible Full Width CTA",
+      "settings": {
+        "image": "shopify://shop_images/empathy.jpg",
+        "image_position": "right",
+        "subtitle": "",
+        "title": "Empathy",
+        "text": "We believe that understanding what riders think and feel is the first step in developing gear to truly serve their needs. Our experience shows that connecting and listening is a major driver for meaningful innovation.",
+        "btn_label": "",
+        "btn_link": "",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "full_width_cta_reversible_RN46MJ": {
+      "type": "full-width-cta-reversible",
+      "name": "Reversible Full Width CTA",
+      "settings": {
+        "image": "shopify://shop_images/impact.jpg",
+        "image_position": "right",
+        "subtitle": "",
+        "title": "Impact",
+        "text": "We strive to make the biggest positive impact on our cycling community and the absolute smallest negative impact on our environment. After all, our ability to ride our bikes is afforded by a healthy planet on which to ride.",
+        "btn_label": "",
+        "btn_link": "",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "full_width_cta_reversible_7XPzGe": {
+      "type": "full-width-cta-reversible",
+      "name": "Reversible Full Width CTA",
+      "settings": {
+        "image": "shopify://shop_images/plus1.jpg",
+        "image_position": "right",
+        "subtitle": "",
+        "title": "Plus 1",
+        "text": "Our passion for riding and the belief that bicycles are part of the solution for many of the world’s current challenges motivates us to push a little more. The better we do our jobs the more we share the stoke.",
+        "btn_label": "",
+        "btn_link": "",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "full_width_cta_cP76hR": {
+      "type": "full-width-cta",
+      "name": "Full Width CTA",
+      "settings": {
+        "image": "shopify://shop_images/Bottom_Banner2_477b5fd4-83dd-45d9-b7fb-b4e815eb3690.jpg",
+        "image_mobile": "shopify://shop_images/x2mob.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "hero_height": "normal",
+        "text_overlay_color": "38,43,44",
+        "overlay_opacity": 0.6,
+        "title": "here we go",
+        "text": "Go connection.",
+        "enable_description": true,
+        "btn_label_1": "subscribe",
+        "btn_link_1": "https://www.youtube.com/c/pearlizumi",
+        "btn_label_2": "",
+        "btn_link_2": "",
+        "enable_bottom_margin": false
+      }
+    }
+  },
+  "order": [
+    "full_width_cta_xDY6qt",
+    "full_width_cta_reversible_KVf3xp",
+    "text_block_frABPz",
+    "full_width_cta_reversible_qaRMhp",
+    "full_width_cta_reversible_W3TpJV",
+    "full_width_cta_reversible_geggbq",
+    "full_width_cta_reversible_RN46MJ",
+    "full_width_cta_reversible_7XPzGe",
+    "full_width_cta_cP76hR"
+  ]
+}

@@ -1,0 +1,27 @@
+{% render 'shogun-products', content: collection %}
+{{ collection.metafields.shogun.above }}
+{%- comment -%} Redirect Pro members to Homepage when they attempt to access "Clearance" Collections{%- endcomment -%}
+{%- comment -%}
+  {% if collection.handle contains "clearance" %}
+    {% if customer %}
+      {% assign discount_tag = false %}
+      {% assign limit_tag = false %}
+      {% for tag in customer.tags %}
+        {% if tag contains "discount-" %}
+          {% assign discount_tag = tag | remove: "discount-" | plus: 0 %}
+        {% endif %}
+        {% if tag contains "limit-" %}
+          {% assign limit_tag = tag | remove: "limit-" | plus: 0 %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endif %}
+{%- endcomment -%}
+
+{%- unless discount_tag and limit_tag -%}
+  {%- section 'collection-template' -%}
+{%- else -%}
+  <script>window.location.replace("{{ shop.url }}");</script>
+{%- endunless -%}
+{{ collection.metafields.shogun.below }}
+{{ collection.metafields.shogun.optimizer }}

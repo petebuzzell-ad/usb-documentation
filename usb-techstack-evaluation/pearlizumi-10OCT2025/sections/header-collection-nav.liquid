@@ -1,0 +1,83 @@
+{%-liquid
+  assign show_collection_images = section.settings.show_collection_images
+  assign show_only_on_homepage = section.settings.show_only_on_homepage
+  assign cols = section.blocks
+-%}
+
+{%- if template == 'index' or show_only_on_homepage == false -%}
+  {%- if cols.size > 0 -%}
+    <div class="md:hidden">
+      <div data-header-colllection-nav>
+        <div class="flex items-start {% unless show_collection_images %}gap-6{% endunless %} mobile:px-6 {% if show_collection_images %}py-3{% else %}py-4{% endif %} overflow-auto">
+          {%- for col in cols -%}
+            {%- assign link = col.settings.link -%}
+            {%- assign title = col.settings.title | default: collection.title -%}
+            {% if title != blank %}
+              <a href="{{ link }}" class="shrink-0 flex flex-col items-center gap-1.5 text-black {% if show_collection_images %}w-[102px]{% endif %} justify-center">
+                {%- if show_collection_images and col.settings.image -%}
+                  <div class="relative w-[54px] h-[54px]">
+                    <img
+                      src="{{ col.settings.image | image_url: width: 100 }}"
+                      class="absolute left-0 top-0 w-full h-full object-cover"
+                      alt="{{ col.settings.image.alt | default: title }}"
+                      loading="lazy" />
+                  </div>
+                {%- endif -%}
+                <span class="text-[13px] leading-5 font-semibold {% if show_collection_images %}max-w-[90px]{% endif %} text-center">{{ title }}</span>
+              </a>
+            {% endif %}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+{%- endif -%}
+{% schema %}
+
+{
+  "name": "Header Collection Nav",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_only_on_homepage",
+      "label": "Show Only on Homepage",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_images",
+      "label": "Show Collection Images",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Item",
+      "type": "item",
+      "settings": [
+        {
+          "id": "link",
+          "type": "url",
+          "label": "Item Link"
+        },
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Item Title"
+        },
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Item Image",
+          "info": "Recommended size: 54 X 54"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

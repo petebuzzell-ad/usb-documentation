@@ -1,0 +1,87 @@
+<div data-block-id="{{ block.id }}" data-block-type="content-block" class="lg:mb-30 md:mb-18 mb-16">
+  <div class="container mx-auto xl:px-0 md:px-11 px-6">
+    {% if block.settings.heading_10 != blank %}
+    <div class="text-center">
+      <h2 class="tracking-normal lg:mb-12 mb-6">{{ block.settings.heading_10 | escape }}</h2>
+    </div>
+    {% endif %}
+    {% if block.settings.image_16 != blank %}
+    {% assign block_image_16 = block.settings.image_16 | img_url: 'master' %}
+    {% endif %}
+    {% if block.settings.image_16_mobile != blank %}
+    {% assign block_image_mobile_16 = block.settings.image_16_mobile | img_url: 'master' %}
+    {% endif %}
+    <div class="md:max-w-83% mx-auto video_container md:mb-20 mb-10">
+      <div class="relative lg:mb-10 mb-6">
+        {% if block.settings.image_16 != blank %}
+          <div
+            class="icon_play absolute top-0 right-0 bottom-0 left-0  cursor-pointer flex content-center items-center text-center"
+            data-index="6">
+            {% render 'icon-play' width: '70px', height: '70px', classes: 'mx-auto' %}
+          </div>
+          <picture class="thumbnail_image">
+            <source media="(max-width: 767px)"
+              data-srcset="{%- if block_image_mobile_16 != blank -%}{{ block_image_mobile_16 }}{%- else -%}{{ block_image_16 }}{%- endif -%}">
+            <source media="(min-width: 768px)" data-srcset="{{ block_image_16 }}">
+            <img data-src="{{ block_image_16 }}" alt="{{ block_image_16.alt }}" class="lazy w-full rounded-sm">
+          </picture>
+          {% if block.settings.videourl_16 contains 'youtube' %}
+          <div
+            class="{% if block.settings.image_16 != blank %}video_js_6 hidden {% endif %}relative overflow-hidden pb-65.5% max-w-full h-auto lg:mb-8 mb-6" style="padding-bottom: 65%;">
+            <iframe width="100%" height="auto" class="lazy absolute top-0 left-0 w-full h-full rounded-sm"
+              data-src="{{ block.settings.videourl_16 }}" frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          {% elsif block.settings.videourl_16 contains '.mp4' %}
+          <div
+            class="{% if block.settings.image_16 != blank %}video_js_6 hidden  pb-0 {% else %} pb-65.5%{% endif %}relative overflow-hidden max-w-full h-auto lg:mb-8 mb-6">
+            {% if block.settings.image_16 != blank %}
+            <video id="htmlvideo_6" controls="" name="media">
+              <source src="{{ block.settings.videourl_16 }}" type="video/mp4">
+            </video>
+            {% else %}
+            <iframe width="100%" height="auto" class="lazy absolute top-0 left-0 w-full h-full rounded-sm"
+              data-src="{{ block.settings.videourl_16 }}" frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            {% endif %}
+          </div>
+          {% endif %}
+        {% endif %}
+      </div>
+      <div class="text-center">
+        {% if block.settings.title_16 != blank %}
+        <h2 class="md:mb-6 mb-4 tracking-normal">{{ block.settings.title_16 | escape }}</h2>
+        {% endif %}
+        {% if block.settings.text_16 != blank %}
+        <p class="md:text-h6 text-h6-m tracking-normal lg:px-26 font-medium">{{ block.settings.text_16 }}</p>
+        {% endif %}
+      </div>
+    </div>
+    {% if block.settings.image_17 != blank %}
+    {% assign block_image_17 = block.settings.image_17 | img_url: 'master' %}
+    {% endif %}
+    {% if block.settings.image_17_mobile != blank %}
+    {% assign block_image_mobile_17 = block.settings.image_17_mobile | img_url: 'master' %}
+    {% endif %}
+    <div class="md:max-w-83% mx-auto md:mb-20">
+      <div class="lg:mb-10 mb-6">
+        {% if block.settings.image_17 != blank %}
+        <picture>
+          <source media="(max-width: 767px)"
+            data-srcset="{%- if block_image_mobile_17 != blank -%}{{ block_image_mobile_17 }}{%- else -%}{{ block_image_17 }}{%- endif -%}">
+          <source media="(min-width: 768px)" data-srcset="{{ block_image_17 }}">
+          <img data-src="{{ block_image_17 }}" alt="{{ block_image_17.alt }}" class="lazy w-full rounded-sm">
+        </picture>
+        {% endif %}
+      </div>
+      <div class="text-center">
+        {% if block.settings.title_17 != blank %}
+        <h2 class="mb-6 tracking-normal">{{ block.settings.title_17 | escape }}</h2>
+        {% endif %}
+        {% if block.settings.text_17 != blank %}
+        <p class="md:text-h6 text-h6-m tracking-normal lg:px-26 font-medium">{{ block.settings.text_17 }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

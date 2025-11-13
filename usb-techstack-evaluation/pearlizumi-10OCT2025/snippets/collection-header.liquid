@@ -1,0 +1,154 @@
+{% assign mobile_image = collection.metafields.custom.mobile_collection_image | default: collection.image %}
+{%- assign blocks = collection.metafields.custom.collection_sub_category.value -%}
+{% if blocks != blank %}
+  {% assign block_size = 0 %}
+  {% for block in blocks %}
+    {% assign block_size = forloop.index %}
+  {% endfor %}
+{% endif %}
+{%- if collection.metafields.custom.enable_sub_category_images == true and block_size >= 3 -%}
+  {%- assign show_cta_images = true -%}
+{%- else -%}
+  {%- assign show_cta_images = false -%}
+{% endif %}
+
+<section class="relative {% if collection.image != blank %} flex flex-col-reverse{% endif %}">
+  <div class="relative z-1  {% if collection.image != blank %} md:min-h-[300px] {% endif %}{% if collection.image != blank and show_cta_images == false %} md:w-[530px] md:bg-[#262B2CCC] md:force-white-text{% endif %}">
+    <div class="py-3 px-4 md:px-12 text-black">
+      <div class="">
+        <div class="w-full md:uppercase font-semibold">
+          {% render 'breadcrumbs', template: template, collection: collection %}
+        </div>
+        <h3 class="text-[24px] md:text-[34px] font-semibold uppercase !mb-1 md:!mb-6">{{ collection.title }}</h3>
+        {%- if collection.metafields.custom.enable_collection_description != false
+          and collection.description != blank
+          and show_cta_images == false
+        -%}
+          <div class="mt-2 max-w-2xl hidden md:block"><p><span>{{ collection.description }}</span></p></div>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- if show_cta_images -%}
+      <div
+        class="pb-4 md:pb-10 px-6 md:px-12 overflow-hidden"
+        data-category
+      >
+        {%- if block_size >= 3 -%}
+          <div class="clp-slider relative">
+            <div
+              class=" category-carousel overflow-x-visible {% if block_size == 3 %} md:overflow-x-hidden {% endif %} "
+              data-category-carouel
+              data-set="{{  block_size }}"
+            >
+              <div class="glide__track" data-glide-el="track">
+                <div class="glide__slides {% if block_size == 3 %} md:gap-[46.8px] {% endif %}">
+                  {%- for block in blocks -%}
+                    <div class="relative md:h-67.5 h-33 {% if block_size == 3 %} md:w-full {% endif %}">
+                      {% if block.image != blank %}
+                        <img
+                          src="{{ block.image | img_url: 'master' }}"
+                          alt="block image"
+                          class="w-full h-full object-cover"
+                          width=""
+                          height=""
+                        >
+                      {% endif %}
+                      {% if block.title != blank %}
+                        <a
+                          href="{{ block.url }}"
+                          class="p-3 md:p-4 absolute bottom-0 w-full justify-between items-center bg-[#262B2CCC] flex group"
+                        >
+                          <div class="text-white font-semibold">{{ block.title }}</div>
+                          <span
+                            class="w-6 h-6 m-0 p-0 border-1 border-black rounded-circle hidden group-hover:!flex items-center justify-center transform scale-50 md:scale-100 invert"
+                            aria-hidden="true"
+                          >
+                            {% render 'svg-arrow-right', width: '14px', height: '9px', classes: '' %}
+                          </span>
+                        </a>
+                      {% endif %}
+                    </div>
+                  {%- endfor -%}
+                </div>
+              </div>
+
+              <div
+                class="glide__arrows absolute w-screen h-0 top-1/2 -translate-y-1/2 left-1/2 transform -translate-x-1/2 flex justify-between px-1 md:px-6 {% if block_size == 3 %} md:!hidden {% endif %}"
+                data-glide-el="controls"
+              >
+                <button
+                  type="button"
+                  class="glide__arrow glide__arrow--left h-full flex items-center"
+                  data-glide-dir="<"
+                  aria-label="Previous slide"
+                >
+                  <span class="button-slider-nav-light w-8 !h-8 md:w-12.5 md:!h-12.5 m-0 p-0 rounded-circle !flex items-center justify-center transform scale-50 md:scale-100 !bg-white opacity-90 !border-opacity-90">
+                    {% render 'svg-arrow-left', classes: 'hidden md:block' %}
+                    {% render 'svg-arrow-left', width: '14px', height: '9px', classes: 'block md:hidden' %}
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  class="glide__arrow glide__arrow--right h-full flex items-center"
+                  data-glide-dir=">"
+                  aria-label="Next slide"
+                >
+                  <span class="button-slider-nav-light w-8 !h-8 md:w-12.5 md:!h-12.5 m-0 p-0 rounded-circle !flex items-center justify-center transform scale-50 md:scale-100 !bg-white opacity-90 !border-opacity-90">
+                    {% render 'svg-arrow-right', classes: 'hidden md:block' %}
+                    {% render 'svg-arrow-right', width: '14px', height: '9px', classes: 'block md:hidden' %}
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+    {%- else -%}
+      {%- if block_size > 0 -%}
+        <div class="pb-8">
+          <div class="px-6 scrollbar-hide overflow-x-auto md:px-12 {% if collection.image == blank %} {% else %} md:flex-wrap md:overflow-x-visible {% endif %}">
+            <div class="flex gap-4 uppercase font-semibold w-fit {% if collection.image != blank %} md:flex-wrap {% endif %}">
+              {% for block in blocks %}
+                <a
+                  href="{{ block.url }}"
+                  style="color: black !important;"
+                  class="whitespace-nowrap flex-shrink-0 border {% if collection.image != blank %}md:border-white bg-white{% else %}border-black bg-white {% endif %} md:hover:invert px-4 py-2 rounded-full min-w-[120px] text-center font-sora font-semibold text-[13px]"
+                >
+                  {{ block.title }}
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+  {%- if collection.image != blank and show_cta_images == false -%}
+    <div class="relative md:absolute md:h-full md:top-0 w-full">
+      <picture class="h-full w-full">
+        <source media="(min-width: 768px)" srcset="{{ collection.image | img_url: 'master' }}">
+        <img
+          src="{{ mobile_image | img_url: 'master' }}"
+          alt="{{ collection.title }}"
+          class="w-full h-full object-cover {% if collection.metafields.custom.featured_product_label != blank and collection.image != blank %}min-h-[145px] md:min-h-[300px]{% else %}min-h-[98px] md:min-h-[300px]{% endif %}"
+          width=""
+          height=""
+        >
+      </picture>
+
+      {%- if collection.image != blank
+        and collection.metafields.custom.featured_product_label != blank
+        and collection.metafields.custom.featured_product_link != blank
+      -%}
+        <a
+          class="absolute right-6 bottom-6 bg-[#161718] min-w-[120px] p-3 flex gap-3 items-center justify-center shrink-0 md:hover:invert"
+          href="{{ collection.metafields.custom.featured_product_link }}"
+        >
+          <span> {% render 'icon-tag' %}</span>
+          <div class="text-white text-xs">{{ collection.metafields.custom.featured_product_label }}</div>
+        </a>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+</section>

@@ -1,0 +1,136 @@
+<div class="product-details">
+  <a href="{{ product.url | within: collection }}" itemprop="url">
+  	<span class="title" itemprop="name">{{ product.title }}</span>
+  </a>  
+  {% if settings.enable_shopify_collection_badges %}
+    <div class="shopify-reviews reviewsVisibility--{{settings.enable_shopify_review_comments}}">
+<!--       <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span> -->
+      <div data-bv-show="rating_summary" data-bv-productId="{{product.id}}" id="rating_summary">
+        {% if product.metafields.bazaarvoice.reviews-aggregate-ratings %}
+        {{ product.metafields.bazaarvoice.reviews-aggregate-ratings }}
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+  {% if settings.display_vendor %}
+    <span itemprop="brand" class="brand">{{ product.vendor }}</span>
+  {% endif %}
+
+  {% if product.tags contains 'custom-text' and settings.custom_text != "" %}
+    {% assign is_valid = true %}
+    {% assign now_date = 'now' | date: '%s' %}
+    {% if settings.custom_text_start_date != "" %}
+      {% assign custom_text_start_date = settings.custom_text_start_date | date: '%s' %}
+      {% if custom_text_start_date > now_date %}
+        {% assign is_valid = false %}
+      {% endif %}
+    {% endif %}
+    {% if settings.custom_text_end_date != "" %}
+      {% assign custom_text_end_date = settings.custom_text_end_date | date: '%s' %}
+      {% if custom_text_end_date < now_date %}
+        {% assign is_valid = false %}
+      {% endif %}
+    {% endif %}
+    {% if is_valid %}
+      <div class="custom-text" {% if settings.custom_text_color != blank %}style="color: {{settings.custom_text_color}};"{% endif %}>
+        {% if settings.custom_text_modal != blank %}
+          <a href="#" class="open-usb-modal" data-trigger-id="custom-text">
+        {% elsif settings.custom_text_url != blank %}
+          <a href="{{settings.custom_text_url}}">
+        {% endif %}
+          {{settings.custom_text}}
+        {% if settings.custom_text_modal != blank %}
+          </a>
+        {% elsif settings.custom_text_url != blank %}
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endif %}
+  {% if product.tags contains 'custom-text2' and settings.custom_text2 != "" %}
+    {% assign is_valid = true %}
+    {% assign now_date = 'now' | date: '%s' %}
+    {% if settings.custom_text2_start_date != "" %}
+      {% assign custom_text2_start_date = settings.custom_text2_start_date | date: '%s' %}
+      {% if custom_text2_start_date > now_date %}
+        {% assign is_valid = false %}
+      {% endif %}
+    {% endif %}
+    {% if settings.custom_text2_end_date != "" %}
+      {% assign custom_text2_end_date = settings.custom_text2_end_date | date: '%s' %}
+      {% if custom_text2_end_date < now_date %}
+        {% assign is_valid = false %}
+      {% endif %}
+    {% endif %}
+    {% if is_valid %}
+      <div class="custom-text" {% if settings.custom_text2_color != blank %}style="color: {{settings.custom_text2_color}};"{% endif %}>
+        {% if settings.custom_text2_modal != blank %}
+          <a href="#" class="open-usb-modal" data-trigger-id="custom-text2">
+        {% elsif settings.custom_text2_url != blank %}
+          <a href="{{settings.custom_text2_url}}">
+        {% endif %}
+          {{settings.custom_text2}}
+        {% if settings.custom_text2_modal != blank %}
+          </a>
+        {% elsif settings.custom_text2_url != blank %}
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endif %}
+  {% if product.tags contains 'custom-text3' and settings.custom_text3 != "" %}
+    {% assign is_valid = true %}
+    {% assign now_date = 'now' | date: '%s' %}
+    {% if settings.custom_text3_start_date != "" %}
+      {% assign custom_text3_start_date = settings.custom_text3_start_date | date: '%s' %}
+      {% if custom_text3_start_date > now_date %}
+        {% assign is_valid = false %}
+      {% endif %}
+    {% endif %}
+    {% if settings.custom_text3_end_date != "" %}
+      {% assign custom_text3_end_date = settings.custom_text3_end_date | date: '%s' %}
+      {% if custom_text3_end_date < now_date %}
+        {% assign is_valid = false %}
+      {% endif %}
+    {% endif %}
+    {% if is_valid %}
+      <div class="custom-text" {% if settings.custom_text3_color != blank %}style="color: {{settings.custom_text3_color}};"{% endif %}>
+        {% if settings.custom_text3_modal != blank %}
+          <a href="#" class="open-usb-modal" data-trigger-id="custom-text3">
+        {% elsif settings.custom_text3_url != blank %}
+          <a href="{{settings.custom_text3_url}}">
+        {% endif %}
+          {{settings.custom_text3}}
+        {% if settings.custom_text3_modal != blank %}
+          </a>
+        {% elsif settings.custom_text3_url != blank %}
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endif %}
+
+  {% if collection_handles contains 'coming-soon' %}
+    <span class="modal_price">{{ 'collections.general.coming_soon' | t }}</span>
+  {% else %}
+    <span class="price {% if bold_compare_at_price_max > bold_price %}sale{% endif %}">
+      {% if product.available %}
+        {% if bold_price_varies and bold_price_min > 0 %}
+          <small><em>{{ 'products.general.from' | t }}</em></small>
+        {% endif %}
+          {% if bold_price_min > 0 %}
+            <span class="money">{{ bold_price_min | money }}</span>
+          {% else %}
+            {{ settings.free_price_text }}
+          {% endif %}
+      {% else %}
+        <span class="sold_out">{{ 'products.product.sold_out' | t }}</span>
+      {% endif %}
+      {% if bold_compare_at_price_max > bold_price %}
+        <span class="was_price">
+          <span class="money">{{ bold_compare_at_price_max | money }}</span>
+        </span>
+      {% endif %}
+    </span>
+  {% endif %}
+</div>

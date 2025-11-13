@@ -1,0 +1,30 @@
+<div class="collection-wrapper-item">
+	<div class="title-collection title-one">
+		<h1>{{ title_colection }} </h1>
+		<a class="hide-the-sh-one" href="{{ link_colection }}"> {{ label_all_colection }} </a>
+	</div>
+	<ul id="isp_search_results_container">
+		{%- paginate collection.products by 5 -%}
+		{%- for product in collection.products -%}
+		<li class="isp_grid_product" product_id="{{ product.id }}">
+			<div class="isp_product_image_wrapper">
+				<a class="isp_product_image_href" href="{{ product.url }}">
+					<img alt="{{ product.title }}" loading="lazy" width height src="{{ product | img_url: '800x' }}" isp_product_id="{{ product.id }}" class="isp_product_image">
+				</a>
+			</div>
+			<div class="isp_product_info">
+				<a class="isp_product_image_href" href="{{ product.url }}"> 
+					<div class="isp_product_title">{{ product.title }}</div> 
+				</a>
+				<div class="isp_product_price_wrapper"> 
+					<span class="isp_product_price money" data-currency="{{ currency.name }}" data-currency-usd="{{ product.price | money_without_currency }}" title="{{ product.price }}">{{ product.price | money }}</span> 
+				</div>
+			</div>
+		</li>
+		{%- endfor -%}
+	{%- endpaginate -%}	
+	</ul>
+	<div class="title-collection hide-the-sh">
+		<a class="button btn_show_mob" href="{{ link_colection }}"> {{ label_all_colection }} </a>
+	</div>
+</div>

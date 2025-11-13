@@ -1,0 +1,73 @@
+{% assign metafields = product.metafields["global"] %}
+
+{% if metafields["enable_bundle_details"] == 'true' %}
+  {% assign products_split = metafields["bundle_products"] | split: ',' %}
+
+  {% for product in products_split %}
+    {% assign current_product = all_products[product] %}
+    {% assign current_metafields = current_product.metafields["global"] %}
+
+    {% if current_product.title contains ':' %}
+      {% assign split_title = current_product.title | split: ': ' %}
+    {% elsif current_product.title contains '-' %}
+      {% assign split_title = current_product.title | split: '- ' %}
+    {% endif %}
+
+    {% if current_metafields["feature_icons"] %}
+      {% assign icons_split = current_metafields["feature_icons"] | split: ',' %}
+    {% endif %}
+
+    {% if current_product.handle ==  products_split.last %}
+      {% assign last_bundle_item = true %}
+    {% endif %}
+
+    {% capture content %}
+      <div class="bundle-section max-h-0 bxl:max-h-unset overflow-hidden transition-max-height duration-500 ease-out bxl:border-t {% if last_bundle_item %}bxl:border-b{% endif %} bxl:border-stone">
+        <div class="container px-6 bxl:px-8 xl:px-0 bxl:flex py-10.5 bxl:py-32">
+          <div class="w-full bxl:w-1/2 bxl:pr-32">
+            {% if split_title %}
+              <h3 class="pt-0 mb-0">{{ split_title[0] }}</h3>
+              <h6 class="pt-1 mb-0">{{ split_title[1] }}</h6>
+            {% else %}
+              <h3 class="pt-0 mb-0">{{ current_product.title }}</h3>
+            {% endif %}
+            <a class="special-xs bxl:hidden font-bold text-bright-yellow" href="{{ current_product.url }}">VIEW DETAILS</a>
+            <p class="mt-6 mb-10.5">{{  current_metafields["bundle_short_description"] }}</p>
+            <a href="{{ current_product.url }}" class="hidden bxl:block button button-light w-56">VIEW DETAILS</a>
+          </div>
+          <div class="w-full bxl:w-1/2 bxl:pl-32">
+            <div class="flex">
+              <div class="flex-shrink-0 w-10 bxl:w-15 mt-3 mr-10">
+                {% render 'product-features-icon' icon_handle: icons_split[0] %}
+              </div>
+              <div>
+                <h6 class="leading-10 pt-0 mb-0">{{ current_metafields["feature_1_heading"] }}</h6>
+                <p>{{ current_metafields["feature_1_copy"] }}</p>
+              </div>
+            </div>
+            <div class="flex">
+              <div class="flex-shrink-0 w-10 bxl:w-15 mt-3 mr-10">
+                {% render 'product-features-icon' icon_handle: icons_split[1] %}
+              </div>
+              <div>
+                <h6 class="leading-10 pt-0 mb-0">{{ current_metafields["feature_2_heading"] }}</h6>
+                <p>{{ current_metafields["feature_2_copy"] }}</p>
+              </div>
+            </div>
+            <div class="flex">
+              <div class="flex-shrink-0 w-10 bxl:w-15 mt-3 mr-10">
+                {% render 'product-features-icon' icon_handle: icons_split[2] %}
+              </div>
+              <div>
+                <h6 class="leading-10 pt-0 mb-0">{{ current_metafields["feature_3_heading"] }}</h6>
+                <p>{{ current_metafields["feature_3_copy"] }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endcapture %}
+
+    {% render 'product-mobile-accordion' title: current_product.title, content: content %}
+  {% endfor %}
+{% endif %}

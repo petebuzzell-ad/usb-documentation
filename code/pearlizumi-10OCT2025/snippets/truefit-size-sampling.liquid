@@ -1,0 +1,203 @@
+{% if template =='cart' %}
+  {%-liquid
+    assign only_gift_cards = true
+
+    for item in cart.items
+      unless item.gift_card
+        assign only_gift_cards = false
+      endunless
+    endfor
+  -%}
+  
+  {%- unless only_gift_cards -%}
+    {%-  style -%}
+    .tf-popup__backdrop{
+      background:#00000047;
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      z-index:999;
+      display:none;
+    }
+
+    .tf-popup__content{
+      background:white;
+      width:400px;
+      height:400px;
+      max-width:90%;
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%, -50%);
+      display:flex;
+      align-items:center;
+      box-shadow: 0px 11px 19px -4px rgba(0,0,0,0.36);
+      -webkit-box-shadow: 0px 11px 19px -4px rgba(0,0,0,0.36);
+      -moz-box-shadow: 0px 11px 19px -4px rgba(0,0,0,0.36);
+    }
+
+    .tf-popup__content-inner{
+      padding:45px;
+      text-align:center;
+      text-transform:uppercase;
+    }
+
+    .tf-popup__title{
+      font-size: 40px;
+      text-align: center;
+      font-weight: bold;
+      padding:0;
+      margin:0 0 10px 0;
+    }
+
+    .tf-popup__subtitle{
+      display:flex;
+      align-items: center;
+      justify-content: center;
+      text-align:center;
+      margin:0 0 30px 0;
+      font-size:18px;
+    }
+
+    .tf-popup__subtitle img{margin-right:5px;}
+
+    .tf-popup__button{
+      border: 2px solid black;
+      background: none;
+      padding: 10px 15px;
+      font-size: 18px;
+      font-weight: 600;
+      display: block;
+      margin: auto;
+    }
+    .tf-popup__button:hover{
+      background:black;
+      color:white;
+    }
+    .tf-popup__close-btn{
+      position:absolute;
+      right:15px;
+      top:15px;
+      cursor:pointer;
+      background: transparent;
+      border: none;
+      padding:0;
+      margin:0;
+    }
+    .tf-popup__close {
+      box-sizing: border-box;
+      position: relative;
+      display: block;
+      transform: scale(var(--ggs,1));
+      width: 22px;
+      height: 22px;
+      border: 2px solid transparent;
+      border-radius: 40px;
+    }
+    .tf-popup__close::after,
+    .tf-popup__close::before {
+      content: "";
+      display: block;
+      box-sizing: border-box;
+      position: absolute;
+      width: 16px;
+      height: 2px;
+      background: currentColor;
+      transform: rotate(45deg);
+      border-radius: 5px;
+      top: 8px;
+      left: 1px
+    }
+    .tf-popup__close::after {
+      transform: rotate(-45deg)
+    }
+
+    .tfc-cfg-widget.tfc-fitrec-result .tfc-cfg-basic-button.tfc-svg-layout{
+      display:block;
+      margin:auto;
+      padding-left:2em;
+      padding-right:2em;
+    }
+
+    .tfc-fitrec-product {
+      padding-left: 2.75em;
+    }
+
+    @media screen and (max-width:650){
+      .tf-popup__content-inner{
+        padding:20px;
+      }
+    }
+    {%-  endstyle -%}
+    <!--Popup-->
+    <div id="tf-popup" class="tf-popup__backdrop">
+      <div class="tf-popup__content">
+        <button class="tf-popup__close-btn"><i class="tf-popup__close"></i></button>
+        <div class="tf-popup__content-inner">
+          <h3 class="tf-popup__title">Not sure what size to order?</h3>
+          <div class="tf-popup__subtitle">
+            <img src="{{ 'true-fit-logo.png' | asset_img_url: '20x' }}" />
+            <span>True Fit Knows.</span>
+            </div>
+
+          <div class="tfc-fitrec-product" data-styleid="{{ product.id }}" data-locale="{{ locale.iso_code }}" data-userid="{{ customer.id }}"></div>
+        </div>
+      </div>
+    </div>
+    <!--/Popup-->
+
+    <script type="text/javascript">
+      var TFPopup = document.querySelector('#tf-popup');
+      var TFCloseButton = document.querySelector('.tf-popup__close-btn');
+      TFCloseButton.addEventListener('click', () => {
+        TFPopup.style.display = 'none';
+      });
+      fetch('cart.js')
+        .then((response) => response.json())
+        .then((cart) => {
+          let isOnlyGiftCards = true;
+          let adjacentSizeFound = false;
+
+          cart.items.forEach((item) => {
+            if (item.gift_card) {
+              return;
+            }
+            
+            let adjacentItem = cart.items.find((i) => i.product_id === item.product_id && i.variant_id !== item.variant_id);
+            if ( typeof adjacentItem !== 'undefined') {
+              document.querySelector('.tfc-fitrec-product').setAttribute('data-styleid', item.product_id);
+              adjacentSizeFound = true;
+            }
+          })
+          if ( adjacentSizeFound === true) {
+            TFPopup.style.display = 'block';
+          }
+        })
+    </script>
+
+    <script type="text/JavaScript">(function(){
+      var a={};
+      function g(l){
+      a[l]=function(r,e,o){
+      var w=window,d=document,p=[],t,s,x;
+      w.tfcapi=t=w.tfcapi||function(){
+      t.q=t.q||[];
+      t.q.push(arguments);};
+      o && !!o.deviceType && p.push('deviceType=' + o.deviceType);
+      o&&o.autoCalculate===false&&p.push('autoCalculate=false');
+      x=d.getElementsByTagName('script')[0];
+      s=d.createElement('script');
+      s.type='text/javascript';s.async=true;
+      s.src='https://'+r+'-cdn'+(e==='dev'||e==='staging'?'.'+e:'')+
+      '.truefitcorp.com/fitrec/'+r+'/js/'+l+'.js?'+p.join('&');
+      x.parentNode.insertBefore(s,x);}}
+      g('fitrec');
+      g('tracker');
+      return a;
+      // Don't change anything above this line
+    })().fitrec('izu',
+    {% if theme.role == 'unpublished' %} 'staging' {% else %} 'prod' {% endif %});</script>
+  {%- endunless -%}
+{% endif %}

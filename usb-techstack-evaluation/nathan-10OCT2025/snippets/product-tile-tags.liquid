@@ -1,0 +1,41 @@
+{% liquid
+  assign on_sale = false
+  assign is_new = false
+  assign is_final_sale = false
+  assign is_special = false
+  assign is_low_stock = false
+
+  for variant in product.variants
+    if variant.price < variant.compare_at_price
+      assign on_sale = true
+      break
+    endif
+  endfor
+
+  for tag in product.tags
+    if tag == 'badge:new'
+      assign is_new = true
+    endif
+    if tag == 'badge:special'
+      assign is_special = true
+    endif
+    if tag == 'badge:low-stock'
+      assign is_low_stock = true
+    endif
+  endfor
+%}
+
+{%- if product.available == false -%}
+  <span class="inline-block text-white bg-red py-1 px-2 rounded">Out of Stock</span>
+{%- elsif is_final_sale -%}
+  <span class="inline-block text-red py-1 px-2">Final Sale</span>
+{%- elsif on_sale -%}
+  <span class="inline-block text-red py-1 px-2">Sale</span>
+{%- elsif is_special -%}
+  <span class="inline-block text-bright-yellow py-1 px-2">Special</span>
+{%- elsif is_new -%}
+  <span class="inline-block text-pine py-1 px-2">New</span>
+{%- elsif is_low_stock -%}
+  <span class="inline-block text-red py-1 px-2">Low Stock</span>
+{%- endif -%}
+

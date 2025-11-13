@@ -1,0 +1,10 @@
+<div class="flex items-center text-p-s bxl:text-p-xs font-light mb-1.5">
+  <span class="mr-2">
+    {% if svg == 'truck' %}
+      {% render 'svg-truck' %}
+    {% elsif svg == 'shield' %}
+      {% render 'svg-shield' %}
+    {% endif %}
+  </span>
+  {{ key | t }}{{ text_after | default: '' }}
+</div>

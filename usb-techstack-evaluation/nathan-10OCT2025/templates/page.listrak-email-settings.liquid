@@ -1,0 +1,17 @@
+<!-- Listrak Analytics - Javascript Framework -->
+<script type="text/javascript">
+  (function (d, tid, vid) {
+    if (typeof _ltk != 'undefined') return;
+    var js = d.createElement('script');
+    js.id = 'ltkSDK';
+    js.src = `https://cdn.listrakbi.com/scripts/script.js?m=${tid}&v=${vid}`;
+    d.querySelector('head').appendChild(js);
+  })(document, 'MlOcLQD1Cj3j', '1');
+</script>
+
+{%- if page.metafields.global.content_landing_key == "email-settings" -%}
+  {% include 'listrak-email-preferences' %}
+{%- else -%}
+  {%- comment -%} New Listrak Settings Page {%- endcomment -%}
+  <div data-ltk-prefcenter="PearlIzumi"></div>
+{%- endif -%}

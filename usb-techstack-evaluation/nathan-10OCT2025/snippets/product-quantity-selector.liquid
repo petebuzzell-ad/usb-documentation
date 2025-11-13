@@ -1,0 +1,14 @@
+<div id="quantitySelector{% if quickview %}QuickView{% endif %}" class="relative flex items-end w-full h-full border border-grey-five px-3 pt-1 pb-2 cursor-pointer hover:border-grey-one" tabindex="0" onclick="{% if quickview %}eHS.quickviewProductBuyBox.toggleQuantitySelector(event){% else %}eHS.productBuyBox.toggleQuantitySelector(event){% endif %}">
+  <span class="absolute top-2 left-3 font-lato text-p-xs text-grey-three">QTY</span>
+  <div class="flex items-center justify-between w-full">
+    <span id="quantitiySelectorQuantity{% if quickview %}QuickView{% endif %}" class="font-lato text-p text-grey-three">1</span>
+    <div class="stroke-grey-one">
+      {% render 'svg-chevron-down' width: '10px', height: '6px' %}
+    </div>
+  </div>
+  <div id="quantitySelectorDropdown{% if quickview %}QuickView{% endif %}" class="absolute hidden z-10 bottom-1 py-1.5 h-40 overflow-y-auto bg-white transform translate-y-full border border-grey-five border-t-0 rounded-t-none" style="width: calc(100% + 2px); left: -1px;">
+    {% for number in (1..5) %}
+      <span tabindex="0" class="block w-full px-3 py-1.5 font-lato hover:bg-light-grey text-grey-three" onclick="{% if quickview %}eHS.quickviewProductBuyBox.selectQuantity(event, {{ forloop.index }}){% else %}eHS.productBuyBox.selectQuantity(event, {{ forloop.index }}){% endif %}">{{ forloop.index }}</span>
+    {% endfor %}
+  </div>
+</div>

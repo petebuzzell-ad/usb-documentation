@@ -1,0 +1,191 @@
+{% liquid
+  if product.available
+    assign current_variant = product.selected_or_first_available_variant
+  else
+    assign current_variant = product.variants[0]
+  endif
+
+  assign promo_text = ''
+  assign promo_messages = settings.promo_messages | newline_to_br | split: '<br />'
+  for tag in product.tags
+    if tag contains 'promo:'
+      for message in promo_messages
+        if message contains tag
+          assign promo_text = message | remove: tag | remove: '||'
+        endif
+      endfor
+    endif
+  endfor
+  if promo_text == blank
+    if product.metafields["global"]["prd_promotion_text"] != blank
+      assign promo_text = product.metafields["global"]["prd_promotion_text"]
+    elsif current_variant.metafields["global"]["promo_text"] != blank
+      assign promo_text = current_variant.metafields["global"]["promo_text"]
+    endif
+  endif
+
+  assign extra_pro_discount = settings.pro_extra_discount
+  assign extra_pro_discount_amount = settings.extra_pro_discount_amount
+  assign pro_price = false
+  if customer
+    comment
+      check if the customer is a Pro member
+    endcomment
+    unless gift_card
+      assign discount_tag = false
+      assign limit_tag = false
+      for tag in customer.tags
+        if tag contains "discount-"
+          if extra_pro_discount
+            assign discount_tag = tag | remove: "discount-" | plus: extra_pro_discount_amount
+          else
+            assign discount_tag = tag | remove: "discount-" | plus: 0
+          endif
+        endif
+        if tag contains "limit-"
+          assign limit_tag = tag | remove: "limit-" | plus: 0
+        endif
+      endfor
+
+      if discount_tag and limit_tag
+        assign display_price = current_variant.price | money_without_currency
+        assign pro_price = 100.00 | minus: discount_tag | times: display_price
+      endif
+    endunless
+  endif
+
+%}
+
+{%- if mobile -%}
+  <!-- Mobile Buy Box Info -->
+  <div class="px-6 xl:px-8 xl:px-0 mb-4">
+    {%- comment -%} Top Row {%- endcomment -%}
+    <!-- Title -->
+    <h4 class="pdp-title text-center font-sora font-semibold text-black tracking-normal m-0">
+      {{- product.title -}}
+    </h4>
+
+    {% if product.metafields["global"]["prd_sub_title"] != blank %}
+      <div class="text-center mb-2.5">
+        <p class="text-p-ms m-0">{{ product.metafields["global"]["prd_sub_title"] }}</p>
+      </div>
+    {% endif %}
+
+    {%- unless gift_card -%}
+      {%- comment -%} Bottom Row {%- endcomment -%}
+      <div class="flex flex-col justify-center items-center mt-2 gap-2">
+        {%- unless storefront == "INT" -%}
+          <!-- Review Stars -->
+          {% render 'yotpo-pdp-rating' %}
+        {%- endunless -%}
+
+        <!-- SKU & Stock Info -->
+        <div data-sku-and-stock class="flex leading-18">
+          {%- if current_variant.sku != blank -%}
+            <span class="hidden md:inline-block text-p-xs text-black mx-1">•</span>
+            <span class="inline-block text-p-xs text-black" data-sku>
+              SKU #{{ current_variant.sku -}}
+            </span>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- else -%}
+      <div data-sku-and-stock class="hidden">
+        {%- if current_variant.sku != blank -%}
+          <span class="inline-block text-p-xs text-black mx-1">•</span>
+          <span class="inline-block text-p-xs text-black" data-sku>
+            SKU #{{ current_variant.sku -}}
+          </span>
+        {%- endif -%}
+      </div>
+    {%- endunless -%}
+  </div>
+
+{%- else-%}
+
+  <!-- Desktop Buy Box Info -->
+  <div class="hidden md:block mb-3.5">
+    {%- comment -%} Top Row {%- endcomment -%}
+    <!-- Title -->
+    <h3 class="pdp-title text-left text-h4-m xl:text-h4 font-sora font-semibold text-black tracking-normal m-0 mb-1">
+      {{- product.title -}}
+    </h3>
+
+    {%- unless gift_card -%}
+      <div class="flex flex-col xl:flex-row xl:items-center">
+        {%- unless storefront == "INT" -%}
+          <!-- Review Stars -->
+          {% render 'yotpo-pdp-rating' %}
+        {%- endunless -%}
+
+        <!-- SKU & Stock Info -->
+        <div data-sku-and-stock class="flex leading-18">
+          {%- if current_variant.sku != blank -%}
+            <span class="hidden xl:inline-block text-p-xs text-black mx-1">•</span>
+            <span class="inline-block text-p-xs text-black" data-sku>
+              SKU #{{ current_variant.sku -}}
+            </span>
+          {%- endif -%}
+        </div>
+      </div>
+    {% else %}
+      <div data-sku-and-stock class="hidden">
+        {%- if current_variant.sku != blank -%}
+          <span class="hidden xl:inline-block text-p-xs text-black mx-1">•</span>
+          <span class="inline-block text-p-xs text-black" data-sku>
+            SKU #{{ current_variant.sku -}}
+          </span>
+        {%- endif -%}
+      </div>
+    {%- endunless -%}
+
+    {%- unless storefront == "INT" -%}
+      {%- if product.metafields.global.prd_sub_title != blank -%}
+        <div class="mt-2 text-p-s xl:text-p-lg">
+          {{ product.metafields.global.prd_sub_title }}
+        </div>
+      {%- endif -%}
+    {%- endunless -%}
+    <div data-final-sale-buybox class="hidden mt-3">
+      {% if settings.final_sale_link %}
+      <a href="{{ settings.final_sale_link }}" target="_blank">
+      {% endif %}
+        <span class="whitespace-nowrap product-badge !py-0.5 !text-dark-stone !text-[11px] {% if settings.final_sale_link %}hover:bg-faint-cloud{% endif %}">Final Sale</span>
+      {% if settings.final_sale_link %}
+      </a>
+      {% endif %}
+    </div>
+    <!-- Price Container -->
+    {%- unless storefront == "INT" -%}
+    <div class="mt-3 flex items-center justify-between md:justify-start">
+      <div class="flex items-center justify-start flex-wrap">
+        {%- comment -%} Clearance Pricing {%- endcomment -%}
+        {% if current_variant.compare_at_price and current_variant.price < current_variant.compare_at_price %}
+        <span data-product-price class="inline-block text-h6 mr-2.5 font-sora font-semibold text-stone tracking-normal">{{ pro_price | money }}</span>
+        <span data-compare-price class="inline-block mr-2.5 text-h6 font-sora font-light line-through text-light-stone tracking-normal"></span>
+        {%- comment -%} Member Pricing (clearance takes precedence) {%- endcomment -%}
+        {% elsif discount_tag and limit_tag %}
+        <span data-product-price class="inline-block text-h6 mr-2.5 font-sora font-semibold text-red tracking-normal">{{ current_variant.price | money }}</span>
+        <span data-compare-price class="inline-block mr-2.5 text-h6 font-sora font-light line-through text-light-stone tracking-normal">{{ current_variant.compare_at_price | money }}</span>
+        {%- comment -%} Regular Pricing {%- endcomment -%}
+        {% else %}
+          <span data-product-price class="inline-block text-h6 mr-2.5 font-sora font-semibold text-stone tracking-normal">{{ current_variant.price | money }}</span>
+          <span data-compare-price class="inline-block mr-2.5 text-h6 font-sora font-light line-through text-light-stone tracking-normal"></span>
+        {% endif %}
+        <!-- Promo Message -->
+        {%- comment -%}
+          Hiding Percentage Off + Promo Messaging until after all sites are launched
+        {%- endcomment -%}
+        <span class="inline-block font-sora font-normal text-xl text-dark-stone text-right" data-promo-message><span data-promo-message-percent-off></span></span>
+      </div>
+        
+      </div>
+      <div class="flex items-center justify-start gap-2 text-[15px] mt-4 text-success-green font-semibold font-sora mb-5"><span class="h-[18px] w-[18px] {% if promo_text %}hidden{% endif %}" data-promo-icon>{% render 'promo-message-icon' %}</span><span data-promo-message-text>{{- promo_text -}}</span></div>
+    {%- endunless -%}
+
+    {%- if quickview -%}
+      <div class="mt-5 text-p-s" id="quickviewDescription">{{- product.description | strip_html -}}</div>
+    {%- endif -%}
+  </div>
+
+{%- endif -%}

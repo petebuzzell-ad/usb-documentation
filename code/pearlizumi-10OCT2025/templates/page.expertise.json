@@ -1,0 +1,205 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "full-width-cta": {
+      "type": "full-width-cta",
+      "settings": {
+        "image": "shopify://shop_images/BikePI-F22-Road-Ozarks-532-2201x1467-43d37b0.webp",
+        "image_mobile": "shopify://shop_images/BikePI-F22-Road-Ozarks-532-2201x1467-43d37b0.webp",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "hero_height": "normal",
+        "text_overlay_color": "38,43,44",
+        "overlay_opacity": 0.6,
+        "title": "Expert Advice",
+        "text": "<p style=\"color:white\">We're a team of passionate cyclists that believe in the transformative power of riding bikes.</p>\n<p style=\"color:white\">And because we believe that riding bikes makes us the best version of ourselves, we're committed to helping more people get on bikes. We've put together some tools and tips to empower you to ride more and to get you where you want to go.</p>",
+        "enable_description": false,
+        "btn_label_1": "",
+        "btn_link_1": "",
+        "btn_label_2": "",
+        "btn_link_2": "",
+        "enable_bottom_margin": true
+      }
+    },
+    "hero-image": {
+      "type": "hero-image",
+      "settings": {
+        "image": "shopify://shop_images/xnew2.jpg",
+        "image_mobile": "shopify://shop_images/xnew2.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "subtitle": "",
+        "title": "jersey guide",
+        "text": "For all riders and all weather,\nwe've put together a guide on\nhow to find your perfect jersey.",
+        "show_description": true,
+        "btn_text_1": "jersey guide",
+        "btn_url_1": "shopify://pages/how-to-choose-a-cycling-jersey",
+        "btn_text_2": "Button",
+        "btn_url_2": "",
+        "btn_text_3": "Button",
+        "btn_url_3": "",
+        "show_breadcrumbs": false,
+        "enable_bottom_margin": true
+      }
+    },
+    "hero-image-2": {
+      "type": "hero-image",
+      "settings": {
+        "image": "shopify://shop_images/xnew3.jpg",
+        "image_mobile": "shopify://shop_images/xnew3mob.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "subtitle": "",
+        "title": "ROAD BEGINNER'S GUIDE",
+        "text": "The bike is just the start of your\njourney. If you're new to riding—or if\nit's been awhile since you last swung\na leg over a top tube—we're here to\ncatch you up on the latest clothing\nand accessory innovations to take your\nriding to the next level.",
+        "show_description": true,
+        "btn_text_1": "Men's Road Guide",
+        "btn_url_1": "shopify://pages/mens-road-beginners-guide",
+        "btn_text_2": "Women's Road Guide",
+        "btn_url_2": "shopify://pages/womens-road-beginners-guide",
+        "btn_text_3": "Button",
+        "btn_url_3": "",
+        "show_breadcrumbs": false,
+        "enable_bottom_margin": true
+      }
+    },
+    "hero-image-3": {
+      "type": "hero-image",
+      "settings": {
+        "image": "shopify://shop_images/xnew4.jpg",
+        "image_mobile": "shopify://shop_images/xnew4mob.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "subtitle": "",
+        "title": "MOUNTAIN BEGINNER'S GUIDE",
+        "text": "Putting tires in the dirt for the first time\ncan be a little intimidating. With the\nright knowledge and apparel, getting\ninto mountain biking can be accessible\nfor anyone.",
+        "show_description": true,
+        "btn_text_1": "Men's Mountain Guide",
+        "btn_url_1": "shopify://pages/mens-mountain-bike-beginners-guide",
+        "btn_text_2": "Women's Mountain guide",
+        "btn_url_2": "shopify://pages/womens-mountain-bike-beginners-guide",
+        "btn_text_3": "Button",
+        "btn_url_3": "",
+        "show_breadcrumbs": false,
+        "enable_bottom_margin": false
+      }
+    },
+    "full-width-cta-reversible": {
+      "type": "full-width-cta-reversible",
+      "settings": {
+        "image": "shopify://shop_images/shoes_4f89739e-6cf6-47e7-a794-af9d2b826a00.jpg",
+        "image_position": "right",
+        "subtitle": "",
+        "title": "CYCLING SHOE GUIDE",
+        "text": "<p>From road to gravel and trail, clipless and flats, we've got a shoe for you. Check out our shoe guide to find the best choice for your riding style.</p>",
+        "btn_label": "shoe guide",
+        "btn_link": "shopify://pages/how-to-choose-cycling-shoes",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "full-width-cta-reversible-2": {
+      "type": "full-width-cta-reversible",
+      "settings": {
+        "image": "shopify://shop_images/BikePI-W21-Womens-Road-Broomfield-21189-1667x2501-cee5d84.webp",
+        "image_position": "left",
+        "subtitle": "",
+        "title": "WINTER TIGHTS GUIDE",
+        "text": "<p>As the season transitions and the chill in the air becomes more pronounced, don't let the colder weather put a freeze on your cycling adventures. PEARL iZUMi's winter tights are engineered to turn the cold into a companion on your journey, not a barrier. With innovative fabrics and cyclist-centered designs, we ensure that every pedal you push is in comfort and warmth, empowering you to embrace the beauty of winter riding. Because at PEARL iZUMi, we believe that the right gear can make any weather, perfect weather.</p>",
+        "btn_label": "LEARN MORE",
+        "btn_link": "shopify://pages/winter-tights-guide",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "full-width-cta-reversible-3": {
+      "type": "full-width-cta-reversible",
+      "settings": {
+        "image": "shopify://shop_images/BikePI-F22-Road-Winter-Ned-1879-2000x1333-282f2dd.webp",
+        "image_position": "right",
+        "subtitle": "",
+        "title": "WINTER GLOVE GUIDE",
+        "text": "<p>Equipping yourself with gloves for cool and cold weather riding ensures your hands remain warm and responsive, crucial for maintaining control and comfort during your cycling adventures, no matter the temperature.</p>",
+        "btn_label": "LEARN MORE",
+        "btn_link": "shopify://pages/winter-glove-guide",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "text-block": {
+      "type": "text-block",
+      "disabled": true,
+      "settings": {
+        "bg_color": "#B1A69B",
+        "svg": "",
+        "svg_mobile": "",
+        "text_color": "#fff",
+        "heading": "We're more than the gear we make.",
+        "body": "<p>We're a team of passionate cyclists that believe in the transformative power of riding bikes.<br/><br/>And because we believe that riding bikes makes us the best version of ourselves, we're committed to helping more people get on bikes. We've put together some tools and tips to empower you to ride more and to get you where you want to go.</p>",
+        "enable_bottom_margin": false
+      }
+    },
+    "full-width-cta-reversible-4": {
+      "type": "full-width-cta-reversible",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/2_db325b51-db9c-4f5b-b1ac-e0e361dc4eb7.jpg",
+        "image_position": "right",
+        "subtitle": "",
+        "title": "FIT",
+        "text": "<p>Bike clothes can be kind of weird. But when done right they're pretty awesome. The key is to get the right fit so you look and feel your best.</p>",
+        "btn_label": "explore fit",
+        "btn_link": "shopify://pages/size-and-fit-guide",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "hero-image-4": {
+      "type": "hero-image",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/xnew.jpg",
+        "image_mobile": "shopify://shop_images/xnewmob.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "subtitle": "",
+        "title": "BIKE SHORTS GUIDE",
+        "text": "<p>Whether you're pushing pedals on\npavement or cruising flowy singletrack,\nwe can help you find the perfect shorts.</p>",
+        "show_description": true,
+        "btn_text_1": "shorts guide",
+        "btn_url_1": "shopify://pages/how-to-choose-a-short",
+        "btn_text_2": "Button",
+        "btn_url_2": "",
+        "btn_text_3": "Button",
+        "btn_url_3": "",
+        "show_breadcrumbs": false,
+        "enable_bottom_margin": true
+      }
+    }
+  },
+  "order": [
+    "full-width-cta",
+    "hero-image",
+    "hero-image-2",
+    "hero-image-3",
+    "full-width-cta-reversible",
+    "full-width-cta-reversible-2",
+    "full-width-cta-reversible-3",
+    "text-block",
+    "full-width-cta-reversible-4",
+    "hero-image-4"
+  ]
+}

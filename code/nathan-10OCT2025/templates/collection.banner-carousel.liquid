@@ -1,0 +1,451 @@
+{% render 'shogun-products', content: collection %}
+{{collection.metafields.shogun.above}}
+{% comment %}
+  The contents of the collection.liquid template can be found in /sections/collection-template.liquid
+{% endcomment %}
+</div> <!-- close container -->
+{% if current_tags %}
+{% assign filter_tag = current_tags[0] | replace: " ", "-" | downcase %}
+{% assign subcollection_meta_description = filter_tag | append: "-meta-description" %}
+{% assign subcollection_title = filter_tag | append: "-title" %}
+{% unless collection.metafields.subcollection[subcollection_title] %}  
+  {% assign subcollection_title = filter_tag | append: "-t" %}
+{% endunless %}
+{% assign subcollection_hide_image = filter_tag | append: "-hide-image" %}
+{% unless collection.metafields.subcollection[subcollection_hide_image] %}  
+  {% assign subcollection_hide_image = filter_tag | append: "-hi" %}
+{% endunless %}
+{% endif %}
+{% unless current_tags and filter_tag and collection.metafields.subcollection[subcollection_hide_image] == "true" %}
+{% if collection.image %}
+  <div class="collection_image_container"><img class="collection_image lazyload fade-in"
+              data-src="{{ collection.image | img_url: 'master' }}"
+              data-widths="[180, 220, 300, 360, 460, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+              data-aspectratio="{{ collection.image.aspect_ratio }}"
+              data-sizes="auto"
+              alt="{{ collection.image.alt | escape }}"></div>
+{% endif %}
+{% endunless %}
+
+{% assign subcollection_menu_handle = collection.handle %}
+
+{% if current_tags %}
+{% assign subcollection_menu_handle = subcollection_menu_handle | append: '-' | append: filter_tag  | downcase %}
+{% endif %}
+{% assign subcollection_menu_handle = subcollection_menu_handle | append: '-subcollections' | downcase %}
+
+{% comment %}
+{% if linklists[subcollection_menu_handle].links.size > 0%}
+<ul class="collection_subs">
+  {% for link in linklists[subcollection_menu_handle].links%}
+  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endcomment %}
+
+<div class="container cf">
+<h1>{% if current_tags and filter_tag and collection.metafields.subcollection[subcollection_title] %}
+  {{collection.metafields.subcollection[subcollection_title]}}
+  {% else %}
+  	{% if collection.metafields.plp.title %}
+  		{{collection.metafields.plp.title}}
+  	{% else %}
+  		{{ collection.title }}
+  	{% endif %}
+{% endif%}</h1>
+{% include 'isp-smart-navigation' %}
+{% if current_tags and filter_tag and collection.metafields.subcollection[subcollection_meta_description] %}
+  {% assign page_meta_description = collection.metafields.subcollection[subcollection_meta_description] | escape %}
+  <div class="collection-description">{{ page_meta_description }}</div>
+{% else %}
+<div class="collection-description">{{ collection.description}}</div>
+{% endif %}
+{% comment %}
+{% section 'collection-template' %}
+{% endcomment %}
+
+{% if settings.product_promoted_ids %}
+  
+    {% assign promoted_ids = settings.product_promoted_ids | split: ',' %}
+    {% for promotedId in promoted_ids %}
+      <style>
+      ul#isp_search_results_container li.isp_grid_product[product_id="{{ promotedId }}"] {
+        border: 0 !important;
+      }
+      ul#isp_search_results_container li.isp_grid_product[product_id="{{ promotedId }}"] .isp_product_info,
+      ul#isp_search_results_container li.isp_grid_product[product_id="{{ promotedId }}"] .isp_sold_out_banner_container {
+        display: none;
+      }
+      ul#isp_search_results_container li.isp_grid_product[product_id="{{ promotedId }}"] .isp_product_image_wrapper {
+        height: 100% !important;
+        background: none !important;
+      }
+      ul#isp_search_results_container li.isp_grid_product[product_id="{{ promotedId }}"] .isp_product_image_wrapper a {
+        font-size: 0;
+      }
+      ul#isp_search_results_container li.isp_grid_product[product_id="{{ promotedId }}"] .isp_product_image_wrapper img {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        height: auto;
+        max-height: 100%;
+        padding: 0;
+      }
+      </style>
+    {% endfor %}
+{% endif %}
+<script>
+var loadedProducts = {
+  {%- paginate collections.all.products by 1000 -%}
+  {%- for product in collections['all'].products -%}
+    "{{product.handle}}": {
+      image: "{{product.featured_image | img_url: '60x65', crop: 'center', scale: 2 }}",
+      {% for media in product.media -%}
+        {%- if media.alt contains '!!MAIN!!' -%}
+          {%- if media.media_type == "image" %}
+          image_main: "{{ media | img_url: '300x400', crop: 'center', scale: 2 }}",
+          {%- else %}
+          image_main: `{{ media | video_tag: image_size: '300x400', controls: false, muted: true, loop: true, autoplay: true }}`,
+          {%- endif %}        
+        image_main_switch: "{{media.preview_image | img_url: '60x65', crop: 'center', scale: 2 }}",
+        {%- endif %}
+      {%- endfor -%}
+      price: "{{product.price}}",
+      compare_at_price: "{{product.compare_at_price}}"{% if product.compare_at_price >0 %},
+      percentage: "{{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price }}"{%endif %}
+    }{%- unless forloop.last == "true"-%},{%- endunless-%}
+  {%- endfor -%}
+  {%- endpaginate -%}
+}
+</script>
+
+<script>
+{% unless collection.metafields.global.hide_custom_texts %}
+  {% if settings.custom_text_discount != "" %}
+    {% assign is_valid = true %}
+    {% assign now_date = 'now' | date: '%s' %}
+    {% if settings.custom_text_discount_start_date != "" %}
+      {% assign custom_text_discount_start_date = settings.custom_text_discount_start_date | date: '%s' %}
+      {% if custom_text_discount_start_date > now_date %}
+        {% assign is_valid = false %}
+      {% endif %}
+    {% endif %}
+    {% if settings.custom_text_discount_end_date != "" %}
+      {% assign custom_text_discount_end_date = settings.custom_text_discount_end_date | date: '%s' %}
+      {% if custom_text_discount_end_date < now_date %}
+        {% assign is_valid = false %}
+      {% endif %}
+    {% endif %}
+    {% if is_valid %}
+    var customTextDiscount = `<div class="custom-text custom-textDiscount" {% if settings.custom_text_discount_color != blank %}style="color: {{settings.custom_text_discount_color}};"{% endif %}>
+          {% if settings.custom_text_discount_modal != blank %}
+            <a href="#" class="open-usb-modal" data-trigger-id="custom-text-discount">
+          {% elsif settings.custom_text_discount_url != blank %}
+            <a href="{{settings.custom_text_discount_url}}">
+          {% endif %}
+            {{settings.custom_text_discount}}
+          {% if settings.custom_text_discount_modal != blank %}
+            </a>
+          {% elsif settings.custom_text_discount_url != blank %}
+            </a>
+          {% endif %}
+        </div>`;
+      {% endif %}
+  {% endif %}
+  {% if settings.custom_text != "" %}
+    {% assign is_valid = true %}
+    {% assign now_date = 'now' | date: '%s' %}
+    {% if settings.custom_text_start_date != "" %}
+      {% assign custom_text_start_date = settings.custom_text_start_date | date: '%s' %}
+      {% if custom_text_start_date > now_date %}
+        {% assign is_valid = false %}
+      {% endif %}
+    {% endif %}
+    {% if settings.custom_text_end_date != "" %}
+      {% assign custom_text_end_date = settings.custom_text_end_date | date: '%s' %}
+      {% if custom_text_end_date < now_date %}
+        {% assign is_valid = false %}
+      {% endif %}
+    {% endif %}
+    {% if is_valid %}
+    var customText = `<div class="custom-text custom-text1" {% if settings.custom_text_color != blank %}style="color: {{settings.custom_text_color}};"{% endif %}>
+          {% if settings.custom_text_modal != blank %}
+            <a href="#" class="open-usb-modal" data-trigger-id="custom-text">
+          {% elsif settings.custom_text_url != blank %}
+            <a href="{{settings.custom_text_url}}">
+          {% endif %}
+            {{settings.custom_text}}
+          {% if settings.custom_text_modal != blank %}
+            </a>
+          {% elsif settings.custom_text_url != blank %}
+            </a>
+          {% endif %}
+        </div>`;
+      {% endif %}
+  {% endif %}
+
+  {% if settings.custom_text2 != "" %}
+    {% assign is_valid = true %}
+    {% assign now_date = 'now' | date: '%s' %}
+    {% if settings.custom_text2_start_date != "" %}
+      {% assign custom_text2_start_date = settings.custom_text2_start_date | date: '%s' %}
+      {% if custom_text2_start_date > now_date %}
+        {% assign is_valid = false %}
+      {% endif %}
+    {% endif %}
+    {% if settings.custom_text2_end_date != "" %}
+      {% assign custom_text2_end_date = settings.custom_text2_end_date | date: '%s' %}
+      {% if custom_text2_end_date < now_date %}
+        {% assign is_valid = false %}
+      {% endif %}
+    {% endif %}
+    {% if is_valid %}
+    var customText2 = `<div class="custom-text custom-text2" {% if settings.custom_text2_color != blank %}style="color: {{settings.custom_text2_color}};"{% endif %}>
+          {% if settings.custom_text2_modal != blank %}
+            <a href="#" class="open-usb-modal" data-trigger-id="custom-text2">
+          {% elsif settings.custom_text2_url != blank %}
+            <a href="{{settings.custom_text2_url}}">
+          {% endif %}
+            {{settings.custom_text2}}
+          {% if settings.custom_text2_modal != blank %}
+            </a>
+          {% elsif settings.custom_text2_url != blank %}
+            </a>
+          {% endif %}
+        </div>`;
+    {% endif %}
+  {% endif %}
+
+  {% if settings.custom_text3 != "" %}
+    {% assign is_valid = true %}
+    {% assign now_date = 'now' | date: '%s' %}
+    {% if settings.custom_text3_start_date != "" %}
+      {% assign custom_text3_start_date = settings.custom_text3_start_date | date: '%s' %}
+      {% if custom_text3_start_date > now_date %}
+        {% assign is_valid = false %}
+      {% endif %}
+    {% endif %}
+    {% if settings.custom_text3_end_date != "" %}
+      {% assign custom_text3_end_date = settings.custom_text3_end_date | date: '%s' %}
+      {% if custom_text3_end_date < now_date %}
+        {% assign is_valid = false %}
+      {% endif %}
+    {% endif %}
+    {% if is_valid %}
+    var customText3 = `<div class="custom-text custom-text3" {% if settings.custom_text3_color != blank %}style="color: {{settings.custom_text3_color}};"{% endif %}>
+          {% if settings.custom_text3_modal != blank %}
+            <a href="#" class="open-usb-modal" data-trigger-id="custom-text3">
+          {% elsif settings.custom_text3_url != blank %}
+            <a href="{{settings.custom_text3_url}}">
+          {% endif %}
+            {{settings.custom_text3}}
+          {% if settings.custom_text3_modal != blank %}
+            </a>
+          {% elsif settings.custom_text3_url != blank %}
+            </a>
+          {% endif %}
+        </div>`;
+    {% endif %}
+  {% endif %}
+{% endunless %}
+
+function insertAfter(referenceNode, newNode) {
+  referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+
+function getAdditionalInfo(ISPlusProductId) {
+  var productTargeted = $("#isp_search_result_page .isp_grid_product[product_id='"+ISPlusProductId+"']");
+  var handleWithoutVariant = productTargeted.find('.isp_product_image_href').attr('href').split('?');
+  var handle = handleWithoutVariant[0].split('/');
+  if(!handle.includes('products')) {
+    return false;
+  }
+  var promoted_ids = "{{ settings.product_promoted_ids }}"; 
+
+  var urlParamCharacter = "?";
+  var handleToCheck = handle[handle.length-1];
+  if(handleToCheck.includes("?")) {
+    urlParamCharacter = "&";
+    handleSplit = handleToCheck.split("?");
+    handleToCheck = handleSplit[0];
+  }
+
+  if(loadedProducts[handleToCheck] && loadedProducts[handleToCheck]["compare_at_price"]) {
+    productTargeted.addClass("has-discount");
+    productTargeted.find('.isp_product_image_wrapper').append('<span class="discount_percentage">'+parseInt(loadedProducts[handleToCheck]["percentage"])+'% OFF</span>');
+  } 
+  
+  $.ajax({
+    type: 'GET',
+    url: '/products/' + handle[handle.length-1] + urlParamCharacter +'view=metafields.json',
+    success: function(response) {
+      metafieldsJSON = JSON.parse(response);
+
+      if(loadedProducts[handle[handle.length-1]].image_main && !productTargeted.find(".isp_product_image_main").length) {
+        productTargeted.find(".isp_product_image_wrapper").addClass('has_main_image');
+        if(!loadedProducts[handle[handle.length-1]].image_main.includes('video')) {
+          productTargeted.find(".isp_product_image").attr('src',loadedProducts[handle[handle.length-1]].image_main)
+          productTargeted.find(".isp_product_image_wrapper a").append(`<img alt="`+productTargeted.find(".isp_product_image").attr('alt')+`" src="`+loadedProducts[handle[handle.length-1]].image_main+`" class="isp_product_image_main">`);
+      
+        } else {
+          productTargeted.find(".isp_product_image_wrapper").addClass('has_video');
+          productTargeted.find(".isp_product_image_wrapper a").append(loadedProducts[handle[handle.length-1]].image_main);
+        }
+      }
+
+      if(promoted_ids.includes(productTargeted.attr('product_id'))) {
+        if(metafieldsJSON != undefined && metafieldsJSON.global != undefined && metafieldsJSON.global.violator_url != undefined) {
+          productTargeted.find(".isp_product_image_href").attr('href',metafieldsJSON.global.violator_url);
+          productTargeted.addClass('no-swatches');
+        }
+        {% unless collection.metafields.global.hide_custom_texts %}  
+        {% if settings.custom_text_discount != "" %}      
+        if(customTextDiscount && metafieldsJSON != undefined && metafieldsJSON.tags != undefined && loadedProducts[handleToCheck]["price"] < loadedProducts[handleToCheck]["compare_at_price"]) {
+          if(metafieldsJSON.tags.includes('custom-text-discount')) {
+            productTargeted.find(".isp_product_price_wrapper").after(customTextDiscount);
+          }
+        }     
+        {% endif %}
+        {% if settings.custom_text3 != "" %}      
+        if(customText3 && metafieldsJSON != undefined && metafieldsJSON.tags != undefined) {
+          if(metafieldsJSON.tags.includes('custom-text3')) {
+            if(!productTargeted.find('.custom-text3').length) {
+              productTargeted.find(".isp_product_price_wrapper").after(customText3);
+            }
+          }
+        }     
+        {% endif %}
+        {% if settings.custom_text2 != "" %}     
+        if(customText2 && metafieldsJSON != undefined && metafieldsJSON.tags != undefined) {
+          if(metafieldsJSON.tags.includes('custom-text2')) {
+            if(!productTargeted.find('.custom-text2').length) {
+              productTargeted.find(".isp_product_price_wrapper").after(customText2);
+            }
+          }
+        }
+        {% endif %}
+        {% if settings.custom_text != "" %}
+        if(customText && metafieldsJSON != undefined && metafieldsJSON.tags != undefined) {
+          if(metafieldsJSON.tags.includes('custom-text')) {
+            if(!productTargeted.find('.custom-text1').length) {
+              productTargeted.find(".isp_product_price_wrapper").after(customText);
+            }
+          }
+        }
+        {% endif %}
+        {% endunless %}
+      } else {
+        if(metafieldsJSON != undefined && metafieldsJSON.colorop != undefined && metafieldsJSON.colorop.ordering != undefined) {
+          swatches = JSON.parse(metafieldsJSON.colorop.ordering);
+          if(!productTargeted.find('.isp_product_swatches_switch').length) {
+            var switches = `<div class="isp_product_swatches_switch">`;
+            $.each(swatches, function(i, ordering) {
+              if(i<4) { 
+                if(loadedProducts[ordering.handle]) {
+                  //if(loadedProducts[ordering.handle].image_main_switch) switches += `<a href="/products/`+ordering.handle+`" style="background-image: url(`+loadedProducts[ordering.handle].image_main_switch+`)"></a>`;
+                  //else switches += `<a href="/products/`+ordering.handle+`" style="background-image: url(`+loadedProducts[ordering.handle].image+`)"></a>`;
+                  switches += `<a href="/products/`+ordering.handle+`" style="background-image: url(`+loadedProducts[ordering.handle].image+`)"></a>`;
+                }
+              } else {
+                switches += `<a href="/products/`+handle[handle.length-1]+`" class="plus-more">+`+(swatches.length - 4)+`</a>`;
+                return false;
+              }
+            });
+            switches += `</div>`;
+            productTargeted.find(".isp_product_info").before(switches);
+          }
+        }
+        if(metafieldsJSON != undefined && metafieldsJSON.colorop != undefined && metafieldsJSON.colorop.ordering_count != undefined && parseInt(metafieldsJSON.colorop.ordering_count) > 0) {   
+          if(!productTargeted.find('.isp_product_swatches').length) productTargeted.find(".isp_product_info").append('<div class="isp_product_swatches">'+metafieldsJSON.colorop.ordering_count+' colors</div>');
+        } else {
+          productTargeted.addClass('no-swatches');
+        }
+
+        {% unless collection.metafields.global.hide_custom_texts %}
+          {% if settings.custom_text_discount != "" %}
+            if(customTextDiscount && metafieldsJSON != undefined && metafieldsJSON.tags != undefined && loadedProducts[handleToCheck]["price"] < loadedProducts[handleToCheck]["compare_at_price"]) {
+              if(metafieldsJSON.tags.includes('custom-text-discount')) {
+                productTargeted.find(".isp_product_price_wrapper").after(customTextDiscount);
+              }
+            }
+          {% endif %}
+          {% if settings.custom_text3 != "" %}
+            if(customText3 && metafieldsJSON != undefined && metafieldsJSON.tags != undefined) {
+              if(metafieldsJSON.tags.includes('custom-text3')) {
+                if(!productTargeted.find('.custom-text3').length) {
+                  productTargeted.find(".isp_product_price_wrapper").after(customText3);
+                }
+              }
+            }
+          {% endif %}
+          {% if settings.custom_text2 != "" %}
+            if(customText2 && metafieldsJSON != undefined && metafieldsJSON.tags != undefined) {
+              if(metafieldsJSON.tags.includes('custom-text2')) {
+                if(!productTargeted.find('.custom-text2').length) {
+                  productTargeted.find(".isp_product_price_wrapper").after(customText2);
+                }
+              }
+            }
+          {% endif %}
+          {% if settings.custom_text != "" %}
+            if(customText && metafieldsJSON != undefined && metafieldsJSON.tags != undefined) {
+              if(metafieldsJSON.tags.includes('custom-text')) {
+                if(!productTargeted.find('.custom-text1').length) {
+                  productTargeted.find(".isp_product_price_wrapper").after(customText);
+                }
+              }
+            }
+          {% endif %}
+        {% endunless %}
+      }
+    },
+    error: function(status) {
+    }
+  });
+}
+// Select the node that will be observed for mutations
+var targetNode = document.getElementById('isp_search_result_page');
+// Options for the observer (which mutations to observe)
+var config = { attributes: true, childList: true, subtree: true };
+// Callback function to execute when mutations are observed
+var callback = function (mutationsList, observer) {
+  for (var mutation of mutationsList) {    
+    if (mutation.type == 'childList' && mutation.target.id == "isp_search_results_container" && mutation.addedNodes.length > 0) {
+      // DO CUSTOM THINGS HERE
+      $.each($("#"+mutation.target.id + " li:not(:has(.isp_product_swatches))"), function(i, val) {
+        if($(this).attr('position') && !$(this).find('.isp_product_swatches').length) $(this).find('.isp_product_info').append(getAdditionalInfo($(this).attr('product_id')));        
+      });
+    }
+  }
+};
+// Create an observer instance linked to the callback function
+var observer = new MutationObserver(callback);
+
+// Start observing the target node for configured mutations
+observer.observe(targetNode, config);
+if (targetNode[0] != undefined) {
+  observer.observe(targetNode, config);
+} else {
+  setTimeout(function () {
+    if (targetNode[0] != undefined) {
+      observer.observe(targetNode, config);
+    }
+  }, 500);
+}
+
+var updateProductsInterval = setInterval( function() {
+  if($("#isp_search_results_container li:not(.no-swatches):not(:has(.isp_product_swatches))").length > 0) {
+    $.each($("#isp_search_results_container li:not(.no-swatches):not(:has(.isp_product_swatches))"), function(i, val) {
+      if($(this).attr('position') && !$(this).find('.isp_product_swatches').length) $(this).find('.isp_product_info').append(getAdditionalInfo($(this).attr('product_id')));        
+    });
+  } else {
+    clearInterval(updateProductsInterval)
+  }
+}, 1000);
+
+</script>
+
+{{collection.metafields.shogun.below}}
+

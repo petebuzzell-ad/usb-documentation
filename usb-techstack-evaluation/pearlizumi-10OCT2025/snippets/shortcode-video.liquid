@@ -1,0 +1,15 @@
+{% capture video_src %}{% include 'shortcode-render' render:'video_src' %}{% endcapture %}
+<div class="lg:mb-18 mb-12 {% if video_src %}video-item{% endif %}">
+  <div class="lg:mb-6 mb-6 relative {% if video_src %}w-full h-0 pt-[56.25%]{% endif %}">
+    {%- if video_src -%}<div class="absolute top-0 left-0 w-full h-full">{%- endif -%}
+      <img class="lazy w-full {% if video_src %}h-full object-cover{% endif %}" data-src="{% include 'shortcode-render' render:'image_src' %}">
+      {%- if video_src -%}
+        <span class="play-video-btn bg-bright-yellow hover:bg-[faded-bright-yellow] w-8.5 h-8.5 lg:w-23.5 lg:h-23.5 rounded-full absolute top-1/2 left-1/2 cursor-pointer transform -translate-x-1/2 -translate-y-1/2 z-1" data-video="{{video_src | strip }}">
+          {%- render 'svg-play-light', classes: 'absolute z-2 top-1/2 left-1/2 cursor-pointer transform -translate-y-1/2 -translate-x-1/3 w-4 h-6 lg:w-8 lg:h-12' -%}
+        </span>
+        <iframe src="{{ video_src | replace: 'autoplay=1', '' }}" class="hidden w-full h-full"></iframe>
+      {%- endif -%}
+    {%- if video_src -%}</div>{%- endif -%}
+  </div>
+  <p class="p-s m-0">{% include 'shortcode-render' render:'content' %}</p>
+</div>

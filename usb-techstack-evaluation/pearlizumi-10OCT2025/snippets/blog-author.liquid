@@ -1,0 +1,65 @@
+{%- if article.metafields["author.author"] != blank -%}
+  {%-liquid
+    assign name = article.metafields["author.author"]["name"]
+    assign photo = article.metafields["author.author"]["photo"]
+    assign bio = article.metafields["author.author"]["bio"]
+    assign label = article.metafields["author.author"]["label"]
+    assign facebook = article.metafields["author.author"]["facebook"]
+    assign instagram = article.metafields["author.author"]["instagram"]
+    assign twitter = article.metafields["author.author"]["twitter"]
+
+    assign author_handle = "Author: " | append: name | handleize
+    assign author_url = blog.url | append: "/tagged/" | append : author_handle
+  -%}
+  <div class="py-14 mt-14 border-t border-silver blog-author">
+    <div class="flex items-center flex-col lg:flex-row lg:px-16 xl:px-25">
+      <div class="text-center">
+        <a href="{{ author_url }}">
+          {%- if photo != blank -%}
+            <div class="w-45 aspect-w-1 aspect-h-1">
+              <img alt="Author Iamge" class="lazy w-full h-full rounded-full object-cover" data-src="{{ photo }}" loading="lazy" />
+            </div>
+          {%- endif -%}
+
+          {%- if name != blank -%}
+            <h6 class="mt-6 mb-0">{{ name }}</h6>
+          {%- endif -%}
+        </a>
+
+        {%- if facebook != blank or instagram != blank or twitter != blank -%}
+          <div class="flex items-center justify-center mt-4 -mx-2">
+            {%- if facebook != blank -%}
+              <a href="{{ facebook }}" target="_blank" class="inline-block mx-2 group hover:text-pine transition duration-300 ease-in-out">
+                {% render 'svg-facebook' %}
+              </a>
+            {%- endif -%}
+            {%- if instagram != blank -%}
+              <a href="{{ instagram }}" target="_blank" class="inline-block mx-2 group hover:text-pine transition duration-300 ease-in-out">
+                {% render 'svg-instagram' %}
+              </a>
+            {%- endif -%}
+            {%- if twitter != blank -%}
+              <a href="{{ twitter }}" target="_blank" class="inline-block mx-2 group hover:text-pine transition duration-300 ease-in-out">
+                {% render 'svg-twitter' %}
+              </a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="flex-1 lg:ml-30 mt-8 lg:mt-0">
+        {%- if bio != blank -%}
+          <div class="blog-author__bio">
+            {{ bio }}
+          </div>
+        {%- endif -%}
+
+        {%- if label != blank -%}
+          <div class="uppercase font-sora font-semibold text-pine text-special">
+            <span>{{ article.metafields["author.author"]["label"] }}</span>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}

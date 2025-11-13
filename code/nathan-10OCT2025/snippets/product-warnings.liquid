@@ -1,0 +1,17 @@
+{%- capture is_quickshop -%}
+  {%- if quickshop -%}qs-{%- endif -%}
+{%- endcapture -%}
+<!-- Product Warnings -->
+<div>
+  <div id="{{- is_quickshop -}}prop65Warning" style="display: none;" class="{% if quickshop %}mt-2{% endif %}">
+    <div class="flex">
+      <div class="mr-2.5">
+        {% render 'svg-warning' %}
+      </div>
+      <p class="p-s {% if quickshop %}mb-0{% endif %}">WARNING: This product can expose you to lead, which is known to the State of California to cause cancer. For more information, go to <a href="https://p65warnings.ca.gov">P65Warnings.ca.gov</a>.</p>
+    </div>
+  </div>
+  <div id="{{- is_quickshop -}}collagenWarning" style="display: none;">
+    <p class="text-center" style="color: #D64123;">Collagen products are not available to ship to certain countries due to regulations.</p>
+  </div>
+</div>

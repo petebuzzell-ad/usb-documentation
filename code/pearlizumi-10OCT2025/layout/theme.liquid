@@ -1,0 +1,306 @@
+{%- comment %}<locksmith:0385>{% endcomment -%}
+  {%- include 'locksmith' -%}
+{%- comment %}</locksmith:0385>{% endcomment -%}
+
+{% include 'shogun-content-handler' %}
+{% liquid
+  if shop.permanent_domain == 'pearlizumi.myshopify.com'
+    assign storefront = "US"
+  elsif shop.permanent_domain == 'pearlizumi-ca.myshopify.com'
+    assign storefront = "CA"
+  elsif shop.permanent_domain == 'pearl-izumi-int.myshopify.com'
+    assign storefront = "INT"
+  endif
+
+  assign ss_collection_handle = settings.ss_collection_handle
+  if storefront == "CA" and shop.locale == "fr"
+    assign ss_collection_handle = "shop"
+  endif
+
+  if shop.permanent_domain == 'pearlizumi-dev.myshopify.com' or shop.permanent_domain == 'pearlizumi-cadev.myshopify.com'
+    assign dev_store = true
+  else
+    assign dev_store = false
+  endif
+%}
+
+{%- unless dev_store -%}
+{%- endunless -%}
+
+{% comment %}ly_liquid_scripts_begin{% endcomment %}
+{% capture ly_liquid_content %}
+{% comment %}ly_liquid_scripts_end{% endcomment %}
+
+<!DOCTYPE html>
+<html lang="{{ shop.locale }}"{% if storefront == "CA" %}{% comment %}ly_dir_replace_for_[]_begin{% endcomment %} {%- assign language_code = '_' | append: request.locale.iso_code -%}{%- if '_ar_he_fa_ur' contains language_code -%}dir="rtl" {%- endif -%}{% comment %}ly_dir_replace_end{% endcomment %}{% endif %}>
+
+<head>
+  {{ locksmith_initializations }}
+  {%- comment -%}UserWay Test for ADA{%- endcomment -%}
+  <script src="https://cdn.userway.org/widget.js" data-account="7EmL1Oo5IX"></script>
+
+  {%- unless template == 'cart' -%}
+    {%- comment -%}For CE: yottaa is added via GTM tag for cart{%- endcomment -%}
+    <script src="https://rapid-cdn.yottaa.com/rapid/lib/wd1wJj_L-pD28Q.js"></script>
+    {%- comment -%}<script src="https://cdn.shopify.com/s/files/1/0518/9405/9179/files/wd1wJj_L-pD28Q.js?v=1722532680" defer></script>{%- endcomment -%}
+  {%- endunless -%}
+  {%- comment -%}{% render 'gcm-integration-script' %}Consentmo{%- endcomment -%}
+
+  {%- comment -%} Omit certain pages from Search Engine Crawlers {%- endcomment -%}
+  {%- assign hide_from_crawlers = false -%}
+  {%- if page and page.url == "/pages/pro" -%}
+    {%- assign hide_from_crawlers = true -%}
+  {%- elsif collection and collection.handle == "frontpage" -%}
+    {%- assign hide_from_crawlers = true -%}
+  {% elsif template == 'product.custom' or template == 'product.hidden' %}
+    {%- assign hide_from_crawlers = true -%}
+  {%- endif -%}
+
+  {%- comment -%} Preloading collection hero image to optimize LCP {%- endcomment -%}
+  {% if template == 'collection' and collection.image %}
+  <link
+    rel="preload"
+    as="image"
+    href="{{ collection.image | image_url: width: 1440, format: 'webp' }}"
+    type="image/webp"
+    media="(min-width: 768px)"
+    imagesizes="(min-width: 1024px) 1440px, (min-width: 768px) 960px, 100vw"
+  />
+  {% endif %}
+
+
+  {%- if hide_from_crawlers -%}
+    <meta name="robots" content="noindex">
+  {%- endif -%}
+
+  {%- comment -%} Cozy Country Redirect {%- endcomment -%}
+  {% comment %} {%- if storefront == "US" -%}
+    {{ "https://cozycountryredirect.addons.business/js/eggbox/9016/dtag/script.js?shop=pearlizumi.myshopify.com" | script_tag }}
+  {%- elsif storefront == "CA" -%}
+    {{ "https://cozycountryredirect.addons.business/js/eggbox/9017/dtag/script.js?shop=pearlizumi-ca.myshopify.com" | script_tag }}
+  {%- elsif storefront == "INT" -%}
+    {{ "https://cozycountryredirect.addons.business/js/eggbox/9018/dtag/script.js?shop=pearl-izumi-int.myshopify.com" | script_tag }}
+  {%- endif -%} {% endcomment %}
+
+  <!-- hreflang tags -->
+  {%- if storefront == "US" -%}
+    <link rel="alternate" hreflang="en-us" href="https://www.pearlizumi.com{{ request.path }}">
+    <link rel="alternate" hreflang="en-ca" href="https://pearlizumi.ca{{ request.path }}">
+    <link rel="alternate" hreflang="fr-ca" href="https://pearlizumi.ca/fr{{ request.path }}">
+    <link rel="alternate" hreflang="x-default" href="https://www.pearlizumi.com{{ request.path }}">
+  {%- elsif storefront == "CA" -%}
+    <link rel="alternate" hreflang="en-us" href="https://www.pearlizumi.com{{ request.path }}">
+    <link rel="alternate" hreflang="en-ca" href="https://pearlizumi.ca{{ request.path }}">
+    <link rel="alternate" hreflang="fr-ca" href="https://pearlizumi.ca/fr{{ request.path }}">
+    <link rel="alternate" hreflang="x-default" href="https://pearlizumi.ca{{ request.path }}">
+  {%- elsif storefront == "INT" -%}
+    <link rel="alternate" hreflang="en" href="https://international.pearlizumi.com{{ request.path }}">
+  {%- else -%}
+    <link rel="alternate" hreflang="x-default" href="https://pearlizumi.com{{ request.path }}">
+  {%- endif -%}
+
+  <!-- main site JS file -->
+  <!-- <script src="{{ 'vendor.js' | asset_url }}"></script> -->
+  <script src="{{ 'layout.build.js' | asset_url }}" defer></script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="shortcut icon" href="" type="image/png">
+
+
+  {%- capture seo_title -%}
+    {{ page_title }}
+    {%- if current_page != 1 -%}
+      &ndash; {{ 'general.meta.page' | t: page: current_page }}
+    {%- endif -%}
+    {%- unless page_title contains shop.name -%}
+      &ndash; {{ shop.name }}
+    {%- endunless -%}
+  {%- endcapture -%}
+  {%- unless dev_store -%}
+    {%- if page_description and storefront == "US" -%}
+      {%- comment %}<locksmith:a876>{% endcomment -%}
+        {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}{% if var == 'true' %}<meta name="description" content="{{ page_description | escape }}">{% endif -%}
+        {%- comment %}original: <meta name="description" content="{{ page_description | escape }}">{%- endcomment %}
+      {%- comment %}</locksmith:a876>{% endcomment -%}
+    {%- endif -%}
+  {%- endunless -%}
+
+  {% if settings.favicon != blank %}
+  <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+  {% endif %}
+
+  {%- comment -%} Avada SEO {%- endcomment -%}
+  {%- if storefront == "US" -%}
+    {% include 'avada-seo' %}
+  {%- endif -%}
+
+  <title>{{ seo_title }}</title>
+
+  {% render 'head-meta' with storefront: storefront %}
+
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+  {{ content_for_header }}
+
+  {%- render 'yotpo-script-include' storefront: storefront -%}
+
+  {%- if storefront == 'CA' -%}
+    {% comment %}ly_dir_styles_begin{% endcomment %}{%- assign language_code = '_' | append: request.locale.iso_code -%}{%- if '_ar_he_fa_ur' contains language_code -%}{{- 'ly-rtl.css' | asset_url | stylesheet_tag -}}{%- endif -%}{% comment %}ly_dir_styles_end{% endcomment %}
+  {%- endif -%}
+
+  {%if settings.ss_enable %}
+  	{% include 'ss-script' storefront: storefront %}
+  {% endif %}
+
+  {%- if storefront == "US" and page and page.handle contains "frequently-asked-questions" -%}
+    {% render 'faq-rich-results', page: page %}
+  {%- endif -%}
+
+  {%- if storefront == "US" -%}
+    <meta name="google-site-verification" content="q7EtRXjyZjGK2WDhjaPfEL6Y9EZBiIBJh6de6O4gNZw" />
+  {%- endif -%}
+
+  {%- if template.name == 'gift_card' -%}
+    <script src="{{ 'vendor/qrcode.js' | shopify_asset_url }}" defer></script>
+  {%- endif -%}
+
+  {% render 'shogun-head' %}
+</head>
+
+{%- if customer -%}
+  {%- comment -%} check if the customer is a Pro member {%- endcomment -%}
+  {%- assign discount_tag = false -%}
+  {%- assign limit_tag = false -%}
+  {%- for tag in customer.tags -%}
+    {%- if tag contains "discount-" -%}
+      {%- assign discount_tag = tag | remove: "discount-" | plus: 0 -%}
+    {%- endif -%}
+    {%- if tag contains "limit-" -%}
+      {%- assign limit_tag = tag | remove: "limit-" | plus: 0 -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{%- section 'cart-drawer' -%}
+
+<body
+  {% if settings.ss_enable and collection.handle and collection.handle == ss_collection_handle %} class="ss-shop"{% endif %}
+  data-storefront="{{ storefront }}"
+  data-devstore="{{ dev_store }}"
+  data-language="{{ shop.locale }}"
+  data-is-pro="{% if limit_tag and discount_tag %}true{% else %}false{% endif %}"
+  {% if discount_tag %}data-pro-discount="{{- discount_tag -}}"{% endif %}
+  {% if limit_tag %}data-pro-limit="{{- limit_tag -}}"{% endif %}
+  data-extra-pro-discount="{{- settings.pro_extra_discount -}}"
+  data-extra-pro-discount-amount="{{- settings.extra_pro_discount_amount -}}"
+  data-coming-soon-text="{{ settings.coming_soon_text | escape }}"
+  data-fs-customers="{{ settings.free_shipping_enabled_normals }}"
+  data-fs-pros="{{ settings.free_shipping_enabled_pros }}"
+>
+
+  {% render 'pro-classes' %}
+
+  {% assign splash_page = settings.show_splash %}
+  {% if splash_page %}
+    {% render 'splash-page' %}
+  {% else %}
+    {% comment %} {% section 'utility-bar' %}
+    {% section 'header' %} {% endcomment %}
+    {% comment %} Replacing old Utility Bar and Header liquids with new Header Group {% endcomment %}
+    {% sections 'header-group' %}
+
+    <div tabindex="0" class="mobile-search !z-[101] fixed top-0 left-0 w-full h-15 bg-white shadow-search-auto hidden xl:hidden" data-search-wrapper>
+      {%- render 'search-form', storefront: storefront -%}
+    </div>
+    <!-- Meganav Scrim -->
+    <div class="hidden lg:block fixed opacity-0 z-1 invisible top-0 bottom-0 left-0 right-0 transition-opacity bg-stone bg-opacity-40" data-scrim>
+    </div>
+
+    <main role="main" id="root">
+      {{ content_for_layout }}
+    </main>
+    {% sections 'footer-group' %}
+  {% endif %}
+
+  {% section 'fit-guides' %}
+  {% section 'technology-icons' %}
+  {% render 'tailwind-classes' %}
+
+  {%- unless storefront == "INT" -%}
+    {%- if template.suffix == "bundle" -%}
+      {% render 'mini-cart' bundle: true %}
+    {%- else -%}
+      {% render 'mini-cart' bundle: false %}
+    {%- endif -%}
+  {%- endunless -%}
+
+  <!-- Global Modal -->
+  <div class="hidden lg:block">
+    <div id="siteOverlay" class="site-overlay fixed top-0 left-0 w-screen h-screen bg-black opacity-0 transition duration-300 ease-in-out z-30 hidden"></div>
+    <div id="searchOverlay" class="site-overlay fixed bottom-0 left-0 w-screen h-desktop-search bg-black opacity-0 transition duration-300 ease-in-out z-10 hidden"></div>
+  </div>
+
+  <div class="fixed z-10 top-0 right-0 bottom-0 left-0 bg-black bg-opacity-75 hidden" data-modal-container>
+    <div class="global-modal-inner fixed top-2.5 md:top-1/2 left-1/2 transform -translate-x-1/2 md:-translate-y-1/2 bg-white w-screen overflow-y-auto rounded max-w-1200" data-inner-modal></div>
+  </div>
+
+  {%- render 'quickshop-modal' -%}
+
+  {% unless storefront == 'US' %}
+    {% render 'listrak-tracking' storefront: storefront %}
+  {% endunless %}
+
+  {%- if storefront == "US" -%}
+    {% render 'accessibe-widget' %}
+  {%- endif -%}
+
+  {% render 'avantlink-script' storefront: storefront %}
+
+  <!-- langify-v2-scripts-begin -->{% endcapture %}
+  {%- if storefront == "CA" -%}
+    {% comment %}ly_liquid_scripts_begin{% endcomment %}
+    {% render 'ly-liquid-scripts' content: ly_liquid_content %}
+    {% comment %}ly_liquid_scripts_end{% endcomment %}
+
+    {% comment %}ly_core_scripts_begin{% endcomment %}
+    {% render 'ly-core-scripts' %}
+    {% comment %}ly_core_scripts_end{% endcomment %}
+
+    {% comment %}ly_switcher_factory_begin{% endcomment %}
+    {% render 'ly-switcher-factory' %}
+    {% comment %}ly_switcher_factory_end{% endcomment %}
+  {% else %}
+     {{ ly_liquid_content }}
+  {%- endif -%}
+  <!-- langify-v2-scripts-end -->
+
+  {% if settings.ss_enable %}
+    {% include 'ss-intellisuggest', storefront: storefront %}
+  {% endif %}
+  {%- if storefront == "US" -%}
+    {% include 'truefit-size-sampling' %}
+  {%- endif -%}
+  {% include 'loop-returns' %}
+
+  {% unless storefront == 'US' %}
+    <!-- Listrak Analytics – Javascript Framework -->
+    {% if customer %}
+      <script type="text/javascript" async>
+          var ltkCustObj = { "firstname": "{{customer.first_name}}", "lastname": "{{customer.last_name}}", "email": "{{customer.email}}"};
+      </script>
+    {% endif %}
+    <script type="text/javascript" async>
+      var biJsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+      (function (d, s, id, tid, vid) {
+          var js, ljs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return; js = d.createElement(s); js.id = id;
+          js.src = biJsHost + "cdn.listrakbi.com/scripts/script.js?m=" + tid + "&v=" + vid;
+          ljs.parentNode.insertBefore(js, ljs);
+      })(document, 'script', 'ltkSDK', 'MlOcLQD1Cj3j', '1');
+    </script>
+  {% endunless %}
+</body>
+
+</html>

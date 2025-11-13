@@ -1,0 +1,112 @@
+{%- liquid
+  assign btn_1 = false
+  assign btn_2 = false
+  assign btn_count = 0
+  if block.settings.btn_text_1 != blank and block.settings.btn_url_1 != blank
+    assign btn_1 = true
+    assign btn_count = btn_count | plus: 1
+  endif
+  if block.settings.btn_text_2 != blank and block.settings.btn_url_2 != blank
+    assign btn_2 = true
+    assign btn_count = btn_count | plus: 1
+  endif
+  if block.settings.btn_text_3 != blank and block.settings.btn_url_3 != blank
+    assign btn_3 = true
+    assign btn_count = btn_count | plus: 1
+  endif
+-%}
+{% assign mb_class = 'mb-0' %}{% if block.settings.enable_bottom_margin %}{% assign mb_class = 'mb-20 md:mb-40' %}{% endif %}
+
+<div data-section-id="{{ block.id }}" data-section-type="hero" id="section-{{ number }}" class="relative block {{ mb_class }}">
+
+  {% assign content_text_color_class = "text-black" %}
+  {% assign breadcrumbs_text_color_class = "text-black" %}
+  {% assign breadcrumbs_overlay_class = "" %}
+  {% if block.settings.image != blank or block.settings.video != blank or block.settings.youtube_video != blank %}
+    {% assign content_text_color_class = "text-white" %}
+    {% assign breadcrumbs_text_color_class = "text-light-grey" %}
+    {% assign breadcrumbs_overlay_class = "bg-dark-stone-overlay" %}
+  {% endif %}
+
+  {% if block.settings.show_breadcrumbs %}
+    <div class="hero__breadcrumbs absolute w-full flex justify-center z-1 my-4">
+      <div class="hero__breadcrumbs-inner px-2 {{ breadcrumbs_overlay_class }} {{ breadcrumbs_text_color_class }}">
+        {% render 'snippet-hero-breadcrumbs' %}
+      </div>
+    </div>
+  {% endif %}
+
+  {% assign content_class = "relative" %}
+  {% if block.settings.image != blank or block.settings.video != blank or block.settings.youtube_video != blank %}
+    <div class="hero__bg relative">
+      {% if block.settings.image != blank %}
+        <picture>
+          <source media="(min-width:1024px)" data-srcset="{{ block.settings.image | img_url: 'master' }}">
+          <source media="(max-width:1023px)" data-srcset="{% if block.settings.image_mobile != blank %}{{ block.settings.image_mobile | img_url: 'master' }}{% endif %}">
+          <source media="(max-width:767px)" data-srcset="{% if block.settings.image_mobile != blank %}{{ block.settings.image_mobile | img_url: '768x', scale: 2 }}{% endif %}">
+          <img class="lazy hero__bg-image object-cover mx-auto" data-src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image.alt | escape }}" />
+        </picture>
+      {% elsif block.settings.video != blank or block.settings.video_1 != blank %}
+        <video class="w-full min-h-400 lg:min-h-560 object-cover" autoplay="true" loop="true" muted="true" playsinline>
+          <source src="{{ block.settings.video }}" type="video/webm" />
+          <source src="{{ block.settings.video_1 }}" type="video/mp4" />
+        </video>
+      {% elsif block.settings.youtube_video != blank %}
+        <div class="relative pt-[56.25%] min-h-400 lg:min-h-560">
+          <iframe class="absolute inset-0" src="https://www.youtube.com/embed/{{ block.settings.youtube_video.id }}?rel=0&version=3&autoplay=1&controls=0&showinfo=0&playlist={{ block.settings.youtube_video.id }}&loop=1&mute=1" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      {% endif %}
+    </div>
+    {% assign content_class = "absolute" %}
+  {% endif %}
+
+  {%- if btn_count == 1 -%}
+  <a class="hero__content block {{ content_class }} w-full lg:h-full bottom-0 lg:flex lg:flex-col lg:align-center lg:justify-center"
+    href="{% if btn_1 == true %}{{block.settings.btn_url_1}}{% endif %}{% if btn_2 == true %}{{block.settings.btn_url_2}}{% endif %}{% if btn_3 == true %}{{block.settings.btn_url_3}}{% endif %}">
+  {%- else -%}
+  <div class="hero__content block {{ content_class }} w-full lg:h-full bottom-0 lg:flex lg:flex-col lg:align-center lg:justify-center">
+  {%- endif -%}
+    <div class="text-center py-0 lg:py-30">
+      <div class="lg:max-w-full-width-content bg-dark-stone-overlay p-6 md:p-15 m-auto">
+        {% if block.settings.subtitle != blank %}
+          <p class="font-sora font-normal text-special uppercase mb-0 {{ content_text_color_class }}">{{ block.settings.subtitle }}</p>
+        {% endif %}
+        {% if block.settings.title != blank %}
+          <h2 class="uppercase mb-0 {{ content_text_color_class }}">{{ block.settings.title }}</h2>
+        {% endif %}
+        {% if block.settings.text != blank %}
+          <p class="mt-4.5 mb-0 mx-auto text-p-lg {{ content_text_color_class }} {% if block.settings.show_description == false %}hidden md:block{% endif %}">{{ block.settings.text }}</p>
+        {% endif %}
+
+        <div class="flex items-center justify-center">
+          {%- if btn_1 == true -%}
+            {%- if btn_count == 1 -%}
+              <span class="font-sora font-semibold text-special-xs md:text-special uppercase text-white border-b-1.5 border-white hover:text-bright-yellow hover:border-bright-yellow mt-4 md:mt-6">{{block.settings.btn_text_1}}</span>
+            {%- else -%}
+              <a href="{{block.settings.btn_url_1}}" class="font-sora font-semibold text-special-xs md:text-special cursor-pointer uppercase text-white border-b-1.5 border-white hover:text-bright-yellow hover:border-bright-yellow mt-4 md:mt-6">{{block.settings.btn_text_1}}</a>
+            {%- endif -%}
+          {%- endif -%}
+          {%- if btn_2 == true -%}
+            {%- if btn_count == 1 -%}
+              <span class="font-sora font-semibold text-special-xs md:text-special uppercase text-white border-b-1.5 border-white hover:text-bright-yellow hover:border-bright-yellow mt-4 md:mt-6">{{block.settings.btn_text_2}}</span>
+            {%- else -%}
+              <a href="{{block.settings.btn_url_2}}" class="font-sora font-semibold text-special-xs md:text-special cursor-pointer uppercase text-white border-b-1.5 border-white hover:text-bright-yellow hover:border-bright-yellow mt-4 md:mt-6 ml-6 md:ml-7.5">{{block.settings.btn_text_2}}</a>
+            {%- endif -%}
+          {%- endif -%}
+          {%- if btn_3 == true -%}
+            {%- if btn_count == 1 -%}
+              <span class="font-sora font-semibold text-special-xs md:text-special uppercase text-white border-b-1.5 border-white hover:text-bright-yellow hover:border-bright-yellow mt-4 md:mt-6">{{block.settings.btn_text_3}}</span>
+            {%- else -%}
+              <a href="{{block.settings.btn_url_3}}" class="font-sora font-semibold text-special-xs md:text-special cursor-pointer uppercase text-white border-b-1.5 border-white hover:text-bright-yellow hover:border-bright-yellow mt-4 md:mt-6 ml-6 md:ml-7.5">{{block.settings.btn_text_3}}</a>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  {%- if btn_count == 1 -%}
+  </a>
+  {%- else -%}
+  </div>
+  {%- endif -%}
+
+</div>

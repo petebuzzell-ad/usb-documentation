@@ -1,0 +1,52 @@
+{%- paginate collection.products by section.settings.per_page -%}
+  {% if settings.ss_enable %}
+    <div id="searchspring-content">
+      {% comment %}Searchspring Results{% endcomment %}
+    </div>
+  {% else %}
+    <div class="collection-grid">
+      <div class="collection-grid--inner">
+        {%- if collection.products_count == 0 -%}
+          <div class="collection-grid__empty text-center col-span-3">
+            No products
+          </div>
+        {%- else -%}
+          {%- for product in collection.products -%}
+            {%- render 'product-carousel-item'
+              , product: product -%}
+          {%- endfor -%}
+        {%- endif -%}
+
+        {%- if current_block != nil -%}
+          {%- for i in (1..5) -%}
+            {%- capture image -%}tile_image_{{i}}
+            {%- endcapture -%}
+            {%- capture video -%}tile_video_{{i}}
+            {%- endcapture -%}
+            {%- capture title -%}tile_title_{{i}}
+            {%- endcapture -%}
+            {%- capture description -%}tile_desc_{{i}}
+            {%- endcapture -%}
+            {%- capture url -%}tile_url_{{i}}
+            {%- endcapture -%}
+            {%- render 'plp-cta-item'
+              , image: current_block.settings[image]
+              , video: current_block.settings[video]
+              , title: current_block.settings[title]
+              , description: current_block.settings[description]
+              , url: current_block.settings[url] -%}
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+
+      {%- if paginate.next.url != blank -%}
+        <div class="collection-grid-load">
+          <div class="block md:grid md:grid-cols-3 md:gap-6">
+            <button class="collection-grid__viewmore button button-secondary" onclick="window.eHS.collection.loadMore('{{paginate.next.url}}');">
+            VIEW MORE</button>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  {% endif %}
+{%- endpaginate -%}

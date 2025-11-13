@@ -1,0 +1,53 @@
+<div class="mt-7 pb-15">
+  <div class="px-5 lg:px-14 max-w-[1480px] mx-auto">
+    <div class="mx-auto w-full" id="template" style="max-width: 420px;">
+      <div id="customer">
+        <div id="create-customer">
+          <div class="template_header mt-2">
+            <h2 class="title text-center text-h3 lg:text-h4 mb-2">Create an Account</h2>
+            <p style="text-align:center;">Join Our Nathan Loyalty/Rewards Program today! You'll automatically become a member upon signing up. Earn points & exclusive rewards every time you shop. (Plus, get 50 points when you join now!)</p>
+          </div>
+
+          {% form 'create_customer' %}
+
+            {{ form.errors | default_errors }}
+
+            <input name="return_to" type="hidden" value="/account">
+
+            <div class="input-row mb-5">
+              <label class="login" for="first_name">{{ 'customer.register.first_name' | t }}</label>
+              <input class="large" id="first_name" name="customer[first_name]" required size="30" type="text" value=""/>
+            </div>
+
+            <div class="input-row mb-5">
+              <label class="login" for="last_name">{{ 'customer.register.last_name' | t }}</label>
+              <input class="large" id="last_name" name="customer[last_name]" required size="30" type="text" value=""/>
+            </div>
+
+            <div class="input-row mb-5">
+              <label class="login" for="email">{{ 'customer.register.email' | t }}</label>
+              <input class="large" id="email" name="customer[email]" required size="30" type="email" value=""/>
+            </div>
+
+            <div class="input-row mb-5">
+              <label class="login" for="password">{{ 'customer.register.password' | t }}</label>
+              <input class="large password" id="password" name="customer[password]" required size="30" type="password" value=""/>
+            </div>
+
+            <div class="mb-5" id="accepts_marketing">
+              <input checked="checked" id="marketing" name="customer[accepts_marketing]" type="checkbox" value="true"/>
+              <label for="marketing">I want to receive the newsletter.</label>
+            </div>
+
+            <div class="action_bottom flex flex-col gap-2">
+              <input class="button button-secondary" type="submit" value="Create"/>
+              <span class="note">
+                <a class="underline" href="{{ routes.account_login_url }}">Already a member? Log in now</a>
+              </span>
+            </div>
+          {% endform %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

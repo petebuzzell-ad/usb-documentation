@@ -1,0 +1,28 @@
+{%- liquid
+  assign show = false
+  assign content = settings.brand_value_callout_content
+  assign icon = settings.brand_value_callout_icon
+  assign svg = settings.brand_value_callout_svg
+  assign bg_color = settings.brand_value_callout_bg_color
+
+  if content != blank and settings.brand_value_callout_show != false
+   assign show = true
+  endif
+-%}
+
+{%- if show != false -%}
+  <section class="brand-value-callout bg-{{ bg_color }} py-6 px-4">
+    <div class="flex gap-3 inner">
+      {%- if icon != blank or svg != blank -%}
+        <div class="w-full h-auto" style="max-width: 32px;">
+          {%- if svg -%}
+            {{ svg }}
+          {%- else -%}
+            <img loading="lazy" src="{{ icon | img_url: '32px'}}" alt="Brand Value Call Out">
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+      <div class="{% if icon == blank and svg == blank %}text-center{% endif %}">{{ content }}</div>
+    </div>
+  </section>
+{%- endif -%}

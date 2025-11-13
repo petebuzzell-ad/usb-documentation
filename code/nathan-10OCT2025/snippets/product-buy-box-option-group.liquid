@@ -1,0 +1,127 @@
+{%- unless option_handle == 'color' or quickview -%}
+  {%- assign size_chart_trigger = 'select-size' -%}
+{%- endunless -%}
+
+<!-- Option Label Row -->
+<div class="flex items-center {% if size_guide %}justify-between{% else %}justify-start{% endif %} {{ size_chart_trigger }}">
+  <!-- Label -->
+  <div class="text-special-s font-lato font-semibold my-4 mr-3">
+    <span>{{ option.name | upcase }}:&nbsp;</span>
+    <span data-option-label="{{- option_handle -}}"></span>
+  </div>
+</div>
+{%- comment -%} Color Options {%- endcomment -%}
+{% if option_handle == 'color' or option_handle == 'couleur' %}
+
+  {%- comment -%} Hide "Regular" Color Prices if there are no "Sale" prices to contrast {%- endcomment -%}
+  {% if regular_price and on_sale_colors != blank and regular_price > 0 %}
+    {%- assign display_price = regular_price -%}
+    {%- if discount_tag and limit_tag -%}
+      {%- unless quickview -%}
+        {%- comment -%} bring the regular price down to match pro pricing {%- endcomment -%}
+        {% assign display_price = 100.00
+          | minus: discount_tag
+          | times: display_price
+          | divided_by: 100 %}
+      {%- endunless -%}
+    {%- endif -%}
+    {%- comment -%} Color Price Row {%- endcomment -%}
+    <div class="flex items-baseline max-w-1/4" data-regular-color-price-label data-color-label>
+      <span class="text-p font-lato font-semibold text-grey-three" {% if quickview %}
+        data-regular-color-price="{{- regular_price -}}"
+        {%- endif -%}>{{ display_price | money }}</span>
+    </div>
+  {% endif %}
+
+  {%- comment -%}
+    Get EXACT color names from on_sale_colors to determine which options to omit
+    from the the "Regular" color group. Prevents bugs with substrings
+    (ie. Cosmic Black is on sale, so Black is mistakenly omitted from this grouping)
+  {%- endcomment -%}
+  {%- assign on_sale_colors_split = on_sale_colors | split: '||' -%}
+  {%- assign on_sale_color_names = '' -%}
+  {%- if on_sale_colors_split.size > 0 -%}
+    {%- for price_and_colors in on_sale_colors_split -%}
+      {%- if price_and_colors == blank -%}
+        {%- continue -%}{%- endif -%}
+      {%- assign price_colors = price_and_colors | split: '::' -%}
+      {%- assign colors = price_colors[2] -%}
+      {%- assign on_sale_color_names = on_sale_color_names | append: colors | append: '##' -%}
+    {%- endfor -%}
+  {%- endif -%}
+  {%- assign on_sale_color_names = on_sale_color_names | split: '##' | uniq -%}
+
+  <div class="flex flex-wrap mb-1 last:mb-2 last:pb-8" data-option-group="{{- option_handle -}}" data-option-num="{{ option_num }}">
+    {% for value in option.values %}
+      {%- comment -%} on_sale_color_names should contain the exact value {%- endcomment -%}
+      {%- unless on_sale_color_names contains value -%}
+        <button
+          data-color-option
+          data-option="{{ option_handle }}"
+          data-value="{{ value | handleize }}"
+          style="padding: 3px;"
+          class="option-swatch w-9 h-9 border border-grey-five rounded-circle mr-2 mb-2 lg:mr-4 lg:mb-3 cursor-pointer focus:outline-none hover:border-grey-one"
+          onclick="{% if quickview %}eHS.quickviewProductBuyBox.handleOptionSelect('{{ option.name }}', {{ option_num }}, '{{ value }}'){% else %}eHS.productBuyBox.handleOptionSelect('{{ option.name }}', {{ option_num }}, '{{ value }}'){% endif %}">
+          <div class="swatch-{{ value | handleize }} w-full h-full bg-grey-four rounded-circle"></div>
+          <span class="sr-only">{{ option_handle | capitalize }} {{ value }}</span>
+        </button>
+      {%- endunless -%}
+    {% endfor %}
+  </div>
+  {%- if on_sale_colors_split.size > 0 -%}
+    {% for price_and_colors in on_sale_colors_split %}
+      {% if price_and_colors == blank %}
+        {% continue %}{% endif %}
+      {% assign price_colors = price_and_colors | split: '::' %}
+
+      {%- comment -%} Color Price Row {%- endcomment -%}
+      <div class="flex items-baseline max-w-1/4 mb-2" data-clearance-color-price-label data-color-label>
+        <span class="text-p font-lato font-semibold text-red mr-2">{{ price_colors[0] | money }}</span>
+        <span class="text-p font-lato font-normal line-through text-grey-four">{{ price_colors[1] | money }}</span>
+      </div>
+
+      <div class="flex flex-wrap mb-1 last:mb-2 last:pb-8" data-option-group="{{- option_handle -}}" data-option-num="{{ option_num }}" data-clearance-color-price-options>
+        {% for value in option.values %}
+          {%- if price_and_colors contains value -%}
+            <button
+              data-color-option
+              data-option="{{ option_handle }}"
+              data-value="{{ value | handleize }}"
+              style="padding: 3px;"
+              class="option-swatch w-9 h-9 border border-grey-five rounded-circle mr-2 mb-2 lg:mr-4 lg:mb-3 cursor-pointer focus:outline-none hover:border-grey-one"
+              onclick="{% if quickview %}eHS.quickviewProductBuyBox.handleOptionSelect('{{ option.name }}', {{ option_num }}, '{{ value }}'){% else %}eHS.productBuyBox.handleOptionSelect('{{ option.name }}', {{ option_num }}, '{{ value }}'){% endif %}">
+              <div class="swatch-{{ value | handleize }} w-full h-full bg-grey-four rounded-circle"></div>
+              <span class="sr-only">{{ option_handle | capitalize }} {{ value }}</span>
+            </button>
+          {%- endif -%}
+        {% endfor %}
+      </div>
+    {% endfor %}
+  {%- endif -%}
+
+{% else %}
+  {%- comment -%} Size Options, etc. {%- endcomment -%}
+  <div class="flex md:grid grid-flow-row grid-cols-6 md:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-6 gap-2 mb-2 {% if option.values.size == 1 %}hidden{% endif %}" data-option-group="{{- option_handle -}}" data-option-num="{{ option_num }}">
+    {% for value in option.values %}
+      <div class="option-wrapper flex-1">
+        <button data-option="{{ option_handle }}" data-value="{{ value | handleize }}" class="option border border-grey-five p-2 min-h-option-btn cursor-pointer font-lato text-grey-three text-special-s text-center w-full focus:outline-none hover:border-grey-one" onclick="{% if quickview %}eHS.quickviewProductBuyBox.handleOptionSelect('{{ option.name | downcase }}', {{ option_num }}, '{{ value }}'){% else %}eHS.productBuyBox.handleOptionSelect('{{ option.name | downcase }}', {{ option_num }}, '{{ value }}'){% endif %}">
+          {{ value }}
+          <span class="sr-only">{{ option_handle | capitalize }} {{ value }}</span>
+        </button>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<style>
+  body #productTemplate div.ks-chart-container.sizing-chart-container.ks-container-with-modal {
+    width: fit-content !important;
+  }
+
+  body #productTemplate div.ks-chart-container.sizing-chart-container.ks-container-with-modal * {
+    font-size: 14px !important;
+    color: #ffa400 !important;
+  }
+
+
+</style>

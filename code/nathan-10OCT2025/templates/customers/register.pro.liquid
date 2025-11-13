@@ -1,0 +1,34 @@
+{% liquid
+  if shop.permanent_domain == 'usbns.myshopify.com'
+    assign storefront = "US"
+  endif
+
+  assign login_link = "/account/login?referrer=pro"
+%}
+
+<div class="xl:px-0 w-full max-w-840 mx-auto lg:px-15.5 md:px-11 px-6">
+  <div class="account_page mx-auto text-center lg:pb-20 pb-14" >
+    <div class="register-account">
+
+      {%- comment -%} Pro Member Benefits Richtext {%- endcomment -%}
+      {%- assign benefits_page_handle = "pro-purchase-program-benefits" -%}
+      <div class="rte pt-8 lg:pt-16 general-content-template text-left">
+        {% include 'shortcode' load: pages[benefits_page_handle].content %}
+      </div>
+
+      {%- if storefront == "US" -%}
+
+        {%- comment -%} US HulkApps Form ID {%- endcomment -%}
+        <div style="margin:0 auto;" class="pxFormGenerator" id="Bfr4PFUD7HV0FXMUzKJyDw"></div>
+
+      {%- elsif storefront == "CA" -%}
+
+        {%- comment -%} CA HulkApps Form ID {%- endcomment -%}
+        <div style="margin:0 auto;" class="pxFormGenerator" id="WS8e5xV500HNilKkw6098A"></div>
+
+      {%- endif -%}
+
+    </div>
+  </div>
+</div>
+

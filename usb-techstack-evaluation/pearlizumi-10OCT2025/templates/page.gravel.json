@@ -1,0 +1,163 @@
+{
+  "sections": {
+    "full-width-cta": {
+      "type": "full-width-cta",
+      "settings": {
+        "image": "shopify://shop_images/banner_d6ba483d-c220-4fc9-ba9f-a9001c2a065f.jpg",
+        "image_mobile": "shopify://shop_images/bannermob_df56bf36-72a8-452f-9401-445f39d43141.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "text_overlay_color": "#262b2c",
+        "overlay_opacity": 0.6,
+        "title": "Go Astray, Your Way",
+        "text": "<p>We're all about the gravel soundtrack—the soft static of rolling over farm roads and the chatty buzz of hardpack under our wheels. Gravel is more than a way to ride—it's a feeling. Big skies and back roads, tight two-tracks under a tunnel of trees, and chasing adventure on mixed terrain. It puts the experience above performance, and we think that's something we could all use a little more of in our riding.</p>",
+        "enable_description": true,
+        "btn_label_1": "",
+        "btn_link_1": "",
+        "btn_label_2": "",
+        "btn_link_2": "",
+        "enable_bottom_margin": false
+      }
+    },
+    "text-block": {
+      "type": "text-block",
+      "settings": {
+        "bg_color": "#000",
+        "svg": "",
+        "svg_mobile": "",
+        "text_color": "#fff",
+        "heading": "",
+        "body": "<p>The best days often contain an element of the unexpected: exploring a new road, a surprise creek crossing, stumbling upon a new cafe, or just perfect weather and the right mix of friends. Gravel embodies the unexpected, and encourages us to see what's over that next rise. Our line of gravel-geared apparel is ready to embrace the adventure with you. With features like cargo pockets, PI Dry® water-shedding treatment, moisture-wicking fabrics, and a comfortable fit that feels great hours-in, get ready to explore the groad ahead. </p>",
+        "enable_bottom_margin": true
+      }
+    },
+    "full-width-cta-reversible": {
+      "type": "full-width-cta-reversible",
+      "settings": {
+        "image": "shopify://shop_images/2_f780a167-98d8-48dd-a88a-cacfd247ea37.jpg",
+        "image_position": "right",
+        "subtitle": "",
+        "title": "Groadeo Suit",
+        "text": "<p>There's more than one way to gravel. And with more and more new gravel events coming onto the scene, we designed the Groadeo Suit for the days when performance takes precedence. Constructed from upcycled fabrics, we upgraded the features of a standard kit by adding cargo thigh pockets and PI Dry water repellency to this sleek and amazingly comfortable one-piece race machine.</p>",
+        "btn_label": "learn more",
+        "btn_link": "shopify://products/expedition-pro-groadeo-suit-11112207",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "full-width-cta-2": {
+      "type": "full-width-cta",
+      "settings": {
+        "image": "shopify://shop_images/hero_d61041b9-f3fa-4a9d-8184-41ee2970650f.jpg",
+        "image_mobile": "shopify://shop_images/heromob_abbe4ff7-3c3a-49d8-99b1-73184fcf6ac1.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "text_overlay_color": "#262b2c",
+        "overlay_opacity": 0.4,
+        "title": "Expedition pro Bib Short",
+        "text": "<p>Fact: pockets are great, and even better when paired with premium bib shorts. Made for the adventure-minded all-day rider, the Expedition PRO bibs offer a luxe fit with added functionality, including our PI Dry permanent water-repellent technology. And with support from the Levitate PRO chamois you'll be good-to-go no matter how far you go.</p>",
+        "enable_description": true,
+        "btn_label_1": "shop men's",
+        "btn_link_1": "shopify://products/mens-expedition-pro-bib-shorts-11112203",
+        "btn_label_2": "shop women's",
+        "btn_link_2": "shopify://products/womens-expedition-pro-bib-shorts-11212203",
+        "enable_bottom_margin": true
+      }
+    },
+    "full-width-cta-reversible-2": {
+      "type": "full-width-cta-reversible",
+      "settings": {
+        "image": "shopify://shop_images/3_7f11fc9d-8d72-49f8-8e5c-b64666fe0234.jpg",
+        "image_position": "right",
+        "subtitle": "",
+        "title": "Expedition Shell Short",
+        "text": "<p>Jorts may look hip, but when it comes to all-day comfort they can't beat our new Expedition Shell Short. This slim short is constructed from lightweight, high-stretch fabric that makes it easy to access the thigh cargo pockets on our Expedition Shorts, should you choose to wear them underneath. And when things get rowdy, our permanent PI Dry technology shrugs off spray from tires and stream crossings.</p>",
+        "btn_label": "LEARN MORE",
+        "btn_link": "shopify://products/mens-expedition-shell-shorts-11112208",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "full-width-cta-3": {
+      "type": "full-width-cta",
+      "settings": {
+        "image": "shopify://shop_images/GAITER.jpg",
+        "image_mobile": "shopify://shop_images/GAITERmob.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "text_overlay_color": "#262b2c",
+        "overlay_opacity": 0.5,
+        "title": "Gravel Gaiter",
+        "text": "<p>Yes, gravel is a feeling. But, it's a feeling we don't want in our shoes. Meet the Gravel Gaiter, our solution to keeping bits of dirt, sand, and rock on the road and out of our shoes and socks. Inspired by the sleek fit of trail running gaiters and our own gravel racing debacles, this over-the-ankle essential piece of gravel protection keeps your focus on pedaling, even when the terrain turns challenging.</p>",
+        "enable_description": true,
+        "btn_label_1": "learn more",
+        "btn_link_1": "https://www.pearlizumi.com/products/gravel-gaiter-14182101?variant=40647739932843",
+        "btn_label_2": "",
+        "btn_link_2": "",
+        "enable_bottom_margin": true
+      }
+    },
+    "full-width-cta-reversible-3": {
+      "type": "full-width-cta-reversible",
+      "settings": {
+        "image": "shopify://shop_images/henley.png",
+        "image_position": "right",
+        "subtitle": "",
+        "title": "Rove Tech Henley",
+        "text": "<p>Our Henley has the soft feel of a worn-in favorite tee with subtle tech that makes it the ideal companion for gravel riding. We chose drirelease fabric that expertly wicks moisture and dries quickly in the face of stream crossings and spray, to keep you cool even on hot and humid days. The Rove Henley offers a casual alternative to a jersey, so you'll be ready to go astray, your way.</p>",
+        "btn_label": "learn more",
+        "btn_link": "shopify://products/rove-tech-henley-17122201",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "full-width-cta-reversible-4": {
+      "type": "full-width-cta-reversible",
+      "settings": {
+        "image": "shopify://shop_images/tank.jpg",
+        "image_position": "right",
+        "subtitle": "",
+        "title": "Women's Symphony Tank",
+        "text": "<p>Perfect for roaming all your favorite back roads, the Symphony Tank hits the sweet spot between style and performance. A sleek alternative to a standard jersey, this tank features flattering crossover straps and a higher neckline for the best on-bike fit.</p>",
+        "btn_label": "learn more",
+        "btn_link": "shopify://products/womens-symphony-tank-11222103",
+        "btn_style": "outline-dark",
+        "enable_bottom_margin": true
+      }
+    },
+    "full-width-cta-4": {
+      "type": "full-width-cta",
+      "settings": {
+        "image": "shopify://shop_images/LS.jpg",
+        "image_mobile": "shopify://shop_images/LSmob.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "text_overlay_color": "#262b2c",
+        "overlay_opacity": 0.5,
+        "title": "Women's Attack Long Sleeve jersey",
+        "text": "<p>Designed for long days in the sun, the Attack Long Sleeve Jersey provides protective coverage in a lightweight layer. And moisture-wicking Transfer fabric means you won't overheat on warm days. Pair with the PRO Expedition Bib Short for the ultimate all-road kit.</p>",
+        "enable_description": true,
+        "btn_label_1": "learn more",
+        "btn_link_1": "shopify://products/womens-attack-long-sleeve-jersey-11222003",
+        "btn_label_2": "",
+        "btn_link_2": "",
+        "enable_bottom_margin": false
+      }
+    }
+  },
+  "order": [
+    "full-width-cta",
+    "text-block",
+    "full-width-cta-reversible",
+    "full-width-cta-2",
+    "full-width-cta-reversible-2",
+    "full-width-cta-3",
+    "full-width-cta-reversible-3",
+    "full-width-cta-reversible-4",
+    "full-width-cta-4"
+  ]
+}

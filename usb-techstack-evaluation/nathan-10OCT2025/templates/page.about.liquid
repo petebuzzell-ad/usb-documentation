@@ -1,0 +1,16 @@
+{% if page.metafields.image.desktop %}
+	<img data-src="{{ page.metafields.image.desktop }}" alt="" class="page-header-image lazyload {% if page.metafields.image.mobile %}desktop-only{% endif %}">
+{% endif %}
+{% if page.metafields.image.mobile %}
+	<img data-src="{{ page.metafields.image.mobile }}" alt="" class="page-header-image lazyload mobile-only">
+{% endif %}
+<div class="article">
+  <div class="container cf">
+    <div class="page-header cf">
+      <h1 class="majortitle">{{ page.title }}</h1>
+    </div>
+    <div class="user-content">
+      {{ page.content }}
+    </div>
+  </div>
+</div>

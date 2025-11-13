@@ -1,0 +1,11 @@
+{%  liquid 
+  assign qty = qty | default: 1
+  assign line = line | default: ''
+  assign is_visible = is_visible | default: false %}
+
+<div class="input-quantity border border-silver p-2 font-sora text-black text-special-s text-center flex justify-between align-center font-light basis-28 w-28 mr-3 text-base{% unless is_visible %} hidden{% endunless %}" data-quantity-control="{{ line }}" style="min-width: 100px;">
+  <label for="quantity" class="hidden">Quantity</label>
+  <button class="w-1/3" type="button" name="decrement" {% if qty == 1 %}disabled{% endif %}><strong>−</strong></button>
+  <input value="{{ qty }}" name="quantity" type="text" pattern="\d*" class="font-semibold text-center w-1/3" style="background-color:transparent" />
+  <button class="w-1/3" type="button" name="increment"><strong>+</strong></button>
+</div>

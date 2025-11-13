@@ -1,0 +1,146 @@
+{%- assign bg_sand = false -%}
+{%- if current_block and current_block.settings.banner_type == 'image' and collection.image -%}
+{%- elsif current_block and current_block.settings.banner_type == 'category' and items_exist -%}
+{%- else -%}
+  {%- assign bg_sand = true -%}
+{% endif %}
+
+{%- assign category_active = false -%}
+{%- for i in (1..6) -%}
+  {%- capture image -%}cat_image_{{i}}
+  {%- endcapture -%}
+  {%- capture text -%}cta_text_{{i}}
+  {%- endcapture -%}
+  {%- capture url -%}cta_url_{{i}}
+  {%- endcapture -%}
+  {%- if current_block.settings[image] != blank
+    and current_block.settings[text] != blank
+    and current_block.settings[url] != blank
+  -%}
+    {%- if request.path == current_block.settings[url] or request.path contains current_block.settings[url] -%}
+      {%- assign category_active = true -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{% liquid
+  assign collection_description = null
+  if collection.description
+    assign collection_description = collection.description | strip_html
+  endif
+
+  if shop.permanent_domain == 'usbns.myshopify.com'
+    assign storefront = 'US'
+  endif
+
+  assign ss_collection_handle = settings.ss_collection_handle
+  if storefront == 'CA' and shop.locale == 'fr'
+    assign ss_collection_handle = 'shop'
+  endif
+%}
+
+{% if settings.ss_enable and collection.handle and collection.handle == ss_collection_handle %}
+  <div id="searchspring-search-summary"></div>
+{% else %}
+  <header
+    class="
+      collection-header text-center relative {% if current_block and current_block.settings.banner_type == 'image' and
+      collection.image %} px-0 pt-21 md:py-21 {% elsif current_block and current_block.settings.banner_type == 'category' and
+      items_exist %} pt-6 pb-6 md:pt-9.5 {% else %} px-6 py-8 md:pt-12.5 md:pb-18 {% if bg_sand %}bg-snow{% endif %} {% endif
+      %}
+    "
+  >
+    <div
+      class="
+        collection-content w-full {% if current_block and current_block.settings.banner_type == 'image' and
+        collection.image %} mx-auto max-w-full-width-content bg-overlay px-6 py-9 md:pt-15 md:pb-18 {% elsif current_block and
+        current_block.settings.banner_type == 'category' and items_exist %} px-0 {% else %} max-w-1200 mx-auto {% endif %}
+      "
+    >
+      {%- if collection.title -%}
+        <h1
+          class="
+            collection-content__title uppercase text-h5 max-w-710 mx-auto mb-0 !font-semibold px-6 xl:px-0 {% if current_block
+            and current_block.settings.banner_type == 'image' and collection.image %} md:text-h2 text-grey-three {% else %}
+            md:text-h3 text-grey-three {% endif %}
+          "
+        >
+          {{- collection.title -}}
+        </h1>
+      {%- endif -%}
+      {%- if collection_description -%}
+        <div
+          class="
+            collection-content__description font-normal max-w-652 mx-auto mb-0 hidden md:block md:mt-3 px-6 xl:px-0 {% if
+            current_block and current_block.settings.banner_type == 'image' and collection.image %} text-grey-three {% else %}
+            text-grey-three {% endif %} text-[18px]
+          "
+        >
+          {{- collection_description -}}
+        </div>
+      {%- endif -%}
+
+      {%- if current_block and current_block.settings.banner_type == 'category' and items_exist -%}
+        <div class="collection-categories {% if category_active %}collection-categories--active{% endif %}">
+          <div class="w-auto min-w-min collection-categories--inner">
+            {%- for i in (1..6) -%}
+              {%- capture image -%}cat_image_{{i}}
+              {%- endcapture -%}
+              {%- capture image_hover -%}cat_image_{{i}}_hover
+              {%- endcapture -%}
+              {%- capture text -%}cta_text_{{i}}
+              {%- endcapture -%}
+              {%- capture url -%}cta_url_{{i}}
+              {%- endcapture -%}
+              {%- if current_block.settings[image] != blank
+                and current_block.settings[text] != blank
+                and current_block.settings[url] != blank
+              -%}
+                <a
+                  class="category-item text-left {% if request.path == current_block.settings[url] or request.path contains current_block.settings[url] %}active{% endif %}"
+                  href="{% if request.path == current_block.settings[url] or request.path contains current_block.settings[url] %}javascript:void(0){% else %}{{current_block.settings[url]}}{% endif %}"
+                >
+                  <div class="category-item__img bg-faint-cloud group">
+                    <img
+                      class="w-full h-full object-cover absolute top-0 left-0"
+                      src="{{ current_block.settings[image] | img_url: 'master' }}"
+                      alt="{{current_block.settings[image].alt}}"
+                    >
+                    {% if current_block.settings[image_hover] %}
+                      <img
+                        class="w-full h-full object-cover absolute top-0 left-0 z-1 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                        src="{{ current_block.settings[image_hover] | img_url: 'master' }}"
+                        alt="{{current_block.settings[image_hover].alt}}"
+                      >
+                    {% endif %}
+                  </div>
+                  <span
+                    class="
+                      block lg:inline-block underline lg:no-underline font-sora text-special-xs text-black uppercase border-b-0
+                      lg:border-b-1.5 lg:border-black group-hover:text-pine group-hover:border-pine group-focus:border-pine font-semibold z-1
+                      mx-4 md:mx-6
+                    "
+                  >
+                    {{- current_block.settings[text] -}}
+                  </span>
+                </a>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if current_block and current_block.settings.banner_type == 'image' and collection.image -%}
+      <img
+        class="collection-hero absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 object-cover w-full h-full -z-1"
+        src="{{ collection.image | img_url: '1440x', scale: 2 }}"
+        alt="{{collection.image.alt}}"
+      >
+    {%- endif -%}
+  </header>
+  <div class="w-full mx-auto px-6 md:px-14 lg:px-22.5">
+    {% render 'breadcrumbs', custom_classes: 'mx-auto w-fit', template: template, collection: collection %}
+  </div>
+{% endif %}

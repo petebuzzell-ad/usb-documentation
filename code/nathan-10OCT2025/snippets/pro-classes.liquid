@@ -1,0 +1,38 @@
+<style>
+  .show-all-pro {
+    display: none;
+  }
+</style>
+{% if customer %}
+  {% comment %} All pro affiliates {% endcomment %}
+  {% if customer.tags contains 'Pro Purchase' or customer.tags contains 'Expert Voice' or customer.tags contains 'Outdoor Pro' %}
+    <style>
+      .hide-all-pro {
+        display: none;
+      }
+      .show-all-pro {
+        display: block;
+      }
+    </style>
+  {% endif %}
+  {% comment %} Specific pros {% endcomment %}
+  {% if customer.tags contains 'Pro Purchase' %}
+    <style>
+      .hide-pro-purchase {
+        display: none;
+      }
+    </style>
+  {% elsif customer.tags contains 'Expert Voice' %}
+    <style>
+      .hide-expert-voice {
+        display: none;
+      }
+    </style>
+  {% elsif customer.tags contains 'Outdoor Pro' %}
+    <style>
+      .hide-outdoor-pro {
+        display: none;
+      }
+    </style>
+  {% endif %}
+{% endif %}

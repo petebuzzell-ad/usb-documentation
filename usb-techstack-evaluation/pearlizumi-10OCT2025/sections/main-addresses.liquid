@@ -1,0 +1,103 @@
+{% liquid
+  assign is_member = false
+  assign member_discount = nil
+  assign member_limit = nil
+  assign pro_tag = nil
+  for tag in customer.tags
+    if tag contains 'discount-'
+      assign member_discount = tag | remove: 'discount-' | plus: 0
+    endif
+    if tag contains 'limit-'
+      assign member_limit = tag | remove: 'limit-' | plus: 0
+      assign member_limit_formatted = member_limit | times: 100 | money
+    endif
+    if tag contains 'Expert Voice' or tag contains 'Outdoor Pro' or tag contains 'Pro Purchase' or tag contains 'PRO PURCHASE'
+      assign pro_tag = tag
+    endif
+  endfor
+  if member_discount and member_limit
+    assign is_member = true
+  endif
+%}
+<div class="account-page pb-0 lg:pt-24 lg:pb-30">
+  <div class="mx-auto lg:max-w-1320 lg:px-15">
+    <div class="flex flex-col lg:flex-row lg:-mx-3">
+      {% render 'account-nav' is_member: is_member %}
+
+      <section class="account-addresses lg:w-5/6 lg:px-3">
+        <h1 class="account-page-title uppercase mt-9 mb-4.5 px-6 lg:mt-0 lg:mb-9 lg:px-0">Addresses</h1>
+
+        {% paginate customer.addresses by 8 %}
+          <div class="px-6 lg:px-0">
+            <div class="flex flex-wrap mx-auto sm:-mx-3">
+              {% if customer.addresses.size > 0 %}
+                {% for address in customer.addresses %}
+                  <div class="w-full sm:w-1/2 lg:w-2/5 mb-4.5 sm:px-3 sm:mb-6">
+                    <div class="border-t-2 border-black bg-light-sand w-full h-auto sm:h-full px-9 py-7 flex flex-col">
+                      <div class="flex-grow mb-2 lg:mb-5">
+                        <h6 class="tracking-normal font-semibold mb-3">{{ address.first_name }} {{ address.last_name }}</h6>
+                        <p class="font-normal mb-1">{{ address.address1 }}</p>
+                        {% if address.address2 %}<p class="font-normal mb-1">{{ address.address2 }}</p>{% endif %}
+                        <p class="font-normal mb-1"><span>{{ address.city }}</span>, <span>{{ address.province }}</span> <span>{{ address.zip }}</span></p>
+                        <p class="font-normal mb-1">{{ address.country }}</p>
+                      </div>
+
+                      {% if address == customer.default_address %}
+                        <p class="font-normal text-pine mb-3 lg:mb-6">Default address</p>
+                      {% endif %}
+
+                      <div class="flex btn--actions actions-{{ address.id }}">
+                        <button class="address-card__button edit font-sora font-semibold text-special-xs uppercase border-b-1.5 text-black border-black lg:hover:text-pine lg:hover:border-pine focus:outline-none mr-3.5" type="button" data-edit-address="{{ address.id }}">
+                          {{ 'customer.addresses.edit' | t }}
+                        </button>
+                        <button class="address-card__button delete font-sora font-semibold text-special-xs uppercase border-b-1.5 text-red border-red lg:hover:text-pine lg:hover:border-pine focus:outline-none" type="button" data-delete-address="{{ address.id }}">
+                          {{ 'customer.addresses.delete' | t }}
+                        </button>
+                      </div>
+                      <div class="delete--actions delete--actions-{{ address.id }} hidden">
+                        <span class="block md:inline font-sora font-medium text-special-xs text-red uppercase mr-3.5">{{ 'customer.addresses.delete_confirm' | t }}</span>
+                        <button class="btn-yes font-sora font-semibold text-special-xs uppercase border-b-1.5 text-red border-red lg:hover:text-pine lg:hover:border-pine focus:outline-none mr-2" data-address="{{ address.id }}">YES</button>
+                        <button class="btn-no font-sora font-semibold text-special-xs uppercase border-b-1.5 text-black border-black lg:hover:text-pine lg:hover:border-pine focus:outline-none" data-address="{{ address.id }}">NO</button>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              {% endif %}
+
+              <div class="add-address w-full sm:w-1/2 lg:w-2/5 mb-4.5 sm:px-3 sm:mb-6 cursor-pointer">
+                <div class="border-t-2 border-silver bg-faint-cloud lg:hover:border-pine lg:hover:bg-light-sand w-full h-auto sm:h-full py-20 text-center flex flex-col justify-center">
+                  <span class="block w-7 h-7 relative mx-auto">
+                    <span class="block w-0.5 h-full bg-pine absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></span>
+                    <span class="block h-0.5 w-full bg-pine absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></span>
+                  </span>
+                  <p class="font-sora font-semibold text-p-xl my-6">Add Address</p>
+                </div>
+              </div>
+
+            </div>
+            {% include 'pagination-accounts' %}
+          </div>
+        {% endpaginate %}
+      </section>
+
+      <div class="add-new-address px-6 lg:w-5/6 lg:px-3 hidden">
+        {%
+          include 'account-address-form',
+          address: customer.new_address,
+          visible: false
+        %}
+      </div>
+
+      <div class="edit-address px-6 lg:w-5/6 lg:px-3 hidden">
+        {% for address in customer.addresses %}
+          {%
+            include 'account-address-form',
+            address: address,
+            visible: false
+          %}
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</div>

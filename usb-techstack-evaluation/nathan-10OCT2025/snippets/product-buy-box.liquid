@@ -1,0 +1,41 @@
+{% liquid
+  if customer.tags contains 'Pro Purchase'
+    assign threshold = settings.free_shipping_threshold_pro | times: 1
+  elsif customer.tags contains 'Expert Voice'
+    assign threshold = settings.free_shipping_threshold_expert | times: 1
+  elsif customer.tags contains 'Outdoor Pro'
+    assign threshold = settings.free_shipping_threshold_outdoor | times: 1
+  else
+    assign threshold = settings.free_shipping_threshold | times: 1
+  endif
+%}
+
+<!-- Buy Box -->
+<div class="lg:pl-16" data-pdp-buybox>
+
+  <!-- Buy Box Info - Title, Price, Stock, etc. -->
+  <div class="text-center lg:text-left">
+    {% render 'product-buy-box-info'
+      , product: product
+      , quickview: quickview
+      , storefront: storefront %}
+  </div>
+
+
+
+  {%- comment -%} Buy Box Options {%- endcomment -%}
+  {% render 'product-buy-box-standard'
+    , product: product
+    , quickview: quickview
+    , discount_tag: discount_tag
+    , limit_tag: limit_tag
+    , storefront: storefront
+  %}
+
+  {%- unless quickview -%}
+    <div id="productBuyBoxDetails">
+      <!-- Brand Value Call Out -->
+      {% render 'brand-value-call-out' %}
+    </div>
+  {%- endunless -%}
+</div>

@@ -1,0 +1,35 @@
+{%- if paginate.pages > 1 -%}
+<nav class="pagination--container" aria-label="Pagination">
+  <ul class="pagination--inner">
+    {% for part in paginate.parts %}
+      {%- assign partTitle = part.title -%}
+      {%- if part.title < 10 -%}
+        {%- assign partTitle = part.title | prepend: '0' -%}
+      {%- endif -%}
+      {% if part.is_link %}
+        <li class="mr-6">
+          <a class="font-lato font-normal text-p hover:text-orange-one"
+            href="{{ part.url }}{% if grid_list %}&grid_list{% endif %}"
+            aria-label="Go to page {{ part.title }}"
+          >{{ partTitle }}</a>
+        </li>
+      {% else %}
+        {% if part.title == '&hellip;' %}
+          <li class="pagination--ellipsis mr-6">
+            <span class="font-lato font-normal text-p">{{ part.title }}</span>
+          </li>
+        {% else %}
+          <li
+            class="pagination--active"
+            aria-label="Page {{ part.title }}"
+            aria-current="true"
+          >
+            <span class="font-lato font-bold text-p">{{ partTitle }}</span>
+            <hr class="inline-block w-16 my-0 ml-3 border-black align-middle">
+          </li>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>
+{% endif %}

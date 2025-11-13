@@ -1,0 +1,80 @@
+{% for link in linklists[sub-menu].links %}
+  {% if linklists[link.handle] != empty %}
+    {% assign link_count = linklists[link.handle].links | size %}
+	
+	{% if link.type == 'collection_link' %}
+	  {% assign collectiondyna = link.url | remove: '/collections/' %}
+
+      <div class="dropdown_container upper_menu" data-dropdown="{{ link.handle }}">
+        <div class="dropdown menu">
+          <div class="dropdown_content {% if link_count < 4 %}dropdown_narrow{% endif %} new_megamenu">
+            <div class="mega-menu__richtext"> 
+              
+              <p><strong>{{collections[collectiondyna].title}}</strong></p>
+              {% if collections[collectiondyna].metafields.global.short_description != blank %}
+              <p>{{ collections[collectiondyna].metafields.global.short_description }}</p>
+              {% endif %}
+              <p><a href="{{collections[collectiondyna].url}}" title="{{collections[collectiondyna].title}}">Browse All</a></p>
+            </div>
+            <div class="center_megamenu">
+              {% for sublink in linklists[link.handle].links %}
+              <div class="dropdown_column">
+                <ul class="{% if linklists[sublink.handle] != empty %}dropdown_title{% else %}dropdown_item{% endif %}">
+                  <li>
+                    <a href="{{ sublink.url }}">{{ sublink.title }}</a>
+                  </li>
+                </ul>
+
+                {% if linklists[sublink.handle] != empty %}
+                <ul>
+                  {% for subsublink in linklists[sublink.handle].links %}
+                  <li>
+                    <a href="{{ subsublink.url }}">{{ subsublink.title }}</a>
+                  </li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+              </div>
+              {% cycle link.handle: '', '', '', '', '<div class="dropdown_row"></div>' %}
+              {% endfor %}
+            </div> 
+            
+            {% if collections[collectiondyna].image %}
+            <div class="mega-menu__image-caption-link">
+              <a href="{{collections[collectiondyna].url}}" style="background: url('{{collections[collectiondyna].image | img_url: '320x' }}') no-repeat; background-size: cover; background-position: center;">
+              </a>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+	{% else %}
+	<div class="dropdown_container upper_menu" data-dropdown="{{ link.handle }}">
+      <div class="dropdown menu">
+        <div class="dropdown_content {% if link_count < 4 %}dropdown_narrow{% endif %}">
+          {% for sublink in linklists[link.handle].links %}
+            <div class="dropdown_column">
+              <ul class="{% if linklists[sublink.handle] != empty %}dropdown_title{% else %}dropdown_item{% endif %}">
+                <li>
+                  <a href="{{ sublink.url }}">{{ sublink.title }}</a>
+                </li>
+              </ul>
+
+              {% if linklists[sublink.handle] != empty %}
+                <ul>
+                  {% for subsublink in linklists[sublink.handle].links %}
+                    <li>
+                      <a href="{{ subsublink.url }}">{{ subsublink.title }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+            {% cycle link.handle: '', '', '', '', '<div class="dropdown_row"></div>' %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+	{% endif %}
+  {% endif %}
+{% endfor %}

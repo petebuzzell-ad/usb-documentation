@@ -1,0 +1,11 @@
+{% assign blog_handles = "our-impact,how-to,gear-up,cycling-culture,riders-rides,destinations" | split: "," %}
+<div class="container sm:max-w-xl sm:mx-auto sm:px-0 lg:max-w-full lg:px-13 xl:max-w-1200 xl:px-0 blog-list">
+    <div class="flex flex-row flex-wrap flex-col py-7 sm:flex-row sm:justify-between lg:-mx-1 lg:py-13 xl:-mx-2.5">
+        {% for handle in blog_handles %}
+            {% assign blog = blogs[handle] %}
+            {% for article in blog.articles %}
+                {% render 'blog-item' article: article, blogCategory: blog.title, height: "285" %}
+            {% endfor %} 
+        {% endfor %}
+    </div>
+</div>

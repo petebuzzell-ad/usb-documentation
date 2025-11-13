@@ -1,0 +1,74 @@
+{%- comment -%}
+  Check URL Param to render page
+  https://community.shopify.com/c/Shopify-Design/URL-Parameters-in-LIQUID/m-p/808960/highlight/true#M203580
+{%- endcomment -%}
+{%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+{%- liquid 
+  assign page_url = contentForQuerystring | split: '"pageurl":"' | last | split: '"' | first | split: '.myshopify.com' | last | replace: '\/','/' | replace: '%20',' ' | replace: '\u0026','&' 
+  assign param_firstname = ''
+  assign param_lastname = ''
+  assign param_email = ''
+  assign param_discount = ''
+  assign param_limit = ''
+
+  for i in (1..1)
+    unless page_url contains "?"
+      break
+    endunless
+    assign query_string = page_url | split: '?' | last
+    assign qry_parts= query_string | split: '&'
+    for part in qry_parts
+      assign key_and_value = part | split: '='
+      if key_and_value.size > 1
+        if key_and_value[0] == 'firstName'
+          assign param_firstname = key_and_value[1] | url_decode
+        elsif key_and_value[0] == 'lastName'
+          assign param_lastname = key_and_value[1] | url_decode
+        elsif key_and_value[0] == 'email'
+          assign param_email = key_and_value[1] | url_decode
+        elsif key_and_value[0] == 'd'
+          assign param_discount = key_and_value[1] | url_decode
+        elsif key_and_value[0] == 'limit'
+          assign param_limit = key_and_value[1] | url_decode
+        endif
+      endif
+    endfor
+  endfor
+
+  if shop.permanent_domain == 'pearlizumi.myshopify.com'
+    assign storefront = "US"
+  elsif shop.permanent_domain == 'pearlizumi-ca.myshopify.com'
+    assign storefront = "CA"
+  elsif shop.permanent_domain == 'pearl-izumi-int.myshopify.com'
+    assign storefront = "INT"
+  endif
+-%}
+
+{%- if storefront == "US" -%}
+  <div class="xl:px-0 w-full max-w-840 mx-auto lg:px-15.5 md:px-11 px-6">
+    <div class="account_page mx-auto text-center lg:pb-20 pb-14" >
+      <div class="register-account">
+
+        {%- comment -%} Pro Member Benefits Richtext {%- endcomment -%}
+        {%- assign benefits_page_handle = "outdoorprolink-membership-benefits" -%}
+        <div class="rte pt-8 lg:pt-16 general-content-template text-left">
+          {% include 'shortcode' load: pages[benefits_page_handle].content %}
+        </div>
+
+        {% render 'customer-registration-form'
+            view: 'outdoorprolink'
+            firstname: param_firstname
+            lastname: param_lastname
+            email: param_email
+            discount_level: "40"
+            purchase_limit: "2000"
+        %}
+
+      </div>
+    </div>
+  </div>
+{%- else -%}
+  {%- comment -%} Canada site has no affiliate account creation, so redirect these templates to the normal flow. International has no accounts {%- endcomment -%}
+  <script>window.location.replace("/account/register");</script>
+{%- endif -%}
+

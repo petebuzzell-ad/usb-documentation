@@ -1,0 +1,15 @@
+/*********************** Custom CSS for Boost AI Search & Discovery  ************************/
+/* Start Boost #197415  */
+.bg-none {
+  background: none;
+}
+.boost-sd__product-image-img {
+  background-color: transparent;
+}
+.boost-sd__header-description ul {
+    list-style: disc outside;
+}
+body {
+  overflow-anchor:none;
+}
+/* End Boost #197415  */

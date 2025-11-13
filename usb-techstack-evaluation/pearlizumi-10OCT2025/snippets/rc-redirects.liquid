@@ -1,0 +1,35 @@
+<script>
+  const RC_CLASS_IDENTIFIER = 'js--rc-'
+
+  async function fetchRcCustomer() {
+    try {
+      const res = await fetch('/tools/recurring/get_rc_token/{{ customer.id }}')
+      .then((res) => res.clone().text())
+      .then((res) => JSON.parse(res.match(/{"rc_customer":.*}}/g)[0]))
+      return res.rc_customer
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  fetchRcCustomer().then((rc_customer) => {
+    document.querySelectorAll(`[class^=${RC_CLASS_IDENTIFIER}]`).forEach((link) => {
+      const target_class = Array.from(link.classList).find((el) => el.includes(RC_CLASS_IDENTIFIER))
+      const target_class_location = target_class.split(RC_CLASS_IDENTIFIER)[1]
+      const base_path = `/tools/recurring/portal/${rc_customer.hash}/${target_class_location}`
+      const token = `token=${rc_customer.token}`
+
+      if(link.href) {
+        target_class_location.includes('?')
+        ? (link.href = base_path + '&' + token)
+        : (link.href = base_path + '?' + token)
+      }
+
+      if(link.dataset.url) {
+        target_class_location.includes('?')
+        ? (link.dataset.url = base_path + '&' + token)
+        : (link.dataset.url = base_path + '?' + token)
+      }
+    })
+  })
+</script>

@@ -1,0 +1,82 @@
+{%-liquid
+  assign featured_post = articles[section.settings.featured_post]
+
+  if current_tags
+    for block in section.blocks
+      if current_tags.first == block.settings.blog_tag
+        assign featured_post = articles[block.settings.featured_post]
+      endif
+    endfor
+  endif
+-%}
+
+{% comment %} TODO: Update pagination prelaunch{% endcomment %}
+{%- paginate blog.articles by 6 -%}
+	{%- if featured_post != blank -%}
+		<div class="lg:max-w-full lg:px-13 xl:px-0 xl:max-w-1200 mx-auto pb-10">
+			{% render 'blog-item' article: featured_post, is_featured: true %}
+		</div>
+	{%- endif -%}
+    <div class="sm:container px-6 sm:max-w-xl sm:mx-auto sm:px-0 lg:max-w-full lg:px-13 xl:max-w-1200 xl:px-0 pb-30 blog-list">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-5 gap-y-10 md:gap-y-20" data-blog-list-section>
+            {%- for article in blog.articles -%}
+                {% unless article.id == featured_post.id  %}
+                    {% render 'blog-item' article: article %}
+                {% endunless %}
+            {%- endfor -%}
+        </div>
+
+        {%- if paginate.pages > 1 -%}
+            {%- capture current_url -%}
+                {{ blog.url }}{% if current_tags %}/tagged/{{ current_tags.first | handleize }}{% endif %}
+            {%- endcapture -%}
+            <div class="text-center mt-12 lg:mt-20" data-load-more-container>
+                <button
+                    class="button button-secondary w-350 mx-auto"
+                    data-url="{{ current_url }}"
+                    data-page="{{ paginate.current_page }}"
+                    data-total-page="{{ paginate.pages }}"
+                    data-load-more-posts
+                >
+                    View More
+                </button>
+            </div>
+        {%- endif -%}
+    </div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Blog List",
+  "settings": [
+    {
+      "type": "article",
+      "id": "featured_post",
+      "label": "Featured Post"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Categorized Featured Post",
+      "type": "categorized_featured_post",
+      "settings": [
+        {
+          "type": "text",
+          "id": "blog_tag",
+          "label": "Blog Tag"
+        },
+        {
+          "type": "article",
+          "id": "featured_post",
+          "label": "Featured Post"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog List"
+    }
+  ]
+}
+{% endschema %}

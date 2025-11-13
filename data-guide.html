@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <title>Data Guide - USB - McDavid eCommerce Documentation</title>
+    <link rel="icon" type="image/webp" href="assets/favicon.webp">
+    <link rel="stylesheet" href="arcadia-style.css">
+</head>
+<body>
+    <!-- Header will be loaded dynamically by component-loader.js -->
+    <div id="header-container"></div>
+    
+    <div class="container">
+        <div class="two-column-layout">
+            <!-- Enhanced Table of Contents Sidebar -->
+            <nav class="toc-sidebar">
+                <h3>Table of Contents</h3>
+<ul>
+<li><a href="#complete-metafield-and-metaobject-reference">Complete Metafield and Metaobject Reference</a>
+</ul>
+</li>
+<li><a href="#metafield-organization">Metafield Organization</a>
+</ul>
+</li>
+<li><a href="#custom-namespace-custom">Custom Namespace (`custom.*`)</a>
+<ul>
+<li><a href="#product-metafields">Product Metafields</a>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#global-namespace-global">Global Namespace (`global.*`)</a>
+<ul>
+<li><a href="#product-metafields">Product Metafields</a>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#myovolt-namespace-myovolt">MyoVolt Namespace (`myovolt.*`)</a>
+</ul>
+</li>
+<li><a href="#pdp-namespace-pdp">PDP Namespace (`pdp.*`)</a>
+</ul>
+</li>
+<li><a href="#google-shopping-namespace-mm-google-shopping">Google Shopping Namespace (`mm-google-shopping.*`)</a>
+</ul>
+</li>
+<li><a href="#facebook-namespace-mc-facebook">Facebook Namespace (`mc-facebook.*`)</a>
+</ul>
+</li>
+<li><a href="#avalara-namespace-avalara">Avalara Namespace (`avalara.*`)</a>
+</ul>
+</li>
+<li><a href="#legacystring-metafields">Legacy/String Metafields</a>
+</ul>
+</li>
+<li><a href="#colorop-namespace-colorop">ColorOp Namespace (`colorop.*`)</a>
+</ul>
+</li>
+<li><a href="#microsoft-bing-ads-namespace-msft_bingads">Microsoft Bing Ads Namespace (`msft_bingads.*`)</a>
+</ul>
+</li>
+<li><a href="#seo-metafields">SEO Metafields</a>
+</ul>
+</li>
+<li><a href="#metaobjects">Metaobjects</a>
+<ul>
+<li><a href="#features-metaobject">Features Metaobject</a>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#metafield-access-in-liquid">Metafield Access in Liquid</a>
+<ul>
+<li><a href="#product-metafields">Product Metafields</a>
+</ul>
+</li>
+<ul>
+<li><a href="#variant-metafields">Variant Metafields</a>
+</ul>
+</li>
+<ul>
+<li><a href="#metaobject-access">Metaobject Access</a>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#data-relationships">Data Relationships</a>
+</ul>
+</li>
+<li><a href="#code-references">Code References</a>
+<ul>
+<li><a href="#product-template-metafield-usage">Product Template Metafield Usage</a>
+</ul>
+</li>
+<ul>
+<li><a href="#metafield-display-order-on-product-pages">Metafield Display Order on Product Pages</a>
+</ul>
+</li>
+<ul>
+<li><a href="#metafield-verification">Metafield Verification</a>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+            </nav>
+            
+            <!-- Main Content Area -->
+            <main>
+                <section id="data-guide">
+<h1>Data Guide</h1>
+<section id="complete-metafield-and-metaobject-reference">
+<h2>Complete Metafield and Metaobject Reference</h2>
+
+<hr>
+
+<section id="metafield-organization">
+<h2>Metafield Organization</h2>
+
+<p>
+Metafields are organized by namespace. This guide documents all metafields found in the McDavid data exports.
+</p>
+
+<strong>Data Source:</strong> <code>data/mcdavid/AD_MCDAVID_EVERYTHING_Export_2025-11-11_075420/Products.csv</code>
+
+<hr>
+
+<section id="custom-namespace-codecustomcode">
+<h2>Custom Namespace (<code>custom.<em></code>)</h2>
+
+<section id="product-metafields">
+<h3>Product Metafields</h3>
+
+<strong><code>custom.best_for</code></strong> (single_line_text_field)
+<ul>
+<li><strong>Description:</strong> Product use case or target audience</li>
+<li><strong>Display Location:</strong> Product page, below app blocks and above "Add to Cart" button</li>
+<li><strong>Display Format:</strong> "Best For: [value]" with label prefix, wrapped in <code><div class="best-for"></code></li>
+<li><strong>Display Position:</strong> Appears after app blocks (<code>product-app-blocks</code> div) and before product form</li>
+<li><strong>Example:</strong> "Moderate support for minor to moderate sprains, strains and wrist instability"</li>
+<li><strong>Code Reference:</strong></li>
+<li><code>sections/product-template.liquid</code> lines 420-424 (exact implementation)</li>
+<li><code>sections/product-template-hexviz.liquid</code> lines 420-424</li>
+<li><code>sections/product-template-myovolt.liquid</code> lines 335-338</li>
+<li><strong>Usage Pattern:</strong></li>
+</ul>
+  <pre><code class="language-liquid">  {% if product.metafields.custom.best_for != blank %}
+    <div class="best-for">
+      <span>Best For:</span> {{ product.metafields.custom.best_for }}
+    </div>
+<p>
+  {% endif %}
+</p>
+  </code></pre>
+<ul>
+<li><strong>Conditional Rendering:</strong> Only displays if metafield has value (not blank)</li>
+<li><strong>Styling:</strong> Uses <code>.best-for</code> CSS class for styling</li>
+<li><strong>When to Use:</strong> Describe the primary use case or target audience for the product</li>
+<li><strong>Data Verification:</strong> Verified in Products.csv export - used across product catalog</li>
+</ul>
+
+<strong><code>custom.product_family</code></strong> (list.product_reference)
+<ul>
+<li><strong>Description:</strong> Product family/line identifier</li>
+<li><strong>Usage:</strong> Product grouping and relationships</li>
+<li><strong>Example:</strong> "MDP300"</li>
+</ul>
+
+<strong><code>custom.features</code></strong> (list.metaobject_reference)
+<ul>
+<li><strong>Description:</strong> Product features (references Features metaobject)</li>
+<li><strong>Display Location:</strong> Product page, in dedicated "Features" section below product description</li>
+<li><strong>Display Format:</strong> Section with title "Features", each feature displays as:</li>
+<li>Section wrapper: <code><div class="product_desc product_features extended"></code></li>
+<li>Section title: <code><h4 class="title">Features</h4></code></li>
+<li>Each feature in: <code><div class="product-description-item"></code></li>
+<li>Feature title as <code><h5></code> heading</li>
+<li>Feature description as <code><p></code> paragraph text</li>
+<li><strong>Display Order:</strong> Appears after product description section, before Details section</li>
+<li><strong>Metaobject:</strong> References <code>features</code> metaobject (see Metaobjects section below)</li>
+<li><strong>Code Reference:</strong></li>
+<li><code>sections/product-template.liquid</code> lines 532-548 (exact implementation)</li>
+<li><code>sections/product-template-hexviz.liquid</code> lines 547-563</li>
+<li><strong>Usage Pattern:</strong></li>
+</ul>
+  <pre><code class="language-liquid">  {% if product.metafields.custom.features != blank %}
+    <div class="product_desc product_features extended">
+      <div class="description" itemprop="description">
+        <h4 class="title">Features</h4>
+        <div class="description-content">
+          <div class="product-description-image">
+<p>
+            {% for feature in product.metafields.custom.features.value %}
+</p>
+              <div class="product-description-item">
+                <h5>{{ feature.title }}</h5>
+                <p>{{ feature.description }}</p>
+              </div>
+<p>
+            {% endfor %}
+</p>
+          </div>
+        </div>
+      </div>
+    </div>
+<p>
+  {% endif %}
+</p>
+  </code></pre>
+<ul>
+<li><strong>Conditional Rendering:</strong> Only displays if metafield has value (not blank)</li>
+<li><strong>Loop Structure:</strong> Iterates through <code>product.metafields.custom.features.value</code> array</li>
+<li><strong>Metaobject Access:</strong> Uses <code>.value</code> property to access metaobject data</li>
+<li><strong>When to Use:</strong> Highlight key product features and benefits</li>
+<li><strong>Creating Features:</strong> Features are created as metaobjects in Shopify Admin → Settings → Custom data → Metaobjects → Features</li>
+<li><strong>Data Verification:</strong> 100+ feature entries available in Metaobjects.csv export</li>
+</ul>
+
+<strong><code>custom.details</code></strong> (list.single_line_text_field)
+<ul>
+<li><strong>Description:</strong> Product detail points displayed as list items</li>
+<li><strong>Display Location:</strong> Product page, in "Details" section below Features section</li>
+<li><strong>Display Format:</strong></li>
+<li>Section wrapper: <code><div class="product_desc extended"></code></li>
+<li>Section title: <code><h4 class="title">{{ 'products.product.details' | t }}</h4></code> (uses translation string)</li>
+<li>Each detail in: <code><div class="product-description-item"><h5>...</h5></div></code></li>
+<li>Details rendered as <code><h5></code> headings (not bulleted list)</li>
+<li><strong>Display Order:</strong> Appears after Features section, before Care section</li>
+<li><strong>Example:</strong> ["FITS LEFT OR RIGHT WRIST", "UNISEX", "HSA/FSA ELIGIBLE"]</li>
+<li><strong>Code Reference:</strong></li>
+<li><code>sections/product-template.liquid</code> lines 550-563 (exact implementation)</li>
+<li><code>sections/product-template-hexviz.liquid</code> lines 565-578</li>
+<li><strong>Usage Pattern:</strong></li>
+</ul>
+  <pre><code class="language-liquid">  {% if product.metafields.custom.details != blank %}
+    <div class="product_desc extended">
+      <div class="description" itemprop="description">
+        <h4 class="title">{{ 'products.product.details' | t }}</h4>
+        <div class="description-content">
+          <div class="product-description-image">
+<p>
+            {% for detailsItem in product.metafields.custom.details.value %}
+</p>
+              <div class="product-description-item">
+                <h5>{% render 'shortcode' load: detailsItem %}</h5>
+              </div>
+<p>
+            {% endfor %}
+</p>
+          </div>
+        </div>
+      </div>
+    </div>
+<p>
+  {% endif %}
+</p>
+  </code></pre>
+<ul>
+<li><strong>Shortcode Processing:</strong> Details are processed through <code>shortcode</code> snippet (<code>snippets/shortcode.liquid</code>), which may handle special formatting, links, or HTML</li>
+<li><strong>Conditional Rendering:</strong> Only displays if metafield has value (not blank)</li>
+<li><strong>Translation Support:</strong> Section title uses Shopify translation system (<code>'products.product.details' | t</code>)</li>
+<li><strong>When to Use:</strong> List key product specifications, certifications, or important details</li>
+<li><strong>Data Verification:</strong> Verified in Products.csv export - commonly used across product catalog</li>
+</ul>
+
+<strong><code>custom.care</code></strong> (list.single_line_text_field)
+<ul>
+<li><strong>Description:</strong> Care instructions for product maintenance</li>
+<li><strong>Display Location:</strong> Product page, in "Care" section below Details section</li>
+<li><strong>Display Format:</strong></li>
+<li>Section wrapper: <code><div class="product_desc extended"></code></li>
+<li>Section title: <code><h4 class="title">{{ 'products.product.care' | t }}</h4></code> (uses translation string)</li>
+<li>Each care instruction in: <code><div class="product-description-item"></code> (no heading, just text)</li>
+<li><strong>Display Order:</strong> Appears after Details section, before Shipping & Returns section</li>
+<li><strong>Example:</strong> ["Hand wash. Air dry only."]</li>
+<li><strong>Code Reference:</strong></li>
+<li><code>sections/product-template.liquid</code> lines 565-578 (exact implementation)</li>
+<li><code>sections/product-template-hexviz.liquid</code> lines 580-593</li>
+<li><strong>Usage Pattern:</strong></li>
+</ul>
+  <pre><code class="language-liquid">  {% if product.metafields.custom.care != blank %}
+    <div class="product_desc extended">
+      <div class="description" itemprop="description">
+        <h4 class="title">{{ 'products.product.care' | t }}</h4>
+        <div class="description-content">
+          <div class="product-description-image">
+<p>
+            {% for careItem in product.metafields.custom.care.value %}
+</p>
+              <div class="product-description-item">{{ careItem }}</div>
+<p>
+            {% endfor %}
+</p>
+          </div>
+        </div>
+      </div>
+    </div>
+<p>
+  {% endif %}
+</p>
+  </code></pre>
+<ul>
+<li><strong>Conditional Rendering:</strong> Only displays if metafield has value (not blank)</li>
+<li><strong>Translation Support:</strong> Section title uses Shopify translation system (<code>'products.product.care' | t</code>)</li>
+<li><strong>Format Difference:</strong> Unlike Details, Care items don't use <code><h5></code> headings - just plain text in div</li>
+<li><strong>When to Use:</strong> Provide washing, care, and maintenance instructions for products</li>
+<li><strong>Data Verification:</strong> Verified in Products.csv export - commonly used for care instructions</li>
+</ul>
+
+<strong><code>custom.description_image</code></strong> (file_reference)
+<ul>
+<li><strong>Description:</strong> Additional image displayed in product description area</li>
+<li><strong>Display Location:</strong> Product page, within product description section</li>
+<li><strong>Display Conditions:</strong></li>
+<li>Only displays when <code>section.settings.product_description_position == "top"</code></li>
+<li>Appears within description content area</li>
+<li>Wrapped in <code><div class="product-description-image"></code> container</li>
+<li><strong>Display Format:</strong></li>
+<li>Image wrapper: <code><div class="description-image"></code></li>
+<li>Image rendered at 800px height</li>
+<li>Displays alongside product description text</li>
+<li><strong>Image Size:</strong> Rendered at 800px height using <code>image_url: height: 800</code> filter</li>
+<li><strong>Code Reference:</strong></li>
+<li><code>sections/product-template.liquid</code> lines 520-524 (exact implementation)</li>
+<li><code>sections/product-template-myovolt.liquid</code> line 576 (also used in MyoVolt template at 1500px height)</li>
+<li><strong>Usage Pattern:</strong></li>
+</ul>
+  <pre><code class="language-liquid">  {% if section.settings.product_description_position == "top" %}
+<p>
+    {% if product.description != blank %}
+</p>
+      <div class="description" itemprop="description">
+        <h4 class="title">Description</h4>
+        <div class="description-content">
+          <div class="product-description-image">
+            <div class="product-description">{{ product.description }}</div>
+<p>
+            {% if product.metafields.custom.description_image %}
+</p>
+              <div class="description-image">
+<p>
+                {{ product.metafields.custom.description_image | image_url: height: 800 | image_tag }}
+</p>
+              </div>
+<p>
+            {% endif %}
+</p>
+          </div>
+        </div>
+      </div>
+<p>
+    {% endif %}
+  {% endif %}
+</p>
+  </code></pre>
+<ul>
+<li><strong>Conditional Rendering:</strong> Only displays if description position is "top" and image exists</li>
+<li><strong>MyoVolt Usage:</strong> In MyoVolt template, displays at 1500px height alongside <code>myovolt.description</code></li>
+<li><strong>When to Use:</strong> Add supporting imagery to product description (lifestyle shots, detail images, etc.)</li>
+<li><strong>Data Verification:</strong> Verified in Products.csv export - file reference type</li>
+</ul>
+
+<strong><code>custom.free_shipping_returns</code></strong> (rich_text_field)
+<ul>
+<li><strong>Description:</strong> Free shipping and returns information</li>
+<li><strong>Display Location:</strong> Product page, in "Shipping & Returns" section (if used)</li>
+<li><strong>Note:</strong> Currently, shipping/returns section uses theme translation strings (<code>products.product.shipping_returns_html</code>)</li>
+<li><strong>Usage:</strong> Can be used for custom shipping/returns content if needed</li>
+<li><strong>Code Reference:</strong> <code>sections/product-template.liquid</code> lines 581-592 (uses translation, not metafield)</li>
+<li><strong>When to Use:</strong> Override default shipping/returns text with product-specific information</li>
+</ul>
+
+<strong><code>custom.sika_hsa_fsa</code></strong> (single_line_text_field)
+<ul>
+<li><strong>Description:</strong> HSA/FSA eligibility (Sika integration)</li>
+<li><strong>Usage:</strong> Healthcare spending account eligibility</li>
+</ul>
+
+<strong><code>custom.sika_hsa_fsa_lmn_beluga</code></strong> (single_line_text_field)
+<ul>
+<li><strong>Description:</strong> HSA/FSA eligibility variant</li>
+</ul>
+
+<strong><code>custom.sika_hsa_fsa_subscription</code></strong> (single_line_text_field)
+<ul>
+<li><strong>Description:</strong> HSA/FSA eligibility for subscriptions</li>
+</ul>
+
+<hr>
+
+<section id="global-namespace-codeglobalcode">
+<h2>Global Namespace (<code>global.</em></code>)</h2>
+
+<section id="product-metafields">
+<h3>Product Metafields</h3>
+
+<strong><code>global.brand</code></strong> (string)
+<ul>
+<li><strong>Description:</strong> Product brand identifier</li>
+<li><strong>Usage:</strong> Brand classification and filtering</li>
+<li><strong>Example:</strong> "MD" (McDavid)</li>
+<li><strong>Code Reference:</strong> <code>sections/product-template-myovolt.liquid</code> line 8</li>
+<li><strong>Usage Pattern:</strong></li>
+</ul>
+  <pre><code class="language-liquid">  {% assign brand = product.metafields.global.brand %}
+  </code></pre>
+
+<strong><code>global.display_sku</code></strong> (string/boolean)
+<ul>
+<li><strong>Description:</strong> Display SKU flag or value</li>
+<li><strong>Display Location:</strong> Product page, in SKU container</li>
+<li><strong>Code Reference:</strong></li>
+<li><code>sections/product-template-hexviz.liquid</code> lines 401-404</li>
+<li><code>sections/product-template-myovolt.liquid</code> lines 316-318</li>
+<li><strong>Usage Pattern:</strong></li>
+</ul>
+  <pre><code class="language-liquid">  {% if product.metafields.global.display_sku %}
+    <p class="display-sku">
+      <span>SKU: <span itemprop="sku">{{ product.selected_or_first_available_variant.sku }}</span></span>
+    </p>
+<p>
+  {% endif %}
+</p>
+  </code></pre>
+<ul>
+<li><strong>When to Use:</strong> Control SKU display on product pages</li>
+</ul>
+
+<hr>
+
+<section id="myovolt-namespace-codemyovoltcode">
+<h2>MyoVolt Namespace (<code>myovolt.<em></code>)</h2>
+
+<p>
+MyoVolt-specific product metafields for MyoVolt product template.
+</p>
+
+<strong><code>myovolt.hero_image_desktop</code></strong> (file_reference)
+<ul>
+<li><strong>Description:</strong> Hero image for desktop view</li>
+<li><strong>Display Location:</strong> MyoVolt product template, hero section at top of product page</li>
+<li><strong>Display Conditions:</strong> Only displays if <code>myovolt.hero_image_mobile</code> is also present (conditional logic)</li>
+<li><strong>Image Size:</strong> Rendered at 800px width using <code>image_url: width: 800</code> filter</li>
+<li><strong>Display Behavior:</strong></li>
+<li>Hidden on mobile via <code>.mobile-myovolt-hide</code> CSS class</li>
+<li>Shows on desktop only</li>
+<li>Wrapped in <code><div class="myovolt-hero"></code> container</li>
+<li><strong>Code Reference:</strong> <code>sections/product-template-myovolt.liquid</code> lines 519-528 (exact implementation)</li>
+<li><strong>Usage Pattern:</strong></li>
+</ul>
+  <pre><code class="language-liquid">  {% if product.metafields.myovolt.hero_image_mobile != blank %}
+    <div class="myovolt-hero">
+<p>
+      {{ product.metafields.myovolt.hero_image_desktop.value | image_url: width: 800 | image_tag: class: 'mobile-myovolt-hide', loading: "lazy" }}
+      {{ product.metafields.myovolt.hero_image_mobile.value | image_url: width: 800 | image_tag: class: 'desktop-myovolt-hide', loading: "lazy" }}
+</p>
+    </div>
+<p>
+  {% endif %}
+</p>
+  </code></pre>
+<ul>
+<li><strong>Required:</strong> Yes, for MyoVolt products (required if mobile image is present)</li>
+<li><strong>Recommended Size:</strong> 1920px width for optimal quality on desktop displays</li>
+<li><strong>Lazy Loading:</strong> Uses <code>loading: "lazy"</code> attribute for performance</li>
+<li><strong>Value Access:</strong> Uses <code>.value</code> property to access file reference</li>
+</ul>
+
+<strong><code>myovolt.hero_image_mobile</code></strong> (file_reference)
+<ul>
+<li><strong>Description:</strong> Hero image for mobile view</li>
+<li><strong>Display Location:</strong> MyoVolt product template, hero section</li>
+<li><strong>Image Size:</strong> Rendered at 800px width</li>
+<li><strong>Display Behavior:</strong> Hidden on desktop (<code>.desktop-myovolt-hide</code> class)</li>
+<li><strong>Code Reference:</strong> <code>sections/product-template-myovolt.liquid</code> lines 519-526</li>
+<li><strong>Required:</strong> Optional (falls back to desktop image if not provided)</li>
+<li><strong>Recommended Size:</strong> 768px width for mobile optimization</li>
+</ul>
+
+<strong><code>myovolt.hero_description</code></strong> (multi_line_text_field)
+<ul>
+<li><strong>Description:</strong> Hero section description text</li>
+<li><strong>Display Location:</strong> MyoVolt product template, below hero image</li>
+<li><strong>Display Format:</strong> Text block with class <code>myovolt-hero-description</code></li>
+<li><strong>Code Reference:</strong> <code>sections/product-template-myovolt.liquid</code> lines 530-532</li>
+<li><strong>Required:</strong> Optional</li>
+<li><strong>When to Use:</strong> Provide compelling product description for hero section</li>
+</ul>
+
+<strong><code>myovolt.video</code></strong> (file_reference)
+<ul>
+<li><strong>Description:</strong> Product video file</li>
+<li><strong>Display Location:</strong> MyoVolt product template, hero section below description</li>
+<li><strong>Display Format:</strong> HTML5 video element with autoplay, loop, muted, no controls</li>
+<li><strong>Code Reference:</strong> <code>sections/product-template-myovolt.liquid</code> lines 534-536</li>
+<li><strong>Usage Pattern:</strong></li>
+</ul>
+  <pre><code class="language-liquid">  {% if product.metafields.myovolt.video.value != blank %}
+    <div class="myovolt-video">
+<p>
+      {{ product.metafields.myovolt.video.value | video_tag: autoplay: true, loop: true, muted: true, controls: false }}
+</p>
+    </div>
+<p>
+  {% endif %}
+</p>
+  </code></pre>
+<ul>
+<li><strong>Required:</strong> Optional</li>
+<li><strong>Video Format:</strong> MP4 recommended</li>
+<li><strong>When to Use:</strong> Add product demonstration or promotional video</li>
+</ul>
+
+<strong><code>myovolt.tech_spec_1</code></strong> through <strong><code>myovolt.tech_spec_4</code></strong> (single_line_text_field)
+<ul>
+<li><strong>Description:</strong> Technical specification labels/text</li>
+<li><strong>Display Location:</strong> MyoVolt product template, technical specifications section</li>
+<li><strong>Display Format:</strong> Each spec displays with its corresponding image</li>
+<li><strong>Example:</strong> "Battery Life: 8 hours", "Weight: 12 oz"</li>
+<li><strong>Code Reference:</strong> <code>sections/product-template-myovolt.liquid</code> lines 541+ (tech specs section)</li>
+<li><strong>Required:</strong> Optional (can use 1-4 specs)</li>
+<li><strong>When to Use:</strong> Highlight key technical specifications with visual support</li>
+</ul>
+
+<strong><code>myovolt.tech_spec_1_image</code></strong> through <strong><code>myovolt.tech_spec_4_image</code></strong> (file_reference)
+<ul>
+<li><strong>Description:</strong> Technical specification images</li>
+<li><strong>Display Location:</strong> MyoVolt product template, paired with corresponding tech spec text</li>
+<li><strong>Display Format:</strong> Image displayed alongside or above specification text</li>
+<li><strong>Code Reference:</strong> <code>sections/product-template-myovolt.liquid</code> lines 541+ (tech specs section)</li>
+<li><strong>Required:</strong> Optional (should match corresponding tech_spec field)</li>
+<li><strong>Recommended Size:</strong> Appropriate for specification display area</li>
+<li><strong>When to Use:</strong> Visual representation of technical specifications</li>
+</ul>
+
+<strong><code>myovolt.treatment_modes_title</code></strong> (single_line_text_field)
+<ul>
+<li><strong>Description:</strong> Treatment modes section title/heading</li>
+<li><strong>Display Location:</strong> MyoVolt product template, treatment modes section</li>
+<li><strong>Display Format:</strong> <code><h3></code> heading</li>
+<li><strong>Example:</strong> "Treatment Modes"</li>
+<li><strong>Code Reference:</strong> <code>sections/product-template-myovolt.liquid</code> line 583</li>
+<li><strong>Required:</strong> Optional</li>
+<li><strong>When to Use:</strong> Provide section title for treatment modes</li>
+</ul>
+
+<strong><code>myovolt.treatment_modes_subtitle</code></strong> (single_line_text_field)
+<ul>
+<li><strong>Description:</strong> Treatment modes section subtitle</li>
+<li><strong>Display Location:</strong> MyoVolt product template, treatment modes section below title</li>
+<li><strong>Display Format:</strong> <code><p></code> paragraph text</li>
+<li><strong>Code Reference:</strong> <code>sections/product-template-myovolt.liquid</code> line 584</li>
+<li><strong>Required:</strong> Optional</li>
+<li><strong>When to Use:</strong> Provide additional context or description for treatment modes section</li>
+</ul>
+
+<strong><code>myovolt.treatment_mode_1_image</code></strong> through <strong><code>myovolt.treatment_mode_3_image</code></strong> (file_reference)
+<ul>
+<li><strong>Description:</strong> Treatment mode images (up to 3 modes)</li>
+<li><strong>Display Location:</strong> MyoVolt product template, treatment modes section</li>
+<li><strong>Display Format:</strong> Image displayed at 150x150px, paired with description</li>
+<li><strong>Image Size:</strong> Rendered at 150px width and height</li>
+<li><strong>Code Reference:</strong> <code>sections/product-template-myovolt.liquid</code> lines 587-604</li>
+<li><strong>Required:</strong> Optional (should match corresponding description)</li>
+<li><strong>When to Use:</strong> Visual representation of each treatment mode</li>
+</ul>
+
+<strong><code>myovolt.treatment_mode_1_description</code></strong> through <strong><code>myovolt.treatment_mode_3_description</code></strong> (rich_text_field)
+<ul>
+<li><strong>Description:</strong> Treatment mode descriptions (up to 3 modes)</li>
+<li><strong>Display Location:</strong> MyoVolt product template, treatment modes section below images</li>
+<li><strong>Display Format:</strong> Rich text (supports formatting via <code>metafield_tag</code> filter)</li>
+<li><strong>Code Reference:</strong> <code>sections/product-template-myovolt.liquid</code> lines 587-604</li>
+<li><strong>Usage Pattern:</strong></li>
+</ul>
+  <pre><code class="language-liquid">  {% if product.metafields.myovolt.treatment_mode_1_image and product.metafields.myovolt.treatment_mode_1_description %}
+    <div>
+<p>
+      {{ product.metafields.myovolt.treatment_mode_1_image | image_url: width: 150, height: 150 | image_tag }}
+</p>
+      <div>{{ product.metafields.myovolt.treatment_mode_1_description | metafield_tag }}</div>
+    </div>
+<p>
+  {% endif %}
+</p>
+  </code></pre>
+<ul>
+<li><strong>Required:</strong> Optional (should match corresponding image)</li>
+<li><strong>When to Use:</strong> Describe each treatment mode functionality</li>
+</ul>
+
+<strong><code>myovolt.highlight_1_image</code></strong> and <strong><code>myovolt.highlight_2_image</code></strong> (file_reference)
+<ul>
+<li><strong>Description:</strong> Product highlight background images (2 highlights)</li>
+<li><strong>Display Location:</strong> MyoVolt product template, highlights section</li>
+<li><strong>Display Format:</strong> Background image for highlight block, rendered at 1080px height</li>
+<li><strong>Image Size:</strong> Rendered as CSS background-image at 1080px height</li>
+<li><strong>Code Reference:</strong> <code>sections/product-template-myovolt.liquid</code> lines 608-617</li>
+<li><strong>Required:</strong> Optional</li>
+<li><strong>When to Use:</strong> Visual background for product highlight sections</li>
+</ul>
+
+<strong><code>myovolt.highlight_1_title</code></strong> and <strong><code>myovolt.highlight_2_title</code></strong> (single_line_text_field)
+<ul>
+<li><strong>Description:</strong> Product highlight titles (2 highlights)</li>
+<li><strong>Display Location:</strong> MyoVolt product template, highlights section over background image</li>
+<li><strong>Display Format:</strong> <code><h3></code> heading overlaid on background image</li>
+<li><strong>Code Reference:</strong> <code>sections/product-template-myovolt.liquid</code> lines 610, 614</li>
+<li><strong>Required:</strong> Optional</li>
+<li><strong>When to Use:</strong> Title for each product highlight</li>
+</ul>
+
+<strong><code>myovolt.highlight_1_description</code></strong> and <strong><code>myovolt.highlight_2_description</code></strong> (rich_text_field)
+<ul>
+<li><strong>Description:</strong> Product highlight descriptions (2 highlights)</li>
+<li><strong>Display Location:</strong> MyoVolt product template, highlights section below title</li>
+<li><strong>Display Format:</strong> Rich text (supports formatting via <code>metafield_tag</code> filter)</li>
+<li><strong>Code Reference:</strong> <code>sections/product-template-myovolt.liquid</code> lines 611, 615</li>
+<li><strong>Required:</strong> Optional</li>
+<li><strong>When to Use:</strong> Detailed description for each product highlight</li>
+</ul>
+
+<strong><code>myovolt.included_image_desktop</code></strong> and <strong><code>myovolt.included_image_mobile</code></strong> (file_reference)
+<ul>
+<li><strong>Description:</strong> Included items images (desktop and mobile versions)</li>
+<li><strong>Display Location:</strong> MyoVolt product template, included items section</li>
+<li><strong>Display Format:</strong> CSS background-image, rendered at 1300px height</li>
+<li><strong>Display Behavior:</strong> Desktop image hidden on mobile (<code>.mobile-myovolt-hide</code>), mobile image hidden on desktop (<code>.desktop-myovolt-hide</code>)</li>
+<li><strong>Image Size:</strong> Rendered as CSS background-image at 1300px height</li>
+<li><strong>Code Reference:</strong> <code>sections/product-template-myovolt.liquid</code> lines 619-621</li>
+<li><strong>Required:</strong> Optional</li>
+<li><strong>When to Use:</strong> Visual representation of included items/accessories</li>
+</ul>
+
+<strong><code>myovolt.included_items</code></strong> (rich_text_field)
+<ul>
+<li><strong>Description:</strong> Included items list text</li>
+<li><strong>Display Location:</strong> MyoVolt product template, included items section</li>
+<li><strong>Display Format:</strong> Rich text (supports formatting via <code>metafield_tag</code> filter)</li>
+<li><strong>Code Reference:</strong> <code>sections/product-template-myovolt.liquid</code> line 622</li>
+<li><strong>Required:</strong> Optional</li>
+<li><strong>When to Use:</strong> List or describe items included with product</li>
+</ul>
+
+<strong><code>myovolt.description</code></strong> (rich_text_field)
+<ul>
+<li><strong>Description:</strong> MyoVolt product description (full description)</li>
+<li><strong>Display Location:</strong> MyoVolt product template, product description section</li>
+<li><strong>Display Format:</strong> Rich text (supports formatting via <code>metafield_tag</code> filter)</li>
+<li><strong>Code Reference:</strong> <code>sections/product-template-myovolt.liquid</code> line 575</li>
+<li><strong>Note:</strong> Can be displayed alongside <code>custom.description_image</code> if present</li>
+<li><strong>Required:</strong> Optional (standard product description can be used instead)</li>
+<li><strong>When to Use:</strong> Full product description with rich formatting support</li>
+</ul>
+
+<strong>Template:</strong> Used exclusively in <code>sections/product-template-myovolt.liquid</code>
+
+<strong>MyoVolt Product Requirements:</strong>
+<ul>
+<li>Product template must be set to "MyoVolt" (<code>product.myovolt</code>)</li>
+<li>Hero images (desktop and/or mobile) are required</li>
+<li>Other metafields are optional but recommended for complete product presentation</li>
+<li>See Business User Guide → MyoVolt Product Setup for complete configuration workflow</li>
+</ul>
+
+<hr>
+
+<section id="pdp-namespace-codepdpcode">
+<h2>PDP Namespace (<code>pdp.</em></code>)</h2>
+
+<p>
+Product detail page display settings.
+</p>
+
+<strong><code>pdp.swatch_color</code></strong> (single_line_text_field)
+<ul>
+<li><strong>Description:</strong> Color swatch value</li>
+<li><strong>Usage:</strong> Product color swatch display</li>
+<li><strong>Example:</strong> "#000000"</li>
+</ul>
+
+<strong><code>pdp.swatch_image</code></strong> (single_line_text_field)
+<ul>
+<li><strong>Description:</strong> Color swatch image</li>
+<li><strong>Usage:</strong> Product color swatch image display</li>
+</ul>
+
+<hr>
+
+<section id="google-shopping-namespace-codemm-google-shoppingcode">
+<h2>Google Shopping Namespace (<code>mm-google-shopping.<em></code>)</h2>
+
+<p>
+Google Shopping feed metafields.
+</p>
+
+<strong>Product Metafields:</strong>
+<ul>
+<li><code>mm-google-shopping.custom_product</code> (boolean/string)</li>
+<li><code>mm-google-shopping.age_group</code> (string/single_line_text_field)</li>
+<li><code>mm-google-shopping.condition</code> (string/single_line_text_field)</li>
+<li><code>mm-google-shopping.gender</code> (string/single_line_text_field)</li>
+<li><code>mm-google-shopping.google_product_category</code> (string/single_line_text_field)</li>
+<li><code>mm-google-shopping.color</code> (string/single_line_text_field)</li>
+</ul>
+
+<strong>Variant Metafields:</strong>
+<ul>
+<li><code>mm-google-shopping.custom_label_0</code> through <code>custom_label_4</code> (single_line_text_field)</li>
+<li><code>mm-google-shopping.size_system</code> (single_line_text_field)</li>
+<li><code>mm-google-shopping.size_type</code> (single_line_text_field)</li>
+<li><code>mm-google-shopping.mpn</code> (single_line_text_field)</li>
+</ul>
+
+<strong>Usage:</strong> Google Shopping feed generation
+
+<hr>
+
+<section id="facebook-namespace-codemc-facebookcode">
+<h2>Facebook Namespace (<code>mc-facebook.</em></code>)</h2>
+
+<p>
+Facebook catalog metafields.
+</p>
+
+<strong><code>mc-facebook.google_product_category</code></strong> (string)
+<ul>
+<li><strong>Description:</strong> Facebook product category</li>
+<li><strong>Usage:</strong> Facebook catalog feed</li>
+</ul>
+
+<strong><code>mc-facebook.condition</code></strong> (string)
+<ul>
+<li><strong>Description:</strong> Product condition for Facebook</li>
+<li><strong>Usage:</strong> Facebook catalog feed</li>
+</ul>
+
+<hr>
+
+<section id="avalara-namespace-codeavalaracode">
+<h2>Avalara Namespace (<code>avalara.<em></code>)</h2>
+
+<p>
+Tax classification metafields.
+</p>
+
+<strong><code>avalara.taxcode</code></strong> (single_line_text_field)
+<ul>
+<li><strong>Description:</strong> Tax classification code</li>
+<li><strong>Usage:</strong> Tax calculation</li>
+<li><strong>Example:</strong> "P0000000"</li>
+</ul>
+
+<hr>
+
+<section id="legacystring-metafields">
+<h2>Legacy/String Metafields</h2>
+
+<strong><code>best_for</code></strong> (string)
+<ul>
+<li><strong>Description:</strong> Product use case (legacy)</li>
+<li><strong>Note:</strong> Also available as <code>custom.best_for</code></li>
+</ul>
+
+<strong><code>best_for_title</code></strong> (string)
+<ul>
+<li><strong>Description:</strong> Best for section title</li>
+</ul>
+
+<strong><code>brand</code></strong> (string)
+<ul>
+<li><strong>Description:</strong> Product brand</li>
+<li><strong>Example:</strong> "MD"</li>
+</ul>
+
+<strong><code>catalog_year</code></strong> (string/multi_line_text_field)
+<ul>
+<li><strong>Description:</strong> Catalog year reference</li>
+</ul>
+
+<strong><code>display_sku</code></strong> (string/multi_line_text_field)
+<ul>
+<li><strong>Description:</strong> Display SKU</li>
+</ul>
+
+<strong><code>item_style</code></strong> (string)
+<ul>
+<li><strong>Description:</strong> Item style classification</li>
+</ul>
+
+<strong><code>materials_used</code></strong> (string)
+<ul>
+<li><strong>Description:</strong> Product materials</li>
+</ul>
+
+<strong><code>product_type_level</code></strong> (string)
+<ul>
+<li><strong>Description:</strong> Product type classification</li>
+</ul>
+
+<strong><code>sizing_content</code></strong> (string)
+<ul>
+<li><strong>Description:</strong> Sizing information</li>
+</ul>
+
+<strong><code>top_seller</code></strong> (string)
+<ul>
+<li><strong>Description:</strong> Top seller flag</li>
+</ul>
+
+<strong><code>product_feature</code></strong> (string)
+<ul>
+<li><strong>Description:</strong> Product feature (legacy)</li>
+</ul>
+
+<strong><code>description_alternate</code></strong> (string)
+<ul>
+<li><strong>Description:</strong> Alternate description</li>
+</ul>
+
+<strong><code>protect_type</code></strong> (string)
+<ul>
+<li><strong>Description:</strong> Protection type</li>
+</ul>
+
+<strong><code>item_class</code></strong> (string)
+<ul>
+<li><strong>Description:</strong> Item classification</li>
+</ul>
+
+<strong><code>segment</code></strong> (string)
+<ul>
+<li><strong>Description:</strong> Product segment</li>
+</ul>
+
+<strong><code>ready_to_ship</code></strong> (string)
+<ul>
+<li><strong>Description:</strong> Ready to ship flag</li>
+</ul>
+
+<strong><code>stock_alternate</code></strong> (string)
+<ul>
+<li><strong>Description:</strong> Alternate stock information</li>
+</ul>
+
+<strong><code>youtube_id</code></strong> (string)
+<ul>
+<li><strong>Description:</strong> YouTube video ID</li>
+</ul>
+
+<strong><code>bundleid</code></strong> (string)
+<ul>
+<li><strong>Description:</strong> Bundle identifier</li>
+</ul>
+
+<strong><code>warnings</code></strong> (string)
+<ul>
+<li><strong>Description:</strong> Product warnings</li>
+</ul>
+
+<strong><code>mcdavid_size</code></strong> (string)
+<ul>
+<li><strong>Description:</strong> McDavid size classification</li>
+</ul>
+
+<hr>
+
+<section id="colorop-namespace-codecoloropcode">
+<h2>ColorOp Namespace (<code>colorop.</em></code>)</h2>
+
+<p>
+Color option management metafields.
+</p>
+
+<strong><code>colorop.ordering</code></strong> (single_line_text_field/string)
+<ul>
+<li><strong>Description:</strong> Color option ordering</li>
+</ul>
+
+<strong><code>colorop.canonicals</code></strong> (single_line_text_field/string)
+<ul>
+<li><strong>Description:</strong> Color option canonical URLs</li>
+</ul>
+
+<strong><code>colorop.handle1</code></strong> through <strong><code>colorop.handle7</code></strong> (single_line_text_field/string)
+<ul>
+<li><strong>Description:</strong> Color option product handles</li>
+<li><strong>Usage:</strong> Color variant linking</li>
+</ul>
+
+<hr>
+
+<section id="microsoft-bing-ads-namespace-codemsft_bingadscode">
+<h2>Microsoft Bing Ads Namespace (<code>msft_bingads.<em></code>)</h2>
+
+<strong>Product Metafield:</strong>
+<ul>
+<li><code>msft_bingads.product_status</code> (json_string)</li>
+<li><strong>Example:</strong> <code>{"pending":4,"failed":0,"approved":0}</code></li>
+</ul>
+
+<strong>Variant Metafield:</strong>
+<ul>
+<li><code>msft_bingads.import_status</code> (string)</li>
+</ul>
+
+<hr>
+
+<section id="seo-metafields">
+<h2>SEO Metafields</h2>
+
+<strong><code>title_tag</code></strong> (string)
+<ul>
+<li><strong>Description:</strong> Custom page title for SEO</li>
+<li><strong>Usage:</strong> SEO optimization</li>
+</ul>
+
+<strong><code>description_tag</code></strong> (string)
+<ul>
+<li><strong>Description:</strong> Custom meta description for SEO</li>
+<li><strong>Usage:</strong> SEO optimization</li>
+</ul>
+
+<strong>Variant:</strong>
+<ul>
+<li><code>description_tag</code> (string) - Variant-level SEO description</li>
+</ul>
+
+<hr>
+
+<section id="metaobjects">
+<h2>Metaobjects</h2>
+
+<section id="features-metaobject">
+<h3>Features Metaobject</h3>
+
+<strong>Definition Handle:</strong> <code>features</code>  
+<strong>Definition Name:</strong> Features  
+<strong>Status:</strong> Active
+
+<strong>Fields:</strong>
+<ul>
+<li><code>title</code> (single_line_text_field) - Feature title (required)</li>
+<li>Example: "BEST-SELLING PROTECTION", "ULTIMATE CONFIDENCE IN MOTION"</li>
+<li><code>description</code> (multi_line_text_field) - Feature description (optional)</li>
+<li>Example: "Specifically designed to anatomically wrap, flex and protect the knee by absorbing collisions, body-to-body contact and other impact."</li>
+</ul>
+
+<strong>Usage:</strong>
+<ul>
+<li>Referenced via <code>custom.features</code> metafield (list.metaobject_reference)</li>
+<li>Used for product feature highlights on product pages</li>
+<li>Multiple features can be assigned to a single product</li>
+<li>Features display in dedicated "Features" section on product pages</li>
+</ul>
+
+<strong>Example Feature Handles:</strong>
+<ul>
+<li><code>features.best-selling-protection</code></li>
+<li><code>features.ultimate-confidence-in-motion</code></li>
+<li><code>features.extended-length</code></li>
+<li><code>features.superior-fit-unmatched-performance</code></li>
+<li><code>features.moisture-wicking</code></li>
+<li><code>features.unisex</code></li>
+<li><code>features.patented-hex-protection</code></li>
+<li><code>features.enhanced-fit-and-comfort</code></li>
+<li><code>features.durable</code></li>
+<li><code>features.breathable</code></li>
+</ul>
+
+<strong>Creating Features:</strong>
+<ol>
+<li>Go to <strong>Shopify Admin</strong> → <strong>Settings</strong> → <strong>Custom data</strong> → <strong>Metaobjects</strong></li>
+<li>Find <strong>Features</strong> metaobject definition</li>
+<li>Click <strong>Add entry</strong></li>
+<li>Enter feature title and description</li>
+<li>Click <strong>Save</strong></li>
+<ol>
+<li>Feature can now be assigned to products via <code>custom.features</code> metafield</li>
+
+<strong>Assigning Features to Products:</strong>
+<li>Open product in Shopify Admin</li>
+<li>Scroll to <strong>Metafields</strong> section</li>
+<ol>
+<li>Find <code>custom.features</code> metafield</li>
+<li>Click to add features (list field)</li>
+<li>Search for and select feature entries</li>
+<li>Multiple features can be selected</li>
+<li>Click <strong>Save</strong></li>
+
+<strong>Data Source:</strong> <code>data/mcdavid/AD_MCDAVID_EVERYTHING_Export_2025-11-11_075420/Metaobjects.csv</code>  
+<strong>Total Features in Catalog:</strong> 100+ feature entries available
+
+<strong>Common Feature Categories:</strong>
+<ul>
+<li>Protection features (BEST-SELLING PROTECTION, ELITE PROTECTION)</li>
+<li>Technology features (PATENTED HEX® PROTECTION, MOISTURE WICKING)</li>
+<li>Fit and comfort (ENHANCED FIT AND COMFORT, CUSTOM-LIKE FIT)</li>
+<li>Durability (DURABLE, BUILT TO LAST)</li>
+<li>Versatility (UNISEX, FITS LEFT OR RIGHT LEG/KNEE/ANKLE)</li>
+<li>Care instructions (MACHINE WASHABLE / DRYABLE)</li>
+</ul>
+
+<hr>
+
+<section id="metafield-access-in-liquid">
+<h2>Metafield Access in Liquid</h2>
+
+<section id="product-metafields">
+<h3>Product Metafields</h3>
+
+<pre><code class="language-liquid">{{ product.metafields.custom.best_for }}
+</ol>
+<p>
+{{ product.metafields.custom.product_family }}
+{{ product.metafields.custom.features }}
+{{ product.metafields.myovolt.hero_image_desktop }}
+{{ product.metafields.pdp.swatch_color }}
+</p>
+</code></pre>
+
+<section id="variant-metafields">
+<h3>Variant Metafields</h3>
+
+<pre><code class="language-liquid">{{ variant.metafields.mm-google-shopping.custom_label_0 }}
+<p>
+{{ variant.metafields.msft_bingads.import_status }}
+</p>
+</code></pre>
+
+<section id="metaobject-access">
+<h3>Metaobject Access</h3>
+
+<pre><code class="language-liquid">{% for feature in product.metafields.custom.features.value %}
+  <h4>{{ feature.title }}</h4>
+  <p>{{ feature.description }}</p>
+<p>
+{% endfor %}
+</p>
+</code></pre>
+
+<hr>
+
+<section id="data-relationships">
+<h2>Data Relationships</h2>
+
+<strong>Product → Features:</strong>
+<ul>
+<li>Products reference Features metaobject via <code>custom.features</code></li>
+<li>Multiple features per product (list reference)</li>
+</ul>
+
+<strong>Product → Product Family:</strong>
+<ul>
+<li>Products reference other products via <code>custom.product_family</code></li>
+<li>Used for product grouping</li>
+</ul>
+
+<hr>
+
+<section id="code-references">
+<h2>Code References</h2>
+
+<section id="product-template-metafield-usage">
+<h3>Product Template Metafield Usage</h3>
+
+<strong>Default Product Template</strong> (<code>sections/product-template.liquid</code>):
+<ul>
+<li>Line 420-423: <code>custom.best_for</code> - "Best For:" display</li>
+<li>Line 520-524: <code>custom.description_image</code> - Description image</li>
+<li>Line 532-548: <code>custom.features</code> - Features section</li>
+<li>Line 550-563: <code>custom.details</code> - Details section</li>
+<li>Line 565-578: <code>custom.care</code> - Care instructions section</li>
+</ul>
+
+<strong>HEX® Product Template</strong> (<code>sections/product-template-hexviz.liquid</code>):
+<ul>
+<li>Line 420-423: <code>custom.best_for</code> - "Best For:" display</li>
+<li>Line 547-563: <code>custom.features</code> - Features section</li>
+<li>Line 565-578: <code>custom.details</code> - Details section</li>
+<li>Line 580-593: <code>custom.care</code> - Care instructions section</li>
+</ul>
+
+<strong>MyoVolt Product Template</strong> (<code>sections/product-template-myovolt.liquid</code>):
+<ul>
+<li>Line 8: <code>global.brand</code> - Brand assignment</li>
+<li>Line 316-318: <code>global.display_sku</code> - SKU display</li>
+<li>Line 335-338: <code>custom.best_for</code> - "Best For:" display</li>
+<li>Line 519-526: <code>myovolt.hero_image_desktop</code> and <code>hero_image_mobile</code> - Hero images</li>
+<li>Line 530-532: <code>myovolt.hero_description</code> - Hero description</li>
+<li>Line 534-536: <code>myovolt.video</code> - Product video</li>
+<li>Line 541+: <code>myovolt.tech_spec_</em></code> and <code>tech_spec_<em>_image</code> - Technical specifications</li>
+<li>Additional MyoVolt metafields throughout template</li>
+</ul>
+
+<section id="metafield-display-order-on-product-pages">
+<h3>Metafield Display Order on Product Pages</h3>
+
+<strong>Default Template Display Order:</strong>
+<ol>
+<li>Product images and basic info</li>
+<li>App blocks (Sika Discovery Eligibility, etc.)</li>
+<li><strong>Best For</strong> (<code>custom.best_for</code>)</li>
+<li>Add to Cart button</li>
+<li>Product description (with optional <code>custom.description_image</code>)</li>
+<ol>
+<li><strong>Features</strong> section (<code>custom.features</code>)</li>
+<li><strong>Details</strong> section (<code>custom.details</code>)</li>
+<li><strong>Care</strong> section (<code>custom.care</code>)</li>
+<li>Shipping & Returns section</li>
+
+<strong>MyoVolt Template Display Order:</strong>
+<ol>
+<li>Hero section (images, description, video)</li>
+<li>Technical specifications</li>
+<li>Treatment modes</li>
+<li>Product highlights</li>
+<li>Included items</li>
+<ol>
+<li>Product description</li>
+<li>Best For and Add to Cart</li>
+
+<section id="metafield-verification">
+<h3>Metafield Verification</h3>
+
+<strong>Data Verification:</strong>
+<ul>
+<li>All metafields verified against actual data exports from November 11, 2025</li>
+<li>Field types verified from CSV column headers</li>
+<li>Example values verified from actual product data</li>
+</ul>
+
+<strong>Code Verification:</strong>
+<ul>
+<li>All metafield usage verified against theme code</li>
+<li>Code references include exact file paths and line numbers</li>
+<li>Display locations and formats verified</li>
+<li>Conditional rendering logic documented</li>
+</ul>
+
+<strong>Usage Patterns:</strong>
+<ul>
+<li>Metafields use conditional rendering (<code>{% if metafield != blank %}</code>)</li>
+<li>List metafields use <code>{% for item in metafield.value %}</code> loops</li>
+<li>Metaobject references access <code>.value</code> property</li>
+<li>File references use Liquid filters (<code>image_url</code>, <code>video_tag</code>)</li>
+</ul>
+
+<hr>
+
+</em>This data guide is based on actual data exports from November 11, 2025. All metafields documented here exist in the McDavid product catalog.*
+
+
+</ol>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Footer will be loaded dynamically by component-loader.js -->
+    <div id="footer-container"></div>
+    
+    <!-- Component Loader: Dynamically loads header.html and footer.html -->
+    <script src="component-loader.js"></script>
+    
+    <!-- Enhanced TOC: Adds scroll-based highlighting and smooth navigation -->
+    <script src="enhanced-toc/enhanced-toc.js"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+{% liquid
+  assign mb_class = 'mb-0'
+  if section.settings.enable_bottom_margin
+    assign mb_class = 'mb-20 md:mb-40'
+  endif
+  if section.settings.image_position == 'left'
+    assign image_block_class = 'md:order-none'
+    assign text_block_class = 'md:pl-15 md:pr-20'
+  endif
+  if section.settings.image_position == 'right'
+    assign image_block_class = 'md:order-2'
+    assign text_block_class = 'md:pl-20 md:pr-15'
+  endif
+  if section.settings.btn_style == 'outline-dark'
+    assign btn_style = 'button-outline-dark'
+  endif
+  if section.settings.btn_style == 'secondary'
+    assign btn_style = 'button-secondary'
+  endif
+%}
+
+<div data-section-id="{{ section.id }}" data-section-type="full-cta-reversible" id="section-{{ number }}" class="relative px-0 md:px-5 overflow-hidden {{ mb_class }}">
+  <div class="max-w-full mx-auto md:max-w-1200">
+    <div class="flex flex-wrap items-center  -mx-2.5">
+      <div class="w-full md:w-1/2 px-2.5 {{ image_block_class }}">
+        {% if section.settings.image != blank %}
+          <div class="full-cta-reversible__image relative">
+            <img class="lazy absolute inset-0 w-full h-full object-cover" data-src="{{ section.settings.image | img_url: 'master' }}" alt="{{ section.settings.image.alt | escape }}" />
+          </div>
+        {% endif %}
+      </div>
+      <div class="w-full md:w-1/2 px-2.5 md:order-1">
+        <div class="px-6 {{ text_block_class }}">
+          <div class="max-w-350">
+            {% if section.settings.subtitle != blank %}
+              <p class="font-sora font-normal text-special uppercase mt-10 md:mt-0 mb-0">{{ section.settings.subtitle }}</p>
+            {% endif %}
+            {% if section.settings.title != blank %}
+              <h3 class="uppercase mt-4 mb-0">{{ section.settings.title }}</h3>
+            {% endif %}
+            {% if section.settings.text != blank %}
+              <p class="mt-6 mb-0 md:mt-8">{{ section.settings.text }}</p>
+            {% endif %}
+            {% if section.settings.btn_label != blank and section.settings.btn_link != blank %}
+              <a href="{{ section.settings.btn_link }}" class="{{ btn_style }} block w-full max-w-btn mt-8 mb-0 md:mt-10">{{ section.settings.btn_label }}</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Reversible Full Width CTA",
+  "tag": "section",
+  "class": "full-width-cta-reversible",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label":"Image Position",
+      "default": "left",
+      "options": [
+        {
+          "label": "Left",
+          "value": "left"
+        },
+        {
+          "label": "Right",
+          "value": "right"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "select",
+      "id": "btn_style",
+      "label":"Button Style",
+      "default": "outline-dark",
+      "options": [
+        {
+          "label": "Outline Dark",
+          "value": "outline-dark"
+        },
+        {
+          "label": "Secondary",
+          "value": "secondary"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_bottom_margin",
+      "label": "Enable Bottom Margin",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reversible Full Width CTA",
+      "category": "Call to Action"
+    }
+  ]
+}
+{% endschema %}

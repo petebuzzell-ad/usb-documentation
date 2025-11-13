@@ -1,0 +1,341 @@
+<div class="fw-product-families-slider" id="section-{{ section.id }}">
+  <div class="fw-product-families-slider__container">
+    <nav class="fw-product-families-slider__slider-nav">
+      <div class="fw-product-families-slider__slider-nav-inner">
+        {% assign nav_index = 0 %}
+        {% for block in section.blocks %}
+          {% if block.type == 'slide' %}
+            <button class="{% if forloop.index0 == 0 %}selected{% endif %}" data-slide-index="{{ nav_index }}">
+              {{ block.settings.slide_title | upcase }}
+            </button>
+            {% assign nav_index = nav_index | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </nav>
+    <!-- Loop -->
+    <div id="fw-product-families-slider__slider-{{ section.id }}" class="fw-product-families-slider__slider">
+      {% assign slide_index = 0 %}
+      {% for block in section.blocks %}
+        {% if block.type == 'slide' %}
+          <div
+            id="fw-product-families-slider--{{ slide_index }}"
+            class="fw-product-families-slider__slide"
+            {{ block.shopify_attributes }}
+            data-slide-index="{{ slide_index }}"
+          >
+            {% assign slide_index = slide_index | plus: 1 %}
+            <div class="slide-content">
+              {% if block.settings.background_image %}
+                <div
+                  class="slide-content__bg-image"
+                  style="background-image: url('{{ block.settings.background_image | img_url: 'large' }}');"
+                ></div>
+              {% endif %}
+              <div class="slide-content__copy">
+                {% if block.settings.subtitle %}
+                  <h3>{{ block.settings.subtitle | upcase }}</h3>
+                {% endif %}
+                {% if block.settings.heading %}
+                  <h2>{{ block.settings.heading | upcase }}</h2>
+                {% endif %}
+                {% if block.settings.description %}
+                  {{ block.settings.description }}
+                {% endif %}
+                <div class="slide-content__links">
+                  {% if block.settings.link_one_url %}
+                    <a href="{{ block.settings.link_one_url }}" class="slide-content__link">
+                      {{- block.settings.link_one_text -}}
+                    </a>
+                  {% endif %}
+                  {% if block.settings.link_two_url %}
+                    <a href="{{ block.settings.link_two_url }}" class="slide-content__link">
+                      {{- block.settings.link_two_text -}}
+                    </a>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="slide-content__image">
+                {% if block.settings.product_image %}
+                  <img
+                    src="{{ block.settings.product_image | img_url: 'original' }}"
+                    alt="{{ block.settings.heading }}"
+                    width=""
+                    height=""
+                  >
+                {% endif %}
+              </div>
+            </div>
+
+            <h3 class="fw-product-families-slider__sub-slider-heading">
+              Explore more {{ block.settings.slide_title }} shoes
+            </h3>
+
+            <!-- Sub-Slider for Current Slide -->
+            <div class="fw-product-families-slider__sub-slider">
+              {% assign hit_end_of_subslides = false %}
+              {% for inner_block in section.blocks offset: forloop.index %}
+                {% if inner_block.type == 'slide' %}
+                  {% assign hit_end_of_subslides = true %}
+                {% endif %}
+                {% if inner_block.type == 'sub_slide' and hit_end_of_subslides == false %}
+                  {% assign next_block_index = forloop.index0 | plus: 1 %}
+
+                  <div class="fw-product-families-slider__sub-slide" {{ inner_block.shopify_attributes }}>
+                    <a href="{{ inner_block.settings.product_url }}">
+                      <img
+                        src="{{ inner_block.settings.product_image | img_url: 'medium' }}"
+                        alt="{{ inner_block.settings.product_name }}"
+                        width=""
+                        height=""
+                      >
+                      <div class="product-info">
+                        <p class="product-name">{{ inner_block.settings.product_name | upcase }}</p>
+                        <p class="product-cta">{{ inner_block.settings.cta_text | upcase }}</p>
+                      </div>
+                    </a>
+                  </div>
+                {% endif %}
+              {% endfor %}
+              <div class="fw-product-families-slider__sub-slide blank"></div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const header = document.getElementById('shopify-section-header');
+    const slider_nav = document.querySelector('.fw-product-families-slider__slider-nav');
+    const slider_nav_btns = document.querySelectorAll('.fw-product-families-slider__slider-nav button');
+    const slider_els = document.querySelectorAll('.fw-product-families-slider__slide');
+    const sub_slider_els = document.querySelectorAll('.fw-product-families-slider__sub-slider');
+
+    // slider nav buttons
+    slider_nav_btns.forEach((btn, index) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target_index = Number(e.target.dataset.slideIndex);
+
+        // slider_nav_btns.forEach((btn, index) => {
+        //   btn.classList.remove('selected');
+        // });
+
+        // btn.classList.add('selected');
+
+        // scroll to section
+        const targetElement = document.getElementById(`fw-product-families-slider--${target_index}`);
+        let offset_height = header.offsetHeight + slider_nav.offsetHeight;
+        if (window.innerWidth < 1024) {
+          offset_height = slider_nav.offsetHeight;
+        }
+        window.scrollTo({
+          top: targetElement.offsetTop - offset_height, // Scroll to the top of the target element
+          behavior: 'smooth', // Smooth scrolling
+        });
+      });
+    });
+
+    // Sub Sliders
+    sub_slider_els.forEach((sub_slider_el, index) => {
+      const sub_slider = new Flickity(sub_slider_el, {
+        cellAlign: 'center',
+        contain: true,
+        groupCells: '100%',
+        prevNextButtons: false,
+        pageDots: true,
+        freeScroll: true,
+      });
+
+      // Force resize event on sliders
+      setTimeout(function () {
+        sub_slider.resize();
+      }, 1000);
+    });
+
+    //////////////////////////////
+    //////////////////////////////
+    // Create IntersectionObserver
+    //////////////////////////////
+    //////////////////////////////
+    let lastScrollY = window.scrollY;
+    let isScrollingDown = true;
+    let currentSection = 0;
+    let slideIndex = 0;
+
+    window.addEventListener(
+      'scroll',
+      () => {
+        const currentScrollY = window.scrollY;
+        isScrollingDown = currentScrollY > lastScrollY;
+        lastScrollY = currentScrollY;
+
+        // console.log(isScrollingDown ? 'Scrolling down' : 'Scrolling up');
+      },
+      { passive: true }
+    );
+
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Get the data-slide-index value from the intersecting element
+            slideIndex = Number(entry.target.getAttribute('data-slide-index'));
+            // console.log(`Section with slide index ${slideIndex} is now in view`);
+          }
+          if (!entry.isIntersecting) {
+            // only if scrolling up
+            if (!isScrollingDown && slideIndex > 0) {
+              slideIndex = Number(entry.target.getAttribute('data-slide-index')) - 1;
+              //   console.log(`Section with slide index ${slideIndex} is LEAVING view`);
+            }
+          }
+
+          //
+          slider_nav_btns.forEach((btn, index) => {
+            btn.classList.remove('selected');
+          });
+          slider_nav_btns[slideIndex].classList.add('selected');
+        });
+      },
+      {
+        root: null, // Use the viewport as the root
+        rootMargin: '0px', // Margin around the root
+        threshold: 0.5, // Trigger when 10% of the element is visible
+      }
+    );
+
+    // Observe each section
+    slider_els.forEach((section) => {
+      observer.observe(section);
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "FW Product Family Slider",
+  "tag": "section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "slide_title",
+          "label": "Slide Title",
+          "default": "Slide Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "background_image",
+          "label": "Background Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Product Image"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "PRO ROAD SHOE"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "BUILT FOR BIG EFFORTS"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Comfort that locks in. Power that won't quit. The PRO Road Shoe blends a dialed fit with serious performance for riders who put in real miles...</p>"
+        },
+        {
+          "type": "url",
+          "id": "link_one_url",
+          "label": "Link 1 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_one_text",
+          "label": "Link 1 Text",
+          "default": "Link 1 Text"
+        },
+        {
+          "type": "url",
+          "id": "link_two_url",
+          "label": "Link 2 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_two_text",
+          "label": "Link 2 Text",
+          "default": "Link 2 Text"
+        },
+        {
+          "type": "text",
+          "id": "sub_slider_heading",
+          "label": "Sub Slider Heading"
+        }
+      ]
+    },
+    {
+      "type": "sub_slide",
+      "name": "Sub-Slider Product",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Product Image"
+        },
+        {
+          "type": "url",
+          "id": "product_url",
+          "label": "Product URL"
+        },
+        {
+          "type": "text",
+          "id": "product_name",
+          "label": "Product Name",
+          "default": "Product Name"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "CTA Text",
+          "default": "Shop Collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FW Product Family Slider",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "slide"
+        },
+        {
+          "type": "sub_slide"
+        },
+        {
+          "type": "sub_slide"
+        },
+        {
+          "type": "sub_slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

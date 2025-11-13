@@ -1,0 +1,104 @@
+{%- layout none -%}
+{%- liquid
+  assign on_sale = false
+  assign is_new = false
+  assign other_tag = nil
+
+  assign coming_soon_text = settings.coming_soon_text
+
+   for variant in product.variants
+    if product.selected_or_first_available_variant.id == variant.id
+     assign current_variant = variant
+    endif
+  endfor
+
+  for tag in product.tags
+    if tag contains "badge:"
+      assign badge_text = tag | remove: 'badge:' | downcase
+      if badge_text contains 'new'
+        assign is_new = true
+      else
+        assign other_tag = badge_text | replace: '-', ' '
+      endif
+    endif
+  endfor
+
+  assign hide_final_sale = false
+  if settings.seasonal_collections != blank
+    assign seasonal_collections = settings.seasonal_collections | split: ','
+    assign product_collection_handles = product.collections | map: "handle"
+    for seasonal_handle in seasonal_collections
+      if product_collection_handles contains seasonal_handle
+        assign hide_final_sale = true
+        break
+      endif
+    endfor
+  endif
+
+  if current_variant != blank
+    if current_variant.price < current_variant.compare_at_price
+      assign on_sale = true
+    endif
+    assign stocktype = current_variant.metafields.stocktype.stocktype
+    if current_variant.metafields.global.badge != blank
+      assign badge_text = current_variant.metafields.global.badge | downcase
+      if badge_text == 'new' or badge_text == 'NEW' or badge_text == 'New'
+        assign is_new = true
+      else
+        assign other_tag = badge_text | replace: '-', ' '
+      endif
+    endif
+  else
+      if product.first_available_variant != blank
+        assign stocktype = product.first_available_variant.metafields.stocktype.stocktype
+        assign badge_text = product.first_available_variant.metafields.global.badge | downcase
+        if product.first_available_variant.price < product.first_available_variant.compare_at_price
+          assign on_sale = true
+        endif
+      else
+        assign stocktype = product.variants[0].metafields.stocktype.stocktype
+        assign badge_text = product.variants[0].metafields.global.badge | downcase
+        if product.variants[0].price < product.variants[0].compare_at_price
+          assign on_sale = true
+        endif
+      endif
+      if badge_text == 'new' or badge_text == 'NEW' or badge_text == 'New' or badge_text == 'new color' or badge_text == 'New Color' or badge_text == 'NEW COLOR'
+        assign is_new = true
+        assign new_tag = badge_text | replace: '-', ' '
+      else
+        assign other_tag = badge_text | replace: '-', ' '
+      endif
+  endif
+
+-%}
+
+{%- comment -%}
+  - Any product with stock type U or O and a compare _at price, the final sale badge would appear automatically ✔
+  - Any product with stock type S and a compare_at price, the Sale badge would appear automatically ✔
+  - If stock type S AND variant is OOS, change badge to Coming Soon ✔
+{%- endcomment -%}
+
+{%  capture json %}
+[{
+  {%- if product.available == false and stocktype != 'S' -%}
+  "class": "product-badge product-badge__out-of-stock flex items-center justify-start uppercase py-1 px-2 h-7.5 text-special-s font-lato font-semibold bg-grey-one border border-sale-outline border-l-3 md:border-l-5 border-t-0 border-r-0 border-b-0 md:border-t-1 md:border-r-1 md:border-b-1 border-l-grey-seven text-grey-seven {{classes}}",
+  "label": "OUT OF STOCK"
+{%- elsif product.available == false and stocktype == 'S' -%}
+  "class": class="product-badge product-badge__other flex items-center justify-start uppercase py-1 px-2 h-7.5 text-special-s border border-sale-outline border-l-3 md:border-l-5 border-t-0 border-r-0 border-b-0 md:border-t-1 md:border-r-1 md:border-b-1 border-l-dark-black text-white font-lato font-semibold bg-dark-black {{classes}}",
+  "label": "COMING SOON"
+{%- elsif on_sale and stocktype == 'S' -%}
+  "class":"product-badge product-badge__final-sale flex items-center justify-start bg-error-one py-1 px-2 h-7.5 text-special-s text-grey-seven font-lato font-semibold border border-sale-outline border-l-3 md:border-l-5 border-t-0 border-r-0 border-b-0 md:border-t-1 md:border-r-1 md:border-b-1 border-l-grey-seven {{classes}}",
+  "label": "SALE"
+{%- elsif on_sale and stocktype == 'U' or stocktype == 'O' -%}
+  "class": "product-badge product-badge__final-sale flex items-center justify-start bg-error-one py-1 px-2 h-7.5 text-special-s text-grey-seven font-lato font-semibold border border-sale-outline border-l-3 md:border-l-5 border-t-0 border-r-0 border-b-0 md:border-t-1 md:border-r-1 md:border-b-1 border-l-grey-seven {{classes}}",
+  "label": "FINAL SALE"
+{%- elsif is_new -%}
+  "class": "product-badge product-badge__new flex items-center justify-start bg-orange-two py-1 px-2 h-7.5 text-special-s text-grey-three border border-sale-outline border-l-3 md:border-l-5 border-t-0 border-r-0 border-b-0 md:border-t-1 md:border-r-1 md:border-b-1 border-l-grey-seven font-lato font-semibold {{classes}}",
+  "label": "{{- new_tag -}}"
+{%- elsif other_tag != blank -%}
+  "class":"product-badge product-badge__other flex items-center justify-start uppercase py-1 px-2 h-7.5 text-special-s border border-sale-outline border-l-3 md:border-l-5 border-t-0 border-r-0 border-b-0 md:border-t-1 md:border-r-1 md:border-b-1 border-l-grey-seven text-orange-two font-lato font-semibold bg-grey-three {{classes}}",
+  "label": "{{- other_tag -}}"
+{%- endif -%}
+}]
+{%  endcapture %}
+{{ json }}

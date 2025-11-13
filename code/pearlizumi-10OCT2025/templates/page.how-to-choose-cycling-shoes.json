@@ -1,0 +1,302 @@
+{
+  "sections": {
+    "full-width-cta": {
+      "type": "full-width-cta",
+      "settings": {
+        "image": "shopify://shop_images/DSK_Hero.jpg",
+        "image_mobile": "shopify://shop_images/MBL_Hero.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "hero_height": "small",
+        "text_overlay_color": "#262b2c",
+        "overlay_opacity": 0.7,
+        "title": "How To Choose Your Cycling Shoes",
+        "text": "",
+        "enable_description": false,
+        "btn_label_1": "",
+        "btn_link_1": "",
+        "btn_label_2": "",
+        "btn_link_2": "",
+        "enable_bottom_margin": false
+      }
+    },
+    "category-filter": {
+      "type": "category-filter",
+      "settings": {
+        "title_1": "Road",
+        "link_1": "#section-4",
+        "title_2": "Mountain",
+        "link_2": "#section-6",
+        "title_3": "Gravel",
+        "link_3": "#section-8",
+        "title_4": "Indoor, Spin & Fitness",
+        "link_4": "#section-10",
+        "title_5": "",
+        "link_5": "",
+        "title_6": "",
+        "link_6": "",
+        "title_7": "",
+        "link_7": "",
+        "title_8": "",
+        "link_8": "",
+        "title_9": "",
+        "link_9": "",
+        "title_10": "",
+        "link_10": "",
+        "enable_bottom_margin": true
+      }
+    },
+    "text-block": {
+      "type": "text-block",
+      "settings": {
+        "bg_color": "#e3cba5",
+        "svg": "",
+        "svg_mobile": "",
+        "text_color": "#fff",
+        "heading": "",
+        "body": "<p>The best cycling shoes disappear on the pedals. As our most critical connection with the bike, the shoes you ride in should be comfortable to the point of invisible while providing technical features and breathability to ensure top performance. Our design team is committed to developing the technology needed to take your riding further. Our shoes are ready to go the distance - from the road, trails, gravel, and indoor riding.</p><p>Read on for advice to help you select the right shoe for your next adventure.</p>",
+        "enable_bottom_margin": false
+      }
+    },
+    "full-width-cta-2": {
+      "type": "full-width-cta",
+      "settings": {
+        "image": "shopify://shop_images/DSK_Road.jpg",
+        "image_mobile": "shopify://shop_images/MBL_Road.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "hero_height": "normal",
+        "text_overlay_color": "#262b2c",
+        "overlay_opacity": 0.5,
+        "title": "Road",
+        "text": "Offering the most lightweight options and a highly efficient pedaling experience, road shoes excel on smooth and predictable terrain. With fully rigid soles constructed from carbon or carbon-reinforced nylon, these shoes will provide the highest level of support for the road experience. BOA fit systems allow on-the-fly adjustability, and the super stable 3-bolt delta cleat mounting system helps this category deliver the most power transfer from your legs to the pedals.",
+        "enable_description": false,
+        "btn_label_1": "Shop Road Shoes",
+        "btn_link_1": "https://www.pearlizumi.com/collections/road-shoes-collection",
+        "btn_label_2": "",
+        "btn_link_2": "",
+        "enable_bottom_margin": false
+      }
+    },
+    "suggested-products": {
+      "type": "suggested-products",
+      "settings": {
+        "title": "Road Cycling Shoes",
+        "btn_label": "",
+        "btn_link": "",
+        "product_list": [
+          "mens-pro-road-shoes-15182302",
+          "womens-pro-road-shoes-15282301",
+          "pro-air-shoes-15182301",
+          "mens-attack-road-shoes-15182303",
+          "womens-attack-road-shoes-15282302",
+          "mens-tour-road-shoes-15181903",
+          "womens-sugar-road-shoes-15281902",
+          "tri-fly-pro-shoes-15172201"
+        ],
+        "enable_bottom_margin": true
+      }
+    },
+    "full-width-cta-3": {
+      "type": "full-width-cta",
+      "settings": {
+        "image": "shopify://shop_images/DSK_MTB_flipped.jpg",
+        "image_mobile": "shopify://shop_images/MBL_MTB_flipped.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "hero_height": "normal",
+        "text_overlay_color": "#262b2c",
+        "overlay_opacity": 0.5,
+        "title": "Mountain",
+        "text": "Mountain bike shoes include 2-bolt SPD-compatible and flat pedal options. Our 2-bolt SPD-compatible shoes are well suited for pumping the pedals with cross-country efficiency or where a more secure connection to the bike is preferred. Flat-soled models are designed with high grip rubber that allows for more dynamic foot positioning on the pedals when taking on more technical trails. And they're also perfect for beginners who want the confidence to step off the bike at any moment easily. All MTB offerings feature durable uppers for trail protection and hiking-inspired traction for improved walkability.",
+        "enable_description": false,
+        "btn_label_1": "Shop MTB Shoes",
+        "btn_link_1": "https://www.pearlizumi.com/collections/mountain-bike-shoes",
+        "btn_label_2": "",
+        "btn_link_2": "",
+        "enable_bottom_margin": false
+      }
+    },
+    "suggested-products-2": {
+      "type": "suggested-products",
+      "settings": {
+        "title": "Mountain Bike Shoes",
+        "btn_label": "",
+        "btn_link": "",
+        "product_list": [
+          "mens-summit-shoes-15192303",
+          "womens-summit-shoes-15292302",
+          "x-alp-launch-spd-shoes-15192102",
+          "x-alp-launch-mid-wrx-shoes-15392101",
+          "x-alp-launch-shoes-15192101",
+          "mens-canyon-spd-shoes-15192301",
+          "womens-canyon-spd-shoes-15292301",
+          "mens-canyon-shoes-15192302",
+          "womens-x-alp-flow-pop-shoes-15292101",
+          "x-alp-flow-pop-shoes-15192103"
+        ],
+        "enable_bottom_margin": false
+      }
+    },
+    "full-width-cta-4": {
+      "type": "full-width-cta",
+      "settings": {
+        "image": "shopify://shop_images/DSK_Gravel.jpg",
+        "image_mobile": "shopify://shop_images/MBL_Gravel.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "hero_height": "normal",
+        "text_overlay_color": "#262b2c",
+        "overlay_opacity": 0.5,
+        "title": "Gravel",
+        "text": "For a do-it-all shoe, shopping the gravel category will likely be your best bet. Adapting the sleek design of road shoes with SPD-compatibility, improved durability, and walkability of our MTB line-up, our gravel collection is ready to take you on mixed terrain riding adventures.",
+        "enable_description": false,
+        "btn_label_1": "Shop Gravel Shoes",
+        "btn_link_1": "https://www.pearlizumi.com/collections/gravel-cycling#/filter:tags_sub_type:Shoe$2520(2-Bolt)",
+        "btn_label_2": "",
+        "btn_link_2": "",
+        "enable_bottom_margin": false
+      }
+    },
+    "suggested-products-3": {
+      "type": "suggested-products",
+      "settings": {
+        "title": "Gravel Bike Shoes",
+        "btn_label": "",
+        "btn_link": "",
+        "product_list": [
+          "expedition-pro-shoes-15192304",
+          "mens-expedition-shoes-15192305",
+          "womens-expedition-shoes-15292303",
+          "x-alp-mesa-shoes-15392202",
+          "x-alp-gravel-shoes-15382004"
+        ],
+        "enable_bottom_margin": false
+      }
+    },
+    "full-width-cta-5": {
+      "type": "full-width-cta",
+      "settings": {
+        "image": "shopify://shop_images/DSK_Indoor_flipped.jpg",
+        "image_mobile": "shopify://shop_images/MBL_Indoor_flipped_0342a551-8a17-49ac-a347-54b9c16dd717.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "hero_height": "normal",
+        "text_overlay_color": "#262b2c",
+        "overlay_opacity": 0.5,
+        "title": "Spin, Fitness & Indoor Cycling Shoes",
+        "text": "Without a natural breeze, trainer sessions can get heated up in a hurry. In a hot and humid training space, your feet will likely suffer the most (and you can risk forming blisters). Our selection of shoes for indoor riding feature lightweight construction, highly-vented uppers, and is compatible with SPD or Delta cleats. Find the right shoes for you and start spinning or commuting cooler.",
+        "enable_description": false,
+        "btn_label_1": "Shop Indoor Shoes",
+        "btn_link_1": "https://www.pearlizumi.com/collections/men-and-womens-fitness-collection#/filter:tags_sub_type:Cycling$2520Shoes",
+        "btn_label_2": "",
+        "btn_link_2": "",
+        "enable_bottom_margin": false
+      }
+    },
+    "suggested-products-4": {
+      "type": "suggested-products",
+      "settings": {
+        "title": "Indoor, Spin & Fitness Shoes",
+        "btn_label": "",
+        "btn_link": "",
+        "product_list": [
+          "mens-quest-studio-shoes-15182102",
+          "womens-quest-studio-shoes-15282101",
+          "womens-vesta-studio-shoes-15282005",
+          "pro-air-shoes-15182301",
+          "tri-fly-pro-shoes-15172201",
+          "womens-x-alp-canyon-shoes-15292001",
+          "mens-x-alp-canyon-shoes-15192001",
+          "mens-all-road-v5-shoes-15182006",
+          "womens-all-road-v5-shoes-15282007"
+        ],
+        "enable_bottom_margin": false
+      }
+    },
+    "full-width-cta-6": {
+      "type": "full-width-cta",
+      "settings": {
+        "image": "shopify://shop_images/DSK_Clipping_in_flipped.jpg",
+        "image_mobile": "shopify://shop_images/MBL_ClippingIn_flipped.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "hero_height": "normal",
+        "text_overlay_color": "#262b2c",
+        "overlay_opacity": 0.6,
+        "title": "How To Clip In Cycling Shoes",
+        "text": "From improving your efficiency on the bike, to maximizing power distribution, being clipped in to your pedals – in certain scenarios – will help you feel more at one with the bike and allow you to push further with greater force and ease. Different cleats, which attach to your bike's pedals, are built for different types of riding. Typically, the faster you ride, the more solid you'd want your foot to be attached to the pedal, and the use of - and type of - cleat determines how easily you can clip and unclip. Our shoes are designed with all types of riding in mind, and we have shoes 2-bolt SPD, 3-bolt Delta, or 5-bolt options to accommodate either. In addition to 2-bolt and 3-bolt options, we also offer flat pedal options for riders that prefer the flexibility and full freedom of movement.",
+        "enable_description": false,
+        "btn_label_1": "",
+        "btn_link_1": "",
+        "btn_label_2": "",
+        "btn_link_2": "",
+        "enable_bottom_margin": false
+      }
+    },
+    "full-width-cta-7": {
+      "type": "full-width-cta",
+      "settings": {
+        "image": "shopify://shop_images/cleats_9e9c0455-eed6-4d55-a1ca-008ed6a271ee.png",
+        "image_mobile": "shopify://shop_images/logosmob_copy.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "hero_height": "normal",
+        "text_overlay_color": "#262b2c",
+        "overlay_opacity": 0,
+        "title": "",
+        "text": "",
+        "enable_description": false,
+        "btn_label_1": "",
+        "btn_link_1": "",
+        "btn_label_2": "",
+        "btn_link_2": "",
+        "enable_bottom_margin": true
+      }
+    },
+    "full-width-cta-8": {
+      "type": "full-width-cta",
+      "settings": {
+        "image": "shopify://shop_images/end_b5b21e49-37f9-4823-a9c2-aca5e133a35f.jpg",
+        "image_mobile": "shopify://shop_images/endmob_54da0687-5c22-485b-bb72-e553f151aa67.jpg",
+        "video": "",
+        "video_1": "",
+        "youtube_video": "",
+        "hero_height": "small",
+        "text_overlay_color": "#262b2c",
+        "overlay_opacity": 0.7,
+        "title": "Trouble deciding?",
+        "text": "Looking for size advice? Need to know how a shoe compares to another brand? Our customer care team - made up of real-life cycling fanatics - is available to help!",
+        "enable_description": true,
+        "btn_label_1": "Email",
+        "btn_link_1": "https://www.pearlizumi.com/pages/contact-us",
+        "btn_label_2": "Call",
+        "btn_link_2": "tel:800-328-8488",
+        "enable_bottom_margin": false
+      }
+    }
+  },
+  "order": [
+    "full-width-cta",
+    "category-filter",
+    "text-block",
+    "full-width-cta-2",
+    "suggested-products",
+    "full-width-cta-3",
+    "suggested-products-2",
+    "full-width-cta-4",
+    "suggested-products-3",
+    "full-width-cta-5",
+    "suggested-products-4",
+    "full-width-cta-6",
+    "full-width-cta-7",
+    "full-width-cta-8"
+  ]
+}

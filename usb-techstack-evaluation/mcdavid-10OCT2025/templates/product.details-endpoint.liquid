@@ -1,0 +1,24 @@
+{% comment %} Please don’t update this content {% endcomment %}
+
+{% layout none %}
+{
+  "product":
+    {
+      "id":{{ product.id }},
+      "metafields":[
+        
+              {% comment %}
+                Single Metafield
+              {% endcomment %}
+              {% assign v_reviews-aggregate-ratings = product.metafields.bazaarvoice["reviews-aggregate-ratings"] %}
+              {% if v_reviews-aggregate-ratings != blank %}
+                {
+                  "namespace": "bazaarvoice",
+                  "key": "reviews-aggregate-ratings",
+                  "value": {{ v_reviews-aggregate-ratings | json }}
+                },
+              {% endif %}
+        
+      ]
+    }
+}

@@ -1,0 +1,3691 @@
+{
+  "theme_name": "nathan-10OCT2025",
+  "apps": [
+    {
+      "id": "12440966767595914869",
+      "name": "sales-motivator-free-gifts",
+      "path": "shopify://apps/sales-motivator-free-gifts/blocks/app-block/790f143d-f67c-4036-9b09-2d69c24dd826",
+      "enabled": true,
+      "settings": {}
+    },
+    {
+      "id": "855628211100114053",
+      "name": "klaviyo-email-marketing-sms",
+      "path": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+      "enabled": true,
+      "settings": {}
+    },
+    {
+      "id": "8962992520437913685",
+      "name": "yotpo-loyalty-rewards",
+      "path": "shopify://apps/yotpo-loyalty-rewards/blocks/loader-app-embed-block/2f9660df-5018-4e02-9868-ee1fb88d6ccd",
+      "enabled": true,
+      "settings": {
+        "inject_modules_loader": true,
+        "inject_sdk_loader": false
+      }
+    },
+    {
+      "id": "17868308261682785792",
+      "name": "armex",
+      "path": "shopify://apps/armex/blocks/armex-extension/7fd274f7-e6a1-4512-8228-f11c90d2ef69",
+      "enabled": true,
+      "settings": {}
+    },
+    {
+      "id": "17428600031447253342",
+      "name": "attentive",
+      "path": "shopify://apps/attentive/blocks/attn-tag/8df62c72-8fe4-407e-a5b3-72132be30a0d",
+      "enabled": true,
+      "settings": {}
+    }
+  ],
+  "scripts": [
+    {
+      "file": "checkout.liquid",
+      "type": "inline_script",
+      "content": "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\n      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.asy..."
+    },
+    {
+      "file": "checkout.liquid",
+      "type": "external_script",
+      "src": "https://cdn-widgetsrepository.yotpo.com/v1/loader/XyZdDVtr7vbEO3NTAs4rJQ"
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "inline_script",
+      "content": "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\n  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;..."
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "inline_script",
+      "content": "window.dataLayer = window.dataLayer || [];\n    function gtag(){dataLayer.push(arguments);}\n    gtag('js', new Date());\n\n    gtag('config', 'AW-868109585');"
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "inline_script",
+      "content": "window.dataLayer = window.dataLayer || [];\n    function gtag(){dataLayer.push(arguments);}\n    gtag('js', new Date());\n\n    gtag('config', 'G-L759EKP838');"
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "inline_script",
+      "content": "console.log(\"noindex page\");"
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "inline_script",
+      "content": "!function(_){_.GORGIAS_CHAT_APP_ID=\"4459\",_.GORGIAS_CHAT_BASE_URL=\"us-east1-898b.production.gorgias.chat\",_.GORGIAS_API_BASE_URL=\"config.gorgias.chat\";var e=new XMLHttpRequest;e.open(\"GET\",\"https://co..."
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "inline_script",
+      "content": "!function(_){_.SHOPIFY_PERMANENT_DOMAIN=\"{{shop.permanent_domain}}\",_.SHOPIFY_CUSTOMER_ID=\"{{customer.id}}\",_.SHOPIFY_CUSTOMER_EMAIL=\"{{customer.email}}\"}(window||{});"
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "inline_script",
+      "content": "LoopOnstore.init({\n      key: \"03b888e94801710c26501de6b7273cd27354f556\",\n      attach: \"[data-checkout-btn]\"\n    });"
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "external_script",
+      "src": "https://sapi.negate.io/script/XvHMv74qJcRokaeCK/HnhQ==?shop=usbns.myshopify.com"
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "external_script",
+      "src": "https://www.googleoptimize.com/optimize.js?id=OPT-WBBDCRP"
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "external_script",
+      "src": "https://www.googletagmanager.com/gtag/js?id=G-L759EKP838"
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "external_script",
+      "src": "https://www.googletagmanager.com/gtag/js?id=AW-868109585"
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "external_script",
+      "src": "https://apps.bazaarvoice.com/deployments/nathansports/main_site/production/en_US/bv.js?shop=usbns.myshopify.com"
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "external_script",
+      "src": "https://unpkg.com/@loophq/onstore-sdk@latest/dist/loop-onstore-sdk.js"
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "tracking",
+      "content": "gtag('js', new Date()"
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "tracking",
+      "content": "gtag('config', 'AW-868109585')"
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "tracking",
+      "content": "gtag('js', new Date()"
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "tracking",
+      "content": "gtag('config', 'G-L759EKP838')"
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "tracking",
+      "content": "dataLayer.push(arguments)"
+    },
+    {
+      "file": "backup_theme.liquid",
+      "type": "tracking",
+      "content": "dataLayer.push(arguments)"
+    },
+    {
+      "file": "theme-backup-uso.liquid",
+      "type": "inline_script",
+      "content": "window.location.href =\"/\";"
+    },
+    {
+      "file": "theme-backup-uso.liquid",
+      "type": "inline_script",
+      "content": "window.theme = window.theme || {};\n    theme.money_format = {{ shop.money_format | json }};\n    theme.strings = {\n      previous: {{ 'general.accessibility_labels.previous' | t | json }},\n      next: ..."
+    },
+    {
+      "file": "theme-backup-uso.liquid",
+      "type": "inline_script",
+      "content": "$(function() {\n      ajaxCart.init({\n        formSelector: 'form[data-ajax-add-to-cart=\"true\"]',\n        cartContainer: '#CartContainer',\n        addToCartSelector: 'input[type=\"submit\"]',\n        car..."
+    },
+    {
+      "file": "theme-backup-uso.liquid",
+      "type": "inline_script",
+      "content": "!function(_){_.GORGIAS_CHAT_APP_ID=\"4459\",_.GORGIAS_CHAT_BASE_URL=\"us-east1-898b.production.gorgias.chat\",_.GORGIAS_API_BASE_URL=\"config.gorgias.chat\";var e=new XMLHttpRequest;e.open(\"GET\",\"https://co..."
+    },
+    {
+      "file": "theme-backup-uso.liquid",
+      "type": "inline_script",
+      "content": "!function(_){_.SHOPIFY_PERMANENT_DOMAIN=\"{{shop.permanent_domain}}\",_.SHOPIFY_CUSTOMER_ID=\"{{customer.id}}\",_.SHOPIFY_CUSTOMER_EMAIL=\"{{customer.email}}\"}(window||{});"
+    },
+    {
+      "file": "theme.liquid",
+      "type": "inline_script",
+      "content": "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\n  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;..."
+    },
+    {
+      "file": "theme.liquid",
+      "type": "inline_script",
+      "content": "window.dataLayer = window.dataLayer || [];\n    function gtag(){dataLayer.push(arguments);}\n    gtag('js', new Date());\n\n    gtag('config', 'AW-868109585');"
+    },
+    {
+      "file": "theme.liquid",
+      "type": "inline_script",
+      "content": "window.dataLayer = window.dataLayer || [];\n    function gtag(){dataLayer.push(arguments);}\n    gtag('js', new Date());\n\n    gtag('config', 'G-L759EKP838');"
+    },
+    {
+      "file": "theme.liquid",
+      "type": "inline_script",
+      "content": "console.log(\"noindex page\");"
+    },
+    {
+      "file": "theme.liquid",
+      "type": "inline_script",
+      "content": "(function e(){var e=document.createElement(\"script\");e.type=\"text/javascript\",e.async=true,e.src=\"//staticw2.yotpo.com/X8mbdiogiOo0Ef97SNvBY1GPXQzwi5ggWbUxVyXz/widget.js\";var t=document.getElementsByT..."
+    },
+    {
+      "file": "theme.liquid",
+      "type": "inline_script",
+      "content": "!function(_){_.GORGIAS_CHAT_APP_ID=\"4459\",_.GORGIAS_CHAT_BASE_URL=\"us-east1-898b.production.gorgias.chat\",_.GORGIAS_API_BASE_URL=\"config.gorgias.chat\";var e=new XMLHttpRequest;e.open(\"GET\",\"https://co..."
+    },
+    {
+      "file": "theme.liquid",
+      "type": "inline_script",
+      "content": "!function(_){_.SHOPIFY_PERMANENT_DOMAIN=\"{{shop.permanent_domain}}\",_.SHOPIFY_CUSTOMER_ID=\"{{customer.id}}\",_.SHOPIFY_CUSTOMER_EMAIL=\"{{customer.email}}\"}(window||{});"
+    },
+    {
+      "file": "theme.liquid",
+      "type": "inline_script",
+      "content": "LoopOnstore.init({\n      key: \"03b888e94801710c26501de6b7273cd27354f556\",\n      attach: \"[data-checkout-btn]\"\n    });"
+    },
+    {
+      "file": "theme.liquid",
+      "type": "inline_script",
+      "content": "document.querySelectorAll('.cta-video-modal:has(video)').forEach(videoModal => {\n    const observer = new MutationObserver(mutations => {\n      mutations.forEach(mutation => {\n        if (\n          m..."
+    },
+    {
+      "file": "theme.liquid",
+      "type": "external_script",
+      "src": "https://sapi.negate.io/script/CvXPWDYIgYrTScA2WJQ7og==?shop=usbns.myshopify.com"
+    },
+    {
+      "file": "theme.liquid",
+      "type": "external_script",
+      "src": "https://www.googleoptimize.com/optimize.js?id=OPT-WBBDCRP"
+    },
+    {
+      "file": "theme.liquid",
+      "type": "external_script",
+      "src": "https://www.googletagmanager.com/gtag/js?id=G-L759EKP838"
+    },
+    {
+      "file": "theme.liquid",
+      "type": "external_script",
+      "src": "https://www.googletagmanager.com/gtag/js?id=AW-868109585"
+    },
+    {
+      "file": "theme.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "theme.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "theme.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "theme.liquid",
+      "type": "external_script",
+      "src": "https://apps.bazaarvoice.com/deployments/nathansports/main_site/production/en_US/bv.js?shop=usbns.myshopify.com"
+    },
+    {
+      "file": "theme.liquid",
+      "type": "external_script",
+      "src": "https://cdn.elements.amazon/elements/amazon-delivery-message/v1.0/web-component.js"
+    },
+    {
+      "file": "theme.liquid",
+      "type": "external_script",
+      "src": "https://unpkg.com/@loophq/onstore-sdk@latest/dist/loop-onstore-sdk.js"
+    },
+    {
+      "file": "theme.liquid",
+      "type": "tracking",
+      "content": "gtag('js', new Date()"
+    },
+    {
+      "file": "theme.liquid",
+      "type": "tracking",
+      "content": "gtag('config', 'AW-868109585')"
+    },
+    {
+      "file": "theme.liquid",
+      "type": "tracking",
+      "content": "gtag('js', new Date()"
+    },
+    {
+      "file": "theme.liquid",
+      "type": "tracking",
+      "content": "gtag('config', 'G-L759EKP838')"
+    },
+    {
+      "file": "theme.liquid",
+      "type": "tracking",
+      "content": "dataLayer.push(arguments)"
+    },
+    {
+      "file": "theme.liquid",
+      "type": "tracking",
+      "content": "dataLayer.push(arguments)"
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "inline_script",
+      "content": "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\n  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;..."
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "inline_script",
+      "content": "window.dataLayer = window.dataLayer || [];\n    function gtag(){dataLayer.push(arguments);}\n    gtag('js', new Date());\n\n    gtag('config', 'AW-868109585');"
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "inline_script",
+      "content": "window.dataLayer = window.dataLayer || [];\n    function gtag(){dataLayer.push(arguments);}\n    gtag('js', new Date());\n\n    gtag('config', 'G-L759EKP838');"
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "inline_script",
+      "content": "console.log(\"noindex page\");"
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "inline_script",
+      "content": "(function e(){var e=document.createElement(\"script\");e.type=\"text/javascript\",e.async=true,e.src=\"//staticw2.yotpo.com/X8mbdiogiOo0Ef97SNvBY1GPXQzwi5ggWbUxVyXz/widget.js\";var t=document.getElementsByT..."
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "inline_script",
+      "content": "!function(_){_.GORGIAS_CHAT_APP_ID=\"4459\",_.GORGIAS_CHAT_BASE_URL=\"us-east1-898b.production.gorgias.chat\",_.GORGIAS_API_BASE_URL=\"config.gorgias.chat\";var e=new XMLHttpRequest;e.open(\"GET\",\"https://co..."
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "inline_script",
+      "content": "!function(_){_.SHOPIFY_PERMANENT_DOMAIN=\"{{shop.permanent_domain}}\",_.SHOPIFY_CUSTOMER_ID=\"{{customer.id}}\",_.SHOPIFY_CUSTOMER_EMAIL=\"{{customer.email}}\"}(window||{});"
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "inline_script",
+      "content": "LoopOnstore.init({\n      key: \"03b888e94801710c26501de6b7273cd27354f556\",\n      attach: \"[data-checkout-btn]\"\n    });"
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "inline_script",
+      "content": "document.querySelectorAll('.cta-video-modal:has(video)').forEach(videoModal => {\n    const observer = new MutationObserver(mutations => {\n      mutations.forEach(mutation => {\n        if (\n          m..."
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "external_script",
+      "src": "https://sapi.negate.io/script/CvXPWDYIgYrTScA2WJQ7og==?shop=usbns.myshopify.com"
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "external_script",
+      "src": "https://www.googleoptimize.com/optimize.js?id=OPT-WBBDCRP"
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "external_script",
+      "src": "https://www.googletagmanager.com/gtag/js?id=G-L759EKP838"
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "external_script",
+      "src": "https://www.googletagmanager.com/gtag/js?id=AW-868109585"
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "external_script",
+      "src": "https://apps.bazaarvoice.com/deployments/nathansports/main_site/production/en_US/bv.js?shop=usbns.myshopify.com"
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "external_script",
+      "src": "https://cdn.elements.amazon/elements/amazon-delivery-message/v1.0/web-component.js"
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "external_script",
+      "src": "https://unpkg.com/@loophq/onstore-sdk@latest/dist/loop-onstore-sdk.js"
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "tracking",
+      "content": "gtag('js', new Date()"
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "tracking",
+      "content": "gtag('config', 'AW-868109585')"
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "tracking",
+      "content": "gtag('js', new Date()"
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "tracking",
+      "content": "gtag('config', 'G-L759EKP838')"
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "tracking",
+      "content": "dataLayer.push(arguments)"
+    },
+    {
+      "file": "theme.shogun.landing.liquid",
+      "type": "tracking",
+      "content": "dataLayer.push(arguments)"
+    },
+    {
+      "file": "gift_card.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "gift_card.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "password.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "password.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "password.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    },
+    {
+      "file": "password.liquid",
+      "type": "external_script",
+      "src": "{{ "
+    }
+  ],
+  "assets": {
+    "css_files": [
+      {
+        "name": "theme.css",
+        "size": 415610,
+        "size_mb": 0.4
+      },
+      {
+        "name": "ecodrive.css",
+        "size": 1484,
+        "size_mb": 0.0
+      },
+      {
+        "name": "boost-sd-custom.css",
+        "size": 69,
+        "size_mb": 0.0
+      },
+      {
+        "name": "ly-rtl.css",
+        "size": 350,
+        "size_mb": 0.0
+      }
+    ],
+    "js_files": [
+      {
+        "name": "layout.build.js",
+        "size": 960255,
+        "size_mb": 0.92
+      },
+      {
+        "name": "collection.build.js",
+        "size": 13861,
+        "size_mb": 0.01
+      },
+      {
+        "name": "theme.build.js",
+        "size": 482824,
+        "size_mb": 0.46
+      },
+      {
+        "name": "quickviewProduct.build.js",
+        "size": 255673,
+        "size_mb": 0.24
+      },
+      {
+        "name": "product.build.js",
+        "size": 361538,
+        "size_mb": 0.34
+      },
+      {
+        "name": "giftcard.v.1.0.js",
+        "size": 596,
+        "size_mb": 0.0
+      },
+      {
+        "name": "cart.build.js",
+        "size": 97264,
+        "size_mb": 0.09
+      },
+      {
+        "name": "custom.js",
+        "size": 343,
+        "size_mb": 0.0
+      },
+      {
+        "name": "blog.build.js",
+        "size": 71496,
+        "size_mb": 0.07
+      },
+      {
+        "name": "ecodrive.js",
+        "size": 47162,
+        "size_mb": 0.04
+      },
+      {
+        "name": "bundle.build.js",
+        "size": 262363,
+        "size_mb": 0.25
+      }
+    ],
+    "images": [
+      {
+        "name": "ly-icon-en_1x1.svg",
+        "size": 541,
+        "size_mb": 0.0
+      },
+      {
+        "name": "true-fit-logo.png",
+        "size": 5379,
+        "size_mb": 0.01
+      },
+      {
+        "name": "ly-icon-fr_1x1.svg",
+        "size": 292,
+        "size_mb": 0.0
+      },
+      {
+        "name": "ly-icon-en.svg",
+        "size": 538,
+        "size_mb": 0.0
+      },
+      {
+        "name": "ly-icon-fr.svg",
+        "size": 292,
+        "size_mb": 0.0
+      }
+    ],
+    "fonts": [],
+    "total_size": 2978280,
+    "total_size_mb": 2.84
+  },
+  "code_quality": {
+    "deprecated_tags": [
+      {
+        "file": "snippets/snippet-3-grid-cta.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 11
+      },
+      {
+        "file": "snippets/snippet-3-grid-cta.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/bv-questions-answers.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/snippet-hero-image.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 10
+      },
+      {
+        "file": "snippets/product-features-icon.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/bundle-product-buy-box.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/snippet-accordion2.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/backorder.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/boost-sd-fallback.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/bv-ratings-reviews.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/ly-switcher-factory.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 13
+      },
+      {
+        "file": "snippets/ly-switcher-factory.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/ly-switcher-factory.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/ly-core-scripts.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 13
+      },
+      {
+        "file": "snippets/klaviyo-snippets.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/social-meta-tags.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 3
+      },
+      {
+        "file": "snippets/social-meta-tags.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/snippet-smart-recommendation-cart.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 3
+      },
+      {
+        "file": "snippets/searchspring-recommendations.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/isp-smart-navigation.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/swatch.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 13
+      },
+      {
+        "file": "snippets/swatch.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/swatch.liquid",
+        "pattern": "\\{\\%\\s*raw\\s+",
+        "count": 4
+      },
+      {
+        "file": "snippets/swatch.liquid",
+        "pattern": "\\{\\%\\s*endraw\\s+",
+        "count": 4
+      },
+      {
+        "file": "snippets/snippet-full-width-cta.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/promo-banner.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 6
+      },
+      {
+        "file": "snippets/blog-list.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/form-gift-card.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 4
+      },
+      {
+        "file": "snippets/customer-registration-form.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/product-description.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 7
+      },
+      {
+        "file": "snippets/product-description.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/product-block.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/onboarding-product-block.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/product-details.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/kiwi-sizing-embed.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/shortcode-video.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/blog-list-all.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/locksmith-content-variables.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 9
+      },
+      {
+        "file": "snippets/locksmith-content-variables.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 9
+      },
+      {
+        "file": "snippets/elevar-body-end.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/blog-menu-mobile.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/isp-smart-navigation-static.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/customer-login-form.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/shogun-head.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 4
+      },
+      {
+        "file": "snippets/shogun-head.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/product-description-features.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/product-description-features.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/smart-navigation.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/collection__grid.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/snippet-text-block.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/pro-classes.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/special-offers-templates.liquid",
+        "pattern": "\\{\\%\\s*raw\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/special-offers-templates.liquid",
+        "pattern": "\\{\\%\\s*endraw\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/snippet-full_width_cta.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/shogun-content-handler.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 8
+      },
+      {
+        "file": "snippets/shogun-content-handler.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 6
+      },
+      {
+        "file": "snippets/shogun-content-handler.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/product-seo-schema.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/cart-line-item.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/product-buy-box-standard.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/onboarding-collection-block.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/product-features-item.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/collection__filter-header.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/locksmith-variables.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 168
+      },
+      {
+        "file": "snippets/locksmith-variables.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 6
+      },
+      {
+        "file": "snippets/product-technologies.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 5
+      },
+      {
+        "file": "snippets/collection-block.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/product-carousel-item.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/ss-script.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 14
+      },
+      {
+        "file": "snippets/ss-script.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/snippet-ingredients-hero-image.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/shogun-products.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/shogun-products.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/product-shop-the-look.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 3
+      },
+      {
+        "file": "snippets/product-shop-the-look.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 4
+      },
+      {
+        "file": "snippets/product-shop-the-look.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/product-bundle-features.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 8
+      },
+      {
+        "file": "snippets/product-bundle-features.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/ajax-cart-template.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/ajax-cart-template.liquid",
+        "pattern": "\\{\\%\\s*raw\\s+",
+        "count": 14
+      },
+      {
+        "file": "snippets/ajax-cart-template.liquid",
+        "pattern": "\\{\\%\\s*endraw\\s+",
+        "count": 14
+      },
+      {
+        "file": "snippets/ajaxify-cart-so.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/blogstudio-wrapper.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/blogstudio-wrapper.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 3
+      },
+      {
+        "file": "snippets/product-buy-box-option-group.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/blog-menu.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/bv-inline-ratings.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/breadcrumbs.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/bv-inline-rating.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/kiwiSizing.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/blog-comments.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/blog-comments.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/blog-comments.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 3
+      },
+      {
+        "file": "snippets/snippet-centered-content.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/snippet-hero-breadcrumbs.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/snippet-hero-breadcrumbs.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/form-row.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/snippet-image-with-text-row.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 4
+      },
+      {
+        "file": "snippets/back-in-stock-helper.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/snippet-suggested-products.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 5
+      },
+      {
+        "file": "snippets/share-icons.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/snippet-content-block.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 4
+      },
+      {
+        "file": "snippets/product-template-inline-styles.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/content-blocks.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 7
+      },
+      {
+        "file": "snippets/content-blocks.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/product-item-shop-the-look.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 4
+      },
+      {
+        "file": "snippets/bv-summary.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/account-address-form.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/account-address-form.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 3
+      },
+      {
+        "file": "snippets/ly-get-customs.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/special-offers.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 5
+      },
+      {
+        "file": "snippets/special-offers.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/product-faqs.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 3
+      },
+      {
+        "file": "snippets/product-faqs.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/product-riding-conditions.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 3
+      },
+      {
+        "file": "snippets/product-riding-conditions.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/customer-login-landing.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/head-meta.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 20
+      },
+      {
+        "file": "snippets/head-meta.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/snippet-image-gallery-slider.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 5
+      },
+      {
+        "file": "snippets/snippet-image-gallery-slider.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/social-icons.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/locksmith.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 6
+      },
+      {
+        "file": "snippets/locksmith.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 4
+      },
+      {
+        "file": "snippets/nav-desktop.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 14
+      },
+      {
+        "file": "snippets/nav-desktop.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      },
+      {
+        "file": "snippets/snippet-image-with-text-cta.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 4
+      },
+      {
+        "file": "snippets/boost-sd-app.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "snippets/snippet-smart-recommendation.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 3
+      },
+      {
+        "file": "snippets/snippet-image-content-slider.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 4
+      },
+      {
+        "file": "snippets/snippet-image-content-slider.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/slideshow.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/shogun-above.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "sections/shogun-above.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/blog-list.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/styleguide.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/homepage-product-carousel.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "sections/homepage-product-carousel--expertvoice.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "sections/static-blog.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 4
+      },
+      {
+        "file": "sections/collection-list.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/featured-blog.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/featured-blog.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/cart-template.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 22
+      },
+      {
+        "file": "sections/cart-template.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      },
+      {
+        "file": "sections/blog-category-landing-cta-grid.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 11
+      },
+      {
+        "file": "sections/blog-category-landing-cta-grid.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/list-collections-template.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/map.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 4
+      },
+      {
+        "file": "sections/image-with-text.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "sections/cross-page-promos.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 7
+      },
+      {
+        "file": "sections/product-pre-order-template.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 9
+      },
+      {
+        "file": "sections/product-pre-order-template.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 5
+      },
+      {
+        "file": "sections/blog-category-landing-hero.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/shogun-below.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "sections/shogun-below.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/main-collection-products-block.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 5
+      },
+      {
+        "file": "sections/main-page.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 4
+      },
+      {
+        "file": "sections/homepage-product-carousel--outdoorprolink.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "sections/homepage-hero--outdoorprolink.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/collection-template-bk.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 35
+      },
+      {
+        "file": "sections/collection-template-bk.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 3
+      },
+      {
+        "file": "sections/featured-product.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/blog-template.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 6
+      },
+      {
+        "file": "sections/blog-template.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 2
+      },
+      {
+        "file": "sections/stores-banner.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "sections/homepage-hero--pro.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/product-template.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 33
+      },
+      {
+        "file": "sections/product-template.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 7
+      },
+      {
+        "file": "sections/cart-template-backup-uso.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 5
+      },
+      {
+        "file": "sections/homepage-hero--expertvoice.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/shogun-optimizer.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 4
+      },
+      {
+        "file": "sections/shogun-optimizer.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/shogun-helper.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 4
+      },
+      {
+        "file": "sections/shogun-helper.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/footer.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 3
+      },
+      {
+        "file": "sections/footer.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/homepage-product-carousel--pro.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "sections/homepage-hero.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/password-template.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/article-template.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "sections/newsletter.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "layout/backup_theme.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "layout/backup_theme.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 4
+      },
+      {
+        "file": "layout/theme-backup-uso.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 4
+      },
+      {
+        "file": "layout/theme.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "layout/theme.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 4
+      },
+      {
+        "file": "layout/theme.shogun.landing.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 3
+      },
+      {
+        "file": "templates/collection.banner-carousel.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 35
+      },
+      {
+        "file": "templates/collection.banner-carousel.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 3
+      },
+      {
+        "file": "templates/product.bundle-mini-cart.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/collection.subcollection-carousel.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 35
+      },
+      {
+        "file": "templates/collection.subcollection-carousel.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 2
+      },
+      {
+        "file": "templates/collection.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 4
+      },
+      {
+        "file": "templates/index.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/index.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/product.metafields.json.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/page.accessibility-statement.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/page.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 4
+      },
+      {
+        "file": "templates/page.shogun.landing.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/product.mini-cart.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/product.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 4
+      },
+      {
+        "file": "templates/page.shogun.default.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/product.json.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "templates/product.json.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/product.ss-badges.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/gift_card.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "templates/gift_card.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/collection.shogun.custom.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/article.shogun.custom.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/password.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/collection.stocktype-u.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/product.shogun.custom.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/product.pre-order.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/page.ui-kit.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 4
+      },
+      {
+        "file": "templates/customers/order.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 2
+      },
+      {
+        "file": "templates/customers/account.liquid",
+        "pattern": "\\{\\%\\s*assign\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/customers/account.liquid",
+        "pattern": "\\{\\%\\s*capture\\s+",
+        "count": 1
+      },
+      {
+        "file": "templates/customers/account.liquid",
+        "pattern": "\\{\\%\\s*comment\\s+",
+        "count": 1
+      }
+    ],
+    "performance_issues": [
+      {
+        "file": "snippets/snippet-3-grid-cta.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/snippet-3-grid-cta.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 21
+      },
+      {
+        "file": "snippets/bv-questions-answers.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/snippet-hero-image.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 14
+      },
+      {
+        "file": "snippets/listrak-tracking.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/elevar-checkout-end.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/bundle-product-buy-box.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/bundle-product-buy-box.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/snippet-accordion2.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/snippet-accordion2.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "snippets/backorder.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/boost-sd-fallback.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/boost-sd-fallback.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 6
+      },
+      {
+        "file": "snippets/snippet-iframe_with_text.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 6
+      },
+      {
+        "file": "snippets/bv-ratings-reviews.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/brand-value-call-out.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/product-quantity-selector.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/product-quantity-selector.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "snippets/ly-switcher-factory.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 8
+      },
+      {
+        "file": "snippets/ly-switcher-factory.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 64
+      },
+      {
+        "file": "snippets/cart-quantity-selector.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/ly-core-scripts.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/ly-core-scripts.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "snippets/snippet-upsell-item.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 7
+      },
+      {
+        "file": "snippets/social-meta-tags.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/social-meta-tags.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 7
+      },
+      {
+        "file": "snippets/snippet-smart-recommendation-cart.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/searchspring-recommendations.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/isp-smart-navigation.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/swatch.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/swatch.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 9
+      },
+      {
+        "file": "snippets/snippet-full-width-cta.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 14
+      },
+      {
+        "file": "snippets/promo-banner.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 7
+      },
+      {
+        "file": "snippets/localization.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/localization.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "snippets/blog-list.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/form-gift-card.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "snippets/responsive-image.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "snippets/product-item.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 10
+      },
+      {
+        "file": "snippets/pagination-control.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/pagination-control.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "snippets/customer-registration-form.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/customer-registration-form.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 7
+      },
+      {
+        "file": "snippets/collection-header.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 7
+      },
+      {
+        "file": "snippets/truefit-size-sampling.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/product-description.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "snippets/product-description.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 7
+      },
+      {
+        "file": "snippets/snippet-video-hero.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/product-block.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 10
+      },
+      {
+        "file": "snippets/product-details.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/kiwi-sizing-embed.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/shortcode-video.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "snippets/blog-list-all.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/locksmith-content-variables.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 9
+      },
+      {
+        "file": "snippets/blog-menu-mobile.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/blog-menu-mobile.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/isp-smart-navigation-static.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/customer-login-form.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "snippets/bundle-product-buy-box-standard.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/snippet-full-width-cta-reversible.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "snippets/product-buy-box-info.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/signup-form.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/signup-form.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/shogun-head.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "snippets/product-description-features.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "snippets/smart-navigation.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/collection__grid.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/snippet-text-block.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "snippets/pro-classes.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "snippets/snippet-full_width_cta.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "snippets/blog-tags.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/blog-tags.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/ss-intellisuggest.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/ss-intellisuggest.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "snippets/snippet-2-grid-cta.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 12
+      },
+      {
+        "file": "snippets/shogun-content-handler.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 6
+      },
+      {
+        "file": "snippets/product-seo-schema.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/cart-line-item.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/cart-line-item.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/product-size-guide.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 13
+      },
+      {
+        "file": "snippets/product-buy-box-standard.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 11
+      },
+      {
+        "file": "snippets/onboarding-collection-block.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/page-side-nav.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/page-side-nav.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "snippets/product-features-item.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "snippets/collection__filter-header.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/blog-header.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "snippets/locksmith-variables.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/locksmith-variables.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 32
+      },
+      {
+        "file": "snippets/product-technologies.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/product-technologies.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 6
+      },
+      {
+        "file": "snippets/blog-related-posts.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/collection-block.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "snippets/product-carousel-item.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 10
+      },
+      {
+        "file": "snippets/avada-seo-other.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/avada-seo-other.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "snippets/snippet-ingredients-hero-image.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 6
+      },
+      {
+        "file": "snippets/blog-item.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/blog-item.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "snippets/product-gallery-new.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/product-gallery-new.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "snippets/icon-play.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/shogun-products.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/shogun-products.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "snippets/sm-red.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/product-mobile-accordion.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/product-shop-the-look.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/product-shop-the-look.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/blog-pagination.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/product-bundle-features.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/product-bundle-features.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 6
+      },
+      {
+        "file": "snippets/language-selector-mobile.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/ajax-cart-template.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/product-label-detail.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/blogstudio-wrapper.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "snippets/blogstudio-wrapper.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 19
+      },
+      {
+        "file": "snippets/product-gallery.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/product-gallery.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "snippets/product-buy-box-option-group.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "snippets/product-buy-box-option-group.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 9
+      },
+      {
+        "file": "snippets/product-warnings.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/snippet-category-filter.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 10
+      },
+      {
+        "file": "snippets/truefit-script.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/blog-menu.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/blog-menu.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "snippets/snippet-accordion.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 11
+      },
+      {
+        "file": "snippets/nav-mobile.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "snippets/nav-mobile.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 13
+      },
+      {
+        "file": "snippets/product-back-in-stock.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 6
+      },
+      {
+        "file": "snippets/product-features.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "snippets/breadcrumbs.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "snippets/kiwiSizing.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/blog-comments.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/blog-comments.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 9
+      },
+      {
+        "file": "snippets/svg-shirt.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/snippet-centered-content.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 8
+      },
+      {
+        "file": "snippets/snippet-hero-breadcrumbs.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "snippets/form-row.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 8
+      },
+      {
+        "file": "snippets/bgset.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 18
+      },
+      {
+        "file": "snippets/snippet-image-with-text-row.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 14
+      },
+      {
+        "file": "snippets/back-in-stock-helper.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/back-in-stock-helper.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/snippet-suggested-products.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/snippet-suggested-products.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "snippets/snippet-content-block.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 15
+      },
+      {
+        "file": "snippets/search-form.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/snippet-icon_with_text.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 14
+      },
+      {
+        "file": "snippets/content-blocks.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/content-blocks.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "snippets/shipping-calculator.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "snippets/customer-password-recovery-form.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/blog-sidebar.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/blog-sidebar.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 48
+      },
+      {
+        "file": "snippets/product-item-shop-the-look.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 11
+      },
+      {
+        "file": "snippets/bv-summary.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/product-tags.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/account-address-form.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/page-header.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "snippets/structured-data-product.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/pagination.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/pagination.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 6
+      },
+      {
+        "file": "snippets/special-offers.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "snippets/special-offers.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 7
+      },
+      {
+        "file": "snippets/product-faqs.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/product-faqs.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/pagination-accounts.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/pagination-accounts.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "snippets/shortcode-button.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/product-riding-conditions.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/product-riding-conditions.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/nerdy-form-builder.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/account-nav.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 10
+      },
+      {
+        "file": "snippets/shortcode-quick-links.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/head-meta.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/head-meta.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 22
+      },
+      {
+        "file": "snippets/snippet-image-gallery-slider.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/snippet-image-gallery-slider.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 6
+      },
+      {
+        "file": "snippets/social-icons.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 8
+      },
+      {
+        "file": "snippets/locksmith.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 7
+      },
+      {
+        "file": "snippets/nav-desktop.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 6
+      },
+      {
+        "file": "snippets/nav-desktop.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 14
+      },
+      {
+        "file": "snippets/bundle-buy-box-option-group.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "snippets/bundle-buy-box-option-group.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "snippets/snippet-image-with-text-cta.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 14
+      },
+      {
+        "file": "snippets/snippet-smart-recommendation.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "snippets/bundle-product-buy-box-info.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/faq-rich-results.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/snippet-image-content-slider.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "snippets/snippet-image-content-slider.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "sections/content-landing_womens-collection.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_kids-collection.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_womens-mtb-beginners-guide.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/slideshow.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 6
+      },
+      {
+        "file": "sections/content-landing_new-jersey-arrivals.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_cold-gear.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/cart-drawer.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_new-tights-arrivals.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_how-to-choose-cycling-shoes.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_our-social-purpose.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_all-about-chamois.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_new-mountain-bike-protection.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/main-collection-product-grid-two.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/main-collection-product-grid-two.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/shogun-above.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/homepage-full-cta--pro.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_mens-collection.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/kit-landing-womens.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_pro.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/blog-category-landing.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "sections/content-landing_sustainability.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_new-sock-arrivals.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-library.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/homepage-reversible-full-cta--expertvoice.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "sections/content-landing_careers.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_new-road-arrivals-all.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/background-video.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "sections/blog-list.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_upcycling.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_how-to-choose-a-short.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_pro-collection.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/video.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "sections/content-landing_new-gravel-arrivals.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_dei.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_here-we-go.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/contact-template.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/contact-template.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 13
+      },
+      {
+        "file": "sections/homepage-full-cta.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_new-bikestyle-arrivals-all.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_outerwear.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/homepage-product-carousel.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/homepage-product-carousel.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "sections/homepage-product-carousel--expertvoice.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/homepage-product-carousel--expertvoice.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "sections/content-landing_factory-store-park-city.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_we-ride-finder.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/static-blog.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "sections/static-blog.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 17
+      },
+      {
+        "file": "sections/content-landing_ride-365.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/collection-list.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "sections/collection-list.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 9
+      },
+      {
+        "file": "sections/content-landing_size-guides-and-fit.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/featured-blog.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "sections/featured-blog.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 8
+      },
+      {
+        "file": "sections/content-landing_expertise.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_we-campaign.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_pedal-to-zero.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/cart-template.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "sections/cart-template.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 15
+      },
+      {
+        "file": "sections/content-landing_mountain-bike-cold-gear.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_test-lab.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/homepage-half-cta--pro.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 6
+      },
+      {
+        "file": "sections/content-landing_technology.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/page-list-collections-template.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/page-list-collections-template.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "sections/blog-category-landing-cta-grid.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/blog-category-landing-cta-grid.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 21
+      },
+      {
+        "file": "sections/list-collections-template.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "sections/list-collections-template.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "sections/featured-collection.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "sections/featured-collection.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 9
+      },
+      {
+        "file": "sections/homepage-reversible-full-cta.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "sections/content-landing_rain-gear.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/stores-list.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/homepage-half-cta.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 6
+      },
+      {
+        "file": "sections/homepage-reversible-full-cta--outdoorprolink.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "sections/content-landing_how-to-choose-a-jacket.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/rich-text.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "sections/map.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 11
+      },
+      {
+        "file": "sections/content-landing_how-to-choose-tights-guide.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_mens-mountain-bike-beginners-guide.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_ride-there.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/image-with-text.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 15
+      },
+      {
+        "file": "sections/content-landing_gravel.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_innovation.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_mens-road-beginners-guide.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/gallery.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 7
+      },
+      {
+        "file": "sections/cross-page-promos.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "sections/cross-page-promos.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 19
+      },
+      {
+        "file": "sections/content-landing_origins.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/product-pre-order-template.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 7
+      },
+      {
+        "file": "sections/product-pre-order-template.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 67
+      },
+      {
+        "file": "sections/content-landing_womens-beginners-guide.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/blog-category-landing-hero.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "sections/content-landing_mountain-bike-experience.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/utility-bar.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_how-to-choose-a-jersey.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_levitate-chamois.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/homepage-half-cta--outdoorprolink.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 6
+      },
+      {
+        "file": "sections/yotpo-faq.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/homepage-reversible-full-cta--pro.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "sections/shogun-below.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/main-collection-products-block.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/main-collection-products-block.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_film.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/main-page.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "sections/homepage-product-carousel--outdoorprolink.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/homepage-product-carousel--outdoorprolink.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "sections/content-landing_more-trail.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/homepage-hero--outdoorprolink.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "sections/content-landing_new-mountain-bike-arrivals-all.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/blog-menu.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "sections/blog-menu.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "sections/content-landing_factory-store-silverthorne.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_gloves-guide.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/kit-landing-mens.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/collection-template-bk.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "sections/collection-template-bk.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 59
+      },
+      {
+        "file": "sections/image-with-text-overlay.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "sections/content-landing_womens-road-beginners-guide.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_athlete-crew.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_crew.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/featured-product.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "sections/featured-product.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 33
+      },
+      {
+        "file": "sections/homepage-full-cta--expertvoice.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_quality.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/kit-landing-kids.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_fitness.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/blog-template.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "sections/blog-template.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 17
+      },
+      {
+        "file": "sections/stores-banner.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 9
+      },
+      {
+        "file": "sections/content-landing_pro-shorts.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/homepage-half-cta--expertvoice.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 6
+      },
+      {
+        "file": "sections/content-landing_charities.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_wear-tester.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_gift-guide.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/homepage-hero--pro.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "sections/content-landing_featured-styles.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_new-shorts-arrivals.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_wind-gear.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_events.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/product-template.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 9
+      },
+      {
+        "file": "sections/product-template.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 128
+      },
+      {
+        "file": "sections/cart-template-backup-uso.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "sections/cart-template-backup-uso.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 14
+      },
+      {
+        "file": "sections/page-story-template.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/page-story-template.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 23
+      },
+      {
+        "file": "sections/homepage-hero--expertvoice.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "sections/content-landing_pro-system.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/shogun-optimizer.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/shogun-helper.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/footer.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "sections/footer.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 22
+      },
+      {
+        "file": "sections/content-landing_new-glove-arrivals.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_values.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/custom-row.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/custom-row.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 8
+      },
+      {
+        "file": "sections/homepage-product-carousel--pro.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/homepage-product-carousel--pro.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "sections/content-landing_new-arrivals-all.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/homepage-hero.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "sections/content-landing_library.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/password-template.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/password-template.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 6
+      },
+      {
+        "file": "sections/homepage-full-cta--outdoorprolink.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/article-template.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/article-template.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 9
+      },
+      {
+        "file": "sections/text-columns-with-images.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/text-columns-with-images.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 7
+      },
+      {
+        "file": "sections/product-recommendations.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "sections/content-landing_everyday-value.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/newsletter.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_go-grants.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "sections/content-landing_mountain-bike.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "layout/backup_theme.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 8
+      },
+      {
+        "file": "layout/theme-backup-uso.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 8
+      },
+      {
+        "file": "layout/theme.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 9
+      },
+      {
+        "file": "layout/theme.shogun.landing.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "layout/gift_card.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "layout/password.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "templates/collection.banner-carousel.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "templates/collection.banner-carousel.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 53
+      },
+      {
+        "file": "templates/list-collections.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "templates/product.bundle-mini-cart.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "templates/collection.subcollection-carousel.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "templates/collection.subcollection-carousel.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 64
+      },
+      {
+        "file": "templates/page.contact-centered.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "templates/page.contact-centered.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "templates/collection.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "templates/collection.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "templates/index.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "templates/product.metafields.json.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "templates/page.accessibility-statement.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "templates/page.accessibility-statement.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "templates/page.about.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "templates/page.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "templates/product.mini-cart.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "templates/product.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "templates/product.json.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "templates/product.json.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "templates/gift_card.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "templates/article.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "templates/collection.stocktype-u.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "templates/page.ui-kit.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 4
+      },
+      {
+        "file": "templates/search.avada-seo.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 5
+      },
+      {
+        "file": "templates/customers/order.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 3
+      },
+      {
+        "file": "templates/customers/order.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 8
+      },
+      {
+        "file": "templates/customers/account.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 1
+      },
+      {
+        "file": "templates/customers/account.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 6
+      },
+      {
+        "file": "templates/customers/addresses.liquid",
+        "pattern": "\\{\\%\\s*for\\s+.*?\\s+in\\s+.*?\\s*\\%\\}",
+        "count": 2
+      },
+      {
+        "file": "templates/customers/addresses.liquid",
+        "pattern": "\\{\\%\\s*if\\s+.*?\\s*\\%\\}",
+        "count": 3
+      }
+    ],
+    "custom_sections": 176,
+    "custom_snippets": 341,
+    "total_lines": 139739
+  },
+  "architecture": {
+    "sections_count": 176,
+    "snippets_count": 341,
+    "templates_count": 60,
+    "layouts_count": 7,
+    "locales_count": 2,
+    "has_shogun": true,
+    "has_custom_checkout": true,
+    "complexity_score": 782
+  },
+  "performance_indicators": {}
+}

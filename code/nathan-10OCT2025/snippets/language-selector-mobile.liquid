@@ -1,0 +1,12 @@
+{% liquid
+  if shop.permanent_domain == 'usbns.myshopify.com'
+    assign storefront = "US"
+  endif
+  assign US_ENGLISH_URL = "https://usbns.myshopify.com"
+%}
+
+<select class="w-full font-sora text-p border p-5 pr-8 border-mobile-nav-border bg-transparent" data-mobile-lang-selector>
+	<optgroup label="North america">
+    <option value="{{ US_ENGLISH_URL }}" {% if storefront == "US" %}selected{% endif %}>United States: English</option>
+  </optgroup>
+</select>

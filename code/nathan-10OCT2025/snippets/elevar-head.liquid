@@ -1,0 +1,37 @@
+{% liquid
+  if storefront == "US"
+    assign store_GTM_id = "GTM-WQ2J9QP"
+    assign store_script_id = "667de3aedc5847acd8b96e4a4b602d40141438dc"
+    assign script_version = "3.1.9"
+  elsif storefront == "CA"
+    assign store_GTM_id = "GTM-TSC6D7M"
+    assign store_script_id = "eb9b04e6514526908264af3fd289bb4822001005"
+    assign script_version = "3.1.9"
+  endif
+%}
+
+{%- unless storefront == "INT" -%}
+  <!--
+  Elevar Data Layer V2
+
+  This file is automatically updated and should not be edited directly.
+
+  https://knowledge.getelevar.com/how-to-customize-data-layer-version-2
+
+  Updated: 2023-03-29 19:05:27+00:00
+  Version: 3.1.9
+  -->
+  <!-- Google Tag Manager -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+  </script>
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":
+    new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
+    "https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,"script","dataLayer","{{ store_GTM_id }}");
+  </script>
+  <!-- End Google Tag Manager -->
+  <script id="elevar-gtm-suite-config" type="application/json">{"gtm_id": "{{ store_GTM_id }}", "event_config": {"cart_reconcile": true, "cart_view": true, "checkout_complete": true, "checkout_step": true, "collection_view": true, "defers_collection_loading": false, "defers_search_results_loading": false, "product_add_to_cart": true, "product_add_to_cart_ajax": true, "product_remove_from_cart": true, "product_select": true, "product_view": true, "search_results_view": true, "user": true, "save_order_notes": true}, "gtm_suite_script": "https://shopify-gtm-suite.getelevar.com/shops/{{- store_script_id -}}/{{- script_version -}}/gtm-suite.js", "consent_enabled": false, "apex_domain": null}</script>
+{%- endunless -%}

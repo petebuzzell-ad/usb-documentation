@@ -1,0 +1,175 @@
+<div class="fw-tech-grid" id="section-{{ section.id }}">
+  {%- assign col_count = section.blocks.size | at_most: 3 -%}
+  <div class="fw-tech-grid__grid" style="grid-template-columns: repeat({{ col_count }}, 1fr);">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'title_card' -%}
+          <div class="fw-tech-grid__block fw-tech-grid__block--title" {{ block.shopify_attributes }}>
+            {%- if block.settings.title != blank -%}
+              <div class="fw-tech-grid__title">
+                <h2>{{ block.settings.title }}</h2>
+              </div>
+            {%- endif -%}
+          </div>
+
+        {%- when 'feature' -%}
+          <div
+            class="fw-tech-grid__block fw-tech-grid__block--feature"
+            style="background: {{ block.settings.bg_color }}; color: {{ block.settings.font_color }};"
+            {{ block.shopify_attributes }}
+          >
+            <div class="fw-tech-grid__feature-text-wrapper">
+              {%- if block.settings.title != blank -%}
+                <div class="fw-tech-grid__feature-title">
+                  <h3 style="color: {{ block.settings.font_color }};">{{ block.settings.title }}</h3>
+                </div>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                <div class="fw-tech-grid__feature-text" style="color: {{ block.settings.font_color }};">
+                  {{ block.settings.text }}
+                </div>
+              {%- endif -%}
+              {% if block.settings.cfm_rating != blank %}
+                <div class="fw-tech-grid__cfm-rating" style="color: {{ block.settings.rating_font_color }};">
+                  {{ block.settings.cfm_rating }}
+                </div>
+              {% endif %}
+              {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
+                <a
+                  href="{{ block.settings.button_link }}"
+                  class="fw-tech-grid__button"
+                  style="color: {{ block.settings.font_color }};"
+                >
+                  {{- block.settings.button_label -}}
+                </a>
+              {%- endif -%}
+            </div>
+
+            {%- if block.settings.image != blank -%}
+              <div class="fw-tech-grid__feature-image">
+                {{ block.settings.image | img_url: '600x' | img_tag: block.settings.title | escape }}
+              </div>
+            {%- endif -%}
+          </div>
+
+        {%- when 'info' -%}
+          <div class="fw-tech-grid__block fw-tech-grid__block--info" {{ block.shopify_attributes }}>
+            {%- if block.settings.title != blank -%}
+              <div class="fw-tech-grid__info-title">
+                <h3>{{ block.settings.title }}</h3>
+              </div>
+            {%- endif -%}
+            {%- if block.settings.text != blank -%}
+              <div class="fw-tech-grid__info-text">{{ block.settings.text }}</div>
+            {%- endif -%}
+          </div>
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FW Tech Grid",
+  "tag": "section",
+  "class": "fw-tech-grid",
+  "max_blocks": 9,
+  "settings": [],
+  "blocks": [
+    {
+      "type": "title_card",
+      "name": "Title Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Tech Grid Heading"
+        }
+      ]
+    },
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Rich text",
+          "default": "<p>Feature description goes here.</p>"
+        },
+        {
+          "type": "text",
+          "id": "cfm_rating",
+          "label": "CFM Rating",
+          "default": "CFM"
+        },
+        {
+          "type": "color",
+          "id": "rating_font_color",
+          "label": "Rating Font color",
+          "default": "#000000"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Learn more"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background color",
+          "default": "#f5f5f5"
+        },
+        {
+          "type": "color",
+          "id": "font_color",
+          "label": "Font color",
+          "default": "#000000"
+        }
+      ]
+    },
+    {
+      "type": "info",
+      "name": "Info",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Info Title"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Rich text",
+          "default": "<p>Info description goes here.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FW Tech Grid",
+      "blocks": [{ "type": "title_card" }, { "type": "feature" }, { "type": "info" }]
+    }
+  ]
+}
+{% endschema %}

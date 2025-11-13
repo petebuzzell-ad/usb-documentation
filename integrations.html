@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <title>Integrations Guide - USB - McDavid eCommerce Documentation</title>
+    <link rel="icon" type="image/webp" href="assets/favicon.webp">
+    <link rel="stylesheet" href="arcadia-style.css">
+</head>
+<body>
+    <!-- Header will be loaded dynamically by component-loader.js -->
+    <div id="header-container"></div>
+    
+    <div class="container">
+        <div class="two-column-layout">
+            <!-- Enhanced Table of Contents Sidebar -->
+            <nav class="toc-sidebar">
+                <h3>Table of Contents</h3>
+<ul>
+<li><a href="#third-party-app-integration-documentation">Third-Party App Integration Documentation</a>
+</ul>
+</li>
+<li><a href="#apps-with-theme-code-integration">Apps with Theme Code Integration</a>
+<ul>
+<li><a href="#sika-discovery-eligibility">Sika Discovery Eligibility</a>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#app-block-support">App Block Support</a>
+</ul>
+</li>
+<li><a href="#shogun-page-builder">Shogun Page Builder</a>
+</ul>
+</li>
+<li><a href="#klaviyo-email-marketing">Klaviyo Email Marketing</a>
+</ul>
+</li>
+<li><a href="#bazaarvoice-ratings-reviews">Bazaarvoice Ratings & Reviews</a>
+</ul>
+</li>
+<li><a href="#shopify-product-reviews-spr">Shopify Product Reviews (SPR)</a>
+</ul>
+</li>
+<li><a href="#gorgias-chat-widget">Gorgias Chat Widget</a>
+</ul>
+</li>
+<li><a href="#freshworks-widget">Freshworks Widget</a>
+</ul>
+</li>
+<li><a href="#loop-returns">Loop Returns</a>
+</ul>
+</li>
+<li><a href="#saso-special-offers-upsells">SASO (Special Offers / Upsells)</a>
+</ul>
+</li>
+<li><a href="#elevar-google-tag-manager-analytics">Elevar (Google Tag Manager / Analytics)</a>
+</ul>
+</li>
+<li><a href="#kiwi-sizing">Kiwi Sizing</a>
+</ul>
+</li>
+<li><a href="#easyvideo">EasyVideo</a>
+</ul>
+</li>
+<li><a href="#gem-apps-page-builder">Gem Apps (Page Builder)</a>
+</ul>
+</li>
+<li><a href="#thimatic-bundle">Thimatic Bundle</a>
+</ul>
+</li>
+<li><a href="#apps-without-theme-integration">Apps Without Theme Integration</a>
+</ul>
+</li>
+<li><a href="#integration-verification">Integration Verification</a>
+</li>
+</ul>
+</ul>
+            </nav>
+            
+            <!-- Main Content Area -->
+            <main>
+                <section id="integrations-guide">
+<h1>Integrations Guide</h1>
+<section id="third-party-app-integration-documentation">
+<h2>Third-Party App Integration Documentation</h2>
+
+<hr>
+
+<section id="apps-with-theme-code-integration">
+<h2>Apps with Theme Code Integration</h2>
+
+<section id="sika-discovery-eligibility">
+<h3>Sika Discovery Eligibility</h3>
+
+<strong>App Handle:</strong> <code>sika-discovery-eligibility</code>  
+<strong>Integration Type:</strong> App Block  
+<strong>Block Type:</strong> <code>shopify://apps/sika-discovery-eligibility/blocks/sika_large_chip/</code>
+
+<strong>Code References:</strong>
+<ul>
+<li><code>templates/product.json</code> line 16 (exact block reference)</li>
+<li><code>templates/product.myovolt.json</code> line 16</li>
+<li>App blocks rendered in <code>sections/product-template.liquid</code> lines 412-418</li>
+</ul>
+
+<strong>Usage:</strong>
+<ul>
+<li>App block added to product templates</li>
+<li>Displays HSA/FSA eligibility information on product pages</li>
+<li>Appears in <code>product-app-blocks</code> div container</li>
+<li>Positioned above "Best For" metafield and "Add to Cart" button</li>
+</ul>
+
+<strong>Display Location:</strong>
+<ul>
+<li>Product pages (default template)</li>
+<li>MyoVolt product pages</li>
+<li>HEX® product pages</li>
+<li>All product templates that support <code>@app</code> blocks</li>
+</ul>
+
+<strong>Configuration:</strong>
+<ul>
+<li>Block added via Theme Customizer → Product pages → Add block</li>
+<li>Settings include product reference, alignment, and color options</li>
+<li>Block ID: <code>e17f8505-bcca-4959-8609-82e792382ccf</code></li>
+<li>Managed via Sika Discovery Eligibility app in Shopify Admin</li>
+</ul>
+
+<strong>Code Pattern:</strong>
+<pre><code class="language-liquid"><div class="product-app-blocks">
+<p>
+  {%- for block in section.blocks -%}
+    {% if block.type == '@app' %}
+        {% render block %}
+    {% endif %}
+  {%- endfor -%}
+</p>
+</div>
+</code></pre>
+
+<strong>Template Support:</strong>
+<ul>
+<li>Default product template (<code>product-template.liquid</code>)</li>
+<li>MyoVolt product template (<code>product-template-myovolt.liquid</code>)</li>
+<li>HEX® product template (<code>product-template-hexviz.liquid</code>)</li>
+<li>All product templates support app blocks via <code>@app</code> block type</li>
+</ul>
+
+<hr>
+
+<section id="app-block-support">
+<h2>App Block Support</h2>
+
+<p>
+All product templates support app blocks via the <code>@app</code> block type.
+</p>
+
+<strong>Code Pattern:</strong>
+<pre><code class="language-liquid"><div class="product-app-blocks">
+<p>
+  {%- for block in section.blocks -%}
+    {% if block.type == '@app' %}
+        {% render block %}
+    {% endif %}
+  {%- endfor -%}
+</p>
+</div>
+</code></pre>
+
+<strong>Templates with App Block Support:</strong>
+<ul>
+<li><code>sections/product-template.liquid</code> (line 412-418)</li>
+<li><code>sections/product-template-hexviz.liquid</code> (line 387-393)</li>
+<li><code>sections/product-template-myovolt.liquid</code> (line 319-325)</li>
+<li><code>sections/product-details-template.liquid</code> (line 326-332)</li>
+<li><code>sections/product-full-width-images-template.liquid</code> (line 336-342)</li>
+<li><code>sections/featured-products.liquid</code> (line 245-251)</li>
+</ul>
+
+<strong>Adding App Blocks:</strong>
+<ol>
+<li>Go to Theme Customizer</li>
+<li>Navigate to product page template</li>
+<li>Click "Add block"</li>
+<li>Select app block from available blocks</li>
+<li>Configure app block settings</li>
+<ol>
+<li>Save</li>
+
+<hr>
+
+<section id="shogun-page-builder">
+<h2>Shogun Page Builder</h2>
+
+<strong>Integration Type:</strong> Page Builder  
+<strong>Snippet:</strong> <code>snippets/shogun-content-handler.liquid</code>
+
+<strong>Usage:</strong>
+<ul>
+<li>Custom page layouts via Shogun app</li>
+<li>Template suffix support for Shogun pages</li>
+<li>Metafield-based template configuration</li>
+</ul>
+
+<strong>Code Reference:</strong>
+<ul>
+<li><code>snippets/shogun-content-handler.liquid</code> - Handles Shogun content rendering</li>
+<li><code>sections/shogun-above.liquid</code> - Shogun content above main content</li>
+<li><code>sections/shogun-below.liquid</code> - Shogun content below main content</li>
+</ul>
+
+<strong>Configuration:</strong>
+<ul>
+<li>Pages edited via Shogun app interface</li>
+<li>Template suffix automatically assigned</li>
+<li>Content stored in page metafields</li>
+</ul>
+
+<hr>
+
+<section id="klaviyo-email-marketing">
+<h2>Klaviyo Email Marketing</h2>
+
+<strong>Integration Type:</strong> Newsletter Form + Back in Stock (BIS)  
+<strong>Location:</strong> Footer section (newsletter) + Product pages (BIS)
+
+<strong>Newsletter Form:</strong>
+<ul>
+<li><strong>Code Reference:</strong> <code>sections/footer-md.liquid</code> line 36</li>
+<li><strong>Implementation:</strong> <code><div class="klaviyo-form-LWy48v"></div></code></li>
+<li><strong>Form ID:</strong> <code>LWy48v</code></li>
+<li><strong>Display Location:</strong> Footer column 1, below newsletter title and text</li>
+<li><strong>Wrapper:</strong> <code><div class="newsletter"></code> container</li>
+</ul>
+
+<strong>Back in Stock (BIS):</strong>
+<ul>
+<li><strong>Code Reference:</strong> <code>assets/klaviyo_bis_onsite.js</code> (3629 lines)</li>
+<li><strong>Script Location:</strong> <code>layout/theme.shogun.landing.liquid</code> line 307</li>
+<li><strong>Implementation:</strong> <code><script src="{{ 'klaviyo_bis_onsite.js' | asset_url }}"></script></code></li>
+<li><strong>Usage:</strong> Product page back-in-stock notifications</li>
+<li><strong>Configuration:</strong> Managed via Klaviyo app settings</li>
+</ul>
+
+<strong>Configuration:</strong>
+<ul>
+<li>Newsletter form managed via Klaviyo app → Forms</li>
+<li>Form ID <code>LWy48v</code> configured in footer section</li>
+<li>BIS functionality configured in Klaviyo app → Onsite</li>
+<li>No theme code changes needed for form updates</li>
+<li>Footer newsletter title and text configurable in Theme Customizer → Footer</li>
+</ul>
+
+<strong>Footer Newsletter Settings:</strong>
+<ul>
+<li>Newsletter title: <code>section.settings.newsletter_title</code></li>
+<li>Newsletter text: <code>section.settings.newsletter_text</code></li>
+<li>Both appear above Klaviyo form</li>
+</ul>
+
+<hr>
+
+<section id="bazaarvoice-ratings-reviews">
+<h2>Bazaarvoice Ratings & Reviews</h2>
+
+<strong>Integration Type:</strong> Product Reviews and Q&A  
+<strong>Location:</strong> Product pages
+
+<strong>Code References:</strong>
+<ul>
+<li><code>sections/product-template.liquid</code> lines 438-459</li>
+<li><code>sections/product-template-hexviz.liquid</code> lines 438-459</li>
+<li><code>templates/collection.products-endpoint.liquid</code> lines 18-21 (aggregate ratings)</li>
+</ul>
+
+<strong>Implementation:</strong>
+<pre><code class="language-liquid"><div class="shopify-reviews reviewsVisibility--{{settings.enable_shopify_review_comments}}">
+  <div data-bv-show="reviews" data-bv-product-Id="{{product.id}}">
+</ol>
+<p>
+    {% if product.metafields.bazaarvoice.reviews %}
+      {{ product.metafields.bazaarvoice.reviews }}
+    {% endif %}
+</p>
+  </div>
+  <div data-bv-show="questions" data-bv-product-Id="{{product.id}}">
+<p>
+    {% if product.metafields.bazaarvoice.questions %}
+      {{ product.metafields.bazaarvoice.questions }}
+    {% endif %}
+</p>
+  </div>
+</div>
+</code></pre>
+
+<strong>Metafields Used:</strong>
+<ul>
+<li><code>bazaarvoice.reviews</code> - Product reviews content</li>
+<li><code>bazaarvoice.questions</code> - Product Q&A content</li>
+<li><code>bazaarvoice.reviews-aggregate-ratings</code> - Aggregate rating data (collection endpoint)</li>
+</ul>
+
+<strong>Display Conditions:</strong>
+<ul>
+<li>Only displays when <code>section.settings.review_position == "next_to_gallery"</code></li>
+<li>Visibility controlled by <code>settings.enable_shopify_review_comments</code></li>
+<li>Requires Bazaarvoice metafields to be populated</li>
+</ul>
+
+<strong>Configuration:</strong>
+<ul>
+<li>Managed via Bazaarvoice app in Shopify Admin</li>
+<li>Review position configurable in Theme Customizer → Product pages</li>
+<li>Metafields automatically populated by Bazaarvoice app</li>
+</ul>
+
+<hr>
+
+<section id="shopify-product-reviews-spr">
+<h2>Shopify Product Reviews (SPR)</h2>
+
+<strong>Integration Type:</strong> Native Shopify Reviews  
+<strong>Location:</strong> Product pages
+
+<strong>Code References:</strong>
+<ul>
+<li><code>sections/product-description-bottom-template.liquid</code> lines 154, 345, 403</li>
+<li><code>assets/app.js</code> lines 795-803, 829-837 (SPR initialization)</li>
+</ul>
+
+<strong>Implementation:</strong>
+<pre><code class="language-liquid"><span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+<div id="shopify-product-reviews" data-id="{{product.id}}">
+<p>
+  {{ product.metafields.spr.reviews }}
+</p>
+</div>
+</code></pre>
+
+<strong>JavaScript Initialization:</strong>
+<pre><code class="language-javascript">if($('#shopify-product-reviews').length || $('.shopify-product-reviews-badge').length) {
+<p>
+  SPR.$(document).ready(function() {
+    return SPR.registerCallbacks(),
+    SPR.initRatingHandler(),
+    SPR.initDomEls(),
+    SPR.loadProducts(),
+    SPR.loadBadges()
+  })
+}
+</p>
+</code></pre>
+
+<strong>Metafields Used:</strong>
+<ul>
+<li><code>spr.reviews</code> - Shopify Product Reviews content</li>
+</ul>
+
+<strong>Display:</strong>
+<ul>
+<li>Review badges and full reviews on product pages</li>
+<li>Initialized on product template section load</li>
+<li>Also initialized on featured products section load</li>
+</ul>
+
+<hr>
+
+<section id="gorgias-chat-widget">
+<h2>Gorgias Chat Widget</h2>
+
+<strong>Integration Type:</strong> Customer Support Chat  
+<strong>Location:</strong> All pages (footer scripts)
+
+<strong>Code References:</strong>
+<ul>
+<li><code>layout/theme.liquid</code> lines 401-402</li>
+<li><code>layout/theme.shogun.landing.liquid</code> lines 298-299</li>
+</ul>
+
+<strong>Implementation:</strong>
+<pre><code class="language-liquid"><script id="gorgias-chat-widget-install-v2" src="https://config.gorgias.chat/gorgias-chat-bundle-loader.js?applicationId=4458"></script>
+<script id="gorgias-chat-shopify-install">
+<p>
+  !function(_){
+    _.SHOPIFY_PERMANENT_DOMAIN="{{shop.permanent_domain}}",
+    _.SHOPIFY_CUSTOMER_ID="{{customer.id}}",
+    _.SHOPIFY_CUSTOMER_EMAIL="{{customer.email}}"
+  }(window||{});
+</p>
+</script>
+</code></pre>
+
+<strong>Application ID:</strong> <code>4458</code>
+
+<strong>Features:</strong>
+<ul>
+<li>Customer support chat widget</li>
+<li>Customer data passed to Gorgias (ID, email, domain)</li>
+<li>Loads on all pages via theme layout</li>
+<li>Widget appears as floating chat button</li>
+</ul>
+
+<strong>Configuration:</strong>
+<ul>
+<li>Managed via Gorgias app in Shopify Admin</li>
+<li>Application ID configured in theme layout</li>
+<li>Customer data automatically synced</li>
+</ul>
+
+<hr>
+
+<section id="freshworks-widget">
+<h2>Freshworks Widget</h2>
+
+<strong>Integration Type:</strong> Customer Support Widget  
+<strong>Location:</strong> Footer (all pages)
+
+<strong>Code References:</strong>
+<ul>
+<li><code>sections/footer-md.liquid</code> lines 134-140</li>
+</ul>
+
+<strong>Implementation:</strong>
+<pre><code class="language-javascript"><script>
+<p>
+  window.fwSettings={
+    'widget_id':44000003784
+  };
+  !function(){
+    if("function"!=typeof window.FreshworksWidget){
+      var n=function(){n.q.push(arguments)};
+      n.q=[],window.FreshworksWidget=n
+    }
+  }()
+</p>
+</script>
+<script type='text/javascript' src='https://widget.freshworks.com/widgets/44000003784.js' async defer></script>
+</code></pre>
+
+<strong>Widget ID:</strong> <code>44000003784</code>
+
+<strong>Features:</strong>
+<ul>
+<li>Customer support widget</li>
+<li>Loads asynchronously in footer</li>
+<li>Appears as floating support widget</li>
+</ul>
+
+<strong>Configuration:</strong>
+<ul>
+<li>Managed via Freshworks app in Shopify Admin</li>
+<li>Widget ID configured in footer section</li>
+</ul>
+
+<hr>
+
+<section id="loop-returns">
+<h2>Loop Returns</h2>
+
+<strong>Integration Type:</strong> Returns Management  
+<strong>Location:</strong> Cart/Checkout
+
+<strong>Code References:</strong>
+<ul>
+<li><code>layout/theme.shogun.landing.liquid</code> lines 300-306</li>
+</ul>
+
+<strong>Implementation:</strong>
+<pre><code class="language-javascript"><script src="https://unpkg.com/@loophq/onstore-sdk@latest/dist/loop-onstore-sdk.js"></script>
+<script> 
+<p>
+  LoopOnstore.init({ 
+    key: "95498ea9ef05415e91b152adbddb46031a51f369", 
+    attach: ".subtotal .action_button#checkout" 
+  });
+</p>
+</script>
+</code></pre>
+
+<strong>API Key:</strong> <code>95498ea9ef05415e91b152adbddb46031a51f369</code>
+
+<strong>Features:</strong>
+<ul>
+<li>Returns management integration</li>
+<li>Attached to checkout button (<code>.subtotal .action_button#checkout</code>)</li>
+<li>Handles return requests and exchanges</li>
+</ul>
+
+<strong>Configuration:</strong>
+<ul>
+<li>Managed via Loop app in Shopify Admin</li>
+<li>API key configured in theme layout</li>
+<li>Attaches to checkout button selector</li>
+</ul>
+
+<hr>
+
+<section id="saso-special-offers-upsells">
+<h2>SASO (Special Offers / Upsells)</h2>
+
+<strong>Integration Type:</strong> Upsell and Cross-sell Popups  
+<strong>Location:</strong> Product and Cart pages
+
+<strong>Code References:</strong>
+<ul>
+<li><code>layout/theme.liquid</code> lines 357-368</li>
+<li><code>layout/theme.shogun.landing.liquid</code> lines 273-284</li>
+<li><code>snippets/special-offers.liquid</code> (187 lines)</li>
+</ul>
+
+<strong>Configuration Object:</strong>
+<pre><code class="language-javascript">window.saso_config = {
+<p>
+  product_title_max_length: 40,
+  crosssell_never_show_popup: false,
+  show_upsell_only_in: "product, cart",
+  hide_shown_upsells_for: 15, //minutes
+  hide_closed_notifications_for: 10, //minutes
+  upsell_variant_choose_option: "please select",
+  upsell_variant_choose_message: "Please select an option",
+  translate_percent_off: '% Off'
+}
+</p>
+</code></pre>
+
+<strong>Features:</strong>
+<ul>
+<li>Upsell popups on product pages</li>
+<li>Cross-sell popups in cart</li>
+<li>Product title max length: 40 characters</li>
+<li>Popup hiding logic (15 minutes for upsells, 10 minutes for notifications)</li>
+<li>Variant selection handling</li>
+</ul>
+
+<strong>Script Loading:</strong>
+<ul>
+<li>Loads from <code>https://storefront.cdn.pxu.co/apps/uso.js</code></li>
+<li>Includes Magnific Popup CSS for modal functionality</li>
+<li>Custom CSS file: <code>special-offers.css</code></li>
+<li>Templates rendered via <code>special-offers-templates</code> snippet</li>
+</ul>
+
+<strong>Configuration:</strong>
+<ul>
+<li>Managed via SASO app in Shopify Admin</li>
+<li>Configuration object in theme layout</li>
+<li>Popup behavior configurable in app settings</li>
+</ul>
+
+<hr>
+
+<section id="elevar-google-tag-manager-analytics">
+<h2>Elevar (Google Tag Manager / Analytics)</h2>
+
+<strong>Integration Type:</strong> Analytics and Data Layer  
+<strong>Location:</strong> All pages (body end)
+
+<strong>Code References:</strong>
+<ul>
+<li><code>layout/theme.liquid</code> line 394: <code>{% include 'elevar-body-end' %}</code></li>
+<li><code>snippets/elevar-body-end.liquid</code> (405 lines)</li>
+</ul>
+
+<strong>Features:</strong>
+<ul>
+<li>Google Tag Manager integration</li>
+<li>Enhanced ecommerce data layer</li>
+<li>Customer tracking (logged in vs guest)</li>
+<li>Page type tracking (homepage, product, collection, cart, checkout, search)</li>
+<li>Product detail view tracking</li>
+<li>Add to cart tracking</li>
+<li>Remove from cart tracking</li>
+<li>Collection view tracking</li>
+<li>Search results tracking</li>
+<li>Product click tracking</li>
+</ul>
+
+<strong>Data Layer Events:</strong>
+<ul>
+<li><code>HomeView</code> - Homepage visits</li>
+<li><code>productDetailView</code> - Product page views</li>
+<li><code>addToCart</code> - Add to cart actions</li>
+<li><code>removeFromCart</code> - Remove from cart actions</li>
+<li><code>collectionView</code> - Collection page views</li>
+<li><code>SearchView</code> - Search page views</li>
+<li><code>searchResults</code> - Search results impressions</li>
+<li><code>productClick</code> - Product link clicks</li>
+</ul>
+
+<strong>GTM Container ID:</strong> <code>GTM-5HMZRVC</code>
+
+<strong>Customer Data Tracked:</strong>
+<ul>
+<li>Visitor type (Logged In / Guest)</li>
+<li>Customer ID, email, name</li>
+<li>Customer orders count and total spent</li>
+<li>Product data (SKU, price, brand, variant)</li>
+<li>Cart data (items, total, SKUs)</li>
+</ul>
+
+<strong>Configuration:</strong>
+<ul>
+<li>Managed via Elevar app in Shopify Admin</li>
+<li>GTM container ID configured in snippet</li>
+<li>Data layer automatically populated</li>
+</ul>
+
+<hr>
+
+<section id="kiwi-sizing">
+<h2>Kiwi Sizing</h2>
+
+<strong>Integration Type:</strong> Size Guide  
+<strong>Location:</strong> Product pages
+
+<strong>Code References:</strong>
+<ul>
+<li><code>layout/theme.liquid</code> lines 388-391</li>
+<li><code>snippets/kiwiSizing.liquid</code> (18 lines)</li>
+</ul>
+
+<strong>Implementation:</strong>
+<pre><code class="language-liquid">{% if template !='index' %}
+<p>
+  {% if template contains 'product' or 'collections'%}
+    {% include 'kiwiSizing' %}
+  {% endif %}
+{% endif %}
+</p>
+</code></pre>
+
+<strong>Data Passed:</strong>
+<pre><code class="language-javascript">KiwiSizing.shop = "{{ shop.permanent_domain }}";
+<p>
+KiwiSizing.data = {
+  collections: "{{ product.collections | map: 'id' | join: ','}}",
+  tags: {{ product.tags | join: ',' | json}},
+  product: "{{product.id}}",
+  vendor: {{product.vendor | json}},
+  type: {{product.type | json}},
+  title: {{product.title | json}},
+  images: {{product.images | json}},
+  options: {{product.options_with_values | json}},
+  variants: {{product.variants | json}},
+};
+</p>
+</code></pre>
+
+<strong>Features:</strong>
+<ul>
+<li>Size guide integration</li>
+<li>Product data passed to Kiwi Sizing</li>
+<li>Displays on product and collection pages</li>
+<li>Includes product collections, tags, images, options, and variants</li>
+</ul>
+
+<strong>Configuration:</strong>
+<ul>
+<li>Managed via Kiwi Sizing app in Shopify Admin</li>
+<li>Product data automatically synced</li>
+<li>Size guide displays based on product data</li>
+</ul>
+
+<hr>
+
+<section id="easyvideo">
+<h2>EasyVideo</h2>
+
+<strong>Integration Type:</strong> Video Player  
+<strong>Location:</strong> Product and Collection pages
+
+<strong>Code References:</strong>
+<ul>
+<li><code>layout/theme.liquid</code> lines 388-391</li>
+<li><code>snippets/easyvideo.liquid</code> (if exists)</li>
+</ul>
+
+<strong>Implementation:</strong>
+<pre><code class="language-liquid">{% if template !='index' %}
+<p>
+  {% if template contains 'product' or 'collections'%}
+    {% include 'easyvideo' %}
+  {% endif %}
+{% endif %}
+</p>
+</code></pre>
+
+<strong>Features:</strong>
+<ul>
+<li>Video player integration</li>
+<li>Displays on product and collection pages</li>
+<li>Video content management</li>
+</ul>
+
+<strong>Configuration:</strong>
+<ul>
+<li>Managed via EasyVideo app in Shopify Admin</li>
+<li>Video content configured in app</li>
+</ul>
+
+<hr>
+
+<section id="gem-apps-page-builder">
+<h2>Gem Apps (Page Builder)</h2>
+
+<strong>Integration Type:</strong> Page Builder Sections  
+<strong>Location:</strong> Homepage and Pages
+
+<strong>Code References:</strong>
+<ul>
+<li><code>layout/theme.liquid</code> lines 395-400</li>
+<li><code>snippets/gem-app-footer-scripts.liquid</code></li>
+<li>Multiple <code>templates/index.gem-<em>.liquid</code> files</li>
+</ul>
+
+<strong>Template Files:</strong>
+<ul>
+<li><code>templates/index.gem-1600551102-template.liquid</code></li>
+<li><code>templates/index.gem-1590033886-template.liquid</code></li>
+<li><code>templates/index.gem-1592426711-template.liquid</code></li>
+<li><code>templates/index.gem-1608019865-template.liquid</code></li>
+<li><code>templates/index.gem-1594692224-template.liquid</code></li>
+<li><code>templates/index.gem-1610136936-template.liquid</code></li>
+<li><code>templates/index.gem-1584690625-template.liquid</code></li>
+<li><code>templates/index.gem-1595010713-template.liquid</code></li>
+<li><code>templates/index.gem-1571095289-template.liquid</code></li>
+</ul>
+
+<strong>Features:</strong>
+<ul>
+<li>Page builder sections for homepage</li>
+<li>Custom page layouts</li>
+<li>Footer scripts loaded via <code>gem-app-footer-scripts</code> snippet</li>
+<li>Multiple homepage template variations</li>
+</ul>
+
+<strong>Configuration:</strong>
+<ul>
+<li>Managed via Gem app in Shopify Admin</li>
+<li>Page templates created via Gem interface</li>
+<li>Footer scripts automatically loaded</li>
+</ul>
+
+<hr>
+
+<section id="thimatic-bundle">
+<h2>Thimatic Bundle</h2>
+
+<strong>Integration Type:</strong> Product Bundles  
+<strong>Location:</strong> All pages (footer scripts)
+
+<strong>Code References:</strong>
+<ul>
+<li><code>layout/theme.liquid</code> line 398: <code>{% render 'th-bundle-product' %}</code></li>
+</ul>
+
+<strong>Features:</strong>
+<ul>
+<li>Product bundle functionality</li>
+<li>Bundle product display</li>
+<li>Bundle pricing and discounts</li>
+</ul>
+
+<strong>Configuration:</strong>
+<ul>
+<li>Managed via Thimatic Bundle app in Shopify Admin</li>
+<li>Bundle configuration in app settings</li>
+</ul>
+
+<hr>
+
+<section id="apps-without-theme-integration">
+<h2>Apps Without Theme Integration</h2>
+
+<p>
+The following apps may be installed but have no theme code integration:
+</p>
+
+<ul>
+<li>Apps using only Shopify admin configuration</li>
+<li>Apps using only metafields (no theme code)</li>
+<li>Apps using only checkout extensions</li>
+<li>Apps using only Shopify Flow or Scripts</li>
+</ul>
+
+<strong>Note:</strong> To verify app integration, check for:
+<ol>
+<li>App blocks in templates (<code>@app</code> block type)</li>
+<li>App snippets in theme code (<code>snippets/</code> directory)</li>
+<li>App-specific metafield usage in theme code</li>
+<li>App JavaScript/CSS in theme assets (<code>assets/</code> directory)</li>
+<li>App scripts in layout files (<code>layout/theme.liquid</code>)</li>
+<ol>
+<li>App configuration objects in JavaScript</li>
+
+<hr>
+
+<section id="integration-verification">
+<h2>Integration Verification</h2>
+
+</ol>
+<p>
+All documented integrations have been verified against actual theme code from <code>code/mcdavid-11NOV2025/</code>:
+</p>
+
+<ol>
+<li><strong>Sika Discovery Eligibility:</strong> Verified in <code>templates/product.json</code> line 16 and <code>templates/product.myovolt.json</code> line 16</li>
+<li><strong>App Block Support:</strong> Verified in <code>sections/product-template.liquid</code> lines 412-418 and multiple product template sections</li>
+<li><strong>Shogun:</strong> Verified via <code>snippets/shogun-content-handler.liquid</code> and template suffix support</li>
+<li><strong>Klaviyo:</strong> Verified in <code>sections/footer-md.liquid</code> line 36 (newsletter) and <code>layout/theme.shogun.landing.liquid</code> line 307 (BIS)</li>
+<li><strong>Bazaarvoice:</strong> Verified in <code>sections/product-template.liquid</code> lines 438-459</li>
+<ol>
+<li><strong>Shopify Product Reviews:</strong> Verified in <code>sections/product-description-bottom-template.liquid</code> and <code>assets/app.js</code></li>
+<li><strong>Gorgias:</strong> Verified in <code>layout/theme.liquid</code> lines 401-402</li>
+<li><strong>Freshworks:</strong> Verified in <code>sections/footer-md.liquid</code> lines 134-140</li>
+<li><strong>Loop:</strong> Verified in <code>layout/theme.shogun.landing.liquid</code> lines 300-306</li>
+<li><strong>SASO:</strong> Verified in <code>layout/theme.liquid</code> lines 357-368 and <code>snippets/special-offers.liquid</code></li>
+<ol>
+<li><strong>Elevar:</strong> Verified in <code>snippets/elevar-body-end.liquid</code> (405 lines)</li>
+<li><strong>Kiwi Sizing:</strong> Verified in <code>layout/theme.liquid</code> lines 388-391 and <code>snippets/kiwiSizing.liquid</code></li>
+<li><strong>EasyVideo:</strong> Verified in <code>layout/theme.liquid</code> lines 388-391</li>
+<li><strong>Gem Apps:</strong> Verified in <code>layout/theme.liquid</code> lines 395-400 and multiple <code>templates/index.gem-</em>.liquid</code> files</li>
+<li><strong>Thimatic Bundle:</strong> Verified in <code>layout/theme.liquid</code> line 398</li>
+
+<strong>Evidence-Based Documentation:</strong>
+<ul>
+<li>Only apps with actual theme code integration are documented</li>
+<li>Code references include exact file paths and line numbers</li>
+<li>Integration patterns verified against source code</li>
+<li>JavaScript configuration objects documented</li>
+<li>Metafield usage verified</li>
+<li>Script loading locations verified</li>
+</ul>
+
+<strong>Integration Types:</strong>
+<ul>
+<li><strong>App Blocks:</strong> Sika Discovery Eligibility</li>
+<li><strong>Snippets:</strong> Shogun, Kiwi Sizing, EasyVideo, Special Offers, Elevar, Gem Apps, Thimatic Bundle</li>
+<li><strong>Layout Scripts:</strong> Gorgias, Loop, SASO, Klaviyo BIS, Elevar</li>
+<li><strong>Footer Scripts:</strong> Freshworks, Klaviyo Newsletter</li>
+<li><strong>JavaScript Assets:</strong> Klaviyo BIS (<code>klaviyo_bis_onsite.js</code>), SASO (external CDN)</li>
+<li><strong>Metafields:</strong> Bazaarvoice (<code>bazaarvoice.<em></code>), Shopify Product Reviews (<code>spr.reviews</code>)</li>
+</ul>
+
+<hr>
+
+</em>This guide documents only apps with verified theme code integration. For app-specific configuration, refer to app documentation or Shopify App Store. All integrations verified against McDavid theme code from November 2025.*
+
+
+</ol>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Footer will be loaded dynamically by component-loader.js -->
+    <div id="footer-container"></div>
+    
+    <!-- Component Loader: Dynamically loads header.html and footer.html -->
+    <script src="component-loader.js"></script>
+    
+    <!-- Enhanced TOC: Adds scroll-based highlighting and smooth navigation -->
+    <script src="enhanced-toc/enhanced-toc.js"></script>
+</body>
+</html>

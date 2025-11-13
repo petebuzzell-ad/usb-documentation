@@ -1,0 +1,418 @@
+{% liquid
+  if shop.permanent_domain == 'pearlizumi.myshopify.com'
+    assign storefront = "US"
+  elsif shop.permanent_domain == 'pearlizumi-ca.myshopify.com'
+    assign storefront = "CA"
+  elsif shop.permanent_domain == 'pearl-izumi-int.myshopify.com'
+    assign storefront = "INT"
+  endif
+%}
+
+{%- assign current_block = nil -%}
+{%- assign items_exist = nil -%}
+{%- for block in section.blocks -%}
+  {%- if block.settings.collection == collection.handle -%}
+    {%- assign current_block = block -%}
+    {%- for i in (1..6) -%}
+      {%- capture image -%}cat_image_{{i}}{%- endcapture -%}
+      {%- capture text -%}cta_text_{{i}}{%- endcapture -%}
+      {%- capture url -%}cta_url_{{i}}{%- endcapture -%}
+      {%- if current_block.settings[image] != blank and current_block.settings[text] != blank and current_block.settings[url] != blank -%}
+        {%- assign items_exist = true -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- render 'collection-header', current_block: current_block, items_exist: items_exist, storefront: storefront -%}
+
+<div id="searchspring-main">
+  {%- render 'collection__filter-header', collection: collection, storefront: storefront -%}
+  {%- render 'collection__grid', collection: collection, current_block: current_block, storefront: storefront -%}
+  {%- render 'seo_text', collection: collection -%}
+</div>
+
+<div class="cta-video-modal hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 shadow-modal max-w-1010 w-full z-50">
+  <span class="cta-video-modal__close absolute left-auto right-1 -top-14 xl:top-auto xl:bottom-full xl:right-auto xl:left-full shadow-modal rounded-full bg-white w-10 h-10 flex items-center justify-center cursor-pointer">
+    {%- render 'svg-close' -%}
+  </span>
+  <div class="cta-video-modal--inner relative h-0 w-full pt-[56.25%]"></div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection page",
+  "settings": [
+    {
+      "type": "range",
+      "id": "per_page",
+      "min": 3,
+      "max": 96,
+      "step": 1,
+      "label": "Items per page",
+      "default": 3
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Item",
+      "type": "item",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection",
+          "info": "The following content will be rendered on the collection which matches this one."
+        },
+        {
+          "type": "select",
+          "id": "banner_type",
+          "options": [
+            { "value": "image", "label": "Image"},
+            { "value": "category", "label": "Category Items"}
+          ],
+          "label": "Banner Type",
+          "default": "image",
+          "info": "If type is equal to 'image', then category items will not be rendered."
+        },
+        {
+          "type": "header",
+          "content": "SEO content"
+        },
+        {
+          "type": "text",
+          "id": "seo_title",
+          "label": "SEO Title"
+        },
+        {
+          "type": "html",
+          "id": "seo_content",
+          "label": "SEO Content"
+        },
+        {
+          "type": "header",
+          "content": "Category Item 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "cat_image_1",
+          "label": "Category Image 1",
+          "info": "Recommended size: 400x480"
+        },
+        {
+          "type": "image_picker",
+          "id": "cat_image_1_hover",
+          "label": "Category Image 1 (Hover)",
+          "info": "Recommended size: 400x480"
+        },
+        {
+          "type": "text",
+          "id": "cta_text_1",
+          "label": "Category Title"
+        },
+        {
+          "id": "cta_url_1",
+          "type": "url",
+          "label": "CTA URL"
+        },
+        {
+          "type": "header",
+          "content": "Category Item 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "cat_image_2",
+          "label": "Category Image 2",
+          "info": "Recommended size: 400x480"
+        },
+        {
+          "type": "image_picker",
+          "id": "cat_image_2_hover",
+          "label": "Category Image 2 (Hover)",
+          "info": "Recommended size: 400x480"
+        },
+        {
+          "type": "text",
+          "id": "cta_text_2",
+          "label": "Category Title"
+        },
+        {
+          "id": "cta_url_2",
+          "type": "url",
+          "label": "CTA URL"
+        },
+        {
+          "type": "header",
+          "content": "Category Item 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "cat_image_3",
+          "label": "Category Image 3",
+          "info": "Recommended size: 400x480"
+        },
+        {
+          "type": "image_picker",
+          "id": "cat_image_3_hover",
+          "label": "Category Image 3 (Hover)",
+          "info": "Recommended size: 400x480"
+        },
+        {
+          "type": "text",
+          "id": "cta_text_3",
+          "label": "Category Title"
+        },
+        {
+          "id": "cta_url_3",
+          "type": "url",
+          "label": "CTA URL"
+        },
+        {
+          "type": "header",
+          "content": "Category Item 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "cat_image_4",
+          "label": "Category Image 4",
+          "info": "Recommended size: 400x480"
+        },
+        {
+          "type": "image_picker",
+          "id": "cat_image_4_hover",
+          "label": "Category Image 4 (Hover)",
+          "info": "Recommended size: 400x480"
+        },
+        {
+          "type": "text",
+          "id": "cta_text_4",
+          "label": "Category Title"
+        },
+        {
+          "id": "cta_url_4",
+          "type": "url",
+          "label": "CTA URL"
+        },
+        {
+          "type": "header",
+          "content": "Category Item 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "cat_image_5",
+          "label": "Category Image 5",
+          "info": "Recommended size: 400x480"
+        },
+        {
+          "type": "image_picker",
+          "id": "cat_image_5_hover",
+          "label": "Category Image 5 (Hover)",
+          "info": "Recommended size: 400x480"
+        },
+        {
+          "type": "text",
+          "id": "cta_text_5",
+          "label": "Category Title"
+        },
+        {
+          "id": "cta_url_5",
+          "type": "url",
+          "label": "CTA URL"
+        },
+        {
+          "type": "header",
+          "content": "Category Item 6"
+        },
+        {
+          "type": "image_picker",
+          "id": "cat_image_6",
+          "label": "Category Image 6",
+          "info": "Recommended size: 400x480"
+        },
+        {
+          "type": "image_picker",
+          "id": "cat_image_6_hover",
+          "label": "Category Image 6 (Hover)",
+          "info": "Recommended size: 400x480"
+        },
+        {
+          "type": "text",
+          "id": "cta_text_6",
+          "label": "Category Title"
+        },
+        {
+          "id": "cta_url_6",
+          "type": "url",
+          "label": "CTA URL"
+        },
+        {
+          "type": "header",
+          "content": "CTA Tile 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "tile_image_1",
+          "label": "CTA Tile Image",
+          "info": "Recommended size: 600x600"
+        },
+        {
+          "type": "text",
+          "id": "tile_video_1",
+          "label": "CTA Tile Video",
+          "info": "If video is empty, it will be just an image tile. Video should be a mp4 url."
+        },
+        {
+          "type": "text",
+          "id": "tile_title_1",
+          "label": "Tile Title"
+        },
+        {
+          "type": "text",
+          "id": "tile_desc_1",
+          "label": "Tile Description",
+          "info": "Recommended Character Count: 120"
+        },
+        {
+          "id": "tile_url_1",
+          "type": "url",
+          "label": "Tile URL",
+          "info": "This will be ignored if video is set."
+        },
+        {
+          "type": "header",
+          "content": "CTA Tile 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "tile_image_2",
+          "label": "CTA Tile Image",
+          "info": "Recommended size: 600x600"
+        },
+        {
+          "type": "text",
+          "id": "tile_video_2",
+          "label": "CTA Tile Video",
+          "info": "If video is empty, it will be just an image tile. Video should be a mp4 url."
+        },
+        {
+          "type": "text",
+          "id": "tile_title_2",
+          "label": "Tile Title"
+        },
+        {
+          "type": "text",
+          "id": "tile_desc_2",
+          "label": "Tile Description",
+          "info": "Recommended Character Count: 120"
+        },
+        {
+          "id": "tile_url_2",
+          "type": "url",
+          "label": "Tile URL",
+          "info": "This will be ignored if video is set."
+        },
+        {
+          "type": "header",
+          "content": "CTA Tile 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "tile_image_3",
+          "label": "CTA Tile Image",
+          "info": "Recommended size: 600x600"
+        },
+        {
+          "type": "text",
+          "id": "tile_video_3",
+          "label": "CTA Tile Video",
+          "info": "If video is empty, it will be just an image tile. Video should be a mp4 url."
+        },
+        {
+          "type": "text",
+          "id": "tile_title_3",
+          "label": "Tile Title"
+        },
+        {
+          "type": "text",
+          "id": "tile_desc_3",
+          "label": "Tile Description",
+          "info": "Recommended Character Count: 120"
+        },
+        {
+          "id": "tile_url_3",
+          "type": "url",
+          "label": "Tile URL",
+          "info": "This will be ignored if video is set."
+        },
+        {
+          "type": "header",
+          "content": "CTA Tile 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "tile_image_4",
+          "label": "CTA Tile Image",
+          "info": "Recommended size: 600x600"
+        },
+        {
+          "type": "text",
+          "id": "tile_video_4",
+          "label": "CTA Tile Video",
+          "info": "If video is empty, it will be just an image tile. Video should be a mp4 url."
+        },
+        {
+          "type": "text",
+          "id": "tile_title_4",
+          "label": "Tile Title"
+        },
+        {
+          "type": "text",
+          "id": "tile_desc_4",
+          "label": "Tile Description",
+          "info": "Recommended Character Count: 120"
+        },
+        {
+          "id": "tile_url_4",
+          "type": "url",
+          "label": "Tile URL",
+          "info": "This will be ignored if video is set."
+        },
+        {
+          "type": "header",
+          "content": "CTA Tile 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "tile_image_5",
+          "label": "CTA Tile Image",
+          "info": "Recommended size: 600x600"
+        },
+        {
+          "type": "text",
+          "id": "tile_video_5",
+          "label": "CTA Tile Video",
+          "info": "If video is empty, it will be just an image tile. Video should be a mp4 url."
+        },
+        {
+          "type": "text",
+          "id": "tile_title_5",
+          "label": "Tile Title"
+        },
+        {
+          "type": "text",
+          "id": "tile_desc_5",
+          "label": "Tile Description",
+          "info": "Recommended Character Count: 120"
+        },
+        {
+          "id": "tile_url_5",
+          "type": "url",
+          "label": "Tile URL",
+          "info": "This will be ignored if video is set."
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

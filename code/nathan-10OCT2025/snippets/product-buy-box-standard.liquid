@@ -1,0 +1,209 @@
+{% liquid
+  assign current_variant = product.selected_or_first_available_variant
+
+  assign color_option_index = nil
+  for option in product.options
+    assign option_lower = option | downcase
+    if option_lower == 'color' or option_lower == 'couleur'
+      assign color_option_index = forloop.index0
+      break
+    endif
+  endfor
+
+  assign on_sale_colors = ""
+  assign regular_price = nil
+  for variant in product.variants
+    unless variant.metafields.global.unavailable == "true" or variant.metafields.global.unavailable == true
+      if variant.price < variant.compare_at_price
+        if discount_tag and limit_tag
+          break
+        endif
+
+        assign price_comb = variant.price | append: '::' | append: variant.compare_at_price | append: '::'
+        assign on_sale_colors_with_price = on_sale_colors | split: '||'
+        assign not_found = true
+        assign on_sale_colors = ""
+        for colors_with_price in on_sale_colors_with_price
+          assign colors_with_price_new = colors_with_price
+          if colors_with_price contains price_comb
+            unless colors_with_price contains variant.options[color_option_index]
+              assign colors_with_price_new = colors_with_price_new | append: variant.options[color_option_index] | append: '##'
+            endunless
+            assign not_found = false
+          endif
+          assign on_sale_colors = on_sale_colors | append: colors_with_price_new | append: '||'
+        endfor
+        if not_found
+          assign on_sale_colors = on_sale_colors | append: price_comb | append: variant.options[color_option_index] | append: '##'
+        endif
+      else
+        assign regular_price = variant.price
+      endif
+    endunless
+  endfor
+
+  assign client_confirmed = false
+%}
+
+<!-- Price Container -->
+<div class="flex md:hidden my-4 gap-2.5">
+  {%- comment -%} Clearance Pricing {%- endcomment -%}
+  {% if current_variant.compare_at_price and current_variant.price < current_variant.compare_at_price %}
+    <span data-product-price class="text-h4 font-lato font-semibold text-on-sale tracking-normal align-right">{{ current_variant.price | money }}</span>
+    <span data-compare-price class="text-h4 font-lato font-light line-through text-grey-four tracking-normal align-right">{{ current_variant.compare_at_price | money }}</span>
+  {%- comment -%} Member Pricing (clearance takes precedence) {%- endcomment -%}
+  {% elsif pro_price %}
+    <span data-product-price class="text-h4 font-lato font-semibold text-on-sale tracking-normal align-right">{{ pro_price | money }}</span>
+    <span data-compare-price class="text-h4 font-lato font-light line-through text-grey-four tracking-normal align-right"></span>
+  {%- comment -%} Regular Pricing {%- endcomment -%}
+  {% else %}
+    <span data-product-price class="text-h4 font-lato font-semibold tracking-normal align-right text-stone">{{ current_variant.price | money }}</span>
+    <span data-compare-price class="text-h4 font-lato font-light line-through text-grey-four tracking-normal align-right"></span>
+  {% endif %}
+
+  <span class="inline-block font-lato font-semibold text-h4-m mt-1 text-right capitalize" data-promo-message><span data-promo-message-percent-off></span> <span data-promo-message-text>{{- promo_text | capitalize | replace: 'off', 'Off' -}}</span></span>
+</div>
+
+<div id="productOptions{% if quickview %}QuickView{% endif %}">
+  {% if product.options and product.options[0] != "Title" %}
+    <div>
+      <div class="divide-y divide-light-grey border-t border-light-grey w-full">
+        {%- comment -%} Show Color First {%- endcomment -%}
+        {%- for option in product.options_with_values -%}
+          {%- assign option_handle = option.name | handleize -%}
+          {%- if option_handle == 'color' or option_handle == 'couleur' -%}
+            {%- assign option_num = forloop.index0 -%}
+              <div>{%- comment -%} Wrapper to allow Divide-Y border between Groups {%- endcomment -%}
+                {%- render 'product-buy-box-option-group'
+                  option: option,
+                  option_handle: option_handle,
+                  option_num: option_num,
+                  quickview: quickview,
+                  on_sale_colors: on_sale_colors,
+                  regular_price: regular_price,
+                  discount_tag: discount_tag,
+                  limit_tag: limit_tag,
+                  storefront: storefront,
+                  gift_card: gift_card
+                -%}
+              </div>
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- comment -%} For some reason, the French site is hiding color option groups ... check the JS {%- endcomment -%}
+        {%- for option in product.options_with_values -%}
+          {%- assign option_handle = option.name | handleize -%}
+          {%- unless option_handle == 'color' or option_handle == 'couleur' -%}
+            {%- assign option_num = forloop.index0 -%}
+            <div {% if storefront == "US" %} class="border-t border-light-grey" {% endif %}>{%- comment -%} Wrapper to allow Divide-Y border between Groups {%- endcomment -%}
+              {%- render 'product-buy-box-option-group'
+                option: option,
+                option_handle: option_handle,
+                option_num: option_num,
+                size_guide: size_guide,
+                product: product,
+                quickview: quickview,
+                discount_tag: discount_tag,
+                limit_tag: limit_tag,
+                storefront: storefront,
+                gift_card: gift_card
+              -%}
+            </div>
+          {%- endunless -%}
+        {%- endfor -%}
+
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+<div class="mb-5" id="productForm{% if quickview %}QuickView{% endif %}">
+  {% comment %} <form
+    action="/cart/add"
+    class="form-vertical"
+    enctype="multipart/form-data"
+    id="AddToCartForm{% if quickview %}QuickView{% endif %}"
+    method="post">
+    <div class="hidden">
+      <input id="quantity{% if quickview %}QuickView{% endif %}" name="quantity" type="text" value="1" />
+    </div>
+    <div class="flex h-15 mt-8 " data-buybox-submits>
+      <div class="w-20 h-inherit mr-2 {% if product.gift_card? %}!hidden{% endif %}" data-quantity-wrapper>
+        {% render 'product-quantity-selector'
+          , quickview: quickview %}
+      </div>
+
+      <button
+        data-add-to-cart
+        name="add"
+        class="button button-primary p-4 w-full text-special uppercase font-lato font-semibold"
+        type="submit"
+        onclick="{% if quickview %}eHS.quickviewProductBuyBox.addToCart(event){% else %}eHS.productBuyBox.addToCart(event){% endif %}">
+        Add To Cart</button>
+
+      <button
+        style="display: none;"
+        data-bis-notify
+        name="notify"
+        class="hidden button-primary-lg p-4 w-full text-special uppercase font-lato font-semibold"
+        type="button"
+        onclick="eHS.productBuyBox.openBISNotification(event)"
+        disabled></button>
+
+      <a data-klaviyo-bis class="klaviyo-bis-trigger w-full text-center hover:text-grey-three button button-secondary no-underline text-sm hidden" href="#">
+        Notify Me When Available</a>
+    </div>
+  </form> {% endcomment %}
+  {%-liquid
+    assign form_id = 'AddToCartForm'
+    assign form_class = 'form-vertical'
+    if quickview
+      assign form_id = form_id | append: 'QuickView'
+    endif
+  -%}
+
+  {%- form 'product', product, id: form_id, class: form_class -%}
+    <div class="hidden">
+      <input aria-label="{{ 'products.product.quantity' | t }}" id="quantity{% if quickview %}QuickView{% endif %}" type="text" value="1" name="quantity" />
+    </div>
+    <div class="flex h-15 mt-8">
+      <div class="hidden">
+        <div class="w-20 h-inherit mr-2" data-quantity-wrapper>
+          {% render 'product-quantity-selector', quickview: quickview %}
+        </div>
+      </div>
+
+      <button
+        data-add-to-cart
+        name="add"
+        class="button button-primary p-4 w-full text-special uppercase font-lato font-semibold"
+        type="submit"
+        onclick="{% if quickview %}eHS.quickviewProductBuyBox.addToCart(event){% else %}eHS.productBuyBox.addToCart(event){% endif %}">
+        Add To Cart</button>
+
+      <button
+        style="display: none;"
+        data-bis-notify
+        aria-label="Notify"
+        title="Notify"
+        name="notify"
+        class="hidden button-primary-lg p-4 w-full text-special uppercase font-lato font-semibold"
+        type="button"
+        onclick="eHS.productBuyBox.openBISNotification(event)"
+        disabled></button>
+
+      <a data-klaviyo-bis class="klaviyo-bis-trigger w-full text-center hover:text-grey-three button button-secondary no-underline text-sm hidden" href="#">
+        Notify Me When Available</a>
+
+    </div>
+    {%- comment -%}
+    <div class="text-center text-xs mt-3 pb-3 border-b border-light-grey">
+      {{ form | payment_terms }}
+    </div>
+    {%- endcomment -%}
+  {%- endform -%}
+
+  {%- render 'form-gift-card', product: product -%}
+</div>
+
+

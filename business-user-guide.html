@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <title>Business User Guide - USB - McDavid eCommerce Documentation</title>
+    <link rel="icon" type="image/webp" href="assets/favicon.webp">
+    <link rel="stylesheet" href="arcadia-style.css">
+</head>
+<body>
+    <!-- Header will be loaded dynamically by component-loader.js -->
+    <div id="header-container"></div>
+    
+    <div class="container">
+        <div class="two-column-layout">
+            <!-- Enhanced Table of Contents Sidebar -->
+            <nav class="toc-sidebar">
+                <h3>Table of Contents</h3>
+<ul>
+<li><a href="#content-management-workflows-for-usb-mcdavid">Content Management Workflows for USB - McDavid</a>
+</ul>
+</li>
+<li><a href="#navigation-menu-management">Navigation & Menu Management</a>
+<ul>
+<li><a href="#menu-to-section-mapping-table">Menu-to-Section Mapping Table</a>
+</ul>
+</li>
+<ul>
+<li><a href="#header-navigation">Header Navigation</a>
+<ul>
+<li><a href="#main-menu">Main Menu</a>
+</ul>
+</li>
+<ul>
+<li><a href="#header-elements-non-menu">Header Elements (Non-Menu)</a>
+</ul>
+</li>
+</ul>
+</li>
+<ul>
+<li><a href="#footer-navigation">Footer Navigation</a>
+<ul>
+<li><a href="#footer-structure">Footer Structure</a>
+</ul>
+</li>
+<ul>
+<li><a href="#how-to-update-footer-menus">How to Update Footer Menus</a>
+</ul>
+</li>
+</ul>
+</li>
+<ul>
+<li><a href="#creating-menus-in-shopify-admin">Creating Menus in Shopify Admin</a>
+</ul>
+</li>
+<ul>
+<li><a href="#desktop-vs-mobile-behavior">Desktop vs. Mobile Behavior</a>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#content-management">Content Management</a>
+<ul>
+<li><a href="#editing-pages">Editing Pages</a>
+</ul>
+</li>
+<ul>
+<li><a href="#creating-new-pages">Creating New Pages</a>
+</ul>
+</li>
+<ul>
+<li><a href="#shogun-page-builder">Shogun Page Builder</a>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#product-management">Product Management</a>
+<ul>
+<li><a href="#editing-product-information">Editing Product Information</a>
+</ul>
+</li>
+<ul>
+<li><a href="#product-images">Product Images</a>
+</ul>
+</li>
+<ul>
+<li><a href="#product-variants">Product Variants</a>
+</ul>
+</li>
+<ul>
+<li><a href="#product-metafields">Product Metafields</a>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#launching-new-products">Launching New Products</a>
+<ul>
+<li><a href="#pre-launch-checklist">Pre-Launch Checklist</a>
+</ul>
+</li>
+<ul>
+<li><a href="#step-by-step-product-launch">Step-by-Step Product Launch</a>
+</ul>
+</li>
+<ul>
+<li><a href="#adding-products-to-navigation">Adding Products to Navigation</a>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#myovolt-product-setup">MyoVolt Product Setup</a>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a>
+</ul>
+</li>
+<ul>
+<li><a href="#step-by-step-myovolt-setup">Step-by-Step MyoVolt Setup</a>
+</ul>
+</li>
+<ul>
+<li><a href="#myovolt-metafield-checklist">MyoVolt Metafield Checklist</a>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#mega-menu-configuration">Mega Menu Configuration</a>
+<ul>
+<li><a href="#adding-menu-item-descriptions">Adding Menu Item Descriptions</a>
+</ul>
+</li>
+<ul>
+<li><a href="#adding-mega-menu-promotional-content">Adding Mega Menu Promotional Content</a>
+</ul>
+</li>
+<ul>
+<li><a href="#menu-item-formatting">Menu Item Formatting</a>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#footer-configuration">Footer Configuration</a>
+<ul>
+<li><a href="#newsletter-signup-klaviyo">Newsletter Signup (Klaviyo)</a>
+</ul>
+</li>
+<ul>
+<li><a href="#social-media-icons">Social Media Icons</a>
+</ul>
+</li>
+<ul>
+<li><a href="#footer-logo-and-usb-logo">Footer Logo and USB Logo</a>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#common-tasks">Common Tasks</a>
+<ul>
+<li><a href="#updating-product-prices">Updating Product Prices</a>
+</ul>
+</li>
+<ul>
+<li><a href="#changing-product-images">Changing Product Images</a>
+</ul>
+</li>
+<ul>
+<li><a href="#updating-menu-items">Updating Menu Items</a>
+</ul>
+</li>
+<ul>
+<li><a href="#adding-new-collection-to-menu">Adding New Collection to Menu</a>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#troubleshooting">Troubleshooting</a>
+<ul>
+<li><a href="#menu-not-appearing-on-site">Menu Not Appearing on Site</a>
+</ul>
+</li>
+<ul>
+<li><a href="#product-not-showing-in-collection">Product Not Showing in Collection</a>
+</ul>
+</li>
+<ul>
+<li><a href="#images-not-displaying">Images Not Displaying</a>
+</ul>
+</li>
+<ul>
+<li><a href="#footer-menu-not-updating">Footer Menu Not Updating</a>
+</ul>
+</li>
+<ul>
+<li><a href="#help-banner-not-displaying">Help Banner Not Displaying</a>
+</ul>
+</li>
+<ul>
+<li><a href="#mega-menu-not-showing-promo-content">Mega Menu Not Showing Promo Content</a>
+</ul>
+</li>
+<ul>
+<li><a href="#myovolt-product-not-displaying-correctly">MyoVolt Product Not Displaying Correctly</a>
+</ul>
+</li>
+<ul>
+<li><a href="#need-more-help">Need More Help?</a>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+            </nav>
+            
+            <!-- Main Content Area -->
+            <main>
+                <section id="business-user-guide">
+<h1>Business User Guide</h1>
+<section id="content-management-workflows-for-usb-mcdavid">
+<h2>Content Management Workflows for USB - McDavid</h2>
+
+<hr>
+
+<section id="table-of-contents">
+<h2>Table of Contents</h2>
+
+<ol>
+<li><a href="#navigation--menu-management">Navigation & Menu Management</a></li>
+<li><a href="#content-management">Content Management</a></li>
+<li><a href="#product-management">Product Management</a></li>
+<li><a href="#launching-new-products">Launching New Products</a></li>
+<li><a href="#common-tasks">Common Tasks</a></li>
+<ol>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+
+<hr>
+
+<section id="navigation-menu-management">
+<h2>Navigation & Menu Management</h2>
+
+<section id="menu-to-section-mapping-table">
+<h3>Menu-to-Section Mapping Table</h3>
+
+</ol>
+<p>
+This table shows exactly which menu setting in Theme Customizer controls which visible navigation element on your site.
+</p>
+
+<table>
+<thead>
+<tr>
+<th><strong>Menu Setting</strong></th>
+<th><strong>Theme Customizer Location</strong></th>
+<th><strong>Visible Element</strong></th>
+<th><strong>Desktop Behavior</strong></th>
+<th><strong>Mobile Behavior</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>main_linklist</code></td>
+<td>Header section → Main menu</td>
+<td>Main desktop navigation menu (horizontal)</td>
+<td>Displays as horizontal menu with mega menu dropdowns</td>
+<td>Included in mobile menu drawer</td>
+</tr>
+<tr>
+<td><code>footer_column2_menu</code></td>
+<td>Footer section → Column 2 menu</td>
+<td>Footer column 2 links</td>
+<td>Displays in footer column 2</td>
+<td>Same as desktop</td>
+</tr>
+<tr>
+<td><code>footer_column3_menu</code></td>
+<td>Footer section → Column 3 menu</td>
+<td>Footer column 3 links</td>
+<td>Displays in footer column 3</td>
+<td>Same as desktop</td>
+</tr>
+<tr>
+<td><code>footer_column4_menu</code></td>
+<td>Footer section → Column 4 menu</td>
+<td>Footer column 4 links</td>
+<td>Displays in footer column 4</td>
+<td>Same as desktop</td>
+</tr>
+</tbody>
+</table>
+<strong>Code Verification:</strong>
+<ul>
+<li>Header menu: <code>sections/header-md.liquid</code> line 106: <code>linklists[section.settings.main_linklist]</code></li>
+<li>Footer menus: <code>sections/footer-md.liquid</code> lines 61, 71, 81: <code>linklists[section.settings.footer_column2_menu]</code>, etc.</li>
+</ul>
+
+<section id="header-navigation">
+<h3>Header Navigation</h3>
+
+<p>
+The header contains the main site navigation and several configurable elements.
+</p>
+
+<section id="main-menu">
+<h4>Main Menu</h4>
+
+<strong>Location:</strong> Theme Customizer → Header section → Main menu setting
+
+<strong>How to Update:</strong>
+<ol>
+<li>Go to <strong>Shopify Admin</strong> → <strong>Online Store</strong> → <strong>Navigation</strong></li>
+<li>Find or create the menu you want to use (e.g., "Main menu")</li>
+<li>Add/edit menu items (collections, pages, products, or custom links)</li>
+<li>Go to <strong>Theme Customizer</strong> → <strong>Header</strong> section</li>
+<li>Select your menu from the <strong>Main menu</strong> dropdown</li>
+<ol>
+<li>Click <strong>Save</strong></li>
+
+<strong>Menu Features:</strong>
+<ul>
+<li><strong>Nested menus (submenus)</strong> - Create parent items with child items in Shopify Admin</li>
+<li><strong>Mega menu support</strong> - Automatically displays when menu items have submenus</li>
+<li>Multi-column layout based on number of submenu items</li>
+<li>First column shows "Browse All" and main submenu items</li>
+<li>Additional columns show submenu categories with their items</li>
+<li>Special formatting: Menu items with <code><strong></code> are bolded, items with <code>%%</code> show descriptions</li>
+<li></strong>Mega menu descriptions<strong> - Add descriptions to menu items via Theme Customizer blocks</li>
+<li></strong>Mega menu promo blocks<strong> - Add promotional content to mega menus</li>
+<li>Configure in Theme Customizer → Header section → Blocks</li>
+<li>Add "Mega menu promo" block</li>
+<li>Match trigger to menu item handle (case-sensitive)</li>
+<li>Include image, pre-header, header, and link</li>
+<li></strong>HEX® logo support<strong> - Menu item titled exactly "HEX®" automatically displays the HEX logo image instead of text</li>
+<li></strong>SportMed® branding<strong> - Menu items titled "Braces & Supports" automatically display as "SportMed®" in mega menu</li>
+<li></strong>Custom link support<strong> - Can link to external URLs, internal pages, or anchor links</li>
+</ul>
+
+</strong>Desktop Display:<strong>
+<ul>
+<li>Horizontal menu bar at top of page</li>
+<li>Mega menu dropdowns appear on hover for items with submenus</li>
+<li>Search icon, account icon, and cart icon on the right</li>
+</ul>
+
+</strong>Mobile Display:<strong>
+<ul>
+<li>Hamburger menu icon opens mobile menu drawer</li>
+<li>All menu items appear in vertical list</li>
+<li>Search icon accessible from mobile header</li>
+</ul>
+
+<section id="header-elements-non-menu">
+<h4>Header Elements (Non-Menu)</h4>
+
+</strong>Logo:<strong>
+<ul>
+<li>Location: Theme Customizer → Header section → Logo settings</li>
+<li>Two logo options:</li>
+<li></strong>White logo<strong> - Displays on homepage (when header is over banner content)</li>
+<li></strong>Colored logo<strong> - Displays on all other pages</li>
+<li>Recommended size: 40px height</li>
+<li>Logo automatically links to homepage</li>
+<li>Logo switches automatically based on page type</li>
+</ul>
+
+</strong>Help Banner/Announcement Bar:<strong>
+<ul>
+<li>Location: Theme Customizer → Header section → Help text settings</li>
+<li></strong>Up to 3 rotating messages<strong> - Messages automatically rotate if multiple are active</li>
+<li></strong>Date-based scheduling:<strong></li>
+<li>Each message can have a start date and end date</li>
+<li>Format: <code>yyyy-mm-dd hh:mm:ss</code> (e.g., <code>2025-11-13 00:00:00</code>)</li>
+<li>Messages only display during their scheduled date range</li>
+<li>Leave dates blank for messages that should always show</li>
+<li></strong>Customization options:<strong></li>
+<li>Text color (<code>help_text_color</code>)</li>
+<li>Background color (<code>help_text_bg_color</code>)</li>
+<li>Link color (<code>help_text_link_color</code>)</li>
+<li></strong>Character limit:<strong> Maximum 170 characters per message</li>
+<li></strong>Brace Finder Link:<strong></li>
+<li>Optional link that appears on the right side of help banner</li>
+<li>Enable via "SHOW Brace Finder" checkbox</li>
+<li>Configure label text and URL</li>
+<li>Customize background and text colors</li>
+<li>Only displays on desktop (hidden on mobile/tablet)</li>
+<li>Location: Theme Customizer → Header section → Brace Finder link settings</li>
+</ul>
+
+</strong>Search:<strong>
+<ul>
+<li>Always enabled in McDavid header</li>
+<li>Search icon appears in header icons area (desktop) and mobile header</li>
+<li>Search functionality configured via global theme settings</li>
+</ul>
+
+</strong>Account & Cart:<strong>
+<ul>
+<li>Account icon appears if customer accounts are enabled</li>
+<li>Cart icon with live item count</li>
+<li>Both appear in header icons area (right side)</li>
+<li>Cart opens as slide-out drawer</li>
+</ul>
+
+<section id="footer-navigation">
+<h3>Footer Navigation</h3>
+
+</ol>
+<p>
+The footer uses a block-based system with multiple columns.
+</p>
+
+<section id="footer-structure">
+<h4>Footer Structure</h4>
+
+</strong>Column 1 (Left):<strong>
+<ul>
+<li>Footer logo image</li>
+<li>Newsletter signup (Klaviyo form)</li>
+<li>Social media icons (Instagram, TikTok, Facebook, YouTube, Twitter/X)</li>
+</ul>
+
+</strong>Columns 2, 3, 4:<strong>
+<ul>
+<li>Each column has a title and menu</li>
+<li>Menus assigned via Theme Customizer → Footer section</li>
+<li>Each column menu is independent</li>
+</ul>
+
+</strong>Column 5 (Right - Wide Column):<strong>
+<ul>
+<li>USB logo image (desktop only)</li>
+<li>Payment icons</li>
+<li>Copyright text</li>
+</ul>
+
+<section id="how-to-update-footer-menus">
+<h4>How to Update Footer Menus</h4>
+
+<ol>
+<li>Go to </strong>Shopify Admin<strong> → </strong>Online Store<strong> → </strong>Navigation<strong></li>
+<li>Create or edit the menu you want to use (e.g., "Footer Column 2")</li>
+<li>Add menu items (pages, collections, or custom links)</li>
+<li>Go to </strong>Theme Customizer<strong> → </strong>Footer<strong> section</li>
+<li>Find the column you want to update (Column 2, 3, or 4)</li>
+<ol>
+<li>Enter the column title in the </strong>Column X title<strong> field</li>
+<li>Select your menu from the </strong>Column X menu<strong> dropdown</li>
+<li>Click </strong>Save<strong></li>
+
+</strong>Footer Menu Features:<strong>
+<ul>
+<li>Simple link lists (no nested menus in footer)</li>
+<li>Each column is independent</li>
+<li>Column titles are configurable</li>
+<li>Menus can be left empty (column won't display)</li>
+</ul>
+
+<section id="creating-menus-in-shopify-admin">
+<h3>Creating Menus in Shopify Admin</h3>
+
+</strong>Step-by-Step:<strong>
+
+<ol>
+<li></strong>Navigate to Navigation:<strong></li>
+<ul>
+<li>Go to </strong>Shopify Admin<strong> → </strong>Online Store<strong> → </strong>Navigation<strong></li>
+</ul>
+
+<ol>
+<li></strong>Create New Menu:<strong></li>
+<ul>
+<li>Click </strong>Add menu<strong></li>
+<li>Enter menu name (e.g., "Main menu", "Footer Column 2")</li>
+<li>Click </strong>Add menu<strong></li>
+</ul>
+
+<ol>
+<li></strong>Add Menu Items:<strong></li>
+<ul>
+<li>Click </strong>Add menu item<strong></li>
+<li>Choose item type:</li>
+<li></strong>Collection<strong> - Links to a product collection</li>
+<li></strong>Page<strong> - Links to a content page</li>
+<li></strong>Product<strong> - Links to a product page</li>
+<li></strong>HTTP<strong> - Custom URL (internal or external)</li>
+<li>Enter the item details</li>
+<li>Click </strong>Add<strong></li>
+</ul>
+
+<ol>
+<li></strong>Create Nested Menus (Submenus):<strong></li>
+<ul>
+<li>Add a parent menu item first</li>
+<li>Click </strong>Add menu item<strong> again</li>
+<li>Choose your item type</li>
+<li></strong>Important:<strong> Before clicking Add, look for the </strong>Parent item<strong> dropdown</li>
+<li>Select the parent item from the dropdown</li>
+<li>Click </strong>Add<strong></li>
+<li>The submenu item will appear indented under the parent</li>
+</ul>
+
+<ol>
+<li></strong>Reorder Menu Items:<strong></li>
+<ul>
+<li>Drag and drop menu items to reorder</li>
+<li>Drag submenu items to change their parent</li>
+<li>Changes save automatically</li>
+</ul>
+
+</strong>Menu Item Types:<strong>
+<ul>
+<li></strong>Collection:<strong> Links to a product collection page</li>
+<li></strong>Page:<strong> Links to a content page</li>
+<li></strong>Product:<strong> Links to a specific product page</li>
+<li></strong>HTTP:<strong> Custom URL - can be:</li>
+<li>Internal page: <code>/pages/about-us</code></li>
+<li>External site: <code>https://example.com</code></li>
+<li>Anchor link: <code>#section-name</code></li>
+<li>Placeholder: <code>#</code> (for parent items that only have submenus)</li>
+</ul>
+
+<section id="desktop-vs-mobile-behavior">
+<h3>Desktop vs. Mobile Behavior</h3>
+
+</strong>Desktop Navigation:<strong>
+<ul>
+<li>Main menu displays horizontally across header</li>
+<li>Mega menus appear on hover</li>
+<li>Footer menus display in columns</li>
+<li>All menus always visible</li>
+</ul>
+
+</strong>Mobile Navigation:<strong>
+<ul>
+<li>Main menu hidden behind hamburger icon</li>
+<li>Tapping hamburger opens full-screen menu drawer</li>
+<li>Footer menus stack vertically</li>
+<li>Mobile menu includes all header menu items</li>
+</ul>
+
+<hr>
+
+<section id="content-management">
+<h2>Content Management</h2>
+
+<section id="editing-pages">
+<h3>Editing Pages</h3>
+
+</strong>Step-by-Step:<strong>
+
+<ol>
+<li>Go to </strong>Shopify Admin<strong> → </strong>Online Store<strong> → </strong>Pages<strong></li>
+<li>Find the page you want to edit</li>
+<li>Click the page title to open it</li>
+<li>Edit the page content in the content editor</li>
+<li>Update page title, SEO settings, or template if needed</li>
+<ol>
+<li>Click </strong>Save<strong></li>
+
+</strong>Page Templates Available:<strong>
+<ul>
+<li>Default page template</li>
+<li>Page with sidebar</li>
+<li>Page with banner</li>
+<li>Page details template</li>
+<li>Multi-column page template</li>
+<li>Gallery template</li>
+<li>FAQ template</li>
+<li>Contact template</li>
+</ul>
+
+</strong>To Change Page Template:<strong>
+<ol>
+<li>Open the page in Shopify Admin</li>
+<li>Scroll to </strong>Search engine listing<strong> section</li>
+<li>Find </strong>Template<strong> dropdown</li>
+<li>Select the template you want</li>
+<li>Click </strong>Save<strong></li>
+
+<section id="creating-new-pages">
+<h3>Creating New Pages</h3>
+
+<ol>
+<li>Go to </strong>Shopify Admin<strong> → </strong>Online Store<strong> → </strong>Pages<strong></li>
+<li>Click </strong>Add page<strong></li>
+<li>Enter page title</li>
+<li>Add page content</li>
+<li>Set visibility (visible/hidden)</li>
+<ol>
+<li>Configure SEO settings</li>
+<li>Select template (if different from default)</li>
+<li>Click </strong>Save<strong></li>
+
+</strong>Page Visibility:<strong>
+<ul>
+<li></strong>Visible:<strong> Page is live and accessible via URL</li>
+<li></strong>Hidden:<strong> Page exists but is not listed in navigation (can still be accessed via direct URL)</li>
+</ul>
+
+<section id="shogun-page-builder">
+<h3>Shogun Page Builder</h3>
+
+</ol>
+<p>
+Some pages use Shogun page builder for custom layouts and advanced design options.
+</p>
+
+</strong>Identifying Shogun Pages:<strong>
+<ul>
+<li>Pages with template suffix like <code>shogun-68f1425c049b6e3f42882321</code></li>
+<li>Pages edited via Shogun app interface (not standard Shopify page editor)</li>
+<li>Homepage can use Shogun (template: <code>index.shogun-68f1425c049b6e3f42882321</code>)</li>
+</ul>
+
+</strong>Editing Shogun Pages:<strong>
+<ol>
+<li>Go to </strong>Shogun<strong> app in Shopify Admin</li>
+<li>Find your page in the Shogun page list</li>
+<li>Click to edit</li>
+<li>Use Shogun's visual drag-and-drop editor to make changes</li>
+<li>Add sections, images, text, buttons, and custom HTML</li>
+<ol>
+<li>Preview changes before publishing</li>
+<li>Click </strong>Publish<strong> when done</li>
+
+</strong>Shogun Features:<strong>
+<ul>
+<li>Visual page builder with drag-and-drop interface</li>
+<li>Pre-built sections and components</li>
+<li>Custom HTML/CSS support</li>
+<li>Mobile-responsive editing</li>
+<li>A/B testing capabilities</li>
+<li>Advanced styling options</li>
+</ul>
+
+</strong>Important Notes:<strong>
+<ul>
+<li>Shogun pages are separate from standard Shopify pages</li>
+<li>Changes made in Shogun override standard page content</li>
+<li>Shogun pages require Shogun app subscription</li>
+<li>Contact technical team if you need to convert a Shogun page to standard page</li>
+</ul>
+
+<hr>
+
+<section id="product-management">
+<h2>Product Management</h2>
+
+<section id="editing-product-information">
+<h3>Editing Product Information</h3>
+
+</strong>Step-by-Step:<strong>
+
+<ol>
+<li>Go to </strong>Shopify Admin<strong> → </strong>Products<strong></li>
+<li>Find the product you want to edit</li>
+<li>Click the product title to open it</li>
+<li>Edit product details:</li>
+<ul>
+<li>Title, description, vendor</li>
+<li>Product images</li>
+<li>Variants (sizes, colors, etc.)</li>
+<li>Pricing</li>
+<li>Inventory</li>
+<li>SEO settings</li>
+</ul>
+<ol>
+<li>Click </strong>Save<strong></li>
+
+<section id="product-images">
+<h3>Product Images</h3>
+
+</strong>Image Requirements:<strong>
+<ul>
+<li>Recommended size: 1000x1000px minimum</li>
+<li>Square format preferred</li>
+<li>High quality, well-lit product photos</li>
+<li>Multiple angles recommended</li>
+</ul>
+
+</strong>Adding Product Images:<strong>
+<ol>
+<li>Open product in Shopify Admin</li>
+<li>Scroll to </strong>Media<strong> section</li>
+<li>Click </strong>Add files<strong> or drag images</li>
+<li>Reorder images by dragging (first image is featured)</li>
+<li>Add alt text for accessibility</li>
+<ol>
+<li>Click </strong>Save<strong></li>
+
+<section id="product-variants">
+<h3>Product Variants</h3>
+
+</strong>Creating Variants:<strong>
+<ol>
+<li>Open product in Shopify Admin</li>
+<li>Scroll to </strong>Variants<strong> section</li>
+<li>Click </strong>Add variant<strong></li>
+<li>Select option names (Size, Color, etc.)</li>
+<li>Enter option values</li>
+<ol>
+<li>Set price, SKU, inventory for each variant</li>
+<li>Click </strong>Save<strong></li>
+
+</strong>Variant Options:<strong>
+<ul>
+<li>Common options: Size, Color, Style</li>
+<li>Can have up to 3 option types per product</li>
+<li>Each combination creates a separate variant</li>
+</ul>
+
+<section id="product-metafields">
+<h3>Product Metafields</h3>
+
+</ol>
+<p>
+Products use metafields for additional information that displays on product pages and in search results.
+</p>
+
+</strong>Common Product Metafields:<strong>
+
+</strong><code>custom.best_for</code><strong> - Product use case description
+<ul>
+<li>Displays on product pages as "Best For:" section</li>
+<li>Example: "Moderate support for minor to moderate sprains, strains and wrist instability"</li>
+<li>Single line text field</li>
+</ul>
+
+</strong><code>custom.product_family</code><strong> - Product line identifier
+<ul>
+<li>Links products in the same product family</li>
+<li>Used for product recommendations and grouping</li>
+<li>Example: "MDP300"</li>
+<li>List of product references</li>
+</ul>
+
+</strong><code>custom.features</code><strong> - Product feature highlights
+<ul>
+<li>References Features metaobject</li>
+<li>Displays as feature list on product pages</li>
+<li>Each feature has a title and description</li>
+<li>List of metaobject references</li>
+</ul>
+
+</strong><code>custom.details</code><strong> - Product detail points
+<ul>
+<li>Displays as bulleted list on product pages</li>
+<li>Example: ["FITS LEFT OR RIGHT WRIST", "UNISEX", "HSA/FSA ELIGIBLE"]</li>
+<li>List of single line text fields</li>
+</ul>
+
+</strong><code>custom.care</code><strong> - Care instructions
+<ul>
+<li>Displays care and maintenance information</li>
+<li>Example: ["Hand wash. Air dry only."]</li>
+<li>List of single line text fields</li>
+</ul>
+
+</strong><code>custom.description_image</code><strong> - Additional description image
+<ul>
+<li>Image displayed in product description area</li>
+<li>File reference</li>
+</ul>
+
+</strong><code>custom.free_shipping_returns</code><strong> - Free shipping and returns information
+<ul>
+<li>Rich text field for shipping/returns policy</li>
+<li>Displays on product pages</li>
+</ul>
+
+</strong><code>pdp.swatch_color</code><strong> - Color swatch value
+<ul>
+<li>Used for color variant display</li>
+<li>Example: "#000000"</li>
+<li>Single line text field</li>
+</ul>
+
+</strong><code>pdp.swatch_image</code><strong> - Color swatch image
+<ul>
+<li>Image used for color variant swatch</li>
+<li>Single line text field</li>
+</ul>
+
+</strong>Editing Metafields:<strong>
+<ol>
+<li>Open product in Shopify Admin</li>
+<li>Scroll to </strong>Metafields<strong> section (may need to enable in settings)</li>
+<li>Find the metafield you want to edit</li>
+<li>Update the value</li>
+<li>Click </strong>Save<strong></li>
+
+</strong>Important Notes:<strong>
+<ul>
+<li>Some metafields are managed via apps (Sika Discovery Eligibility, Google Shopping, etc.)</li>
+<li>Bulk metafield updates require technical assistance</li>
+<li>Features metafield requires creating/editing Features metaobjects first</li>
+<li>Contact technical team for bulk updates or complex metafield configurations</li>
+</ul>
+
+<hr>
+
+<section id="launching-new-products">
+<h2>Launching New Products</h2>
+
+<section id="pre-launch-checklist">
+<h3>Pre-Launch Checklist</h3>
+
+<ul>
+<li>[ ] Product information complete (title, description, vendor)</li>
+<li>[ ] Product images uploaded (minimum 1, recommended 3-5)</li>
+<li>[ ] Variants created (sizes, colors, etc.)</li>
+<li>[ ] Pricing set for all variants</li>
+<li>[ ] Inventory quantities set</li>
+<li>[ ] Product tags added</li>
+<li>[ ] Product added to collections</li>
+<li>[ ] SEO title and description set</li>
+<li>[ ] Product template selected (if using custom template)</li>
+<li>[ ] Metafields populated (best_for, features, etc.)</li>
+<li>[ ] Product visibility set to "Visible"</li>
+</ul>
+
+<section id="step-by-step-product-launch">
+<h3>Step-by-Step Product Launch</h3>
+
+<ol>
+<li></strong>Create Product:<strong></li>
+<ul>
+<li>Go to </strong>Shopify Admin<strong> → </strong>Products<strong> → </strong>Add product<strong></li>
+<li>Enter product title, description, vendor</li>
+<li>Add product images</li>
+<li>Set product type and tags</li>
+</ul>
+
+<ol>
+<li></strong>Set Up Variants:<strong></li>
+<ul>
+<li>Add variant options (Size, Color, etc.)</li>
+<li>Set price for each variant</li>
+<li>Enter SKU for each variant</li>
+<li>Set inventory quantities</li>
+</ul>
+
+<ol>
+<li></strong>Add to Collections:<strong></li>
+<ul>
+<li>Scroll to </strong>Collections<strong> section</li>
+<li>Select collections this product belongs to</li>
+<li>Or add product to collections later</li>
+</ul>
+
+<ol>
+<li></strong>Configure SEO:<strong></li>
+<ul>
+<li>Scroll to </strong>Search engine listing<strong> section</li>
+<li>Edit page title (if different from product title)</li>
+<li>Add meta description</li>
+<li>Preview how it will appear in search results</li>
+</ul>
+
+<ol>
+<li></strong>Select Template (if needed):<strong></li>
+<ul>
+<li>Most products use default template</li>
+<li></strong>Special templates available:<strong></li>
+<li></strong>HEX® visualization template<strong> (<code>product.hexviz</code>)</li>
+<li>For HEX® products with visualization features</li>
+<li>Includes HEX®-specific product display</li>
+<li>Contact technical team to determine if product should use this template</li>
+<li></strong>MyoVolt product template<strong> (<code>product.myovolt</code>)</li>
+<li>For MyoVolt products with advanced features</li>
+<li>Requires MyoVolt-specific metafields:</li>
+<li>Hero images (desktop and mobile)</li>
+<li>Hero description</li>
+<li>Video</li>
+<li>Technical specifications (4 specs with images)</li>
+<li>Treatment modes (3 modes with images and descriptions)</li>
+<li>Product highlights (2 highlights with images and descriptions)</li>
+<li>Included items (images and text)</li>
+<li>Product description</li>
+<li>See "MyoVolt Product Setup" section below for details</li>
+<li></strong>To assign template:<strong></li>
+</ul>
+<ol>
+<li>Open product in Shopify Admin</li>
+<li>Scroll to </strong>Search engine listing<strong> section</li>
+<li>Find </strong>Template<strong> dropdown</li>
+<li>Select template (default, hexviz, or myovolt)</li>
+<li>Click </strong>Save<strong></li>
+
+<ol>
+<li></strong>Set Visibility:<strong></li>
+<ul>
+<li>Scroll to top of product page</li>
+<li>Ensure </strong>Product status<strong> is set to </strong>Active<strong></li>
+<li>Click </strong>Save<strong></li>
+</ul>
+
+<ol>
+<li></strong>Verify Product:<strong></li>
+<ul>
+<li>View product on live site</li>
+<li>Check all images display correctly</li>
+<li>Verify pricing and variants</li>
+<li>Test add to cart functionality</li>
+<li>Check mobile view</li>
+</ul>
+
+<section id="adding-products-to-navigation">
+<h3>Adding Products to Navigation</h3>
+
+</strong>Option 1: Add to Collection Menu<strong>
+<ul>
+<li>If product is in a collection that's in the menu, it's automatically accessible</li>
+<li>No additional steps needed</li>
+</ul>
+
+</strong>Option 2: Add Product Directly to Menu<strong>
+<ol>
+<li>Go to </strong>Shopify Admin<strong> → </strong>Online Store<strong> → </strong>Navigation<strong></li>
+<li>Find the menu you want to add product to</li>
+<li>Click </strong>Add menu item<strong></li>
+<li>Select </strong>Product<strong> as item type</li>
+<li>Search for and select your product</li>
+<ol>
+<li>Click </strong>Add<strong></li>
+
+</strong>Option 3: Create Featured Products Section<strong>
+<ul>
+<li>Use homepage sections to feature new products</li>
+<li>Go to </strong>Theme Customizer<strong> → </strong>Homepage<strong></li>
+<li>Add </strong>Featured Products** section</li>
+<li>Select products to feature</li>
+</ul>
+
+<hr>
+
+<section id="myovolt-product-setup">
+<h2>MyoVolt Product Setup</h2>
+
+</ol>
+<p>
+MyoVolt products use a special template with extensive metafield configuration. Follow these steps to set up a MyoVolt product.
+</p>
+
+<section id="prerequisites">
+<h3>Prerequisites</h3>
+
+<ul>
+<li>Product created in Shopify Admin</li>
+<li>Product template set to "MyoVolt" (<code>product.myovolt</code>)</li>
+<li>MyoVolt metafields available (namespace: <code>myovolt.*</code>)</li>
+</ul>
+
+<section id="step-by-step-myovolt-setup">
+<h3>Step-by-Step MyoVolt Setup</h3>
+
+<ol>
+<li><strong>Set Product Template:</strong></li>
+<ul>
+<li>Open product in Shopify Admin</li>
+<li>Scroll to <strong>Search engine listing</strong> section</li>
+<li>Select <strong>MyoVolt</strong> from Template dropdown</li>
+<li>Click <strong>Save</strong></li>
+</ul>
+
+<ol>
+<li><strong>Configure Hero Section:</strong></li>
+<ul>
+<li><strong>Hero Image (Desktop):</strong> <code>myovolt.hero_image_desktop</code></li>
+<li>Upload high-quality product hero image for desktop view</li>
+<li>Recommended: 1920px width</li>
+<li><strong>Hero Image (Mobile):</strong> <code>myovolt.hero_image_mobile</code></li>
+<li>Upload optimized hero image for mobile view</li>
+<li>Recommended: 768px width</li>
+<li><strong>Hero Description:</strong> <code>myovolt.hero_description</code></li>
+<li>Enter product description for hero section</li>
+<li>Multi-line text field</li>
+</ul>
+
+<ol>
+<li><strong>Add Product Video (Optional):</strong></li>
+<ul>
+<li><strong>Video:</strong> <code>myovolt.video</code></li>
+<li>Upload product video file</li>
+<li>File reference</li>
+</ul>
+
+<ol>
+<li><strong>Configure Technical Specifications:</strong></li>
+<ul>
+<li><strong>Tech Spec 1-4:</strong> <code>myovolt.tech_spec_1</code> through <code>tech_spec_4</code></li>
+<li>Enter specification label (e.g., "Battery Life: 8 hours")</li>
+<li>Single line text field</li>
+<li><strong>Tech Spec Images:</strong> <code>myovolt.tech_spec_1_image</code> through <code>tech_spec_4_image</code></li>
+<li>Upload image for each specification</li>
+<li>File reference</li>
+</ul>
+
+<ol>
+<li><strong>Set Up Treatment Modes:</strong></li>
+<ul>
+<li><strong>Title:</strong> <code>myovolt.treatment_modes_title</code></li>
+<li>Section title (e.g., "Treatment Modes")</li>
+<li><strong>Subtitle:</strong> <code>myovolt.treatment_modes_subtitle</code></li>
+<li>Section subtitle</li>
+<li><strong>Mode 1-3 Images:</strong> <code>myovolt.treatment_mode_1_image</code> through <code>treatment_mode_3_image</code></li>
+<li>Upload image for each treatment mode</li>
+<li><strong>Mode 1-3 Descriptions:</strong> <code>myovolt.treatment_mode_1_description</code> through <code>treatment_mode_3_description</code></li>
+<li>Enter description for each treatment mode</li>
+<li>Rich text field (supports formatting)</li>
+</ul>
+
+<ol>
+<li><strong>Configure Product Highlights:</strong></li>
+<ul>
+<li><strong>Highlight 1-2 Images:</strong> <code>myovolt.highlight_1_image</code>, <code>highlight_2_image</code></li>
+<li>Upload images for product highlights</li>
+<li><strong>Highlight 1-2 Titles:</strong> <code>myovolt.highlight_1_title</code>, <code>highlight_2_title</code></li>
+<li>Enter highlight titles</li>
+<li><strong>Highlight 1-2 Descriptions:</strong> <code>myovolt.highlight_1_description</code>, <code>highlight_2_description</code></li>
+<li>Enter highlight descriptions</li>
+<li>Rich text field</li>
+</ul>
+
+<ol>
+<li><strong>Set Up Included Items:</strong></li>
+<ul>
+<li><strong>Included Image (Desktop):</strong> <code>myovolt.included_image_desktop</code></li>
+<li>Upload image showing included items (desktop)</li>
+<li><strong>Included Image (Mobile):</strong> <code>myovolt.included_image_mobile</code></li>
+<li>Upload image showing included items (mobile)</li>
+<li><strong>Included Items Text:</strong> <code>myovolt.included_items</code></li>
+<li>Enter list of included items</li>
+<li>Rich text field</li>
+</ul>
+
+<ol>
+<li><strong>Add Product Description:</strong></li>
+<ul>
+<li><strong>Description:</strong> <code>myovolt.description</code></li>
+<li>Enter full product description</li>
+<li>Rich text field (supports formatting, links, etc.)</li>
+</ul>
+
+<section id="myovolt-metafield-checklist">
+<h3>MyoVolt Metafield Checklist</h3>
+
+<ul>
+<li>[ ] Hero image (desktop) uploaded</li>
+<li>[ ] Hero image (mobile) uploaded</li>
+<li>[ ] Hero description entered</li>
+<li>[ ] Video uploaded (if applicable)</li>
+<li>[ ] Technical specifications (1-4) configured with images</li>
+<li>[ ] Treatment modes title and subtitle entered</li>
+<li>[ ] Treatment modes (1-3) configured with images and descriptions</li>
+<li>[ ] Product highlights (1-2) configured with images, titles, and descriptions</li>
+<li>[ ] Included items images (desktop and mobile) uploaded</li>
+<li>[ ] Included items text entered</li>
+<li>[ ] Product description entered</li>
+</ul>
+
+<hr>
+
+<section id="mega-menu-configuration">
+<h2>Mega Menu Configuration</h2>
+
+</ol>
+<p>
+The McDavid header supports advanced mega menu features including descriptions and promotional content.
+</p>
+
+<section id="adding-menu-item-descriptions">
+<h3>Adding Menu Item Descriptions</h3>
+
+<p>
+Menu item descriptions appear in the mega menu to provide additional context.
+</p>
+
+<strong>Step-by-Step:</strong>
+<ol>
+<li>Go to <strong>Theme Customizer</strong> → <strong>Header</strong> section</li>
+<li>Scroll to <strong>Blocks</strong> section</li>
+<li>Click <strong>Add block</strong></li>
+<li>Select <strong>Mega menu description</strong> block type</li>
+<li>Configure settings:</li>
+<ul>
+<li><strong>Trigger:</strong> Enter the menu item handle (case-sensitive)</li>
+<li>To find handle: Menu item title converted to lowercase with hyphens</li>
+<li>Example: "Braces & Supports" → <code>braces-supports</code></li>
+<li><strong>Description:</strong> Enter description text</li>
+</ul>
+<ol>
+<li>Click <strong>Save</strong></li>
+
+<strong>Tips:</strong>
+<ul>
+<li>Descriptions appear below the menu item title in mega menu</li>
+<li>Use descriptions to explain what's in each menu section</li>
+<li>Keep descriptions concise (1-2 sentences)</li>
+</ul>
+
+<section id="adding-mega-menu-promotional-content">
+<h3>Adding Mega Menu Promotional Content</h3>
+
+</ol>
+<p>
+Promotional blocks appear in mega menus to highlight special offers or featured content.
+</p>
+
+<strong>Step-by-Step:</strong>
+<ol>
+<li>Go to <strong>Theme Customizer</strong> → <strong>Header</strong> section</li>
+<li>Scroll to <strong>Blocks</strong> section</li>
+<li>Click <strong>Add block</strong></li>
+<li>Select <strong>Mega menu promo</strong> block type</li>
+<li>Configure settings:</li>
+<ul>
+<li><strong>Trigger:</strong> Enter the menu item handle (must match exactly, case-sensitive)</li>
+<li><strong>Activate promo:</strong> Check to enable promotional content</li>
+<li><strong>Image:</strong> Upload promotional image (recommended: 300px width)</li>
+<li><strong>Pre-header:</strong> Small text above main header (optional)</li>
+<li><strong>Header:</strong> Main promotional headline</li>
+<li><strong>Link label:</strong> Button/link text</li>
+<li><strong>Link URL:</strong> Destination URL for promotional link</li>
+</ul>
+<ol>
+<li>Click <strong>Save</strong></li>
+
+<strong>Promo Block Features:</strong>
+<ul>
+<li>Appears as rightmost column in mega menu</li>
+<li>Image displays at top</li>
+<li>Pre-header, header, and link text below image</li>
+<li>Entire block can be clickable if link URL is provided</li>
+<li>Only displays for menu items with submenus</li>
+</ul>
+
+<section id="menu-item-formatting">
+<h3>Menu Item Formatting</h3>
+
+</ol>
+<p>
+Mega menu items support special formatting via menu item titles:
+</p>
+
+<strong>Bold Text:</strong>
+<ul>
+<li>Add <code><strong></code> around text in menu item title</li>
+<li>Example: <code></strong>New Arrivals<strong></code> displays as </strong>New Arrivals<strong></li>
+<li>Use for emphasis on important menu items</li>
+</ul>
+
+</strong>Menu Item Descriptions:<strong>
+<ul>
+<li>Add <code>%%</code> separator in menu item title</li>
+<li>Format: <code>Menu Item Title%%Description text</code></li>
+<li>Example: <code>Knee Sleeves%%Premium protection for active athletes</code></li>
+<li>Description appears below menu item title in mega menu</li>
+</ul>
+
+</strong>Combining Formats:<strong>
+<ul>
+<li>Can combine bold and description: <code></strong>New<strong>%%Just arrived!</code></li>
+<li>Bold applies to title portion only</li>
+</ul>
+
+<hr>
+
+<section id="footer-configuration">
+<h2>Footer Configuration</h2>
+
+<section id="newsletter-signup-klaviyo">
+<h3>Newsletter Signup (Klaviyo)</h3>
+
+<p>
+The footer includes a Klaviyo newsletter signup form.
+</p>
+
+</strong>Configuration:<strong>
+<ul>
+<li>Form is pre-configured with Klaviyo form ID: <code>LWy48v</code></li>
+<li>Form managed via Klaviyo app</li>
+<li>To update form:</li>
+</ul>
+<ol>
+<li>Go to </strong>Klaviyo<strong> app in Shopify Admin</li>
+<li>Find form with ID <code>LWy48v</code></li>
+<li>Edit form design and fields</li>
+<li>Changes reflect automatically on site</li>
+
+</strong>Footer Newsletter Settings:<strong>
+<ul>
+<li></strong>Newsletter Title:<strong> Theme Customizer → Footer → Newsletter title</li>
+<li></strong>Newsletter Text:<strong> Theme Customizer → Footer → Newsletter text</li>
+<li>Both appear above the Klaviyo form</li>
+</ul>
+
+<section id="social-media-icons">
+<h3>Social Media Icons</h3>
+
+</ol>
+<p>
+Social media icons appear in footer column 1.
+</p>
+
+</strong>Configured Icons:<strong>
+<ul>
+<li>Instagram</li>
+<li>TikTok</li>
+<li>Facebook</li>
+<li>YouTube</li>
+<li>Twitter/X</li>
+</ul>
+
+</strong>Configuration:<strong>
+<ul>
+<li>Go to </strong>Theme Customizer<strong> → </strong>Theme settings<strong> → </strong>Social media<strong></li>
+<li>Enter URLs for each platform:</li>
+<li><code>instagram_link</code></li>
+<li><code>tiktok_link</code></li>
+<li><code>facebook_link</code></li>
+<li><code>youtube_link</code></li>
+<li><code>twitter_link</code></li>
+<li>Icons automatically appear in footer when URLs are provided</li>
+<li>Icons open in new tab</li>
+</ul>
+
+<section id="footer-logo-and-usb-logo">
+<h3>Footer Logo and USB Logo</h3>
+
+</strong>Footer Logo:<strong>
+<ul>
+<li>Location: Theme Customizer → Footer section → Footer logo image</li>
+<li>Displays in footer column 1 (left)</li>
+<li>Recommended size: Appropriate for footer space</li>
+</ul>
+
+</strong>USB Logo:<strong>
+<ul>
+<li>Location: Theme Customizer → Footer section → Footer USB logo</li>
+<li>Displays in footer column 5 (right, wide column)</li>
+<li>Only displays on desktop (hidden on mobile)</li>
+<li>Recommended size: Appropriate for footer space</li>
+</ul>
+
+<hr>
+
+<section id="common-tasks">
+<h2>Common Tasks</h2>
+
+<section id="updating-product-prices">
+<h3>Updating Product Prices</h3>
+
+<ol>
+<li>Go to </strong>Shopify Admin<strong> → </strong>Products<strong></li>
+<li>Open the product</li>
+<li>Scroll to </strong>Variants<strong> section</li>
+<li>Click the price field for the variant</li>
+<li>Enter new price</li>
+<ol>
+<li>Click </strong>Save<strong></li>
+
+</strong>Bulk Price Updates:<strong>
+<ul>
+<li>Use Shopify's bulk editor or import/export</li>
+<li>Contact technical team for assistance with bulk updates</li>
+</ul>
+
+<section id="changing-product-images">
+<h3>Changing Product Images</h3>
+
+<ol>
+<li>Open product in Shopify Admin</li>
+<li>Scroll to </strong>Media<strong> section</li>
+<li>To replace an image: Click the image → </strong>Replace<strong></li>
+<li>To add images: Click </strong>Add files<strong></li>
+<li>To reorder: Drag images to desired order</li>
+<ol>
+<li>Click </strong>Save<strong></li>
+
+<section id="updating-menu-items">
+<h3>Updating Menu Items</h3>
+
+<ol>
+<li>Go to </strong>Shopify Admin<strong> → </strong>Online Store<strong> → </strong>Navigation<strong></li>
+<li>Find the menu containing the item</li>
+<li>Click the menu item to edit</li>
+<li>Update title, URL, or item type</li>
+<li>Click </strong>Save<strong></li>
+
+</strong>To Remove Menu Item:<strong>
+<ul>
+<li>Click the menu item</li>
+<li>Click </strong>Delete<strong> or remove the item</li>
+<li>Changes save automatically</li>
+</ul>
+
+<section id="adding-new-collection-to-menu">
+<h3>Adding New Collection to Menu</h3>
+
+<ol>
+<li></strong>Create Collection (if needed):<strong></li>
+<ul>
+<li>Go to </strong>Shopify Admin<strong> → </strong>Products<strong> → </strong>Collections<strong></li>
+<li>Click </strong>Create collection<strong></li>
+<li>Set up collection details</li>
+<li>Add products to collection</li>
+</ul>
+
+<ol>
+<li></strong>Add Collection to Menu:<strong></li>
+<ul>
+<li>Go to </strong>Shopify Admin<strong> → </strong>Online Store<strong> → </strong>Navigation<strong></li>
+<li>Find the menu (Main menu, Footer menu, etc.)</li>
+<li>Click </strong>Add menu item<strong></li>
+<li>Select </strong>Collection<strong></li>
+<li>Search for and select your collection</li>
+<li>Click </strong>Add<strong></li>
+</ul>
+
+<ol>
+<li></strong>Assign Menu in Theme Customizer:<strong></li>
+<ul>
+<li>Go to </strong>Theme Customizer<strong> → </strong>Header<strong> (or </strong>Footer<strong>)</li>
+<li>Select your menu from the appropriate dropdown</li>
+<li>Click </strong>Save<strong></li>
+</ul>
+
+<hr>
+
+<section id="troubleshooting">
+<h2>Troubleshooting</h2>
+
+<section id="menu-not-appearing-on-site">
+<h3>Menu Not Appearing on Site</h3>
+
+</strong>Checklist:<strong>
+<ul>
+<li>[ ] Menu created in Shopify Admin → Navigation</li>
+<li>[ ] Menu assigned in Theme Customizer → Header/Footer section</li>
+<li>[ ] Menu has at least one menu item</li>
+<li>[ ] Menu items are set to visible</li>
+<li>[ ] Changes saved in Theme Customizer</li>
+</ul>
+
+</strong>Solution:<strong>
+<ol>
+<li>Verify menu exists in Shopify Admin → Navigation</li>
+<li>Go to Theme Customizer → Header section</li>
+<li>Check that correct menu is selected in "Main menu" dropdown</li>
+<li>Click </strong>Save<strong> in Theme Customizer</li>
+<li>Refresh site to see changes</li>
+
+<section id="product-not-showing-in-collection">
+<h3>Product Not Showing in Collection</h3>
+
+</strong>Checklist:<strong>
+<ul>
+<li>[ ] Product is active (not draft or archived)</li>
+<li>[ ] Product is added to the collection</li>
+<li>[ ] Collection is published</li>
+<li>[ ] Product has inventory (if inventory tracking enabled)</li>
+</ul>
+
+</strong>Solution:<strong>
+<ol>
+<li>Open product in Shopify Admin</li>
+<li>Check product status (should be "Active")</li>
+<li>Scroll to </strong>Collections<strong> section</li>
+<li>Verify product is in the correct collection</li>
+<li>If using smart collection, check collection conditions match product</li>
+
+<section id="images-not-displaying">
+<h3>Images Not Displaying</h3>
+
+</strong>Checklist:<strong>
+<ul>
+<li>[ ] Image file uploaded successfully</li>
+<li>[ ] Image file format supported (JPG, PNG, GIF, WebP)</li>
+<li>[ ] Image file size not too large</li>
+<li>[ ] Product saved after adding image</li>
+</ul>
+
+</strong>Solution:<strong>
+<ol>
+<li>Try re-uploading the image</li>
+<li>Check image file size (recommended under 2MB)</li>
+<li>Ensure image is in supported format</li>
+<li>Clear browser cache and refresh</li>
+
+<section id="footer-menu-not-updating">
+<h3>Footer Menu Not Updating</h3>
+
+</strong>Checklist:<strong>
+<ul>
+<li>[ ] Menu updated in Shopify Admin → Navigation</li>
+<li>[ ] Correct menu selected in Theme Customizer → Footer</li>
+<li>[ ] Column title and menu both configured</li>
+<li>[ ] Changes saved in Theme Customizer</li>
+</ul>
+
+</strong>Solution:<strong>
+<ol>
+<li>Verify menu changes in Shopify Admin → Navigation</li>
+<li>Go to Theme Customizer → Footer section</li>
+<li>Check that correct menu is selected for the column</li>
+<li>Ensure column title is entered</li>
+<li>Click </strong>Save<strong></li>
+<ol>
+<li>Refresh site</li>
+
+<section id="help-banner-not-displaying">
+<h3>Help Banner Not Displaying</h3>
+
+</strong>Checklist:<strong>
+<ul>
+<li>[ ] Help text entered in Theme Customizer → Header</li>
+<li>[ ] Start/end dates are correct (if using date ranges)</li>
+<li>[ ] Date format is correct: <code>yyyy-mm-dd hh:mm:ss</code></li>
+<li>[ ] Current date is within start/end date range (if dates set)</li>
+<li>[ ] Changes saved in Theme Customizer</li>
+</ul>
+
+</strong>Solution:<strong>
+<ol>
+<li>Go to Theme Customizer → Header section</li>
+<li>Check Help text fields (Help text, Help text 2, Help text 3)</li>
+<li>Verify date ranges if using scheduled messages</li>
+<li>Ensure at least one help text field has content</li>
+<li>Check date format matches: <code>2025-11-13 00:00:00</code></li>
+<ol>
+<li>Click </strong>Save<strong></li>
+<li>Refresh site</li>
+
+<section id="mega-menu-not-showing-promo-content">
+<h3>Mega Menu Not Showing Promo Content</h3>
+
+</strong>Checklist:<strong>
+<ul>
+<li>[ ] Mega menu promo block added in Theme Customizer → Header → Blocks</li>
+<li>[ ] Trigger matches menu item handle exactly (case-sensitive)</li>
+<li>[ ] "Activate promo" checkbox is checked</li>
+<li>[ ] Menu item has submenus (promo only shows for items with submenus)</li>
+<li>[ ] Changes saved in Theme Customizer</li>
+</ul>
+
+</strong>Solution:<strong>
+<ol>
+<li>Verify menu item has submenus in Shopify Admin → Navigation</li>
+<li>Find the menu item handle (title converted to lowercase with hyphens)</li>
+<li>Go to Theme Customizer → Header → Blocks</li>
+<li>Check that trigger in promo block matches handle exactly</li>
+<li>Ensure "Activate promo" is checked</li>
+<ol>
+<li>Click </strong>Save<strong></li>
+
+<section id="myovolt-product-not-displaying-correctly">
+<h3>MyoVolt Product Not Displaying Correctly</h3>
+
+</strong>Checklist:<strong>
+<ul>
+<li>[ ] Product template set to "MyoVolt"</li>
+<li>[ ] Required MyoVolt metafields populated</li>
+<li>[ ] Images uploaded for hero, tech specs, treatment modes, highlights</li>
+<li>[ ] Text fields filled in</li>
+<li>[ ] Product saved after metafield updates</li>
+</ul>
+
+</strong>Solution:<strong>
+<ol>
+<li>Verify product template is "MyoVolt" in Shopify Admin</li>
+<li>Check that all required MyoVolt metafields have values</li>
+<li>Ensure images are uploaded and not broken</li>
+<li>Verify text fields are not empty</li>
+<li>Save product and refresh product page</li>
+
+<section id="need-more-help">
+<h3>Need More Help?</h3>
+
+<ul>
+<li>Review this guide for step-by-step instructions</li>
+<li>Check </strong>Quick Reference<strong> guide for common tasks</li>
+<li>Review </strong>Data Guide** for complete metafield reference</li>
+<li>Contact technical team for advanced configuration</li>
+<li>Refer to Shopify Help Center for general Shopify questions</li>
+</ul>
+
+<hr>
+
+<em>This guide focuses on client-specific features and workflows. For general Shopify documentation, refer to Shopify's official help center.</em>
+
+
+</ol>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Footer will be loaded dynamically by component-loader.js -->
+    <div id="footer-container"></div>
+    
+    <!-- Component Loader: Dynamically loads header.html and footer.html -->
+    <script src="component-loader.js"></script>
+    
+    <!-- Enhanced TOC: Adds scroll-based highlighting and smooth navigation -->
+    <script src="enhanced-toc/enhanced-toc.js"></script>
+</body>
+</html>

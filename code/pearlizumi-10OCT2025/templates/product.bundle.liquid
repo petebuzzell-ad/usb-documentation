@@ -1,0 +1,256 @@
+{%- comment -%} Bundle PDP {%- endcomment -%}
+{% liquid
+    if shop.permanent_domain == 'pearlizumi.myshopify.com'
+      assign storefront = "US"
+    elsif shop.permanent_domain == 'pearlizumi-ca.myshopify.com'
+      assign storefront = "CA"
+    elsif shop.permanent_domain == 'pearl-izumi-int.myshopify.com'
+      assign storefront = "INT"
+    endif
+
+    if customer
+      assign discount_tag = false
+      assign limit_tag = false
+      for tag in customer.tags
+        if tag contains "discount-"
+          assign discount_tag = tag | remove: "discount-" | plus: 0
+        endif
+        if tag contains "limit-"
+          assign limit_tag = tag | remove: "limit-" | plus: 0
+        endif
+      endfor
+    endif
+
+    assign group_1_handles = ""
+    assign group_2_handles = ""
+    assign group_3_handles = ""
+    for tag in product.tags
+      if tag contains "group-1"
+        assign handle = tag | split: ":" | last
+        assign group_1_handles = group_1_handles | append: handle | append: "|"
+      elsif tag contains "group-2"
+        assign handle = tag | split: ":" | last
+        assign group_2_handles = group_2_handles | append: handle | append: "|"
+      elsif tag contains "group-3"
+        assign handle = tag | split: ":" | last
+        assign group_3_handles = group_3_handles | append: handle | append: "|"
+      endif
+    endfor
+
+    assign all_handles = group_1_handles | append: '###' | append: group_2_handles | append: '###' | append: group_3_handles
+
+    assign handles_by_group = all_handles | split: '###'
+
+    assign bundle_discount_percentage = product.metafields.my_fields.bundle_discount_percentage
+    assign bundle_savings_message = product.metafields.my_fields.bundle_savings_message
+
+    assign bundle_pro_discount_percentage = product.metafields.my_fields.bundle_pro_discount_percentage
+    assign bundle_pro_savings_message = product.metafields.my_fields.bundle_pro_savings_message
+
+    assign bundle_step_1_label = product.metafields.my_fields.bundle_step_1_label
+    assign bundle_step_2_label = product.metafields.my_fields.bundle_step_2_label
+    assign bundle_step_3_label = product.metafields.my_fields.bundle_step_3_label
+
+    assign bundle_discount_percentage = bundle_discount_percentage | minus: 0
+    assign bundle_pro_discount_percentage = bundle_pro_discount_percentage | minus: 0
+
+    assign discount_for_bundle = bundle_discount_percentage
+    assign message_for_bundle = bundle_savings_message
+
+    if discount_tag and limit_tag
+      if discount_tag > bundle_pro_discount_percentage
+        assign discount_for_bundle = discount_tag
+      else
+        assign discount_for_bundle = bundle_pro_discount_percentage
+      endif
+      assign message_for_bundle = bundle_pro_savings_message
+    else
+      assign discount_for_bundle = bundle_discount_percentage
+      assign message_for_bundle = bundle_savings_message
+    endif
+
+  %}
+{%- if storefront == "INT" or storefront == "CA" -%}
+
+  {%- comment -%} Redirect to the homepage on other storefronts - or if the product is not published {%- endcomment -%}
+  <script>window.location.replace("/");</script>
+
+{%- elsif storefront == "US" -%}
+
+  {%- comment -%} Render on the US storefront is the bundle is published {%- endcomment -%}
+  <div id="productBundleTemplate" class="transition-opacity opacity-1 py-10 bxl:py-15"
+    data-product-handle="{{ product.handle }}"
+    data-bundle-discount="{{ discount_for_bundle }}"
+    data-bundle-message="{{ message_for_bundle }}"
+  >
+
+    <!-- Bundle Product Main Title & Description -->
+    <div class="mx-auto w-full px-6 bxl:max-w-1/2 text-center mb-8 bxl:mb-20">
+      <h1 class="text-h1-m bxl:text-h2 mx-auto text-center text-black mb-3 bxl:mb-4 font-sora font-semibold uppercase">{{ product.title }}</h1>
+      <p class="text-p-s bxl:text-p text-black">{{ product.description }}</p>
+    </div>
+
+    {%- comment -%} Render a PDP Display block (Gallery + Buy Box) for Each Group (up to 3) {%- endcomment -%}
+    {%- for i in (1..3) -%}
+      {%- assign index = i | minus: 1 -%}
+      {%- assign last_group = false -%}
+      {%- if forloop.last -%}
+        {%- assign last_group = true -%}
+      {%- endif -%}
+      {%- assign group_handles = handles_by_group[index] -%}
+      {%- assign handles =  group_handles | split: "|" -%}
+      {%- assign first_buy_box_in_group = true -%}
+      {%- if handles.size > 0 -%}
+        <div class="w-full md:px-14 bxl:px-22.5 mx-auto transition-opacity" data-bundle-display data-group="{{ i }}" data-bundle-handles="{{ group_handles }}" style="max-width: 1380px;">
+          <!-- Buy Box -->
+          <div class="flex flex-col w-full bxl:flex-row bxl:justify-between">
+            <!-- Gallery -->
+            <span class="skeleton-box h-80 bxl:h-100 w-full bxl:max-w-product-gallery-desktop" data-skeleton></span>
+            <div class="w-full bxl:w-63% bxl:max-w-product-gallery-desktop hidden bg-faint-cloud {% unless i == 1 %}bxl:border-t-2 bxl:border-l-0 bxl:border-r-0 bxl:border-b-0 bxl:border-white {% endunless %}" data-bundle-gallery>
+              {% render 'bundle-product-gallery' last_group: last_group %}
+            </div>
+
+            {%- comment -%} Skeleton Buy Box{%- endcomment -%}
+            <div class="h-100 w-full px-6 pt-4 bxl:pt-0 bxl:pl-0 bxl:max-w-112 bg-white" data-skeleton>
+              <div class="px-0 bxl:w-full bxl:max-w-112">
+                <div class="bxl:pl-10">
+                  {%- comment -%} Buy Box Info{%- endcomment -%}
+                  <span class="skeleton-box h-8 w-full mb-2"></span>
+                  <span class="skeleton-box h-9 w-1/2 mb-2"></span>
+                  {%- comment -%} Feature Accordion {%- endcomment -%}
+                  <span class="skeleton-box h-10 w-full mb-4"></span>
+                  {%- comment -%} Option Groups {%- endcomment -%}
+                  <div class="py-2">
+                    <span class="skeleton-box h-4 w-1/2 mb-2"></span>
+                    <span class="skeleton-box h-12 w-full mb-2"></span>
+                  </div>
+                  <div class="py-2">
+                    <span class="skeleton-box h-4 w-1/2 mb-2"></span>
+                    <span class="skeleton-box h-12 w-full mb-2"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Buy Box Wrapper -->
+            <div data-buy-box-wrapper class="hidden bg-white pb-4 bxl:w-37%">
+              {%- for handle in handles -%}
+                {%- assign product = all_products[handle] -%}
+                {%- assign all_stocktype_o = true -%}
+                {%- for variant in product.variants -%}
+                  {%- unless variant.available == false -%}
+                    {%- assign stocktype = variant.metafields.stocktype.stocktype -%}
+                    {%- if stocktype != "O" and stocktype != "o" -%}
+                      {%- assign all_stocktype_o = false -%}
+                      {%- break -%}
+                    {%- endif -%}
+                  {%- endunless -%}
+                {%- endfor -%}
+
+                {%- if product.available and all_stocktype_o == false -%}
+                  {%- comment -%} take note of the first buy box being rendered, so others are hidden {%- endcomment -%}
+                  {%- render 'bundle-product-buy-box'
+                    product: product
+                    storefront: storefront
+                    discount_tag: discount_tag
+                    limit_tag: limit_tag
+                    first_buy_box: first_buy_box_in_group
+                    group_num: i
+                    step_1_label: bundle_step_1_label
+                    step_2_label: bundle_step_2_label
+                    step_3_label: bundle_step_3_label
+                    bundle_discount: discount_for_bundle
+                  -%}
+
+                  {%- assign first_buy_box_in_group = false -%}
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+
+          </div>
+          <!--  -->
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+
+    <!-- Bottom portion of Bundle Buy Box (ATC, Value Callouts)-->
+    <div class="w-full md:px-14 bxl:px-22.5 mx-auto" style="max-width: 1380px;">
+      {%- comment -%} Skeleton Loader {%- endcomment -%}
+      <span class="skeleton-box flex flex-col w-full bxl:flex-row bxl:justify-between mx-auto pt-6 bxl:pt-0 bxl:mx-0 h-40" style="max-width: 1380px;" data-skeleton></span>
+
+      <div class="flex flex-col w-full bxl:flex-row bxl:justify-between mx-auto pt-6 bxl:pt-0 bxl:mx-0 bg-white bxl:bg-faint-cloud hidden" style="max-width: 1380px;">
+
+        {%- comment -%} Spacer {%- endcomment -%}
+        <div class="w-full bxl:w-63% bxl:max-w-product-gallery-desktop bxl:pt-8"></div>
+
+        <div class="px-6 bxl:pl-10 bxl:pr-0 w-full bxl:w-37% bxl:pt-8 bg-white">
+          <!-- Add to Cart Button -->
+          <div data-bundle-atc-wrapper class="w-full">
+
+            {%- comment -%} Savings Message {%- endcomment -%}
+            {%- if discount_for_bundle != blank and message_for_bundle != blank -%}
+              <p data-savings-message class="text-pine font-sora text-p-s m-0 mb-3 p-0 uppercase text-center hidden">{{ discount_for_bundle }}% {{ message_for_bundle }}</p>
+            {%- endif -%}
+
+            <button data-bundle-add-to-cart name="add"
+              class="button-primary-lg p-4 w-full text-special uppercase font-sora font-semibold mx-auto tracking-normal max-w-none"
+              onclick="eHS.bundle.addToCart()">Add To Cart</button>
+
+          </div>
+          <!-- Value Callouts -->
+          <div data-bundle-buy-box-details class="mt-4">
+            <!-- Guarantees & Shipping Info -->
+            <div class="mb-4 flex flex-col items-center">
+              <div class="flex items-center text-p-s bxl:text-p-xs font-light mb-1.5">
+                <span class="mr-2">{% render 'svg-truck' %}</span>
+                {%- if settings.free_shipping_enabled_pros or settings.free_shipping_enabled_normals -%}
+                  {%- if threshold > 0 -%}
+                    {{ 'products.product.free_shipping_on_orders_over' | t }} ${{threshold}}
+                  {%- else -%}
+                    {{ 'products.product.free_shipping_on_all' | t }}
+                  {%- endif -%}
+                {%- else -%}
+                  {{ 'products.product.free_shipping_on_all' | t }}
+                {%- endif -%}
+              </div>
+              <div class="flex items-center text-p-s bxl:text-p-xs font-light mb-1.5">
+                <span class="mr-2">{% render 'svg-shield' %}</span>
+                {{ 'products.product.lifetime_warranty' | t }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  {%- comment -%} Skeleton Loader Styles {%- endcomment -%}
+  {%- comment -%} TODO: Move this into a CSS file {%- endcomment -%}
+  <style>
+    .skeleton-box {
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+      background-color: #f8f8f8;
+    }
+    .skeleton-box::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transform: translateX(-100%);
+      background: linear-gradient(90deg, rgba(130, 130, 130, 0) 0, rgba(130, 130, 130, 0.2) 20%, rgba(130, 130, 130, 0.5) 60%, rgba(130, 130, 130, 0));
+      animation: shimmer 3s infinite;
+      content: '';
+    }
+
+    @keyframes shimmer {
+      100% {
+        transform: translateX(100%);
+      }
+    }
+  </style>
+{%- endif -%}

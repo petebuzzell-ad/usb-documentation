@@ -1,0 +1,170 @@
+{% comment %}
+  @param address {Object}
+    Object containing address items
+
+  @param visible {Bool}
+    Determine if the address form is visible
+{% endcomment %}
+
+{% if address.id != null %}
+  {% assign address_id = address.id %}
+{% else %}
+  {% assign address_id = 'new' %}
+{% endif %}
+
+{%- comment -%} Add Address Form {%- endcomment -%}
+<div class="account-address-form hidden mx-auto w-full pt-8 pb-10 lg:p-0 lg:max-w-894 lg:pb-18" data-address-id="{{ address_id }}">
+  <h2 class="text-h3-m lg:text-h3 uppercase text-left mb-2 lg:mb-3 font-semibold">
+    {%- if address_id == 'new' -%}
+      {{ 'customer.addresses.add_new_title' | t }}
+    {%- else -%}
+      {{ 'customer.addresses.edit_existing_title' | t }}
+    {%- endif -%}
+  </h2>
+
+  {% form 'customer_address', address, class: 'account-form flex flex-wrap justify-center lg:-mx-3 lg:justify-start' %}
+
+    {%- comment -%} Desktop - Left Column {%- endcomment -%}
+    <div class="w-full lg:w-2/5 lg:px-3 mt-6 lg:mt-7">
+
+      {%- comment -%} First Name {%- endcomment -%}
+      <div class="relative mb-6 input-wrap w-full">
+        <input type="text"
+          id="customer_addr_{{ address_id }}_firstname"
+          name="address[first_name]" placeholder=" " value="{{ form.first_name }}"
+          onblur="eHS.customerLogin.validateFieldsOnBlur(event)" data-required>
+        <label for="customer_addr_{{ address_id }}_firstname">{{ 'customer.addresses.first_name' | t }}*</label>
+        <div class="text-red flex items-center mt-2 hidden" data-error-container>
+          <span class="mr-2.5">
+            {% render 'svg-alert' %}
+          </span>
+          <span class="font-normal text-p-xs text-grey-one" data-error-text></span>
+        </div>
+      </div>
+
+      {%- comment -%} Last Name {%- endcomment -%}
+      <div class="relative mb-6 input-wrap w-full">
+        <input type="text"
+          id="customer_addr_{{ address_id }}_lastname"
+          name="address[last_name]" placeholder=" " value="{{ form.last_name }}"
+          onblur="eHS.customerLogin.validateFieldsOnBlur(event)" data-required>
+        <label for="customer_addr_{{ address_id }}_lastname">{{ 'customer.addresses.last_name' | t }}*</label>
+        <div class="text-red flex items-center mt-2 hidden" data-error-container>
+          <span class="mr-2.5">
+            {% render 'svg-alert' %}
+          </span>
+          <span class="font-normal text-p-xs text-grey-one" data-error-text></span>
+        </div>
+      </div>
+
+      {%- comment -%} Address {%- endcomment -%}
+      <div class="relative mb-6 input-wrap w-full">
+        <input type="text"
+          id="customer_addr_{{ address_id }}_address1"
+          name="address[address1]" placeholder=" " value="{{ form.address1 }}"
+          onblur="eHS.customerLogin.validateFieldsOnBlur(event)" data-required>
+        <label for="customer_addr_{{ address_id }}_address1">{{ 'customer.addresses.address1' | t }}*</label>
+        <div class="text-red flex items-center mt-2 hidden" data-error-container>
+          <span class="mr-2.5">
+            {% render 'svg-alert' %}
+          </span>
+          <span class="font-normal text-p-xs text-grey-one" data-error-text></span>
+        </div>
+      </div>
+
+      {%- comment -%} Phone {%- endcomment -%}
+      <div class="relative mb-6 input-wrap w-full">
+        <input type="text"
+          id="customer_addr_{{ address_id }}_address2"
+          name="address[address2]" placeholder=" " value="{{ form.address2 }}">
+        <label for="customer_addr_{{ address_id }}_address2">{{ 'customer.addresses.address2' | t }}</label>
+      </div>
+    </div>
+
+    {%- comment -%} Desktop - Right Column {%- endcomment -%}
+    <div class="w-full lg:w-2/5 lg:px-3 lg:mt-7">
+
+      {%- comment -%} City {%- endcomment -%}
+      <div class="relative mb-6 input-wrap w-full">
+        <input type="text"
+          id="customer_addr_{{ address_id }}_city"
+          name="address[city]" placeholder=" " value="{{ form.city }}"
+          onblur="eHS.customerLogin.validateFieldsOnBlur(event)" data-required>
+        <label for="customer_addr_{{ address_id }}_city">{{ 'customer.addresses.city' | t }}*</label>
+        <div class="text-red flex items-center mt-2 hidden" data-error-container>
+          <span class="mr-2.5">
+            {% render 'svg-alert' %}
+          </span>
+          <span class="font-normal text-p-xs text-grey-one" data-error-text></span>
+        </div>
+      </div>
+
+      {%- comment -%} Country {%- endcomment -%}
+      <div class="relative mb-6 input-wrap w-full">
+        <select
+          class="address-country"
+          id="customer_addr_{{ address_id }}_country"
+          name="address[country]" data-default="{{ form.country }}" onchange="eHS.account.countrySelection(this)">
+          {{ country_option_tags }}
+        </select>
+        <label for="customer_addr_{{ address_id }}_country">{{ 'customer.addresses.country' | t }}</label>
+        {% comment %} <span class="absolute right-5 top-1/2 transform -translate-y-1/2">
+          {% render 'svg-arrow-down', width: '10px', height: '7.5px' %}
+        </span> {% endcomment %}
+      </div>
+
+      {%- comment -%} State / Province {%- endcomment -%}
+      <div class="relative mb-6 select-wrap w-full">
+        <select
+          class="address-province"
+          id="customer_addr_{{ address_id }}_province"
+          name="address[province]" data-default="{{ form.province }}" onchange="eHS.account.provinceSelection(this)">
+        </select>
+        <label for="customer_addr_{{ address_id }}_province">{{ 'customer.addresses.province' | t }}</label>
+        {% comment %} <span class="absolute right-5 top-1/2 transform -translate-y-1/2">
+          {% render 'svg-arrow-down', width: '10px', height: '7.5px' %}
+        </span> {% endcomment %}
+      </div>
+
+      {%- comment -%} ZipCode {%- endcomment -%}
+      <div class="relative mb-6 input-wrap w-full">
+        <input type="text"
+          id="customer_addr_{{ address_id }}_zip"
+          name="address[zip]" placeholder=" " value="{{ form.zip }}"
+          onblur="eHS.customerLogin.validateFieldsOnBlur(event)" data-required>
+        <label for="customer_addr_{{ address_id }}_zip">{{ 'customer.addresses.zip' | t }}*</label>
+        <div class="text-red flex items-center mt-2 hidden" data-error-container>
+          <span class="mr-2.5">
+            {% render 'svg-alert' %}
+          </span>
+          <span class="font-normal text-p-xs text-grey-one" data-error-text></span>
+        </div>
+      </div>
+    </div>
+
+    {%- comment -%} Make as Default {%- endcomment -%}
+    <div class="w-full mb-4 lg:w-4/5 lg:px-3 lg:mb-10">
+      <label for="address_default_address_{{ address_id }}" class="custom-checkbox text-p font-normal py-0.75 px-6">
+        {{ form.set_as_default_checkbox }}
+        <span class="checkmark"></span>
+        {{ 'customer.addresses.set_default' | t }}
+      </label>
+    </div>
+ 
+    {%- comment -%} Submit Registration Form + Cancel {%- endcomment -%}
+    <div class="w-full lg:w-4/5 lg:px-3 text-center">
+      <button type="button" id="submit-{{form.id}}" class="form-submit button button-primary mb-10 w-full max-w-full py-4.5 cursor-pointer focus:outline-none">
+        {%- if address_id == 'new' -%}
+          {{ 'customer.addresses.add' | t }}
+        {%- else -%}
+          {{ 'customer.addresses.update' | t }}
+        {%- endif -%}
+      </button>
+      <button type="button" class="back-btn inline-block text-special mb-8 font-lato font-semibold uppercase text-grey-one hover:text-blue-one border-b-2 border-grey-one hover:border-blue-one focus:outline-none">
+        {{ 'customer.addresses.cancel' | t }}
+      </button>
+    </div>
+
+  {% endform %}
+
+</div>

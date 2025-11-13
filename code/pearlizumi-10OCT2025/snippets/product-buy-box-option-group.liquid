@@ -1,0 +1,242 @@
+{%- assign in_stock_option_values = '' -%}
+{%- for variant in product.variants -%}
+  {%- if variant.available or variant.metafields.stocktype.stocktype == 'S' -%}
+    {%- assign option_value = variant.options[option_num] -%}
+    {%- assign in_stock_option_values = in_stock_option_values | append: option_value | append: '||' -%}
+  {%- endif -%}  
+{%- endfor -%}
+{%- assign in_stock_option_values = in_stock_option_values | split: '||' | uniq -%}
+
+<!-- Option Label Row -->
+<div class="flex items-center {% if size_guide %}justify-between{% else %}justify-start{% endif %}">
+  <!-- Label -->
+  <div class="text-p-xxs xl:text-p-ms font-sora font-semibold my-4">
+    <span>{{ option.name | upcase }}:&nbsp;</span>
+    <span data-option-label="{{- option_handle -}}"></span>
+  </div>
+  {%- comment -%} TODO: add functionality for size guide - quick fix for launch{%- endcomment -%}
+  {%- unless quickview -%}
+    {%- if size_guide -%}
+      {% liquid
+        assign size_chart = null
+        assign how_to_measure = null
+        assign fit_type = null
+        for image in product.images
+          if image.alt contains 'sizeguide'
+            assign size_chart = image
+          endif
+          if image.alt contains 'fitguide'
+            assign how_to_measure = image
+          endif
+        endfor
+        assign gender = null
+        for tag in product.tags
+          if tag contains 'gender:'
+            assign gender = tag | remove: 'gender:' | downcase
+          endif
+          if tag contains 'fit:'
+            assign fit_type = tag | remove: 'fit:'
+          endif
+        endfor
+      %}
+
+      <div class="flex items-center">
+        <a
+        href="#"
+        class="flex items-center justify-start"
+        onclick="{% if quickview %}eHS.quickviewProductBuyBox.showSizeGuide(event){% else %}eHS.productBuyBox.showSizeGuide(event){% endif %}"
+        role="button"
+        aria-label="{{ 'products.product.view_size_guide' | t }}"
+      >
+        <span class="text-stone mr-1 xl:mr-2">
+          {%- render 'svg-tape-measure' -%}
+        </span>
+        <span class="text-p-xxs xl:text-p-ms text-pine">{{ 'products.product.view_size_guide' | t }}</span>
+      </a>
+
+        {%- if fit_type -%}
+          <div class="flex items-center mr-1 xl:ml-2">
+            {%- render 'svg-fit-type' -%}
+            <span class="ml-0.5 text-p-xxs xl:text-p-ms text-stone">{{ fit_type }}</span>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {% render 'product-size-guide',
+        id: product.id,
+        tags: product.tags,
+        size_chart: size_chart,
+        size_chart_alt: product.metafields.global.size_guide_alt,
+        how_to_measure: how_to_measure,
+        how_to_measure_alt: product.metafields.global.how_to_measure_alt,
+        gender: gender
+      %}
+    {%- endif -%}
+  {%- endunless -%}
+</div>
+
+{%- comment -%}
+  Get EXACT color names from on_sale_colors to determine which options to omit
+  from the the "Regular" color group. Prevents bugs with substrings
+  (ie. Cosmic Black is on sale, so Black is mistakenly omitted from this grouping)
+{%- endcomment -%}
+{%- assign on_sale_colors_split = on_sale_colors | split: '||' -%}
+{%- assign on_sale_color_names = '' -%}
+
+{%- if on_sale_colors_split.size > 0 -%}
+  {%- for price_and_colors in on_sale_colors_split -%}
+    {%- if price_and_colors == blank -%}{% continue %}{% endif -%}
+    {%- assign price_colors = price_and_colors | split: '::' -%}
+    {%- assign colors = price_colors[2] | split: '##' -%}
+    {%- assign color_string = colors | join: '##' -%}
+    {%- assign on_sale_color_names = on_sale_color_names | append: color_string | append: '##' -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{%- assign on_sale_color_names = on_sale_color_names | split: '##' | uniq -%} 
+
+{%- comment -%} Color Price Row {%- endcomment -%}
+{% if regular_price and on_sale_colors != blank and regular_price > 0 %}
+  {%- assign display_price = regular_price -%}
+  {%- assign display_price = 100.00 | minus: discount_tag | times: display_price | divided_by: 100 -%}
+  <div class="flex items-baseline max-w-1/4 mb-2.5" style="display:flex" data-regular-color-price-label data-color-label>
+    <span
+      class="text-p-ms font-sora font-semibold text-stone"
+      {%- if quickview -%}
+        data-regular-color-price="{{- regular_price -}}"
+      {%- endif -%}
+    >
+      {{- display_price | money -}}
+    </span>
+  </div>
+{%- endif -%}
+
+{%- if option_handle == 'color' or option_handle == 'couleur' -%}
+  <div
+    class="flex flex-wrap mb-1 last:mb-2 last:pb-8"
+    data-option-group="{{- option_handle -}}"
+    data-option-num="{{ option_num }}"
+    style="display: flex"
+  >
+    {%- for value in option.values -%}      
+      {%- if in_stock_option_values contains value -%}
+        {%- unless on_sale_color_names contains value -%}
+          <button
+            data-color-option
+            data-option="{{ option_handle }}"
+            data-value="{{ value | handleize }}"
+            style="padding: 3px;"
+            class="option-swatch w-9 h-9 border border-light-grey rounded-circle mr-2 mb-2 xl:mr-4 xl:mb-3 cursor-pointer focus:outline-none hover:border-black"
+            onclick="{% if quickview %}eHS.quickviewProductBuyBox.handleOptionSelect('{{ option.name }}', {{ option_num }}, '{{ value }}'){% else %}eHS.productBuyBox.handleOptionSelect('{{ option.name }}', {{ option_num }}, '{{ value }}'){% endif %}"
+            role="radio"
+            aria-checked="false"
+            aria-labelby="{{ option_handle }}-{{value}}"
+          >
+            <div class="swatch-{{ value | handleize }} w-full h-full bg-silver rounded-circle"></div>
+          </button>
+        {%- endunless -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  {%- if on_sale_colors_split.size > 0 -%}
+    <div class="swatch-sales-wrap flex flex-col-reverse mb-2 pb-8">
+      {% for item in on_sale_colors_split %}
+        {%- assign sale_item = item | split: '::' -%}    
+        {%- assign sale_prices = sale_item[0] -%}
+        {%- assign sale_names = sale_item[2] | split: '##' -%}
+
+        {% if in_stock_option_values contains sale_names[0] %}  
+          <div style="order: {{ sale_prices }}">
+            <div class="flex items-baseline max-w-1/4 mb-2.5" data-clearance-color-price-label data-color-label>
+              <span class="text-p-ms font-sora font-semibold text-red mr-2">{{ sale_prices | money}}</span>
+              <span class="text-p-s font-sora font-normal line-through text-light-stone">{{sale_item[1] | money}}</span>
+            </div>
+          {% if sale_names.size < 2 %}
+            <button
+              data-color-option
+              data-option="{{ option_handle }}"
+              data-value="{{ sale_names[0] | handleize }}"
+              style="padding: 3px;"
+              class="option-swatch w-9 h-9 border border-light-grey rounded-circle mr-2 mb-2 xl:mr-4 xl:mb-3 cursor-pointer focus:outline-none hover:border-black"
+              onclick="{% if quickview %}eHS.quickviewProductBuyBox.handleOptionSelect('{{ option.name }}', {{ option_num }}, '{{ sale_names[0] }}'){% else %}eHS.productBuyBox.handleOptionSelect('{{ option.name }}', {{ option_num }}, '{{ sale_names[0] }}'){% endif %}"
+              role="radio"
+              aria-checked="false"
+              aria-labelby="{{ option_handle }}-{{sale_names[0]}}"
+            >
+              <div class="swatch-{{ sale_names[0] | handleize }} w-full h-full bg-silver rounded-circle"></div>
+            </button>          
+          {% else %}
+            {% for itemz in sale_names %}
+              {% if in_stock_option_values contains itemz %}                
+                <button
+                  data-color-option
+                  data-option="{{ option_handle }}"
+                  data-value="{{ itemz | handleize }}"
+                  style="padding: 3px;"
+                  class="option-swatch w-9 h-9 border border-light-grey rounded-circle mr-2 mb-2 xl:mr-4 xl:mb-3 cursor-pointer focus:outline-none hover:border-black"
+                  onclick="{% if quickview %}eHS.quickviewProductBuyBox.handleOptionSelect('{{ option.name }}', {{ option_num }}, '{{ itemz }}'){% else %}eHS.productBuyBox.handleOptionSelect('{{ option.name }}', {{ option_num }}, '{{ itemz }}'){% endif %}"
+                  role="radio"
+                  aria-checked="false"
+                  aria-labelby="{{ option_handle }}-{{itemz}}"
+                >
+                  <div class="swatch-{{ itemz | handleize }} w-full h-full bg-silver rounded-circle"></div>
+                </button> 
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {%- endif -%} 
+
+  {%- if gift_card -%}
+      <div
+        class="flex gap-2 mb-2 {% if option.values.size == 1 %}hidden{% endif %}"
+        data-option-group="{{- option_handle -}}"
+        data-option-num="{{ option_num }}"
+      >
+        {% for value in option.values %}
+          <div class="option-wrapper max-w-21 flex-1">
+            <button
+            aria-checked="false"
+          aria-label="{{ option.name }} - {{ value }}"
+        
+              data-option="{{ option_handle }}"
+              data-value="{{ value | handleize }}"
+              class="option border border-silver p-2 min-h-option-btn cursor-pointer font-sora text-black text-special-xs text-center w-full focus:outline-none hover:border-black"
+              onclick="{% if quickview %}eHS.quickviewProductBuyBox.handleOptionSelect('{{ option.name | downcase }}', {{ option_num }}, '{{ value }}'){% else %}eHS.productBuyBox.handleOptionSelect('{{ option.name | downcase }}', {{ option_num }}, '{{ value }}'){% endif %}"
+            >
+              {{ value }}
+            </button>
+          </div>
+        {% endfor %}
+      </div>  
+  {%- endif -%}
+{%- else -%}
+  <div
+    class="grid grid-flow-row grid-cols-6 md:grid-cols-4 xl:grid-cols-7 gap-2 mb-2 {% if option.values.size == 1 %}hidden{% endif %}"
+    data-option-group="{{- option_handle -}}"
+    data-option-num="{{ option_num }}"
+    data-product-type="{{ product_type }}"
+  >
+    {% assign sorted_values = option.values | sort %}
+    {%- for value in sorted_values -%}
+      {% comment %} {%- if in_stock_option_values contains value -%} {% endcomment %}
+        <div class="option-wrapper flex-1 item-{{ forloop.index }}">
+          <button
+            aria-checked="false"
+            aria-label="{{ option.name }} - {{ value }}"
+            data-option="{{ option_handle }}"
+            data-value="{{ value | handleize }}"
+            class="option border border-silver p-2 min-h-option-btn cursor-pointer font-sora text-black text-special-xs text-center w-full focus:outline-none hover:border-black"
+            onclick="{% if quickview %}eHS.quickviewProductBuyBox.handleOptionSelect('{{ option.name | downcase }}', {{ option_num }}, '{{ value }}'){% else %}eHS.productBuyBox.handleOptionSelect('{{ option.name | downcase }}', {{ option_num }}, '{{ value }}'){% endif %}"
+          >
+            {{ value }}
+          </button>
+        </div>
+      {% comment %} {%- endif -%} {% endcomment %}
+    {%- endfor -%}
+  </div>
+{%- endif -%}

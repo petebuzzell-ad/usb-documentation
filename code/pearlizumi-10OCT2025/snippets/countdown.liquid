@@ -1,0 +1,64 @@
+{%- comment -%}
+** LOGIC **
+  IF: NO START DATE, NO END DATE
+  - No countdown clock
+  - Custom products unavailable
+
+  IF: NO START DATE, END DATE
+  - Countdown until end date, then removed
+
+  IF: START DATE, NO END DATE
+  - No countdown.
+  - Unavailable until start date.
+
+  IF: START DATE, END DATE
+  - Unavailable until start date
+  - Countdown until end product, then removed.
+
+** TO MAKE THIS WORK **
+  Requires custom.start_date and/or custom.end_date metafields.
+{%- endcomment -%}
+
+{%- liquid
+  assign start_date = product.metafields.custom.start_date | default: false
+  assign end_date = product.metafields.custom.end_date | default: false
+  assign deadline_text = product.metafields.custom.deadline_text | default: ''
+-%}
+
+{% comment %}
+  Need if we have a start date or end date
+  Hide if we don't have an end date
+{% endcomment %}
+
+{% if start_date or end_date %}
+<div class="countdown opacity-0 delay-1000 transition-opacity{% unless end_date %} hidden{% endunless %}" id="countdown" data-start-date="{{ start_date }}" data-end-date="{{ end_date }}">
+  <p class="hidden text-red">{{ deadline_text }}</p>
+  <div class="inline-flex items-center justify-center border-solid border-2 border-lush text-center px-4">
+    {% assign wrap_class = 'p-2 w-14' %}
+    {% assign val_class = 'h6' %}
+    {% assign unit_class = 'text-p-xxs font-light' %}
+
+    <div class="{{ wrap_class }}">
+      <div data-count="days" class="{{ val_class }}">00</div>
+      <div class="{{ unit_class }}">DAYS</div>
+    </div>
+    <div class="{{ val_class }} mb-5">:</div>
+    <div class="{{ wrap_class }}">
+      <div data-count="hours" class="{{ val_class }}">00</div>
+      <div class="{{ unit_class }}">HRS</div>
+    </div>
+    <div class="{{ val_class }} mb-5">:</div>
+    <div class="{{ wrap_class }}">
+      <div data-count="minutes" class="{{ val_class }}">00</div>
+      <div class="{{ unit_class }}">MIN</div>
+    </div>
+    <div class="{{ val_class }} mb-5">:</div>
+    <div class="{{ wrap_class }}">
+      <div data-count="seconds" class="{{ val_class }}">00</div>
+      <div class="{{ unit_class }}">SEC</div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+

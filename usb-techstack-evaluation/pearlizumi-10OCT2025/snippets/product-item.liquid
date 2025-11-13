@@ -1,0 +1,258 @@
+{% comment %}Don't show hidden products{% endcomment %}
+{% liquid
+  assign is_hidden = false
+  if product.template_suffix == 'hidden'
+    assign is_hidden = true
+  endif %}
+
+{% unless is_hidden %}
+  {%- assign color_label = 'color,colour,couleur,cor,colore,farbe,색,色,カラー,färg,farve,szín' | split: ',' -%}
+  {%- assign colors_count = 0 -%}
+  {%- assign color_option = nil -%}
+  {%- for option in product.options_with_values -%}
+    {%- assign downcased_option = option.name | downcase -%}
+    {%- if color_label contains downcased_option -%}
+      {%- assign colors_count = option.values.size -%}
+      {%- assign color_option = option -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- assign gendered = false -%}
+  {%- if collection != blank and collection.metafields["global"]["gendered_collection"] != blank -%}
+    {%- capture gender_alt -%}gender:{{collection.metafields["global"]["gendered_collection"]}}{%- endcapture -%}
+    {%- assign gendered = true -%}
+  {%- endif -%}
+  {%- assign current_variant = product.first_available_variant -%}
+
+  {% liquid
+    assign promo_text = ''
+    assign promo_messages = settings.promo_messages | newline_to_br | split: '<br />'
+    for tag in product.tags
+      if tag contains 'promo:'
+        for message in promo_messages
+          if message contains tag
+            assign promo_text = message | remove: tag | remove: '||'
+          endif
+        endfor
+      endif
+    endfor
+    if promo_text == blank
+      if product.metafields["global"]["prd_promotion_text"] != blank
+        assign promo_text = product.metafields["global"]["prd_promotion_text"]
+      elsif current_variant.metafields["global"]["promo_text"] != blank
+        assign promo_text = current_variant.metafields["global"]["promo_text"]
+      endif
+    endif
+  %}
+
+  {%- if color_option != nil -%}
+    {%- for value in color_option.values -%}
+      {%- for variant in product.variants -%}
+        {%- if variant.options contains value -%}
+          {%- assign current_variant = variant -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- capture color_alt -%}color:{{value | escape}}{%- endcapture -%}
+
+      {%- assign featured_image = nil -%}
+      {%- assign second_image = nil -%}
+      {%- assign men_image = nil -%}
+      {%- assign women_image = nil -%}
+      {%- assign men_hover_image = nil -%}
+      {%- assign women_hover_image = nil -%}
+      {%- for image in product.images -%}
+        {%- if image.alt contains 'hover_image' -%}
+          {%- if image.alt contains color_alt -%}
+            {%- if second_image != blank -%}
+              {%- if gender_alt != blank and image.alt contains gender_alt -%}
+                {%- assign second_image = image -%}
+              {%- endif -%}  
+            {%- else -%}
+              {%- assign second_image = image -%}
+            {%- endif -%}
+
+            {%- if men_hover_image == blank and image.alt contains 'gender:men' -%}
+              {%- assign men_hover_image = image -%}
+            {%- endif -%}
+            {%- if women_hover_image == blank and image.alt contains 'gender:women' -%}
+              {%- assign women_hover_image = image -%}
+            {%- endif -%}
+          {%- endif -%}
+        {% else %}
+          {%- if image.alt contains color_alt -%}
+            {%- if featured_image != blank -%}
+              {%- if gender_alt != blank and image.alt contains gender_alt -%}
+                {%- assign featured_image = image -%}
+              {%- endif -%}  
+            {%- else -%}
+              {%- assign featured_image = image -%}
+            {%- endif -%}
+
+            {%- if men_image == blank and image.alt contains 'gender:men' -%}
+              {%- assign men_image = image -%}
+            {%- endif -%}
+            {%- if women_image == blank and image.alt contains 'gender:women' -%}
+              {%- assign women_image = image -%}
+            {%- endif -%}
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- if featured_image == blank -%}
+        {%- assign featured_image = variant.image | default: product.featured_image -%}
+      {%- endif -%}
+      {%- if second_image == blank -%}
+        {%- assign second_image = featured_image -%}
+      {%- endif -%}
+
+      {%- if current_variant.price < current_variant.compare_at_price -%}
+        {%- assign sale = true -%}
+      {%- else -%}
+        {%- assign sale = false -%}
+      {%- endif -%}
+
+      <div class="product-item">
+        <a href="{{ current_variant.url | default: product.url | within: collection }}" class="product-item__image">
+          <div class="product-item__image-wrapper">
+            <img class="lazy product-item__primary-image" data-src="{{featured_image | img_url: '600x'}}" alt="{{featured_image.alt}}"
+              data-gendered="{{gendered}}" {% if men_image != nil %}data-men-img="{{men_image | img_url: '600x'}}"{% endif %} {% if women_image != nil %}data-women-img="{{women_image | img_url: '600x'}}"{% endif %} loading="lazy"
+              >
+            <img class="lazy product-item__secondary-image" data-src="{{second_image | img_url: '600x'}}" alt="{{second_image.alt}}"
+              data-gendered="{{gendered}}" {% if men_hover_image != nil %}data-men-img="{{men_hover_image | img_url: '600x'}}"{% endif %} {% if women_hover_image != nil %}data-women-img="{{women_hover_image | img_url: '600x'}}"{% endif %} loading="lazy"
+              >
+
+            {%- render 'product-badge' product: product, current_variant: current_variant, classes: 'absolute -bottom-6.25 md:bottom-auto md:top-5 left-0' -%}
+          </div>
+        </a>
+        <div class="product-item__info">
+          <a href="{{ current_variant.url | default: product.url | within: collection }}" class="product-item__title">{{ product.title }}<span> - {{value}}</span></a>
+          {%- if product.metafields["global"]["prd_sub_title"] -%}
+            <div class="product-item__meta">{{- product.metafields["global"]["prd_sub_title"] -}}</div>
+          {%- endif -%}
+          {%- render 'yotpo-plp-rating' product: product -%}
+          <div class="product-item__price">
+            <span class="flex items-center justify-start sm:justify-end">
+              <span {% if sale %}class="text-pine"{% endif %}>{{ current_variant.price | default: product.price | money }}</span>
+              {%- if sale -%}
+                <span class="text-light-stone text-p-s line-through inline-block ml-2.5">{{ current_variant.compare_at_price | money }}</span>
+              {%- endif -%}
+            </span>
+            {%- comment -%}
+            {%- if sale -%}
+              {%- assign savings = current_variant.compare_at_price | minus: current_variant.price | times: 100.0 | divided_by: current_variant.compare_at_price | round | append: '%' -%}
+              <span class="text-center text-p-xs font-light text-red tracking-normal font-sora">{{ savings }} Off with code PEARL</span>
+            {%- endif -%}
+            {%- endcomment -%}
+          </div>
+          {%- if colors_count > 0 -%}
+          <div class="product-item__variants">{{ 'collections.general.colors_count' | t: count: colors_count }}</div>
+          {%- endif -%}
+          {%- if promo_text -%}
+            <span class="text-p-xs font-light text-pine tracking-normal font-sora">{{ promo_text }}</span>
+          {%- endif -%}
+        </div>
+        <div class="product-item__quickview">
+          <button class="product-item__quickview-btn" onclick="eHS.quickshop.openQuickshop(event,'{{ product.handle }}','{{ current_variant.id }}')">QUICK VIEW</button>
+        </div>
+      </div>
+    {%- endfor -%}
+  {%- else -%}
+    {%- assign featured_image = product.featured_image -%}
+    {%- assign second_image = nil -%}
+    {%- assign men_image = nil -%}
+    {%- assign women_image = nil -%}
+    {%- assign men_hover_image = nil -%}
+    {%- assign women_hover_image = nil -%}
+    {%- for image in product.images -%}
+      {%- if image.alt contains 'hover_image' -%}
+        {%- if second_image != blank -%}
+          {%- if gender_alt != blank and image.alt contains gender_alt -%}
+            {%- assign second_image = image -%}
+          {%- endif -%}  
+        {%- else -%}
+          {%- assign second_image = image -%}
+        {%- endif -%}
+
+        {%- if men_hover_image == blank and image.alt contains 'gender:men' -%}
+          {%- assign men_hover_image = image -%}
+        {%- endif -%}
+        {%- if women_hover_image == blank and image.alt contains 'gender:women' -%}
+          {%- assign women_hover_image = image -%}
+        {%- endif -%}
+      {% else %}
+        {%- if gender_alt != blank and image.alt contains gender_alt -%}
+          {%- assign featured_image = image -%}
+        {%- endif -%}
+
+        {%- if men_image == blank and image.alt contains 'gender:men' -%}
+          {%- assign men_image = image -%}
+        {%- endif -%}
+        {%- if women_image == blank and image.alt contains 'gender:women' -%}
+          {%- assign women_image = image -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- if second_image == blank -%}
+      {%- assign second_image = featured_image -%}
+    {%- endif -%}
+
+    {%- if product.price < product.compare_at_price -%}
+      {%- assign sale = true -%}
+    {%- else -%}
+      {%- assign sale = false -%}
+    {%- endif -%}
+
+    <div class="product-item">
+      <a href="{{ product.url | within: collection }}" class="product-item__image">
+        <div class="product-item__image-wrapper">
+          <img class="lazy product-item__primary-image" data-src="{{featured_image | img_url: '600x'}}" alt="{{featured_image.alt}}"
+            data-gendered="{{gendered}}" {% if men_image != nil %}data-men-img="{{men_image | img_url: '600x'}}"{% endif %} {% if women_image != nil %}data-women-img="{{women_image | img_url: '600x'}}"{% endif %} loading="lazy"
+            >
+          <img class="lazy product-item__secondary-image" data-src="{{second_image | img_url: '600x'}}" alt="{{second_image.alt}}"
+            data-gendered="{{gendered}}" {% if men_hover_image != nil %}data-men-img="{{men_hover_image | img_url: '600x'}}"{% endif %} {% if women_hover_image != nil %}data-women-img="{{women_hover_image | img_url: '600x'}}"{% endif %}
+            loading="lazy" />
+          {%- render 'product-badge' product: product, classes: 'absolute -bottom-6.25 md:bottom-auto md:top-5 left-0' -%}
+        </div>
+      </a>
+      <div class="product-item__info">
+        <a href="{{ product.url | within: collection }}" class="product-item__title">{{- product.title -}}</a>
+        {%- if product.metafields["global"]["prd_sub_title"] -%}
+          <div class="product-item__meta">{{- product.metafields["global"]["prd_sub_title"] -}}</div>
+        {%- endif -%}
+        {%- render 'yotpo-plp-rating' product: product -%}
+        <div class="product-item__price">
+          <span class="flex items-center justify-center">
+            <span {% if sale %}class="text-pine"{% endif %}>{{ product.price | money }}</span>
+            {%- if sale -%}
+              <span class="text-light-stone text-p-s line-through inline-block ml-2.5">{{ product.compare_at_price | money }}</span>
+            {%- endif -%}
+          </span>
+          {%- if sale -%}
+            {%- assign savings = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round | append: '%' -%}
+            <span class="text-center text-p-xs font-light text-pine tracking-normal font-sora">{{ savings }} Off with code PEARL</span>
+          {%- endif -%}
+        </div>
+        {%- assign colors_count = 0 -%}
+        {%- for option in product.options_with_values -%}
+          {%- assign downcased_option = option.name | downcase -%}
+          {%- if color_label contains downcased_option -%}
+            {%- assign colors_count = option.values.size -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if colors_count > 0 -%}
+          <div class="product-item__variants">{{ 'collections.general.colors_count' | t: count: colors_count }}</div>
+        {%- endif -%}
+        {%- if promo_text -%}
+          <span class="text-p-xs font-light text-pine tracking-normal font-sora">{{ promo_text }}</span>
+        {%- endif -%}
+      </div>
+      <div class="product-item__quickview">
+        <button class="product-item__quickview-btn" onclick="eHS.quickshop.openQuickshop(event,'{{ product.handle }}','{{ current_variant.id }}')">QUICK VIEW</button>
+      </div>
+    </div>
+  {%- endif -%}
+{% endunless %}

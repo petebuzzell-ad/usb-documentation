@@ -1,0 +1,216 @@
+{% liquid
+  assign pro_homepage_enabled = settings.enable_pro_homepage
+  assign ev_homepage_enabled = settings.enable_ev_homepage
+  assign op_homepage_enabled = settings.enable_op_homepage
+  
+  assign is_pro_customer = false
+  assign is_ev_customer = false
+  assign is_op_customer = false
+  if customer.tags contains 'Pro Purchase'
+    assign is_pro_customer = true
+  elsif customer.tags contains 'Expert Voice'
+    assign is_ev_customer = true
+  elsif customer.tags contains 'Outdoor Pro'
+    assign is_op_customer = true
+  endif
+
+  assign use_pro_homepage = false
+  assign use_ev_homepage = false
+  assign use_op_homepage = false
+
+  if pro_homepage_enabled and is_pro_customer
+    assign use_pro_homepage = true
+  elsif ev_homepage_enabled and is_ev_customer
+    assign use_ev_homepage = true
+  elsif op_homepage_enabled and is_op_customer
+    assign use_op_homepage = true
+  endif
+%}
+
+{%- if use_pro_homepage  -%}
+  {%- if section.settings.title != blank -%}
+    {% render 'snippet-3-grid-cta' block: section %}
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "3 Column Content CTA(Pro)",
+  "settings": [
+    {
+      "type": "header",
+      "content": "3 Column Content CTA(Pro)"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "select",
+      "id": "background",
+      "options": [
+        { "value": "white", "label": "White"},
+        { "value": "pine", "label": "Green"},
+        { "value": "sand", "label": "Sand"}
+      ],
+      "label": "Background Color",
+      "default": "white"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button Label",
+      "default": "View all"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "cta_image_1",
+      "label": "CTA 1 Image"
+    },
+    {
+      "type": "video_url",
+      "id": "cta_youtube_video_1",
+      "accept": ["youtube"],
+      "label": "CTA 1 Youtube Video"
+    },
+    {
+      "type": "text",
+      "id": "cta_tag_1",
+      "label": "CTA 1 Tag"
+    },
+    {
+      "type": "text",
+      "id": "cta_title_1",
+      "label": "CTA 1 Title"
+    },
+    {
+      "type": "text",
+      "id": "cta_info_1",
+      "label": "CTA 1 Info"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_text_1",
+      "label": "CTA 1 Text"
+    },
+    {
+      "type": "text",
+      "id": "cta_btn_label_1",
+      "label": "CTA 1 Button Label",
+      "default": "Read more"
+    },
+    {
+      "type": "url",
+      "id": "cta_btn_link_1",
+      "label": "CTA 1 Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "cta_image_2",
+      "label": "CTA 2 Image"
+    },
+    {
+      "type": "video_url",
+      "id": "cta_youtube_video_2",
+      "accept": ["youtube"],
+      "label": "CTA 2 Youtube Video"
+    },
+    {
+      "type": "text",
+      "id": "cta_tag_2",
+      "label": "CTA 2 Tag"
+    },
+    {
+      "type": "text",
+      "id": "cta_title_2",
+      "label": "CTA 2 Title"
+    },
+    {
+      "type": "text",
+      "id": "cta_info_2",
+      "label": "CTA 2 Info"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_text_2",
+      "label": "CTA 2 Text"
+    },
+    {
+      "type": "text",
+      "id": "cta_btn_label_2",
+      "label": "CTA 2 Button Label",
+      "default": "Read more"
+    },
+    {
+      "type": "url",
+      "id": "cta_btn_link_2",
+      "label": "CTA 2 Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "cta_image_3",
+      "label": "CTA 3 Image"
+    },
+    {
+      "type": "video_url",
+      "id": "cta_youtube_video_3",
+      "accept": ["youtube"],
+      "label": "CTA 3 Youtube Video"
+    },
+    {
+      "type": "text",
+      "id": "cta_tag_3",
+      "label": "CTA 3 Tag"
+    },
+    {
+      "type": "text",
+      "id": "cta_title_3",
+      "label": "CTA 3 Title"
+    },
+    {
+      "type": "text",
+      "id": "cta_info_3",
+      "label": "CTA 3 Info"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_text_3",
+      "label": "CTA 3 Text"
+    },
+    {
+      "type": "text",
+      "id": "cta_btn_label_3",
+      "label": "CTA 3 Button Label",
+      "default": "Read more"
+    },
+    {
+      "type": "url",
+      "id": "cta_btn_link_3",
+      "label": "CTA 3 Button Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_bottom_margin",
+      "label": "Enable Bottom Margin",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "3 Column Content CTA(Pro)",
+      "category": "Homepage"
+    }
+  ]
+}
+{% endschema %}

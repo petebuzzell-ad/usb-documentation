@@ -1,0 +1,261 @@
+<div class="shopify-section-faq-loyalty">
+  <div class="loyalty-faq-container">
+    <h2>{{ section.settings.faq_header }}</h2>
+    <h3 class="h3_header_faq_yotpo">{{ section.settings.sub_faq_header }}</h3>
+
+    <div class="loyalty-faq">
+    {% for block in section.blocks %}
+      <div class="question-container">
+        <h2>{{ block.settings.question }}</h2>
+        <div class="toggle-btn">
+          <p>+</p>
+        </div>
+      </div>
+      <div class="answer">
+        <p>{{ block.settings.answer }}</p>
+      </div>
+      <hr/>
+    {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% javascript %}
+    const questionContainers = document.querySelectorAll('.question-container');
+  const answers = document.querySelectorAll('.answer');
+  let activeAnswer = answers[0];
+
+  // Adds the visible class to the first answer and rotate class to the first toggle button
+  questionContainers[0].querySelector('.toggle-btn p').classList.add('rotate');
+  activeAnswer.classList.add('visible');
+
+  questionContainers.forEach((container, index) => {
+    container.addEventListener('click', () => {
+      const answer = answers[index];
+      const toggleBtn = container.querySelector('.toggle-btn p');
+
+      if (activeAnswer !== null && activeAnswer !== answer) {
+        const activeToggleBtn = activeAnswer.previousElementSibling.querySelector('.toggle-btn p');
+        activeToggleBtn.classList.remove('rotate');
+        activeAnswer.classList.remove('visible');
+      }
+
+      toggleBtn.classList.toggle('rotate');
+
+      if (answer.classList.contains('visible')) {
+        answer.classList.remove('visible');
+        activeAnswer = null;
+      } else {
+        answers.forEach((a) => {
+          a.classList.remove('visible');
+        });
+        answer.classList.add('visible');
+        activeAnswer = answer;
+      }
+    });
+  });
+{% endjavascript %}
+
+{% stylesheet %}
+
+div#shopify-section-template--18516281098328__yotpo_faq_b3atbG .shopify-section-faq-loyalty {
+    padding-bottom: 50px;
+}
+
+
+  /* FAQ styles */
+  .loyalty-faq{
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+  }
+
+  
+  .shopify-section-faq-loyalty {
+    padding: 30px 20px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    font-family: Lato;
+    background: #e7e7e7;
+    text-align: center;
+}
+  }
+
+  .loyalty-faq-container > h2 {
+    text-align: center;
+    font-style: normal !important;
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+
+ .h3_header_faq_yotpo {
+    text-align: left;
+    font-style: normal !important;
+    font-size: 30px;
+  }
+
+  
+
+  .question-container h2 {
+    font-weight: 400;
+    font-size: 22px;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    width: 80%;
+    color: #fff;
+    line-height: 25px;
+    text-transform: none;
+  }
+
+  .loyalty-faq-container {
+    margin: 0 auto;
+    max-width: 1600px;
+  }
+
+  .loyalty-faq-container hr{
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 3px !important;
+    border: none;
+  }
+
+  .loyalty-faq {
+    margin-bottom: 10px;
+  }
+
+  .question-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: background-color 0.7s ease;
+    background: #aaa9a7;
+    border-radius: 5px;
+  }
+
+  .question-container.first-question {
+    border-top: none !important;
+  }
+
+ /* .question-container.last-question {
+    border-bottom: 1px solid #000 !important;
+  } */
+
+  .answer {
+    padding: 0px;
+    color: #000;
+    overflow: hidden;
+    transition: 0.3s ease, opacity 0.3s ease;
+    max-height: 0;
+    font-size: 14px;
+  }
+
+  .toggle-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.6s ease;
+  }
+
+  .toggle-btn p {
+    margin: 0;
+    font-size: 25px;
+    color: #fff;
+    transition: transform 0.3s ease, opacity 0.3s 300ms;
+    line-height: 30px;
+  }
+
+  .toggle-btn p.rotate {
+    transform: rotate(45deg);
+  }
+
+  .answer.visible {
+    max-height: 1000px;
+    opacity: 1;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .answer {
+    font-size: 16px;
+    text-align: left;
+    background: #fff;
+    border-radius: 5px;
+    padding: 0 20px;
+  }
+
+  .answer a {
+    text-decoration: underline;
+    color: #000;
+  }
+
+  .answer a:hover {
+    text-decoration: none;
+  }
+
+  .answer p ol,
+  .answer p ul,
+  .answer p ol li,
+  .answer p ul li{
+    padding-left: 25px !Important;
+  }
+
+.answer p {
+    line-height: 20px;
+    margin-bottom: 20px;
+}
+.answer p:last-child {
+    margin: 0;
+}
+
+{% endstylesheet %}
+
+{% schema %}
+    {
+        "name": "FAQ Section",
+        "settings": [
+            {
+            "type": "text",
+            "id": "faq_header",
+            "label": "Header",
+            "default": "FAQs"
+            },
+            {
+            "type": "text",
+            "id": "sub_faq_header",
+            "label": "Sub header",
+            "default": "Sub Header"
+            }
+        ],
+        "blocks":[
+            {
+                "name": "FAQ items",
+                "type": "faq",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "question",
+                        "label": "Question",
+                        "default": "Add question here"
+                    },
+                    {
+                        "type": "richtext",
+                        "id":"answer",
+                        "label":"answer"
+                    }
+                ]
+            }
+        ],
+        "presets": [{
+            "name": "Yotpo FAQ",
+            "settings": {}
+        }]
+    }
+{% endschema %}

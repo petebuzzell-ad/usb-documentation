@@ -1,0 +1,6 @@
+<div class="quickshop-forms__container js-quickshop-forms__container js-quickshop-forms--{{ product.id }}">
+    {% unless collection_handles contains 'coming-soon' %}
+      {% include 'product-notify-me' %}
+      {% include 'product-form', show_payment_button_quickshop: false %}
+    {% endunless %}
+</div>

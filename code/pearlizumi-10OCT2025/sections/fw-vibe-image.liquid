@@ -1,0 +1,44 @@
+<div class="fw-vibe-image" id="section-{{ section.id }}">
+  {%- if section.settings.image != blank -%}
+    <div
+      class="fw-vibe-image__wrapper{% if section.settings.constrain_height %} fw-vibe-image__wrapper--cover{% else %} fw-vibe-image__wrapper--auto-height{% endif %}"
+      style="{% if section.settings.constrain_height %}max-height: {{ section.settings.max_height }}px;{% endif %}"
+    >
+      {{ section.settings.image | img_url: '2048x' | img_tag: section.settings.image.alt | escape }}
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Vibe Image",
+  "tag": "section",
+  "class": "fw-vibe-image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "constrain_height",
+      "label": "Constrain height with object-fit: cover",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "max_height",
+      "label": "Max height (px) when constrained",
+      "default": 500,
+      "info": "Only applies when \"Constrain height\" is enabled."
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Vibe Image"
+    }
+  ]
+}
+{% endschema %}

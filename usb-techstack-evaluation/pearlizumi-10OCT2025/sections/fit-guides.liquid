@@ -1,0 +1,133 @@
+<script>
+  {%- capture fit_guides -%}
+  [
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'fit_guide' -%}
+        ,
+        {
+          name: {{ block.settings.title | json }},
+          gender: {{ block.settings.gender | default: 'none' | json }},
+          img: {{ block.settings.image | img_url: 'master' | json }}
+        }
+      {%- endif -%}
+    {%- endfor -%}
+  ]
+  {%- endcapture -%}
+  {% assign fit_guides = fit_guides | remove_first: ',' %}
+
+  {%- capture size_guides -%}
+  [
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'size_guide' -%}
+        ,
+        {
+          name: {{ block.settings.title | json }},
+          gender: {{ block.settings.gender | default: 'none' | json }},
+          img: {{ block.settings.image | img_url: 'master' | json }}
+        }
+      {%- endif -%}
+    {%- endfor -%}
+  ]
+  {%- endcapture -%}
+  {% assign size_guides = size_guides | remove_first: ',' %}
+
+  {%- capture size_charts -%}
+  [
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'size_chart' -%}
+        ,
+        {
+          name: {{ block.settings.title | json }},
+          gender: {{ block.settings.gender | default: 'none' | json }},
+          img: {{ block.settings.image | img_url: 'master' | json }}
+        }
+      {%- endif -%}
+    {%- endfor -%}
+  ]
+  {%- endcapture -%}
+  {% assign size_charts = size_charts | remove_first: ',' %}
+
+  window.guides = {
+    fitGuides: {{ fit_guides }},
+    sizeGuides: {{ size_guides }},
+    sizeCharts: {{ size_charts }}
+  };
+</script>
+
+{% schema %}
+  {
+    "name": "Fit Guides & Size Charts",
+    "tag": "section",
+    "blocks": [
+      {
+        "type": "fit_guide",
+        "name": "Fit Guide",
+        "settings": [
+          {
+            "id": "title",
+            "type": "text",
+            "label": "Name",
+            "info": "Name must match product tag fit_guide:name"
+          },
+          {
+            "id": "gender",
+            "type": "text",
+            "label": "Gender",
+            "info": "Gender must match product tag (gender:Men)"
+          },
+          {
+            "id": "image",
+            "type": "image_picker",
+            "label": "Image"
+          }
+        ]
+      },
+      {
+        "type": "size_guide",
+        "name": "Size Guide",
+        "settings": [
+          {
+            "id": "title",
+            "type": "text",
+            "label": "Name",
+            "info": "Name must match product tag size_guide:name"
+          },
+          {
+            "id": "gender",
+            "type": "text",
+            "label": "Gender",
+            "info": "Gender must match product tag (gender:Men)"
+          },
+          {
+            "id": "image",
+            "type": "image_picker",
+            "label": "Image"
+          }
+        ]
+      },
+      {
+        "type": "size_chart",
+        "name": "Size Chart",
+        "settings": [
+          {
+            "id": "title",
+            "type": "text",
+            "label": "Name",
+            "info": "Name must match product tag size_chart:name"
+          },
+          {
+            "id": "gender",
+            "type": "text",
+            "label": "Gender",
+            "info": "Gender must match product tag (gender:Men)"
+          },
+          {
+            "id": "image",
+            "type": "image_picker",
+            "label": "Image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
