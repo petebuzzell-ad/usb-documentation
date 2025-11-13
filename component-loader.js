@@ -19,7 +19,7 @@
     // CLIENT-SIDE AUTHENTICATION
     // ============================================
     
-    const PASSWORD = 'YOUR_PASSWORD_HERE'; // REPLACE WITH ACTUAL PASSWORD
+    const PASSWORD = 'arcadia'; // REPLACE WITH ACTUAL PASSWORD
     const AUTH_KEY = 'docs_authenticated'; // Change this if you want a unique key per project
     
     /**
@@ -38,10 +38,21 @@
     
     /**
      * Hide content to prevent flash before authentication
+     * Hides main content containers, not the entire body (so overlay is visible)
      */
     function hideContent() {
+        const containers = [
+            document.getElementById('header-container'),
+            document.getElementById('footer-container'),
+            document.querySelector('.container')
+        ].filter(Boolean);
+        
+        containers.forEach(container => {
+            container.style.visibility = 'hidden';
+        });
+        
+        // Also hide body content but keep it in layout so overlay can be positioned
         if (document.body) {
-            document.body.style.visibility = 'hidden';
             document.body.style.overflow = 'hidden';
         }
     }
@@ -50,8 +61,17 @@
      * Show content after authentication
      */
     function showContent() {
+        const containers = [
+            document.getElementById('header-container'),
+            document.getElementById('footer-container'),
+            document.querySelector('.container')
+        ].filter(Boolean);
+        
+        containers.forEach(container => {
+            container.style.visibility = 'visible';
+        });
+        
         if (document.body) {
-            document.body.style.visibility = 'visible';
             document.body.style.overflow = '';
         }
     }
@@ -212,8 +232,8 @@
                 // Success - authenticate and show content
                 setAuthenticated();
                 overlay.remove();
+                // Show content and load components
                 showContent();
-                // Continue with component loading (will happen automatically)
                 loadComponents();
             } else {
                 // Error - show message and refocus
@@ -381,14 +401,17 @@
      */
     function init() {
         if (document.body) {
-            // Hide content immediately to prevent flash
-            hideContent();
-            
             if (!isAuthenticated()) {
-                // Not authenticated - show password prompt
+                // Not authenticated - show password prompt first, then hide content
+                // Show overlay first so it's visible, then hide main content
                 showPasswordPrompt();
+                // Small delay to ensure overlay is rendered before hiding content
+                setTimeout(function() {
+                    hideContent();
+                }, 10);
             } else {
-                // Already authenticated - show content and load components
+                // Already authenticated - hide content briefly, then show and load
+                hideContent();
                 showContent();
                 if (document.readyState === 'loading') {
                     document.addEventListener('DOMContentLoaded', loadComponents);
